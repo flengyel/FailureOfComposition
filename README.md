@@ -8,6 +8,8 @@ of Florian Lengyel's *Pointwise provable equality and the failure of composition
   and [manuscript provenance and build instructions](manuscript/README.md)
 - [Manuscript-to-Lean coverage map](Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
 - [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md)
+- [Codex setup in WSL2](docs/CODEX_WSL_SETUP.md) and
+  [first toolchain-port task](docs/CODEX_PORT_TASK.md)
 
 The development proves the failure of induced composition on pointwise
 provability classes, the Pi-one completeness characterization, the classification
@@ -39,8 +41,8 @@ With Lean 4.32.2 and the pinned dependencies already installed under
 `${PCATS_DST:-$HOME/src/PCats}/.lake/packages`, run from this directory:
 
 ```sh
-./scripts/verify-failure-composition.sh --check-environment
-./scripts/verify-failure-composition.sh
+bash scripts/verify-failure-composition.sh --check-environment
+bash scripts/verify-failure-composition.sh
 ```
 
 The environment check invokes no Lake command. Full verification builds the

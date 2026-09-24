@@ -7,3 +7,4 @@
 /Audit/failure-composition-v36/evidence/*
 !/Audit/failure-composition-v36/evidence/evaluator-source-pins.json
 /manuscript/build/
+/.codex-work/
