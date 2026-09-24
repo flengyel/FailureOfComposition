@@ -1,0 +1,130 @@
+{
+  "repository": "flengyel/Categorical_Rice_Shapiro",
+  "commit": "97484e4988a3e632e2c255c641edbe5292a86ea3",
+  "files": [
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Arithmetic.lean",
+      "blob_sha": "dbe1ab084de86ed23a509bac1d74c2624429ed24"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Basic.lean",
+      "blob_sha": "df62923a5bae6a1653dd9bc6aae5966a1c1d8b86"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean",
+      "blob_sha": "c8cf2a165d602d521992b1e1400237156844dff4"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Conditional.lean",
+      "blob_sha": "c5532358b6fc5eac41ea28990ce40381c7db550f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/EncodedList.lean",
+      "blob_sha": "c10544b69e1a3014e142e7b239875cb707b66836"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean",
+      "blob_sha": "ea47c6b0b8a18c6644ea2a023145d34ff921c403"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean",
+      "blob_sha": "4a8b00b8e4858940d154b669a10f503a77d2813f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/EvaluationCongruence.lean",
+      "blob_sha": "bdb76fbe8dcc365d6610eb3e2bb8b1e955b7cc26"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean",
+      "blob_sha": "03f90f91c0f2cda8a91e80c4cb26ff0e0651c9e4"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Minimization.lean",
+      "blob_sha": "72ac146d3d797f5d0be168ac5ee14526a82f8ef7"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/NumeralEvaluation.lean",
+      "blob_sha": "9db660a84cfee87b0309df71ea1803d80e785f3f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Pairing.lean",
+      "blob_sha": "d8363cca4ae349eb31774a97b2ae9e950be49265"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/PartialRecursive.lean",
+      "blob_sha": "1e720c6d699487dcbc9bfa487b6a186453977fd4"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean",
+      "blob_sha": "01a712200b67853aef5aa7d1c83f8feaf1d5bdf1"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Recursion.lean",
+      "blob_sha": "6fbe44ba7ec0fe087daa3b4c5b8143bd2a18a46b"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean",
+      "blob_sha": "e77f0590115e04c9b9406e12d4d7d501db1f6281"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/Cell.lean",
+      "blob_sha": "223b369fde94da4ae3bc3c8e8b043995af6eaf81"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CellCongruence.lean",
+      "blob_sha": "2a8f7be27152c0f80a989263a393f0ce262cc895"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CellEvaluation.lean",
+      "blob_sha": "ca374c5739e5bc22c282029915bac7a51a5c60fd"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/Certificate.lean",
+      "blob_sha": "e63bf1e48d467e54addf71bb07a575d501cf1335"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean",
+      "blob_sha": "1c37526fe641463e7c98afdcefeb0242166a5e61"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean",
+      "blob_sha": "5ba333203ca139a0ef501178ce8e1ca2451bed15"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/History.lean",
+      "blob_sha": "b664dd0e74c37b64a0ed4150e9486c1e89d00001"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean",
+      "blob_sha": "c24ae03280d4346f930156c672157e756541d481"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PairPersistence.lean",
+      "blob_sha": "756cb576f6d4dd1601095d92b615e06c9c5e6d16"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean",
+      "blob_sha": "49da2c994ad33db1561338d697bd4725976dd4e6"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean",
+      "blob_sha": "5d611f33a7833e7d878ce86db29262527fc2fb97"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean",
+      "blob_sha": "93a46b6483883c8e6f34925f0c950afc80ba827f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/TableLookup.lean",
+      "blob_sha": "2d42133a35fd9615b114033893af396c778451bc"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean",
+      "blob_sha": "619660cdb8affa81568aa4893a1dea3de1b0f3d9"
+    },
+    {
+      "path": "CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean",
+      "blob_sha": "83856394cb67f4ef8f733ed68ac0d4f2c5ade915"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+/Lean/.lake/
+**/__pycache__/
+*.py[cod]
+*.olean
+*.ilean
+*.trace
+/Audit/failure-composition-v36/evidence/*
+!/Audit/failure-composition-v36/evidence/evaluator-source-pins.json

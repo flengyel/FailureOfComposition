@@ -1,0 +1,1766 @@
+{
+  "format": 1,
+  "source_repository": "flengyel/Categorical_Rice_Shapiro",
+  "baseline_reference": "202194e54e883648f0d9f22a65afee6987ef2134",
+  "baseline_reference_scope": "Historical reference, not a claim that all current bytes match it.",
+  "exported_at_utc": "2026-09-24T03:06:09.415885+00:00",
+  "source_files": [
+    {
+      "path": "Audit/failure-composition-v36/evidence/evaluator-source-pins.json",
+      "sha256": "e0ad90bc98aa49c7dccc53b65edf358ad92bdf75a0a7808e443ff866d75805ea",
+      "bytes": 4725,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Arithmetic.lean",
+      "sha256": "e2495190451417d39aed26d403d8696d83a617cbce429261e64b7b5fdb3066b8",
+      "bytes": 12177,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Basic.lean",
+      "sha256": "6e3113c13b04924b49e5cbbf979a3a65228e185bd68de2bac0af57a6a34b4bcf",
+      "bytes": 8809,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean",
+      "sha256": "eb9246baa6a058815bb9350247c044827fb3258cad283b933b787fe693632914",
+      "bytes": 24853,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Conditional.lean",
+      "sha256": "e057c95560665c74eacb336c9401ad1657de6cb787d4087f621f3d9804f6331f",
+      "bytes": 2567,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedList.lean",
+      "sha256": "d6aa5a314e2e4e84333bcbb678f978c13d52ea05da639fc95a92fb222b332564",
+      "bytes": 5014,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean",
+      "sha256": "b031b510fcf97147a2c0f7ea3c203523af1afddf433498eb1b3dfd8bddcb6abf",
+      "bytes": 21656,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean",
+      "sha256": "8ff86dd92fc40484601de3bf5e8006322827742e34e10ce7dbf481b8a2bb415f",
+      "bytes": 21564,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EvaluationCongruence.lean",
+      "sha256": "af2820b87edd2853a630df58d5291fa23377b7482ad13da4d4cf93621fe2f557",
+      "bytes": 26222,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean",
+      "sha256": "a1450a93d486d98909a9f568196c186b0bf6fa3b7ae284cddb48e0312821aa1f",
+      "bytes": 3520,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Minimization.lean",
+      "sha256": "bf3cc841633a56aa59b4600b9a1d4c16053d3f5352f77472ef07147f109a91b8",
+      "bytes": 2949,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/NumeralEvaluation.lean",
+      "sha256": "4feb05c7fa48083ed82f11a1ba4de31e0a8ba159e375b085e0b4eba31be22d17",
+      "bytes": 51881,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Pairing.lean",
+      "sha256": "cfcae652a2613a615ea1fd36bf79fa1a7832c8cfcc146f01f2c245d18208a7c0",
+      "bytes": 964,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursive.lean",
+      "sha256": "d10d5204f3ef1ecf4d9faf3dabe7720a8361ef04a9bff4474c46bb3b6e8d615d",
+      "bytes": 4478,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean",
+      "sha256": "32241b6a8b5f63a00e32aec2fe73cfce5253c3123c53e65c08be7f7f0f30e061",
+      "bytes": 6308,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Recursion.lean",
+      "sha256": "d8f48127d2528547998ec4e6f3f90528f29d78451e9b42ee7dc356f6aa23e35c",
+      "bytes": 10769,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean",
+      "sha256": "d654dd4bd740acd09d181d4d1ddb36e6413e6bfe05637ac856fff1c95177489e",
+      "bytes": 86041,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/Cell.lean",
+      "sha256": "d209a381758d00616bab06dd98ed4ff893a4faf677a23e46ae585aae255af18f",
+      "bytes": 4717,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CellCongruence.lean",
+      "sha256": "63ff70ba4ddbb4c26f19e92870de500325d1af634d7c8160dc9fd782fb98e227",
+      "bytes": 26666,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CellEvaluation.lean",
+      "sha256": "2a737f91f6277e1f6081fe457d44e4cee1382655f8d6704b8493d61c017dc7ca",
+      "bytes": 25453,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/Certificate.lean",
+      "sha256": "5b324b76ce5ab6931977ec8cdef9206604aa3ffbf595af374b649197179ac2b4",
+      "bytes": 16858,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean",
+      "sha256": "b43826039386bf990c1121f631eeff63e601400a2a366bd834c7104823e197d9",
+      "bytes": 30353,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean",
+      "sha256": "3ee6fe5d36a7d7e12efd6df8e169bc56ef8e4e95967f7c4be3da05f1797d6da4",
+      "bytes": 5884,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/History.lean",
+      "sha256": "e5794c3e25495d139fdfede7d8731db5b8fcf989b77b3bc91e199e1ccd7823f7",
+      "bytes": 3585,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean",
+      "sha256": "4a07af27e93490cd36001bb65073d8540817cdfa631509ab0c800cab59a3817e",
+      "bytes": 131052,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PairPersistence.lean",
+      "sha256": "134641b1656c9d93c98e88b89db1e3b00c9a3f63c92e6da9324f6e134f285a9e",
+      "bytes": 18836,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean",
+      "sha256": "b8b15329466bcaa59f9247d818019eae71b7b153d440a56ca3f496e9f27cd95e",
+      "bytes": 7462,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean",
+      "sha256": "7ec578df7c72d30687712977472755a7cbcb6494a24e66a6f39c5a820d7422b7",
+      "bytes": 49393,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean",
+      "sha256": "ef8d91daf988c1617efc76b2b795aa31f3f0ddd9f8f742a3df0b9a5eab7d67e1",
+      "bytes": 24232,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/TableLookup.lean",
+      "sha256": "efb374355395de303938f4d62db643b73c80ae76202da3464da895831d16f672",
+      "bytes": 1882,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean",
+      "sha256": "831f4bfc89afef8d9bc2a01f76a68456c17301e7566ebb76e9867d55d44e94e1",
+      "bytes": 5401,
+      "mode": 511
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean",
+      "sha256": "160044994aad536efc7796fbbd18ba34ca3670034379c8a5b12b3387b1bafec1",
+      "bytes": 9820,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition.lean",
+      "sha256": "1487928ce8c12577834d03f6041732d1c313f3003a34396bb1a6a2616522e043",
+      "bytes": 3659,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmeticCodeCompiler.lean",
+      "sha256": "6752177cab3313ae0b28307843325bd1848770d6b5d939cbd58ba6e6255d5b2e",
+      "bytes": 11054,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmeticFormulaAtoms.lean",
+      "sha256": "2fd95aa7b4f7fcc7802ccd24303b161b388b02526e8a7e3134f405a93c447587",
+      "bytes": 7397,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmeticProgramOperations.lean",
+      "sha256": "98e42235b7ae750dc425010b5fbdcfe54e7f3d51f88a6e55979f7d8b0654fc0c",
+      "bytes": 12080,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmetizationTransport.lean",
+      "sha256": "da0cafd67f8e42ac6fa371524e6b82364c695da08ae9fc1dbc0e44c1862bfb27",
+      "bytes": 4088,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/AxiomEnumeration.lean",
+      "sha256": "c10fde6a569104abc6b55ca84904357ee4eca83171be1d67dcd80bf5e0064fca",
+      "bytes": 2143,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/BoundedSemidecision.lean",
+      "sha256": "0740e1bee51f16c41e81dfc1f642aa8913dc6f89113554b9d19d9123c0a88e42",
+      "bytes": 5341,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/CompositionClosure.lean",
+      "sha256": "d5e9974a6a669448059d571441fa01b972aaa980245b99c8f289faa61830fa66",
+      "bytes": 4070,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ComputationSearchIndices.lean",
+      "sha256": "a446cfae440cc3b301e8e95f07752a0cd670c1a66e8885f7c19f94ff81b8600a",
+      "bytes": 3586,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteAdequacy.lean",
+      "sha256": "8675eca69d7f5eafacba78a36d4969e2837d773e2db8555ce04587789a4fbef3",
+      "bytes": 9769,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteConstructorGraphs.lean",
+      "sha256": "030bc4ef871042e038192ebd68f0a87019185897d7f3b6bbb383049f1bf07d56",
+      "bytes": 20753,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteDiagonal.lean",
+      "sha256": "69c70d057d171dadd20896670cdc54b5656558ac3d314a1c84de7dc8564c27ef",
+      "bytes": 7335,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteEmptyGraph.lean",
+      "sha256": "dcb8e6935c0ff7efdd276253352290e83847f5b7e110926e87b84fcc529c5d76",
+      "bytes": 4616,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteEvaluatorGraph.lean",
+      "sha256": "e3888b897e06dc9149cc4d2f932165cb39a3646b231c68ea465bde35c7fe3e6d",
+      "bytes": 6923,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteGeneratedCongruence.lean",
+      "sha256": "f407984ce595426508ecd36182cabb282d5d382cadd380bd5b61818877d3c198",
+      "bytes": 4228,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteGodel.lean",
+      "sha256": "f07060f82ec9fba11981143300eae959e743d96eb46759f55f6ce86fef2eb194",
+      "bytes": 3945,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteGodelRE.lean",
+      "sha256": "3f1c825e8dc7705bcd5c250762d8e5389bbeceec4feaded18b2648ca283b50a4",
+      "bytes": 2100,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteIndexObstruction.lean",
+      "sha256": "460d8ad0dd2ce7a6e16cbafe16b9e492b5f3a6a40afe13314325f774cd440d2b",
+      "bytes": 7528,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteMinimizationGraph.lean",
+      "sha256": "8068df87d98a75a7aee6dfb987fa2f020baebf4e2be296a796d985b39f7c2eac",
+      "bytes": 11147,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteNormalForm.lean",
+      "sha256": "08ddfe14a688aa9305e99388cf5c256f1f584e22152f6819c446833160a67db7",
+      "bytes": 6805,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcretePersistence.lean",
+      "sha256": "ac1f608e1d3ae9efbec01dd401ed3de8dad547cacd33f42eab9b24e14ebc6e82",
+      "bytes": 2804,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcretePiOneCharacterization.lean",
+      "sha256": "fc3027205546d7964e337aa9c49a805654b2bcaa1666042c4132beab37ac75bc",
+      "bytes": 4121,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteRecursionGraph.lean",
+      "sha256": "84e18b99aeba6fbbc3ae380d6b134a0a4c7aeb909437c2a50837db0acb760fe1",
+      "bytes": 34006,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteTransport.lean",
+      "sha256": "d1b787db8bcaeb6cf9486c6b3e92701ff47de579b0da73766235c7a02a78d1ed",
+      "bytes": 2131,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteWeakTotality.lean",
+      "sha256": "0ba65559acf01282a9f66491b415337dec9e4767ac8ff70093c9f21da7144b13",
+      "bytes": 9341,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteWitnessGraphs.lean",
+      "sha256": "bf6ec54d2ecfb54305c233dc57bcf47ef322b3e3986a13608f5f2d912183f20a",
+      "bytes": 12538,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConservativityConsequence.lean",
+      "sha256": "4d1b34918a06df6398984a2e16ba9e9c18e56cda485ef6353ff62a0ef9ded836",
+      "bytes": 5344,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/CraigPresentation.lean",
+      "sha256": "e3e5b0db492395adc60c60239a76ce90f4136f952600e1e408ec66dd6a18d92d",
+      "bytes": 9659,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/DomainTotality.lean",
+      "sha256": "2af8ba2db5d9231f8fe2b2f87911b372922beff8d1b7613f0e002442fcfe469e",
+      "bytes": 6192,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedClassification.lean",
+      "sha256": "87365e1175bbb70d68f09e6d0641631014e4bbb939268d6b465ba616762d90f5",
+      "bytes": 2987,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedCollapse.lean",
+      "sha256": "d6d0e66cf716ef3c97fa939dbf44d9af7f835e074d26da96f405cf5deb6ad532",
+      "bytes": 6061,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedExtensionality.lean",
+      "sha256": "bacce9eb38bcc197cd187ed0b1de717e5c05c7f3ebdd8d95f1e73934c00c1dfa",
+      "bytes": 3894,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedGraphDefinitions.lean",
+      "sha256": "485a2b5fb703fd5f1e61c148b0b2f126116f0ab57de957b5037fa315d7cc47e4",
+      "bytes": 2044,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedIndexClassification.lean",
+      "sha256": "e2930b9c78920a3695ab413f88cdf75a710395838b86b6742d89651751d578a4",
+      "bytes": 4280,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedIndexQuotient.lean",
+      "sha256": "e1b30db91eeb1eba7de1be13235a8dc32373f22de0c2ca370ad88ba3ed2a66f3",
+      "bytes": 6220,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedIndexTransport.lean",
+      "sha256": "c4cc5fabf6f6afeb3202b97fad49f6fa7ef8fa7d1fc0efc075e4d18548d3f12a",
+      "bytes": 6113,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedQuotient.lean",
+      "sha256": "886027cdea539d2e63518e958c31dff38592d71339391bbcc59c69e1d8b206fb",
+      "bytes": 3041,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedSoundness.lean",
+      "sha256": "2e69a784c0b744298c6883cc221e78f55b1bea8c9f4224aeef8a3a446d858568",
+      "bytes": 3233,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedWitnessGraphs.lean",
+      "sha256": "44e5c660979c02cd21966fb377ebbe5868338699e4c852a315583c084bb51894",
+      "bytes": 10632,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedWitnessPointwise.lean",
+      "sha256": "3ccfe3f088ab0682cfc807d5b98e44bb8b56ffd4eb2d715bc294b578c75523f0",
+      "bytes": 4872,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GodelGraph.lean",
+      "sha256": "82bf8253f18656145c15d18807792af602a8488fca4b9ee01a3b9897233cee60",
+      "bytes": 2566,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/GraphQuotient.lean",
+      "sha256": "2dc6ecbeda84959f79317a54b8ed994ce91c3f31f4cd1559778bfbf6a6bf315c",
+      "bytes": 4038,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/HistoryObstruction.lean",
+      "sha256": "91e27786994c15b65156c1c12773131e40a4193c49c091a6fd22aa2144a4df19",
+      "bytes": 5869,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/HistoryWitnesses.lean",
+      "sha256": "4a7e647f899b6117f58298324a65cbec2a947d0b4ef7c47329c363f882bffeb5",
+      "bytes": 7658,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/KleeneNormalForm.lean",
+      "sha256": "962ee0a1229459c7d5eea40fe04083e2f70f3f989e5ea2d38d80306472c346c6",
+      "bytes": 4317,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md",
+      "sha256": "83f98e3c0754aabb3f70d8f0a9e04750ee17076122d544dce91814a98b92b3a5",
+      "bytes": 13111,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ManuscriptObstruction.lean",
+      "sha256": "c18c5ece9ef138f2dc989bb03461271fd2881cda2342e0395d3409873caba730",
+      "bytes": 7588,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/MinimizationPersistence.lean",
+      "sha256": "4a4e79307062804dd2d543c6ec96d86dd9e6fa228defb74a8f471a2713ca8236",
+      "bytes": 20306,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/Challenge.lean",
+      "sha256": "79e2bca7c4a61eb2dececd9390b05cf9329230a6ad12e19f438d3717d94d6c28",
+      "bytes": 7110,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/CheckInterface.lean",
+      "sha256": "b15962f705f07e85e414e72f22f3cff1d4b4bdd6e4409a5af52606a4578f9dad",
+      "bytes": 5854,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/README.md",
+      "sha256": "0a6e52af10b5bc0ff28a037876f564ecca2325aba3c36d975900790b116e263e",
+      "bytes": 14378,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/Solution.lean",
+      "sha256": "f0a0904f37b03a9e3d714e6fb0c05c3c7e29a319cc0adf112774ba04ad7cd328",
+      "bytes": 6681,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/check_draft.py",
+      "sha256": "aeab399c9c4579a4b134f0780e61b3c673a711f7b6a2eb1e2825a84d64e4c2a4",
+      "bytes": 2168,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/comparator.json",
+      "sha256": "1418b85514795cc13663144395172f02fb4ad8d399c3404fefd8009e8a26f75e",
+      "bytes": 825,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/export_repository.py",
+      "sha256": "8b21486d5eac58dde3e2d8ef117d0e86ffa74d7362da452317fdbad601283963",
+      "bytes": 16232,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/formalization.yaml",
+      "sha256": "fdb03091d14c146cd4ebe357ed80f04cf91ad3958982d525536cc7c5bac5e751",
+      "bytes": 12432,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/PartialRecursiveQuotient.lean",
+      "sha256": "8ac36ad75e7ca1dc4596e0fb1989c0170878e41429a8b31e9ac94b84aeb096bd",
+      "bytes": 4502,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneCharacterization.lean",
+      "sha256": "bb02c42834dbcedc1323472f53ede0e023c63492de0a331b78772b9e98f4d1ec",
+      "bytes": 3250,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneCongruence.lean",
+      "sha256": "690a89e0a0d40471e2d1abf1da16242849b371274abc0aba90b01e39d8847eac",
+      "bytes": 3346,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneDefinitions.lean",
+      "sha256": "97f7b273a7ee2236574e792c52341bce7f9e9ec7593dcb57ace6882d73a748b7",
+      "bytes": 1689,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneExtensionality.lean",
+      "sha256": "f20d5689075a7226e00eb54eed817f7bdefcca2beb89e0c7452efd271aad1572",
+      "bytes": 7891,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneIndexCharacterization.lean",
+      "sha256": "4604ba2081dd360d2313821785eb4399e4d2a818dcb3e1da6d866dbaa4c9565e",
+      "bytes": 10035,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneNecessity.lean",
+      "sha256": "0d672b60f5e4f9a3d2d5e64afa64b33231a784aa2d962da3ff22881835f8c04a",
+      "bytes": 2485,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProductiveDivergence.lean",
+      "sha256": "d54f254713c19f98fae23fad519a0288be0a50fa93ad531050da9a3fff33da9d",
+      "bytes": 4437,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProductiveGraph.lean",
+      "sha256": "cc666802e965d36e018f55eb4d092ad76550226984cb2de119b41e2f2040e909",
+      "bytes": 3852,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Productiveness.lean",
+      "sha256": "d4594e048a373719c4e94db47edfef9aaf7d9d931b19a5c23f17c09889e4f244",
+      "bytes": 1925,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProgramGraph.lean",
+      "sha256": "db7c1b066abf5e41aeaa751c8a595d07dd8ae6345616c8b1885fe64041cb9e3b",
+      "bytes": 4042,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProgramIndices.lean",
+      "sha256": "47285aa631017298daa4520f71054bc558be189214790d142318dae2bed6ea1b",
+      "bytes": 8673,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProofSearchTemplate.lean",
+      "sha256": "d4747d7dd903c37a8d37e39dec07397c125db87ea58c67de2b2756a973dbfd90",
+      "bytes": 9791,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/QuotientComposition.lean",
+      "sha256": "8f6784d1836cc86a5c793b6349d8a701e0cb8fcffbd8216a004cb1998989c118",
+      "bytes": 1321,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/QuotientObstruction.lean",
+      "sha256": "f3d5a78a95450bffb53855633953e737de6c589858afb4d56a522b95e987061a",
+      "bytes": 2282,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/README.md",
+      "sha256": "982e147a7c099246cc40f549619b22c9d1020aeefe55b4e2acc8c3c4116ec739",
+      "bytes": 35745,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeAssignment.lean",
+      "sha256": "f39a0455c13d4a5a513f0705bc4a984c914ae36236e218f562362edc99cb824d",
+      "bytes": 6347,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeGodel.lean",
+      "sha256": "5e14fe6ca1eb3691501699b480039b8a21f3f647f210e98c3ea4c76568b97d01",
+      "bytes": 7053,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeProductive.lean",
+      "sha256": "bf6865a618dfb5a315a565511a080ecceebde05b0cd39bf57c3f0d2b52da57ec",
+      "bytes": 5915,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeWitness.lean",
+      "sha256": "f26ec58810bffa2925dfce321316327a9625353a604c1b876193b429a0718209",
+      "bytes": 8324,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneGraphWitness.lean",
+      "sha256": "8e5d809500a6e366a72fa2eb27e9e84e3b6f096e5f771c06943adf3dac37e7f4",
+      "bytes": 3166,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneRealization.lean",
+      "sha256": "c3a09764de856b8520a77d0c7efbe6d3b39fa5e44b16d9fba7cb9fbe4cf8cfa5",
+      "bytes": 6713,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneSearch.lean",
+      "sha256": "b94f21a7ec6744984483fd790d565fc83effb845a37caa44d4b89f9296bca69a",
+      "bytes": 14634,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneSemidecisionCore.lean",
+      "sha256": "bd2131291097a15b376f3e6946b03bc1651fd8b90896bf7a0be99e5e8f827487",
+      "bytes": 2668,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/TheoryEnumerability.lean",
+      "sha256": "3e9ed3c6bb4369c98c594e08d3e895d2313acb44b77bc0a352de8c565c9ab94f",
+      "bytes": 8500,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/TruePiOneTheory.lean",
+      "sha256": "ec525ca12a35e9391ede667621a9d5e94169739c37763132765bddcf3243991f",
+      "bytes": 2927,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Verification/CheckAxioms.lean",
+      "sha256": "729d29ce4bb2210012710da0b221e3328ae1cf640663c0544fbad25ba88d5606",
+      "bytes": 26721,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Verification/CheckDependencies.lean",
+      "sha256": "520c42030daee5e5311f05098a16b7e730d350dd95db22d3f0d43aaafe7c776a",
+      "bytes": 21204,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/Verification/CheckTypes.lean",
+      "sha256": "63339a1fe2b1ebec06556ae5703e6fd93152debcbb8d8706dfcf2590ae775c3b",
+      "bytes": 20480,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/build_evaluator.py",
+      "sha256": "6e5415724098d21afcea7db007399db51783624d94ea3c28900080bd408178b1",
+      "bytes": 2995,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/check_style.py",
+      "sha256": "55d4f66bf79b1fadbb2c5588fab53d8482cc02bafcf968b48a9d7343ef39532b",
+      "bytes": 5178,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/prepare_packages.py",
+      "sha256": "4ae2a0055c35699944b0e516da603493e07556cf5ca045c5cb8ff3f093d22eb8",
+      "bytes": 9514,
+      "mode": 511
+    },
+    {
+      "path": "Lean/FailureOfComposition/verify.sh",
+      "sha256": "0a882262b073cb3ecff21f54c5c3ff02f4bd8b98d3c7d124b7c20c8a04aeac22",
+      "bytes": 7394,
+      "mode": 511
+    },
+    {
+      "path": "Lean/LICENSE",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "bytes": 11357,
+      "mode": 511
+    },
+    {
+      "path": "Lean/lake-manifest.json",
+      "sha256": "d1261e9bcb23421d0e8f8a48e6dbca336387c2a64d10cecb5fcb2f1703629aa9",
+      "bytes": 5411,
+      "mode": 511
+    },
+    {
+      "path": "Lean/lakefile.toml",
+      "sha256": "9a6b03b8ff2bc7b0b502b264205da4f2937b7c0948358f8dd3ca73f9e9c574fc",
+      "bytes": 779,
+      "mode": 511
+    },
+    {
+      "path": "Lean/lean-toolchain",
+      "sha256": "2bdc48adfa58d0017e538a0ad117c5d73d35deec879978f909406a80c8037273",
+      "bytes": 25,
+      "mode": 511
+    },
+    {
+      "path": "scripts/sync_failcomp.py",
+      "sha256": "d71d369a50e77a4079105ecbe876568535233c492366aeba270862dd45abd3d7",
+      "bytes": 18696,
+      "mode": 511
+    },
+    {
+      "path": "scripts/syncfailcomp.sh",
+      "sha256": "6f187f857a73f90453ff4f0437461d8b633e609e3435878d48cc7f03af995b14",
+      "bytes": 458,
+      "mode": 511
+    },
+    {
+      "path": "scripts/verify-failure-composition.sh",
+      "sha256": "cb4d9ce9766eb78ad2f8a14b5c583128d8b0ffe90d74198c30735f9d2e1e827d",
+      "bytes": 256,
+      "mode": 511
+    }
+  ],
+  "exported_files": [
+    {
+      "path": ".gitignore",
+      "sha256": "e1f1311cab24e098ffeb56292b5418296047f3551a874149f80a34fcbcedaed5",
+      "bytes": 173,
+      "mode": 420,
+      "generated": true
+    },
+    {
+      "path": "Audit/failure-composition-v36/evidence/evaluator-source-pins.json",
+      "sha256": "e0ad90bc98aa49c7dccc53b65edf358ad92bdf75a0a7808e443ff866d75805ea",
+      "bytes": 4725,
+      "mode": 511,
+      "source": "Audit/failure-composition-v36/evidence/evaluator-source-pins.json"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "bytes": 11357,
+      "mode": 511,
+      "source": "Lean/LICENSE"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro.lean",
+      "sha256": "aa5136041d227e9e9d26200c0cad74b2cb22b59bfcdf3c3c2c864ef0be941167",
+      "bytes": 1837,
+      "mode": 420,
+      "generated": true
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Arithmetic.lean",
+      "sha256": "e2495190451417d39aed26d403d8696d83a617cbce429261e64b7b5fdb3066b8",
+      "bytes": 12177,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/Arithmetic.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Basic.lean",
+      "sha256": "6e3113c13b04924b49e5cbbf979a3a65228e185bd68de2bac0af57a6a34b4bcf",
+      "bytes": 8809,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/Basic.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean",
+      "sha256": "eb9246baa6a058815bb9350247c044827fb3258cad283b933b787fe693632914",
+      "bytes": 24853,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Conditional.lean",
+      "sha256": "e057c95560665c74eacb336c9401ad1657de6cb787d4087f621f3d9804f6331f",
+      "bytes": 2567,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/Conditional.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedList.lean",
+      "sha256": "d6aa5a314e2e4e84333bcbb678f978c13d52ea05da639fc95a92fb222b332564",
+      "bytes": 5014,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedList.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean",
+      "sha256": "b031b510fcf97147a2c0f7ea3c203523af1afddf433498eb1b3dfd8bddcb6abf",
+      "bytes": 21656,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean",
+      "sha256": "8ff86dd92fc40484601de3bf5e8006322827742e34e10ce7dbf481b8a2bb415f",
+      "bytes": 21564,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EvaluationCongruence.lean",
+      "sha256": "af2820b87edd2853a630df58d5291fa23377b7482ad13da4d4cf93621fe2f557",
+      "bytes": 26222,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/EvaluationCongruence.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean",
+      "sha256": "a1450a93d486d98909a9f568196c186b0bf6fa3b7ae284cddb48e0312821aa1f",
+      "bytes": 3520,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Minimization.lean",
+      "sha256": "bf3cc841633a56aa59b4600b9a1d4c16053d3f5352f77472ef07147f109a91b8",
+      "bytes": 2949,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/Minimization.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/NumeralEvaluation.lean",
+      "sha256": "4feb05c7fa48083ed82f11a1ba4de31e0a8ba159e375b085e0b4eba31be22d17",
+      "bytes": 51881,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/NumeralEvaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Pairing.lean",
+      "sha256": "cfcae652a2613a615ea1fd36bf79fa1a7832c8cfcc146f01f2c245d18208a7c0",
+      "bytes": 964,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/Pairing.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursive.lean",
+      "sha256": "d10d5204f3ef1ecf4d9faf3dabe7720a8361ef04a9bff4474c46bb3b6e8d615d",
+      "bytes": 4478,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursive.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean",
+      "sha256": "32241b6a8b5f63a00e32aec2fe73cfce5253c3123c53e65c08be7f7f0f30e061",
+      "bytes": 6308,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Recursion.lean",
+      "sha256": "d8f48127d2528547998ec4e6f3f90528f29d78451e9b42ee7dc356f6aa23e35c",
+      "bytes": 10769,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/Recursion.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean",
+      "sha256": "d654dd4bd740acd09d181d4d1ddb36e6413e6bfe05637ac856fff1c95177489e",
+      "bytes": 86041,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/Cell.lean",
+      "sha256": "d209a381758d00616bab06dd98ed4ff893a4faf677a23e46ae585aae255af18f",
+      "bytes": 4717,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/Cell.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CellCongruence.lean",
+      "sha256": "63ff70ba4ddbb4c26f19e92870de500325d1af634d7c8160dc9fd782fb98e227",
+      "bytes": 26666,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/CellCongruence.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CellEvaluation.lean",
+      "sha256": "2a737f91f6277e1f6081fe457d44e4cee1382655f8d6704b8493d61c017dc7ca",
+      "bytes": 25453,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/CellEvaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/Certificate.lean",
+      "sha256": "5b324b76ce5ab6931977ec8cdef9206604aa3ffbf595af374b649197179ac2b4",
+      "bytes": 16858,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/Certificate.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean",
+      "sha256": "b43826039386bf990c1121f631eeff63e601400a2a366bd834c7104823e197d9",
+      "bytes": 30353,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean",
+      "sha256": "3ee6fe5d36a7d7e12efd6df8e169bc56ef8e4e95967f7c4be3da05f1797d6da4",
+      "bytes": 5884,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/History.lean",
+      "sha256": "e5794c3e25495d139fdfede7d8731db5b8fcf989b77b3bc91e199e1ccd7823f7",
+      "bytes": 3585,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/History.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean",
+      "sha256": "4a07af27e93490cd36001bb65073d8540817cdfa631509ab0c800cab59a3817e",
+      "bytes": 131052,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PairPersistence.lean",
+      "sha256": "134641b1656c9d93c98e88b89db1e3b00c9a3f63c92e6da9324f6e134f285a9e",
+      "bytes": 18836,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/PairPersistence.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean",
+      "sha256": "b8b15329466bcaa59f9247d818019eae71b7b153d440a56ca3f496e9f27cd95e",
+      "bytes": 7462,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean",
+      "sha256": "7ec578df7c72d30687712977472755a7cbcb6494a24e66a6f39c5a820d7422b7",
+      "bytes": 49393,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean",
+      "sha256": "ef8d91daf988c1617efc76b2b795aa31f3f0ddd9f8f742a3df0b9a5eab7d67e1",
+      "bytes": 24232,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/TableLookup.lean",
+      "sha256": "efb374355395de303938f4d62db643b73c80ae76202da3464da895831d16f672",
+      "bytes": 1882,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/TableLookup.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean",
+      "sha256": "831f4bfc89afef8d9bc2a01f76a68456c17301e7566ebb76e9867d55d44e94e1",
+      "bytes": 5401,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean"
+    },
+    {
+      "path": "Lean/CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean",
+      "sha256": "160044994aad536efc7796fbbd18ba34ca3670034379c8a5b12b3387b1bafec1",
+      "bytes": 9820,
+      "mode": 511,
+      "source": "Lean/CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition.lean",
+      "sha256": "1487928ce8c12577834d03f6041732d1c313f3003a34396bb1a6a2616522e043",
+      "bytes": 3659,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmeticCodeCompiler.lean",
+      "sha256": "6752177cab3313ae0b28307843325bd1848770d6b5d939cbd58ba6e6255d5b2e",
+      "bytes": 11054,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ArithmeticCodeCompiler.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmeticFormulaAtoms.lean",
+      "sha256": "2fd95aa7b4f7fcc7802ccd24303b161b388b02526e8a7e3134f405a93c447587",
+      "bytes": 7397,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ArithmeticFormulaAtoms.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmeticProgramOperations.lean",
+      "sha256": "98e42235b7ae750dc425010b5fbdcfe54e7f3d51f88a6e55979f7d8b0654fc0c",
+      "bytes": 12080,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ArithmeticProgramOperations.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ArithmetizationTransport.lean",
+      "sha256": "da0cafd67f8e42ac6fa371524e6b82364c695da08ae9fc1dbc0e44c1862bfb27",
+      "bytes": 4088,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ArithmetizationTransport.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/AxiomEnumeration.lean",
+      "sha256": "c10fde6a569104abc6b55ca84904357ee4eca83171be1d67dcd80bf5e0064fca",
+      "bytes": 2143,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/AxiomEnumeration.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/BoundedSemidecision.lean",
+      "sha256": "0740e1bee51f16c41e81dfc1f642aa8913dc6f89113554b9d19d9123c0a88e42",
+      "bytes": 5341,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/BoundedSemidecision.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/CompositionClosure.lean",
+      "sha256": "d5e9974a6a669448059d571441fa01b972aaa980245b99c8f289faa61830fa66",
+      "bytes": 4070,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/CompositionClosure.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ComputationSearchIndices.lean",
+      "sha256": "a446cfae440cc3b301e8e95f07752a0cd670c1a66e8885f7c19f94ff81b8600a",
+      "bytes": 3586,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ComputationSearchIndices.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteAdequacy.lean",
+      "sha256": "8675eca69d7f5eafacba78a36d4969e2837d773e2db8555ce04587789a4fbef3",
+      "bytes": 9769,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteAdequacy.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteConstructorGraphs.lean",
+      "sha256": "030bc4ef871042e038192ebd68f0a87019185897d7f3b6bbb383049f1bf07d56",
+      "bytes": 20753,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteConstructorGraphs.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteDiagonal.lean",
+      "sha256": "69c70d057d171dadd20896670cdc54b5656558ac3d314a1c84de7dc8564c27ef",
+      "bytes": 7335,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteDiagonal.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteEmptyGraph.lean",
+      "sha256": "dcb8e6935c0ff7efdd276253352290e83847f5b7e110926e87b84fcc529c5d76",
+      "bytes": 4616,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteEmptyGraph.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteEvaluatorGraph.lean",
+      "sha256": "e3888b897e06dc9149cc4d2f932165cb39a3646b231c68ea465bde35c7fe3e6d",
+      "bytes": 6923,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteEvaluatorGraph.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteGeneratedCongruence.lean",
+      "sha256": "f407984ce595426508ecd36182cabb282d5d382cadd380bd5b61818877d3c198",
+      "bytes": 4228,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteGeneratedCongruence.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteGodel.lean",
+      "sha256": "f07060f82ec9fba11981143300eae959e743d96eb46759f55f6ce86fef2eb194",
+      "bytes": 3945,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteGodel.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteGodelRE.lean",
+      "sha256": "3f1c825e8dc7705bcd5c250762d8e5389bbeceec4feaded18b2648ca283b50a4",
+      "bytes": 2100,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteGodelRE.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteIndexObstruction.lean",
+      "sha256": "460d8ad0dd2ce7a6e16cbafe16b9e492b5f3a6a40afe13314325f774cd440d2b",
+      "bytes": 7528,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteIndexObstruction.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteMinimizationGraph.lean",
+      "sha256": "8068df87d98a75a7aee6dfb987fa2f020baebf4e2be296a796d985b39f7c2eac",
+      "bytes": 11147,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteMinimizationGraph.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteNormalForm.lean",
+      "sha256": "08ddfe14a688aa9305e99388cf5c256f1f584e22152f6819c446833160a67db7",
+      "bytes": 6805,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteNormalForm.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcretePersistence.lean",
+      "sha256": "ac1f608e1d3ae9efbec01dd401ed3de8dad547cacd33f42eab9b24e14ebc6e82",
+      "bytes": 2804,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcretePersistence.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcretePiOneCharacterization.lean",
+      "sha256": "fc3027205546d7964e337aa9c49a805654b2bcaa1666042c4132beab37ac75bc",
+      "bytes": 4121,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcretePiOneCharacterization.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteRecursionGraph.lean",
+      "sha256": "84e18b99aeba6fbbc3ae380d6b134a0a4c7aeb909437c2a50837db0acb760fe1",
+      "bytes": 34006,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteRecursionGraph.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteTransport.lean",
+      "sha256": "d1b787db8bcaeb6cf9486c6b3e92701ff47de579b0da73766235c7a02a78d1ed",
+      "bytes": 2131,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteTransport.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteWeakTotality.lean",
+      "sha256": "0ba65559acf01282a9f66491b415337dec9e4767ac8ff70093c9f21da7144b13",
+      "bytes": 9341,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteWeakTotality.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConcreteWitnessGraphs.lean",
+      "sha256": "bf6ec54d2ecfb54305c233dc57bcf47ef322b3e3986a13608f5f2d912183f20a",
+      "bytes": 12538,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConcreteWitnessGraphs.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ConservativityConsequence.lean",
+      "sha256": "4d1b34918a06df6398984a2e16ba9e9c18e56cda485ef6353ff62a0ef9ded836",
+      "bytes": 5344,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ConservativityConsequence.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/CraigPresentation.lean",
+      "sha256": "e3e5b0db492395adc60c60239a76ce90f4136f952600e1e408ec66dd6a18d92d",
+      "bytes": 9659,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/CraigPresentation.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/DomainTotality.lean",
+      "sha256": "2af8ba2db5d9231f8fe2b2f87911b372922beff8d1b7613f0e002442fcfe469e",
+      "bytes": 6192,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/DomainTotality.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedClassification.lean",
+      "sha256": "87365e1175bbb70d68f09e6d0641631014e4bbb939268d6b465ba616762d90f5",
+      "bytes": 2987,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedClassification.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedCollapse.lean",
+      "sha256": "d6d0e66cf716ef3c97fa939dbf44d9af7f835e074d26da96f405cf5deb6ad532",
+      "bytes": 6061,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedCollapse.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedExtensionality.lean",
+      "sha256": "bacce9eb38bcc197cd187ed0b1de717e5c05c7f3ebdd8d95f1e73934c00c1dfa",
+      "bytes": 3894,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedExtensionality.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedGraphDefinitions.lean",
+      "sha256": "485a2b5fb703fd5f1e61c148b0b2f126116f0ab57de957b5037fa315d7cc47e4",
+      "bytes": 2044,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedGraphDefinitions.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedIndexClassification.lean",
+      "sha256": "e2930b9c78920a3695ab413f88cdf75a710395838b86b6742d89651751d578a4",
+      "bytes": 4280,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedIndexClassification.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedIndexQuotient.lean",
+      "sha256": "e1b30db91eeb1eba7de1be13235a8dc32373f22de0c2ca370ad88ba3ed2a66f3",
+      "bytes": 6220,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedIndexQuotient.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedIndexTransport.lean",
+      "sha256": "c4cc5fabf6f6afeb3202b97fad49f6fa7ef8fa7d1fc0efc075e4d18548d3f12a",
+      "bytes": 6113,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedIndexTransport.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedQuotient.lean",
+      "sha256": "886027cdea539d2e63518e958c31dff38592d71339391bbcc59c69e1d8b206fb",
+      "bytes": 3041,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedQuotient.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedSoundness.lean",
+      "sha256": "2e69a784c0b744298c6883cc221e78f55b1bea8c9f4224aeef8a3a446d858568",
+      "bytes": 3233,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedSoundness.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedWitnessGraphs.lean",
+      "sha256": "44e5c660979c02cd21966fb377ebbe5868338699e4c852a315583c084bb51894",
+      "bytes": 10632,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedWitnessGraphs.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GeneratedWitnessPointwise.lean",
+      "sha256": "3ccfe3f088ab0682cfc807d5b98e44bb8b56ffd4eb2d715bc294b578c75523f0",
+      "bytes": 4872,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GeneratedWitnessPointwise.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GodelGraph.lean",
+      "sha256": "82bf8253f18656145c15d18807792af602a8488fca4b9ee01a3b9897233cee60",
+      "bytes": 2566,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GodelGraph.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/GraphQuotient.lean",
+      "sha256": "2dc6ecbeda84959f79317a54b8ed994ce91c3f31f4cd1559778bfbf6a6bf315c",
+      "bytes": 4038,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/GraphQuotient.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/HistoryObstruction.lean",
+      "sha256": "91e27786994c15b65156c1c12773131e40a4193c49c091a6fd22aa2144a4df19",
+      "bytes": 5869,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/HistoryObstruction.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/HistoryWitnesses.lean",
+      "sha256": "4a7e647f899b6117f58298324a65cbec2a947d0b4ef7c47329c363f882bffeb5",
+      "bytes": 7658,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/HistoryWitnesses.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/KleeneNormalForm.lean",
+      "sha256": "962ee0a1229459c7d5eea40fe04083e2f70f3f989e5ea2d38d80306472c346c6",
+      "bytes": 4317,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/KleeneNormalForm.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md",
+      "sha256": "83f98e3c0754aabb3f70d8f0a9e04750ee17076122d544dce91814a98b92b3a5",
+      "bytes": 13111,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ManuscriptObstruction.lean",
+      "sha256": "c18c5ece9ef138f2dc989bb03461271fd2881cda2342e0395d3409873caba730",
+      "bytes": 7588,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ManuscriptObstruction.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/MinimizationPersistence.lean",
+      "sha256": "4a4e79307062804dd2d543c6ec96d86dd9e6fa228defb74a8f471a2713ca8236",
+      "bytes": 20306,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/MinimizationPersistence.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/Challenge.lean",
+      "sha256": "79e2bca7c4a61eb2dececd9390b05cf9329230a6ad12e19f438d3717d94d6c28",
+      "bytes": 7110,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/Challenge.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/CheckInterface.lean",
+      "sha256": "b15962f705f07e85e414e72f22f3cff1d4b4bdd6e4409a5af52606a4578f9dad",
+      "bytes": 5854,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/CheckInterface.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/README.md",
+      "sha256": "0a6e52af10b5bc0ff28a037876f564ecca2325aba3c36d975900790b116e263e",
+      "bytes": 14378,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/README.md"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/Solution.lean",
+      "sha256": "f0a0904f37b03a9e3d714e6fb0c05c3c7e29a319cc0adf112774ba04ad7cd328",
+      "bytes": 6681,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/Solution.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/check_draft.py",
+      "sha256": "aeab399c9c4579a4b134f0780e61b3c673a711f7b6a2eb1e2825a84d64e4c2a4",
+      "bytes": 2168,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/check_draft.py"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/comparator.json",
+      "sha256": "1418b85514795cc13663144395172f02fb4ad8d399c3404fefd8009e8a26f75e",
+      "bytes": 825,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/comparator.json"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/export_repository.py",
+      "sha256": "8b21486d5eac58dde3e2d8ef117d0e86ffa74d7362da452317fdbad601283963",
+      "bytes": 16232,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/export_repository.py"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Palomar/formalization.yaml",
+      "sha256": "fdb03091d14c146cd4ebe357ed80f04cf91ad3958982d525536cc7c5bac5e751",
+      "bytes": 12432,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Palomar/formalization.yaml"
+    },
+    {
+      "path": "Lean/FailureOfComposition/PartialRecursiveQuotient.lean",
+      "sha256": "8ac36ad75e7ca1dc4596e0fb1989c0170878e41429a8b31e9ac94b84aeb096bd",
+      "bytes": 4502,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/PartialRecursiveQuotient.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneCharacterization.lean",
+      "sha256": "bb02c42834dbcedc1323472f53ede0e023c63492de0a331b78772b9e98f4d1ec",
+      "bytes": 3250,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/PiOneCharacterization.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneCongruence.lean",
+      "sha256": "690a89e0a0d40471e2d1abf1da16242849b371274abc0aba90b01e39d8847eac",
+      "bytes": 3346,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/PiOneCongruence.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneDefinitions.lean",
+      "sha256": "97f7b273a7ee2236574e792c52341bce7f9e9ec7593dcb57ace6882d73a748b7",
+      "bytes": 1689,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/PiOneDefinitions.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneExtensionality.lean",
+      "sha256": "f20d5689075a7226e00eb54eed817f7bdefcca2beb89e0c7452efd271aad1572",
+      "bytes": 7891,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/PiOneExtensionality.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneIndexCharacterization.lean",
+      "sha256": "4604ba2081dd360d2313821785eb4399e4d2a818dcb3e1da6d866dbaa4c9565e",
+      "bytes": 10035,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/PiOneIndexCharacterization.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/PiOneNecessity.lean",
+      "sha256": "0d672b60f5e4f9a3d2d5e64afa64b33231a784aa2d962da3ff22881835f8c04a",
+      "bytes": 2485,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/PiOneNecessity.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProductiveDivergence.lean",
+      "sha256": "d54f254713c19f98fae23fad519a0288be0a50fa93ad531050da9a3fff33da9d",
+      "bytes": 4437,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ProductiveDivergence.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProductiveGraph.lean",
+      "sha256": "cc666802e965d36e018f55eb4d092ad76550226984cb2de119b41e2f2040e909",
+      "bytes": 3852,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ProductiveGraph.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Productiveness.lean",
+      "sha256": "d4594e048a373719c4e94db47edfef9aaf7d9d931b19a5c23f17c09889e4f244",
+      "bytes": 1925,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Productiveness.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProgramGraph.lean",
+      "sha256": "db7c1b066abf5e41aeaa751c8a595d07dd8ae6345616c8b1885fe64041cb9e3b",
+      "bytes": 4042,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ProgramGraph.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProgramIndices.lean",
+      "sha256": "47285aa631017298daa4520f71054bc558be189214790d142318dae2bed6ea1b",
+      "bytes": 8673,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ProgramIndices.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/ProofSearchTemplate.lean",
+      "sha256": "d4747d7dd903c37a8d37e39dec07397c125db87ea58c67de2b2756a973dbfd90",
+      "bytes": 9791,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/ProofSearchTemplate.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/QuotientComposition.lean",
+      "sha256": "8f6784d1836cc86a5c793b6349d8a701e0cb8fcffbd8216a004cb1998989c118",
+      "bytes": 1321,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/QuotientComposition.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/QuotientObstruction.lean",
+      "sha256": "f3d5a78a95450bffb53855633953e737de6c589858afb4d56a522b95e987061a",
+      "bytes": 2282,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/QuotientObstruction.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/README.md",
+      "sha256": "982e147a7c099246cc40f549619b22c9d1020aeefe55b4e2acc8c3c4116ec739",
+      "bytes": 35745,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/README.md"
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeAssignment.lean",
+      "sha256": "f39a0455c13d4a5a513f0705bc4a984c914ae36236e218f562362edc99cb824d",
+      "bytes": 6347,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/RangeAssignment.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeGodel.lean",
+      "sha256": "5e14fe6ca1eb3691501699b480039b8a21f3f647f210e98c3ea4c76568b97d01",
+      "bytes": 7053,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/RangeGodel.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeProductive.lean",
+      "sha256": "bf6865a618dfb5a315a565511a080ecceebde05b0cd39bf57c3f0d2b52da57ec",
+      "bytes": 5915,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/RangeProductive.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/RangeWitness.lean",
+      "sha256": "f26ec58810bffa2925dfce321316327a9625353a604c1b876193b429a0718209",
+      "bytes": 8324,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/RangeWitness.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneGraphWitness.lean",
+      "sha256": "8e5d809500a6e366a72fa2eb27e9e84e3b6f096e5f771c06943adf3dac37e7f4",
+      "bytes": 3166,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/SigmaOneGraphWitness.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneRealization.lean",
+      "sha256": "c3a09764de856b8520a77d0c7efbe6d3b39fa5e44b16d9fba7cb9fbe4cf8cfa5",
+      "bytes": 6713,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/SigmaOneRealization.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneSearch.lean",
+      "sha256": "b94f21a7ec6744984483fd790d565fc83effb845a37caa44d4b89f9296bca69a",
+      "bytes": 14634,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/SigmaOneSearch.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/SigmaOneSemidecisionCore.lean",
+      "sha256": "bd2131291097a15b376f3e6946b03bc1651fd8b90896bf7a0be99e5e8f827487",
+      "bytes": 2668,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/SigmaOneSemidecisionCore.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/TheoryEnumerability.lean",
+      "sha256": "3e9ed3c6bb4369c98c594e08d3e895d2313acb44b77bc0a352de8c565c9ab94f",
+      "bytes": 8500,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/TheoryEnumerability.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/TruePiOneTheory.lean",
+      "sha256": "ec525ca12a35e9391ede667621a9d5e94169739c37763132765bddcf3243991f",
+      "bytes": 2927,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/TruePiOneTheory.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Verification/CheckAxioms.lean",
+      "sha256": "729d29ce4bb2210012710da0b221e3328ae1cf640663c0544fbad25ba88d5606",
+      "bytes": 26721,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Verification/CheckAxioms.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Verification/CheckDependencies.lean",
+      "sha256": "520c42030daee5e5311f05098a16b7e730d350dd95db22d3f0d43aaafe7c776a",
+      "bytes": 21204,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Verification/CheckDependencies.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/Verification/CheckTypes.lean",
+      "sha256": "63339a1fe2b1ebec06556ae5703e6fd93152debcbb8d8706dfcf2590ae775c3b",
+      "bytes": 20480,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/Verification/CheckTypes.lean"
+    },
+    {
+      "path": "Lean/FailureOfComposition/build_evaluator.py",
+      "sha256": "6e5415724098d21afcea7db007399db51783624d94ea3c28900080bd408178b1",
+      "bytes": 2995,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/build_evaluator.py"
+    },
+    {
+      "path": "Lean/FailureOfComposition/check_style.py",
+      "sha256": "55d4f66bf79b1fadbb2c5588fab53d8482cc02bafcf968b48a9d7343ef39532b",
+      "bytes": 5178,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/check_style.py"
+    },
+    {
+      "path": "Lean/FailureOfComposition/prepare_packages.py",
+      "sha256": "4ae2a0055c35699944b0e516da603493e07556cf5ca045c5cb8ff3f093d22eb8",
+      "bytes": 9514,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/prepare_packages.py"
+    },
+    {
+      "path": "Lean/FailureOfComposition/verify.sh",
+      "sha256": "0a882262b073cb3ecff21f54c5c3ff02f4bd8b98d3c7d124b7c20c8a04aeac22",
+      "bytes": 7394,
+      "mode": 511,
+      "source": "Lean/FailureOfComposition/verify.sh"
+    },
+    {
+      "path": "Lean/LICENSE",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "bytes": 11357,
+      "mode": 511,
+      "source": "Lean/LICENSE"
+    },
+    {
+      "path": "Lean/lake-manifest.json",
+      "sha256": "d1261e9bcb23421d0e8f8a48e6dbca336387c2a64d10cecb5fcb2f1703629aa9",
+      "bytes": 5411,
+      "mode": 511,
+      "source": "Lean/lake-manifest.json"
+    },
+    {
+      "path": "Lean/lakefile.toml",
+      "sha256": "4977f7da5f0ae301f0b6794c40b167b4729ec9065ed77b73908ed6682ac66998",
+      "bytes": 582,
+      "mode": 420,
+      "generated": true
+    },
+    {
+      "path": "Lean/lean-toolchain",
+      "sha256": "2bdc48adfa58d0017e538a0ad117c5d73d35deec879978f909406a80c8037273",
+      "bytes": 25,
+      "mode": 511,
+      "source": "Lean/lean-toolchain"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4556ae3cc93a347cb097f8553999b5f84d253b0f7e118acd906481db05e532f3",
+      "bytes": 3163,
+      "mode": 420,
+      "generated": true
+    },
+    {
+      "path": "scripts/README.md",
+      "sha256": "4cf14f64e089f92b1537cfd7f1ec8a1710792e066c831e82dc7aaf20d223dce1",
+      "bytes": 1511,
+      "mode": 420,
+      "generated": true
+    },
+    {
+      "path": "scripts/sync_failcomp.py",
+      "sha256": "d71d369a50e77a4079105ecbe876568535233c492366aeba270862dd45abd3d7",
+      "bytes": 18696,
+      "mode": 511,
+      "source": "scripts/sync_failcomp.py"
+    },
+    {
+      "path": "scripts/syncfailcomp.sh",
+      "sha256": "6f187f857a73f90453ff4f0437461d8b633e609e3435878d48cc7f03af995b14",
+      "bytes": 458,
+      "mode": 511,
+      "source": "scripts/syncfailcomp.sh"
+    },
+    {
+      "path": "scripts/verify-failure-composition.sh",
+      "sha256": "cb4d9ce9766eb78ad2f8a14b5c583128d8b0ffe90d74198c30735f9d2e1e827d",
+      "bytes": 256,
+      "mode": 511,
+      "source": "scripts/verify-failure-composition.sh"
+    }
+  ],
+  "transformations": [
+    {
+      "path": "Lean/CategoricalRiceShapiro.lean",
+      "description": "Import-only evaluator umbrella generated from the unchanged 31-file pin inventory.",
+      "source_paths": [
+        "Audit/failure-composition-v36/evidence/evaluator-source-pins.json"
+      ]
+    },
+    {
+      "path": "Lean/lakefile.toml",
+      "description": "Preserve package identity, version, options and requirements; default to FailureOfComposition and remove unrelated libraries: Arith, Metamath, PCats, RiceShapiro",
+      "source_paths": [
+        "Lean/lakefile.toml"
+      ]
+    },
+    {
+      "path": "README.md",
+      "description": "Standalone export scope and verification instructions.",
+      "source_paths": []
+    },
+    {
+      "path": "scripts/README.md",
+      "description": "Document only the exported verification workflows.",
+      "source_paths": []
+    },
+    {
+      "path": ".gitignore",
+      "description": "Ignore future build outputs and reports; retain evaluator pins.",
+      "source_paths": []
+    }
+  ],
+  "license_copy": {
+    "source": "Lean/LICENSE",
+    "destinations": [
+      "LICENSE",
+      "Lean/LICENSE"
+    ]
+  },
+  "excluded": [
+    "manuscripts and PDFs",
+    "unrelated project libraries",
+    "dependency checkouts",
+    "build artifacts",
+    "old Audit reports",
+    "Git metadata"
+  ],
+  "verification_at_export": {
+    "31_evaluator_git_blob_pins": "passed",
+    "standalone_native_build": "not run",
+    "style_and_theorem_audits": "not run",
+    "kernel_replay": "not run",
+    "palomar_comparator": "not run"
+  },
+  "git_initialized": false,
+  "remote_repository_created": false,
+  "manifest_note": "ROOTPROVENANCE.json does not recursively hash itself."
+}
