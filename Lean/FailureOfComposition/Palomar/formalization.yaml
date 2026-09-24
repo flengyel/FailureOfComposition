@@ -16,14 +16,15 @@ project:
     is extensional equality when the theory is Sigma-one sound and universal
     otherwise. In the sound case its quotient is isomorphic to the monoid of
     actual unary partial recursive functions. This package is a draft Palomar
-    statement interface; current toolchain, Challenge-import, and repository
-    licensing requirements remain unresolved, and Comparator has not been run.
+    statement interface; current toolchain and Challenge-import requirements remain
+    unresolved, the added manuscript retains its existing licensing, and
+    Comparator has not been run.
   authors:
     - "Florian Lengyel"
   responsible_maintainers:
     - "Florian Lengyel"
-  # Existing code license at Lean/LICENSE; not a claim that the absent
-  # repository-root license requirement has been satisfied.
+  # Existing Lean/support-code license is present at LICENSE and Lean/LICENSE.
+  # The manuscript retains its existing licensing; no new paper license is granted.
   license: "Apache-2.0"
 
 classification:
@@ -36,9 +37,11 @@ sources:
     type: "paper"
     relationship: "formalizes"
     id: "https://github.com/flengyel/Categorical_Rice_Shapiro/blob/202194e54e883648f0d9f22a65afee6987ef2134/research/notes/failure_of_composition_2026-09-21_v36.tex"
-    location: "Manuscript dated September 21, 2026; Theorem 1 through Proposition 6 and the generated-quotient corollary."
+    location: "manuscript/failure_of_composition_2026-09-21_v36.tex; dated September 21, 2026; Theorem 1 through Proposition 6 and the generated-quotient corollary."
     author_endorsement: "participated"
     note: >-
+      The unchanged source is maintained locally at the path above. Its id
+      records the historical immutable source, not the current code repository.
       This is source-based formalization of a result already presented in the
       manuscript, not an original-proof provenance claim. The concrete evaluator
       and historical coding qualifications are recorded under fidelity.
@@ -78,8 +81,8 @@ status:
     the maintained library are described in MANUSCRIPT_COVERAGE.md but are not
     all independently selected in this configuration. Deliberate holes occur
     only in the draft Challenge and are excluded from the following proof
-    counts. These counts do not describe unrelated Audit probes or test fixtures
-    elsewhere in the repository. No Palomar eligibility or acceptance is claimed.
+    counts. Historical Audit probes and test fixtures in the original
+    development repository are outside this statement count. No Palomar eligibility or acceptance is claimed.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Quot.sound", "Classical.choice"]
@@ -102,7 +105,8 @@ automation:
     ChatGPT and Claude assistance with mathematical exploration and draft
     review; that disclosure is not evidence that Claude produced these Lean
     proofs. The maintained baseline's automated checks and agent reviews are
-    recorded in the repository. The author's successful full WSL verification
+    retained in the historical development repository linked below. The
+    author's successful full WSL verification
     run is user-reported; this package does not present it as a newly observed
     independent machine run. Preparation does not include a Palomar submission.
 
@@ -134,7 +138,8 @@ review:
     The maintained development underwent manuscript-to-Lean coverage review,
     exact hypothesis and quantifier checks, axiom/dependency audits, strict
     style checks, and kernel replay. See ../MANUSCRIPT_COVERAGE.md and the
-    pinned repository's Audit/failure-composition-v36/evidence reviews.
+    historical reviews linked there at Categorical_Rice_Shapiro commit
+    6c3fe13979f31fed5c6da73098cbc323c2647f15.
     This is automated review, not external human peer review. The local draft
     checker has compared all nine elaborated types and checked their axiom
     envelopes; the preparation verification report records its evidence and
@@ -192,6 +197,9 @@ alignment:
 palomar_preparation:
   status: "DRAFT NOT SUBMISSION READY"
   checked_on: "2026-09-24"
+  current_repository: "flengyel/FailureOfComposition"
+  initial_standalone_commit: "c9814f8afe0597b14df5942d59e49bb2402fa607"
+  baseline_repository: "flengyel/Categorical_Rice_Shapiro"
   baseline_commit: "202194e54e883648f0d9f22a65afee6987ef2134"
   selected_project: "Lean"
   comparator_path: "Lean/FailureOfComposition/Palomar/comparator.json"
@@ -202,7 +210,7 @@ palomar_preparation:
   blockers:
     - "Lean 4.32.2 is below Palomar's current minimum v4.35.0-rc2."
     - "Challenge imports reach prohibited Foundation and project-local sources, including proved results."
-    - "Only Lean/LICENSE exists; a repository-root license and its intended snapshot scope remain unresolved."
+    - "Root LICENSE is present for the code; account for the manuscript's existing licensing in any submitted snapshot."
     - "No successful Comparator, independent exported-proof checker, or Palomar mechanical run is recorded."
   statement_policy: >-
     Eligibility must be achieved without weakening the mathematical statements,
@@ -215,5 +223,5 @@ acknowledgements: >-
   The development builds on Lean, Mathlib, and the FormalizedFormalLogic
   Foundation library. These are software/formal proof dependencies, distinct
   from the mathematical sources above. The existing Lean code carries the
-  Apache-2.0 license; this draft does not resolve the repository-root license
-  requirement or change the licensing of cited sources.
+  Apache-2.0 license, also present at repository root. Adding the manuscript
+  does not change its existing licensing or that of cited sources.

@@ -29,12 +29,17 @@ are abbreviated relative to this namespace.
 From the repository root, build the library and run its checks with:
 
 ```sh
+export FAILCOMP_DST="$HOME/src/FailureOfCompositionStandalone"
 ./scripts/syncfailcomp.sh --check-environment
 ./scripts/syncfailcomp.sh
 ```
 
-Review and verification records remain under
-`Audit/failure-composition-v36/evidence/`. The native Lake build, theorem and
+This dedicated mirror belongs to this repository. Keep the original
+`Categorical_Rice_Shapiro` checkout's `~/src/FailureOfComposition` mirror separate.
+
+Historical review and verification records are retained in the
+[original repository at a fixed revision](https://github.com/flengyel/Categorical_Rice_Shapiro/tree/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/).
+New runs write reports under `Audit/failure-composition-v36/evidence/` here. The native Lake build, theorem and
 dependency audits, all 72 strict style checks, and all 103 kernel replays
 passed. The final [manuscript coverage review](MANUSCRIPT_COVERAGE.md)
 is complete for the stated program-index scope.
@@ -535,7 +540,8 @@ records the exact statements, proof variants, and representation boundaries.
 
 ## Native verification and historical provenance
 
-For a source checkout on `/mnt/c`, use `./scripts/syncfailcomp.sh` from the
+For a source checkout on `/mnt/c`, first set `FAILCOMP_DST` to this repository's
+dedicated mirror as shown above, then use `./scripts/syncfailcomp.sh` from the
 repository root. It synchronizes the required sources into the persistent Linux
 mirror `${FAILCOMP_DST:-$HOME/src/FailureOfComposition}` and keeps build output,
 logs, and temporary package metadata there. It shares the existing PCats
@@ -560,17 +566,18 @@ passes a canonical path override to every Lake invocation and revalidates the
 checkouts afterward. It never clones or updates dependencies.
 
 The external PCats configuration does not need additional library entries.
-`syncpcats.sh` continues to mirror its four original libraries; this verifier
+The original repository's `syncpcats.sh` continues to mirror its four libraries;
+this verifier
 builds the maintained sources in the repository's `Lean/` root. See the
-[WSL workflow](../../scripts/README.md#failure-of-composition-verification-in-wsl)
+[WSL workflow](../../scripts/README.md)
 for details. Do not substitute bare `lake env` for the environment check:
 Lake may resolve and clone dependencies before running its requested command.
 
 Native verification passed on 2026-09-24 using existing external dependency
 checkouts, with no repository-local `.lake/packages` directory before or after
-the run. This was tested in the Linux verification runtime. The author has
-reported a successful WSL environment check; full WSL verification remains
-pending after a reported system crash. The native library build, theorem
+the run. This was tested in the Linux verification runtime. The author subsequently
+reported a successful full WSL mirror verification; that user-reported result is
+recorded separately from the inspected runtime logs. The native library build, theorem
 types, axiom/dependency audits, and all 103 kernel replays passed with no
 warnings in the maintained mathematical library. Its inventory consists of
 71 `FailureOfComposition` mathematical modules, the umbrella, and 31 pinned
@@ -624,35 +631,37 @@ among the audited roots' axioms. The full log uses the maintained
 The source-provenance audit traversed 2,578 modules across 16 pinned, clean
 dependency packages, with no unresolved imports or untracked dependency sources.
 
-Evidence is retained in `Audit/failure-composition-v36/evidence/`:
+The reports below are historical verification evidence from the original
+repository, linked at its preparation commit. The evaluator pin file is
+maintained locally; new runs generate their own reports here:
 
-- [Persistent mirror verification](../../Audit/failure-composition-v36/evidence/syncfailcomp-validation.json)
+- [Persistent mirror verification](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/syncfailcomp-validation.json)
   records initialization of an existing empty directory, the successful build
   from an empty project cache, 40 script regressions, and a repeat sync that
   preserved all 836 cache files. All 72 style checks, 103 kernel replays, and
   260 previously audited theorem types passed unchanged.
-- [Dependency-reuse verification](../../Audit/failure-composition-v36/evidence/wsl-dependency-reuse.json)
+- [Dependency-reuse verification](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/wsl-dependency-reuse.json)
   records the external-checkout run, all 260 preserved audited types, and
   the 22 runner regressions. `syncpcats.sh` and all Lean proof sources are unchanged.
 - [Final coverage map](MANUSCRIPT_COVERAGE.md) and
-  [independent coverage review](../../Audit/failure-composition-v36/evidence/coverage-review.md)
+  [independent coverage review](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/coverage-review.md)
   record the semantic comparison and remaining representation boundaries.
-- [Strict style report](../../Audit/failure-composition-v36/evidence/style-lint.json)
+- [Strict style report](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/style-lint.json)
   records all 72 source checks, their hashes, and the enforced options.
-- [Native build record](../../Audit/failure-composition-v36/evidence/native-build.json)
+- [Native build record](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/native-build.json)
   records the exact command and successful exit status.
-- [Verification log](../../Audit/failure-composition-v36/evidence/verification.log)
-  and [validation record](../../Audit/failure-composition-v36/evidence/validation.json)
+- [Verification log](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/verification.log)
+  and [validation record](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/validation.json)
   record the run outcome, module inventory, hashes, and exact scope.
 - [Evaluator source pins](../../Audit/failure-composition-v36/evidence/evaluator-source-pins.json)
-  and [source provenance](../../Audit/failure-composition-v36/evidence/source-provenance.json)
+  and [source provenance](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/source-provenance.json)
   record the imported dependency sources.
-- [Weak-totality review](../../Audit/failure-composition-v36/evidence/weak-totality-review.md)
+- [Weak-totality review](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/weak-totality-review.md)
   records independent source review of the three new modules and their exact
   manuscript scope.
-- [Range review](../../Audit/failure-composition-v36/evidence/range-review.md)
+- [Range review](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/range-review.md)
   records the four-module independent source review, internal quantifiers,
   realizing-index choice independence, and the scope of both proof routes.
-- [Generated-congruence milestone review](../../Audit/failure-composition-v36/evidence/milestone-review.md)
+- [Generated-congruence milestone review](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/milestone-review.md)
   distinguishes collaborating-agent reviews from authors' checks. It does not
   claim external human acceptance.

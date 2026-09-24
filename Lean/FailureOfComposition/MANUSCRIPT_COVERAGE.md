@@ -1,7 +1,8 @@
 # Manuscript v36: mathematical coverage
 
-This map records the final source review of
-[`failure_of_composition_2026-09-21_v36.tex`](../../research/notes/failure_of_composition_2026-09-21_v36.tex),
+This map preserves the final source review from the original development
+repository. The reviewed manuscript is now stored locally as
+[`failure_of_composition_2026-09-21_v36.tex`](../../manuscript/failure_of_composition_2026-09-21_v36.tex),
 *Pointwise provable equality and the failure of composition*. The reviewed
 manuscript blob is `e0a2bd4b3570235fa4ea89ffe8dcf9d5445499f9`.
 The review starts from commit `355316179c294071d087b04bef0d08bb4329dcb0`
@@ -11,7 +12,7 @@ and includes the three coverage additions below. The manuscript is unchanged.
 No unproved mathematical claim was identified within the program-index scope
 specified here after the additions. The native build, all 72 strict style
 checks, theorem and dependency audits, and all 103 kernel replays passed. Runtime evidence is recorded separately in
-[`validation.json`](../../Audit/failure-composition-v36/evidence/validation.json).
+[`validation.json`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/validation.json).
 
 Names below are relative to `FailureOfComposition`. `PA` denotes `𝗣𝗔`.
 The concrete theorems concern the fixed natural-number program numbering and
@@ -107,6 +108,6 @@ verifier still runs the audits and kernel-replays the evaluator modules.
 The complete kernel inventory is 103 modules.
 
 The review is a collaborating-agent semantic review, separately documented in
-[`coverage-review.md`](../../Audit/failure-composition-v36/evidence/coverage-review.md).
+[`coverage-review.md`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/coverage-review.md).
 It is not external human acceptance. Palomar preparation and the author's
 arXiv version 37 remain subsequent work.

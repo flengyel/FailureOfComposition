@@ -1,21 +1,37 @@
-# FailureOfComposition: standalone repository candidate
+# FailureOfComposition
 
-This source-only export prepares a separate repository for the Lean
-formalization of *Pointwise provable equality and the failure of composition*.
-It has not initialized Git, created a remote repository, or published anything.
+This is the maintained repository for the Lean formalization and LaTeX source
+of Florian Lengyel's *Pointwise provable equality and the failure of composition*.
 
-The mathematical development and its verifier remain in `Lean/`. The only
-libraries declared here are `FailureOfComposition` and its 31 pinned
-`CategoricalRiceShapiro` evaluator modules. The default target is
-`FailureOfComposition`. The historical Lake package name remains
-`CategoricalRiceShapiro` so that the committed dependency manifest is unchanged;
-it does not determine the eventual repository name.
+- [Lean development and verification guide](Lean/FailureOfComposition/README.md)
+- [Manuscript source, version 36](manuscript/failure_of_composition_2026-09-21_v36.tex)
+  and [manuscript provenance and build instructions](manuscript/README.md)
+- [Manuscript-to-Lean coverage map](Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
+- [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md)
 
-The source repository is [flengyel/Categorical_Rice_Shapiro](https://github.com/flengyel/Categorical_Rice_Shapiro).
-The supplied baseline reference is `202194e54e883648f0d9f22a65afee6987ef2134`; this is not a claim that every
-exported byte belongs to that commit. `ROOTPROVENANCE.json` records the exact
-source and exported file hashes and every packaging transformation. No theorem
-source or dependency pin was changed by the export.
+The development proves the failure of induced composition on pointwise
+provability classes, the Pi-one completeness characterization, the classification
+of the generated composition congruence, and the weak-totality and range
+obstructions. The coverage map states the exact program-index scope.
+The manuscript is the unchanged v36 source underlying that coverage review;
+the author's planned v37 revision will be added separately.
+
+## Repository layout and history
+
+The mathematical development and its verifier are in `Lean/`. The two declared
+libraries are `FailureOfComposition` and the 31 pinned `CategoricalRiceShapiro`
+evaluator modules it uses. The default build target is `FailureOfComposition`.
+The Lake package name remains `CategoricalRiceShapiro` to preserve the dependency
+manifest; it does not identify the repository where development is maintained.
+
+The formalization was developed in
+[flengyel/Categorical_Rice_Shapiro](https://github.com/flengyel/Categorical_Rice_Shapiro)
+before moving here. That repository is the historical origin of the exported
+code and verification records. [ROOTPROVENANCE.json](ROOTPROVENANCE.json) records
+the initial export, including its input/output hashes and packaging changes.
+Its flags describe that export event. It is not a manifest of later commits:
+this repository has since been initialized, published, and extended with the
+manuscript and updated documentation.
 
 ## Verification
 
@@ -28,30 +44,25 @@ With Lean 4.32.2 and the pinned dependencies already installed under
 ```
 
 The environment check invokes no Lake command. Full verification builds the
-native library and runs the maintained style, theorem, dependency, and kernel
-checks. `CRS_LAKE_PACKAGES` may provide the existing validated package mapping.
-No dependency checkout is copied into this export or fetched by those scripts.
+library and runs the style, theorem, dependency, and kernel checks.
+`CRS_LAKE_PACKAGES` may supply an existing package mapping. The scripts validate
+the dependency pins and do not fetch new checkouts.
 
-For a source checkout on `/mnt/c`, use `./scripts/syncfailcomp.sh` to maintain
-a Linux verification mirror. Choose a new `FAILCOMP_DST` if an existing mirror
-belongs to the original repository; mirror ownership is tied to its source.
-See [scripts/README.md](scripts/README.md). The exporter has not run these checks
-on this new tree; results must be obtained separately and recorded honestly.
+For a source checkout on `/mnt/c`, use the persistent Linux mirror described in
+[scripts/README.md](scripts/README.md). Choose a fresh mirror, such as
+`~/src/FailureOfCompositionStandalone`: the existing `~/src/FailureOfComposition`
+mirror belongs to the original repository's checkout. Mirror ownership is tied
+to its source directory.
 
-## Palomar preparation and licensing
+## Licensing and Palomar
 
-The nine paired statement drafts are in
-[Lean/FailureOfComposition/Palomar](Lean/FailureOfComposition/Palomar/README.md).
-The export supplies a repository-root `LICENSE`, copied unchanged from the
-existing Lean code license. Manuscripts, PDFs, unrelated projects, build
-artifacts, dependency checkouts, and prior audit reports were not copied.
+The Lean formalization and supporting code use the existing
+[Apache-2.0 license](LICENSE). The manuscript retains its existing licensing;
+placing its source here does not assign it a new code license. See the
+[manuscript notes](manuscript/README.md).
 
-This packaging does not fix Palomar's current minimum-toolchain or Challenge
-import-policy blockers. No Comparator or Palomar check has been run by the
-exporter. The copied draft metadata retains original-repository provenance and
-baseline-specific licensing discussion. Before any submission, update its
-repository identity and checked revision, distinguish this root-license
-packaging from the original baseline, and complete the outstanding gates.
-The draft Challenge's deliberate theorem holes remain outside the maintained
-proof umbrella. Source license and third-party dependency licenses remain
-distinct; no manuscript license is declared by this code-only export.
+The [Palomar draft](Lean/FailureOfComposition/Palomar/README.md) contains nine
+paired statements and proved counterparts. Submission still requires a supported
+Lean/Mathlib/Foundation port, a Challenge with permitted imports, and actual
+Comparator verification. The manuscript's licensing scope must also be accounted
+for in any submitted snapshot. No Palomar submission or registration is claimed.

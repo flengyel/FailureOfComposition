@@ -4,7 +4,9 @@
 and their proved counterparts reviewable. It is not an eligible Palomar
 submission, a Comparator success report, or a registry entry.
 
-The proof baseline is repository commit
+The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
+Its initial standalone commit is `c9814f8afe0597b14df5942d59e49bb2402fa607`.
+The historical proof baseline in the original repository is commit
 [`202194e54e883648f0d9f22a65afee6987ef2134`](https://github.com/flengyel/Categorical_Rice_Shapiro/tree/202194e54e883648f0d9f22a65afee6987ef2134),
 using Lean 4.32.2, Mathlib revision
 `905b95818eb32af7874a58b427f50c1711a5e96c`, and Foundation revision
@@ -68,14 +70,12 @@ and [PalomarSubmission at `1703d7b`](https://github.com/PalomarRegistry/PalomarS
    statement interface with permitted dependencies is still required.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
-3. **Repository-root licensing.** The baseline has Apache-2.0 at
-   `Lean/LICENSE`, but no conventional license at repository root. Selecting
-   nested project `Lean` does not move Palomar's
-   [root-license requirement](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
-   The intended license declaration for the submitted snapshot must be
-   resolved; the code headers alone do not silently license every manuscript
-   or other file in the repository. `project.license: Apache-2.0` records the
-   existing code license and intended declaration, not satisfaction of this gate.
+3. **Snapshot licensing scope.** This repository now has the exported
+   Apache-2.0 code license at its root as `LICENSE`. The historical missing-root
+   issue is resolved. The manuscript has been added under `manuscript/` with
+   its existing licensing preserved; the code license is not a new grant for
+   the paper. Its scope must be settled for any final submitted snapshot under
+   the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
 4. **Comparator has not run.** Local elaboration, matching declaration types,
    axiom audits, and ordinary kernel replay do not establish Palomar's
    protected Challenge/Solution comparison. Its current
@@ -111,7 +111,7 @@ selection is:
 
 | Setting | Repository-relative value |
 | --- | --- |
-| Repository | `flengyel/Categorical_Rice_Shapiro` |
+| Repository | `flengyel/FailureOfComposition` |
 | Selected project | `Lean` |
 | Comparator configuration | `Lean/FailureOfComposition/Palomar/comparator.json` |
 | Metadata | `Lean/FailureOfComposition/Palomar/formalization.yaml` |
@@ -123,27 +123,13 @@ These paths are preparation data, not an instruction to submit the present
 baseline. One configuration containing all nine declarations would be one
 registry entry; each selected declaration would be reviewed.
 
-The preferred packaging direction is a separate repository containing the
-formalization's code and supporting checks. The export helper prepares a new
-local directory while preserving the nested `Lean` project layout:
-
-```bash
-python3 Lean/FailureOfComposition/Palomar/export_repository.py /absolute/path/to/new-destination
-```
-
-Choose a fresh directory such as `~/src/FailureOfComposition-source`;
-`~/src/FailureOfComposition` is already the persistent build mirror and should
-remain available for that workflow.
-
-It copies the existing `Lean/LICENSE` to the exported repository root, giving
-that code-only snapshot an explicit Apache-2.0 license without licensing the
-parent repository's manuscripts or historical sources. This resolves the
-packaging issue for the exported layout only. It does not resolve the Lean
-version or Challenge import blockers. The helper does not create or publish
-a GitHub repository. Its root README records source provenance; before any
-submission, the new repository identity, actual checked commit, and readiness
-metadata must be updated. Until then, the paths and baseline facts in this
-document refer to the original source repository.
+The separate repository has been created and published. It preserves the
+nested `Lean` project layout and contains the maintained code and manuscript.
+The old repository remains linked only for historical provenance and evidence.
+`ROOTPROVENANCE.json` is the frozen initial export record, not an assertion that
+this repository is still unpublished or that later files match the export hashes.
+The retained `export_repository.py` helper reproduces the original code-export
+workflow; it is not a complete backup tool for this repository's added manuscript.
 
 `Challenge.lean` contains nine deliberate theorem holes to expose the intended
 types. It stays outside the maintained proof umbrella. `Solution.lean` does
@@ -154,12 +140,14 @@ every unrelated probe or fixture in the repository is hole-free.
 
 ## Run the local paired check in WSL
 
-From the source repository, refresh the existing persistent Linux mirror and
-run the draft checker there:
+From this repository, select a new persistent Linux mirror for this source
+checkout and run the draft checker there. Keep the original repository's
+`~/src/FailureOfComposition` mirror separate:
 
 ```bash
+export FAILCOMP_DST="$HOME/src/FailureOfCompositionStandalone"
 bash scripts/syncfailcomp.sh --sync-only
-python3 "${FAILCOMP_DST:-$HOME/src/FailureOfComposition}/Lean/FailureOfComposition/Palomar/check_draft.py"
+python3 "$FAILCOMP_DST/Lean/FailureOfComposition/Palomar/check_draft.py"
 ```
 
 The checker reuses the validated pinned dependency checkouts, incrementally
@@ -175,7 +163,7 @@ instance. It is not Comparator, a toolchain port, or Palomar verification.
 ## Scope, provenance, and review
 
 The mathematical source is Florian Lengyel's
-[version 36 manuscript](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/202194e54e883648f0d9f22a65afee6987ef2134/research/notes/failure_of_composition_2026-09-21_v36.tex).
+[version 36 manuscript](../../../manuscript/failure_of_composition_2026-09-21_v36.tex).
 Metadata therefore records `relationship: formalizes`, rather than treating
 the Lean development as the result's first presentation. The manuscript's
 classifications are retained. Montagna (1989) and Di Paola–Montagna (1991)
