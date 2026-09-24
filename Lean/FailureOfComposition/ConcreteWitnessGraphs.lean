@@ -19,8 +19,8 @@ set_option maxRecDepth 4096
 
 
 open Nat Nat.ArithPart₁
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.ArithmeticCode
 open CategoricalRiceShapiro.Evaluator
 
@@ -92,7 +92,7 @@ theorem eval_base_tag [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗣
 /-- Output of the four base programs, interpreted in an arbitrary PA model. -/
 noncomputable def baseOutput [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] (q : ℕ) (u : M) : M :=
   if q = 0 then 0 else if q = 1 then u + 1 else
-    if q = 2 then LO.FirstOrder.Arithmetic.pi₁ u else LO.FirstOrder.Arithmetic.pi₂ u
+    if q = 2 then FFL.FirstOrder.Arithmetic.pi₁ u else FFL.FirstOrder.Arithmetic.pi₂ u
 
 private theorem cell_base_branch [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ}
     (dtable dn : Code r) (v : Fin r → M) (z k : M) (q : ℕ) (hq : q < 4)
@@ -139,7 +139,7 @@ private theorem cell_base_value [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ]
     have h2 := unequal_branch _ _ _ v z 2 1 (by decide) htag h1
     have hz := equal_branch _ _ _ v z 2 htag h2
     have hp := eval_codeUnpair₁ dn u v hu
-    have hs : Semiformula.Evalb ((LO.FirstOrder.Arithmetic.pi₁ u + 1) :> v)
+    have hs : Semiformula.Evalb ((FFL.FirstOrder.Arithmetic.pi₁ u + 1) :> v)
         (code (codeSucc (codeUnpair₁ dn))) :=
       (eval_codeSucc_iff _ _ _).mpr ⟨_, hp, rfl⟩
     simpa [baseOutput] using eval_unique hz hs
@@ -148,7 +148,7 @@ private theorem cell_base_value [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ]
     have h3 := unequal_branch _ _ _ v z 3 2 (by decide) htag h2
     have hz := equal_branch _ _ _ v z 3 htag h3
     have hp := eval_codeUnpair₂ dn u v hu
-    have hs : Semiformula.Evalb ((LO.FirstOrder.Arithmetic.pi₂ u + 1) :> v)
+    have hs : Semiformula.Evalb ((FFL.FirstOrder.Arithmetic.pi₂ u + 1) :> v)
         (code (codeSucc (codeUnpair₂ dn))) :=
       (eval_codeSucc_iff _ _ _).mpr ⟨_, hp, rfl⟩
     simpa [baseOutput] using eval_unique hz hs
@@ -162,7 +162,7 @@ theorem base_computation_iff [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] �
   rw [evalnCertificateFormula_eval_history_iff, eval_codeHistoryEvaluator_succ_iff_cell]
   constructor
   · rintro ⟨hus, hcell⟩
-    have hs : 0 < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) hus
+    have hs : 0 < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) hus
     have he := cell_base_value codeEvaluatorHistoryBeforeCell (Code.proj (2 : Fin 3))
       ![s, (q : M), u] (y + 1) s u q hq
       (eval_codeEvaluatorCell_fuel s (q : M) u) hs
@@ -170,7 +170,7 @@ theorem base_computation_iff [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] �
       ((eval_proj_iff _ _ _).mpr rfl) hcell
     exact ⟨hus, add_right_cancel he⟩
   · rintro ⟨hus, rfl⟩
-    have hs : 0 < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) hus
+    have hs : 0 < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) hus
     obtain ⟨H, hH, _⟩ := eval_codeEvaluatorHistoryBeforeCell_exists s (q : M) u
     obtain ⟨z, hz⟩ := eval_codeEvaluatorCell_exists_of_values
       codeEvaluatorHistoryBeforeCell (Code.proj (2 : Fin 3)) H u
@@ -212,21 +212,21 @@ theorem identity_computation [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] �
   rw [identityIndex_eq, evalnCertificateFormula_eval_history_iff]
   apply (eval_codeHistoryEvaluator_succ_iff_cell s (48 : M) u u).mpr
   refine ⟨hus, ?_⟩
-  have hs : 0 < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) hus
+  have hs : 0 < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) hus
   have hleft := (base_computation_iff 2 (by decide) s u
-    (LO.FirstOrder.Arithmetic.pi₁ u)).mpr ⟨hus, by simp [baseOutput]⟩
+    (FFL.FirstOrder.Arithmetic.pi₁ u)).mpr ⟨hus, by simp [baseOutput]⟩
   have hright := (base_computation_iff 3 (by decide) s u
-    (LO.FirstOrder.Arithmetic.pi₂ u)).mpr ⟨hus, by simp [baseOutput]⟩
+    (FFL.FirstOrder.Arithmetic.pi₂ u)).mpr ⟨hus, by simp [baseOutput]⟩
   rw [evalnCertificateFormula_eval_history_iff] at hleft hright
   have hl := eval_prefix_lookup_succ_of_codeHistoryEvaluator s (48 : M) u
-    (LO.FirstOrder.Arithmetic.pi₁ u) 2
-    (LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by norm_num)) hleft
+    (FFL.FirstOrder.Arithmetic.pi₁ u) 2
+    (FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by norm_num)) hleft
   have hr := eval_prefix_lookup_succ_of_codeHistoryEvaluator s (48 : M) u
-    (LO.FirstOrder.Arithmetic.pi₂ u) 3
-    (LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by norm_num)) hright
+    (FFL.FirstOrder.Arithmetic.pi₂ u) 3
+    (FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by norm_num)) hright
   have hcell := eval_codeEvaluatorCell_succ_of_pair_component_lookups
     codeEvaluatorHistoryBeforeCell (Code.proj (2 : Fin 3)) 48 (by decide)
-    (LO.FirstOrder.Arithmetic.pi₁ u) (LO.FirstOrder.Arithmetic.pi₂ u)
+    (FFL.FirstOrder.Arithmetic.pi₁ u) (FFL.FirstOrder.Arithmetic.pi₂ u)
     ![s, (48 : M), u] (eval_codeEvaluatorCell_index s (48 : M) u)
     ⟨s, hs, eval_codeEvaluatorCell_fuel s (48 : M) u⟩
     (by
@@ -243,7 +243,7 @@ theorem identity_computation [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] �
         change (Nat.unpair (Nat.pair 2 3)).2 = 3
         simp only [Nat.unpair_pair]]
       exact hr)
-  simpa only [LO.FirstOrder.Arithmetic.pair_unpair] using hcell
+  simpa only [FFL.FirstOrder.Arithmetic.pair_unpair] using hcell
 
 
 end FailureOfComposition.ConcreteWitnessGraphs

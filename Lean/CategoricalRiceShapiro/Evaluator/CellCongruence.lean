@@ -28,7 +28,7 @@ open Nat Nat.ArithPart₁
 namespace CategoricalRiceShapiro.Evaluator
 
 open CategoricalRiceShapiro.ArithmeticCode
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 
 variable {M : Type*} [ORingStructure M]
 

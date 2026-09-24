@@ -32,8 +32,8 @@ open Nat Nat.ArithPart₁
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 variable {M : Type*} [ORingStructure M]
 
@@ -289,7 +289,7 @@ theorem eval_codeSqrt_natCast [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ}
       ⟨1, 1, hAone (Nat.sqrt n) hsqle, hBval (Nat.sqrt n) 1 (Or.inl ⟨hsqlt, rfl⟩),
         Or.inl ⟨by simp, rfl⟩⟩⟩
   · intro t ht
-    obtain ⟨j, rfl⟩ := LO.FirstOrder.Arithmetic.eq_fin_of_lt_nat ht
+    obtain ⟨j, rfl⟩ := FFL.FirstOrder.Arithmetic.eq_fin_of_lt_nat ht
     have hup : ((j : ℕ) + 1) * ((j : ℕ) + 1) ≤ n := by
       simpa [pow_two] using Nat.le_sqrt'.mp j.isLt
     have hjj : (j : ℕ) * (j : ℕ) < n :=
@@ -378,10 +378,10 @@ theorem eval_of_computes [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ}
       (((f (List.Vector.ofFn w) : ℕ) : M) :> (fun i => ((w i : ℕ) : M)))
       (code c) := by
   have hnat : Semiformula.Evalb (M := ℕ) ((f (List.Vector.ofFn w)) :> w) (code c) :=
-    (LO.FirstOrder.Arithmetic.models_code hc _ w).mpr (by simp)
-  have htr := LO.FirstOrder.Arithmetic.bold_sigma_one_completeness' (M := M)
-    (LO.FirstOrder.Arithmetic.code_sigma_one c) hnat
-  rw [LO.FirstOrder.Arithmetic.numeral_eq_natCast] at htr
+    (FFL.FirstOrder.Arithmetic.models_code hc _ w).mpr (by simp)
+  have htr := FFL.FirstOrder.Arithmetic.bold_sigma_one_completeness' (M := M)
+    (FFL.FirstOrder.Arithmetic.code_sigma_one c) hnat
+  rw [FFL.FirstOrder.Arithmetic.numeral_eq_natCast] at htr
   have heq : (Nat.cast ∘ ((f (List.Vector.ofFn w)) :> w) : Fin (k + 1) → M)
       = (((f (List.Vector.ofFn w) : ℕ) : M) :> (fun i => ((w i : ℕ) : M))) := by
     funext i
@@ -422,7 +422,7 @@ private theorem exists_lt_natCast [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] :
       have hcast : (((m + 1 : ℕ)) : M) = ((m : ℕ) : M) + 1 := by push_cast; rfl
       rw [hcast] at h
       have hle : t ≤ ((m : ℕ) : M) :=
-        LO.FirstOrder.Arithmetic.lt_succ_iff_le.mp h
+        FFL.FirstOrder.Arithmetic.lt_succ_iff_le.mp h
       rcases lt_or_eq_of_le hle with hlt | heq
       · obtain ⟨j, hj, hjt⟩ := ih t hlt
         exact ⟨j, Nat.lt_succ_of_lt hj, hjt⟩
@@ -607,7 +607,7 @@ arbitrary values
 The results above compute a constructor at the image of a natural number.  Those
 below compute the same constructors at an arbitrary element, against the
 operations the pinned `IOpen` theory of Foundation already supplies:
-`LO.FirstOrder.Arithmetic.sqrt`, `pair`, `pi₁` and `pi₂`, together with their
+`FFL.FirstOrder.Arithmetic.sqrt`, `pair`, `pi₁` and `pi₂`, together with their
 specifications.  No arithmetic identity is reproved here; each proof only
 matches a code against the operation Foundation defines. -/
 
@@ -739,7 +739,7 @@ theorem eval_codeSqrt_of_bounds [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ}
   · exact ⟨1, _root_.zero_lt_one, (eval_codeAnd_iff _ _ _ _).mpr
       ⟨1, 1, hAone r hle, hBval r 1 (Or.inl ⟨hlt, rfl⟩), Or.inl ⟨by simp, rfl⟩⟩⟩
   · intro t ht
-    have hsucc : t + 1 ≤ r := LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr ht
+    have hsucc : t + 1 ≤ r := FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr ht
     have hup : (t + 1) * (t + 1) ≤ r * r := mul_le_mul hsucc hsucc (by simp) (by simp)
     have hnlt : ¬ a < (t + 1) * (t + 1) :=
       not_lt.mpr (le_trans hup hle)
@@ -753,17 +753,17 @@ theorem eval_codeSqrt_of_bounds [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ}
 theorem eval_codeSqrt [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
     (d : Code k) (a : M) (v : Fin k → M)
     (hd : Semiformula.Evalb (a :> v) (code d)) :
-    Semiformula.Evalb (LO.FirstOrder.Arithmetic.sqrt a :> v) (code (codeSqrt d)) :=
+    Semiformula.Evalb (FFL.FirstOrder.Arithmetic.sqrt a :> v) (code (codeSqrt d)) :=
   eval_codeSqrt_of_bounds d a _ v hd
-    (LO.FirstOrder.Arithmetic.sqrt_spec_le a)
-    (LO.FirstOrder.Arithmetic.sqrt_spec_lt a)
+    (FFL.FirstOrder.Arithmetic.sqrt_spec_le a)
+    (FFL.FirstOrder.Arithmetic.sqrt_spec_lt a)
 
 /-- Cantor pairing at arbitrary values. -/
 theorem eval_codePair [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
     (A B : Code k) (a b : M) (v : Fin k → M)
     (hA : Semiformula.Evalb (a :> v) (code A))
     (hB : Semiformula.Evalb (b :> v) (code B)) :
-    Semiformula.Evalb (LO.FirstOrder.Arithmetic.pair a b :> v) (code (codePair A B)) := by
+    Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair a b :> v) (code (codePair A B)) := by
   have hhigh : Semiformula.Evalb ((b * b + a) :> v)
       (code (codeAdd (codeMul B B) A)) :=
     (eval_codeAdd_iff _ _ _ _).mpr
@@ -780,62 +780,62 @@ theorem eval_codePair [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
   · refine eval_codeIfPos_of _ _ _ 1 (b * b + a) (a * a + a + b) _ v
       ((eval_codeLt_iff _ _ _ _).mpr ⟨a, b, hA, hB, Or.inl ⟨hab, rfl⟩⟩)
       hhigh hlow (Or.inl ⟨by simp, ?_⟩)
-    simp [LO.FirstOrder.Arithmetic.pair, hab]
+    simp [FFL.FirstOrder.Arithmetic.pair, hab]
   · refine eval_codeIfPos_of _ _ _ 0 (b * b + a) (a * a + a + b) _ v
       ((eval_codeLt_iff _ _ _ _).mpr ⟨a, b, hA, hB, Or.inr ⟨hab, rfl⟩⟩)
       hhigh hlow (Or.inr ⟨rfl, ?_⟩)
-    simp [LO.FirstOrder.Arithmetic.pair, hab]
+    simp [FFL.FirstOrder.Arithmetic.pair, hab]
 
 /-- The first Cantor component at an arbitrary value. -/
 theorem eval_codeUnpair₁ [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
     (d : Code k) (a : M) (v : Fin k → M)
     (hd : Semiformula.Evalb (a :> v) (code d)) :
-    Semiformula.Evalb (LO.FirstOrder.Arithmetic.pi₁ a :> v) (code (codeUnpair₁ d)) := by
+    Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pi₁ a :> v) (code (codeUnpair₁ d)) := by
   have hsq := eval_codeSqrt d a v hd
   have hmul : Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.sqrt a * LO.FirstOrder.Arithmetic.sqrt a) :> v)
+      ((FFL.FirstOrder.Arithmetic.sqrt a * FFL.FirstOrder.Arithmetic.sqrt a) :> v)
       (code (codeMul (codeSqrt d) (codeSqrt d))) :=
     (eval_codeMul_iff _ _ _ _).mpr ⟨_, _, hsq, hsq, rfl⟩
   have hsub := eval_codeSub d (codeMul (codeSqrt d) (codeSqrt d)) a
-    (LO.FirstOrder.Arithmetic.sqrt a * LO.FirstOrder.Arithmetic.sqrt a) v hd hmul
+    (FFL.FirstOrder.Arithmetic.sqrt a * FFL.FirstOrder.Arithmetic.sqrt a) v hd hmul
   simp only [codeUnpair₁]
-  by_cases hlt : a - LO.FirstOrder.Arithmetic.sqrt a * LO.FirstOrder.Arithmetic.sqrt a
-      < LO.FirstOrder.Arithmetic.sqrt a
+  by_cases hlt : a - FFL.FirstOrder.Arithmetic.sqrt a * FFL.FirstOrder.Arithmetic.sqrt a
+      < FFL.FirstOrder.Arithmetic.sqrt a
   · refine eval_codeIfPos_of _ _ _ 1 _ _ _ v
       ((eval_codeLt_iff _ _ _ _).mpr ⟨_, _, hsub, hsq, Or.inl ⟨hlt, rfl⟩⟩)
       hsub hsq (Or.inl ⟨by simp, ?_⟩)
-    simp [LO.FirstOrder.Arithmetic.pi₁, LO.FirstOrder.Arithmetic.unpair, hlt]
+    simp [FFL.FirstOrder.Arithmetic.pi₁, FFL.FirstOrder.Arithmetic.unpair, hlt]
   · refine eval_codeIfPos_of _ _ _ 0 _ _ _ v
       ((eval_codeLt_iff _ _ _ _).mpr ⟨_, _, hsub, hsq, Or.inr ⟨hlt, rfl⟩⟩)
       hsub hsq (Or.inr ⟨rfl, ?_⟩)
-    simp [LO.FirstOrder.Arithmetic.pi₁, LO.FirstOrder.Arithmetic.unpair, hlt]
+    simp [FFL.FirstOrder.Arithmetic.pi₁, FFL.FirstOrder.Arithmetic.unpair, hlt]
 
 /-- The second Cantor component at an arbitrary value. -/
 theorem eval_codeUnpair₂ [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
     (d : Code k) (a : M) (v : Fin k → M)
     (hd : Semiformula.Evalb (a :> v) (code d)) :
-    Semiformula.Evalb (LO.FirstOrder.Arithmetic.pi₂ a :> v) (code (codeUnpair₂ d)) := by
+    Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pi₂ a :> v) (code (codeUnpair₂ d)) := by
   have hsq := eval_codeSqrt d a v hd
   have hmul : Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.sqrt a * LO.FirstOrder.Arithmetic.sqrt a) :> v)
+      ((FFL.FirstOrder.Arithmetic.sqrt a * FFL.FirstOrder.Arithmetic.sqrt a) :> v)
       (code (codeMul (codeSqrt d) (codeSqrt d))) :=
     (eval_codeMul_iff _ _ _ _).mpr ⟨_, _, hsq, hsq, rfl⟩
   have hsub := eval_codeSub d (codeMul (codeSqrt d) (codeSqrt d)) a
-    (LO.FirstOrder.Arithmetic.sqrt a * LO.FirstOrder.Arithmetic.sqrt a) v hd hmul
+    (FFL.FirstOrder.Arithmetic.sqrt a * FFL.FirstOrder.Arithmetic.sqrt a) v hd hmul
   have hsub2 := eval_codeSub (codeSub d (codeMul (codeSqrt d) (codeSqrt d))) (codeSqrt d)
-    (a - LO.FirstOrder.Arithmetic.sqrt a * LO.FirstOrder.Arithmetic.sqrt a)
-    (LO.FirstOrder.Arithmetic.sqrt a) v hsub hsq
+    (a - FFL.FirstOrder.Arithmetic.sqrt a * FFL.FirstOrder.Arithmetic.sqrt a)
+    (FFL.FirstOrder.Arithmetic.sqrt a) v hsub hsq
   simp only [codeUnpair₂]
-  by_cases hlt : a - LO.FirstOrder.Arithmetic.sqrt a * LO.FirstOrder.Arithmetic.sqrt a
-      < LO.FirstOrder.Arithmetic.sqrt a
+  by_cases hlt : a - FFL.FirstOrder.Arithmetic.sqrt a * FFL.FirstOrder.Arithmetic.sqrt a
+      < FFL.FirstOrder.Arithmetic.sqrt a
   · refine eval_codeIfPos_of _ _ _ 1 _ _ _ v
       ((eval_codeLt_iff _ _ _ _).mpr ⟨_, _, hsub, hsq, Or.inl ⟨hlt, rfl⟩⟩)
       hsq hsub2 (Or.inl ⟨by simp, ?_⟩)
-    simp [LO.FirstOrder.Arithmetic.pi₂, LO.FirstOrder.Arithmetic.unpair, hlt]
+    simp [FFL.FirstOrder.Arithmetic.pi₂, FFL.FirstOrder.Arithmetic.unpair, hlt]
   · refine eval_codeIfPos_of _ _ _ 0 _ _ _ v
       ((eval_codeLt_iff _ _ _ _).mpr ⟨_, _, hsub, hsq, Or.inr ⟨hlt, rfl⟩⟩)
       hsq hsub2 (Or.inr ⟨rfl, ?_⟩)
-    simp [LO.FirstOrder.Arithmetic.pi₂, LO.FirstOrder.Arithmetic.unpair, hlt]
+    simp [FFL.FirstOrder.Arithmetic.pi₂, FFL.FirstOrder.Arithmetic.unpair, hlt]
 
 /-- The first Cantor component of a pair is its first argument. -/
 theorem eval_codeUnpair₁_codePair [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
@@ -843,9 +843,9 @@ theorem eval_codeUnpair₁_codePair [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] 
     (hA : Semiformula.Evalb (a :> v) (code A))
     (hB : Semiformula.Evalb (b :> v) (code B)) :
     Semiformula.Evalb (a :> v) (code (codeUnpair₁ (codePair A B))) := by
-  have h := eval_codeUnpair₁ (codePair A B) (LO.FirstOrder.Arithmetic.pair a b) v
+  have h := eval_codeUnpair₁ (codePair A B) (FFL.FirstOrder.Arithmetic.pair a b) v
     (eval_codePair A B a b v hA hB)
-  rwa [LO.FirstOrder.Arithmetic.pi₁_pair] at h
+  rwa [FFL.FirstOrder.Arithmetic.pi₁_pair] at h
 
 /-- The second Cantor component of a pair is its second argument. -/
 theorem eval_codeUnpair₂_codePair [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
@@ -853,9 +853,9 @@ theorem eval_codeUnpair₂_codePair [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] 
     (hA : Semiformula.Evalb (a :> v) (code A))
     (hB : Semiformula.Evalb (b :> v) (code B)) :
     Semiformula.Evalb (b :> v) (code (codeUnpair₂ (codePair A B))) := by
-  have h := eval_codeUnpair₂ (codePair A B) (LO.FirstOrder.Arithmetic.pair a b) v
+  have h := eval_codeUnpair₂ (codePair A B) (FFL.FirstOrder.Arithmetic.pair a b) v
     (eval_codePair A B a b v hA hB)
-  rwa [LO.FirstOrder.Arithmetic.pi₂_pair] at h
+  rwa [FFL.FirstOrder.Arithmetic.pi₂_pair] at h
 
 /-! ### Divisibility, remainder and the Gödel beta value at arbitrary values
 
@@ -929,9 +929,9 @@ theorem eval_codeDvd [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
           · have hb0 : b = 0 := by rw [hbc, ha0, zero_mul]
             have hc0 : c = 0 := by
               rw [hb0] at hcb
-              exact le_antisymm hcb (LO.FirstOrder.Arithmetic.zero_le c)
+              exact le_antisymm hcb (FFL.FirstOrder.Arithmetic.zero_le c)
             rw [hc0] at ht
-            exact absurd ht (not_lt.mpr (LO.FirstOrder.Arithmetic.zero_le t))
+            exact absurd ht (not_lt.mpr (FFL.FirstOrder.Arithmetic.zero_le t))
           · have hap : 0 < a := pos_iff_ne_zero.mpr ha0
             have hbb : b < b := by
               calc b = t * a := h1.symm
@@ -950,7 +950,7 @@ theorem eval_codeDvd [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
     · rw [eval_codeRfindPos_iff]
       refine ⟨⟨1, _root_.zero_lt_one, hG1 (b + 1) (Or.inr (lt_add_one b))⟩, ?_⟩
       intro t ht
-      have htb : t ≤ b := LO.FirstOrder.Arithmetic.lt_succ_iff_le.mp ht
+      have htb : t ≤ b := FFL.FirstOrder.Arithmetic.lt_succ_iff_le.mp ht
       refine hG0 t ?_
       rintro (h1 | h2)
       · exact absurd ⟨t, by rw [← h1, mul_comm]⟩ hdvd
@@ -984,7 +984,7 @@ theorem eval_codeRem [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
     refine eval_codeDvd (codeLift B) (codeSub (codeLift A) (codeHead (n := k)))
       b (a - a % b) 1 _ (hliftB _) (hsub _) (Or.inl ⟨?_, rfl⟩)
     have hsplit : a - a % b = b * (a / b) :=
-      LO.FirstOrder.Arithmetic.sub_remove_left hdm.symm
+      FFL.FirstOrder.Arithmetic.sub_remove_left hdm.symm
     rw [hsplit]
     exact Dvd.intro _ rfl
   · intro t ht
@@ -992,7 +992,7 @@ theorem eval_codeRem [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
       b (a - t) 0 _ (hliftB _) (hsub _) (Or.inr ⟨?_, rfl⟩)
     intro hdvd
     rcases eq_or_ne b 0 with hb0 | hb0
-    · rw [hb0, LO.FirstOrder.Arithmetic.mod_zero] at ht
+    · rw [hb0, FFL.FirstOrder.Arithmetic.mod_zero] at ht
       rw [hb0] at hdvd
       exact absurd ht (not_lt.mpr (sub_eq_zero_iff_le.mp (zero_dvd_iff.mp hdvd)))
     · have hbpos : 0 < b := pos_iff_ne_zero.mpr hb0
@@ -1003,7 +1003,7 @@ theorem eval_codeRem [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
       have hmod : (a - t) % b = a % b - t := by
         rw [hsplit, mod_mul_add' (a / b) (a % b - t) hbpos,
           mod_eq_self_of_lt
-            (lt_of_le_of_lt (LO.FirstOrder.Arithmetic.sub_le_self _ _) hmlt)]
+            (lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.sub_le_self _ _) hmlt)]
       have hzero : a % b - t = 0 := by
         rw [← hmod]; exact mod_eq_zero_iff_dvd.mpr hdvd
       have hpos : 0 < a % b - t := pos_sub_iff_lt.mpr ht
@@ -1019,19 +1019,19 @@ theorem eval_codeBeta_of_values [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k :
     (hN : Semiformula.Evalb (n :> v) (code N))
     (hI : Semiformula.Evalb (i :> v) (code I)) :
     Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pi₁ n %
-        ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n + 1)) :> v)
+      ((FFL.FirstOrder.Arithmetic.pi₁ n %
+        ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n + 1)) :> v)
       (code (codeBeta N I)) := by
   have h1 := eval_codeUnpair₁ N n v hN
   have h2 := eval_codeUnpair₂ N n v hN
   have hsi : Semiformula.Evalb ((i + 1) :> v) (code (codeSucc I)) :=
     (eval_codeSucc_iff _ _ _).mpr ⟨i, hI, rfl⟩
   have hmul : Semiformula.Evalb
-      (((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n) :> v)
+      (((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n) :> v)
       (code (codeMul (codeSucc I) (codeUnpair₂ N))) :=
     (eval_codeMul_iff _ _ _ _).mpr ⟨_, _, hsi, h2, rfl⟩
   have hsucc : Semiformula.Evalb
-      (((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n + 1) :> v)
+      (((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n + 1) :> v)
       (code (codeSucc (codeMul (codeSucc I) (codeUnpair₂ N)))) :=
     (eval_codeSucc_iff _ _ _).mpr ⟨_, hmul, rfl⟩
   simp only [codeBeta]

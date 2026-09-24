@@ -14,8 +14,8 @@ Arithmetic correctness of the compiled program operations.
 set_option autoImplicit false
 set_option maxRecDepth 4096
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.Evaluator
 open Encodable Nat.Partrec
 

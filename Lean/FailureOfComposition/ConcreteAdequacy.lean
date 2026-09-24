@@ -13,8 +13,8 @@ Standard-model adequacy of the concrete evaluator graph.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Encodable Denumerable
 open CategoricalRiceShapiro.Evaluator CategoricalRiceShapiro.ArithmeticCode
 open CategoricalRiceShapiro.PartialRecursive
@@ -26,16 +26,16 @@ namespace FailureOfComposition.ConcreteEvaluator
 def stageComputation (s q x y : ℕ) : Prop :=
   Semiformula.Evalb ![s, q, x, y] (evalnCertificateFormula : ArithmeticSemisentence 4)
 
-private theorem nat_pi₁ (x : ℕ) : LO.FirstOrder.Arithmetic.pi₁ x = x.unpair.1 := by
-  have h : LO.FirstOrder.Arithmetic.pair x.unpair.1 x.unpair.2 = x := by
+private theorem nat_pi₁ (x : ℕ) : FFL.FirstOrder.Arithmetic.pi₁ x = x.unpair.1 := by
+  have h : FFL.FirstOrder.Arithmetic.pair x.unpair.1 x.unpair.2 = x := by
     rw [nat_pair_eq, Nat.pair_unpair]
-  rw [← h, LO.FirstOrder.Arithmetic.pi₁_pair]
+  rw [← h, FFL.FirstOrder.Arithmetic.pi₁_pair]
   rw [h]
 
-private theorem nat_pi₂ (x : ℕ) : LO.FirstOrder.Arithmetic.pi₂ x = x.unpair.2 := by
-  have h : LO.FirstOrder.Arithmetic.pair x.unpair.1 x.unpair.2 = x := by
+private theorem nat_pi₂ (x : ℕ) : FFL.FirstOrder.Arithmetic.pi₂ x = x.unpair.2 := by
+  have h : FFL.FirstOrder.Arithmetic.pair x.unpair.1 x.unpair.2 = x := by
     rw [nat_pair_eq, Nat.pair_unpair]
-  rw [← h, LO.FirstOrder.Arithmetic.pi₂_pair]
+  rw [← h, FFL.FirstOrder.Arithmetic.pi₂_pair]
   rw [h]
 
 private theorem rfind_tag (c : Nat.Partrec.Code) :
@@ -43,7 +43,7 @@ private theorem rfind_tag (c : Nat.Partrec.Code) :
   have hb (n : ℕ) : n.bodd.toNat = n % 2 := by rw [Nat.mod_two_of_bodd]
   simp only [Nat.Partrec.Code.encodeCode_eq, Nat.Partrec.Code.encodeCode]
   have h : ¬ 2 * (2 * Nat.Partrec.Code.encodeCode c + 1) + 1 + 4 < 4 := by omega
-  simp only [partrecCodeTag, h, if_false, hb, Nat.div2_val]
+  simp only [partrecCodeTag, h, ite_false, hb, Nat.div2_val]
   omega
 
 private theorem rfind_payload (c : Nat.Partrec.Code) :

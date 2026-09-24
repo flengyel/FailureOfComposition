@@ -12,7 +12,7 @@ Classification of the generated composition congruence.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 
 namespace FailureOfComposition.GeneratedCongruence
 open ProofSearch PiOneCharacterization

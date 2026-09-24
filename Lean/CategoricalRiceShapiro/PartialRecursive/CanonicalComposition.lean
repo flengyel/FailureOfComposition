@@ -82,7 +82,7 @@ theorem canonicalPartrecCompIndex_constructor_number (fCode gCode : ℕ) :
   have hsub : canonicalPartrecCompIndex fCode gCode - 4
       = 2 * (2 * Nat.pair fCode gCode + 1) := by
     rw [canonicalPartrecCompIndex_eq]; omega
-  simp only [partrecCodeTag, if_neg hlt, hsub]
+  simp only [partrecCodeTag, ite_eq_right hlt, hsub]
   simp
 
 /-- The first subcode of the canonical composition index is the outer one. -/
@@ -99,8 +99,8 @@ theorem canonicalPartrecCompIndex_inner_index (fCode gCode : ℕ) :
 
 /-! ### Evaluation in an arbitrary model -/
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Nat.ArithPart₁
 
 /-- The payload of the canonical composition index, read inside a model. -/

@@ -11,8 +11,8 @@ Each body call must return zero. A primitive-recursion program combines these
 calls, and PA induction proves its graph equation also at nonstandard bounds. -/
 
 set_option autoImplicit false
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Encodable Nat.Partrec
 
 namespace FailureOfComposition.BoundedSemidecision

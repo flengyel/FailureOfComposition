@@ -17,7 +17,7 @@ No theorem in this file identifies standard-model equivalence with PA provabilit
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 
 namespace FailureOfComposition.ProgramIndices
 open ProofSearch

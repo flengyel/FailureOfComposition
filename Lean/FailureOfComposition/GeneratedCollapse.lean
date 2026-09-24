@@ -16,7 +16,7 @@ sentence collapses it once extensional containment has been established.
 set_option autoImplicit false
 
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 namespace FailureOfComposition.GeneratedCongruence
 open ProofSearch PiOneCharacterization
 

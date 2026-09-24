@@ -36,12 +36,12 @@ namespace CategoricalRiceShapiro.Evaluator
 
 open CategoricalRiceShapiro.ArithmeticCode
 open CategoricalRiceShapiro.PartialRecursive
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 /-- The graph of `codeHistoryEvaluator`, as a Sigma-one semisentence. -/
 def evalnGraphFormula : 𝚺₁.Semisentence 4 :=
-  .mkSigma (LO.FirstOrder.Arithmetic.code codeHistoryEvaluator)
+  .mkSigma (FFL.FirstOrder.Arithmetic.code codeHistoryEvaluator)
     (code_sigma_one codeHistoryEvaluator)
 
 /-- The raw evaluator certificate: the graph formula with its places reordered
@@ -62,7 +62,7 @@ theorem evalnCertificateFormula_eval_history_iff
     Semiformula.Evalb ![s, qCode, u, y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) ↔
       Semiformula.Evalb ![y + 1, s, qCode, u]
-        (LO.FirstOrder.Arithmetic.code codeHistoryEvaluator) := by
+        (FFL.FirstOrder.Arithmetic.code codeHistoryEvaluator) := by
   have hb : (fun x : Fin 4 => Semiterm.val ![s, qCode, u, y] (Empty.elim : Empty → M)
       ((Rew.subst ![(‘#3 + 1’ : ArithmeticSemiterm Empty 4), #0, #1, #2])
         (#x : Semiterm ℒₒᵣ Empty 4))) = ![y + 1, s, qCode, u] := by
@@ -90,12 +90,12 @@ variable {M : Type*} [ORingStructure M]
 /-- The history read before the cell depends only on the first two arguments. -/
 private theorem beforeCell_iff [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] (s qCode a b z : M) :
     Semiformula.Evalb (z :> ![s, qCode, a])
-        (LO.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) ↔
+        (FFL.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) ↔
       Semiformula.Evalb (z :> ![s, qCode, b])
-        (LO.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) := by
+        (FFL.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) := by
   have hp : ∀ c : M, Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, c])
-      (LO.FirstOrder.Arithmetic.code
+      (FFL.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, c])
+      (FFL.FirstOrder.Arithmetic.code
         (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) := fun c =>
     eval_codePair _ _ s qCode ![s, qCode, c]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
@@ -154,15 +154,15 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_forward
       ![s, (canonicalPartrecCompIndex fCode gCode : M), u]
       (by simpa using hcode) hcell
   -- the two subindices lie strictly below the composition index
-  have hgl : LO.FirstOrder.Arithmetic.pair s (gCode : M) <
-      LO.FirstOrder.Arithmetic.pair s
+  have hgl : FFL.FirstOrder.Arithmetic.pair s (gCode : M) <
+      FFL.FirstOrder.Arithmetic.pair s
         (canonicalPartrecCompIndex fCode gCode : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s
       (by exact_mod_cast canonicalPartrecCompIndex_inner_lt fCode gCode)
-  have hfl : LO.FirstOrder.Arithmetic.pair s (fCode : M) <
-      LO.FirstOrder.Arithmetic.pair s
+  have hfl : FFL.FirstOrder.Arithmetic.pair s (fCode : M) <
+      FFL.FirstOrder.Arithmetic.pair s
         (canonicalPartrecCompIndex fCode gCode : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s
       (by exact_mod_cast canonicalPartrecCompIndex_outer_lt fCode gCode)
   refine ⟨x, ?_, ?_⟩
   · rw [evalnCertificateFormula_eval_history_iff]
@@ -221,17 +221,17 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_reverse
   rw [evalnCertificateFormula_eval_history_iff] at hinner houter ⊢
   -- the strict input bound of the inner lookup, and positive fuel
   obtain ⟨hus, -⟩ := (eval_codeHistoryEvaluator_succ_iff_cell s _ u x).mp hinner
-  have hs0 : 0 < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) hus
+  have hs0 : 0 < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) hus
   -- the two subindices lie strictly below the composition index
-  have hgl : LO.FirstOrder.Arithmetic.pair s (gCode : M) <
-      LO.FirstOrder.Arithmetic.pair s
+  have hgl : FFL.FirstOrder.Arithmetic.pair s (gCode : M) <
+      FFL.FirstOrder.Arithmetic.pair s
         (canonicalPartrecCompIndex fCode gCode : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s
       (by exact_mod_cast canonicalPartrecCompIndex_inner_lt fCode gCode)
-  have hfl : LO.FirstOrder.Arithmetic.pair s (fCode : M) <
-      LO.FirstOrder.Arithmetic.pair s
+  have hfl : FFL.FirstOrder.Arithmetic.pair s (fCode : M) <
+      FFL.FirstOrder.Arithmetic.pair s
         (canonicalPartrecCompIndex fCode gCode : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s
       (by exact_mod_cast canonicalPartrecCompIndex_outer_lt fCode gCode)
   -- both component lookups at the stage of the composition index
   have hinnerL :=
@@ -241,7 +241,7 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_reverse
   -- the outer lookup, lifted from arity three to arity four
   have houterLifted : Semiformula.Evalb
       ((y + 1) :> (x :> ![s, (canonicalPartrecCompIndex fCode gCode : M), u]))
-      (LO.FirstOrder.Arithmetic.code
+      (FFL.FirstOrder.Arithmetic.code
         (codeTableLookup
           (codeLift codeEvaluatorHistoryBeforeCell)
           (codeLift (codeUnpair₁ (codeListLength codeEvaluatorHistoryBeforeCell)))
@@ -274,20 +274,20 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_reverse
   have hlencomp :
       Semiformula.Evalb
         (s :> ![s, (canonicalPartrecCompIndex fCode gCode : M), u])
-        (LO.FirstOrder.Arithmetic.code
+        (FFL.FirstOrder.Arithmetic.code
           (codeUnpair₁ (codeListLength codeEvaluatorHistoryBeforeCell))) ∧
       Semiformula.Evalb
         ((canonicalPartrecCompIndex fCode gCode : M) :>
           ![s, (canonicalPartrecCompIndex fCode gCode : M), u])
-        (LO.FirstOrder.Arithmetic.code
+        (FFL.FirstOrder.Arithmetic.code
           (codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell))) := by
     obtain ⟨H, hH⟩ := eval_codeEvaluatorHistory_exists
-      (LO.FirstOrder.Arithmetic.pair s (canonicalPartrecCompIndex fCode gCode : M))
+      (FFL.FirstOrder.Arithmetic.pair s (canonicalPartrecCompIndex fCode gCode : M))
     have hbefore : Semiformula.Evalb
         (H :> ![s, (canonicalPartrecCompIndex fCode gCode : M), u])
-        (LO.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) := by
+        (FFL.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) := by
       rw [codeEvaluatorHistoryBeforeCell, eval_comp_iff]
-      refine ⟨![LO.FirstOrder.Arithmetic.pair s
+      refine ⟨![FFL.FirstOrder.Arithmetic.pair s
         (canonicalPartrecCompIndex fCode gCode : M)], by simpa using hH, ?_⟩
       intro i
       refine Fin.cases ?_ (fun j => Fin.elim0 j) i
@@ -295,19 +295,19 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_reverse
         ![s, (canonicalPartrecCompIndex fCode gCode : M), u]
         ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
     have hself : Semiformula.Evalb (H :> ![H])
-        (LO.FirstOrder.Arithmetic.code (Code.proj (0 : Fin 1))) :=
+        (FFL.FirstOrder.Arithmetic.code (Code.proj (0 : Fin 1))) :=
       (eval_proj_iff _ _ _).mpr rfl
     obtain ⟨len, hlen⟩ :=
       eval_codeListLength_exists_of_value (Code.proj (0 : Fin 1)) H ![H] hself
-    have hlenv : len = LO.FirstOrder.Arithmetic.pair s
+    have hlenv : len = FFL.FirstOrder.Arithmetic.pair s
         (canonicalPartrecCompIndex fCode gCode : M) :=
       eval_codeEvaluatorHistory_length_unique _ H len hH hlen
     have hgraph : ∀ z : M,
         Semiformula.Evalb (z :> ![H])
-            (LO.FirstOrder.Arithmetic.code (Code.proj (0 : Fin 1))) ↔
+            (FFL.FirstOrder.Arithmetic.code (Code.proj (0 : Fin 1))) ↔
           Semiformula.Evalb
             (z :> ![s, (canonicalPartrecCompIndex fCode gCode : M), u])
-            (LO.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) := by
+            (FFL.FirstOrder.Arithmetic.code codeEvaluatorHistoryBeforeCell) := by
       intro z
       constructor
       · intro hz
@@ -320,8 +320,8 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_reverse
     rw [hlenv] at hlen'
     have h₁ := eval_codeUnpair₁ _ _ _ hlen'
     have h₂ := eval_codeUnpair₂ _ _ _ hlen'
-    rw [LO.FirstOrder.Arithmetic.pi₁_pair] at h₁
-    rw [LO.FirstOrder.Arithmetic.pi₂_pair] at h₂
+    rw [FFL.FirstOrder.Arithmetic.pi₁_pair] at h₁
+    rw [FFL.FirstOrder.Arithmetic.pi₂_pair] at h₂
     exact ⟨h₁, h₂⟩
   -- the canonical cell has the value `y + 1`
   have hcell := eval_codeEvaluatorCell_succ_of_component_lookups

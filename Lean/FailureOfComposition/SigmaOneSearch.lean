@@ -15,8 +15,8 @@ All graph laws hold at arbitrary elements of every PA model.
 
 set_option autoImplicit false
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Nat.ArithPart₁
 open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.Evaluator
 

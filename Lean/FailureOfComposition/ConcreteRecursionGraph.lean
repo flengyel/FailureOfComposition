@@ -9,8 +9,8 @@ import FailureOfComposition.ConcreteEvaluatorGraph
 The equations hold over arbitrary PA models, including nonstandard inputs. -/
 
 set_option autoImplicit false
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Nat.ArithPart₁
 open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.PartialRecursive
 open CategoricalRiceShapiro.Evaluator
@@ -78,10 +78,14 @@ private theorem tagSix_prec_branch [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ}
   have hcast6 : ((6 : ℕ) : M) = (6 : M) := by simp
   have hne64 : ¬ ((6 : M) = ((4 : ℕ) : M)) := by
     rw [hcast4]
-    exact fun hc => absurd hc.symm (_root_.ne_of_lt (by norm_num : (4 : M) < (6 : M)))
+    exact fun hc => absurd hc.symm (_root_.ne_of_lt (by
+      simpa [FFL.FirstOrder.Arithmetic.numeral_eq_natCast] using
+        (FFL.FirstOrder.Arithmetic.numeral_lt_of_lt (M := M) (by omega : 4 < 6))))
   have hne65 : ¬ ((6 : M) = ((5 : ℕ) : M)) := by
     rw [hcast5]
-    exact fun hc => absurd hc.symm (_root_.ne_of_lt (by norm_num : (5 : M) < (6 : M)))
+    exact fun hc => absurd hc.symm (_root_.ne_of_lt (by
+      simpa [FFL.FirstOrder.Arithmetic.numeral_eq_natCast] using
+        (FFL.FirstOrder.Arithmetic.numeral_lt_of_lt (M := M) (by omega : 5 < 6))))
   simp only [codeEvaluatorCell] at hcell
   obtain ⟨kf, hkf, hkcase⟩ := eval_codeIfPos_cases _ _ _ z v hcell
   have hkfk : kf = k := eval_unique hkf hk
@@ -128,8 +132,8 @@ private theorem tagSix_prec_branch [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ}
 /-- The dispatcher evaluates the branch at the decremented fuel `k - 1`; for
 positive `k`, its successor, the key of the base lookup, is `k`. -/
 private theorem tagSix_succ_pred [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : M} (hk : 0 < k) : k - 1 + 1 = k :=
-  LO.FirstOrder.Arithmetic.sub_add_self_of_le
-    (LO.FirstOrder.Arithmetic.one_le_of_zero_lt k hk)
+  FFL.FirstOrder.Arithmetic.sub_add_self_of_le
+    (FFL.FirstOrder.Arithmetic.one_le_of_zero_lt k hk)
 
 /-- The decremented fuel, as the dispatcher computes it. -/
 private theorem tagSix_decremented_fuel [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
@@ -164,7 +168,7 @@ private theorem tagSix_table_congr [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒ�
     Semiformula.Evalb (x :> ![s, qCode, u]) (code codeEvaluatorHistoryBeforeCell) ↔
       Semiformula.Evalb (x :> ![s, qCode, z]) (code codeEvaluatorHistoryBeforeCell) := by
   have hpair : ∀ c : M, Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, c])
+      (FFL.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, c])
       (code (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) :=
     fun c => eval_codePair _ _ s qCode ![s, qCode, c]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
@@ -175,14 +179,14 @@ private theorem tagSix_table_congr [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒ�
     intro i
     refine Fin.cases ?_ (fun j => Fin.elim0 j) i
     have h0 := hcomp 0
-    have : w 0 = LO.FirstOrder.Arithmetic.pair s qCode := eval_unique h0 (hpair u)
+    have : w 0 = FFL.FirstOrder.Arithmetic.pair s qCode := eval_unique h0 (hpair u)
     simpa [this] using hpair z
   · rintro ⟨w, hw, hcomp⟩
     refine ⟨w, hw, ?_⟩
     intro i
     refine Fin.cases ?_ (fun j => Fin.elim0 j) i
     have h0 := hcomp 0
-    have : w 0 = LO.FirstOrder.Arithmetic.pair s qCode := eval_unique h0 (hpair z)
+    have : w 0 = FFL.FirstOrder.Arithmetic.pair s qCode := eval_unique h0 (hpair z)
     simpa [this] using hpair u
 
 private theorem tagSix_key_congr [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻]
@@ -225,15 +229,15 @@ private theorem tagSix_query_congr [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒ�
 
 private theorem tagSix_argument_congr [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (s qCode z x : M) :
-    Semiformula.Evalb (x :> ![s, qCode, LO.FirstOrder.Arithmetic.pair z 0])
+    Semiformula.Evalb (x :> ![s, qCode, FFL.FirstOrder.Arithmetic.pair z 0])
         (code (codeUnpair₁ (Code.proj (2 : Fin 3)))) ↔
       Semiformula.Evalb (x :> ![s, qCode, z]) (code (Code.proj (2 : Fin 3))) := by
-  have hleft : Semiformula.Evalb (z :> ![s, qCode, LO.FirstOrder.Arithmetic.pair z 0])
+  have hleft : Semiformula.Evalb (z :> ![s, qCode, FFL.FirstOrder.Arithmetic.pair z 0])
       (code (codeUnpair₁ (Code.proj (2 : Fin 3)))) := by
     have h := eval_codeUnpair₁ (Code.proj (2 : Fin 3))
-      (LO.FirstOrder.Arithmetic.pair z 0) ![s, qCode, LO.FirstOrder.Arithmetic.pair z 0]
+      (FFL.FirstOrder.Arithmetic.pair z 0) ![s, qCode, FFL.FirstOrder.Arithmetic.pair z 0]
       ((eval_proj_iff _ _ _).mpr rfl)
-    rwa [LO.FirstOrder.Arithmetic.pi₁_pair] at h
+    rwa [FFL.FirstOrder.Arithmetic.pi₁_pair] at h
   have hright : Semiformula.Evalb (z :> ![s, qCode, z]) (code (Code.proj (2 : Fin 3))) :=
     (eval_proj_iff _ _ _).mpr rfl
   constructor
@@ -249,21 +253,21 @@ private theorem tagSix_argument_congr [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒ�
 /-- The predecessor lookup reads the argument `pair z a` from `pair z (a + 1)`. -/
 private theorem tagSix_predecessor_argument [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (s qCode z a : M) :
-    Semiformula.Evalb ((LO.FirstOrder.Arithmetic.pair z a) :>
-        ![s, qCode, LO.FirstOrder.Arithmetic.pair z (a + 1)])
+    Semiformula.Evalb ((FFL.FirstOrder.Arithmetic.pair z a) :>
+        ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (codePair (codeUnpair₁ (Code.proj (2 : Fin 3)))
         (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1)))) := by
   letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  have hproj : Semiformula.Evalb (LO.FirstOrder.Arithmetic.pair z (a + 1) :>
-      ![s, qCode, LO.FirstOrder.Arithmetic.pair z (a + 1)])
+  have hproj : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
+      ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (Code.proj (2 : Fin 3))) := (eval_proj_iff _ _ _).mpr rfl
   have h1 := eval_codeUnpair₁ (Code.proj (2 : Fin 3)) _ _ hproj
-  rw [LO.FirstOrder.Arithmetic.pi₁_pair] at h1
+  rw [FFL.FirstOrder.Arithmetic.pi₁_pair] at h1
   have h2 := eval_codeUnpair₂ (Code.proj (2 : Fin 3)) _ _ hproj
-  rw [LO.FirstOrder.Arithmetic.pi₂_pair] at h2
+  rw [FFL.FirstOrder.Arithmetic.pi₂_pair] at h2
   have hone : Semiformula.Evalb ((1 : M) :>
-      ![s, qCode, LO.FirstOrder.Arithmetic.pair z (a + 1)])
+      ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (codeConst (n := 3) 1)) := by
     rw [eval_codeConst_iff]; simp
   have h3 := eval_codeSub _ (codeConst 1) (a + 1) 1 _ h2 hone
@@ -275,36 +279,36 @@ environment, where the intermediate value `x` is the new head. -/
 private theorem tagSix_step_argument [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (s qCode z a x : M) :
     Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x)) :>
-        (x :> ![s, qCode, LO.FirstOrder.Arithmetic.pair z (a + 1)]))
+      ((FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x)) :>
+        (x :> ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)]))
       (code (codePair (codeLift (codeUnpair₁ (Code.proj (2 : Fin 3))))
         (codePair (codeLift (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1)))
           (codeHead (n := 3))))) := by
   letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  have hproj : Semiformula.Evalb (LO.FirstOrder.Arithmetic.pair z (a + 1) :>
-      ![s, qCode, LO.FirstOrder.Arithmetic.pair z (a + 1)])
+  have hproj : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
+      ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (Code.proj (2 : Fin 3))) := (eval_proj_iff _ _ _).mpr rfl
   have h1 := eval_codeUnpair₁ (Code.proj (2 : Fin 3)) _ _ hproj
-  rw [LO.FirstOrder.Arithmetic.pi₁_pair] at h1
+  rw [FFL.FirstOrder.Arithmetic.pi₁_pair] at h1
   have h2 := eval_codeUnpair₂ (Code.proj (2 : Fin 3)) _ _ hproj
-  rw [LO.FirstOrder.Arithmetic.pi₂_pair] at h2
+  rw [FFL.FirstOrder.Arithmetic.pi₂_pair] at h2
   have hone : Semiformula.Evalb ((1 : M) :>
-      ![s, qCode, LO.FirstOrder.Arithmetic.pair z (a + 1)])
+      ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (codeConst (n := 3) 1)) := by
     rw [eval_codeConst_iff]; simp
   have h3 := eval_codeSub _ (codeConst 1) (a + 1) 1 _ h2 hone
   rw [add_sub_self] at h3
   have hz : Semiformula.Evalb (z :> (x :> ![s, qCode,
-      LO.FirstOrder.Arithmetic.pair z (a + 1)]))
+      FFL.FirstOrder.Arithmetic.pair z (a + 1)]))
       (code (codeLift (codeUnpair₁ (Code.proj (2 : Fin 3))))) :=
     (eval_codeLift_iff _ _ _ _).mpr h1
   have ha : Semiformula.Evalb (a :> (x :> ![s, qCode,
-      LO.FirstOrder.Arithmetic.pair z (a + 1)]))
+      FFL.FirstOrder.Arithmetic.pair z (a + 1)]))
       (code (codeLift (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1)))) :=
     (eval_codeLift_iff _ _ _ _).mpr h3
   have hx : Semiformula.Evalb (x :> (x :> ![s, qCode,
-      LO.FirstOrder.Arithmetic.pair z (a + 1)]))
+      FFL.FirstOrder.Arithmetic.pair z (a + 1)]))
       (code (codeHead (n := 3))) := (eval_codeHead_iff _ _).mpr rfl
   exact eval_codePair _ _ z _ _ hz (eval_codePair _ _ a x _ ha hx)
 
@@ -314,9 +318,9 @@ with the caller's argument bound imposed by the concrete evaluator. -/
 theorem evaln_tag_six_zero_iff
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (q : ℕ) (hq : partrecCodeTag q = 6) (s z y : M) (hs : 0 < s) :
-    Semiformula.Evalb ![s, (q : M), LO.FirstOrder.Arithmetic.pair z 0, y]
+    Semiformula.Evalb ![s, (q : M), FFL.FirstOrder.Arithmetic.pair z 0, y]
       (evalnCertificateFormula : ArithmeticSemisentence 4) ↔
-    LO.FirstOrder.Arithmetic.pair z 0 < s ∧
+    FFL.FirstOrder.Arithmetic.pair z 0 < s ∧
     Semiformula.Evalb ![s, (partrecCodePayload₁ q : M), z, y]
       (evalnCertificateFormula : ArithmeticSemisentence 4) := by
   letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
@@ -331,47 +335,47 @@ theorem evaln_tag_six_zero_iff
     codePartrecPayload₂ (codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell)) with hdcg
   set dn : Code 3 := Code.proj (2 : Fin 3) with hdn
   obtain ⟨Hs, hHs, _⟩ :=
-    eval_codeEvaluatorHistoryBeforeCell_exists s (q : M) (LO.FirstOrder.Arithmetic.pair z 0)
-  have hidx_s := eval_codeEvaluatorCell_index s (q : M) (LO.FirstOrder.Arithmetic.pair z 0)
+    eval_codeEvaluatorHistoryBeforeCell_exists s (q : M) (FFL.FirstOrder.Arithmetic.pair z 0)
+  have hidx_s := eval_codeEvaluatorCell_index s (q : M) (FFL.FirstOrder.Arithmetic.pair z 0)
   have htag_s := tagSix_read_tag _ q hq _ hidx_s
   have hn_s : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair z 0 :> ![s, (q : M), LO.FirstOrder.Arithmetic.pair z 0])
+      (FFL.FirstOrder.Arithmetic.pair z 0 :> ![s, (q : M), FFL.FirstOrder.Arithmetic.pair z 0])
       (code (Code.proj (2 : Fin 3))) := (eval_proj_iff _ _ _).mpr rfl
   have source_equivalence :
-      Semiformula.Evalb ((y + 1) :> ![s, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair z 0])
+      Semiformula.Evalb ((y + 1) :> ![s, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z 0])
           (code (codePrecEvaluatorCell dtable dk' dq dcf dcg dn)) ↔
-        Semiformula.Evalb ((y + 1) :> ![s, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair z 0])
+        Semiformula.Evalb ((y + 1) :> ![s, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z 0])
           (code (codeTableLookup dtable (codeSucc dk') dcf (codeUnpair₁ dn))) :=
     eval_codePrecEvaluatorCell_succ_iff_of_zero dtable dk' dq dcf dcg dn
       Hs (s - 1) ((q : ℕ) : M) ((partrecCodePayload₁ q : ℕ) : M)
       ((partrecCodePayload₂ q : ℕ) : M) z y
-      ![s, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair z 0]
-      hHs (tagSix_decremented_fuel s ((q : ℕ) : M) (LO.FirstOrder.Arithmetic.pair z 0))
+      ![s, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z 0]
+      hHs (tagSix_decremented_fuel s ((q : ℕ) : M) (FFL.FirstOrder.Arithmetic.pair z 0))
       hidx_s (tagSix_read_payload₁ _ q hq _ hidx_s) (tagSix_read_payload₂ _ q hq _ hidx_s) hn_s
   have lookup_equivalence :
-      Semiformula.Evalb ((y + 1) :> ![s, (q : M), LO.FirstOrder.Arithmetic.pair z 0])
+      Semiformula.Evalb ((y + 1) :> ![s, (q : M), FFL.FirstOrder.Arithmetic.pair z 0])
           (code (codeTableLookup dtable (codeSucc dk') dcf (codeUnpair₁ dn))) ↔
       Semiformula.Evalb ((y + 1) :> ![s, (q : M), z])
           (code (codeTableLookup codeEvaluatorHistoryBeforeCell
             (codeUnpair₁ (codeListLength codeEvaluatorHistoryBeforeCell))
             (codeConst (n := 3) (partrecCodePayload₁ q)) (Code.proj (2 : Fin 3)))) :=
     eval_codeTableLookup_congr_at _ _ _ _ _ _ _ _ _ _ _
-      (tagSix_table_congr s (q : M) (LO.FirstOrder.Arithmetic.pair z 0) z)
-      (tagSix_key_congr s (q : M) (LO.FirstOrder.Arithmetic.pair z 0) z hs)
-      (tagSix_query_congr s (LO.FirstOrder.Arithmetic.pair z 0) z q hq)
+      (tagSix_table_congr s (q : M) (FFL.FirstOrder.Arithmetic.pair z 0) z)
+      (tagSix_key_congr s (q : M) (FFL.FirstOrder.Arithmetic.pair z 0) z hs)
+      (tagSix_query_congr s (FFL.FirstOrder.Arithmetic.pair z 0) z q hq)
       (tagSix_argument_congr s (q : M) z)
   have payload₁_lt : partrecCodePayload₁ q < q := (partrecCodePayloads_lt_of_tag_six q hq).1
-  have prefix_s : LO.FirstOrder.Arithmetic.pair s (partrecCodePayload₁ q : M) <
-      LO.FirstOrder.Arithmetic.pair s (q : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast payload₁_lt)
+  have prefix_s : FFL.FirstOrder.Arithmetic.pair s (partrecCodePayload₁ q : M) <
+      FFL.FirstOrder.Arithmetic.pair s (q : M) :=
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast payload₁_lt)
   constructor
   · intro hc
     have hh := (evalnCertificateFormula_eval_history_iff s (q : M)
-      (LO.FirstOrder.Arithmetic.pair z 0) y).mp hc
+      (FFL.FirstOrder.Arithmetic.pair z 0) y).mp hc
     obtain ⟨hu, hcell⟩ := (eval_codeHistoryEvaluator_succ_iff_cell s (q : M)
-      (LO.FirstOrder.Arithmetic.pair z 0) y).mp hh
+      (FFL.FirstOrder.Arithmetic.pair z 0) y).mp hh
     have hb := tagSix_prec_branch _ _ _ (y + 1) s
-      (eval_codeEvaluatorCell_fuel s (q : M) (LO.FirstOrder.Arithmetic.pair z 0))
+      (eval_codeEvaluatorCell_fuel s (q : M) (FFL.FirstOrder.Arithmetic.pair z 0))
       hs htag_s hcell
     have hl := lookup_equivalence.mp (source_equivalence.mp hb)
     have hf := eval_codeHistoryEvaluator_succ_of_prefix_lookup s (q : M) z y
@@ -383,31 +387,31 @@ theorem evaln_tag_six_zero_iff
       (partrecCodePayload₁ q) prefix_s hf
     have hb := source_equivalence.mpr (lookup_equivalence.mpr hl)
     obtain ⟨w, hw⟩ := eval_codeEvaluatorCell_exists_of_values dtable dn Hs
-      (LO.FirstOrder.Arithmetic.pair z 0)
-      ![s, (q : M), LO.FirstOrder.Arithmetic.pair z 0] hHs hn_s
+      (FFL.FirstOrder.Arithmetic.pair z 0)
+      ![s, (q : M), FFL.FirstOrder.Arithmetic.pair z 0] hHs hn_s
     have hbw := tagSix_prec_branch _ _ _ w s
-      (eval_codeEvaluatorCell_fuel s (q : M) (LO.FirstOrder.Arithmetic.pair z 0))
+      (eval_codeEvaluatorCell_fuel s (q : M) (FFL.FirstOrder.Arithmetic.pair z 0))
       hs htag_s hw
     have hwy : w = y + 1 := eval_unique hbw hb
     rw [hwy] at hw
     exact (evalnCertificateFormula_eval_history_iff s (q : M)
-      (LO.FirstOrder.Arithmetic.pair z 0) y).mpr
+      (FFL.FirstOrder.Arithmetic.pair z 0) y).mpr
       ((eval_codeHistoryEvaluator_succ_iff_cell s (q : M)
-        (LO.FirstOrder.Arithmetic.pair z 0) y).mpr ⟨hu, hw⟩)
+        (FFL.FirstOrder.Arithmetic.pair z 0) y).mpr ⟨hu, hw⟩)
 
 /-- A successor recursion computation at stage `k + 1` consists of the
 predecessor computation at stage `k` and the step computation at stage `k + 1`. -/
 theorem evaln_tag_six_succ_iff
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (q : ℕ) (hq : partrecCodeTag q = 6) (k z a y : M) :
-    Semiformula.Evalb ![k + 1, (q : M), LO.FirstOrder.Arithmetic.pair z (a + 1), y]
+    Semiformula.Evalb ![k + 1, (q : M), FFL.FirstOrder.Arithmetic.pair z (a + 1), y]
       (evalnCertificateFormula : ArithmeticSemisentence 4) ↔
-    LO.FirstOrder.Arithmetic.pair z (a + 1) < k + 1 ∧
+    FFL.FirstOrder.Arithmetic.pair z (a + 1) < k + 1 ∧
     ∃ x : M,
-      Semiformula.Evalb ![k, (q : M), LO.FirstOrder.Arithmetic.pair z a, x]
+      Semiformula.Evalb ![k, (q : M), FFL.FirstOrder.Arithmetic.pair z a, x]
         (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
       Semiformula.Evalb ![k + 1, (partrecCodePayload₂ q : M),
-        LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x), y]
+        FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x), y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
   letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- the argument codes of the primitive-recursion branch, named once
@@ -420,9 +424,9 @@ theorem evaln_tag_six_succ_iff
   set dcg : Code 3 :=
     codePartrecPayload₂ (codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell)) with hdcg
   set dn : Code 3 := Code.proj (2 : Fin 3) with hdn
-  set u : M := LO.FirstOrder.Arithmetic.pair z (a + 1) with hu
+  set u : M := FFL.FirstOrder.Arithmetic.pair z (a + 1) with hu
   have hs : (0 : M) < k + 1 :=
-    lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le k) (lt_add_one k)
+    lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le k) (lt_add_one k)
   -- readings at the source stage
   obtain ⟨Hs, hHs, hHistS⟩ :=
     eval_codeEvaluatorHistoryBeforeCell_exists (k + 1) ((q : ℕ) : M) u
@@ -448,12 +452,12 @@ theorem evaln_tag_six_succ_iff
       hHs (tagSix_decremented_fuel (k + 1) ((q : ℕ) : M) u)
       hidx_s (tagSix_read_payload₁ _ q hq _ hidx_s) (tagSix_read_payload₂ _ q hq _ hidx_s) hn_s
   have hpayload₂_lt : partrecCodePayload₂ q < q := (partrecCodePayloads_lt_of_tag_six q hq).2
-  have hrow_step : ∀ s : M, LO.FirstOrder.Arithmetic.pair s ((partrecCodePayload₂ q : ℕ) : M) <
-      LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
-    fun s => LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hpayload₂_lt)
+  have hrow_step : ∀ s : M, FFL.FirstOrder.Arithmetic.pair s ((partrecCodePayload₂ q : ℕ) : M) <
+      FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
+    fun s => FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hpayload₂_lt)
   have hstep_bridge (x : M) : ∀ s : M, (0 : M) < s → ∀ H : M,
       Semiformula.Evalb (H :> ![s, ((q : ℕ) : M), u]) (code dtable) →
-      Semiformula.Evalb ![H, LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)]
+      Semiformula.Evalb ![H, FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)]
         (code codeEvaluatorHistory) →
       (Semiformula.Evalb ((y + 1) :> x :> ![s, ((q : ℕ) : M), u])
           (code (codeTableLookup (codeLift dtable) (codeLift (codeSucc dk')) (codeLift dcg)
@@ -461,14 +465,14 @@ theorem evaln_tag_six_succ_iff
               (codePair (codeLift (codeSub (codeUnpair₂ dn) (codeConst 1)))
                 (codeHead (n := 3)))))) ↔
         Semiformula.Evalb ![y + 1, s, ((partrecCodePayload₂ q : ℕ) : M),
-          LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x)]
+          FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x)]
           (code codeHistoryEvaluator)) := by
     intro s hspos H hH hHist
     exact eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
       (codeLift dtable) (codeLift (codeSucc dk')) (codeLift dcg) _
       (x :> ![s, ((q : ℕ) : M), u])
-      (LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)) H s
-      (LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x)) y
+      (FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)) H s
+      (FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x)) y
       (partrecCodePayload₂ q) hHist (hrow_step s)
       ((eval_codeLift_iff _ _ _ _).mpr hH)
       ((eval_codeLift_iff _ _ _ _).mpr (tagSix_base_key s ((q : ℕ) : M) u hspos))
@@ -486,14 +490,14 @@ theorem evaln_tag_six_succ_iff
     have hgh := (hstep_bridge x (k + 1) hs Hs hHs hHistS).mp hg
     exact ⟨hu, x,
       (evalnCertificateFormula_eval_history_iff k (q : M)
-        (LO.FirstOrder.Arithmetic.pair z a) x).mpr hph,
+        (FFL.FirstOrder.Arithmetic.pair z a) x).mpr hph,
       (evalnCertificateFormula_eval_history_iff (k + 1) (partrecCodePayload₂ q : M)
-        (LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x)) y).mpr hgh⟩
+        (FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x)) y).mpr hgh⟩
   · rintro ⟨hu, x, hp, hg⟩
     have hph := (evalnCertificateFormula_eval_history_iff k (q : M)
-      (LO.FirstOrder.Arithmetic.pair z a) x).mp hp
+      (FFL.FirstOrder.Arithmetic.pair z a) x).mp hp
     have hgh := (evalnCertificateFormula_eval_history_iff (k + 1) (partrecCodePayload₂ q : M)
-      (LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x)) y).mp hg
+      (FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x)) y).mp hg
     have hpl := (eval_prec_predecessor_lookup_succ_iff_codeHistoryEvaluator k z a x q).mpr hph
     have hgl := (hstep_bridge x (k + 1) hs Hs hHs hHistS).mpr hgh
     have hb := source_equivalence.mpr ⟨x, hpl, hgl⟩
@@ -510,7 +514,7 @@ theorem evaln_tag_six_succ_iff
 theorem eventualGraph_prec_zero_eval
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] (fCode gCode : ℕ) (z y : M) :
     (eventualGraph (canonicalPartrecPrecIndex fCode gCode)).val.Evalb
-      ![LO.FirstOrder.Arithmetic.pair z 0, y] ↔
+      ![FFL.FirstOrder.Arithmetic.pair z 0, y] ↔
     (eventualGraph fCode).val.Evalb ![z, y] := by
   haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   let q := canonicalPartrecPrecIndex fCode gCode
@@ -521,10 +525,10 @@ theorem eventualGraph_prec_zero_eval
     obtain ⟨s, hs⟩ := (eventualGraph_eval q _).mp h
     simp only [numeral_eq_natCast_app, Matrix.cons_val_zero, Matrix.cons_val_one] at hs
     have hu := ((eval_codeHistoryEvaluator_succ_iff_cell s (q : M)
-      (LO.FirstOrder.Arithmetic.pair z 0) y).mp
+      (FFL.FirstOrder.Arithmetic.pair z 0) y).mp
       ((evalnCertificateFormula_eval_history_iff s (q : M)
-        (LO.FirstOrder.Arithmetic.pair z 0) y).mp hs)).1
-    have hpos : (0 : M) < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le _) hu
+        (FFL.FirstOrder.Arithmetic.pair z 0) y).mp hs)).1
+    have hpos : (0 : M) < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le _) hu
     have hc := ((evaln_tag_six_zero_iff q hq s z y hpos).mp hs).2
     rw [hf] at hc
     exact (eventualGraph_eval fCode _).mpr ⟨s, by
@@ -532,10 +536,10 @@ theorem eventualGraph_prec_zero_eval
   · intro h
     obtain ⟨s, hs⟩ := (eventualGraph_eval fCode _).mp h
     simp only [numeral_eq_natCast_app, Matrix.cons_val_zero, Matrix.cons_val_one] at hs
-    let t := s + LO.FirstOrder.Arithmetic.pair z 0 + 1
+    let t := s + FFL.FirstOrder.Arithmetic.pair z 0 + 1
     have hst : s ≤ t := le_trans le_self_add (le_of_lt (lt_add_one _))
-    have hu : LO.FirstOrder.Arithmetic.pair z 0 < t := lt_of_le_of_lt le_add_self (lt_add_one _)
-    have hpos : (0 : M) < t := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le _) hu
+    have hu : FFL.FirstOrder.Arithmetic.pair z 0 < t := lt_of_le_of_lt le_add_self (lt_add_one _)
+    have hpos : (0 : M) < t := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le _) hu
     have hc := evalnCertificateFormula_natCode_persist fCode s t z y hst hs
     rw [← hf] at hc
     have hr := (evaln_tag_six_zero_iff q hq t z y hpos).mpr ⟨hu, hc⟩
@@ -547,12 +551,12 @@ graph in every PA model. The recursion argument may be nonstandard. -/
 theorem eventualGraph_prec_succ_eval
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] (fCode gCode : ℕ) (z a y : M) :
     (eventualGraph (canonicalPartrecPrecIndex fCode gCode)).val.Evalb
-      ![LO.FirstOrder.Arithmetic.pair z (a + 1), y] ↔
+      ![FFL.FirstOrder.Arithmetic.pair z (a + 1), y] ↔
     ∃ x : M,
       (eventualGraph (canonicalPartrecPrecIndex fCode gCode)).val.Evalb
-        ![LO.FirstOrder.Arithmetic.pair z a, x] ∧
+        ![FFL.FirstOrder.Arithmetic.pair z a, x] ∧
       (eventualGraph gCode).val.Evalb
-        ![LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x), y] := by
+        ![FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x), y] := by
   haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   let q := canonicalPartrecPrecIndex fCode gCode
   have hq : partrecCodeTag q = 6 := canonicalPartrecPrecIndex_constructor_number fCode gCode
@@ -562,10 +566,10 @@ theorem eventualGraph_prec_succ_eval
     obtain ⟨s, hs⟩ := (eventualGraph_eval q _).mp h
     simp only [numeral_eq_natCast_app, Matrix.cons_val_zero, Matrix.cons_val_one] at hs
     have hu := ((eval_codeHistoryEvaluator_succ_iff_cell s (q : M)
-      (LO.FirstOrder.Arithmetic.pair z (a + 1)) y).mp
+      (FFL.FirstOrder.Arithmetic.pair z (a + 1)) y).mp
       ((evalnCertificateFormula_eval_history_iff s (q : M)
-        (LO.FirstOrder.Arithmetic.pair z (a + 1)) y).mp hs)).1
-    have hpos : (0 : M) < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le _) hu
+        (FFL.FirstOrder.Arithmetic.pair z (a + 1)) y).mp hs)).1
+    have hpos : (0 : M) < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le _) hu
     have hpred : s - 1 + 1 = s := tagSix_succ_pred hpos
     have hh := evaln_tag_six_succ_iff q hq (s - 1) z a y
     rw [hpred] at hh
@@ -579,16 +583,16 @@ theorem eventualGraph_prec_succ_eval
     obtain ⟨s, hs⟩ := (eventualGraph_eval q _).mp hp
     obtain ⟨t, ht⟩ := (eventualGraph_eval gCode _).mp hf
     simp only [numeral_eq_natCast_app, Matrix.cons_val_zero, Matrix.cons_val_one] at hs ht
-    let k := s + t + LO.FirstOrder.Arithmetic.pair z (a + 1)
+    let k := s + t + FFL.FirstOrder.Arithmetic.pair z (a + 1)
     have hsk : s ≤ k := le_trans le_self_add le_self_add
     have htk : t ≤ k + 1 := le_trans (le_trans le_add_self le_self_add)
       (le_of_lt (lt_add_one _))
-    have hu : LO.FirstOrder.Arithmetic.pair z (a + 1) < k + 1 :=
+    have hu : FFL.FirstOrder.Arithmetic.pair z (a + 1) < k + 1 :=
       lt_of_le_of_lt le_add_self (lt_add_one _)
     have hs' := evalnCertificateFormula_natCode_persist q s k
-      (LO.FirstOrder.Arithmetic.pair z a) x hsk hs
+      (FFL.FirstOrder.Arithmetic.pair z a) x hsk hs
     have ht' := evalnCertificateFormula_natCode_persist gCode t (k + 1)
-      (LO.FirstOrder.Arithmetic.pair z (LO.FirstOrder.Arithmetic.pair a x)) y htk ht
+      (FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x)) y htk ht
     rw [← hg] at ht'
     have hr := (evaln_tag_six_succ_iff q hq k z a y).mpr ⟨hu, x, hs', ht'⟩
     exact (eventualGraph_eval q _).mpr ⟨k + 1, by

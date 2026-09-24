@@ -30,7 +30,7 @@ historical scope is documented in the draft and the manuscript coverage map.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 open CategoricalRiceShapiro.PartialRecursive
 
 namespace FailureOfComposition.Palomar

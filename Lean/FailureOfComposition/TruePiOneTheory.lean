@@ -14,7 +14,7 @@ productive obstruction and the characterization theorem.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 
 namespace FailureOfComposition.PiOneCharacterization
 

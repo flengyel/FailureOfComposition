@@ -5,7 +5,7 @@ Authors: Florian Lengyel
 -/
 import Foundation.Meta.ClProver
 import FailureOfComposition.Productiveness
-import Foundation.FirstOrder.Bootstrapping.DerivabilityCondition.D1
+import Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.D1
 import Foundation.FirstOrder.Arithmetic.R0.Representation
 
 /-!
@@ -17,8 +17,8 @@ set_option autoImplicit false
 
 
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open LO.FirstOrder.Arithmetic.Bootstrapping LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open FFL.FirstOrder.Arithmetic.Bootstrapping FFL.Entailment
 open Encodable Denumerable Nat.Partrec
 
 namespace FailureOfComposition

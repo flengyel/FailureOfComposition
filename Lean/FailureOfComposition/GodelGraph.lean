@@ -5,7 +5,7 @@ Authors: Florian Lengyel
 -/
 import FailureOfComposition.GraphQuotient
 import Foundation.FirstOrder.Incompleteness.Second
-import Foundation.FirstOrder.Incompleteness.InductionSchemeDelta1
+import Foundation.FirstOrder.Incompleteness.Definability
 
 /-!
 Graph witnesses for the second-incompleteness obstruction.
@@ -13,8 +13,8 @@ Graph witnesses for the second-incompleteness obstruction.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open LO.FirstOrder.Arithmetic.Bootstrapping LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open FFL.FirstOrder.Arithmetic.Bootstrapping FFL.Entailment
 
 namespace FailureOfComposition
 

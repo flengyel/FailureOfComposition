@@ -59,6 +59,7 @@ theorem eval_codeRfindPos {n : ℕ} {d : Code (n + 1)} {f : List.Vector ℕ (n +
   · simp [hz]
   · simp [Nat.pos_of_ne_zero hz]
 
+set_option backward.isDefEq.respectTransparency.types false in
 theorem eval_codeBind {n : ℕ} {dg : Code n} {dc : Code (n + 1)}
     {gp : List.Vector ℕ n →. ℕ} {f : List.Vector ℕ (n + 1) → ℕ}
     (hg : Code.eval dg gp) (hc : Computes dc f) :

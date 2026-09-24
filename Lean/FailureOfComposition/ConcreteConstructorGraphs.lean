@@ -17,8 +17,8 @@ set_option autoImplicit false
 
 
 open Nat Nat.ArithPart₁
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.Evaluator
 open CategoricalRiceShapiro.PartialRecursive
 
@@ -41,7 +41,7 @@ private theorem tagFour_payloads_lt (q : ℕ) (hq : partrecCodeTag q = 4) :
     partrecCodePayload₁ q < q ∧ partrecCodePayload₂ q < q := by
   have h4 : 4 ≤ q := by
     rcases Nat.lt_or_ge q 4 with hlt | hge
-    · rw [tagFour_tag_remainders, if_pos hlt] at hq
+    · rw [tagFour_tag_remainders, ite_eq_left hlt] at hq
       omega
     · exact hge
   have hdd : partrecCodePayload q ≤ q - 4 := by
@@ -93,14 +93,14 @@ private theorem tagFour_read_tag [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ}
   · have hlt1 : Semiformula.Evalb ((1 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inl ⟨?_, rfl⟩⟩
       exact_mod_cast hq
-    rw [if_pos hq]
+    rw [ite_eq_left hq]
     exact eval_codeIfPos_of _ _ _ (1 : M) (((q : ℕ)) : M) _ _ v hlt1 hd hbig
       (Or.inl ⟨_root_.zero_lt_one, rfl⟩)
   · have hlt0 : Semiformula.Evalb ((0 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inr ⟨?_, rfl⟩⟩
       intro hc
       exact hq (by exact_mod_cast hc)
-    rw [if_neg hq]
+    rw [ite_eq_right hq]
     exact eval_codeIfPos_of _ _ _ (0 : M) (((q : ℕ)) : M) _ _ v hlt0 hd hbig
       (Or.inr ⟨rfl, rfl⟩)
 
@@ -185,7 +185,7 @@ private theorem tagFour_source_subcode_histories [M↓[ℒₒᵣ] ⊧* 𝗣𝗔]
           (code codeHistoryEvaluator) ∧
         Semiformula.Evalb ![b + 1, s, ((partrecCodePayload₂ q : ℕ) : M), u]
             (code codeHistoryEvaluator) ∧
-          y = LO.FirstOrder.Arithmetic.pair a b := by
+          y = FFL.FirstOrder.Arithmetic.pair a b := by
   have hk := eval_codeEvaluatorCell_fuel s ((q : ℕ) : M) u
   have hidx := eval_codeEvaluatorCell_index s ((q : ℕ) : M) u
   have htag : Semiformula.Evalb (((4 : ℕ) : M) :> ![s, ((q : ℕ) : M), u])
@@ -225,12 +225,12 @@ private theorem tagFour_source_subcode_histories [M↓[ℒₒᵣ] ⊧* 𝗣𝗔]
     (fun z => (eval_codeLift_iff _ z a _).trans (hq2 z))
     (fun z => eval_codeLift_iff _ z a _)).mp hlb
   have hlt := tagFour_payloads_lt q hq
-  have hpre1 : LO.FirstOrder.Arithmetic.pair s ((partrecCodePayload₁ q : ℕ) : M) <
-      LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.1)
-  have hpre2 : LO.FirstOrder.Arithmetic.pair s ((partrecCodePayload₂ q : ℕ) : M) <
-      LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.2)
+  have hpre1 : FFL.FirstOrder.Arithmetic.pair s ((partrecCodePayload₁ q : ℕ) : M) <
+      FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.1)
+  have hpre2 : FFL.FirstOrder.Arithmetic.pair s ((partrecCodePayload₂ q : ℕ) : M) <
+      FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.2)
   exact ⟨a, b,
     eval_codeHistoryEvaluator_succ_of_prefix_lookup s ((q : ℕ) : M) u a
       (partrecCodePayload₁ q) hpre1 hlaC,
@@ -250,12 +250,12 @@ theorem evalnCertificateFormula_tag_four_iff
           (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
         Semiformula.Evalb ![s, (partrecCodePayload₂ q : M), u, b]
           (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
-        y = LO.FirstOrder.Arithmetic.pair a b := by
+        y = FFL.FirstOrder.Arithmetic.pair a b := by
   constructor
   · intro h
     have hh := (evalnCertificateFormula_eval_history_iff s (q : M) u y).mp h
     obtain ⟨hus, hcell⟩ := (eval_codeHistoryEvaluator_succ_iff_cell s (q : M) u y).mp hh
-    have hs : 0 < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) hus
+    have hs : 0 < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) hus
     obtain ⟨a,b,ha,hb,hy⟩ := tagFour_source_subcode_histories q hq s u y hs hcell
     exact ⟨a,b,(evalnCertificateFormula_eval_history_iff _ _ _ _).mpr ha,
       (evalnCertificateFormula_eval_history_iff _ _ _ _).mpr hb,hy⟩
@@ -264,14 +264,14 @@ theorem evalnCertificateFormula_tag_four_iff
     have hb' := (evalnCertificateFormula_eval_history_iff s (partrecCodePayload₂ q : M) u b).mp hb
     have hus :=
       ((eval_codeHistoryEvaluator_succ_iff_cell s (partrecCodePayload₁ q : M) u a).mp ha').1
-    have hs : 0 < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) hus
+    have hs : 0 < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) hus
     have hlt := tagFour_payloads_lt q hq
-    have hp₁ : LO.FirstOrder.Arithmetic.pair s (partrecCodePayload₁ q : M) <
-        LO.FirstOrder.Arithmetic.pair s (q : M) :=
-      LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.1)
-    have hp₂ : LO.FirstOrder.Arithmetic.pair s (partrecCodePayload₂ q : M) <
-        LO.FirstOrder.Arithmetic.pair s (q : M) :=
-      LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.2)
+    have hp₁ : FFL.FirstOrder.Arithmetic.pair s (partrecCodePayload₁ q : M) <
+        FFL.FirstOrder.Arithmetic.pair s (q : M) :=
+      FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.1)
+    have hp₂ : FFL.FirstOrder.Arithmetic.pair s (partrecCodePayload₂ q : M) <
+        FFL.FirstOrder.Arithmetic.pair s (q : M) :=
+      FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.2)
     have hl₁ := eval_prefix_lookup_succ_of_codeHistoryEvaluator s (q : M) u a _ hp₁ ha'
     have hl₂ := eval_prefix_lookup_succ_of_codeHistoryEvaluator s (q : M) u b _ hp₂ hb'
     have hc := eval_codeEvaluatorCell_succ_of_pair_component_lookups
@@ -320,7 +320,7 @@ theorem eventualGraph_pair_eval
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] (f g : ℕ) (u y : M) :
     (eventualGraph (canonicalPartrecPairIndex f g)).val.Evalb ![u,y] ↔
       ∃ a b : M, (eventualGraph f).val.Evalb ![u,a] ∧
-        (eventualGraph g).val.Evalb ![u,b] ∧ y = LO.FirstOrder.Arithmetic.pair a b := by
+        (eventualGraph g).val.Evalb ![u,b] ∧ y = FFL.FirstOrder.Arithmetic.pair a b := by
   haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   constructor
   · intro h
@@ -348,7 +348,7 @@ theorem eventualGraph_pair_eval
       (show ∃ a b : M,
         Semiformula.Evalb ![s+t,(f:M),u,a] (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
         Semiformula.Evalb ![s+t,(g:M),u,b] (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
-        y = LO.FirstOrder.Arithmetic.pair a b from ⟨a,b,hs',ht',hy⟩)
+        y = FFL.FirstOrder.Arithmetic.pair a b from ⟨a,b,hs',ht',hy⟩)
 
 /-- The natural encoding of a pair constructor is the canonical pairing index. -/
 theorem encode_pair_eq (f g : Nat.Partrec.Code) :
@@ -367,7 +367,7 @@ theorem evalnCertificateFormula_pair_iff
           (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
         Semiformula.Evalb ![s, (Encodable.encode g : M), u, b]
           (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
-        y = LO.FirstOrder.Arithmetic.pair a b := by
+        y = FFL.FirstOrder.Arithmetic.pair a b := by
   rw [encode_pair_eq]
   simpa only [canonicalPartrecPairIndex_left,canonicalPartrecPairIndex_right] using
     evalnCertificateFormula_tag_four_iff
@@ -381,7 +381,7 @@ theorem eventualGraph_pair_code_eval
     (eventualGraph (Encodable.encode (Nat.Partrec.Code.pair f g))).val.Evalb ![u,y] ↔
       ∃ a b : M, (eventualGraph (Encodable.encode f)).val.Evalb ![u,a] ∧
         (eventualGraph (Encodable.encode g)).val.Evalb ![u,b] ∧
-        y = LO.FirstOrder.Arithmetic.pair a b := by
+        y = FFL.FirstOrder.Arithmetic.pair a b := by
   rw [encode_pair_eq]
   exact eventualGraph_pair_eval _ _ _ _
 

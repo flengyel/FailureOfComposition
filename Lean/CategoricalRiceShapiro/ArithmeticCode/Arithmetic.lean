@@ -74,6 +74,7 @@ def codeBeta {n : ℕ} (dn di : Code n) : Code n :=
 
 /-! ### Standard computations over the natural numbers -/
 
+set_option backward.isDefEq.respectTransparency.types false in
 theorem computes_codeSub {n : ℕ} {d₀ d₁ : Code n} {g₀ g₁ : List.Vector ℕ n → ℕ}
     (h₀ : Computes d₀ g₀) (h₁ : Computes d₁ g₁) :
     Computes (codeSub d₀ d₁) (fun v => g₀ v - g₁ v) := by
@@ -97,7 +98,7 @@ theorem computes_codeSub {n : ℕ} {d₀ d₁ : Code n} {g₀ g₁ : List.Vector
         (Nat.and (isLtNat (g₀ v) (g₁ v)) (isEqNat m 0)))
       ↔ (m + g₁ v = g₀ v ∨ (g₀ v < g₁ v ∧ m = 0)) := by
     intro m
-    simp [Nat.or_pos_iff, Nat.and_pos_iff, isEqNat_pos_iff, isLtNat_pos_iff]
+    simp [Nat.orNat_pos_iff, Nat.and_pos_iff, isEqNat_pos_iff, isLtNat_pos_iff]
   simp only [List.Vector.head_cons, List.Vector.tail_cons, Part.coe_some]
   rw [Part.eq_some_iff, Nat.mem_rfind]
   constructor
@@ -107,6 +108,7 @@ theorem computes_codeSub {n : ℕ} {d₀ d₁ : Code n} {g₀ g₁ : List.Vector
     rw [Part.mem_some_iff, eq_comm, decide_eq_false_iff_not, key]
     omega
 
+set_option backward.isDefEq.respectTransparency.types false in
 theorem computes_codeSqrt {n : ℕ} {d : Code n} {g : List.Vector ℕ n → ℕ}
     (hd : Computes d g) : Computes (codeSqrt d) (fun v => Nat.sqrt (g v)) := by
   have hF : Computes
@@ -136,7 +138,7 @@ theorem computes_codeSqrt {n : ℕ} {d : Code n} {g : List.Vector ℕ n → ℕ}
         (isLtNat (g v) ((m + 1) * (m + 1))))
       ↔ (m * m ≤ g v ∧ g v < (m + 1) * (m + 1)) := by
     intro m
-    simp only [Nat.and_pos_iff, Nat.or_pos_iff, isLtNat_pos_iff, isEqNat_pos_iff]
+    simp only [Nat.and_pos_iff, Nat.orNat_pos_iff, isLtNat_pos_iff, isEqNat_pos_iff]
     omega
   simp only [List.Vector.head_cons, List.Vector.tail_cons, Part.coe_some]
   rw [Part.eq_some_iff, Nat.mem_rfind]
@@ -172,6 +174,7 @@ theorem computes_codeUnpair₂ {n : ℕ} {d : Code n} {g : List.Vector ℕ n →
   by_cases hlt : g v - (g v).sqrt * (g v).sqrt < (g v).sqrt <;>
     simp [Nat.unpair, isLtNat, hlt]
 
+set_option backward.isDefEq.respectTransparency.types false in
 theorem computes_codeDvd {n : ℕ} {d₀ d₁ : Code n} {g₀ g₁ : List.Vector ℕ n → ℕ}
     (h₀ : Computes d₀ g₀) (h₁ : Computes d₁ g₁) :
     Computes (codeDvd d₀ d₁) (fun v => isDvdNat (g₀ v) (g₁ v)) := by
@@ -191,7 +194,7 @@ theorem computes_codeDvd {n : ℕ} {d₀ d₁ : Code n} {g₀ g₁ : List.Vector
   have key : ∀ m : ℕ,
       (0 < Nat.or (isEqNat (m * g₀ v) (g₁ v)) (isLtNat (g₁ v) m))
       ↔ (m * g₀ v = g₁ v ∨ g₁ v < m) := by
-    intro m; simp only [Nat.or_pos_iff, isEqNat_pos_iff, isLtNat_pos_iff]
+    intro m; simp only [Nat.orNat_pos_iff, isEqNat_pos_iff, isLtNat_pos_iff]
   simp only [List.Vector.head_cons, List.Vector.tail_cons, Part.coe_some]
   rw [Part.eq_some_iff, Part.mem_bind_iff]
   by_cases hv : g₀ v ∣ g₁ v
@@ -230,6 +233,7 @@ theorem computes_codeDvd {n : ℕ} {d₀ d₁ : Code n} {g₀ g₁ : List.Vector
         · omega
     · simp [isDvdNat, hv, isLeNat]
 
+set_option backward.isDefEq.respectTransparency.types false in
 theorem computes_codeRem {n : ℕ} {d₀ d₁ : Code n} {g₀ g₁ : List.Vector ℕ n → ℕ}
     (h₀ : Computes d₀ g₀) (h₁ : Computes d₁ g₁) :
     Computes (codeRem d₀ d₁) (fun v => g₀ v % g₁ v) := by

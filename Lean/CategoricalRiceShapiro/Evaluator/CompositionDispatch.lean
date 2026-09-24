@@ -59,8 +59,8 @@ open Nat Nat.ArithPart₁
 
 namespace CategoricalRiceShapiro.Evaluator
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.ArithmeticCode
 open CategoricalRiceShapiro.PartialRecursive
 
@@ -165,22 +165,22 @@ theorem eval_codeEvaluatorCell_succ_of_canonicalPartrecCompIndex
     (hcode :
       Semiformula.Evalb
         ((canonicalPartrecCompIndex fCode gCode : M) :> v)
-        (LO.FirstOrder.Arithmetic.code
+        (FFL.FirstOrder.Arithmetic.code
           (codeUnpair₂ (codeListLength dtable))))
     (hcell :
       Semiformula.Evalb ((y + 1) :> v)
-        (LO.FirstOrder.Arithmetic.code
+        (FFL.FirstOrder.Arithmetic.code
           (codeEvaluatorCell dtable dn))) :
     ∃ x : M,
       Semiformula.Evalb ((x + 1) :> v)
-          (LO.FirstOrder.Arithmetic.code
+          (FFL.FirstOrder.Arithmetic.code
             (codeTableLookup
               dtable
               (codeUnpair₁ (codeListLength dtable))
               (codeConst (n := r) gCode)
               dn)) ∧
         Semiformula.Evalb ((y + 1) :> (x :> v))
-          (LO.FirstOrder.Arithmetic.code
+          (FFL.FirstOrder.Arithmetic.code
             (codeTableLookup
               (codeLift dtable)
               (codeLift
@@ -242,16 +242,16 @@ theorem eval_codeEvaluatorCell_succ_of_component_lookups
       Semiformula.Evalb
         ((ORingStructure.numeral
           (canonicalPartrecCompIndex fCode gCode) : M) :> v)
-        (LO.FirstOrder.Arithmetic.code
+        (FFL.FirstOrder.Arithmetic.code
           (codeUnpair₂ (codeListLength dtable))))
     (hfuel :
       ∃ k : M, 0 < k ∧
         Semiformula.Evalb (k :> v)
-          (LO.FirstOrder.Arithmetic.code
+          (FFL.FirstOrder.Arithmetic.code
             (codeUnpair₁ (codeListLength dtable))))
     (hinner :
       Semiformula.Evalb ((x + 1) :> v)
-        (LO.FirstOrder.Arithmetic.code
+        (FFL.FirstOrder.Arithmetic.code
           (codeTableLookup
             dtable
             (codeUnpair₁ (codeListLength dtable))
@@ -259,7 +259,7 @@ theorem eval_codeEvaluatorCell_succ_of_component_lookups
             dn)))
     (houter :
       Semiformula.Evalb ((y + 1) :> (x :> v))
-        (LO.FirstOrder.Arithmetic.code
+        (FFL.FirstOrder.Arithmetic.code
           (codeTableLookup
             (codeLift dtable)
             (codeLift
@@ -267,7 +267,7 @@ theorem eval_codeEvaluatorCell_succ_of_component_lookups
             (codeConst (n := r + 1) fCode)
             (codeHead (n := r))))) :
     Semiformula.Evalb ((y + 1) :> v)
-      (LO.FirstOrder.Arithmetic.code
+      (FFL.FirstOrder.Arithmetic.code
         (codeEvaluatorCell dtable dn)) := by
   letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
@@ -425,14 +425,14 @@ private theorem eval_codePartrecTag_natCast [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {
   · have hlt1 : Semiformula.Evalb ((1 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inl ⟨?_, rfl⟩⟩
       exact_mod_cast hq
-    rw [if_pos hq]
+    rw [ite_eq_left hq]
     exact eval_codeIfPos_of _ _ _ (1 : M) (((q : ℕ)) : M) _ _ v hlt1 hd hbig
       (Or.inl ⟨_root_.zero_lt_one, rfl⟩)
   · have hlt0 : Semiformula.Evalb ((0 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inr ⟨?_, rfl⟩⟩
       intro hc
       exact hq (by exact_mod_cast hc)
-    rw [if_neg hq]
+    rw [ite_eq_right hq]
     exact eval_codeIfPos_of _ _ _ (0 : M) (((q : ℕ)) : M) _ _ v hlt0 hd hbig
       (Or.inr ⟨rfl, rfl⟩)
 
@@ -527,7 +527,7 @@ theorem eval_codeEvaluatorCell_succ_of_pair_component_lookups
     (hsecond : Semiformula.Evalb ((b + 1) :> v)
       (code (codeTableLookup dtable (codeUnpair₁ (codeListLength dtable))
         (codeConst (n := r) (partrecCodePayload₂ q)) dn))) :
-    Semiformula.Evalb ((LO.FirstOrder.Arithmetic.pair a b + 1) :> v)
+    Semiformula.Evalb ((FFL.FirstOrder.Arithmetic.pair a b + 1) :> v)
       (code (codeEvaluatorCell dtable dn)) := by
   letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
@@ -575,7 +575,7 @@ theorem eval_codeEvaluatorCell_succ_of_pair_component_lookups
     (codeUnpair₁ (codeListLength dtable))
     (codePartrecPayload₁ (codeUnpair₂ (codeListLength dtable)))
     (codePartrecPayload₂ (codeUnpair₂ (codeListLength dtable)))
-    dn (LO.FirstOrder.Arithmetic.pair a b) v).mpr
+    dn (FFL.FirstOrder.Arithmetic.pair a b) v).mpr
       ⟨a, b, hfirstD, hsecondL, rfl⟩
   -- values for the table and the argument code, read off a component lookup
   have hsubArg : ∀ (A B : Code r) (w : M),

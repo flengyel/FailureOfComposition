@@ -35,8 +35,8 @@ constructor numbers nor persistence for all standard indices.
 set_option autoImplicit false
 
 open Nat Nat.ArithPart₁
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.ArithmeticCode
 
 namespace CategoricalRiceShapiro.Evaluator
@@ -58,7 +58,7 @@ private theorem tagFour_payloads_lt (q : ℕ) (hq : partrecCodeTag q = 4) :
     partrecCodePayload₁ q < q ∧ partrecCodePayload₂ q < q := by
   have h4 : 4 ≤ q := by
     rcases Nat.lt_or_ge q 4 with hlt | hge
-    · rw [tagFour_tag_remainders, if_pos hlt] at hq
+    · rw [tagFour_tag_remainders, ite_eq_left hlt] at hq
       omega
     · exact hge
   have hdd : partrecCodePayload q ≤ q - 4 := by
@@ -110,14 +110,14 @@ private theorem tagFour_read_tag [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ}
   · have hlt1 : Semiformula.Evalb ((1 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inl ⟨?_, rfl⟩⟩
       exact_mod_cast hq
-    rw [if_pos hq]
+    rw [ite_eq_left hq]
     exact eval_codeIfPos_of _ _ _ (1 : M) (((q : ℕ)) : M) _ _ v hlt1 hd hbig
       (Or.inl ⟨_root_.zero_lt_one, rfl⟩)
   · have hlt0 : Semiformula.Evalb ((0 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inr ⟨?_, rfl⟩⟩
       intro hc
       exact hq (by exact_mod_cast hc)
-    rw [if_neg hq]
+    rw [ite_eq_right hq]
     exact eval_codeIfPos_of _ _ _ (0 : M) (((q : ℕ)) : M) _ _ v hlt0 hd hbig
       (Or.inr ⟨rfl, rfl⟩)
 
@@ -202,7 +202,7 @@ private theorem tagFour_source_subcode_histories [M↓[ℒₒᵣ] ⊧* 𝗣𝗔]
           (code codeHistoryEvaluator) ∧
         Semiformula.Evalb ![b + 1, s, ((partrecCodePayload₂ q : ℕ) : M), u]
             (code codeHistoryEvaluator) ∧
-          y = LO.FirstOrder.Arithmetic.pair a b := by
+          y = FFL.FirstOrder.Arithmetic.pair a b := by
   have hk := eval_codeEvaluatorCell_fuel s ((q : ℕ) : M) u
   have hidx := eval_codeEvaluatorCell_index s ((q : ℕ) : M) u
   have htag : Semiformula.Evalb (((4 : ℕ) : M) :> ![s, ((q : ℕ) : M), u])
@@ -242,12 +242,12 @@ private theorem tagFour_source_subcode_histories [M↓[ℒₒᵣ] ⊧* 𝗣𝗔]
     (fun z => (eval_codeLift_iff _ z a _).trans (hq2 z))
     (fun z => eval_codeLift_iff _ z a _)).mp hlb
   have hlt := tagFour_payloads_lt q hq
-  have hpre1 : LO.FirstOrder.Arithmetic.pair s ((partrecCodePayload₁ q : ℕ) : M) <
-      LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.1)
-  have hpre2 : LO.FirstOrder.Arithmetic.pair s ((partrecCodePayload₂ q : ℕ) : M) <
-      LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.2)
+  have hpre1 : FFL.FirstOrder.Arithmetic.pair s ((partrecCodePayload₁ q : ℕ) : M) <
+      FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.1)
+  have hpre2 : FFL.FirstOrder.Arithmetic.pair s ((partrecCodePayload₂ q : ℕ) : M) <
+      FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :=
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast hlt.2)
   exact ⟨a, b,
     eval_codeHistoryEvaluator_succ_of_prefix_lookup s ((q : ℕ) : M) u a
       (partrecCodePayload₁ q) hpre1 hlaC,
@@ -284,7 +284,7 @@ theorem evalnCertificateFormula_natCode_persist_of_tag_four
   -- (3) source history success to source cell success, with the in-range fact
   obtain ⟨hus, source_cell⟩ :=
     (eval_codeHistoryEvaluator_succ_iff_cell s ((q : ℕ) : M) u y).mp source_history
-  have hs : (0 : M) < s := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) hus
+  have hs : (0 : M) < s := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) hus
   have ht : (0 : M) < t := lt_of_lt_of_le hs hst
   -- (4, 5) forward decomposition: witnesses, payload histories at s, y = ⟪a, b⟫
   obtain ⟨a, b, payload₁_history_at_s, payload₂_history_at_s, hy⟩ :=
@@ -312,12 +312,12 @@ theorem evalnCertificateFormula_natCode_persist_of_tag_four
     (evalnCertificateFormula_eval_history_iff t ((partrecCodePayload₂ q : ℕ) : M) u b).mp
       payload₂_certificate_at_t
   -- (11) each subcode occupies an earlier row at the target fuel
-  have payload₁_prefix : LO.FirstOrder.Arithmetic.pair t ((partrecCodePayload₁ q : ℕ) : M) <
-      LO.FirstOrder.Arithmetic.pair t ((q : ℕ) : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right t (by exact_mod_cast payload₁_lt)
-  have payload₂_prefix : LO.FirstOrder.Arithmetic.pair t ((partrecCodePayload₂ q : ℕ) : M) <
-      LO.FirstOrder.Arithmetic.pair t ((q : ℕ) : M) :=
-    LO.FirstOrder.Arithmetic.pair_lt_pair_right t (by exact_mod_cast payload₂_lt)
+  have payload₁_prefix : FFL.FirstOrder.Arithmetic.pair t ((partrecCodePayload₁ q : ℕ) : M) <
+      FFL.FirstOrder.Arithmetic.pair t ((q : ℕ) : M) :=
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right t (by exact_mod_cast payload₁_lt)
+  have payload₂_prefix : FFL.FirstOrder.Arithmetic.pair t ((partrecCodePayload₂ q : ℕ) : M) <
+      FFL.FirstOrder.Arithmetic.pair t ((q : ℕ) : M) :=
+    FFL.FirstOrder.Arithmetic.pair_lt_pair_right t (by exact_mod_cast payload₂_lt)
   -- (10) target prefix/table lookups through the public converse bridge
   have payload₁_lookup_at_t :=
     eval_prefix_lookup_succ_of_codeHistoryEvaluator t ((q : ℕ) : M) u a

@@ -5,7 +5,7 @@ Authors: Florian Lengyel
 -/
 import FailureOfComposition.GraphQuotient
 import FailureOfComposition.ProductiveDivergence
-import Foundation.FirstOrder.Incompleteness.InductionSchemeDelta1
+import Foundation.FirstOrder.Incompleteness.Definability
 
 /-!
 Productiveness supplies a true unprovable divergence sentence. Searching for PA
@@ -18,8 +18,8 @@ The proof-search witnesses are a variant of v36's direct computation search.
 set_option autoImplicit false
 
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open LO.FirstOrder.Arithmetic.Bootstrapping LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open FFL.FirstOrder.Arithmetic.Bootstrapping FFL.Entailment
 
 namespace FailureOfComposition
 

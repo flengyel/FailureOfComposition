@@ -13,8 +13,8 @@ the same-index recursive lookup is handled by PA induction on the source stage.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Nat.ArithPart₁
 open CategoricalRiceShapiro.ArithmeticCode
 open CategoricalRiceShapiro.PartialRecursive
@@ -70,14 +70,14 @@ private theorem read_tag [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ}
   · have hlt1 : Semiformula.Evalb ((1 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inl ⟨?_, rfl⟩⟩
       exact_mod_cast hq
-    rw [if_pos hq]
+    rw [ite_eq_left hq]
     exact eval_codeIfPos_of _ _ _ (1 : M) (((q : ℕ)) : M) _ _ v hlt1 hd hbig
       (Or.inl ⟨_root_.zero_lt_one, rfl⟩)
   · have hlt0 : Semiformula.Evalb ((0 : M) :> v) (code (codeLt d (codeConst 4))) := by
       refine (eval_codeLt_iff _ _ _ v).mpr ⟨_, _, hd, by simpa using h4, Or.inr ⟨?_, rfl⟩⟩
       intro hc
       exact hq (by exact_mod_cast hc)
-    rw [if_neg hq]
+    rw [ite_eq_right hq]
     exact eval_codeIfPos_of _ _ _ (0 : M) (((q : ℕ)) : M) _ _ v hlt0 hd hbig
       (Or.inr ⟨rfl, rfl⟩)
 
@@ -94,8 +94,8 @@ private theorem read_payload [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ}
     eval_codeDiv2_natCast _ _ v (eval_codeDiv2_natCast _ (q - 4) v hrr)
 
 private theorem min_succ_pred [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : M} (hk : 0 < k) : k - 1 + 1 = k :=
-  LO.FirstOrder.Arithmetic.sub_add_self_of_le
-    (LO.FirstOrder.Arithmetic.one_le_of_zero_lt k hk)
+  FFL.FirstOrder.Arithmetic.sub_add_self_of_le
+    (FFL.FirstOrder.Arithmetic.one_le_of_zero_lt k hk)
 
 /-- The decremented fuel, as the dispatcher computes it. -/
 private theorem min_decremented_fuel [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
@@ -167,7 +167,7 @@ private theorem min_payload_lt (q : ℕ) (hq : partrecCodeTag q = 7) :
     partrecCodePayload q < q := by
   have hq4 : ¬ q < 4 := by
     intro hlt
-    simp only [partrecCodeTag, hlt, if_true] at hq
+    simp only [partrecCodeTag, hlt, ite_true] at hq
     omega
   simp only [partrecCodePayload, Nat.div2_val]
   omega
@@ -188,13 +188,13 @@ private theorem min_cell_iff [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] �
         ((0 < x ∧ Semiformula.Evalb ((y + 1) :> x :> v)
           (code (codeTableLookup (codeLift dtable) (codeLift dk') (codeLift dq)
             (codePair (codeLift (codeUnpair₁ dn)) (codeSucc (codeLift (codeUnpair₂ dn))))))) ∨
-        (x = 0 ∧ y = LO.FirstOrder.Arithmetic.pi₂ u)) := by
+        (x = 0 ∧ y = FFL.FirstOrder.Arithmetic.pi₂ u)) := by
   have hz := eval_codeUnpair₁ dn u v hn
   have hm := eval_codeUnpair₂ dn u v hn
   have hL (x : M) (X : Code r) (a : M) (h : Semiformula.Evalb (a :> v) (code X)) :
       Semiformula.Evalb (a :> x :> v) (code (codeLift X)) :=
     (eval_codeLift_iff X a x v).mpr h
-  have hs (x : M) : Semiformula.Evalb ((LO.FirstOrder.Arithmetic.pi₂ u + 1) :> x :> v)
+  have hs (x : M) : Semiformula.Evalb ((FFL.FirstOrder.Arithmetic.pi₂ u + 1) :> x :> v)
       (code (codeSucc (codeLift (codeUnpair₂ dn)))) :=
     (eval_codeSucc_iff _ _ _).mpr ⟨_, hL x _ _ hm, rfl⟩
   simp only [codeRfindEvaluatorCell, eval_codeOptionBind_succ_iff]
@@ -211,16 +211,16 @@ private theorem min_cell_iff [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] �
     · exact Or.inl ⟨hx, hr⟩
     · exact Or.inr ⟨hx, add_right_cancel (eval_unique hr (hs x))⟩
   · rintro (⟨hx, hr⟩ | ⟨hx, hy⟩)
-    · exact eval_codeIfPos_of _ _ _ x (y + 1) (LO.FirstOrder.Arithmetic.pi₂ u + 1) _
+    · exact eval_codeIfPos_of _ _ _ x (y + 1) (FFL.FirstOrder.Arithmetic.pi₂ u + 1) _
         (x :> v) ((eval_codeHead_iff _ _).mpr rfl) hr (hs x) (Or.inl ⟨hx, rfl⟩)
     · obtain ⟨o, ho⟩ := eval_codeTableLookup_exists_of_values (codeLift dtable)
         (codeLift dk') (codeLift dq)
         (codePair (codeLift (codeUnpair₁ dn)) (codeSucc (codeLift (codeUnpair₂ dn))))
-        table k' qv (LO.FirstOrder.Arithmetic.pair (LO.FirstOrder.Arithmetic.pi₁ u)
-          (LO.FirstOrder.Arithmetic.pi₂ u + 1)) (x :> v)
+        table k' qv (FFL.FirstOrder.Arithmetic.pair (FFL.FirstOrder.Arithmetic.pi₁ u)
+          (FFL.FirstOrder.Arithmetic.pi₂ u + 1)) (x :> v)
         (hL x _ _ htable) (hL x _ _ hk') (hL x _ _ hq)
         (eval_codePair _ _ _ _ (x :> v) (hL x _ _ hz) (hs x))
-      exact eval_codeIfPos_of _ _ _ x o (LO.FirstOrder.Arithmetic.pi₂ u + 1) _
+      exact eval_codeIfPos_of _ _ _ x o (FFL.FirstOrder.Arithmetic.pi₂ u + 1) _
         (x :> v) ((eval_codeHead_iff _ _).mpr rfl) ho (hs x)
         (Or.inr ⟨hx, by rw [hy]⟩)
 
@@ -243,10 +243,10 @@ theorem evalnCertificateFormula_tag_seven_iff
         (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
       ((0 < x ∧ Semiformula.Evalb
         ![s - 1, ((q : ℕ) : M),
-          LO.FirstOrder.Arithmetic.pair (LO.FirstOrder.Arithmetic.pi₁ u)
-            (LO.FirstOrder.Arithmetic.pi₂ u + 1), y]
+          FFL.FirstOrder.Arithmetic.pair (FFL.FirstOrder.Arithmetic.pi₁ u)
+            (FFL.FirstOrder.Arithmetic.pi₂ u + 1), y]
         (evalnCertificateFormula : ArithmeticSemisentence 4)) ∨
-        (x = 0 ∧ y = LO.FirstOrder.Arithmetic.pi₂ u)) := by
+        (x = 0 ∧ y = FFL.FirstOrder.Arithmetic.pi₂ u)) := by
   obtain ⟨H, hH, hHist⟩ := eval_codeEvaluatorHistoryBeforeCell_exists s ((q : ℕ) : M) u
   have hn : Semiformula.Evalb (u :> ![s, ((q : ℕ) : M), u]) (code min_input) :=
     (eval_proj_iff _ _ _).mpr rfl
@@ -264,7 +264,7 @@ theorem evalnCertificateFormula_tag_seven_iff
   have harg : Semiformula.Evalb (u :> ![s, ((q : ℕ) : M), u])
       (code (codePair (codeUnpair₁ min_input) (codeUnpair₂ min_input))) := by
     have h := eval_codePair _ _ _ _ ![s, ((q : ℕ) : M), u] hz hm
-    rwa [LO.FirstOrder.Arithmetic.pair_unpair] at h
+    rwa [FFL.FirstOrder.Arithmetic.pair_unpair] at h
   have hsub (x : M) :
       Semiformula.Evalb ((x + 1) :> ![s, ((q : ℕ) : M), u])
         (code (codeTableLookup min_table (codeSucc min_prev) min_subindex
@@ -274,8 +274,8 @@ theorem evalnCertificateFormula_tag_seven_iff
     rw [evalnCertificateFormula_eval_history_iff]
     exact eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
       min_table (codeSucc min_prev) min_subindex _ ![s, ((q : ℕ) : M), u]
-      (LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)) H s u x (partrecCodePayload q)
-      hHist (LO.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast min_payload_lt q hq))
+      (FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)) H s u x (partrecCodePayload q)
+      hHist (FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by exact_mod_cast min_payload_lt q hq))
       hH (min_base_key s ((q : ℕ) : M) u hs) hp harg
   have hrec (x : M) :
       Semiformula.Evalb ((y + 1) :> x :> ![s, ((q : ℕ) : M), u])
@@ -283,15 +283,15 @@ theorem evalnCertificateFormula_tag_seven_iff
           (codePair (codeLift (codeUnpair₁ min_input))
             (codeSucc (codeLift (codeUnpair₂ min_input)))))) ↔
       Semiformula.Evalb ![s - 1, ((q : ℕ) : M),
-        LO.FirstOrder.Arithmetic.pair (LO.FirstOrder.Arithmetic.pi₁ u)
-          (LO.FirstOrder.Arithmetic.pi₂ u + 1), y]
+        FFL.FirstOrder.Arithmetic.pair (FFL.FirstOrder.Arithmetic.pi₁ u)
+          (FFL.FirstOrder.Arithmetic.pi₂ u + 1), y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
     rw [evalnCertificateFormula_eval_history_iff]
     apply eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
       (codeLift min_table) (codeLift min_prev) (codeLift min_index) _
       (x :> ![s, ((q : ℕ) : M), u])
-      (LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)) H (s - 1) _ y q
-      hHist (LO.FirstOrder.Arithmetic.pair_lt_pair_left hprev _)
+      (FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M)) H (s - 1) _ y q
+      hHist (FFL.FirstOrder.Arithmetic.pair_lt_pair_left hprev _)
       ((eval_codeLift_iff _ _ _ _).mpr hH)
       ((eval_codeLift_iff _ _ _ _).mpr (min_decremented_fuel s ((q : ℕ) : M) u))
       ((eval_codeLift_iff _ _ _ _).mpr hi)
@@ -307,10 +307,10 @@ theorem evalnCertificateFormula_tag_seven_iff
       Semiformula.Evalb ![s, ((partrecCodePayload q : ℕ) : M), u, x]
         (evalnCertificateFormula : ArithmeticSemisentence 4) ∧
       ((0 < x ∧ Semiformula.Evalb
-        ![s - 1, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair
-          (LO.FirstOrder.Arithmetic.pi₁ u) (LO.FirstOrder.Arithmetic.pi₂ u + 1), y]
+        ![s - 1, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair
+          (FFL.FirstOrder.Arithmetic.pi₁ u) (FFL.FirstOrder.Arithmetic.pi₂ u + 1), y]
         (evalnCertificateFormula : ArithmeticSemisentence 4)) ∨
-        (x = 0 ∧ y = LO.FirstOrder.Arithmetic.pi₂ u)) := by
+        (x = 0 ∧ y = FFL.FirstOrder.Arithmetic.pi₂ u)) := by
     rw [hbranch]
     exact exists_congr fun x => and_congr (hsub x)
       (or_congr (and_congr_right fun _ => hrec x) Iff.rfl)
@@ -351,7 +351,7 @@ private theorem min_successor_persistence
       Semiformula.Evalb ![t, ((q : ℕ) : M), u, y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
   intro t u y hkt hc
-  have hk : (0 : M) < k + 1 := lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le k) (lt_add_one k)
+  have hk : (0 : M) < k + 1 := lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le k) (lt_add_one k)
   have ht : (0 : M) < t := lt_of_lt_of_le hk hkt
   obtain ⟨hus, x, hx, hcase⟩ := (evalnCertificateFormula_tag_seven_iff q hq (k + 1) u y hk).mp hc
   apply (evalnCertificateFormula_tag_seven_iff q hq t u y ht).mpr

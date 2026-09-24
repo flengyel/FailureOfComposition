@@ -14,7 +14,7 @@ equations in this file concern arbitrary PA-model inputs, not only numerals.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 open Nat.ArithPart₁
 open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.Evaluator
 

@@ -38,7 +38,7 @@ open Nat Nat.ArithPart₁
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 
 section Syntactic
 
@@ -580,7 +580,7 @@ section Restriction
 
 variable {M : Type*} [ORingStructure M]
 
-open scoped LO.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open HierarchySymbol
 
 /-- The base equation of `codePrecPredicate`, at two recursion arguments. -/
@@ -825,7 +825,7 @@ private theorem eval_precSearch_one [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ}
       (code (codeHead (n := k + 2))) := (eval_codeHead_iff _ _).mpr rfl
   by_cases hle : arg ≤ t
   · refine (eval_codeOr_iff _ _ _ _).mpr ⟨if e = 0 then 1 else 0, 1, ?_, ?_,
-      Or.inl ⟨by positivity, rfl⟩⟩
+      Or.inl ⟨by simp, rfl⟩⟩
     · refine (eval_codeInv_iff _ _ _).mpr ⟨e, he, ?_⟩
       by_cases h0 : e = 0
       · exact Or.inl ⟨h0, by simp [h0]⟩
@@ -1193,7 +1193,7 @@ section Successor
 
 variable {M : Type*} [ORingStructure M]
 
-open scoped LO.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open HierarchySymbol
 
 /-! ### The successor step of primitive recursion -/
@@ -1311,7 +1311,7 @@ section Existence
 
 variable {M : Type*} [ORingStructure M]
 
-open scoped LO.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open HierarchySymbol
 
 /-! ### Totality of the step relation -/
@@ -1381,8 +1381,8 @@ private theorem prec_step_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
   obtain ⟨w, hw⟩ := hdg i hi _
   have hcomp := prec_step_comp_of dg i hc arg _ w v hbeta hw
   rw [codePrecStep_eq]
-  by_cases heq : (LO.FirstOrder.Arithmetic.pi₁ hc %
-      ((i + 1 + 1) * LO.FirstOrder.Arithmetic.pi₂ hc + 1)) = w
+  by_cases heq : (FFL.FirstOrder.Arithmetic.pi₁ hc %
+      ((i + 1 + 1) * FFL.FirstOrder.Arithmetic.pi₂ hc + 1)) = w
   · exact ⟨1, (eval_codeEq_iff _ _ _ _).mpr ⟨_, w, hnext, hcomp, Or.inl ⟨heq, rfl⟩⟩⟩
   · exact ⟨0, (eval_codeEq_iff _ _ _ _).mpr ⟨_, w, hnext, hcomp, Or.inr ⟨heq, rfl⟩⟩⟩
 
@@ -1493,8 +1493,8 @@ private theorem prec_predicate_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
   have hbase : ∃ p : M, Semiformula.Evalb (p :> hc :> a :> v)
       (code (codeEq (codeBeta (Code.proj 0) (codeConst 0))
         (df.comp (fun j => Code.proj j.succ.succ)))) := by
-    by_cases heq : (LO.FirstOrder.Arithmetic.pi₁ hc %
-        ((0 + 1) * LO.FirstOrder.Arithmetic.pi₂ hc + 1)) = x
+    by_cases heq : (FFL.FirstOrder.Arithmetic.pi₁ hc %
+        ((0 + 1) * FFL.FirstOrder.Arithmetic.pi₂ hc + 1)) = x
     · exact ⟨1, (eval_codeEq_iff _ _ _ _).mpr ⟨_, x, hb, hcomp, Or.inl ⟨heq, rfl⟩⟩⟩
     · exact ⟨0, (eval_codeEq_iff _ _ _ _).mpr ⟨_, x, hb, hcomp, Or.inr ⟨heq, rfl⟩⟩⟩
   obtain ⟨p, hp⟩ := hbase
@@ -1627,8 +1627,8 @@ private theorem exists_pos_history [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
         have hca : c < a := lt_of_lt_of_le (by simp) hca1
         obtain ⟨hc, hP⟩ := IH.resolve_right (not_lt.mpr (le_of_lt hca))
         have hpair : ∀ i : M, Semiformula.Evalb
-            ((LO.FirstOrder.Arithmetic.pi₁ hc %
-              ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ hc + 1)) :> ![hc, i])
+            ((FFL.FirstOrder.Arithmetic.pi₁ hc %
+              ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ hc + 1)) :> ![hc, i])
             (code (codeBeta (Code.proj (0 : Fin 2)) (Code.proj (1 : Fin 2)))) :=
           fun i => eval_codeBeta_of_values _ _ hc i ![hc, i]
             ((eval_proj_iff _ _ _).mpr (by simp)) ((eval_proj_iff _ _ _).mpr (by simp))
@@ -1737,8 +1737,8 @@ theorem eval_codePrec_exists_of_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
   have hlift : Semiformula.Evalb (a :> hc₀ :> a :> v)
       (code (codeLift (codeHead (n := k)))) :=
     (eval_codeLift_iff _ _ _ _).mpr ((eval_codeHead_iff _ _).mpr rfl)
-  refine ⟨LO.FirstOrder.Arithmetic.pi₁ hc₀ %
-    ((a + 1) * LO.FirstOrder.Arithmetic.pi₂ hc₀ + 1), ?_⟩
+  refine ⟨FFL.FirstOrder.Arithmetic.pi₁ hc₀ %
+    ((a + 1) * FFL.FirstOrder.Arithmetic.pi₂ hc₀ + 1), ?_⟩
   rw [codePrec, eval_codeBind_iff]
   exact ⟨hc₀, hsearch,
     eval_codeBeta_of_values _ _ hc₀ a (hc₀ :> a :> v) hhead hlift⟩

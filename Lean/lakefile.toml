@@ -11,12 +11,12 @@ maxSynthPendingDepth = 3
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.32.2"
+rev = "065356127b1dc0016f66b7283ce0ce2c4055aa55"
 
 [[require]]
 name = "Foundation"
 git = "https://github.com/FormalizedFormalLogic/Foundation.git"
-rev = "a3dd617f88bda178eb6c206dd5db91f88b6a2a42"
+rev = "e72cfe981aa65166f37fa4e2584f4806bc48d72f"
 
 [[lean_lib]]
 name = "CategoricalRiceShapiro"

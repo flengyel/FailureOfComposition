@@ -20,8 +20,8 @@ set_option autoImplicit false
 
 
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.Evaluator
 
 namespace FailureOfComposition.ConcreteEvaluator

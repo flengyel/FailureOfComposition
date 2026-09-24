@@ -69,6 +69,7 @@ def codePrec {n : ℕ}
 
 /-! ### Standard computations over the natural numbers -/
 
+set_option backward.isDefEq.respectTransparency.types false in
 theorem computes_codeBall {n : ℕ} {dφ : Code (n + 1)}
     {φ : List.Vector ℕ n → ℕ → ℕ}
     (hφ : Computes dφ (fun w => φ w.tail w.head)) (i : Fin n) :
@@ -86,7 +87,7 @@ theorem computes_codeBall {n : ℕ} {dφ : Code (n + 1)}
       (0 < Nat.or (Nat.inv (φ v x)) (isLeNat (v.get i) x))
       ↔ (φ v x = 0 ∨ v.get i ≤ x) := by
     intro x
-    simp only [Nat.or_pos_iff, Nat.inv_pos_iff, isLeNat_pos_iff]
+    simp only [Nat.orNat_pos_iff, Nat.inv_pos_iff, isLeNat_pos_iff]
     omega
   simp only [List.Vector.head_cons, List.Vector.tail_cons, Part.coe_some]
   rw [Part.eq_some_iff, Part.mem_bind_iff]
@@ -213,6 +214,7 @@ theorem computes_codePrecPredicate {n : ℕ}
   intro w
   simp [List.Vector.get_one]
 
+set_option backward.isDefEq.respectTransparency.types false in
 theorem computes_codePrec {n : ℕ}
     {df : Code n} {dg : Code (n + 2)}
     {f : List.Vector ℕ n → ℕ}

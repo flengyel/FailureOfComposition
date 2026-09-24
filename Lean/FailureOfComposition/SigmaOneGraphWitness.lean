@@ -16,7 +16,7 @@ set_option autoImplicit false
 
 
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 
 namespace FailureOfComposition.SigmaOneRealization
 open ProgramGraph ArithmeticCodeCompiler

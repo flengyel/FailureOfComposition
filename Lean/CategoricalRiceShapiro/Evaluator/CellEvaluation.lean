@@ -37,8 +37,8 @@ open Nat Nat.ArithPart₁
 namespace CategoricalRiceShapiro.Evaluator
 
 open CategoricalRiceShapiro.ArithmeticCode
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 variable {M : Type*} [ORingStructure M]
 
@@ -117,7 +117,7 @@ theorem eval_codeOptionBind_succ_iff [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {n : ℕ
     · have hy : y + 1 = gg := by rw [hsum, hq0, add_zero, hpv, hpp1, one_mul]
       rw [← hy, eval_codeBind_iff] at hgg
       obtain ⟨x, hx, hdk⟩ := hgg
-      obtain ⟨x', hax⟩ := LO.FirstOrder.Arithmetic.eq_succ_of_pos hpos
+      obtain ⟨x', hax⟩ := FFL.FirstOrder.Arithmetic.eq_succ_of_pos hpos
       rw [hax] at ha
       have hxx : x = x' := eval_unique hx (hsubC x' ha)
       rw [hxx] at hdk
@@ -151,7 +151,7 @@ theorem eval_codePairEvaluatorCell_succ_iff [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽�
           Semiformula.Evalb ((b + 1) :> a :> v)
             (code (codeTableLookup (codeLift dtable) (codeLift dk) (codeLift dcg)
               (codeLift dn))) ∧
-            y = LO.FirstOrder.Arithmetic.pair a b := by
+            y = FFL.FirstOrder.Arithmetic.pair a b := by
   rw [codePairEvaluatorCell, eval_codeOptionBind_succ_iff]
   constructor
   · rintro ⟨a, ha, hbody⟩
@@ -169,7 +169,7 @@ theorem eval_codePairEvaluatorCell_succ_iff [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽�
     have hpair := eval_codePair (M := M)
       (Code.proj (1 : Fin (r + 2))) (Code.proj (0 : Fin (r + 2))) a b
       (b :> a :> v) hpa hpb
-    have hpeq : p = LO.FirstOrder.Arithmetic.pair a b := eval_unique hp hpair
+    have hpeq : p = FFL.FirstOrder.Arithmetic.pair a b := eval_unique hp hpair
     exact add_right_cancel (hyp.trans (by rw [hpeq]))
   · rintro ⟨a, b, ha, hb, hy⟩
     refine ⟨a, ha, ?_⟩
@@ -182,7 +182,7 @@ theorem eval_codePairEvaluatorCell_succ_iff [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽�
     have hpb : Semiformula.Evalb (b :> (b :> a :> v))
         (code (Code.proj (0 : Fin (r + 2)))) :=
       (eval_proj_iff (0 : Fin (r + 2)) b (b :> a :> v)).mpr (by simp)
-    exact ⟨LO.FirstOrder.Arithmetic.pair a b,
+    exact ⟨FFL.FirstOrder.Arithmetic.pair a b,
       eval_codePair (M := M) _ _ a b (b :> a :> v) hpa hpb, by rw [hy]⟩
 
 /-- Success of the composition branch: the inner index succeeds on the argument,
@@ -254,10 +254,10 @@ private theorem eval_codeBaseEvaluatorCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔
     (eval_codeSucc_iff _ _ _).mpr ⟨index + 1, (eval_codeSucc_iff _ _ _).mpr
       ⟨index, hindex, rfl⟩, rfl⟩
   have hsuccu1 : Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pi₁ index + 1) :> v) (code (codeSucc (codeUnpair₁ dn))) :=
+      ((FFL.FirstOrder.Arithmetic.pi₁ index + 1) :> v) (code (codeSucc (codeUnpair₁ dn))) :=
     (eval_codeSucc_iff _ _ _).mpr ⟨_, eval_codeUnpair₁ dn index v hindex, rfl⟩
   have hsuccu2 : Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pi₂ index + 1) :> v) (code (codeSucc (codeUnpair₂ dn))) :=
+      ((FFL.FirstOrder.Arithmetic.pi₂ index + 1) :> v) (code (codeSucc (codeUnpair₂ dn))) :=
     (eval_codeSucc_iff _ _ _).mpr ⟨_, eval_codeUnpair₂ dn index v hindex, rfl⟩
   have hcmp : ∀ m : ℕ, ∃ z : M,
       Semiformula.Evalb (z :> v)
@@ -404,7 +404,7 @@ private theorem eval_codeRfindEvaluatorCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣�
       Semiformula.Evalb (x :> (o₁ - 1) :> v) (code (codeLift X)) :=
     fun X x hx => (eval_codeLift_iff X x (o₁ - 1) v).mpr hx
   have hsuccm : Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pi₂ index + 1) :> (o₁ - 1) :> v)
+      ((FFL.FirstOrder.Arithmetic.pi₂ index + 1) :> (o₁ - 1) :> v)
       (code (codeSucc (codeLift (codeUnpair₂ dn)))) :=
     (eval_codeSucc_iff _ _ _).mpr ⟨_, hL _ _ hm, rfl⟩
   refine eval_codeIfPos_exists _ _ _ ((o₁ - 1) :> v)

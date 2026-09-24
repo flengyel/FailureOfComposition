@@ -11,8 +11,8 @@ PA graph laws for concrete minimization programs.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Encodable
 open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.Evaluator
 
@@ -24,7 +24,7 @@ private theorem rfind_tag (c : Nat.Partrec.Code) :
   have hb (n : ℕ) : n.bodd.toNat = n % 2 := by rw [Nat.mod_two_of_bodd]
   simp only [Nat.Partrec.Code.encodeCode_eq, Nat.Partrec.Code.encodeCode]
   have h : ¬ 2 * (2 * Nat.Partrec.Code.encodeCode c + 1) + 1 + 4 < 4 := by omega
-  simp only [partrecCodeTag, h, if_false, hb, Nat.div2_val]
+  simp only [partrecCodeTag, h, ite_false, hb, Nat.div2_val]
   omega
 
 private theorem rfind_payload (c : Nat.Partrec.Code) :
@@ -42,11 +42,11 @@ private def pairedEventualFormula (q : ℕ) : ArithmeticSemisentence 3 :=
 variable {M : Type*} [ORingStructure M] [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 private abbrev sc (q : ℕ) (s a m y : M) : Prop :=
-  Semiformula.Evalb ![s, (q : M), LO.FirstOrder.Arithmetic.pair a m, y]
+  Semiformula.Evalb ![s, (q : M), FFL.FirstOrder.Arithmetic.pair a m, y]
     (evalnCertificateFormula : ArithmeticSemisentence 4)
 
 private abbrev egp (q : ℕ) (a m y : M) : Prop :=
-  (eventualGraph q).val.Evalb ![LO.FirstOrder.Arithmetic.pair a m, y]
+  (eventualGraph q).val.Evalb ![FFL.FirstOrder.Arithmetic.pair a m, y]
 
 omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 private theorem pairedStageFormula_eval (q : ℕ) (s a m y : M) :
@@ -62,18 +62,18 @@ omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 private theorem egp_iff (q : ℕ) (a m y : M) :
     egp q a m y ↔ ∃ s : M, sc q s a m y := by
   simpa only [sc, egp, numeral_eq_natCast_app, Matrix.cons_val_zero,
-    Matrix.cons_val_one] using eventualGraph_eval q ![LO.FirstOrder.Arithmetic.pair a m,y]
+    Matrix.cons_val_one] using eventualGraph_eval q ![FFL.FirstOrder.Arithmetic.pair a m,y]
 
 private theorem sc_rfind (f : Nat.Partrec.Code) (s a m y : M) (hs : 0 < s) :
     sc (encode (Nat.Partrec.Code.rfind' f)) s a m y ↔
-      LO.FirstOrder.Arithmetic.pair a m < s ∧ ∃ v : M,
+      FFL.FirstOrder.Arithmetic.pair a m < s ∧ ∃ v : M,
         sc (encode f) s a m v ∧
           ((0 < v ∧ sc (encode (Nat.Partrec.Code.rfind' f)) (s - 1) a (m + 1) y) ∨
             (v = 0 ∧ y = m)) := by
-  simpa only [sc, rfind_payload, LO.FirstOrder.Arithmetic.pi₁_pair,
-    LO.FirstOrder.Arithmetic.pi₂_pair] using
+  simpa only [sc, rfind_payload, FFL.FirstOrder.Arithmetic.pi₁_pair,
+    FFL.FirstOrder.Arithmetic.pi₂_pair] using
     evalnCertificateFormula_tag_seven_iff (encode (Nat.Partrec.Code.rfind' f)) (rfind_tag f) s
-      (LO.FirstOrder.Arithmetic.pair a m) y hs
+      (FFL.FirstOrder.Arithmetic.pair a m) y hs
 
 private def forwardFormula (q p : ℕ) : ArithmeticSemisentence 1 :=
   “s. ∀ a m y, !(pairedStageFormula q) s a m y →
@@ -108,10 +108,10 @@ private theorem rfind_forward (f : Nat.Partrec.Code) :
   · intro a m y h
     have hh := (evalnCertificateFormula_eval_history_iff (0 : M) _ _ _).mp h
     have hlt := ((eval_codeHistoryEvaluator_succ_iff_cell (0 : M) _ _ _).mp hh).1
-    exact False.elim ((not_lt_of_ge (LO.FirstOrder.Arithmetic.zero_le _)) hlt)
+    exact False.elim ((not_lt_of_ge (FFL.FirstOrder.Arithmetic.zero_le _)) hlt)
   · intro s ih a m y h
     have hs : (0 : M) < s + 1 :=
-      lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le s) (lt_add_one s)
+      lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le s) (lt_add_one s)
     obtain ⟨_, v, hv, hcase⟩ := (sc_rfind f (s + 1) a m y hs).mp h
     rcases hcase with ⟨hvp, hr⟩ | ⟨hv0, rfl⟩
     · have hr' : sc (encode (Nat.Partrec.Code.rfind' f)) s a (m + 1) y := by
@@ -121,7 +121,7 @@ private theorem rfind_forward (f : Nat.Partrec.Code) :
       intro k hmk hky
       rcases eq_or_lt_of_le hmk with rfl | hmk'
       · exact ⟨v, ne_of_gt hvp, (egp_iff _ _ _ _).mpr ⟨s + 1, hv⟩⟩
-      · exact hp k (LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hmk') hky
+      · exact hp k (FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hmk') hky
     · refine ⟨le_refl _, ?_, ?_⟩
       · exact (egp_iff _ _ _ _).mpr ⟨s + 1, by simpa only [hv0] using hv⟩
       · intro k hmk hkm
@@ -130,10 +130,10 @@ private theorem rfind_forward (f : Nat.Partrec.Code) :
 private theorem rfind_stop (f : Nat.Partrec.Code) (a m : M)
     (h : egp (encode f) a m 0) : egp (encode (Nat.Partrec.Code.rfind' f)) a m m := by
   obtain ⟨s, hs⟩ := (egp_iff _ _ _ _).mp h
-  let u := LO.FirstOrder.Arithmetic.pair a m
+  let u := FFL.FirstOrder.Arithmetic.pair a m
   have hu : u < s + u + 1 := lt_of_le_of_lt le_add_self (lt_add_one _)
   have hp : (0 : M) < s + u + 1 :=
-    lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le _) (lt_add_one _)
+    lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le _) (lt_add_one _)
   apply (egp_iff _ _ _ _).mpr
   refine ⟨s + u + 1, (sc_rfind f _ a m m hp).mpr ⟨hu, 0, ?_, Or.inr ⟨rfl,rfl⟩⟩⟩
   exact evalnCertificateFormula_natCode_persist (encode f) s (s + u + 1) u 0
@@ -146,19 +146,19 @@ private theorem rfind_next (f : Nat.Partrec.Code) (a m y : M)
   obtain ⟨v, hv, hvg⟩ := h
   obtain ⟨sv, hvs⟩ := (egp_iff _ _ _ _).mp hvg
   obtain ⟨sr, hrs⟩ := (egp_iff _ _ _ _).mp hr
-  let u := LO.FirstOrder.Arithmetic.pair a m
+  let u := FFL.FirstOrder.Arithmetic.pair a m
   let t := sv + sr + u
   have hu : u < t + 1 := lt_of_le_of_lt le_add_self (lt_add_one _)
   have ht : (0 : M) < t + 1 :=
-    lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le _) (lt_add_one _)
-  have hvp : 0 < v := lt_of_le_of_ne (LO.FirstOrder.Arithmetic.zero_le v) (Ne.symm hv)
+    lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le _) (lt_add_one _)
+  have hvp : 0 < v := lt_of_le_of_ne (FFL.FirstOrder.Arithmetic.zero_le v) (Ne.symm hv)
   apply (egp_iff _ _ _ _).mpr
   refine ⟨t + 1, (sc_rfind f _ a m y ht).mpr ⟨hu,v,?_,Or.inl ⟨hvp,?_⟩⟩⟩
   · exact evalnCertificateFormula_natCode_persist (encode f) sv (t + 1) u v
       (le_trans (le_trans le_self_add le_self_add) le_self_add) hvs
   · have hle : sr ≤ t := le_trans le_add_self le_self_add
     have hc := evalnCertificateFormula_natCode_persist (encode (Nat.Partrec.Code.rfind' f)) sr t
-      (LO.FirstOrder.Arithmetic.pair a (m + 1)) y hle hrs
+      (FFL.FirstOrder.Arithmetic.pair a (m + 1)) y hle hrs
     simpa only [add_sub_self] using hc
 
 private def reverseFormula (q p : ℕ) : ArithmeticSemisentence 1 :=
@@ -199,7 +199,7 @@ private theorem rfind_reverse (f : Nat.Partrec.Code) :
       rw [add_assoc, add_comm (1 : M) l]
     have hml : m < m + (l + 1) := by
       have h0 : (0 : M) < l + 1 :=
-        lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le l) (lt_add_one l)
+        lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le l) (lt_add_one l)
       simpa only [zero_add, add_zero, add_comm] using add_lt_add_left h0 m
     have hp := h.2 m (le_refl m) hml
     have hr : egp (encode (Nat.Partrec.Code.rfind' f)) a (m + 1) (m + 1 + l) := by
@@ -213,15 +213,15 @@ private theorem rfind_reverse (f : Nat.Partrec.Code) :
 The candidate bound and every computation stage range over the PA model. -/
 theorem eventualGraph_rfind_code_eval (f : Nat.Partrec.Code) (a y : M) :
     (eventualGraph (encode (Nat.Partrec.Code.rfind' f))).val.Evalb
-        ![LO.FirstOrder.Arithmetic.pair a 0, y] ↔
-      (eventualGraph (encode f)).val.Evalb ![LO.FirstOrder.Arithmetic.pair a y, 0] ∧
+        ![FFL.FirstOrder.Arithmetic.pair a 0, y] ↔
+      (eventualGraph (encode f)).val.Evalb ![FFL.FirstOrder.Arithmetic.pair a y, 0] ∧
         ∀ k : M, k < y → ∃ z : M, z ≠ 0 ∧
-          (eventualGraph (encode f)).val.Evalb ![LO.FirstOrder.Arithmetic.pair a k, z] := by
+          (eventualGraph (encode f)).val.Evalb ![FFL.FirstOrder.Arithmetic.pair a k, z] := by
   constructor
   · intro h
     obtain ⟨s, hs⟩ := (egp_iff _ _ _ _).mp h
     obtain ⟨_, hy, hp⟩ := rfind_forward f s a 0 y hs
-    exact ⟨hy, fun k hk => hp k (LO.FirstOrder.Arithmetic.zero_le k) hk⟩
+    exact ⟨hy, fun k hk => hp k (FFL.FirstOrder.Arithmetic.zero_le k) hk⟩
   · intro h
     have hh : egp (encode f) a (0 + y) 0 ∧
         ∀ k : M, 0 ≤ k → k < 0 + y → ∃ z : M, z ≠ 0 ∧ egp (encode f) a k z := by

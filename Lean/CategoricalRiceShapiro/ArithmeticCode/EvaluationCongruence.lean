@@ -31,8 +31,8 @@ open Nat Nat.ArithPart₁
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 variable {M : Type*} [ORingStructure M]
 

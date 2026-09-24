@@ -13,7 +13,7 @@ with partial composition as multiplication and the total identity as its unit.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 
 namespace FailureOfComposition
 

@@ -15,8 +15,8 @@ No translation to a different historical numerical coding is asserted.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
+open scoped FFL.FirstOrder.Arithmetic
 open Encodable Denumerable
 open Nat.ArithPart₁
 open CategoricalRiceShapiro.Evaluator CategoricalRiceShapiro.ArithmeticCode

@@ -85,8 +85,8 @@ open Nat Nat.ArithPart₁
 namespace CategoricalRiceShapiro.Evaluator
 
 open CategoricalRiceShapiro.ArithmeticCode
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open HierarchySymbol
 
 variable {M : Type*} [ORingStructure M]
@@ -180,7 +180,7 @@ private theorem codeListCons_args [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {r
     (h : Semiformula.Evalb (c :> v) (code (codeListCons A B))) :
     ∃ a b : M, Semiformula.Evalb (a :> v) (code A) ∧
       Semiformula.Evalb (b :> v) (code B) ∧
-      c = LO.FirstOrder.Arithmetic.pair a b + 1 := by
+      c = FFL.FirstOrder.Arithmetic.pair a b + 1 := by
   rw [codeListCons, eval_codeSucc_iff] at h
   obtain ⟨p, hp, hc⟩ := h
   obtain ⟨a, b, ha, hb⟩ := codePair_args A B p v hp
@@ -200,15 +200,15 @@ component. -/
 private theorem eval_tail_of_pair_succ [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {r : ℕ} (d : Code r)
     (w x l z : M) (v : Fin r → M)
     (hw : Semiformula.Evalb (w :> v) (code d))
-    (hwv : w = LO.FirstOrder.Arithmetic.pair x l + 1)
+    (hwv : w = FFL.FirstOrder.Arithmetic.pair x l + 1)
     (hz : Semiformula.Evalb (z :> v) (code (codeListTail d))) : z = l := by
   have hone : Semiformula.Evalb ((1 : M) :> v) (code (codeConst (n := r) 1)) := by
     rw [eval_codeConst_iff]; simp
   have hsub := eval_codeSub d (codeConst 1) w 1 v hw hone
   rw [hwv, add_sub_self] at hsub
   have hu := eval_codeUnpair₂ (codeSub d (codeConst 1))
-    (LO.FirstOrder.Arithmetic.pair x l) v hsub
-  rw [LO.FirstOrder.Arithmetic.pi₂_pair] at hu
+    (FFL.FirstOrder.Arithmetic.pair x l) v hsub
+  rw [FFL.FirstOrder.Arithmetic.pi₂_pair] at hu
   exact eval_unique hz (by rw [codeListTail]; exact hu)
 
 /-! ### The iterated tail of a fixed list -/
@@ -366,14 +366,14 @@ private theorem chain_match [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (base : Code 2) (hdc
     have hcn : c ≤ bound := le_trans le_self_add hc2
     obtain ⟨a, p, hac, hsa, hdi⟩ := IH hcm hcn
     have hapos : 0 < a := by
-      rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
+      rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
       · exfalso
         rw [← h0, zero_add] at hac
         rw [← hac] at hc1
         exact absurd hc1 (by simp)
       · exact hpos
     have hpred : a - 1 + 1 = a :=
-      sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
+      sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
     obtain ⟨q, hsq, hstep⟩ :=
       eval_codePrec_succ _ _ (a - 1) p ![w₀, w₁] (by rw [hpred]; exact hsa)
     obtain ⟨x, l, -, hl, hpv⟩ := codeListCons_args _ _ p _ hstep
@@ -435,14 +435,14 @@ private theorem drop_prefix [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (H bnd z : M)
     · intro j IH hj
       obtain ⟨t, y, htj, hy⟩ := IH (le_trans le_self_add hj)
       have htpos : 0 < t := by
-        rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le t) with h0 | hp
+        rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le t) with h0 | hp
         · exfalso
           rw [← h0, zero_add] at htj
           rw [← htj] at hj
           exact absurd hj (by simp)
         · exact hp
       have hpred : t - 1 + 1 = t :=
-        sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp htpos)
+        sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp htpos)
       obtain ⟨w, hw, -⟩ := dropCore_succ H (t - 1) y (by rw [hpred]; exact hy)
       refine ⟨t - 1, w, ?_, hw⟩
       calc t - 1 + (j + 1) = (t - 1 + 1) + j := by rw [add_comm j 1, ← add_assoc]
@@ -493,13 +493,13 @@ private theorem drops_zero_from [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (H c bound : M)
       (HierarchySymbol.Definable.imp (by definability) hD)
   refine InductionOnHierarchy.succ_induction 𝚺 1 hdef ?_ ?_ t hct htb
   · intro hc0 _
-    have hcz : c = 0 := le_antisymm hc0 (LO.FirstOrder.Arithmetic.zero_le c)
+    have hcz : c = 0 := le_antisymm hc0 (FFL.FirstOrder.Arithmetic.zero_le c)
     rw [hcz] at hc
     exact hc
   · intro r IH hcr hrb
     rcases lt_or_ge r c with hlt | hle
     · have hceq : c = r + 1 :=
-        le_antisymm hcr (LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hlt)
+        le_antisymm hcr (FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hlt)
       rw [hceq] at hc
       exact hc
     · have hprev := IH hle (le_trans le_self_add hrb)
@@ -510,13 +510,13 @@ private theorem drops_zero_from [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (H c bound : M)
           (code (codeConst (n := 3) 1)) := by rw [eval_codeConst_iff]; simp
       have hsub := eval_codeSub (Code.proj (1 : Fin 3)) (codeConst 1) w 1 ![r, w, H]
         ((eval_proj_iff _ _ _).mpr rfl) hone
-      have hw1 : w - 1 = 0 := by rw [hw0]; exact LO.FirstOrder.Arithmetic.zero_sub 1
+      have hw1 : w - 1 = 0 := by rw [hw0]; exact FFL.FirstOrder.Arithmetic.zero_sub 1
       rw [hw1] at hsub
       have hu := eval_codeUnpair₂ (codeSub (Code.proj (1 : Fin 3)) (codeConst 1))
         0 ![r, w, H] hsub
-      have hpi : LO.FirstOrder.Arithmetic.pi₂ (0 : M) = 0 :=
-        le_antisymm (by simpa using LO.FirstOrder.Arithmetic.pi₂_le_self (0 : M))
-          (LO.FirstOrder.Arithmetic.zero_le _)
+      have hpi : FFL.FirstOrder.Arithmetic.pi₂ (0 : M) = 0 :=
+        le_antisymm (by simpa using FFL.FirstOrder.Arithmetic.pi₂_le_self (0 : M))
+          (FFL.FirstOrder.Arithmetic.zero_le _)
       rw [hpi] at hu
       have hz0 : z' = 0 := eval_unique htail (by rw [codeListTail]; exact hu)
       rw [hz0] at hz'
@@ -599,11 +599,11 @@ private theorem snoc_value_ne_zero [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (m₁ H' a p 
   letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   rw [historySnocCore_eq] at hp
-  rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
+  rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
   · rw [← h0] at hp
     exact codeListCons_ne_zero _ _ p _ (eval_codePrec_zero _ _ p ![m₁, H'] hp)
   · have hpred : a - 1 + 1 = a :=
-      sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp hpos)
+      sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp hpos)
     obtain ⟨q, -, hstep⟩ :=
       eval_codePrec_succ _ _ (a - 1) p ![m₁, H'] (by rw [hpred]; exact hp)
     exact codeListCons_ne_zero _ _ p _ hstep
@@ -659,7 +659,7 @@ private theorem length_step [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (m₁ H' H₀ n₀ :
       eval_tail_of_pair_succ (Code.proj (1 : Fin 3)) w r l e ![m₁, w, H₀]
         ((eval_proj_iff _ _ _).mpr rfl) (by rw [hwp, hpv]) htail
     exact hne (by rw [hel, hl0])
-  exact le_antisymm hle (LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hgt)
+  exact le_antisymm hle (FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hgt)
 
 /-! ### The length of a constructed history -/
 
@@ -686,7 +686,7 @@ theorem eval_codeEvaluatorHistory_length_unique [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] 
   have hself : Semiformula.Evalb (H₀ :> ![H₀]) (code (Code.proj (0 : Fin 1))) :=
     (eval_proj_iff _ _ _).mpr rfl
   obtain ⟨hd0, hdn⟩ := drops_of_length _ H₀ n₀ ![H₀] hself hL₀
-  rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le m₀) with hzero | hpos
+  rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le m₀) with hzero | hpos
   · -- the empty history has no nonzero drop at index zero
     refine hne₀ ?_
     rw [← hzero] at hH₀ ⊢
@@ -696,11 +696,11 @@ theorem eval_codeEvaluatorHistory_length_unique [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] 
       simpa [codeListNil] using (eval_zero_iff (M := M) H₀ ![]).mp h0
     by_contra hn0
     obtain ⟨e, hne', he⟩ :=
-      hdn 0 (lt_of_le_of_ne (LO.FirstOrder.Arithmetic.zero_le n₀) (Ne.symm hn0))
+      hdn 0 (lt_of_le_of_ne (FFL.FirstOrder.Arithmetic.zero_le n₀) (Ne.symm hn0))
     exact hne' (by rw [dropCore_zero H₀ e he, hnil])
   · -- the successor step adds exactly one entry
     have hpred : m₀ - 1 + 1 = m₀ :=
-      sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp hpos)
+      sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp hpos)
     obtain ⟨H', hH', hstep⟩ :=
       eval_codePrec_succ _ _ (m₀ - 1) H₀ ![]
         (by rw [codeEvaluatorHistory] at hH₀; rw [hpred]; simpa using hH₀)
@@ -726,12 +726,12 @@ theorem eval_codeEvaluatorHistory_length_unique [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] 
 /-! ### The program index read from the history -/
 
 private theorem posL [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {x y : M} (h : 0 < x * y) : 0 < x := by
-  rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le x) with h0 | hp
+  rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le x) with h0 | hp
   · rw [← h0, zero_mul] at h; exact absurd h (_root_.lt_irrefl 0)
   · exact hp
 
 private theorem posR [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {x y : M} (h : 0 < x * y) : 0 < y := by
-  rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le y) with h0 | hp
+  rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le y) with h0 | hp
   · rw [← h0, mul_zero] at h; exact absurd h (_root_.lt_irrefl 0)
   · exact hp
 
@@ -853,12 +853,12 @@ theorem eval_codeHistoryEvaluator_succ_extract_index [M↓[ℒₒᵣ] ⊧* 𝗣�
   have hlen : Semiformula.Evalb (m :> ![s, qCode, u])
       (code (codeListLength codeEvaluatorHistoryBeforeCell)) :=
     length_of_drops _ H₀ m ![s, qCode, u] hbefore hd0 hdn
-  have hmpair : m = LO.FirstOrder.Arithmetic.pair s qCode :=
+  have hmpair : m = FFL.FirstOrder.Arithmetic.pair s qCode :=
     eval_unique hm (eval_codePair _ _ s qCode ![s, qCode, u]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl))
   have hu := eval_codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell) m
     ![s, qCode, u] hlen
-  rw [hmpair, LO.FirstOrder.Arithmetic.pi₂_pair] at hu
+  rw [hmpair, FFL.FirstOrder.Arithmetic.pi₂_pair] at hu
   exact hu
 
 /-! ### The evaluator cell read from the history -/
@@ -935,13 +935,13 @@ private theorem eval_codeHistoryEvaluator_succ_extract_cell_core [M↓[ℒₒᵣ
     · rw [← heq, hb₁v]
     · exfalso
       have hz0 : Semiformula.Evalb ![(0 : M), 0, w 1] (code dropCore) := by
-        obtain ⟨z, hz⟩ := hdropRow 0 (LO.FirstOrder.Arithmetic.zero_le u)
+        obtain ⟨z, hz⟩ := hdropRow 0 (FFL.FirstOrder.Arithmetic.zero_le u)
         have hzw : z = w 1 := dropCore_zero (w 1) z hz
         have hz0' : z = 0 := by rw [hzw, h0]
         rw [hz0'] at hz
         exact hz
       have := drops_zero_from (w 1) 0 u hz0 hdropRow u
-        (LO.FirstOrder.Arithmetic.zero_le u) le_rfl
+        (FFL.FirstOrder.Arithmetic.zero_le u) le_rfl
       exact absurd (eval_unique hinner this) (ne_of_gt hfpos)
   -- the outer lookup selects the row of the predecessor history
   rw [codeListGet?] at ha₁
@@ -958,7 +958,7 @@ private theorem eval_codeHistoryEvaluator_succ_extract_cell_core [M↓[ℒₒᵣ
     exact add_right_cancel this
   have hgsub := eval_codeSub _ (codeConst 1) g 1 ![s, qCode, u] hg (hone _)
   have hgu := eval_codeUnpair₁ _ (g - 1) ![s, qCode, u] hgsub
-  have hc₁pi : c₁ = LO.FirstOrder.Arithmetic.pi₁ (g - 1) := eval_unique hc₁ hgu
+  have hc₁pi : c₁ = FFL.FirstOrder.Arithmetic.pi₁ (g - 1) := eval_unique hc₁ hgu
   -- the outer drop, the history table, and its predecessor
   rw [codeListDrop_eq_dropCore, eval_comp_iff] at hg
   obtain ⟨w', hgw, hw'i⟩ := hg
@@ -1021,18 +1021,18 @@ private theorem eval_codeHistoryEvaluator_succ_extract_cell_core [M↓[ℒₒᵣ
   have hgp : g = pT := eval_unique hgT hdT
   have hrowv : w 1 = rowv := by
     rw [hc₁Y] at hc₁pi
-    rw [hc₁pi, hgp, hpTv, hnil0, add_sub_self, LO.FirstOrder.Arithmetic.pi₁_pair]
+    rw [hc₁pi, hgp, hpTv, hnil0, add_sub_self, FFL.FirstOrder.Arithmetic.pi₁_pair]
   -- the row recursion, whose bound is `s`
   rw [hrowv] at hinner hdropRow
   rw [codeEvaluatorRow_eq_bind, eval_codeBind_iff] at hrow
   obtain ⟨bnd, hbnd, hrowcore⟩ := hrow
-  have hmpair : m = LO.FirstOrder.Arithmetic.pair s qCode :=
+  have hmpair : m = FFL.FirstOrder.Arithmetic.pair s qCode :=
     eval_unique hmP (eval_codePair _ _ s qCode ![s, qCode, u]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl))
   have hbnds : bnd = s := by
     have := eval_unique hbnd (eval_codeUnpair₁ (codeListLength (Code.proj (1 : Fin 2)))
       m ![m, H₀] hlen')
-    rw [this, hmpair, LO.FirstOrder.Arithmetic.pi₁_pair]
+    rw [this, hmpair, FFL.FirstOrder.Arithmetic.pi₁_pair]
   rw [hbnds] at hrowcore
   -- the index is within the row
   have hus : u ≤ s := by
@@ -1055,7 +1055,7 @@ private theorem eval_codeHistoryEvaluator_succ_extract_cell_core [M↓[ℒₒᵣ
     chain_match _ _ m H₀ s rowv u hrowcore hdropRow u hus le_rfl
   have hpRf : pR = f := eval_unique hdR hinner
   have haRpos : 0 < aR := by
-    rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le aR) with h0 | hpos
+    rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le aR) with h0 | hpos
     · exfalso
       rw [← h0] at hsaR
       have hb := eval_codePrec_zero _ _ pR ![m, H₀] hsaR
@@ -1065,16 +1065,16 @@ private theorem eval_codeHistoryEvaluator_succ_extract_cell_core [M↓[ℒₒᵣ
       exact absurd hpRf.symm (ne_of_gt hfpos)
     · exact hpos
   have hpredR : aR - 1 + 1 = aR :=
-    sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp haRpos)
+    sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp haRpos)
   obtain ⟨q, -, hstepR⟩ :=
     eval_codePrec_succ _ _ (aR - 1) pR ![m, H₀] (by rw [hpredR]; exact hsaR)
   obtain ⟨cellv, l, hcell, hl, hpRv⟩ := codeListCons_args _ _ pR _ hstepR
   -- the head of that cons is the looked-up value
   have hfsub := eval_codeSub _ (codeConst 1) f 1 ![s, qCode, u] hfdrop (hone _)
-  have hcpi : c = LO.FirstOrder.Arithmetic.pi₁ (f - 1) :=
+  have hcpi : c = FFL.FirstOrder.Arithmetic.pi₁ (f - 1) :=
     eval_unique hc (eval_codeUnpair₁ _ (f - 1) ![s, qCode, u] hfsub)
-  have hpif : LO.FirstOrder.Arithmetic.pi₁ (f - 1) = cellv := by
-    rw [← hpRf, hpRv, add_sub_self, LO.FirstOrder.Arithmetic.pi₁_pair]
+  have hpif : FFL.FirstOrder.Arithmetic.pi₁ (f - 1) = cellv := by
+    rw [← hpRf, hpRv, add_sub_self, FFL.FirstOrder.Arithmetic.pi₁_pair]
   have hcelly : cellv = y + 1 := by
     rw [← hpif, ← hcpi]; exact hcy
   -- both table arguments evaluate to the predecessor history
@@ -1096,8 +1096,8 @@ private theorem eval_codeHistoryEvaluator_succ_extract_cell_core [M↓[ℒₒᵣ
   have hfuel : Semiformula.Evalb (s :> ![aR - 1, q, m, H₀])
       (code (codeUnpair₁ (codeListLength
         (codeLift (codeLift (Code.proj (1 : Fin 2))))))) := by
-    have hpi : LO.FirstOrder.Arithmetic.pi₁ m = s := by
-      rw [hmpair, LO.FirstOrder.Arithmetic.pi₁_pair]
+    have hpi : FFL.FirstOrder.Arithmetic.pi₁ m = s := by
+      rw [hmpair, FFL.FirstOrder.Arithmetic.pi₁_pair]
     have hlift := eval_codeUnpair₁ _ m ![aR - 1, q, m, H₀] hlenlift
     rwa [hpi] at hlift
   have hstepv : Semiformula.Evalb (aR :> ![aR - 1, q, m, H₀])
@@ -1154,7 +1154,7 @@ private abbrev GetAt (l i z : M) : Prop :=
 private theorem head_of_drop [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {r : ℕ} (D : Code r) (d : M)
     (v : Fin r → M) (hd : Semiformula.Evalb (d :> v) (code D)) :
     Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pi₁ (d - 1) :> v)
+      (FFL.FirstOrder.Arithmetic.pi₁ (d - 1) :> v)
       (code (codeUnpair₁ (codeSub D (codeConst 1)))) := by
   have hone : Semiformula.Evalb ((1 : M) :> v) (code (codeConst (n := r) 1)) := by
     rw [eval_codeConst_iff]; simp
@@ -1181,7 +1181,7 @@ private theorem getAt_of_eval [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {r : ℕ} (A B : C
   obtain ⟨hdpos, hsucc⟩ := hbr.resolve_right (fun hp => hnz hp.2)
   rw [eval_codeSucc_iff] at hsucc
   obtain ⟨e, he, hze⟩ := hsucc
-  have hev : e = LO.FirstOrder.Arithmetic.pi₁ (d - 1) :=
+  have hev : e = FFL.FirstOrder.Arithmetic.pi₁ (d - 1) :=
     eval_unique he (head_of_drop _ d v hd)
   have hdcopy := hd
   rw [codeListDrop_eq_dropCore, eval_comp_iff] at hd
@@ -1198,7 +1198,7 @@ private theorem getAt_of_eval [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {r : ℕ} (A B : C
       refine Fin.cases ?_ (fun j'' => Fin.elim0 j'') j'
       rfl
   rw [hshape] at hdw
-  refine ⟨w 1, w 0, hA, hB, d, LO.FirstOrder.Arithmetic.pi₁ (d - 1), by simpa using hdw,
+  refine ⟨w 1, w 0, hA, hB, d, FFL.FirstOrder.Arithmetic.pi₁ (d - 1), by simpa using hdw,
     head_of_drop (Code.proj (0 : Fin 1)) d ![d] ((eval_proj_iff _ _ _).mpr rfl),
     hdpos, ?_⟩
   rw [← hev, hze]
@@ -1225,12 +1225,12 @@ private theorem eval_of_getAt [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {r : ℕ} (A B : C
     · intro j'
       refine Fin.cases ?_ (fun j'' => Fin.elim0 j'') j'
       simpa using hA
-  have hhv : hh = LO.FirstOrder.Arithmetic.pi₁ (d - 1) :=
+  have hhv : hh = FFL.FirstOrder.Arithmetic.pi₁ (d - 1) :=
     eval_unique hhead
       (head_of_drop (Code.proj (0 : Fin 1)) d ![d] ((eval_proj_iff _ _ _).mpr rfl))
   rw [codeListGet?]
   exact eval_codeIfPos_of _ _ _ d
-    (LO.FirstOrder.Arithmetic.pi₁ (d - 1) + 1) 0 z v hdrop
+    (FFL.FirstOrder.Arithmetic.pi₁ (d - 1) + 1) 0 z v hdrop
     ((eval_codeSucc_iff _ _ _).mpr ⟨_, head_of_drop _ d v hdrop, rfl⟩)
     ((eval_zero_iff _ _).mpr rfl) (Or.inl ⟨hdpos, by rw [hz, hhv]⟩)
 
@@ -1273,27 +1273,27 @@ private theorem getAt_step_down [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (j i z Hj1 : M)
     chain_match _ _ j Hj j Hj1 i hsnoc hdropJ1 i (le_of_lt hij) le_rfl
   have hpd : p = d := eval_unique hdi hd
   have hapos : 0 < a := by
-    rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
+    rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
     · exfalso
       rw [← h0, zero_add] at hai
       rw [hai] at hij
       exact absurd hij (_root_.lt_irrefl j)
     · exact hpos
   have hpred : a - 1 + 1 = a :=
-    sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
+    sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
   obtain ⟨q, -, hcons⟩ :=
     eval_codePrec_succ _ _ (a - 1) p ![j, Hj] (by rw [hpred]; exact hsa)
   obtain ⟨x, l, hx, hl, hpv⟩ := codeListCons_args _ _ p _ hcons
   -- the head of that cons is the entry, and it is positive
   have hxh : x = hh := by
     have h1 := head_of_drop (Code.proj (0 : Fin 1)) d ![d] ((eval_proj_iff _ _ _).mpr rfl)
-    have h2 : LO.FirstOrder.Arithmetic.pi₁ (d - 1) = x := by
-      rw [← hpd, hpv, add_sub_self, LO.FirstOrder.Arithmetic.pi₁_pair]
+    have h2 : FFL.FirstOrder.Arithmetic.pi₁ (d - 1) = x := by
+      rw [← hpd, hpv, add_sub_self, FFL.FirstOrder.Arithmetic.pi₁_pair]
     rw [h2] at h1
     exact (eval_unique hhead h1).symm
   have hxpos : 0 < x := by
     rw [hxh]
-    rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le hh) with h0 | hpos
+    rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le hh) with h0 | hpos
     · exfalso
       rw [← h0, zero_add] at hzv
       rw [hzv] at hz
@@ -1394,14 +1394,14 @@ private theorem getAt_step_up
   obtain ⟨a, p, hai, hsa, hdi⟩ :=
     chain_match _ _ j Hj j Hj1 i hsnoc hdropJ1 i (le_of_lt hij) le_rfl
   have hapos : 0 < a := by
-    rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
+    rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
     · exfalso
       rw [← h0, zero_add] at hai
       rw [hai] at hij
       exact absurd hij (_root_.lt_irrefl j)
     · exact hpos
   have hpred : a - 1 + 1 = a :=
-    sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
+    sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
   obtain ⟨q, -, hcons⟩ :=
     eval_codePrec_succ _ _ (a - 1) p ![j, Hj] (by rw [hpred]; exact hsa)
   obtain ⟨x, l, hx, -, hpv⟩ := codeListCons_args _ _ p _ hcons
@@ -1429,11 +1429,11 @@ private theorem getAt_step_up
       (eval_of_getAt _ _ Hj i z ![a - 1, q, j, Hj] hTsrc hidx hget) hone)
   -- the drop of the extended history at `i` is that cons
   obtain ⟨-, hh, -, -, -, hzv⟩ := hget
-  refine ⟨p, LO.FirstOrder.Arithmetic.pi₁ (p - 1), hdi,
+  refine ⟨p, FFL.FirstOrder.Arithmetic.pi₁ (p - 1), hdi,
     head_of_drop (Code.proj (0 : Fin 1)) p ![p] ((eval_proj_iff _ _ _).mpr rfl), ?_, ?_⟩
   · rw [hpv]
     exact lt_of_lt_of_le _root_.zero_lt_one le_add_self
-  · rw [hpv, add_sub_self, LO.FirstOrder.Arithmetic.pi₁_pair, hxz, hzv, add_sub_self]
+  · rw [hpv, add_sub_self, FFL.FirstOrder.Arithmetic.pi₁_pair, hxz, hzv, add_sub_self]
 
 /-! ### Descending to the stage that first records the row -/
 
@@ -1536,7 +1536,7 @@ private theorem getAt_descend [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (m i z Hm : M)
       have hjpos : 0 < j :=
         lt_of_lt_of_le (by simp) hij2
       have hpred : j - 1 + 1 = j :=
-        sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp hjpos)
+        sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp hjpos)
       have hij : i < j - 1 := by
         have : i + 1 ≤ j - 1 := by
           have h := hij2
@@ -1581,11 +1581,11 @@ private theorem getAt_nil_absurd [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (n z : M)
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   obtain ⟨d, -, hd, -, hdpos, -⟩ := hg
   have hdrop := drop_prefix 0 n d hd
-  obtain ⟨z₀, hz₀⟩ := hdrop 0 (LO.FirstOrder.Arithmetic.zero_le n)
+  obtain ⟨z₀, hz₀⟩ := hdrop 0 (FFL.FirstOrder.Arithmetic.zero_le n)
   have hz₀0 : z₀ = 0 := dropCore_zero 0 z₀ hz₀
   rw [hz₀0] at hz₀
   have := drops_zero_from 0 0 n hz₀ hdrop n
-    (LO.FirstOrder.Arithmetic.zero_le n) le_rfl
+    (FFL.FirstOrder.Arithmetic.zero_le n) le_rfl
   rw [eval_unique hd this] at hdpos
   exact absurd hdpos (_root_.lt_irrefl 0)
 
@@ -1600,8 +1600,8 @@ theorem eval_codeHistoryEvaluator_succ_of_prefix_lookup
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (s qCode n y : M) (q : ℕ)
     (hprefix :
-      LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) <
-        LO.FirstOrder.Arithmetic.pair s qCode)
+      FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) <
+        FFL.FirstOrder.Arithmetic.pair s qCode)
     (h :
       Semiformula.Evalb ((y + 1) :> ![s, qCode, n])
         (code
@@ -1633,7 +1633,7 @@ theorem eval_codeHistoryEvaluator_succ_of_prefix_lookup
   -- the row is a nonempty list
   obtain ⟨G1, b₁, hG1, hb₁, hcase₁⟩ := eval_sub_args _ _ _ _ hrow
   have hrowpos : 0 < rowv := by
-    rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
+    rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
     · exact absurd (getAt_nil_absurd n (y + 1 + 1) (by rw [← h0] at hgetRow; exact hgetRow))
         not_false
     · exact hp
@@ -1653,7 +1653,7 @@ theorem eval_codeHistoryEvaluator_succ_of_prefix_lookup
   obtain ⟨w, hhist, hwi⟩ := hbefore
   have hpv := hwi 0
   simp only [Matrix.cons_val_zero] at hpv
-  have hmv : w 0 = LO.FirstOrder.Arithmetic.pair s qCode :=
+  have hmv : w 0 = FFL.FirstOrder.Arithmetic.pair s qCode :=
     eval_unique hpv (eval_codePair _ _ s qCode ![s, qCode, n]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl))
   have hshape : w = (w 0) :> ![] := by
@@ -1666,13 +1666,13 @@ theorem eval_codeHistoryEvaluator_succ_of_prefix_lookup
   obtain ⟨lenv, hlenv⟩ :=
     unpair₁_arg (codeListLength codeEvaluatorHistoryBeforeCell) fu ![s, qCode, n] hfu
   obtain ⟨hd0, hdn⟩ := drops_of_length _ Hm lenv ![s, qCode, n] hHm hlenv
-  have hlenm : lenv = LO.FirstOrder.Arithmetic.pair s qCode :=
+  have hlenm : lenv = FFL.FirstOrder.Arithmetic.pair s qCode :=
     eval_codeEvaluatorHistory_length_unique _ Hm lenv hhist
       (length_of_drops _ Hm lenv ![Hm] ((eval_proj_iff _ _ _).mpr rfl) hd0 hdn)
-  have hi₀v : i₀ = LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) := by
+  have hi₀v : i₀ = FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) := by
     have hfuv : fu = s := by
       have hu := eval_unique hfu (eval_codeUnpair₁ _ lenv ![s, qCode, n] hlenv)
-      rw [hu, hlenm, LO.FirstOrder.Arithmetic.pi₁_pair]
+      rw [hu, hlenm, FFL.FirstOrder.Arithmetic.pi₁_pair]
     have hcqv : cqv = ((q : ℕ) : M) := by
       rw [eval_codeConst_iff] at hcq; exact hcq
     rw [eval_unique hi₀ (eval_codePair _ _ fu cqv ![s, qCode, n] hfu hcq), hfuv, hcqv]
@@ -1680,11 +1680,11 @@ theorem eval_codeHistoryEvaluator_succ_of_prefix_lookup
   -- descend to the first stage that records this row
   obtain ⟨H, hH, hgetH⟩ :=
     getAt_descend _ _ _ Hm hhist hgetHm (by simpa using hrowpos)
-      (LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hprefix)
+      (FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hprefix)
   -- reassemble the history-evaluator evaluation at the earlier stage
   rw [codeHistoryEvaluator, codeTableLookup_eq]
   have hpair : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :> ![s, ((q : ℕ) : M), n])
+      (FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :> ![s, ((q : ℕ) : M), n])
       (code (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) :=
     eval_codePair _ _ s _ ![s, ((q : ℕ) : M), n]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
@@ -1692,7 +1692,7 @@ theorem eval_codeHistoryEvaluator_succ_of_prefix_lookup
       (code (codeEvaluatorHistory.comp
         ![codeSucc (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))])) := by
     rw [eval_comp_iff]
-    refine ⟨![LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) + 1], by simpa using hH, ?_⟩
+    refine ⟨![FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) + 1], by simpa using hH, ?_⟩
     intro j
     refine Fin.cases ?_ (fun j' => Fin.elim0 j') j
     simpa using (eval_codeSucc_iff _ _ _).mpr ⟨_, hpair, rfl⟩
@@ -1734,7 +1734,7 @@ theorem eval_codeEvaluatorRow_exists_of_value [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {r
   have hbound := eval_codeUnpair₁ (codeListLength dtable) p v hp
   have hbase : ∃ z : M, Semiformula.Evalb (z :> v) (code (codeListNil (n := r))) :=
     ⟨0, (eval_zero_iff _ _).mpr rfl⟩
-  have hstep : ∀ i : M, i ≤ LO.FirstOrder.Arithmetic.pi₁ p → ∀ row : M, ∃ w : M,
+  have hstep : ∀ i : M, i ≤ FFL.FirstOrder.Arithmetic.pi₁ p → ∀ row : M, ∃ w : M,
       Semiformula.Evalb (w :> i :> row :> v)
         (code (codeListCons
           (codeEvaluatorCell (codeLift (codeLift dtable))
@@ -1821,17 +1821,17 @@ theorem eval_codeEvaluatorHistoryBeforeCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣�
     (s qCode u : M) :
     ∃ H : M,
       Semiformula.Evalb (H :> ![s, qCode, u]) (code codeEvaluatorHistoryBeforeCell) ∧
-        Semiformula.Evalb ![H, LO.FirstOrder.Arithmetic.pair s qCode]
+        Semiformula.Evalb ![H, FFL.FirstOrder.Arithmetic.pair s qCode]
           (code codeEvaluatorHistory) := by
-  obtain ⟨H, hH⟩ := eval_codeEvaluatorHistory_exists (LO.FirstOrder.Arithmetic.pair s qCode)
+  obtain ⟨H, hH⟩ := eval_codeEvaluatorHistory_exists (FFL.FirstOrder.Arithmetic.pair s qCode)
   refine ⟨H, ?_, hH⟩
   have hpair : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, u])
+      (FFL.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, u])
       (code (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) :=
     eval_codePair _ _ s qCode ![s, qCode, u]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
   rw [codeEvaluatorHistoryBeforeCell, eval_comp_iff]
-  refine ⟨![LO.FirstOrder.Arithmetic.pair s qCode], by simpa using hH, ?_⟩
+  refine ⟨![FFL.FirstOrder.Arithmetic.pair s qCode], by simpa using hH, ?_⟩
   intro i
   refine Fin.cases ?_ (fun j => Fin.elim0 j) i
   simpa using hpair
@@ -1845,7 +1845,7 @@ length has a value by `eval_codeListLength_exists_of_value`, and
 `pair s qCode`. -/
 theorem eval_codeEvaluatorHistoryBeforeCell_length [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] (s qCode u : M) :
-    Semiformula.Evalb (LO.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, u])
+    Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, u])
       (code (codeListLength codeEvaluatorHistoryBeforeCell)) := by
   obtain ⟨H, hbefore, hH⟩ := eval_codeEvaluatorHistoryBeforeCell_exists s qCode u
   obtain ⟨lenv, hlenv⟩ := eval_codeListLength_exists_of_value
@@ -1868,7 +1868,7 @@ theorem eval_codeEvaluatorHistoryBeforeCell_length [M↓[ℒₒᵣ] ⊧* 𝗣�
       exact hbefore
   have hlen1 : Semiformula.Evalb ![lenv, H] (code (codeListLength (Code.proj (0 : Fin 1)))) := by
     simpa using hcongr.mp hlenv
-  have hval : lenv = LO.FirstOrder.Arithmetic.pair s qCode :=
+  have hval : lenv = FFL.FirstOrder.Arithmetic.pair s qCode :=
     eval_codeEvaluatorHistory_length_unique _ H lenv hH hlen1
   rw [← hval]
   exact hlenv
@@ -1880,9 +1880,9 @@ theorem eval_codeEvaluatorCell_fuel [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒ
     Semiformula.Evalb (s :> ![s, qCode, u])
       (code (codeUnpair₁ (codeListLength codeEvaluatorHistoryBeforeCell))) := by
   have h := eval_codeUnpair₁ (codeListLength codeEvaluatorHistoryBeforeCell)
-    (LO.FirstOrder.Arithmetic.pair s qCode) ![s, qCode, u]
+    (FFL.FirstOrder.Arithmetic.pair s qCode) ![s, qCode, u]
     (eval_codeEvaluatorHistoryBeforeCell_length s qCode u)
-  rwa [LO.FirstOrder.Arithmetic.pi₁_pair] at h
+  rwa [FFL.FirstOrder.Arithmetic.pi₁_pair] at h
 
 /-- The program index that the evaluator cell reads, the second component of
 the history length, is the second argument. -/
@@ -1891,9 +1891,9 @@ theorem eval_codeEvaluatorCell_index [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒ�
     Semiformula.Evalb (qCode :> ![s, qCode, u])
       (code (codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell))) := by
   have h := eval_codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell)
-    (LO.FirstOrder.Arithmetic.pair s qCode) ![s, qCode, u]
+    (FFL.FirstOrder.Arithmetic.pair s qCode) ![s, qCode, u]
     (eval_codeEvaluatorHistoryBeforeCell_length s qCode u)
-  rwa [LO.FirstOrder.Arithmetic.pi₂_pair] at h
+  rwa [FFL.FirstOrder.Arithmetic.pi₂_pair] at h
 
 /-- The history evaluator has a value at every argument triple.
 
@@ -1922,16 +1922,16 @@ theorem eval_codeHistoryEvaluator_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (s qCod
     (eval_proj_iff _ _ _).mpr rfl
   have hpair := eval_codePair _ _ s qCode ![s, qCode, u] hs hq
   have hsucc : Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pair s qCode + 1) :> ![s, qCode, u])
+      ((FFL.FirstOrder.Arithmetic.pair s qCode + 1) :> ![s, qCode, u])
       (code (codeSucc (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3))))) :=
     (eval_codeSucc_iff _ _ _).mpr ⟨_, hpair, rfl⟩
   obtain ⟨H, hH⟩ :=
-    eval_codeEvaluatorHistory_exists (LO.FirstOrder.Arithmetic.pair s qCode + 1)
+    eval_codeEvaluatorHistory_exists (FFL.FirstOrder.Arithmetic.pair s qCode + 1)
   have htab : Semiformula.Evalb (H :> ![s, qCode, u])
       (code (codeEvaluatorHistory.comp
         ![codeSucc (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))])) :=
     (eval_comp_iff _ _ _ _).mpr
-      ⟨![LO.FirstOrder.Arithmetic.pair s qCode + 1], hH, Fin.forall_fin_one.mpr hsucc⟩
+      ⟨![FFL.FirstOrder.Arithmetic.pair s qCode + 1], hH, Fin.forall_fin_one.mpr hsucc⟩
   exact eval_codeTableLookup_exists_of_values _ _ _ _ H s qCode u ![s, qCode, u]
     htab hs hq hu
 
@@ -1957,8 +1957,8 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (s qCode n y : M) (q : ℕ)
     (hprefix :
-      LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) <
-        LO.FirstOrder.Arithmetic.pair s qCode)
+      FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) <
+        FFL.FirstOrder.Arithmetic.pair s qCode)
     (h :
       Semiformula.Evalb ![y + 1, s, ((q : ℕ) : M), n]
         (code codeHistoryEvaluator)) :
@@ -2044,7 +2044,7 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
       Semiformula.Evalb ((1 : M) :> w) (code (codeConst (n := 3) 1)) := by
     intro w; rw [eval_codeConst_iff]; simp
   have hpairQ : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :> ![s, ((q : ℕ) : M), n])
+      (FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :> ![s, ((q : ℕ) : M), n])
       (code (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) :=
     eval_codePair _ _ s _ ![s, ((q : ℕ) : M), n]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
@@ -2065,7 +2065,7 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
   -- the row is a nonempty list
   obtain ⟨G1, b₁, hG1, hb₁, hcase₁⟩ := eval_sub_args _ _ _ _ hrow
   have hrowpos : 0 < rowv := by
-    rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
+    rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
     · exact absurd (getAt_nil_absurd n (y + 1 + 1) (by rw [← h0] at hgetRow; exact hgetRow))
         not_false
     · exact hp
@@ -2079,13 +2079,13 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
   -- the history one step past the pair of `s` and `q`, and the row index
   obtain ⟨H, i₀, hH, hi₀, hgetH⟩ :=
     getAt_of_eval _ _ _ _ hG1 (by simp)
-  have hi₀v : i₀ = LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) := eval_unique hi₀ hpairQ
+  have hi₀v : i₀ = FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) := eval_unique hi₀ hpairQ
   rw [hi₀v] at hgetH
   rw [eval_comp_iff] at hH
   obtain ⟨w, hhist, hwi⟩ := hH
   have hsv := hwi 0
   simp only [Matrix.cons_val_zero] at hsv
-  have hw0 : w 0 = LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) + 1 :=
+  have hw0 : w 0 = FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) + 1 :=
     eval_unique hsv ((eval_codeSucc_iff _ _ _).mpr ⟨_, hpairQ, rfl⟩)
   have hshape : w = (w 0) :> ![] := by
     funext j
@@ -2093,8 +2093,8 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
     rfl
   rw [hshape, hw0] at hhist
   -- the entry persists at every later stage up to the pair of `s` and `qCode`
-  generalize hPdef : LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) = P at hgetH hhist hprefix
-  generalize hCdef : LO.FirstOrder.Arithmetic.pair s qCode = C at hprefix
+  generalize hPdef : FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) = P at hgetH hhist hprefix
+  generalize hCdef : FFL.FirstOrder.Arithmetic.pair s qCode = C at hprefix
   have hall : ∀ t : M, P + 1 + t ≤ C → ∃ j H' d hd : M, P + 1 + t = j ∧
       Semiformula.Evalb ![H', j] (code codeEvaluatorHistory) ∧
       Semiformula.Evalb ![d, P, H'] (code dropCore) ∧
@@ -2117,7 +2117,7 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
       refine ⟨j + 1, H'', d', hd', ?_, hH'', g1, g2, g3, g4⟩
       rw [← hjt]
       exact (add_assoc (P + 1) t 1).symm
-  have hle : P + 1 ≤ C := LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hprefix
+  have hle : P + 1 ≤ C := FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hprefix
   obtain ⟨j, Hm, d, hd, hjt, hHm, h1, h2, h3, h4⟩ :=
     hall (C - (P + 1)) (by rw [add_tsub_self_of_le hle])
   have hjC : j = C := by rw [← hjt, add_tsub_self_of_le hle]
@@ -2126,28 +2126,28 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
   subst hPdef hCdef
   -- the history before the cell at `s, qCode, n`, and its length
   have hpairC : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, n])
+      (FFL.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, n])
       (code (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) :=
     eval_codePair _ _ s qCode ![s, qCode, n]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
   have hbefore : Semiformula.Evalb (Hm :> ![s, qCode, n])
       (code codeEvaluatorHistoryBeforeCell) := by
     rw [codeEvaluatorHistoryBeforeCell, eval_comp_iff]
-    refine ⟨![LO.FirstOrder.Arithmetic.pair s qCode], by simpa using hHm, ?_⟩
+    refine ⟨![FFL.FirstOrder.Arithmetic.pair s qCode], by simpa using hHm, ?_⟩
     intro i
     refine Fin.cases ?_ (fun j => Fin.elim0 j) i
     simpa using hpairC
   obtain ⟨lenv, hlenv⟩ := eval_codeListLength_exists_of_value
     codeEvaluatorHistoryBeforeCell Hm ![s, qCode, n] hbefore
   obtain ⟨hd0, hdn⟩ := drops_of_length _ Hm lenv ![s, qCode, n] hbefore hlenv
-  have hlenm : lenv = LO.FirstOrder.Arithmetic.pair s qCode :=
+  have hlenm : lenv = FFL.FirstOrder.Arithmetic.pair s qCode :=
     eval_codeEvaluatorHistory_length_unique _ Hm lenv hHm
       (length_of_drops _ Hm lenv ![Hm] ((eval_proj_iff _ _ _).mpr rfl) hd0 hdn)
   have hfuel := eval_codeUnpair₁ _ lenv ![s, qCode, n] hlenv
-  rw [hlenm, LO.FirstOrder.Arithmetic.pi₁_pair] at hfuel
+  rw [hlenm, FFL.FirstOrder.Arithmetic.pi₁_pair] at hfuel
   -- reassemble the two lookups at the later stage
   have hkey : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :> ![s, qCode, n])
+      (FFL.FirstOrder.Arithmetic.pair s ((q : ℕ) : M) :> ![s, qCode, n])
       (code (codePair (codeUnpair₁ (codeListLength codeEvaluatorHistoryBeforeCell))
         (codeConst (n := 3) q))) :=
     eval_codePair _ _ s _ ![s, qCode, n] hfuel ((eval_codeConst_iff _ _ _).mpr rfl)
@@ -2170,10 +2170,10 @@ preceding history at an input strictly below the stage bound. -/
 theorem eval_codeHistoryEvaluator_succ_iff_cell
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (s qCode u y : M) :
     Semiformula.Evalb ![y + 1, s, qCode, u]
-        (LO.FirstOrder.Arithmetic.code codeHistoryEvaluator) ↔
+        (FFL.FirstOrder.Arithmetic.code codeHistoryEvaluator) ↔
       u < s ∧
         Semiformula.Evalb ![y + 1, s, qCode, u]
-          (LO.FirstOrder.Arithmetic.code
+          (FFL.FirstOrder.Arithmetic.code
             (codeEvaluatorCell codeEvaluatorHistoryBeforeCell
               (Code.proj (2 : Fin 3)))) := by
   refine ⟨eval_codeHistoryEvaluator_succ_extract_cell_core s qCode u y, ?_⟩
@@ -2186,11 +2186,11 @@ theorem eval_codeHistoryEvaluator_succ_iff_cell
       Semiformula.Evalb ((1 : M) :> w) (code (codeConst (n := 3) 1)) := by
     intro w; rw [eval_codeConst_iff]; simp
   -- the stage `m`, the pair of `s` and `qCode`
-  have hmP : Semiformula.Evalb (LO.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, u])
+  have hmP : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair s qCode :> ![s, qCode, u])
       (code (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) :=
     eval_codePair _ _ s qCode ![s, qCode, u]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
-  generalize hmdef : LO.FirstOrder.Arithmetic.pair s qCode = m at hmP
+  generalize hmdef : FFL.FirstOrder.Arithmetic.pair s qCode = m at hmP
   -- the histories at `m` and `m + 1`
   obtain ⟨H₀, hH₀⟩ := eval_codeEvaluatorHistory_exists m
   obtain ⟨H₁, hH₁⟩ := eval_codeEvaluatorHistory_exists (m + 1)
@@ -2232,19 +2232,19 @@ theorem eval_codeHistoryEvaluator_succ_iff_cell
   have hbase := eval_codePrec_zero _ _ pT ![m, H₀] hsaT
   obtain ⟨rowv, nilv, hrow, -, hpTv⟩ := codeListCons_args _ _ pT _ hbase
   have hgetH : GetAt H₁ m (rowv + 1) := by
-    refine ⟨pT, LO.FirstOrder.Arithmetic.pi₁ (pT - 1), hdT,
+    refine ⟨pT, FFL.FirstOrder.Arithmetic.pi₁ (pT - 1), hdT,
       head_of_drop (Code.proj (0 : Fin 1)) pT ![pT] ((eval_proj_iff _ _ _).mpr rfl),
       ?_, ?_⟩
     · rw [hpTv]
       exact lt_of_lt_of_le _root_.zero_lt_one le_add_self
-    · rw [hpTv, add_sub_self, LO.FirstOrder.Arithmetic.pi₁_pair]
+    · rw [hpTv, add_sub_self, FFL.FirstOrder.Arithmetic.pi₁_pair]
   -- the row recursion, whose bound is `s`
   rw [codeEvaluatorRow_eq_bind, eval_codeBind_iff] at hrow
   obtain ⟨bnd, hbnd, hrowcore⟩ := hrow
   have hbnds : bnd = s := by
     have := eval_unique hbnd (eval_codeUnpair₁ (codeListLength (Code.proj (1 : Fin 2)))
       m ![m, H₀] hlen')
-    rw [this, ← hmdef, LO.FirstOrder.Arithmetic.pi₁_pair]
+    rw [this, ← hmdef, FFL.FirstOrder.Arithmetic.pi₁_pair]
   rw [hbnds] at hrowcore
   -- the row has an entry at index `u`, so its drops up to `u` have values
   have hselfR : Semiformula.Evalb (rowv :> ![rowv]) (code (Code.proj (0 : Fin 1))) :=
@@ -2267,14 +2267,14 @@ theorem eval_codeHistoryEvaluator_succ_iff_cell
       chain_match _ _ m H₀ s rowv lenR hrowcore hdropR lenR (le_of_lt hls) le_rfl
     have hp0 : p = 0 := eval_unique hdp hd0R
     have hapos : 0 < a := by
-      rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
+      rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
       · exfalso
         rw [← h0, zero_add] at ha
         rw [ha] at hls
         exact absurd hls (_root_.lt_irrefl s)
       · exact hpos
     have hpred : a - 1 + 1 = a :=
-      sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
+      sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp hapos)
     obtain ⟨q', -, hstep'⟩ :=
       eval_codePrec_succ _ _ (a - 1) p ![m, H₀] (by rw [hpred]; exact hsa)
     exact codeListCons_ne_zero _ _ p _ hstep' hp0
@@ -2284,14 +2284,14 @@ theorem eval_codeHistoryEvaluator_succ_iff_cell
   obtain ⟨aR, pR, haR, hsaR, hdR⟩ :=
     chain_match _ _ m H₀ s rowv u hrowcore hdropRow u (le_of_lt hus) le_rfl
   have haRpos : 0 < aR := by
-    rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le aR) with h0 | hpos
+    rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le aR) with h0 | hpos
     · exfalso
       rw [← h0, zero_add] at haR
       rw [haR] at hus
       exact absurd hus (_root_.lt_irrefl s)
     · exact hpos
   have hpredR : aR - 1 + 1 = aR :=
-    sub_add_self_of_le (LO.FirstOrder.Arithmetic.pos_iff_one_le.mp haRpos)
+    sub_add_self_of_le (FFL.FirstOrder.Arithmetic.pos_iff_one_le.mp haRpos)
   obtain ⟨q, -, hstepR⟩ :=
     eval_codePrec_succ _ _ (aR - 1) pR ![m, H₀] (by rw [hpredR]; exact hsaR)
   obtain ⟨cellv, l, hcellv, -, hpRv⟩ := codeListCons_args _ _ pR _ hstepR
@@ -2313,8 +2313,8 @@ theorem eval_codeHistoryEvaluator_succ_iff_cell
   have hfuel : Semiformula.Evalb (s :> ![aR - 1, q, m, H₀])
       (code (codeUnpair₁ (codeListLength
         (codeLift (codeLift (Code.proj (1 : Fin 2))))))) := by
-    have hpi : LO.FirstOrder.Arithmetic.pi₁ m = s := by
-      rw [← hmdef, LO.FirstOrder.Arithmetic.pi₁_pair]
+    have hpi : FFL.FirstOrder.Arithmetic.pi₁ m = s := by
+      rw [← hmdef, FFL.FirstOrder.Arithmetic.pi₁_pair]
     have hlift := eval_codeUnpair₁ _ m ![aR - 1, q, m, H₀] hlenlift
     rwa [hpi] at hlift
   have hstepv : Semiformula.Evalb (aR :> ![aR - 1, q, m, H₀])
@@ -2337,12 +2337,12 @@ theorem eval_codeHistoryEvaluator_succ_iff_cell
   have hcellvy : cellv = y + 1 := eval_unique hcellv hcellsrc
   -- the entry of the row at `u`
   have hgetRow : GetAt rowv u (y + 1 + 1) := by
-    refine ⟨pR, LO.FirstOrder.Arithmetic.pi₁ (pR - 1), hdR,
+    refine ⟨pR, FFL.FirstOrder.Arithmetic.pi₁ (pR - 1), hdR,
       head_of_drop (Code.proj (0 : Fin 1)) pR ![pR] ((eval_proj_iff _ _ _).mpr rfl),
       ?_, ?_⟩
     · rw [hpRv]
       exact lt_of_lt_of_le _root_.zero_lt_one le_add_self
-    · rw [hpRv, add_sub_self, LO.FirstOrder.Arithmetic.pi₁_pair, hcellvy]
+    · rw [hpRv, add_sub_self, FFL.FirstOrder.Arithmetic.pi₁_pair, hcellvy]
   -- reassemble the two lookups in the history one step past `m`
   have htab : Semiformula.Evalb (H₁ :> ![s, qCode, u])
       (code (codeEvaluatorHistory.comp
@@ -2382,7 +2382,7 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
     {r : ℕ} (dtable dk dq dn : Code r) (v : Fin r → M)
     (N H k u y : M) (q : ℕ)
     (hH : Semiformula.Evalb ![H, N] (code codeEvaluatorHistory))
-    (hrow : LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) < N)
+    (hrow : FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) < N)
     (htable : Semiformula.Evalb (H :> v) (code dtable))
     (hk : Semiformula.Evalb (k :> v) (code dk))
     (hq : Semiformula.Evalb (((q : ℕ) : M) :> v) (code dq))
@@ -2395,10 +2395,10 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
       Semiformula.Evalb ((1 : M) :> w) (code (codeConst (n := s) 1)) := by
     intro s w; rw [eval_codeConst_iff]; simp
   have hkey : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) :> v) (code (codePair dk dq)) :=
+      (FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) :> v) (code (codePair dk dq)) :=
     eval_codePair _ _ k _ v hk hq
   have hpairQ : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) :> ![k, ((q : ℕ) : M), u])
+      (FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) :> ![k, ((q : ℕ) : M), u])
       (code (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))) :=
     eval_codePair _ _ k _ ![k, ((q : ℕ) : M), u]
       ((eval_proj_iff _ _ _).mpr rfl) ((eval_proj_iff _ _ _).mpr rfl)
@@ -2417,7 +2417,7 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
     rw [hn₀v] at hgetRow
     obtain ⟨G1, b₁, hG1, hb₁, hcase₁⟩ := eval_sub_args _ _ _ _ hrowc
     have hrowpos : 0 < rowv := by
-      rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
+      rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
       · exact absurd (getAt_nil_absurd u (y + 1 + 1) (by rw [← h0] at hgetRow; exact hgetRow))
           not_false
       · exact hp
@@ -2430,19 +2430,19 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
     rw [hG1v] at hG1
     obtain ⟨Hm, i₀, hHm, hi₀, hgetHm⟩ := getAt_of_eval _ _ _ _ hG1 (by simp)
     have hHmv : Hm = H := eval_unique hHm htable
-    have hi₀v : i₀ = LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) := eval_unique hi₀ hkey
+    have hi₀v : i₀ = FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) := eval_unique hi₀ hkey
     rw [hHmv, hi₀v] at hgetHm
     -- descend to the first stage that records this row
     obtain ⟨H', hH', hgetH'⟩ :=
       getAt_descend _ _ _ H hH hgetHm (by simpa using hrowpos)
-        (LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hrow)
+        (FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hrow)
     -- reassemble the history-evaluator evaluation at the earlier stage
     rw [codeHistoryEvaluator, codeTableLookup_eq]
     have htab : Semiformula.Evalb (H' :> ![k, ((q : ℕ) : M), u])
         (code (codeEvaluatorHistory.comp
           ![codeSucc (codePair (Code.proj (0 : Fin 3)) (Code.proj (1 : Fin 3)))])) := by
       rw [eval_comp_iff]
-      refine ⟨![LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) + 1], by simpa using hH', ?_⟩
+      refine ⟨![FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) + 1], by simpa using hH', ?_⟩
       intro j
       refine Fin.cases ?_ (fun j' => Fin.elim0 j') j
       simpa using (eval_codeSucc_iff _ _ _).mpr ⟨_, hpairQ, rfl⟩
@@ -2540,7 +2540,7 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
     rw [hn₀v] at hgetRow
     obtain ⟨G1, b₁, hG1, hb₁, hcase₁⟩ := eval_sub_args _ _ _ _ hrowc
     have hrowpos : 0 < rowv := by
-      rcases eq_or_lt_of_le (LO.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
+      rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le rowv) with h0 | hp
       · exact absurd (getAt_nil_absurd u (y + 1 + 1) (by rw [← h0] at hgetRow; exact hgetRow))
           not_false
       · exact hp
@@ -2552,13 +2552,13 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
         exact absurd hrowpos (_root_.lt_irrefl 0)
     rw [hG1v] at hG1
     obtain ⟨H₀, i₀, hH₀, hi₀, hgetH₀⟩ := getAt_of_eval _ _ _ _ hG1 (by simp)
-    have hi₀v : i₀ = LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) := eval_unique hi₀ hpairQ
+    have hi₀v : i₀ = FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) := eval_unique hi₀ hpairQ
     rw [hi₀v] at hgetH₀
     rw [eval_comp_iff] at hH₀
     obtain ⟨w, hhist, hwi⟩ := hH₀
     have hsv := hwi 0
     simp only [Matrix.cons_val_zero] at hsv
-    have hw0 : w 0 = LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) + 1 :=
+    have hw0 : w 0 = FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) + 1 :=
       eval_unique hsv ((eval_codeSucc_iff _ _ _).mpr ⟨_, hpairQ, rfl⟩)
     have hshape : w = (w 0) :> ![] := by
       funext j
@@ -2566,7 +2566,7 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
       rfl
     rw [hshape, hw0] at hhist
     -- the entry persists at every later history up to the row count `N`
-    generalize hPdef : LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) = P at hgetH₀ hhist hrow
+    generalize hPdef : FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) = P at hgetH₀ hhist hrow
     have hall : ∀ t : M, P + 1 + t ≤ N → ∃ j H' d hd : M, P + 1 + t = j ∧
         Semiformula.Evalb ![H', j] (code codeEvaluatorHistory) ∧
         Semiformula.Evalb ![d, P, H'] (code dropCore) ∧
@@ -2589,7 +2589,7 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
         refine ⟨j + 1, H'', d', hd', ?_, hH'', g1, g2, g3, g4⟩
         rw [← hjt]
         exact (add_assoc (P + 1) t 1).symm
-    have hle : P + 1 ≤ N := LO.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hrow
+    have hle : P + 1 ≤ N := FFL.FirstOrder.Arithmetic.succ_le_iff_lt.mpr hrow
     obtain ⟨j, Hm, d, hd, hjt, hHm, h1, h2, h3, h4⟩ :=
       hall (N - (P + 1)) (by rw [add_tsub_self_of_le hle])
     have hjN : j = N := by rw [← hjt, add_tsub_self_of_le hle]
@@ -2615,7 +2615,7 @@ theorem input_lt_of_codeTableLookup_succ_of_history
     {r : ℕ} (dtable dk dq dn : Code r) (v : Fin r → M)
     (N H k u y : M) (q : ℕ)
     (hH : Semiformula.Evalb ![H, N] (code codeEvaluatorHistory))
-    (hrow : LO.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) < N)
+    (hrow : FFL.FirstOrder.Arithmetic.pair k ((q : ℕ) : M) < N)
     (htable : Semiformula.Evalb (H :> v) (code dtable))
     (hk : Semiformula.Evalb (k :> v) (code dk))
     (hq : Semiformula.Evalb (((q : ℕ) : M) :> v) (code dq))
@@ -2659,8 +2659,8 @@ theorem eval_predecessor_lookup_succ_iff_codeHistoryEvaluator
     rwa [add_sub_self] at h
   exact eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
     _ _ _ dn ![k + 1, ((q : ℕ) : M), w]
-    (LO.FirstOrder.Arithmetic.pair (k + 1) ((q : ℕ) : M)) H k u y q hH
-    (LO.FirstOrder.Arithmetic.pair_lt_pair_left (lt_add_one k) _)
+    (FFL.FirstOrder.Arithmetic.pair (k + 1) ((q : ℕ) : M)) H k u y q hH
+    (FFL.FirstOrder.Arithmetic.pair_lt_pair_left (lt_add_one k) _)
     hbefore hk (eval_codeEvaluatorCell_index (k + 1) ((q : ℕ) : M) w) hn
 
 end CategoricalRiceShapiro.Evaluator

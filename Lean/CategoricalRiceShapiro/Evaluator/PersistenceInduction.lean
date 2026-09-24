@@ -35,8 +35,8 @@ library.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 namespace CategoricalRiceShapiro.Evaluator
 
@@ -144,6 +144,6 @@ theorem evalnCertificateFormula_natCode_persist_of_stage_zero
   -- a history success at stage `s` bounds the input by `s`
   obtain ⟨hlt, -⟩ :=
     (eval_codeHistoryEvaluator_succ_iff_cell (0 : M) ((q : ℕ) : M) u y).mp source_history
-  exact absurd hlt (not_lt_of_ge (LO.FirstOrder.Arithmetic.zero_le u))
+  exact absurd hlt (not_lt_of_ge (FFL.FirstOrder.Arithmetic.zero_le u))
 
 end CategoricalRiceShapiro.Evaluator

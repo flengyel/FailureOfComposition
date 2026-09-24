@@ -12,7 +12,7 @@ set_option autoImplicit false
 
 
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.PartialRecursive
 
 namespace FailureOfComposition.ProgramGraph

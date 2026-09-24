@@ -14,8 +14,8 @@ Its graph is proved empty inside every model of PA, including nonstandard models
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.Evaluator
 open CategoricalRiceShapiro.ArithmeticCode
 open FailureOfComposition.ConcreteWitnessGraphs
@@ -52,7 +52,7 @@ theorem concreteEmpty_no_computation [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒ�
     have hhist := (evalnCertificateFormula_eval_history_iff 0 (concreteEmptyIndex : M) u y).mp h
     have hlt :=
       ((eval_codeHistoryEvaluator_succ_iff_cell 0 (concreteEmptyIndex : M) u y).mp hhist).1
-    exact (not_lt_of_ge (LO.FirstOrder.Arithmetic.zero_le u)) hlt
+    exact (not_lt_of_ge (FFL.FirstOrder.Arithmetic.zero_le u)) hlt
   have hstep (s : M)
       (ih : ∀ u y : M, ¬Semiformula.Evalb ![s, (concreteEmptyIndex : M), u, y]
         (evalnCertificateFormula : ArithmeticSemisentence 4)) :
@@ -60,7 +60,7 @@ theorem concreteEmpty_no_computation [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒ�
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
     intro u y h
     have hs : (0 : M) < s + 1 :=
-      lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le s) (lt_add_one s)
+      lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le s) (lt_add_one s)
     obtain ⟨_, x, hx, hcase⟩ :=
       (evalnCertificateFormula_tag_seven_iff concreteEmptyIndex (by decide) (s + 1) u y hs).mp h
     have hsub : partrecCodePayload concreteEmptyIndex = 1 := by decide
@@ -71,7 +71,7 @@ theorem concreteEmpty_no_computation [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒ�
     · apply ih _ y
       simpa only [add_sub_self] using hr
     · have hp : (0 : M) < u + 1 :=
-        lt_of_le_of_lt (LO.FirstOrder.Arithmetic.zero_le u) (lt_add_one u)
+        lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.zero_le u) (lt_add_one u)
       exact (ne_of_gt hp) (hx'.2.symm.trans hx0)
   intro s
   refine InductionScheme.succ_induction (C := Set.univ)

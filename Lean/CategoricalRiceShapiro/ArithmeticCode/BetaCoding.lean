@@ -40,8 +40,8 @@ Nothing here uses `Nat.beta`, `Computes` or evaluation over standard `ℕ`.
 set_option autoImplicit false
 
 open Nat Nat.ArithPart₁
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
@@ -58,12 +58,12 @@ private lemma dvd_sub_of {d x y : V} (hx : d ∣ x) (hy : d ∣ y) : d ∣ x - y
   · rw [zero_dvd_iff] at hx hy
     simp [hx, hy]
   · rcases lt_or_ge x y with h | h
-    · simp [LO.FirstOrder.Arithmetic.sub_spec_of_lt h]
+    · simp [FFL.FirstOrder.Arithmetic.sub_spec_of_lt h]
     · obtain ⟨p, rfl⟩ := hx
       obtain ⟨q, rfl⟩ := hy
       have hdp : 0 < d := pos_iff_ne_zero.mpr hd
       have hqp : q ≤ p := le_of_mul_le_mul_left h hdp
-      exact ⟨p - q, (LO.FirstOrder.Arithmetic.mul_sub hqp).symm⟩
+      exact ⟨p - q, (FFL.FirstOrder.Arithmetic.mul_sub hqp).symm⟩
 
 private lemma mod_add_congr {m x₁ x₂ y₁ y₂ : V} (hm : 0 < m)
     (h₁ : x₁ % m = y₁ % m) (h₂ : x₂ % m = y₂ % m) :
@@ -155,7 +155,7 @@ private theorem exists_mul_mod_eq_one {A m : V} (hm : 1 < m)
           _ = (m + (g - m % g)) % m := by rw [harith]
           _ = g - m % g := by
                 rw [mod_add_remove_left hm0, mod_eq_self_of_lt
-                  (lt_of_le_of_lt (LO.FirstOrder.Arithmetic.sub_le_self _ _) hgm)]
+                  (lt_of_le_of_lt (FFL.FirstOrder.Arithmetic.sub_le_self _ _) hgm)]
       have hsub_lt : g - m % g < g := by
         have h : g - m % g < g - m % g + m % g :=
           lt_add_of_pos_right _ (pos_iff_ne_zero.mpr h0)
@@ -442,7 +442,7 @@ private lemma exists_beta_of_seq {s : V} (hs : Seq s) :
       d ∣ (j + 1) * internalFactorial (s + lh s) + 1 → d = 1 := by
     intro i j hij hj d h₁ h₂
     refine modulus_coprime hij (dvd_internalFactorial (pos_sub_iff_lt.mpr hij) ?_) d h₁ h₂
-    calc j - i ≤ j := LO.FirstOrder.Arithmetic.sub_le_self _ _
+    calc j - i ≤ j := FFL.FirstOrder.Arithmetic.sub_le_self _ _
       _ ≤ s + lh s := le_trans (le_of_lt hj) le_add_self
   obtain ⟨c, hc⟩ := exists_crt hb hcop hlt
   exact ⟨c, internalFactorial (s + lh s), hb, hc⟩
@@ -475,20 +475,20 @@ theorem exists_codeBeta_extension
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- the graph of `codeBeta` on the two projections, at an arbitrary pair
   have hbeta : ∀ a i : M, Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pi₁ a %
-        ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ a + 1)) :> ![a, i])
+      ((FFL.FirstOrder.Arithmetic.pi₁ a %
+        ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ a + 1)) :> ![a, i])
       (code (codeBeta (Code.proj (0 : Fin 2)) (Code.proj (1 : Fin 2)))) := by
     intro a i
     exact eval_codeBeta_of_values _ _ a i ![a, i]
       ((eval_proj_iff _ _ _).mpr (by simp)) ((eval_proj_iff _ _ _).mpr (by simp))
   -- the sequence of old beta values below `l`, extended by `x` at `l`
   have hR : 𝚺₁-Relation (fun i y : M =>
-      (i < l ∧ y = LO.FirstOrder.Arithmetic.pi₁ n %
-        ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n + 1)) ∨ (i = l ∧ y = x)) := by
+      (i < l ∧ y = FFL.FirstOrder.Arithmetic.pi₁ n %
+        ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n + 1)) ∨ (i = l ∧ y = x)) := by
     definability
   have hU : ∀ i < l + 1, ∃ y : M,
-      (i < l ∧ y = LO.FirstOrder.Arithmetic.pi₁ n %
-        ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n + 1)) ∨ (i = l ∧ y = x) := by
+      (i < l ∧ y = FFL.FirstOrder.Arithmetic.pi₁ n %
+        ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n + 1)) ∨ (i = l ∧ y = x) := by
     intro i hi
     rcases le_iff_lt_or_eq.mp (lt_succ_iff_le.mp hi) with h | rfl
     · exact ⟨_, Or.inl ⟨h, rfl⟩⟩
@@ -496,22 +496,22 @@ theorem exists_codeBeta_extension
   obtain ⟨s, hs, hlh, hsR⟩ := sigmaOne_skolem_seq hR hU
   obtain ⟨c, b, -, hc⟩ := exists_beta_of_seq hs
   have hval : ∀ i < l + 1,
-      (i < l ∧ znth s i = LO.FirstOrder.Arithmetic.pi₁ n %
-        ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n + 1)) ∨ (i = l ∧ znth s i = x) :=
+      (i < l ∧ znth s i = FFL.FirstOrder.Arithmetic.pi₁ n %
+        ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n + 1)) ∨ (i = l ∧ znth s i = x) :=
     fun i hi => hsR i (znth s i) (hs.znth (by rw [hlh]; exact hi))
-  refine ⟨LO.FirstOrder.Arithmetic.pair c b, ?_, ?_⟩
+  refine ⟨FFL.FirstOrder.Arithmetic.pair c b, ?_, ?_⟩
   · intro i y hi hy
-    have hyval : y = LO.FirstOrder.Arithmetic.pi₁ n %
-        ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n + 1) := eval_unique hy (hbeta n i)
+    have hyval : y = FFL.FirstOrder.Arithmetic.pi₁ n %
+        ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n + 1) := eval_unique hy (hbeta n i)
     have hcv : c % ((i + 1) * b + 1) = znth s i :=
       hc i (by rw [hlh]; exact lt_succ_iff_le.mpr (le_of_lt hi))
-    have hzn : znth s i = LO.FirstOrder.Arithmetic.pi₁ n %
-        ((i + 1) * LO.FirstOrder.Arithmetic.pi₂ n + 1) := by
+    have hzn : znth s i = FFL.FirstOrder.Arithmetic.pi₁ n %
+        ((i + 1) * FFL.FirstOrder.Arithmetic.pi₂ n + 1) := by
       rcases hval i (lt_succ_iff_le.mpr (le_of_lt hi)) with ⟨-, h⟩ | ⟨rfl, -⟩
       · exact h
       · exact absurd hi (_root_.lt_irrefl _)
-    have h := hbeta (LO.FirstOrder.Arithmetic.pair c b) i
-    rw [LO.FirstOrder.Arithmetic.pi₁_pair, LO.FirstOrder.Arithmetic.pi₂_pair,
+    have h := hbeta (FFL.FirstOrder.Arithmetic.pair c b) i
+    rw [FFL.FirstOrder.Arithmetic.pi₁_pair, FFL.FirstOrder.Arithmetic.pi₂_pair,
       hcv, hzn, ← hyval] at h
     exact h
   · have hcv : c % ((l + 1) * b + 1) = znth s l := hc l (by rw [hlh]; exact lt_add_one l)
@@ -519,8 +519,8 @@ theorem exists_codeBeta_extension
       rcases hval l (lt_add_one l) with ⟨h, -⟩ | ⟨-, h⟩
       · exact absurd h (_root_.lt_irrefl _)
       · exact h
-    have h := hbeta (LO.FirstOrder.Arithmetic.pair c b) l
-    rw [LO.FirstOrder.Arithmetic.pi₁_pair, LO.FirstOrder.Arithmetic.pi₂_pair,
+    have h := hbeta (FFL.FirstOrder.Arithmetic.pair c b) l
+    rw [FFL.FirstOrder.Arithmetic.pi₁_pair, FFL.FirstOrder.Arithmetic.pi₂_pair,
       hcv, hzn] at h
     exact h
 

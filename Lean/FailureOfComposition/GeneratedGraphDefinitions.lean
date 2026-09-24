@@ -13,7 +13,7 @@ Definitions and closure laws for the generated graph congruence.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 
 namespace FailureOfComposition.GeneratedCongruence
 open ProofSearch

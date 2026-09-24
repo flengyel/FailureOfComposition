@@ -30,8 +30,8 @@ open Nat Nat.ArithPart₁
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 /-- The payload of a partial-recursive index has a value at any value of the
 index: the shifted index is a truncated difference, and halving it twice has a

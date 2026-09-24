@@ -44,7 +44,7 @@ uniformly in PA; standard-model agreement alone is not the specification.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 open CategoricalRiceShapiro.PartialRecursive
 
 namespace FailureOfComposition.Palomar

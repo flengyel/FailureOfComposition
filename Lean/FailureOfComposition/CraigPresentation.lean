@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
 import FailureOfComposition.TheoryEnumerability
-import Foundation.FirstOrder.Incompleteness.InductionSchemeDelta1
+import Foundation.FirstOrder.Incompleteness.Definability
 
 /-! A decidable presentation of an r.e. arithmetic theory.
 Each axiom is padded by a tautology carrying a PA derivation that its original
@@ -13,9 +13,9 @@ operations are provably Delta-one over IΣ1. -/
 
 set_option autoImplicit false
 set_option maxRecDepth 4096
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
-open LO.FirstOrder.Arithmetic.Bootstrapping
-open scoped LO.FirstOrder.Arithmetic LO.FirstOrder.Arithmetic.Bootstrapping
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
+open FFL.FirstOrder.Arithmetic.Bootstrapping
+open scoped FFL.FirstOrder.Arithmetic FFL.FirstOrder.Arithmetic.Bootstrapping
 
 namespace FailureOfComposition.CraigPresentation
 noncomputable section

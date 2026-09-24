@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate existing pinned checkouts and create a path-only Lake override.
+"""Validate the isolated port checkouts and create a path-only Lake override.
 
 No Lake command or network operation is used here. Caller overrides are only
 package-name-to-directory mappings; resolution metadata comes from the project's
@@ -16,6 +16,10 @@ import re
 import subprocess
 import sys
 import tempfile
+
+
+EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.35.0-rc2"
+EXPECTED_LEAN_VERSION = "4.35.0-rc2"
 
 
 def positive_setting(name, default=1):
@@ -38,21 +42,20 @@ def check_runtime(project):
     """Check the installed compiler directly, without invoking Lake."""
     if sys.version_info < (3, 9):
         raise SystemExit("Python 3.9 or later is required")
-    expected = "leanprover/lean4:v4.32.2"
-    if (project / "lean-toolchain").read_text().strip() != expected:
-        raise SystemExit(f"Unexpected Lean toolchain; expected {expected}")
+    if (project / "lean-toolchain").read_text().strip() != EXPECTED_TOOLCHAIN:
+        raise SystemExit(f"Unexpected Lean toolchain; expected {EXPECTED_TOOLCHAIN}")
     result = subprocess.run(
         ["lean", "--version"], cwd=project, env=clean_environment(),
         capture_output=True, text=True, check=False,
     )
     version = re.search(r"\bversion\s+([^\s,)]+)", result.stdout)
-    if result.returncode or not version or version.group(1) != "4.32.2":
+    if result.returncode or not version or version.group(1) != EXPECTED_LEAN_VERSION:
         raise SystemExit(
-            "Expected installed Lean 4.32.2; got "
+            f"Expected installed Lean {EXPECTED_LEAN_VERSION}; got "
             + (result.stdout.strip() or result.stderr.strip() or "no version output")
         )
     print(result.stdout.strip(), flush=True)
-    print("PASS installed Lean 4.32.2 (checked without Lake)", flush=True)
+    print(f"PASS installed Lean {EXPECTED_LEAN_VERSION} (checked without Lake)", flush=True)
 
 
 def _read_manifest(path):
@@ -118,8 +121,9 @@ def canonical_packages(project, supplied=None):
                     raise SystemExit(f"{name}: supplied {field} conflicts with pinned metadata")
             mapping[name] = Path(directory).resolve(strict=True)
     else:
-        checkout = Path(os.environ.get("PCATS_DST") or Path.home() / "src/PCats")
-        package_directory = (checkout / ".lake/packages").resolve(strict=True)
+        package_directory = (
+            project / manifest.get("packagesDir", ".lake/packages")
+        ).resolve(strict=True)
         for name in pinned:
             mapping[name] = (package_directory / name.strip("«»")).resolve(strict=True)
 
@@ -183,7 +187,11 @@ def check_packages(project, override):
 @contextmanager
 def validated_packages(project, supplied=None):
     check_runtime(project)
-    with tempfile.TemporaryDirectory(prefix="failure-composition-packages-") as temporary:
+    work = Path(project).resolve().parent / ".codex-work" / "tmp"
+    work.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(
+        prefix="failure-composition-packages-", dir=work
+    ) as temporary:
         override = Path(temporary) / "packages.json"
         prepare_packages(project, override, supplied)
         try:

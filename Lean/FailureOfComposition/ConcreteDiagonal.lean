@@ -16,8 +16,8 @@ set_option autoImplicit false
 
 
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open LO.FirstOrder.Arithmetic.Bootstrapping LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open FFL.FirstOrder.Arithmetic.Bootstrapping FFL.Entailment
 
 namespace FailureOfComposition.ConcreteEvaluator
 

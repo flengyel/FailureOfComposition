@@ -8,7 +8,7 @@ import Foundation.FirstOrder.Arithmetic.R0.Representation
 /-!
 # Compatibility results for Foundation's arithmetic codes
 
-Foundation defines `LO.FirstOrder.Arithmetic.code`, the arithmetic formula
+Foundation defines `FFL.FirstOrder.Arithmetic.code`, the arithmetic formula
 associated with a partial-recursive code `Nat.ArithPart₁.Code k`, together with
 its auxiliary formula `codeAux`.  Foundation's own uniqueness statements for
 these formulas are dormant source at the recorded revision, so this module
@@ -22,8 +22,8 @@ set_option autoImplicit false
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 -- The two proofs below are migrated verbatim from the verified checkpoint;
 -- rewriting their `simp` calls as `simp only` is deferred.
@@ -35,14 +35,14 @@ private theorem evalAux_unique
     {v : Fin k → M} {z z' : M}
     (hz :
       Semiformula.Evalf (M := M) (z :> v)
-        (LO.FirstOrder.Arithmetic.codeAux c))
+        (FFL.FirstOrder.Arithmetic.codeAux c))
     (hz' :
       Semiformula.Evalf (M := M) (z' :> v)
-        (LO.FirstOrder.Arithmetic.codeAux c)) :
+        (FFL.FirstOrder.Arithmetic.codeAux c)) :
     z = z' := by
   revert hz hz'
   induction c generalizing z z' <;>
-    simp [LO.FirstOrder.Arithmetic.codeAux]
+    simp [FFL.FirstOrder.Arithmetic.codeAux]
   case zero => rintro rfl rfl; rfl
   case one  => rintro rfl rfl; rfl
   case add  => rintro rfl rfl; rfl
@@ -69,13 +69,13 @@ private theorem evalAux_unique
     intro h₁ hm₁ h₂ hm₂
     by_contra hzz
     wlog h : z < z' with Hz
-    case inr =>
+    case isFalse =>
       have hlt : z' < z := lt_of_le_of_ne (not_lt.mp h) (Ne.symm hzz)
       exact Hz (k := k) c ih h₂ hm₂ h₁ hm₁ (Ne.symm hzz) hlt
     have hex : ∃ x, x ≠ 0 ∧
         Semiformula.Evalf (M := M)
           (x :> z :> fun i => v i)
-          (LO.FirstOrder.Arithmetic.codeAux c) := hm₂ z h
+          (FFL.FirstOrder.Arithmetic.codeAux c) := hm₂ z h
     rcases hex with ⟨x, xz, hx⟩
     exact xz (ih hx h₁)
 
@@ -87,12 +87,12 @@ theorem eval_unique
     {v : Fin k → M} {z z' : M}
     (hz :
       Semiformula.Evalb (M := M) (z :> v)
-        (LO.FirstOrder.Arithmetic.code c))
+        (FFL.FirstOrder.Arithmetic.code c))
     (hz' :
       Semiformula.Evalb (M := M) (z' :> v)
-        (LO.FirstOrder.Arithmetic.code c)) :
+        (FFL.FirstOrder.Arithmetic.code c)) :
     z = z' := by
-  simp [LO.FirstOrder.Arithmetic.code, Semiformula.eval_rew,
+  simp [FFL.FirstOrder.Arithmetic.code, Semiformula.eval_rew,
     Matrix.empty_eq, Function.comp_def] at hz hz'
   exact evalAux_unique hz hz'
 

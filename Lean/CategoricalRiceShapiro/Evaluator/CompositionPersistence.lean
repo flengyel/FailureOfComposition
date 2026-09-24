@@ -30,8 +30,8 @@ numbers nor persistence for all standard indices.
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open CategoricalRiceShapiro.ArithmeticCode
 open CategoricalRiceShapiro.PartialRecursive
 
@@ -47,9 +47,9 @@ private theorem tagFive_canonical_reencoding (q : ℕ) (hq : partrecCodeTag q = 
   have hb : ∀ n : ℕ, n.bodd.toNat = n % 2 := fun n => by rw [Nat.mod_two_of_bodd]
   have h4 : ¬ q < 4 := by
     intro hlt
-    simp only [partrecCodeTag, hlt, if_true] at hq
+    simp only [partrecCodeTag, hlt, ite_true] at hq
     omega
-  simp only [partrecCodeTag, h4, if_false, hb, Nat.div2_val] at hq
+  simp only [partrecCodeTag, h4, ite_false, hb, Nat.div2_val] at hq
   rw [canonicalPartrecCompIndex_eq]
   simp only [partrecCodePayload₁, partrecCodePayload₂, Nat.pair_unpair, partrecCodePayload,
     Nat.div2_val]

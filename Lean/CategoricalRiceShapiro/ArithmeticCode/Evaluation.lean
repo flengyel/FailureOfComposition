@@ -10,7 +10,7 @@ import CategoricalRiceShapiro.ArithmeticCode.FoundationCompat
 # Evaluation of arithmetic codes in an arbitrary model
 
 Every result in this module describes `Semiformula.Evalb` for the arithmetic
-formula `LO.FirstOrder.Arithmetic.code c` under an arbitrary assignment in an
+formula `FFL.FirstOrder.Arithmetic.code c` under an arbitrary assignment in an
 arbitrary structure.
 
 Two results assume a model of `𝗣𝗔⁻`.  `eval_codeConst` states the value of a
@@ -32,8 +32,8 @@ open Nat.ArithPart₁
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 variable {M : Type*} [ORingStructure M]
 
@@ -41,63 +41,63 @@ variable {M : Type*} [ORingStructure M]
 
 theorem eval_zero_iff {k : ℕ} (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.zero k)) ↔ z = 0 := by
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+        (FFL.FirstOrder.Arithmetic.code (Code.zero k)) ↔ z = 0 := by
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Function.comp_def, Matrix.empty_eq]
 
 theorem eval_one_iff {k : ℕ} (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.one k)) ↔ z = 1 := by
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+        (FFL.FirstOrder.Arithmetic.code (Code.one k)) ↔ z = 1 := by
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Function.comp_def, Matrix.empty_eq]
 
 theorem eval_proj_iff {k : ℕ} (i : Fin k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.proj i)) ↔ z = v i := by
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+        (FFL.FirstOrder.Arithmetic.code (Code.proj i)) ↔ z = v i := by
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Function.comp_def]
 
 theorem eval_add_iff {k : ℕ} (i j : Fin k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.add i j)) ↔ z = v i + v j := by
+        (FFL.FirstOrder.Arithmetic.code (Code.add i j)) ↔ z = v i + v j := by
   have hop : ((v i :> fun _ => v j) : Fin 2 → M) = ![v i, v j] := by
     funext x
     refine Fin.cases ?_ ?_ x
     · rfl
     · intro y; simp
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Function.comp_def, Matrix.comp_vecCons', hop]
 
 theorem eval_mul_iff {k : ℕ} (i j : Fin k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.mul i j)) ↔ z = v i * v j := by
+        (FFL.FirstOrder.Arithmetic.code (Code.mul i j)) ↔ z = v i * v j := by
   have hop : ((v i :> fun _ => v j) : Fin 2 → M) = ![v i, v j] := by
     funext x
     refine Fin.cases ?_ ?_ x
     · rfl
     · intro y; simp
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Function.comp_def, Matrix.comp_vecCons', hop]
 
 theorem eval_equal_iff {k : ℕ} (i j : Fin k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.equal i j)) ↔
+        (FFL.FirstOrder.Arithmetic.code (Code.equal i j)) ↔
       ((v i = v j ∧ z = 1) ∨ (¬ v i = v j ∧ z = 0)) := by
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Function.comp_def, Matrix.empty_eq]
 
 theorem eval_lt_iff {k : ℕ} (i j : Fin k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.lt i j)) ↔
+        (FFL.FirstOrder.Arithmetic.code (Code.lt i j)) ↔
       ((v i < v j ∧ z = 1) ∨ (¬ v i < v j ∧ z = 0)) := by
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Function.comp_def, Matrix.empty_eq, -not_lt]
 
 /-! ### Composition -/
@@ -105,29 +105,29 @@ theorem eval_lt_iff {k : ℕ} (i j : Fin k) (z : M) (v : Fin k → M) :
 theorem eval_comp_iff {m k : ℕ}
     (c : Code m) (d : Fin m → Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.comp c d)) ↔
+        (FFL.FirstOrder.Arithmetic.code (Code.comp c d)) ↔
       ∃ w : Fin m → M,
         Semiformula.Evalb (z :> w)
-            (LO.FirstOrder.Arithmetic.code c) ∧
+            (FFL.FirstOrder.Arithmetic.code c) ∧
           ∀ i : Fin m,
             Semiformula.Evalb (w i :> v)
-              (LO.FirstOrder.Arithmetic.code (d i)) := by
-  simp [LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux,
+              (FFL.FirstOrder.Arithmetic.code (d i)) := by
+  simp [FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux,
     Semiformula.eval_rew, Function.comp_def,
     Matrix.empty_eq, Matrix.comp_vecCons']
 
 theorem eval_comp₂_iff {k : ℕ}
     (c : Code 2) (A B : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.comp c ![A, B])) ↔
+        (FFL.FirstOrder.Arithmetic.code (Code.comp c ![A, B])) ↔
       ∃ e : Fin 2 → M,
         Semiformula.Evalb (z :> e)
-            (LO.FirstOrder.Arithmetic.code c) ∧
+            (FFL.FirstOrder.Arithmetic.code c) ∧
           Semiformula.Evalb (e 0 :> v)
-              (LO.FirstOrder.Arithmetic.code A) ∧
+              (FFL.FirstOrder.Arithmetic.code A) ∧
             Semiformula.Evalb (e 1 :> v)
-              (LO.FirstOrder.Arithmetic.code B) := by
+              (FFL.FirstOrder.Arithmetic.code B) := by
   rw [eval_comp_iff]
   simp [Fin.forall_fin_two]
 
@@ -135,13 +135,13 @@ theorem eval_comp_congr {m k : ℕ}
     (c : Code m) (d e : Fin m → Code k) (z : M) (v : Fin k → M)
     (h : ∀ (i : Fin m) (x : M),
       Semiformula.Evalb (x :> v)
-          (LO.FirstOrder.Arithmetic.code (d i)) ↔
+          (FFL.FirstOrder.Arithmetic.code (d i)) ↔
         Semiformula.Evalb (x :> v)
-          (LO.FirstOrder.Arithmetic.code (e i))) :
+          (FFL.FirstOrder.Arithmetic.code (e i))) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.comp c d)) ↔
+        (FFL.FirstOrder.Arithmetic.code (Code.comp c d)) ↔
       Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (Code.comp c e)) := by
+        (FFL.FirstOrder.Arithmetic.code (Code.comp c e)) := by
   rw [eval_comp_iff, eval_comp_iff]
   exact exists_congr fun w =>
     and_congr_right fun _ => forall_congr' fun i => h i (w i)
@@ -150,10 +150,10 @@ theorem eval_comp_congr {m k : ℕ}
 
 theorem eval_codeAdd_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeAdd A B)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeAdd A B)) ↔
       ∃ a b : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
-          Semiformula.Evalb (b :> v) (LO.FirstOrder.Arithmetic.code B) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
+          Semiformula.Evalb (b :> v) (FFL.FirstOrder.Arithmetic.code B) ∧
             z = a + b := by
   rw [codeAdd, eval_comp₂_iff]
   constructor
@@ -165,10 +165,10 @@ theorem eval_codeAdd_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeMul_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeMul A B)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeMul A B)) ↔
       ∃ a b : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
-          Semiformula.Evalb (b :> v) (LO.FirstOrder.Arithmetic.code B) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
+          Semiformula.Evalb (b :> v) (FFL.FirstOrder.Arithmetic.code B) ∧
             z = a * b := by
   rw [codeMul, eval_comp₂_iff]
   constructor
@@ -180,10 +180,10 @@ theorem eval_codeMul_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeEq_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeEq A B)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeEq A B)) ↔
       ∃ a b : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
-          Semiformula.Evalb (b :> v) (LO.FirstOrder.Arithmetic.code B) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
+          Semiformula.Evalb (b :> v) (FFL.FirstOrder.Arithmetic.code B) ∧
             ((a = b ∧ z = 1) ∨ (¬ a = b ∧ z = 0)) := by
   rw [codeEq, eval_comp₂_iff]
   constructor
@@ -195,10 +195,10 @@ theorem eval_codeEq_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeLt_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeLt A B)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeLt A B)) ↔
       ∃ a b : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
-          Semiformula.Evalb (b :> v) (LO.FirstOrder.Arithmetic.code B) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
+          Semiformula.Evalb (b :> v) (FFL.FirstOrder.Arithmetic.code B) ∧
             ((a < b ∧ z = 1) ∨ (¬ a < b ∧ z = 0)) := by
   rw [codeLt, eval_comp₂_iff]
   constructor
@@ -210,9 +210,9 @@ theorem eval_codeLt_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeSucc_iff {k : ℕ} (A : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeSucc A)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeSucc A)) ↔
       ∃ a : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
           z = a + 1 := by
   rw [codeSucc, eval_comp₂_iff]
   constructor
@@ -228,9 +228,9 @@ theorem eval_codeSucc_iff {k : ℕ} (A : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codePos_iff {k : ℕ} (A : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codePos A)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codePos A)) ↔
       ∃ a : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
           ((0 < a ∧ z = 1) ∨ (¬ 0 < a ∧ z = 0)) := by
   rw [codePos, eval_comp₂_iff]
   constructor
@@ -246,9 +246,9 @@ theorem eval_codePos_iff {k : ℕ} (A : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeInv_iff {k : ℕ} (A : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeInv A)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeInv A)) ↔
       ∃ a : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
           ((a = 0 ∧ z = 1) ∨ (¬ a = 0 ∧ z = 0)) := by
   rw [codeInv, eval_comp₂_iff]
   constructor
@@ -264,10 +264,10 @@ theorem eval_codeInv_iff {k : ℕ} (A : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeAnd_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeAnd A B)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeAnd A B)) ↔
       ∃ a b : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
-          Semiformula.Evalb (b :> v) (LO.FirstOrder.Arithmetic.code B) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
+          Semiformula.Evalb (b :> v) (FFL.FirstOrder.Arithmetic.code B) ∧
             ((0 < a * b ∧ z = 1) ∨ (¬ 0 < a * b ∧ z = 0)) := by
   rw [codeAnd, eval_comp₂_iff]
   constructor
@@ -289,10 +289,10 @@ theorem eval_codeAnd_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeOr_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeOr A B)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeOr A B)) ↔
       ∃ a b : M,
-        Semiformula.Evalb (a :> v) (LO.FirstOrder.Arithmetic.code A) ∧
-          Semiformula.Evalb (b :> v) (LO.FirstOrder.Arithmetic.code B) ∧
+        Semiformula.Evalb (a :> v) (FFL.FirstOrder.Arithmetic.code A) ∧
+          Semiformula.Evalb (b :> v) (FFL.FirstOrder.Arithmetic.code B) ∧
             ((0 < a + b ∧ z = 1) ∨ (¬ 0 < a + b ∧ z = 0)) := by
   rw [codeOr, eval_comp₂_iff]
   constructor
@@ -316,7 +316,7 @@ theorem eval_codeOr_iff {k : ℕ} (A B : Code k) (z : M) (v : Fin k → M) :
 
 theorem eval_codeHead_iff {k : ℕ} (z : M) (w : Fin (k + 1) → M) :
     Semiformula.Evalb (z :> w)
-        (LO.FirstOrder.Arithmetic.code (codeHead (n := k))) ↔ z = w 0 :=
+        (FFL.FirstOrder.Arithmetic.code (codeHead (n := k))) ↔ z = w 0 :=
   eval_proj_iff (0 : Fin (k + 1)) z w
 
 -- Migrated verbatim from the verified checkpoint.
@@ -324,11 +324,11 @@ set_option linter.flexible false in
 theorem eval_codeLift_iff {k : ℕ}
     (d : Code k) (z t : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> (t :> v))
-        (LO.FirstOrder.Arithmetic.code (codeLift d)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeLift d)) ↔
       Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code d) := by
-  simp [codeLift, LO.FirstOrder.Arithmetic.code,
-    LO.FirstOrder.Arithmetic.codeAux, Semiformula.eval_rew,
+        (FFL.FirstOrder.Arithmetic.code d) := by
+  simp [codeLift, FFL.FirstOrder.Arithmetic.code,
+    FFL.FirstOrder.Arithmetic.codeAux, Semiformula.eval_rew,
     Function.comp_def, Matrix.empty_eq, Matrix.comp_vecCons']
   constructor
   · rintro ⟨w, hw, hi⟩
@@ -340,7 +340,7 @@ theorem eval_codeLift_iff {k : ℕ}
 
 theorem eval_codeConst [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ} (m : ℕ) (v : Fin k → M) :
     Semiformula.Evalb (((m : ℕ) : M) :> v)
-      (LO.FirstOrder.Arithmetic.code (codeConst (n := k) m)) := by
+      (FFL.FirstOrder.Arithmetic.code (codeConst (n := k) m)) := by
   induction m with
   | zero =>
       have h0 : (((0 : ℕ)) : M) = (0 : M) := by simp
@@ -356,7 +356,7 @@ theorem eval_codeConst [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ} (m : ℕ) (v
 theorem eval_codeConst_iff [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {k : ℕ}
     (m : ℕ) (z : M) (v : Fin k → M) :
     Semiformula.Evalb (z :> v)
-        (LO.FirstOrder.Arithmetic.code (codeConst (n := k) m)) ↔
+        (FFL.FirstOrder.Arithmetic.code (codeConst (n := k) m)) ↔
       z = (m : M) := by
   constructor
   · intro h

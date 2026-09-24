@@ -113,7 +113,7 @@ theorem canonicalPartrecPrecIndex_constructor_number (fCode gCode : ℕ) :
   have hsub : canonicalPartrecPrecIndex fCode gCode - 4
       = 2 * (2 * Nat.pair fCode gCode) + 1 := by
     rw [canonicalPartrecPrecIndex_eq]; omega
-  simp only [partrecCodeTag, hlt, if_false, hsub, hb, Nat.div2_val]
+  simp only [partrecCodeTag, hlt, ite_false, hsub, hb, Nat.div2_val]
   omega
 
 /-- The first subcode of the canonical primitive-recursion index is the base
@@ -140,9 +140,9 @@ theorem partrecCode_eq_canonicalPartrecPrecIndex_of_tag_six
     fun n => by rw [Nat.mod_two_of_bodd]
   have h4 : ¬ q < 4 := by
     intro hlt
-    simp only [partrecCodeTag, hlt, if_true] at hq
+    simp only [partrecCodeTag, hlt, ite_true] at hq
     omega
-  simp only [partrecCodeTag, h4, if_false, hb, Nat.div2_val] at hq
+  simp only [partrecCodeTag, h4, ite_false, hb, Nat.div2_val] at hq
   rw [canonicalPartrecPrecIndex_eq]
   simp only [partrecCodePayload₁, partrecCodePayload₂,
     Nat.pair_unpair, partrecCodePayload, Nat.div2_val]
@@ -165,8 +165,8 @@ theorem partrecCodePayloads_lt_of_tag_six
 
 /-! ### Evaluation in an arbitrary model -/
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Nat.ArithPart₁
 
 /-- The payload of the canonical primitive-recursion index, read inside a model. -/
@@ -276,8 +276,8 @@ end CategoricalRiceShapiro.PartialRecursive
 namespace CategoricalRiceShapiro.Evaluator
 
 open CategoricalRiceShapiro.ArithmeticCode
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open Nat.ArithPart₁
 
 variable {M : Type*} [ORingStructure M]
@@ -350,14 +350,14 @@ theorem eval_codePrecEvaluatorCell_succ_iff_of_zero [M↓[ℒₒᵣ] ⊧* 𝗣�
     (hq : Semiformula.Evalb (qv :> v) (code dq))
     (hcf : Semiformula.Evalb (cf :> v) (code dcf))
     (hcg : Semiformula.Evalb (cg :> v) (code dcg))
-    (hn : Semiformula.Evalb (LO.FirstOrder.Arithmetic.pair z 0 :> v) (code dn)) :
+    (hn : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z 0 :> v) (code dn)) :
     Semiformula.Evalb ((y + 1) :> v)
         (code (codePrecEvaluatorCell dtable dk' dq dcf dcg dn)) ↔
       Semiformula.Evalb ((y + 1) :> v)
         (code (codeTableLookup dtable (codeSucc dk') dcf (codeUnpair₁ dn))) := by
   have ht : Semiformula.Evalb ((0 : M) :> v) (code (codeUnpair₂ dn)) := by
     have h := eval_codeUnpair₂ dn _ v hn
-    rwa [LO.FirstOrder.Arithmetic.pi₂_pair] at h
+    rwa [FFL.FirstOrder.Arithmetic.pi₂_pair] at h
   constructor
   · intro hcell
     simp only [codePrecEvaluatorCell] at hcell
@@ -392,7 +392,7 @@ theorem eval_codePrecEvaluatorCell_succ_iff_of_succ [M↓[ℒₒᵣ] ⊧* 𝗣�
     (hq : Semiformula.Evalb (qv :> v) (code dq))
     (hcf : Semiformula.Evalb (cf :> v) (code dcf))
     (hcg : Semiformula.Evalb (cg :> v) (code dcg))
-    (hn : Semiformula.Evalb (LO.FirstOrder.Arithmetic.pair z (a + 1) :> v) (code dn)) :
+    (hn : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z (a + 1) :> v) (code dn)) :
     Semiformula.Evalb ((y + 1) :> v)
         (code (codePrecEvaluatorCell dtable dk' dq dcf dcg dn)) ↔
       ∃ x : M,
@@ -406,7 +406,7 @@ theorem eval_codePrecEvaluatorCell_succ_iff_of_succ [M↓[ℒₒᵣ] ⊧* 𝗣�
                   (codeHead (n := r)))))) := by
   have ht : Semiformula.Evalb ((a + 1) :> v) (code (codeUnpair₂ dn)) := by
     have h := eval_codeUnpair₂ dn _ v hn
-    rwa [LO.FirstOrder.Arithmetic.pi₂_pair] at h
+    rwa [FFL.FirstOrder.Arithmetic.pi₂_pair] at h
   have hnz : ¬ (a + 1 = (0 : M)) :=
     ne_of_gt (lt_of_lt_of_le _root_.zero_lt_one le_add_self)
   constructor
@@ -444,7 +444,7 @@ theorem eval_prec_predecessor_lookup_succ_iff_codeHistoryEvaluator
     [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (k z a x : M) (q : ℕ) :
     Semiformula.Evalb ((x + 1) :>
-        ![k + 1, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair z (a + 1)])
+        ![k + 1, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z (a + 1)])
         (code (codeTableLookup codeEvaluatorHistoryBeforeCell
           (codeSub (codeUnpair₁ (codeListLength codeEvaluatorHistoryBeforeCell))
             (codeConst 1))
@@ -452,20 +452,20 @@ theorem eval_prec_predecessor_lookup_succ_iff_codeHistoryEvaluator
           (codePair (codeUnpair₁ (Code.proj (2 : Fin 3)))
             (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1))))) ↔
       Semiformula.Evalb
-        ![x + 1, k, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair z a]
+        ![x + 1, k, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z a]
         (code codeHistoryEvaluator) := by
   letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hproj : Semiformula.Evalb
-      (LO.FirstOrder.Arithmetic.pair z (a + 1) :>
-        ![k + 1, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair z (a + 1)])
+      (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
+        ![k + 1, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (Code.proj (2 : Fin 3))) := (eval_proj_iff _ _ _).mpr rfl
   have h1 := eval_codeUnpair₁ (Code.proj (2 : Fin 3)) _ _ hproj
-  rw [LO.FirstOrder.Arithmetic.pi₁_pair] at h1
+  rw [FFL.FirstOrder.Arithmetic.pi₁_pair] at h1
   have h2 := eval_codeUnpair₂ (Code.proj (2 : Fin 3)) _ _ hproj
-  rw [LO.FirstOrder.Arithmetic.pi₂_pair] at h2
+  rw [FFL.FirstOrder.Arithmetic.pi₂_pair] at h2
   have hone : Semiformula.Evalb ((1 : M) :>
-      ![k + 1, ((q : ℕ) : M), LO.FirstOrder.Arithmetic.pair z (a + 1)])
+      ![k + 1, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (codeConst (n := 3) 1)) := by
     rw [eval_codeConst_iff]; simp
   have h3 := eval_codeSub _ (codeConst 1) (a + 1) 1 _ h2 hone

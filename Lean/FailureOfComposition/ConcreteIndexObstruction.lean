@@ -19,7 +19,7 @@ set_option autoImplicit false
 
 
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic LO.Entailment
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic FFL.Entailment
 open CategoricalRiceShapiro.PartialRecursive
 
 namespace FailureOfComposition.ConcreteIndices

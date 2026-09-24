@@ -16,7 +16,7 @@ set_option autoImplicit false
 
 
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 
 namespace FailureOfComposition.ArithmeticCodeCompiler
 open ProgramGraph
@@ -137,20 +137,20 @@ theorem computes_candidate_swap (c : PCode) (a b z : M) :
 omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] in
 private theorem arithmetic_eval_iff_aux {n : ℕ} (c : ACode n)
     (z : M) (v : Fin n → M) :
-    Semiformula.Evalb (z :> v) (LO.FirstOrder.Arithmetic.code c) ↔
-      Semiformula.Evalf (M := M) (z :> v) (LO.FirstOrder.Arithmetic.codeAux c) := by
-  simp [LO.FirstOrder.Arithmetic.code, Semiformula.eval_rew,
+    Semiformula.Evalb (z :> v) (FFL.FirstOrder.Arithmetic.code c) ↔
+      Semiformula.Evalf (M := M) (z :> v) (FFL.FirstOrder.Arithmetic.codeAux c) := by
+  simp [FFL.FirstOrder.Arithmetic.code, Semiformula.eval_rew,
     Matrix.empty_eq, Function.comp_def]
 
 omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] in
 private theorem arithmetic_rfind_eval {n : ℕ} (c : ACode (n + 1))
     (z : M) (v : Fin n → M) :
-    Semiformula.Evalb (z :> v) (LO.FirstOrder.Arithmetic.code (.rfind c)) ↔
-      Semiformula.Evalb ((0 : M) :> z :> v) (LO.FirstOrder.Arithmetic.code c) ∧
+    Semiformula.Evalb (z :> v) (FFL.FirstOrder.Arithmetic.code (.rfind c)) ↔
+      Semiformula.Evalb ((0 : M) :> z :> v) (FFL.FirstOrder.Arithmetic.code c) ∧
       ∀ t : M, t < z → ∃ w : M, w ≠ 0 ∧
-        Semiformula.Evalb (w :> t :> v) (LO.FirstOrder.Arithmetic.code c) := by
+        Semiformula.Evalb (w :> t :> v) (FFL.FirstOrder.Arithmetic.code c) := by
   simp only [arithmetic_eval_iff_aux]
-  simp [LO.FirstOrder.Arithmetic.codeAux, Semiformula.eval_rew,
+  simp [FFL.FirstOrder.Arithmetic.codeAux, Semiformula.eval_rew,
     Function.comp_def, Matrix.empty_eq, Matrix.comp_vecCons']
 
 theorem computes_pair_zero (x z : M) :
@@ -180,7 +180,7 @@ theorem computes_searchZero (c : PCode) (x y : M) :
 components and outputs may be nonstandard elements of that model. -/
 theorem computes_compile {n : ℕ} (c : ACode n) (v : Fin n → M) (y : M) :
     Computes (compile c) (encodeVector v) y ↔
-      Semiformula.Evalb (y :> v) (LO.FirstOrder.Arithmetic.code c) := by
+      Semiformula.Evalb (y :> v) (FFL.FirstOrder.Arithmetic.code c) := by
   induction c generalizing y with
   | zero n =>
     rw [compile, computes_zero, CategoricalRiceShapiro.ArithmeticCode.eval_zero_iff]
@@ -222,7 +222,7 @@ theorem computes_compile {n : ℕ} (c : ACode n) (v : Fin n → M) (y : M) :
 input, without exposing the tuple representation. -/
 theorem computes_unaryCompile (c : ACode 1) (x y : M) :
     Computes (unaryCompile c) x y ↔
-      Semiformula.Evalb ![y, x] (LO.FirstOrder.Arithmetic.code c) := by
+      Semiformula.Evalb ![y, x] (FFL.FirstOrder.Arithmetic.code c) := by
   rw [unaryCompile, computes_comp]
   simp only [computes_pair_zero, exists_eq_left]
   have h := computes_compile c ![x] y
@@ -230,14 +230,14 @@ theorem computes_unaryCompile (c : ACode 1) (x y : M) :
 
 /-- The source arithmetic-code graph, in input-output argument order. -/
 def sourceGraph (c : ACode 1) : ProofSearch.Graph :=
-  ((.mkSigma (LO.FirstOrder.Arithmetic.code c)
+  ((.mkSigma (FFL.FirstOrder.Arithmetic.code c)
     (code_sigma_one c)) : 𝚺₁.Semisentence 2).rew
     (Rew.subst ![(#1 : ArithmeticSemiterm Empty 2), #0])
 
 omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] in
 theorem sourceGraph_eval (c : ACode 1) (x y : M) :
     (sourceGraph c).val.Evalb ![x, y] ↔
-      Semiformula.Evalb ![y, x] (LO.FirstOrder.Arithmetic.code c) := by
+      Semiformula.Evalb ![y, x] (FFL.FirstOrder.Arithmetic.code c) := by
   simp [sourceGraph]
 
 /-- PA proves the uniform realization equation for this explicit compiler. -/

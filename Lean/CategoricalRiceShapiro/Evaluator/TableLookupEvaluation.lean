@@ -35,8 +35,8 @@ open Nat Nat.ArithPart₁
 namespace CategoricalRiceShapiro.Evaluator
 
 open CategoricalRiceShapiro.ArithmeticCode
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 
 /-- Replacing the query code by one with the same graph at `v` does not change
 the graph of the lookup at `v`. -/

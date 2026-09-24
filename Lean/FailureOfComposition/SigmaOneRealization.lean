@@ -19,7 +19,7 @@ set_option autoImplicit false
 
 
 
-open Encodable LO LO.FirstOrder LO.FirstOrder.Arithmetic
+open Encodable FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 
 namespace FailureOfComposition.SigmaOneRealization
 open ProgramGraph ArithmeticCodeCompiler ArithmeticFormulaAtoms BoundedSemidecision
@@ -100,7 +100,7 @@ theorem bounded_semidecides {n : ℕ} (t : ArithmeticSemiterm Empty n)
       exact ⟨_, hbound, hc⟩
   rw [hcomp, computes_boundedAll]
   simp only [hbody]
-  simp [LO.FirstOrder.ball, Semiterm.valb]
+  simp [FFL.FirstOrder.ball, Semiterm.valb]
 
 theorem or_semidecides {n : ℕ} {φ ψ : ArithmeticSemisentence n} {c d : PCode}
     (hφ : Semidecides φ c) (hψ : Semidecides ψ d) :

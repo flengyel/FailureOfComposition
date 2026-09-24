@@ -40,8 +40,8 @@ open Nat Nat.ArithPart₁
 
 namespace CategoricalRiceShapiro.ArithmeticCode
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open scoped LO.FirstOrder.Arithmetic
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open scoped FFL.FirstOrder.Arithmetic
 open HierarchySymbol
 
 variable {M : Type*} [ORingStructure M]
@@ -85,7 +85,7 @@ private theorem eval_codeListHead?_exists [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲
     rw [eval_codeConst_iff]; simp
   have hsub := eval_codeSub d (codeConst 1) x 1 v hd hone
   have hsucc : Semiformula.Evalb
-      ((LO.FirstOrder.Arithmetic.pi₁ (x - 1) + 1) :> v)
+      ((FFL.FirstOrder.Arithmetic.pi₁ (x - 1) + 1) :> v)
       (code (codeSucc (codeUnpair₁ (codeSub d (codeConst 1))))) :=
     (eval_codeSucc_iff _ _ _).mpr
       ⟨_, eval_codeUnpair₁ (codeSub d (codeConst 1)) (x - 1) v hsub, rfl⟩
@@ -93,7 +93,7 @@ private theorem eval_codeListHead?_exists [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲
     (eval_zero_iff _ _).mpr rfl
   simp only [codeListHead?]
   by_cases hx : 0 < x
-  · exact ⟨_, eval_codeIfPos_of _ _ _ x _ 0 (LO.FirstOrder.Arithmetic.pi₁ (x - 1) + 1) v
+  · exact ⟨_, eval_codeIfPos_of _ _ _ x _ 0 (FFL.FirstOrder.Arithmetic.pi₁ (x - 1) + 1) v
       hd hsucc hzero (Or.inl ⟨hx, rfl⟩)⟩
   · exact ⟨0, eval_codeIfPos_of _ _ _ x _ 0 0 v hd hsucc hzero
       (Or.inr ⟨le_antisymm (not_lt.mp hx) (by simp), rfl⟩)⟩
@@ -103,7 +103,7 @@ component of the predecessor. -/
 private theorem eval_codeListTail_value [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] {k : ℕ}
     (d : Code k) (x : M) (v : Fin k → M)
     (hd : Semiformula.Evalb (x :> v) (code d)) :
-    Semiformula.Evalb ((LO.FirstOrder.Arithmetic.pi₂ (x - 1)) :> v)
+    Semiformula.Evalb ((FFL.FirstOrder.Arithmetic.pi₂ (x - 1)) :> v)
       (code (codeListTail d)) := by
   have hone : Semiformula.Evalb ((1 : M) :> v) (code (codeConst (n := k) 1)) := by
     rw [eval_codeConst_iff]; simp
@@ -247,23 +247,23 @@ private theorem dropCore_bound [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (l : M) : ∀ i :
       have hwz : w = z := eval_unique hw hz
       have htail := eval_codeListTail_value (Code.proj (1 : Fin 3)) z (i :> z :> ![l])
         ((eval_proj_iff _ _ _).mpr (by simp))
-      have hz'val : z' = LO.FirstOrder.Arithmetic.pi₂ (z - 1) := by
+      have hz'val : z' = FFL.FirstOrder.Arithmetic.pi₂ (z - 1) := by
         rw [hwz] at hstep
         exact eval_unique hstep htail
       refine Or.inl ⟨z', hz', ?_⟩
       rcases eq_or_ne z 0 with hz0 | hz0
       · have : z' = 0 := by
           rw [hz'val, hz0]
-          exact le_antisymm (by simpa using LO.FirstOrder.Arithmetic.pi₂_le_self ((0 : M) - 1))
+          exact le_antisymm (by simpa using FFL.FirstOrder.Arithmetic.pi₂_le_self ((0 : M) - 1))
             (by simp)
         rw [this, zero_add]
         exact hil
-      · have hone : 1 ≤ z := LO.FirstOrder.Arithmetic.ne_zero_iff_one_le.mp hz0
+      · have hone : 1 ≤ z := FFL.FirstOrder.Arithmetic.ne_zero_iff_one_le.mp hz0
         have hz'le : z' + 1 ≤ z := by
           have h1 : z' ≤ z - 1 := by
-            rw [hz'val]; exact LO.FirstOrder.Arithmetic.pi₂_le_self _
+            rw [hz'val]; exact FFL.FirstOrder.Arithmetic.pi₂_le_self _
           calc z' + 1 ≤ (z - 1) + 1 := by simpa using h1
-            _ = z := LO.FirstOrder.Arithmetic.sub_add_self_of_le hone
+            _ = z := FFL.FirstOrder.Arithmetic.sub_add_self_of_le hone
         calc z' + (i + 1) = (z' + 1) + i := by
               simp [add_comm, add_left_comm]
           _ ≤ z + i := by simpa using hz'le

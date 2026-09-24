@@ -13,8 +13,8 @@ U is the theory whose proofs are searched; T is the theory of pointwise equality
 
 set_option autoImplicit false
 
-open LO LO.FirstOrder LO.FirstOrder.Arithmetic
-open LO.FirstOrder.Arithmetic.Bootstrapping LO.Entailment
+open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
+open FFL.FirstOrder.Arithmetic.Bootstrapping FFL.Entailment
 
 namespace FailureOfComposition.ProofSearch
 noncomputable section
