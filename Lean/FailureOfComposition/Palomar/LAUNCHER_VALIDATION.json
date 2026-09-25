@@ -1,0 +1,150 @@
+{
+  "schema": "failure-of-composition-palomar-launcher-validation-v1",
+  "validated_at_utc": "2026-09-25T21:27:27Z",
+  "tested_code_commit": "8ffd9325e3abf93f1b6b2b586fffe0b2b6b34314",
+  "branch": "codex/palomar-eligibility",
+  "starting_commit": "a2234663fa95d376cc6b11f82278753d19690b87",
+  "starting_launcher_sha256": "6a164b092de358339add32499b2ac6e5cd00293b211a47e66245d944a199c7fc",
+  "tested_files": {
+    "scripts/verify-palomar.sh": "903608e2d669dc2d0c4bdddc4680e8dc2f4c01bf8f7feffbdf7c11d30054c6ea",
+    "scripts/palomar_launcher_checks.py": "eda3667d657b427846cf12c1d24f42a3c29eb64b0104a70120678f28f3a5ba63",
+    "scripts/tests/test_palomar_launcher.py": "7f44ca9be4c55b2acb29f9355dcb2b4d55940c846418236f4ed3dd4b0a0eefba"
+  },
+  "pins": {
+    "lean": "leanprover/lean4:v4.35.0-rc2",
+    "mathlib": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+    "foundation": "e72cfe981aa65166f37fa4e2584f4806bc48d72f",
+    "palomar_policy": "792c7c0b9e798bd02719e795ef11fa2b5929e067",
+    "palomar_submission": "a59f25bd8a66bf6faf3a4f4260d412989c0185ea",
+    "palomar_template": "cb5c79b69a740d2dc299071fc35994627050d77a"
+  },
+  "resource_policies": {
+    "precheck": {
+      "memory_high": "12G",
+      "memory_max": "12800M",
+      "memory_swap_max": "12G",
+      "physical_headroom_bytes": 2147483648,
+      "available_memory_reserve_bytes": 1073741824,
+      "free_swap_reserve_bytes": 2147483648,
+      "deadline_seconds": 14400
+    },
+    "comparator": {
+      "memory_high": "10G",
+      "memory_max": "11G",
+      "memory_swap_max": "20G",
+      "physical_headroom_bytes": 4294967296,
+      "available_memory_reserve_bytes": 1073741824,
+      "free_swap_reserve_bytes": 2147483648,
+      "deadline_seconds": 19800
+    },
+    "shared": {
+      "cpu_list": "0",
+      "pids_max": 512,
+      "snapshot_only_admission_check": true,
+      "admission_check_reserves_resources": false
+    }
+  },
+  "checks": [
+    {
+      "name": "accepted baseline environment",
+      "command": "LEAN_NUM_THREADS=1 FAILCOMP_STYLE_JOBS=1 TMPDIR=$PWD/.codex-work/tmp bash scripts/verify-failure-composition.sh --check-environment",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "name": "focused launcher regressions",
+      "command": "python3 -m unittest scripts.tests.test_palomar_launcher -v",
+      "exit_code": 0,
+      "result": "13 tests passed",
+      "coverage": [
+        "SwapFree exhaustion despite sufficient SwapTotal",
+        "ancestor cgroup capacity and overlapping checker workload",
+        "false placement, unapplied limits, deadline, lost liveness, and surviving workload",
+        "missing or malformed supervisor evidence and failed systemd completion",
+        "memory.high and memory.max pressure events distinguished from OOM",
+        "changed source and changed Comparator configuration",
+        "absent historical precheck manifest",
+        "fake preparatory command routed through supervised containment"
+      ]
+    },
+    {
+      "name": "syntax and byte compilation",
+      "command": "bash -n scripts/verify-palomar.sh; python3 -m py_compile scripts/palomar_launcher_checks.py scripts/tests/test_palomar_launcher.py; git diff --check",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "name": "launcher environment inspection",
+      "command": "bash scripts/verify-palomar.sh --check-environment",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "name": "precheck input manifest determinism",
+      "command": "palomar_launcher_checks.py precheck-manifest twice, then compare-manifests",
+      "exit_code": 0,
+      "result": "pass",
+      "manifest_sha256": "3151e3dfd1418b4cd16f387c7cb3283e0ab33aa5b625eda78741d97f3ed40542"
+    },
+    {
+      "name": "ordinary-WSL reduced-resource containment smoke",
+      "command": "bash scripts/verify-palomar.sh --containment-test",
+      "exit_code": 0,
+      "result": "pass",
+      "run": ".codex-work/palomar/containment-tests/20260925T212721Z-352051",
+      "memory_peak_bytes": 39653376,
+      "nproc": 1,
+      "systemd_exit_status": 0,
+      "oom_events": 0,
+      "oom_kill_events": 0,
+      "forced_oom_tested": false,
+      "deadline_cleanup_tested": false
+    },
+    {
+      "name": "ordinary-WSL phase capacity snapshots",
+      "command": "bash scripts/verify-palomar.sh --capacity-test",
+      "exit_code": 0,
+      "result": "pass",
+      "run": ".codex-work/palomar/capacity-tests/20260925T212727Z-352231",
+      "swap_total_bytes": 25769795584,
+      "swap_free_bytes": 25769676800,
+      "active_checker_workloads": 0,
+      "ancestor_hard_memory_limit": "max",
+      "ancestor_hard_swap_limit": "max"
+    },
+    {
+      "name": "read-only strict assessment of retained Comparator evidence",
+      "command": "assess_supervised_run(.codex-work/palomar/runs/20260925T162212Z-45800)",
+      "exit_code": 0,
+      "result": "pass",
+      "comparator_rerun": false,
+      "infrastructure_clean": true,
+      "computational_success": true
+    }
+  ],
+  "evidence": {
+    ".codex-work/logs/palomar-baseline-environment.log": "b4b7d527671720ef430906a334197e6b2188028b2abc4ef69e88ef086e6965db",
+    ".codex-work/palomar/launcher-validation/20260925T212655Z/focused-tests.log": "269f044e5c8058ffa48f7a519af384b2f5213f11c5464403a2063e4d828140e1",
+    ".codex-work/palomar/launcher-validation/20260925T212655Z/static-checks.log": "99df4f57b4a9f1f8332a10b52724367212a3333252a16c3283e3735d25500e51",
+    ".codex-work/palomar/launcher-validation/20260925T212655Z/environment-check.log": "84a2c82a6c17a82cae9fc5f3d9227133074e8aa0c7c845cf126d33b268f2e219",
+    ".codex-work/palomar/launcher-validation/20260925T212655Z/precheck-manifest-test.log": "f8056220bcb69e61e203dd5ff004711a2b7d09200cf6cd8b98b8d94413c1ec29",
+    ".codex-work/palomar/launcher-validation/20260925T212655Z/precheck-inputs.json": "3151e3dfd1418b4cd16f387c7cb3283e0ab33aa5b625eda78741d97f3ed40542",
+    ".codex-work/palomar/launcher-validation/20260925T212655Z/precheck-input-comparison.json": "f232c7b6c98f96c645168544885c8825649741687f6754a0bb5798edd95c0bdf",
+    ".codex-work/palomar/launcher-validation/20260925T212655Z/historical-comparator-assessment.json": "e914f4d122a9c70bcc378f1e5f2aad9799e60a46c9aa6f7412cf64d6bfe890e9",
+    ".codex-work/palomar/containment-tests/20260925T212721Z-352051/result.json": "71e9c963f2031d11ca5bb3fcaa963e0ace1c4d4b97e3fe5e859da49377ab1b54",
+    ".codex-work/palomar/containment-tests/20260925T212721Z-352051/cgroup-status.json": "608af38e9d9281266d495cb76c8342cca50d4ec09c1ad6322f689d0c460ce010",
+    ".codex-work/palomar/capacity-tests/20260925T212727Z-352231/precheck-capacity.json": "c4884c329bf389d573b867afb80a1a7171408fc279dac2fe29d80eb08d749a55",
+    ".codex-work/palomar/capacity-tests/20260925T212727Z-352231/comparator-capacity.json": "cc162531a49ca2f5e1dce4518d7482746efb1ac507c826dd7e0886b6733a2928",
+    ".codex-work/palomar/runs/20260925T162212Z-45800/status.env": "4e7cbe10b7039f66909defd1de23d0443f1b636522d27c0189406c1c391a0c12",
+    ".codex-work/palomar/runs/20260925T162212Z-45800/cgroup-status.json": "8ef8887c630449c434cb1cc1712c2a01b2b4872b283b4b579e81f3f9b8eaf03e",
+    ".codex-work/palomar/runs/20260925T162212Z-45800/comparator.log": "5b6e9b4a4d3e1da6395a01d1fd90ca5060afacf3a772add74dba1e9971adc32d"
+  },
+  "claims": {
+    "historical_comparator_evidence_preserved": true,
+    "historical_comparator_rerun": false,
+    "containment_smoke_is_comparator": false,
+    "containment_smoke_is_official_palomar_verification": false,
+    "capacity_preflight_is_resource_reservation": false,
+    "manuscript_edited": false
+  }
+}
