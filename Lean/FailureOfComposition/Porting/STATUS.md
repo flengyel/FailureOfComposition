@@ -7,6 +7,9 @@ check pass.** No push or merge has been performed.
 ## Revisions and working state
 
 - Accepted source checkpoint: `93fc6536f17f84933edf6d223eb41c8e3a9f866c`.
+- Accepted toolchain/dependency pins: Lean `4.32.2`, Mathlib
+  `905b95818eb32af7874a58b427f50c1711a5e96c`, and Foundation
+  `a3dd617f88bda178eb6c206dd5db91f88b6a2a42`.
 - Setup/current branch base: `be387e664cae010432f13786ea48b55efdaa0e26` on
   `codex/lean-4.35.0-rc2`.
 - Target Lean: `leanprover/lean4:v4.35.0-rc2`.
@@ -120,12 +123,17 @@ canonical streams contain 79,486 bytes and have SHA-256
 No audited theorem name, explicit parameter, mathematical hypothesis,
 conclusion, or type differs under those normalizations.
 
+`Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md` is byte-identical to the
+accepted checkpoint. Both versions have 113 lines and SHA-256
+`a86ac3a314472adf8c2abb64f597a3f41df17988a604443144f5bce6b40eb356`.
+
 Principal evidence is preserved under `.codex-work/logs/`:
 
 - `native-build-port-09.{command,build,time,processes,usage,status,oom-diff}.log`;
 - `full-verification-port-01.{command,verification,time,processes,usage,status,oom-diff}.log`;
 - `port-verification/native-build.json`, `style-lint.json`, and
   `public-signature-comparison.txt`;
+- `port-verification/manuscript-coverage-comparison.txt`;
 - `check-{types,axioms,dependencies}-port-01.log`;
 - both `kernel-replay-*-port-01.log` files; and
 - `paired-drafts-port-01.log`.
