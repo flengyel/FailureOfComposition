@@ -37,8 +37,9 @@ manuscript and updated documentation.
 
 ## Verification
 
-With Lean 4.32.2 and the pinned dependencies already installed under
-`${PCATS_DST:-$HOME/src/PCats}/.lake/packages`, run from this directory:
+The Lean 4.35.0-rc2 port at `d2100df` passed the independent WSL rerun on
+2026-09-25. With that toolchain and the pinned dependencies installed under
+this checkout's `Lean/.lake/packages`, run from this directory:
 
 ```sh
 bash scripts/verify-failure-composition.sh --check-environment
@@ -46,7 +47,10 @@ bash scripts/verify-failure-composition.sh
 ```
 
 The environment check invokes no Lake command. Full verification builds the
-library and runs the style, theorem, dependency, and kernel checks.
+library and runs the style, theorem, dependency, and kernel checks. The
+[evaluator style cleanup](Lean/FailureOfComposition/Porting/STYLE_CLEANUP.md)
+extends warnings-as-errors checks to all 31 evaluator sources; its changed
+proofs require a subsequent WSL verification before acceptance.
 `CRS_LAKE_PACKAGES` may supply an existing package mapping. The scripts validate
 the dependency pins and do not fetch new checkouts.
 
@@ -64,7 +68,7 @@ placing its source here does not assign it a new code license. See the
 [manuscript notes](manuscript/README.md).
 
 The [Palomar draft](Lean/FailureOfComposition/Palomar/README.md) contains nine
-paired statements and proved counterparts. Submission still requires a supported
-Lean/Mathlib/Foundation port, a Challenge with permitted imports, and actual
-Comparator verification. The manuscript's licensing scope must also be accounted
+paired statements and proved counterparts. The toolchain port has passed its
+project verification. Submission still requires a Challenge with permitted
+imports and actual Comparator verification. The manuscript's licensing scope must also be accounted
 for in any submitted snapshot. No Palomar submission or registration is claimed.

@@ -4,7 +4,7 @@
   "original_source_pins": "Audit/failure-composition-v36/evidence/evaluator-source-pins.json",
   "original_evaluator_repository": "flengyel/Categorical_Rice_Shapiro",
   "original_evaluator_commit": "97484e4988a3e632e2c255c641edbe5292a86ea3",
-  "port_source_checkpoint": "37c8f82391357e22f2722e0c7b0b35396fdb9f78",
+  "port_source_checkpoint": "defc4bd198260adbc8729c9b25e293223d746770",
   "toolchain": "leanprover/lean4:v4.35.0-rc2",
   "mathlib_revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
   "foundation_revision": "e72cfe981aa65166f37fa4e2584f4806bc48d72f",
@@ -56,8 +56,8 @@
     },
     {
       "path": "CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean",
-      "blob_sha1": "69c342ac8cb623d58388766ffabc5558c6126b0f",
-      "sha256": "183023b42853dbf250ad979d3e11964b879c3f4ca419191baa996caefeefd59e"
+      "blob_sha1": "bad65d3361d3dc515786f9b552bbb4204ab83db7",
+      "sha256": "54b7a784c67646adb3385d17644df9324a673ac54584acb95209155784d6f390"
     },
     {
       "path": "CategoricalRiceShapiro/ArithmeticCode/Conditional.lean",
@@ -71,8 +71,8 @@
     },
     {
       "path": "CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean",
-      "blob_sha1": "332cfdd9b83d2f76a5677a4240a62a2baf5d1db3",
-      "sha256": "856c405faec106d9cbea20d31fc58da0d1e9bbc977784cdfbe33d57b0ea316fe"
+      "blob_sha1": "184def79e12e999fbf1611d67f5dcb146e662ba4",
+      "sha256": "0ec73f41f8461cc563c1d4aa2a7428da840989caea9812ec3eee644ffbef79db"
     },
     {
       "path": "CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean",
@@ -111,8 +111,8 @@
     },
     {
       "path": "CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean",
-      "blob_sha1": "26228ea3f313513dcec675e05f212463936437ca",
-      "sha256": "8e3aff8c77afb28e7c28667114c9c5137b5e73cfdb11775e3cb470ea53204751"
+      "blob_sha1": "a0ee088a0e74c79ab7e073de38a12f763588c1e3",
+      "sha256": "770fc57b004711d0b4f49b4815e74f38f56a80de23edfe33282e3fd26a1e96fa"
     },
     {
       "path": "CategoricalRiceShapiro/ArithmeticCode/Recursion.lean",
@@ -121,8 +121,8 @@
     },
     {
       "path": "CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean",
-      "blob_sha1": "fb7f2177f8897b5aad2ccc957ddbd7a9ab96fb36",
-      "sha256": "df962142e000dd70043a4809012cf65dc812477629fe1331b29f340a1cdfff87"
+      "blob_sha1": "8eee9159d42abdbcbde5679a694b97a18fc04347",
+      "sha256": "496883316c837f9e3cddd38a3c47a8393cfd8274c3c3cb108c60b59f13bb15fa"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/Cell.lean",
@@ -136,18 +136,18 @@
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/CellEvaluation.lean",
-      "blob_sha1": "def9ba80ae924f4f7e2fc1ea25b927c8f8615928",
-      "sha256": "41947816b3a780d387dd42b6cdd020914e2b8f408be26c237dab1a0be93a972d"
+      "blob_sha1": "bdfd815f69a76a2b3715b68251a7e6bf6fbecff6",
+      "sha256": "5ce6aeb3d1fb2a0f4e6b20b17a4994a7ef30d4e8e7b18afc0b8429b505919ccf"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/Certificate.lean",
-      "blob_sha1": "731aac081be7db997d4170fe5bf23be794746402",
-      "sha256": "090f76779eac61e2725f898506e421cae2122f2d69bb4f5152752720e88acd62"
+      "blob_sha1": "e17f438b79edac872bb6bd4635c1d4d323f9e3d8",
+      "sha256": "4f617bec051bb31238c59481dbb263c183b6f559dcf89dbeb8e479f5746761ce"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean",
-      "blob_sha1": "f13166a9cbafba70dce4a7d7e6190affdeb628eb",
-      "sha256": "46ae9aef658084d1fc265c72a7d98f82290f07b44970b310b823d3b40f0b9098"
+      "blob_sha1": "9053f8c5b1864bea216ddfc1f19626d7d887642a",
+      "sha256": "74e041a8d8037d8a618bd3b9e15eeaa89d7f28445f8522e792e7ffd2b9645e41"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean",
@@ -161,28 +161,28 @@
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean",
-      "blob_sha1": "a3b3d05cace1f997db15c9989141cb9bab643a92",
-      "sha256": "e59bdc7c7ac73c7a8566bcf5a4e5ca1fd9156d290cba75d0c25ea691c47f93a6"
+      "blob_sha1": "e120c8c125c3a4a1cfc95513c06300f03f0d4dc1",
+      "sha256": "5f3b4b6d725cb9b6b69dbdd14cd1defc9160e6e4216c31ac34ea51ce7a011934"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/PairPersistence.lean",
-      "blob_sha1": "22dc96804415cc4d955a9beae760c09cb020eb13",
-      "sha256": "c1de6f33818e49e806f03d986e8c4a129881b0569304e349ba68bbf9d8c09c91"
+      "blob_sha1": "f4ff18b5e98e34101a46bbf3f69d913eaa838dec",
+      "sha256": "7d0f4d589b5ec79bc6f1b361ca99084c56bef64d534e3919bbb672c5fc486c22"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean",
-      "blob_sha1": "330e57f6434091558c53b24c4d2ad2817126d51a",
-      "sha256": "53eab9f42efc59cdfe22f04e09ccfa0de6f625472bd33619055c6e3817d0c767"
+      "blob_sha1": "761d77b1549675f13b389f1deb1ce36f2f29b18d",
+      "sha256": "f8d1ff150996191a356f339b39782fdb567e88c23dcfeb78a02bb15234b9bfb0"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean",
-      "blob_sha1": "16fbd752bcae2d7282bb833f4fa77c87f93550e3",
-      "sha256": "d3965eb3b7f03b6cca0f2448ec65d98b258b8281cfa8c836377035642334a1ca"
+      "blob_sha1": "5c386dd8b2fcd787863ab79f66c1e2e0dfec5902",
+      "sha256": "4963abda0927796314a27156c46b5959eb7b06c2e33d55d1e511d55f5c734e5a"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean",
-      "blob_sha1": "1dc2d58c3f6674d60777aa74fc689906b583bd3c",
-      "sha256": "158a84d94be7bd1db6eb8db87da06130876c872b9124dbfb79256371a38f1a7c"
+      "blob_sha1": "9db3baa12367b87ef973d001a5d97e15a8b22fd4",
+      "sha256": "c65090e66f7bf660f0449c209ae4d98d905a885f8161cad198f1f91164a171cd"
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/TableLookup.lean",
@@ -191,13 +191,15 @@
     },
     {
       "path": "CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean",
-      "blob_sha1": "d6a70e775fb2bd573cad57ce27032980b4a781d4",
-      "sha256": "b1045c8aeb33303bd9d9f01a0980281c80d0c435d41e1a89aaddde063e60572f"
+      "blob_sha1": "fc217b8472f5fe36c9222f2da098a627d70b9923",
+      "sha256": "55976b675f42e118a228c9713232bec8a5ba5595a7df490b2aac721e69d00712"
     },
     {
       "path": "CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean",
       "blob_sha1": "1ddf7385203f774a788eda3e47d8eebd14698431",
       "sha256": "43ce123c9067b01c5d65725e59057409adae93f33f62cad8192d5cd4327e53b1"
     }
-  ]
+  ],
+  "previous_port_source_checkpoint": "37c8f82391357e22f2722e0c7b0b35396fdb9f78",
+  "style_cleanup_baseline": "d2100df1b583368c56c00c3a4babf0bb72b0cfb2"
 }

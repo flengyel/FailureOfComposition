@@ -1,0 +1,66 @@
+{
+  "reviewed_revision": "d2100df1b583368c56c00c3a4babf0bb72b0cfb2",
+  "reviewed_on": "2026-09-25",
+  "execution": "Author WSL run; uploaded evidence and checksums independently inspected",
+  "evidence_archive": "failure-composition-review-20260925T115820Z.tar.gz",
+  "evidence_archive_sha256": "7a3baa1d78654b521ec763a623accecd54ff032222daa474e388a71390fa111f",
+  "runner_version": 2,
+  "status": "PASS: fresh project build and acceptance rerun",
+  "fresh_native_build": {
+    "name": "06-fresh-native-build",
+    "command": [
+      "/home/flengyel/src/failure-composition-review-20260925T115820Z/checkout/Lean/FailureOfComposition/bounded_lake.sh",
+      "--no-cache",
+      "--packages=/home/flengyel/src/failure-composition-review-20260925T115820Z/tmp/packages.json",
+      "build",
+      "FailureOfComposition",
+      "CategoricalRiceShapiro"
+    ],
+    "started_at": "2026-09-25T12:00:07.457100+00:00",
+    "duration_seconds": 672.5,
+    "finished_at": "2026-09-25T12:11:19.953112+00:00",
+    "returncode": 0,
+    "sampled_max_lean_processes": 1,
+    "sampled_peak_lean_rss_kib": 8277868,
+    "sampled_peak_lean_swap_kib": 0,
+    "memory_pressure_stop": false,
+    "monitor_errors": []
+  },
+  "acceptance_suite": {
+    "name": "07-full-acceptance",
+    "command": [
+      "bash",
+      "scripts/verify-failure-composition.sh"
+    ],
+    "started_at": "2026-09-25T12:11:19.955771+00:00",
+    "duration_seconds": 810.33,
+    "finished_at": "2026-09-25T12:24:50.284921+00:00",
+    "returncode": 0,
+    "sampled_max_lean_processes": 1,
+    "sampled_peak_lean_rss_kib": 8284956,
+    "sampled_peak_lean_swap_kib": 0,
+    "memory_pressure_stop": false,
+    "monitor_errors": []
+  },
+  "verified_scope": {
+    "FailureOfComposition_sources": 72,
+    "pinned_evaluator_sources": 31,
+    "additional_reexport_umbrella": 1,
+    "strict_style_sources": 72,
+    "current_public_signature_checks": 260,
+    "paired_drafts": 9
+  },
+  "warnings": {
+    "proof_instance_style": 95,
+    "long_line": 1,
+    "affected_evaluator_files": 13,
+    "intentional_challenge_holes": 9
+  },
+  "limitations": [
+    "Not a cold rebuild of dependencies",
+    "Prefix kernel replays use imported dependency artifacts",
+    "No old/new elaborated-signature equivalence claim",
+    "Not mathematical peer review or Palomar Comparator",
+    "The pass applies to d2100df, not subsequent evaluator cleanup commits"
+  ]
+}

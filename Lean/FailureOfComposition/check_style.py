@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Re-elaborate the maintained library with Mathlib's standard linters as errors."""
+"""Re-elaborate maintained proofs and evaluator imports with warnings as errors."""
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -21,11 +21,56 @@ from prepare_packages import (
 )
 
 
+# These declaration-local exceptions already occur in the accepted evaluator
+# checkpoint d2100df. The 72 FailureOfComposition sources permit none. Extending
+# the gate must not silently turn these into a file-wide or open-ended exception.
+EXISTING_FLEXIBLE_EXCEPTIONS = {
+    "CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean": {"eval_codeLift_iff"},
+    "CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean": {
+        "evalAux_unique", "eval_unique",
+    },
+}
+
+
+def style_sources(project):
+    library = project / "FailureOfComposition"
+    maintained = [project / "FailureOfComposition.lean", *sorted(library.glob("*.lean"))]
+    provenance = json.loads((library / "Porting/EVALUATOR_PROVENANCE.json").read_text())
+    evaluator = []
+    for entry in provenance["files"]:
+        source = project / entry["path"]
+        if (not source.resolve().is_relative_to(project.resolve())
+                or source.suffix != ".lean" or not source.is_file()):
+            raise SystemExit(f"Invalid evaluator style source: {entry['path']}")
+        evaluator.append(source)
+    sources = maintained + sorted(evaluator)
+    if len(sources) != len(set(sources)):
+        raise SystemExit("Duplicate source in strict style inventory")
+    return sources
+
+
+def suppression_inventory(relative, text):
+    existing = []
+    unexpected = []
+    for match in re.finditer(
+        r"^[ \t]*set_option\s+(?:weak\.)?linter\.\S+\s+(?:false|0)\b[^\n]*",
+        text, re.M,
+    ):
+        declaration = re.match(r"\n(?:private )?theorem (\w+)\b", text[match.end():])
+        name = declaration[1] if declaration else None
+        if (match[0].strip() == "set_option linter.flexible false in"
+                and name in EXISTING_FLEXIBLE_EXCEPTIONS.get(relative, set())
+                and name not in existing):
+            existing.append(name)
+        else:
+            unexpected.append(match[0])
+    return existing, unexpected
+
+
 def check_style(project, packages):
     workers = positive_setting("FAILCOMP_STYLE_JOBS")
-    library = project / "FailureOfComposition"
     evidence = project.parent / ".codex-work/logs/port-verification"
-    sources = [project / "FailureOfComposition.lean", *sorted(library.glob("*.lean"))]
+    sources = style_sources(project)
     command = bounded_lake_command(
         project, "--packages=" + str(packages), "env", "lean", "--json",
         "-Dlinter.mathlibStandardSet=true", "-DwarningAsError=true",
@@ -33,16 +78,20 @@ def check_style(project, packages):
     report = {
         "status": "running",
         "started_at": datetime.now(timezone.utc).isoformat(),
-        "scope": "All maintained FailureOfComposition mathematical sources and their umbrella",
+        "scope": "72 FailureOfComposition sources and all 31 pinned evaluator sources",
         "excluded": {
             "Verification/*.lean": "Diagnostic audit commands, run separately by verify.sh",
-            "CategoricalRiceShapiro and external dependencies": "Pinned imported sources",
+            "External dependencies": "Pinned dependency packages",
+            "CategoricalRiceShapiro.lean": "Re-export-only umbrella; its 31 imports are checked",
         },
         "command_template": [*command, "{source}"],
         "source_count": len(sources),
         "worker_processes": workers,
         "warnings_are_errors": True,
-        "linter_suppressions_allowed": False,
+        "new_linter_suppressions_allowed": False,
+        "existing_scoped_exceptions": {
+            path: sorted(names) for path, names in EXISTING_FLEXIBLE_EXCEPTIONS.items()
+        },
         "results": [],
     }
     evidence.mkdir(parents=True, exist_ok=True)
@@ -56,11 +105,7 @@ def check_style(project, packages):
     def check(source):
         relative = str(source.relative_to(project))
         before = source.read_bytes()
-        # Suppression would turn a clean result into a misleading gate.
-        suppressions = re.findall(
-            r"^\s*set_option\s+(?:weak\.)?linter\.\S+\s+(?:false|0)\b",
-            before.decode(), re.M,
-        )
+        existing, suppressions = suppression_inventory(relative, before.decode())
         result = subprocess.run(
             [*command, relative], cwd=project, env=clean_environment(),
             capture_output=True, text=True, check=False,
@@ -90,6 +135,8 @@ def check_style(project, packages):
             "status": "passed" if passed else "failed",
             "warning_or_error_count": len(diagnostics),
             "linter_suppression_count": len(suppressions),
+            "existing_scoped_exception_count": len(existing),
+            "existing_scoped_exceptions": existing,
             "source_unchanged_during_check": unchanged,
         }
         if not passed:

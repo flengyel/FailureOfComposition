@@ -1,5 +1,10 @@
 # Lean 4.35 port status
 
+The independent WSL rerun at `d2100df` also passed; see
+[INDEPENDENT_REVIEW.json](INDEPENDENT_REVIEW.json). The subsequent
+[evaluator style cleanup](STYLE_CLEANUP.md) has separate pending validation.
+The report below records the original porting session.
+
 Checkpoint: 2026-09-25. **The bounded Lean 4.35.0-rc2 toolchain-port
 milestone is complete: the native build and every required local acceptance
 check pass.** No push or merge has been performed.

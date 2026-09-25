@@ -8,11 +8,14 @@ provable equality and the failure of composition*. Read `README.md`,
 before editing. The Lake project is `Lean/`; its package name is still
 `CategoricalRiceShapiro` for compatibility.
 
-The accepted development uses Lean 4.32.2, Mathlib
-`905b95818eb32af7874a58b427f50c1711a5e96c`, and Foundation
-`a3dd617f88bda178eb6c206dd5db91f88b6a2a42`. The pre-setup repository checkpoint is
-`93fc6536f17f84933edf6d223eb41c8e3a9f866c`. A newer toolchain is a migration until
-its build and audits pass; see `docs/CODEX_PORT_TASK.md`.
+The independently rerun port checkpoint is
+`d2100df1b583368c56c00c3a4babf0bb72b0cfb2`: Lean 4.35.0-rc2, Mathlib
+`065356127b1dc0016f66b7283ce0ce2c4055aa55`, and Foundation
+`e72cfe981aa65166f37fa4e2584f4806bc48d72f`. The earlier 4.32.2 task remains
+documented in `docs/CODEX_PORT_TASK.md`; its pre-setup checkpoint is
+`93fc6536f17f84933edf6d223eb41c8e3a9f866c`. Subsequent evaluator style cleanup
+requires its own build and audits; see
+`Lean/FailureOfComposition/Porting/STYLE_CLEANUP.md`.
 
 Preserve theorem types, quantifiers, and mathematical hypotheses. In particular:
 

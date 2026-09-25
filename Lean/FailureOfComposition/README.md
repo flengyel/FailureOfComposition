@@ -584,14 +584,16 @@ warnings in the maintained mathematical library. Its inventory consists of
 `CategoricalRiceShapiro` evaluator modules.
 
 The repeatable strict style gate, `python3 FailureOfComposition/check_style.py`,
-re-elaborates all 72 maintained mathematical sources with Mathlib's standard
-linters explicitly enabled and all warnings treated as errors. It rejects
-linter suppressions and records the source hash for each check. Audit helper
-commands and pinned evaluator/dependency sources are outside this style-editing
-scope; the helper commands and evaluator kernel checks still run separately.
-The gate passed with zero diagnostics and no suppressions. Unnecessary global
-heartbeat overrides were removed; the one required override is documented
-and scoped to `CraigPresentation.axiom_proof_iff`.
+now includes the 72 maintained mathematical sources and all 31 pinned evaluator
+sources, with Mathlib's standard linters enabled and warnings treated as errors.
+It records the source hash for each check. The 72 FailureOfComposition sources
+permit no suppressions; three existing declaration-local `linter.flexible`
+exceptions in evaluator proofs are explicitly recorded and no new exception
+is permitted. Audit helpers and external dependency packages remain outside
+this style-editing scope. The prior 72-source gate passed with zero diagnostics
+and no suppressions; the expanded gate and evaluator cleanup await their WSL
+run. See [the cleanup record](Porting/STYLE_CLEANUP.md). The required heartbeat
+override remains scoped to `CraigPresentation.axiom_proof_iff`.
 
 The verifier checks the toolchain and dependency pins, builds the maintained
 library, inspects theorem types and axiom dependencies, checks proof dependency
