@@ -591,8 +591,9 @@ permit no suppressions; three existing declaration-local `linter.flexible`
 exceptions in evaluator proofs are explicitly recorded and no new exception
 is permitted. Audit helpers and external dependency packages remain outside
 this style-editing scope. The prior 72-source gate passed with zero diagnostics
-and no suppressions; the expanded gate and evaluator cleanup await their WSL
-run. See [the cleanup record](Porting/STYLE_CLEANUP.md). The required heartbeat
+and no suppressions. The expanded 103-source gate and evaluator cleanup
+passed the full WSL suite; see the [validation record](Porting/STYLE_CLEANUP_VALIDATION.json)
+and [cleanup record](Porting/STYLE_CLEANUP.md). The required heartbeat
 override remains scoped to `CraigPresentation.axiom_proof_iff`.
 
 The verifier checks the toolchain and dependency pins, builds the maintained

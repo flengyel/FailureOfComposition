@@ -49,8 +49,9 @@ bash scripts/verify-failure-composition.sh
 The environment check invokes no Lake command. Full verification builds the
 library and runs the style, theorem, dependency, and kernel checks. The
 [evaluator style cleanup](Lean/FailureOfComposition/Porting/STYLE_CLEANUP.md)
-extends warnings-as-errors checks to all 31 evaluator sources; its changed
-proofs require a subsequent WSL verification before acceptance.
+extends warnings-as-errors checks to all 31 evaluator sources. The cleanup
+passed its full WSL verification; see the
+[validation record](Lean/FailureOfComposition/Porting/STYLE_CLEANUP_VALIDATION.json).
 `CRS_LAKE_PACKAGES` may supply an existing package mapping. The scripts validate
 the dependency pins and do not fetch new checkouts.
 

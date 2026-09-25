@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-09-25T13:45:25.762222+00:00",
+  "verified_source_commit": "dea04886088894fa919b54249b4e97ad59d56d54",
+  "acceptance_mode": "fresh_verification",
+  "regression_tests_exit_code": 0,
+  "full_verification_exit_code": 0,
+  "style_sources": 103,
+  "warning_or_error_count": 0,
+  "unexpected_linter_suppression_count": 0,
+  "existing_scoped_exceptions": 3,
+  "palomar_comparator_run": false,
+  "evidence_directory": ".codex-work/logs/evaluator-style-cleanup-20260925T132157Z-675349",
+  "sha256": {
+    "verification.log": "208bd1cc9379dd38a12f13e0169060539574a9099d951c420e4300d6bbecd95f",
+    "gate-tests.log": "fd3429f6a39b0337f73fcc2e93bc92cfa556334244053e19baf5f74b054988a4",
+    "style-lint.json": "b8e26b91aa987aa3e03ab872229f2af7f0cba6a2f9fbd082b3494d0681a706b2",
+    "native-build.json": "33edf89af3392f6c9014b75a1bc3957bd604b06574dfe1f6dd240f13fb4a939e"
+  }
+}

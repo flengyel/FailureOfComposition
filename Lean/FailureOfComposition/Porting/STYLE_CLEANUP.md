@@ -57,7 +57,10 @@ Source checks performed during preparation:
   exception boundaries, and rejection of warnings even with compiler exit 0.
 - `git diff --check` passes.
 
-**Lean compilation and the expanded strict gate are pending for this cleanup.**
+**Lean compilation and the expanded 103-source strict gate passed for this cleanup.**
+The full WSL suite also passed its theorem/type, axiom, dependency, kernel-replay,
+and nine paired draft checks. [STYLE_CLEANUP_VALIDATION.json](STYLE_CLEANUP_VALIDATION.json)
+records the exact checked source commit and whether the completed run was reused.
 The preparation environment has no Lean installation and an 8 GiB memory
 limit. Use the existing Linux port checkout and its compatible dependency
 caches; another independent checkout or dependency download is unnecessary.

@@ -2,7 +2,8 @@
 
 The independent WSL rerun at `d2100df` also passed; see
 [INDEPENDENT_REVIEW.json](INDEPENDENT_REVIEW.json). The subsequent
-[evaluator style cleanup](STYLE_CLEANUP.md) has separate pending validation.
+[evaluator style cleanup](STYLE_CLEANUP.md) passed its separate full WSL
+verification; see [STYLE_CLEANUP_VALIDATION.json](STYLE_CLEANUP_VALIDATION.json).
 The report below records the original porting session.
 
 Checkpoint: 2026-09-25. **The bounded Lean 4.35.0-rc2 toolchain-port
