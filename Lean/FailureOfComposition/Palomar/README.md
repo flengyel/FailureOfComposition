@@ -4,6 +4,10 @@
 and their proved counterparts reviewable. It is not an eligible Palomar
 submission, a Comparator success report, or a registry entry.
 
+The current launcher-recovery and eligibility findings are recorded in
+[`STATUS.md`](STATUS.md), with the resolved import and correspondence inventory
+in [`ELIGIBILITY_INVENTORY.json`](ELIGIBILITY_INVENTORY.json).
+
 The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
 Its accepted checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`, using
 Lean 4.35.0-rc2, Mathlib `065356127b1dc0016f66b7283ce0ce2c4055aa55`, and

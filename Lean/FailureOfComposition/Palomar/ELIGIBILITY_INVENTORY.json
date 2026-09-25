@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-25T21:42:49Z",
+  "candidate_commit_inspected": "1c287855569f8d754baa57ae6961f3221929b9ac",
+  "accepted_mathematical_checkpoint": "073e95e54907eb26b6af9070302f5afdde04d963",
+  "verdict": "ineligible",
+  "verdict_scope": "current draft Challenge import provenance",
+  "challenge": {
+    "path": "Lean/FailureOfComposition/Palomar/Challenge.lean",
+    "sha256": "bdb1dd7e7a434ce54cf18c96896f71c27cd3e3d78ea01bc6c4a3283507202b6f",
+    "bytes": 7114,
+    "lines": 139,
+    "limits": {
+      "hard_bytes": 102400,
+      "hard_lines": 1000,
+      "preferred_bytes": 32768,
+      "preferred_lines": 300
+    }
+  },
+  "policy": {
+    "palomar_policy_commit": "792c7c0b9e798bd02719e795ef11fa2b5929e067",
+    "palomar_submission_commit": "a59f25bd8a66bf6faf3a4f4260d412989c0185ea",
+    "verify_submission_sha256": "7bec7f2fc59fa4fb310e52ca010f9a5100ceb7e2c955288b205ce7ddd6c250c5",
+    "allowlist_sha256": "bfb114daf5ead308052ccec85b1029aa0c875bebe6eec8f642df57f2ddbd8971",
+    "source_dependency_command": "cd Lean && lake env lean --src-deps FailureOfComposition/Palomar/Challenge.lean",
+    "source_dependency_count": 5,
+    "untrusted_source_count": 4
+  },
+  "resolved_direct_imports": [
+    {
+      "module": "FailureOfComposition.ManuscriptObstruction",
+      "path": "Lean/FailureOfComposition/ManuscriptObstruction.lean",
+      "git_blob": "1507131322ea1e684e0da1b181c79a9ab724d8a5",
+      "sha256": "caf0f91ceba6c9d52b990bb5cfaec8d9ee7735a4d5204b70394df84c4aac74ea",
+      "classification": "candidate_local_untrusted"
+    },
+    {
+      "module": "FailureOfComposition.ConcretePiOneCharacterization",
+      "path": "Lean/FailureOfComposition/ConcretePiOneCharacterization.lean",
+      "git_blob": "bc4632a6fbe69b652c48e72be544393560129fe9",
+      "sha256": "5412582f30688aa41506a0eae82a1fa87c23f215435d5a0b23417052a4e273d0",
+      "classification": "candidate_local_untrusted"
+    },
+    {
+      "module": "FailureOfComposition.PartialRecursiveQuotient",
+      "path": "Lean/FailureOfComposition/PartialRecursiveQuotient.lean",
+      "git_blob": "55b770732eaa8112b6b1fcd4a77d2b6a019a0ed0",
+      "sha256": "b2c5da77ae119eec2db57cc0cb438b4c31995d38c06dbc06c76125dc83d565a6",
+      "classification": "candidate_local_untrusted"
+    },
+    {
+      "module": "FailureOfComposition.RangeAssignment",
+      "path": "Lean/FailureOfComposition/RangeAssignment.lean",
+      "git_blob": "674b712e4a77f7c34e27d17243481cf36cec1834",
+      "sha256": "9a822026b5ea3f82eb5fb687a7503a69c100b294efa38a85bb681daeee61106f",
+      "classification": "candidate_local_untrusted"
+    }
+  ],
+  "allowed_root_observations": [
+    {
+      "repository": "leanprover-community/mathlib4",
+      "revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "available": [
+        "Nat.Partrec.Code and evaluation",
+        "REPred and computability infrastructure",
+        "first-order semantic syntax"
+      ],
+      "missing_for_this_interface": [
+        "a PA derivation calculus corresponding to the maintained Foundation calculus",
+        "the maintained arithmetic hierarchy and proof coding",
+        "the PA-uniform evaluator graph used by the results"
+      ]
+    },
+    {
+      "repository": "TauCetiProject/TauCeti",
+      "revision": "221bb56a017bb794421eac4fa543d7a5e85add75",
+      "available": [],
+      "missing_for_this_interface": [
+        "first-order arithmetic syntax, PA derivability, and program arithmetization"
+      ]
+    },
+    {
+      "repository": "leanprover/cslib",
+      "revision_observed": "a91aaaf96a72419b399c41c974a171749bf5b929",
+      "available": [
+        "generic inference-system support",
+        "propositional and other non-arithmetic logics"
+      ],
+      "missing_for_this_interface": [
+        "first-order PA syntax and derivability",
+        "arithmetic hierarchy and evaluator graph correspondence"
+      ]
+    }
+  ],
+  "concept_inventory": [
+    {
+      "concept": "arithmetic syntax, substitution, sentences, theories, and derivability",
+      "current_provider": "Foundation",
+      "eligible_provider": null,
+      "required_bridge": "translations in both directions preserving substitution and preserving/reflecting actual derivations for every quantified theory",
+      "status": "unproved"
+    },
+    {
+      "concept": "PA and deductive extension",
+      "current_provider": "Foundation PeanoMinus plus full induction scheme",
+      "eligible_provider": null,
+      "required_bridge": "equivalence of PA theorem strength, not literal axiom inclusion only",
+      "status": "unproved"
+    },
+    {
+      "concept": "consistency",
+      "current_provider": "Foundation Entailment.Consistent",
+      "eligible_provider": null,
+      "required_bridge": "preservation and reflection under the theory/formula translation",
+      "status": "unproved"
+    },
+    {
+      "concept": "effective sentence coding and r.e. axiom codes",
+      "current_provider": "Foundation coding plus Mathlib REPred",
+      "eligible_provider": "Mathlib supplies REPred only",
+      "required_bridge": "computable inverse code translations preserving and reflecting REPred",
+      "status": "unproved"
+    },
+    {
+      "concept": "program numbering and actual partial evaluation",
+      "current_provider": "Mathlib Nat.Partrec.Code",
+      "eligible_provider": "Mathlib Nat.Partrec.Code",
+      "required_bridge": "none for the standard partial functions and canonical composition indices",
+      "status": "available"
+    },
+    {
+      "concept": "PA-uniform evaluator graph",
+      "current_provider": "FailureOfComposition.ConcreteEvaluator.eventualGraph",
+      "eligible_provider": null,
+      "required_bridge": "an explicit permitted arithmetic graph plus a PA proof of uniform equivalence for every standard program index",
+      "status": "unproved"
+    },
+    {
+      "concept": "external pointwise versus internal uniform provability",
+      "current_provider": "ConcreteIndices.PointwiseIndex and UniformIndex",
+      "eligible_provider": null,
+      "required_bridge": "provability transport for numeral instances and the single universally quantified graph equation",
+      "status": "unproved"
+    },
+    {
+      "concept": "guard, search, empty, and range indices",
+      "current_provider": "project-local structural compiler and PA graph realization",
+      "eligible_provider": "Mathlib provides only the raw program-code constructors",
+      "required_bridge": "explicit eligible index definitions and PA-uniform graph correctness; range choice requires the maintained choice-independence theorem after correctness",
+      "status": "unproved"
+    },
+    {
+      "concept": "Pi-one truth/completeness and Sigma-one soundness",
+      "current_provider": "Foundation hierarchy and standard-model evaluation",
+      "eligible_provider": null,
+      "required_bridge": "hierarchy and truth preservation/reflection sufficient for every true Pi-one and every proved Sigma-one sentence",
+      "status": "unproved"
+    },
+    {
+      "concept": "generated relation, quotients, and unary partial-recursive monoid",
+      "current_provider": "project definitions over the preceding provability relation plus Mathlib Partrec",
+      "eligible_provider": "Lean Quotient and Mathlib Partrec after the relation bridge",
+      "required_bridge": "relation and quotient transport with the representative equation",
+      "status": "blocked_by_preceding_bridges"
+    }
+  ],
+  "first_checkpoint": {
+    "declaration": "FailureOfComposition.Palomar.obstruction_four_properties",
+    "status": "not_reached",
+    "smallest_unresolved_obligation": {
+      "name": "independent_derivability_correspondence",
+      "statement": "For a permitted, explicit arithmetic syntax and calculus, construct computable inverse translations to the maintained Foundation syntax and prove that T proves a sentence iff the translated Foundation theory proves its translation, uniformly for every theory T.",
+      "why_first": "Without derivation reflection, consistency and PA-extension hypotheses cannot be transported to the maintained theorem; without computability, the r.e. axiom hypothesis cannot be transported.",
+      "next_dependent_obligation": "Prove PA-uniform equivalence between an explicit eligible evaluator graph and ConcreteEvaluator.eventualGraph for every standard program index."
+    }
+  },
+  "verification": {
+    "new_eligible_comparator_run": false,
+    "new_full_verifier_run": false,
+    "reason": "No faithful eligible Challenge/Solution pair exists yet; running either verifier would only recheck the known ineligible draft.",
+    "historical_local_comparator_run_retained": "20260925T162212Z-45800"
+  },
+  "full_verifier_environment": {
+    "default_profile": "palomar-namespace-16x32-v1",
+    "default_minimum_memory_bytes": 30064771072,
+    "default_minimum_cpus": 16,
+    "observed_effective_cpus": 4.0,
+    "observed_effective_memory_bytes": 16772214784,
+    "approved_alternate_profile": "palomar-standard-v1",
+    "alternate_minimum_memory_bytes": 15032385536,
+    "alternate_memory_high_bytes_on_this_host": 15933604044,
+    "alternate_memory_max_bytes_on_this_host": 16436770488,
+    "physical_headroom_at_memory_max_bytes": 335444296,
+    "required_local_system_headroom_bytes": 4294967296,
+    "swap_limit_in_profile": null,
+    "safe_to_execute_here": false,
+    "blocker": "The default profile fails CPU and RAM minima. The alternate profile passes its numerical minimum but its mandated 98% memory.max would leave only 335444296 bytes of physical RAM outside the job and does not specify a swap ceiling; wrapping it in the launcher's safe 11 GiB aggregate cap would make the official capacity check fail."
+  }
+}
