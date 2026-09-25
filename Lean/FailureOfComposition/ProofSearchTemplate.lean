@@ -153,7 +153,7 @@ theorem guard_pointwise_identity (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     apply complete.{0} 𝗣𝗔
     intro V _ _
     simp [models_iff, notProofTarget, eqAt, guard, identity, Semiformula.eval_substs]
-  exact WeakerThan.pbl (mdp! h (numeral_negative U σ hσ n))
+  exact WeakerThan.pbl (Entailment.mdp h (numeral_negative U σ hσ n))
 
 theorem guard_search_empty : Uniform 𝗣𝗔 (comp (guard U σ) (search U σ)) empty := by
   apply complete.{0} 𝗣𝗔
@@ -209,8 +209,8 @@ theorem composites_not_pointwise_equal (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     by_contra hn
     have hmin : ∀ r < y, ¬Proof U r (⌜σ⌝ : V) := by simpa using hn
     exact h y hy hmin hy
-  exact hAbs (mdp! (WeakerThan.pbl (search_empty_implies_absence U σ))
-    (mdp! (WeakerThan.pbl himp) (h 0)))
+  exact hAbs (Entailment.mdp (WeakerThan.pbl (search_empty_implies_absence U σ))
+    (Entailment.mdp (WeakerThan.pbl himp) (h 0)))
 
 theorem functional_graph_noncongruence (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     (hσ : U ⊬ σ) (hAbs : T ⊬ ∼provabilityPred U σ) :

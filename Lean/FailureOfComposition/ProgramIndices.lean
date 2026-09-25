@@ -44,7 +44,8 @@ theorem kleeneEqAt_iff_eqAt (F G : Graph) (hF : Functional F) (hG : Functional G
   simp only [kleeneEqAt, Nat.reduceAdd, Fin.Fin1.eq_one, Fin.isValue, eqAt, Semantics.models_iff,
     Semantics.And.models_and, models_iff, Semiformula.eval_ex, Nat.succ_eq_add_one,
     Semiformula.eval_substs, Matrix.comp₂, Semiterm.val_operator, Matrix.comp₀,
-    Structure.numeral_eq_numeral, numeral_eq_natCast, Semiterm.val_bvar, Matrix.cons_val_fin_one,
+    Tarski.Structure.numeral_eq_numeral, numeral_eq_natCast, Semiterm.val_bvar,
+    Matrix.cons_val_fin_one,
     Semantics.Imp.models_imply, LogicalConnective.HomClass.map_and, LogicalConnective.Prop.and_eq,
     forall_exists_index, Semiformula.eval_all, LogicalConnective.HomClass.map_iff,
     LogicalConnective.Prop.iff_eq]

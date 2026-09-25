@@ -28,6 +28,16 @@ open ProgramGraph ArithmeticCodeCompiler ArithmeticFormulaAtoms BoundedSemidecis
 def truthProgram (c : PCode) : PCode :=
   acceptZeroProgram (.comp ConcreteEvaluator.isZeroProgram c)
 
+private theorem exists_nonzero_bool {M : Type*} [ORingStructure M]
+    [M↓[ℒₒᵣ] ⊧* 𝗤] (P : Prop) :
+    (∃ z : M, z ≠ 0 ∧ BoolValue P z) ↔ P := by
+  constructor
+  · rintro ⟨z, hn, ⟨hp, _⟩ | ⟨_, hz⟩⟩
+    · exact hp
+    · exact False.elim (hn hz)
+  · intro hp
+    exact ⟨1, Arithmetic.one_ne_zero, Or.inl ⟨hp, rfl⟩⟩
+
 section Semantics
 variable {M : Type*} [ORingStructure M]
   [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
@@ -45,15 +55,6 @@ theorem computes_truthProgram (c : PCode) (x y : M) :
   · rintro ⟨hy, z, hn, hz⟩
     exact ⟨hy, z, hz, Or.inr ⟨hn, trivial⟩⟩
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
-private theorem exists_nonzero_bool (P : Prop) :
-    (∃ z : M, z ≠ 0 ∧ BoolValue P z) ↔ P := by
-  constructor
-  · rintro ⟨z, hn, ⟨hp, _⟩ | ⟨_, hz⟩⟩
-    · exact hp
-    · exact False.elim (hn hz)
-  · intro hp
-    exact ⟨1, Arithmetic.one_ne_zero, Or.inl ⟨hp, rfl⟩⟩
 end Semantics
 
 theorem atom_semidecides {n k : ℕ} (r : Language.ORing.Rel k)

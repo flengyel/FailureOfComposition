@@ -39,7 +39,10 @@ private def pairedStageFormula (q : ℕ) : ArithmeticSemisentence 4 :=
 private def pairedEventualFormula (q : ℕ) : ArithmeticSemisentence 3 :=
   “a m y. ∃ u, !pairDef u a m ∧ !(eventualGraph q).val u y”
 
-variable {M : Type*} [ORingStructure M] [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+variable {M : Type*} [ORingStructure M]
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 private abbrev sc (q : ℕ) (s a m y : M) : Prop :=
   Semiformula.Evalb ![s, (q : M), FFL.FirstOrder.Arithmetic.pair a m, y]
@@ -48,21 +51,28 @@ private abbrev sc (q : ℕ) (s a m y : M) : Prop :=
 private abbrev egp (q : ℕ) (a m y : M) : Prop :=
   (eventualGraph q).val.Evalb ![FFL.FirstOrder.Arithmetic.pair a m, y]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
+end
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+
 private theorem pairedStageFormula_eval (q : ℕ) (s a m y : M) :
     (pairedStageFormula q).Evalb ![s,a,m,y] ↔ sc q s a m y := by
   simp [pairedStageFormula, sc, numeral_eq_natCast]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 private theorem pairedEventualFormula_eval (q : ℕ) (a m y : M) :
     (pairedEventualFormula q).Evalb ![a,m,y] ↔ egp q a m y := by
   simp [pairedEventualFormula, egp]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 private theorem egp_iff (q : ℕ) (a m y : M) :
     egp q a m y ↔ ∃ s : M, sc q s a m y := by
   simpa only [sc, egp, numeral_eq_natCast_app, Matrix.cons_val_zero,
     Matrix.cons_val_one] using eventualGraph_eval q ![FFL.FirstOrder.Arithmetic.pair a m,y]
+
+end
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 private theorem sc_rfind (f : Nat.Partrec.Code) (s a m y : M) (hs : 0 < s) :
     sc (encode (Nat.Partrec.Code.rfind' f)) s a m y ↔
@@ -75,18 +85,27 @@ private theorem sc_rfind (f : Nat.Partrec.Code) (s a m y : M) (hs : 0 < s) :
     evalnCertificateFormula_tag_seven_iff (encode (Nat.Partrec.Code.rfind' f)) (rfind_tag f) s
       (FFL.FirstOrder.Arithmetic.pair a m) y hs
 
+end
+
 private def forwardFormula (q p : ℕ) : ArithmeticSemisentence 1 :=
   “s. ∀ a m y, !(pairedStageFormula q) s a m y →
     (m ≤ y ∧ !(pairedEventualFormula p) a y 0 ∧
       ∀ k, m ≤ k → k < y → ∃ v, v ≠ 0 ∧ !(pairedEventualFormula p) a k v)”
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+
 private theorem forwardFormula_eval (q p : ℕ) (s : M) :
     (forwardFormula q p).Evalb ![s] ↔
     ∀ a m y : M, sc q s a m y →
       m ≤ y ∧ egp p a y 0 ∧
         ∀ k : M, m ≤ k → k < y → ∃ v : M, v ≠ 0 ∧ egp p a k v := by
   simp [forwardFormula, pairedStageFormula_eval, pairedEventualFormula_eval]
+
+end
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 private theorem rfind_forward (f : Nat.Partrec.Code) :
     ∀ s a m y : M, sc (encode (Nat.Partrec.Code.rfind' f)) s a m y →
@@ -161,18 +180,27 @@ private theorem rfind_next (f : Nat.Partrec.Code) (a m y : M)
       (FFL.FirstOrder.Arithmetic.pair a (m + 1)) y hle hrs
     simpa only [add_sub_self] using hc
 
+end
+
 private def reverseFormula (q p : ℕ) : ArithmeticSemisentence 1 :=
   “l. ∀ a m, (!(pairedEventualFormula p) a (m + l) 0 ∧
     ∀ k, m ≤ k → k < m + l → ∃ v, v ≠ 0 ∧ !(pairedEventualFormula p) a k v) →
     !(pairedEventualFormula q) a m (m + l)”
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+
 private theorem reverseFormula_eval (q p : ℕ) (l : M) :
     (reverseFormula q p).Evalb ![l] ↔
     ∀ a m : M, (egp p a (m + l) 0 ∧
       ∀ k : M, m ≤ k → k < m + l → ∃ v : M, v ≠ 0 ∧ egp p a k v) →
       egp q a m (m + l) := by
   simp [reverseFormula, pairedEventualFormula_eval]
+
+end
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 private theorem rfind_reverse (f : Nat.Partrec.Code) :
     ∀ l a m : M, (egp (encode f) a (m + l) 0 ∧
@@ -227,6 +255,8 @@ theorem eventualGraph_rfind_code_eval (f : Nat.Partrec.Code) (a y : M) :
         ∀ k : M, 0 ≤ k → k < 0 + y → ∃ z : M, z ≠ 0 ∧ egp (encode f) a k z := by
       simpa only [zero_add] using And.intro h.1 (fun k _ hk => h.2 k hk)
     simpa only [zero_add] using rfind_reverse f y a 0 hh
+
+end
 
 end
 end FailureOfComposition.ConcreteEvaluator

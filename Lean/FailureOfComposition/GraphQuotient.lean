@@ -35,7 +35,7 @@ theorem pointwise_equivalence (T : ArithmeticTheory) [𝗣𝗔 ⪯ T] :
         Nat.reduceAdd]
       intro h y
       exact (h y).symm
-    exact mdp! (WeakerThan.pbl hs) (h n)
+    exact Entailment.mdp (WeakerThan.pbl hs) (h n)
   trans := by
     intro F G H hFG hGH n
     have ht : 𝗣𝗔 ⊢ eqAt F G n 🡒 eqAt G H n 🡒 eqAt F H n := by
@@ -46,7 +46,7 @@ theorem pointwise_equivalence (T : ArithmeticTheory) [𝗣𝗔 ⪯ T] :
         Nat.reduceAdd]
       intro hfg hgh y
       exact (hfg y).trans (hgh y)
-    exact mdp! (mdp! (WeakerThan.pbl ht) (hFG n)) (hGH n)
+    exact Entailment.mdp (Entailment.mdp (WeakerThan.pbl ht) (hFG n)) (hGH n)
 
 theorem comp_functional {F G : Graph} (hF : Functional F) (hG : Functional G) :
     Functional (comp F G) := by

@@ -32,7 +32,7 @@ theorem pointwise_comp_left (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
       Fin.Fin1.eq_one, Matrix.cons_val_fin_one]
     intro hg z
     exact exists_congr fun y => and_congr (hg y) Iff.rfl
-  exact mdp! (WeakerThan.pbl h) (hGH n)
+  exact Entailment.mdp (WeakerThan.pbl h) (hGH n)
 
 /-- Standard equality of graph extensions is preserved in both arguments of
 composition, without a functionality hypothesis. -/

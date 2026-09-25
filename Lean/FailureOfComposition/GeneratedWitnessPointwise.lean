@@ -21,22 +21,29 @@ open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.Evaluator
 namespace FailureOfComposition.GeneratedWitnessGraphs
 open ProofSearch ConcreteEvaluator PiOneCharacterization
 
-private def historyGround (e s x z : ℕ) : 𝚺₁.Semisentence 0 :=
-  .mkSigma “!(code codeHistoryEvaluator) !!(z) !!(s) !!(e) !!(x)”
-
-private theorem historyGround_provable (e s x z : ℕ)
-    (hz : Semiformula.Evalb ![z, s, e, x] (code codeHistoryEvaluator)) :
-    𝗣𝗔 ⊢ (historyGround e s x z).val := by
-  apply sigma_one_completeness (historyGround e s x z).sigma_prop
-  simpa [models_iff, historyGround, numeral_eq_natCast, natCast_nat] using hz
-
 private theorem history_output_at_numerals (e s x z : ℕ)
     (hz : Semiformula.Evalb ![z, s, e, x] (code codeHistoryEvaluator))
     {M : Type*} [ORingStructure M] [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] :
     Semiformula.Evalb ![(z : M), (s : M), (e : M), (x : M)] (code codeHistoryEvaluator) := by
-  have hp := consequence_iff.mp (Theory.Proof.sound (historyGround_provable e s x z hz))
-    M inferInstance
-  simpa [models_iff, historyGround, numeral_eq_natCast] using hp
+  have htr := FFL.FirstOrder.Arithmetic.bold_sigma_one_completeness' (M := M)
+    (code_sigma_one codeHistoryEvaluator) hz
+  rw [numeral_eq_natCast] at htr
+  have heq : (Nat.cast ∘ ![z, s, e, x] : Fin 4 → M) =
+      ![(z : M), (s : M), (e : M), (x : M)] := by
+    funext i
+    refine Fin.cases ?_ ?_ i
+    · rfl
+    · intro i1
+      refine Fin.cases ?_ ?_ i1
+      · rfl
+      · intro i2
+        refine Fin.cases ?_ ?_ i2
+        · rfl
+        · intro i3
+          refine Fin.cases ?_ (fun i4 => Fin.elim0 i4) i3
+          rfl
+  rw [heq] at htr
+  exact htr
 
 /-- A fixed standard stage can only return its genuine standard output in
 any PA model. Standard agreement then supplies the second graph at that output. -/

@@ -129,14 +129,14 @@ private theorem padded_provable (T : ArithmeticTheory) (σ : ArithmeticSentence)
     T ⊢ padded σ d ↔ T ⊢ σ := by
   unfold padded
   constructor
-  · exact K!_left
+  · exact K_left
   · intro h
     have ht : T ⊢ (“!!(d) = !!(d)” ⋎ “!!(d) ≠ !!(d)” : ArithmeticSentence) := by
       have hn : (“!!(d) ≠ !!(d)” : ArithmeticSentence) =
           ∼(“!!(d) = !!(d)” : ArithmeticSentence) := rfl
       rw [hn]
       cl_prover
-    exact K!_intro h ht
+    exact K_intro h ht
 
 /-- Every padded axiom is provable in the original theory. -/
 theorem presentation_weaker (T : ArithmeticTheory) (hT : REPred (AxiomCodes T)) :

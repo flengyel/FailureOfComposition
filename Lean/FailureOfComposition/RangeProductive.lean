@@ -43,7 +43,7 @@ theorem historyPositive_refutable_of_divergence (d : ℕ)
     have hP : ¬(historyPositiveFormula d).val.Evalb ![(n : M)] := by
       simpa [historyPositiveFormula] using hn
     exact fun hp => hP ((eval_numeral_substitution (historyPositiveFormula d).val n).mp hp)
-  exact mdp! hi (guard_pointwise_identity 𝗣𝗔 d hdiv n)
+  exact Entailment.mdp hi (guard_pointwise_identity 𝗣𝗔 d hdiv n)
 
 /-- Absence of all positive history stages is exactly diagonal divergence in PA. -/
 theorem history_absence_iff_divergence (d : ℕ) :

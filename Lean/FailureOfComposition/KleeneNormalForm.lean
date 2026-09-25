@@ -81,15 +81,20 @@ theorem normal_form_equation (e x : ℕ) :
     eval e x = (Nat.rfind (fun s => Part.some (decide (T₁ e x s)))).map U := by
   apply Part.ext
   intro y
-  simp only [Part.mem_map_iff, Nat.mem_rfind, Part.mem_some_iff,
-    Bool.true_eq, decide_eq_true_eq, Bool.false_eq, decide_eq_false_iff_not]
+  rw [Part.mem_map_iff]
   constructor
   · intro hy
     obtain ⟨s, hs, _⟩ := (normal_form e x y).mp hy
     obtain ⟨ht, hmin, hout⟩ := least_witness e x ⟨s, hs⟩
-    exact ⟨_, ⟨ht, fun {_} hlt => hmin _ hlt⟩, (hout y).mp hy⟩
-  · rintro ⟨s, ⟨hs, _⟩, hy⟩
-    exact (normal_form e x y).mpr ⟨s, hs, hy⟩
+    refine ⟨_, Nat.mem_rfind.mpr ?_, (hout y).mp hy⟩
+    constructor
+    · simpa using ht
+    · intro m hm
+      simpa using hmin m hm
+  · rintro ⟨s, hs, hy⟩
+    have hs' : T₁ e x s := by
+      simpa using (Nat.mem_rfind.mp hs).1
+    exact (normal_form e x y).mpr ⟨s, hs', hy⟩
 
 def compIndex (f g : ℕ) : ℕ := encode (Code.comp (ofNat Code f) (ofNat Code g))
 

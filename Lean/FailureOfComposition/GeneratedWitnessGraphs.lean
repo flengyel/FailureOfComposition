@@ -43,32 +43,41 @@ def intersection (F G : Graph) : Graph :=
 
 section Semantics
 variable {M : Type*} [ORingStructure M]
-  [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+
 @[simp] theorem stageGraph_eval (e : ℕ) (s x y : M) :
     (stageGraph e).val.Evalb ![s, x, y] ↔
       Semiformula.Evalb ![s, (e : M), x, y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
   simp [stageGraph, numeral_eq_natCast]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 @[simp] theorem failureGraph_eval (e : ℕ) (s x : M) :
     (failureGraph e).val.Evalb ![s, x] ↔
       Semiformula.Evalb ![0, s, (e : M), x] (code codeHistoryEvaluator) := by
   simp [failureGraph, evalnGraphFormula, numeral_eq_natCast]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 theorem stage_of_history (e : ℕ) (s x y : M) :
     (stageGraph e).val.Evalb ![s, x, y] ↔
       Semiformula.Evalb ![y + 1, s, (e : M), x] (code codeHistoryEvaluator) := by
   rw [stageGraph_eval, evalnCertificateFormula_eval_history_iff]
 
+end
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+
 theorem history_total (e : ℕ) (s x : M) :
     ∃ z : M, Semiformula.Evalb ![z, s, (e : M), x] (code codeHistoryEvaluator) :=
   eval_codeHistoryEvaluator_exists s (e : M) x
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
+end
+
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+
 theorem stage_implies_eventual (e : ℕ) (s x y : M)
     (h : (stageGraph e).val.Evalb ![s, x, y]) :
     (eventualGraph e).val.Evalb ![x, y] := by
@@ -76,6 +85,12 @@ theorem stage_implies_eventual (e : ℕ) (s x y : M)
   refine ⟨s, ?_⟩
   simpa only [numeral_eq_natCast_app, Matrix.cons_val_zero, Matrix.cons_val_one]
     using (stageGraph_eval e s x y).mp h
+
+end
+
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 theorem stage_unique (e : ℕ) (s x a b : M)
     (ha : (stageGraph e).val.Evalb ![s, x, a])
@@ -100,35 +115,41 @@ theorem failure_iff_no_stage (e : ℕ) (s x : M) :
         exact hz)⟩)) (Arithmetic.zero_le z)
     exact (failureGraph_eval e s x).mpr (by simpa only [hz0] using hz)
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
+end
+
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+
 @[simp] theorem leastGraph_eval (e : ℕ) (x s : M) :
     (leastGraph e).val.Evalb ![x, s] ↔
       (∃ y : M, (stageGraph e).val.Evalb ![s, x, y]) ∧
       ∀ r < s, (failureGraph e).val.Evalb ![r, x] := by
   simp [leastGraph]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 @[simp] theorem HGraph_eval (e : ℕ) (x n : M) :
     (HGraph e).val.Evalb ![x, n] ↔
       ∃ s : M, (leastGraph e).val.Evalb ![x, s] ∧ n = pair s x := by
   simp [HGraph]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 @[simp] theorem BGraph_pair_eval (e : ℕ) (s x y : M) :
     (BGraph e).val.Evalb ![pair s x, y] ↔ (stageGraph e).val.Evalb ![s, x, y] := by
   simp [BGraph]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
 @[simp] theorem AGraph_pair_eval (e : ℕ) (G : Graph) (s x y : M) :
     (AGraph e G).val.Evalb ![pair s x, y] ↔
       (stageGraph e).val.Evalb ![s, x, y] ∧ G.val.Evalb ![x, y] := by
   simp [AGraph]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] in
+end
+
 @[simp] theorem intersection_eval (F G : Graph) (x y : M) :
     (intersection F G).val.Evalb ![x, y] ↔
       F.val.Evalb ![x, y] ∧ G.val.Evalb ![x, y] := by
   simp [intersection]
+
+section
+variable [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 theorem leastGraph_unique (e : ℕ) (x s t : M)
     (hs : (leastGraph e).val.Evalb ![x, s])
@@ -188,6 +209,8 @@ theorem A_comp_H_eval (e : ℕ) (G : Graph) (x y : M) :
     obtain ⟨s, hs, hy⟩ := leastGraph_exists e x y he
     exact ⟨pair s x, (HGraph_eval e x _).mpr ⟨s, hs, rfl⟩,
       (AGraph_pair_eval e G s x y).mpr ⟨hy, hg⟩⟩
+
+end
 end Semantics
 
 theorem intersection_functional (F G : Graph) (hF : Functional F) :

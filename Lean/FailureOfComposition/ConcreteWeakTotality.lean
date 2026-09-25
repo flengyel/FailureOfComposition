@@ -72,7 +72,7 @@ theorem searchIndex_not_pointwise_empty (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     eqv.trans (eqv.symm (uniform_to_pointwise T (searchIndex_realizes d)))
       (eqv.trans ((pointwiseIndex_iff T _ _).mp h)
         (uniform_to_pointwise T eventualGraph_empty))
-  exact hnot (mdp! (WeakerThan.pbl (search_empty_implies_absence d)) (hs 0))
+  exact hnot (Entailment.mdp (WeakerThan.pbl (search_empty_implies_absence d)) (hs 0))
 
 /-- All four concrete witnesses used for composition and weak-totality failure. -/
 theorem index_four_witnesses_of_history_divergence

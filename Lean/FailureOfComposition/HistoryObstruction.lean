@@ -82,7 +82,7 @@ theorem guard_pointwise_identity (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     intro M _ _
     simp [models_iff, historyZeroFormula, eqAt, guardGraph, identity,
       Semiformula.eval_substs]
-  exact WeakerThan.pbl (mdp! hi hp)
+  exact WeakerThan.pbl (Entailment.mdp hi hp)
 
 theorem search_empty_implies_absence (d : ℕ) :
     𝗣𝗔 ⊢ eqAt (searchGraph d) empty 0 🡒 ∼diagonalHistoryFormula/[d] := by
@@ -124,7 +124,7 @@ theorem graph_noncongruence_of_history_divergence (T : ArithmeticTheory) [𝗣�
     simp only [models_iff, LogicalConnective.HomClass.map_imply, eqAt_eval]
     intro h y
     exact (hid 0 y).symm.trans ((h y).symm.trans (hempty 0 y))
-  exact hnot (mdp! (WeakerThan.pbl (search_empty_implies_absence d))
-    (mdp! (WeakerThan.pbl hi) (he 0)))
+  exact hnot (Entailment.mdp (WeakerThan.pbl (search_empty_implies_absence d))
+    (Entailment.mdp (WeakerThan.pbl hi) (he 0)))
 
 end FailureOfComposition.HistoryWitnesses

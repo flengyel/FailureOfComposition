@@ -220,10 +220,12 @@ theorem identity_computation [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] �
   rw [evalnCertificateFormula_eval_history_iff] at hleft hright
   have hl := eval_prefix_lookup_succ_of_codeHistoryEvaluator s (48 : M) u
     (FFL.FirstOrder.Arithmetic.pi₁ u) 2
-    (FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by norm_num)) hleft
+    (FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by
+      exact_mod_cast (show (2 : ℕ) < 48 by norm_num))) hleft
   have hr := eval_prefix_lookup_succ_of_codeHistoryEvaluator s (48 : M) u
     (FFL.FirstOrder.Arithmetic.pi₂ u) 3
-    (FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by norm_num)) hright
+    (FFL.FirstOrder.Arithmetic.pair_lt_pair_right s (by
+      exact_mod_cast (show (3 : ℕ) < 48 by norm_num))) hright
   have hcell := eval_codeEvaluatorCell_succ_of_pair_component_lookups
     codeEvaluatorHistoryBeforeCell (Code.proj (2 : Fin 3)) 48 (by decide)
     (FFL.FirstOrder.Arithmetic.pi₁ u) (FFL.FirstOrder.Arithmetic.pi₂ u)

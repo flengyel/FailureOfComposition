@@ -30,13 +30,48 @@ def guardCode (d : ℕ) : Code 1 :=
 def searchCode (d : ℕ) : Code 1 :=
   codeRfindPos ((historyCode d).comp ![Code.proj 0])
 
-def historyGraph (d : ℕ) : Graph := .mkSigma “s z. !(code (historyCode d)) z s”
+private def rawHistoryGraph (d : ℕ) : Graph :=
+  .mkSigma (code (historyCode d)) (code_sigma_one (historyCode d))
+
+def historyGraph (d : ℕ) : Graph :=
+  (rawHistoryGraph d).rew (Rew.subst ![(#1 : ArithmeticSemiterm Empty 2), #0])
+
 def guardGraph (d : ℕ) : Graph := .mkSigma “x y. !(historyGraph d).val x 0 ∧ y = x”
 def searchGraph (d : ℕ) : Graph := .mkSigma
   “x y. (∃ z, 0 < z ∧ !(historyGraph d).val y z) ∧
     ∀ r < y, !(historyGraph d).val r 0”
 
 variable {M : Type*} [ORingStructure M]
+
+private theorem historyGraph_code_eval (d : ℕ) (s z : M) :
+    (historyGraph d).val.Evalb ![s, z] ↔
+      Semiformula.Evalb ![z, s] (code (historyCode d)) := by
+  have hb : (fun x : Fin 2 => Semiterm.val ![s, z] (Empty.elim : Empty → M)
+      ((Rew.subst ![(#1 : ArithmeticSemiterm Empty 2), #0])
+        (#x : Semiterm ℒₒᵣ Empty 2))) = ![z, s] := by
+    funext x
+    refine Fin.cases ?_ ?_ x
+    · simp
+    · intro i
+      refine Fin.cases ?_ (fun j => Fin.elim0 j) i
+      simp
+  have hf : (fun x : Empty => Semiterm.val ![s, z] (Empty.elim : Empty → M)
+      ((Rew.subst ![(#1 : ArithmeticSemiterm Empty 2), #0]) (&x))) =
+      Empty.elim := funext (fun x => x.elim)
+  simp only [historyGraph, rawHistoryGraph, HierarchySymbol.Semiformula.val_rew,
+    HierarchySymbol.Semiformula.val_mkSigma, Semiformula.eval_rew,
+    Function.comp_def, hb, hf]
+
+@[simp] theorem guardGraph_eval (d : ℕ) (v : Fin 2 → M) :
+    (guardGraph d).val.Evalb v ↔
+      (historyGraph d).val.Evalb ![v 0, 0] ∧ v 1 = v 0 := by
+  simp [guardGraph]
+
+@[simp] theorem searchGraph_eval (d : ℕ) (v : Fin 2 → M) :
+    (searchGraph d).val.Evalb v ↔
+      (∃ z : M, 0 < z ∧ (historyGraph d).val.Evalb ![v 1, z]) ∧
+        ∀ r < v 1, (historyGraph d).val.Evalb ![r, 0] := by
+  simp [searchGraph]
 
 theorem eval_rfind_iff {n : ℕ} (c : Code (n + 1)) (y : M) (v : Fin n → M) :
     Semiformula.Evalb (y :> v) (code c.rfind) ↔
@@ -73,7 +108,7 @@ theorem historyCode_eval [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* �
     (d : ℕ) (s z : M) :
     (historyGraph d).val.Evalb ![s, z] ↔
       Semiformula.Evalb ![z, s, (d : M), (d : M)] (code codeHistoryEvaluator) := by
-  simpa [historyGraph] using historyCode_eval d s z
+  exact (historyGraph_code_eval d s z).trans (historyCode_eval d s z)
 
 theorem history_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (d : ℕ) (s : M) : ∃ z : M, (historyGraph d).val.Evalb ![s, z] := by
@@ -103,35 +138,26 @@ theorem guardCode_eval [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* �
   simp only [guardCode, eval_codeBind_iff, eval_proj_iff,
     eval_rfind_iff, eval_codeLift_iff, Matrix.cons_val_one,
     Matrix.cons_val_fin_one]
-  simp only [Nat.succ_eq_add_one, Nat.reduceAdd, ne_eq, exists_and_right, exists_and_left,
-    guardGraph, historyGraph, Fin.isValue, HierarchySymbol.Semiformula.val_mkSigma,
-    LogicalConnective.HomClass.map_and, Semiformula.eval_substs, Matrix.comp₂, Semiterm.val_bvar,
-    Matrix.cons_val_zero, Semiterm.val_operator, Matrix.comp₀, Structure.numeral_eq_numeral,
-    ORingStructure.zero_eq_zero, Matrix.cons_val_one, Fin.Fin1.eq_one, Matrix.cons_val_fin_one,
-    Semiformula.eval_operator, Structure.eq_iff_eq, LogicalConnective.Prop.and_eq,
-    and_congr_left_iff, and_iff_left_iff_imp]
-  intro _ _
-  exact ⟨0, fun r hr => False.elim ((not_lt_of_ge (Arithmetic.zero_le r)) hr)⟩
+  rw [guardGraph_eval, historyGraph_code_eval]
+  constructor
+  · rintro ⟨_, ⟨h, _⟩, hy⟩
+    exact ⟨h, hy⟩
+  · rintro ⟨h, hy⟩
+    refine ⟨0, ⟨h, ?_⟩, hy⟩
+    intro r hr
+    exact False.elim ((not_lt_of_ge (Arithmetic.zero_le r)) hr)
 
 theorem searchCode_eval [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
     (d : ℕ) (x y : M) :
     Semiformula.Evalb ![y, x] (code (searchCode d)) ↔
       (searchGraph d).val.Evalb ![x, y] := by
   rw [searchCode, eval_codeRfindPos_iff]
-  simpa [searchGraph, historyGraph] using
-    (and_congr (exists_congr fun z => and_congr Iff.rfl (headHistory_eval d y x z))
-      (forall_congr' fun r => imp_congr Iff.rfl (headHistory_eval d r x 0)))
-
-@[simp] theorem guardGraph_eval (d : ℕ) (v : Fin 2 → M) :
-    (guardGraph d).val.Evalb v ↔
-      (historyGraph d).val.Evalb ![v 0, 0] ∧ v 1 = v 0 := by
-  simp [guardGraph]
-
-@[simp] theorem searchGraph_eval (d : ℕ) (v : Fin 2 → M) :
-    (searchGraph d).val.Evalb v ↔
-      (∃ z : M, 0 < z ∧ (historyGraph d).val.Evalb ![v 1, z]) ∧
-        ∀ r < v 1, (historyGraph d).val.Evalb ![r, 0] := by
-  simp [searchGraph]
+  rw [searchGraph_eval]
+  exact and_congr
+    (exists_congr fun z => and_congr Iff.rfl
+      ((headHistory_eval d y x z).trans (historyGraph_code_eval d y z).symm))
+    (forall_congr' fun r => imp_congr Iff.rfl
+      ((headHistory_eval d r x 0).trans (historyGraph_code_eval d r 0).symm))
 
 theorem guard_functional (d : ℕ) : Functional (guardGraph d) := by
   apply complete.{0} 𝗣𝗔

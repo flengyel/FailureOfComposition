@@ -76,7 +76,7 @@ theorem probeGraph_pointwise_empty (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     apply complete.{0} 𝗣𝗔
     intro M _ _
     simp [models_iff, eqAt, probeGraph, empty, Semiformula.eval_substs]
-  exact WeakerThan.pbl (mdp! h (href n))
+  exact WeakerThan.pbl (Entailment.mdp h (href n))
 
 theorem probeIndex_pointwise_empty (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     (P : 𝚺₁.Semisentence 1) (href : ∀ n : ℕ, 𝗣𝗔 ⊢ ∼P.val/[n]) :
@@ -120,7 +120,7 @@ theorem range_probeIndex_not_pointwise_empty (T : ArithmeticTheory) [𝗣𝗔 �
     eqv.trans (eqv.symm hprobe)
       (eqv.trans ((pointwiseIndex_iff T _ _).mp he)
         (uniform_to_pointwise T rangeIndex_empty))
-  exact hnot (mdp! (WeakerThan.pbl (range_probe_empty_implies_absence P)) (h 0))
+  exact hnot (Entailment.mdp (WeakerThan.pbl (range_probe_empty_implies_absence P)) (h 0))
 
 /-- A concrete pair of equivalent program indices whose range indices differ. -/
 theorem range_counterexample_of_instance_refutations

@@ -148,16 +148,18 @@ private theorem provable_iff_finiteImplication (T : ArithmeticTheory) (σ : Arit
       (∀ τ ∈ l, τ ∈ T) ∧ (∅ : ArithmeticTheory) ⊢ finiteImplication l σ := by
   constructor
   · rintro ⟨b⟩
-    refine ⟨b.axioms, b.axioms_mem, ?_⟩
+    refine ⟨b.axioms.toList, ?_, ?_⟩
+    · intro τ hτ
+      exact b.axioms_mem τ (by simpa using hτ)
     rw [finiteImplication_provable_iff]
-    simpa only [Set.empty_union] using
+    simpa only [Set.empty_union, Multiset.mem_toList] using
       (show ({τ | τ ∈ b.axioms} : ArithmeticTheory) ⊢ σ from
         ⟨⟨b.axioms, by simp, b.derivation⟩⟩)
   · rintro ⟨l, hl, hp⟩
     rw [finiteImplication_provable_iff] at hp
     exact Entailment.wk! (by
       intro τ hτ
-      exact hl τ (by simpa only [Set.empty_union, Set.mem_setOf_eq] using hτ)) hp
+      exact hl τ (by simpa only [Set.empty_union, Set.mem_ofPred_eq] using hτ)) hp
 
 /-- Recursively enumerable axiom codes yield recursively enumerable theorem
 codes. The theory need not have a Delta-one presentation. -/

@@ -55,7 +55,14 @@ noncomputable def emptyIndex : ℕ := indexOf (fun _ => Part.none) Partrec.none
 @[simp] theorem searchIndex_spec (d x y : ℕ) :
     y ∈ eval (searchIndex d) x ↔ T₁ d d y ∧ ∀ r < y, ¬T₁ d d r := by
   rw [searchIndex, eval_indexOf]
-  simp [searchEval]
+  change y ∈ Nat.rfind (fun n ↦ Part.some (decide (T₁ d d n))) ↔ _
+  constructor
+  · intro hy
+    have h := Nat.mem_rfind.mp hy
+    exact ⟨by simpa using h.1, fun r hr ↦ by simpa using h.2 hr⟩
+  · rintro ⟨hy, hmin⟩
+    apply Nat.mem_rfind.mpr
+    exact ⟨by simpa using hy, fun {r} hr ↦ by simpa using hmin r hr⟩
 
 @[simp] theorem identityIndex_spec (x : ℕ) : eval identityIndex x = Part.some x := by
   simp [eval, identityIndex]

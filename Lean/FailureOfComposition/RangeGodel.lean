@@ -38,7 +38,7 @@ theorem proofBotPredicate_numeral_refutation
     intro M _ _
     haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     simp [models_iff, Semiformula.eval_substs, proofBotPredicate]
-  exact mdp! h (numeral_nonproof_of_consistency T n)
+  exact Entailment.mdp h (numeral_nonproof_of_consistency T n)
 
 /-- Universal absence of contradiction proofs would establish the theory's
 own consistency, which Gödel's second incompleteness theorem excludes. -/

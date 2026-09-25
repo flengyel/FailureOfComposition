@@ -49,10 +49,9 @@ def unionProgram (c d : PCode) : PCode :=
   unaryCompile (codeBind (codeRfindPos (unionTest c d)) (Code.zero 2))
 
 variable {M : Type*} [ORingStructure M]
-  [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
-private theorem historyAt_eval {n : ℕ} (c : PCode) (ds dx : Code n)
+private theorem historyAt_eval [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+    {n : ℕ} (c : PCode) (ds dx : Code n)
     (s x z : M) (v : Fin n → M)
     (hs : Semiformula.Evalb (s :> v) (code ds))
     (hx : Semiformula.Evalb (x :> v) (code dx)) :
@@ -73,6 +72,15 @@ private theorem historyAt_eval {n : ℕ} (c : PCode) (ds dx : Code n)
     · exact hs
     · exact eval_codeConst (encode c) v
     · exact hx
+
+private theorem computes_iff_stage [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
+    (c : PCode) (x y : M) :
+    Computes c x y ↔ ∃ s : M, Semiformula.Evalb ![s,(encode c:M),x,y]
+      (evalnCertificateFormula : ArithmeticSemisentence 4) := by
+  simp only [ProgramGraph.Computes,eventualGraph_eval,numeral_eq_natCast_app,
+    Matrix.cons_val_zero,Matrix.cons_val_one]
+
+variable [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻]
 
 private theorem successAt_eval {n : ℕ} (c : PCode) (ds dx : Code n)
     (s x z : M) (v : Fin n → M)
@@ -178,13 +186,6 @@ private theorem existsTest_zero (c : PCode) (w x : M) :
     Semiformula.Evalb ![0,w,x] (code (existsTest c)) ↔ ¬packedSuccess c x w := by
   rw [existsTest_eval]
   simp
-
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
-private theorem computes_iff_stage (c : PCode) (x y : M) :
-    Computes c x y ↔ ∃ s : M, Semiformula.Evalb ![s,(encode c:M),x,y]
-      (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  simp only [ProgramGraph.Computes,eventualGraph_eval,numeral_eq_natCast_app,
-    Matrix.cons_val_zero,Matrix.cons_val_one]
 
 private theorem existsSearch_domain (c : PCode) (x : M) :
     (∃ w : M, Semiformula.Evalb ![w,x] (code (codeRfindPos (existsTest c)))) ↔

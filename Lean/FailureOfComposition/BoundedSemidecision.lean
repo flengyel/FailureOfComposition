@@ -18,6 +18,17 @@ open Encodable Nat.Partrec
 namespace FailureOfComposition.BoundedSemidecision
 open ProgramGraph ConcreteEvaluator
 
+private theorem forall_lt_succ_iff {M : Type*} [ORingStructure M]
+    [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] (P : M → Prop) (b : M) :
+    (∀ k : M, k < b + 1 → P k) ↔ (∀ k : M, k < b → P k) ∧ P b := by
+  constructor
+  · intro h
+    exact ⟨fun k hk => h k (lt_trans hk (lt_add_one b)), h b (lt_add_one b)⟩
+  · rintro ⟨h, hb⟩ k hk
+    rcases lt_or_eq_of_le (Arithmetic.lt_succ_iff_le.mp hk) with hlt | rfl
+    · exact h k hlt
+    · exact hb
+
 /-- Return zero precisely on input zero; diverge on every other input. -/
 def zeroOnlyProgram : Code :=
   .comp (.rfind' .left) (.pair Code.id .zero)
@@ -71,17 +82,6 @@ variable {M : Type*} [ORingStructure M]
   simp only [boundedStepProgram, computes_comp, computes_pair, computes_left,
     computes_right, pi₁_pair, pi₂_pair, exists_eq_left, computes_acceptZero]
   simp only [exists_and_left, exists_eq_left]
-
-omit [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] in
-private theorem forall_lt_succ_iff (P : M → Prop) (b : M) :
-    (∀ k : M, k < b + 1 → P k) ↔ (∀ k : M, k < b → P k) ∧ P b := by
-  constructor
-  · intro h
-    exact ⟨fun k hk => h k (lt_trans hk (lt_add_one b)), h b (lt_add_one b)⟩
-  · rintro ⟨h, hb⟩ k hk
-    rcases lt_or_eq_of_le (Arithmetic.lt_succ_iff_le.mp hk) with hlt | rfl
-    · exact h k hlt
-    · exact hb
 
 /-- The complete graph equation for bounded universal semidecision. No
 termination or zero-output assumption on the body program is required. -/

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+: "${FAILCOMP_REAL_LEAN:?FAILCOMP_REAL_LEAN must name the pinned Lean executable}"
+exec "$FAILCOMP_REAL_LEAN" -M 12288 -j 1 "$@"

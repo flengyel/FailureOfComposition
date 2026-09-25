@@ -32,7 +32,7 @@ theorem insert_provable_iff_of_provable (T : ArithmeticTheory)
     insert σ T ⊢ τ ↔ T ⊢ τ := by
   constructor
   · intro hτ
-    exact mdp! (deduction! hτ) hσ
+    exact Entailment.mdp (deduction! hτ) hσ
   · intro hτ
     exact wk! (Set.subset_insert σ T) hτ
 
@@ -72,7 +72,7 @@ theorem convergenceAt_provable_of_pointwise_identity (e : ℕ)
       eqAt_eval, convergenceAt_eval]
     intro h
     exact ⟨(n : M), (h (n : M)).mpr ((identity_eval _).mpr rfl)⟩
-  exact mdp! himp (hgraph n)
+  exact Entailment.mdp himp (hgraph n)
 
 /-- Each standard-input convergence sentence of the guard is PA-provable. -/
 theorem guard_convergenceAt_provable (d : ℕ)
