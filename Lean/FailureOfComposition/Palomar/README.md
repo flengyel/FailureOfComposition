@@ -5,15 +5,18 @@ and their proved counterparts reviewable. It is not an eligible Palomar
 submission, a Comparator success report, or a registry entry.
 
 The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
-Its initial standalone commit is `c9814f8afe0597b14df5942d59e49bb2402fa607`.
-The historical proof baseline in the original repository is commit
-[`202194e54e883648f0d9f22a65afee6987ef2134`](https://github.com/flengyel/Categorical_Rice_Shapiro/tree/202194e54e883648f0d9f22a65afee6987ef2134),
-using Lean 4.32.2, Mathlib revision
-`905b95818eb32af7874a58b427f50c1711a5e96c`, and Foundation revision
-`a3dd617f88bda178eb6c206dd5db91f88b6a2a42`. This preparation does not migrate
-that baseline or alter the manuscript. The author has reported a successful
-full WSL verification run; that is user-reported evidence, distinct from a
-newly observed run or a Palomar check.
+Its accepted checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`, using
+Lean 4.35.0-rc2, Mathlib `065356127b1dc0016f66b7283ce0ce2c4055aa55`, and
+Foundation `e72cfe981aa65166f37fa4e2584f4806bc48d72f`. The independent port
+rerun and subsequent evaluator cleanup passed their WSL checks. The cleanup's
+103-source style gate, build, audits, kernel replays, and nine paired draft
+checks are recorded in [STYLE_CLEANUP_VALIDATION.json](../Porting/STYLE_CLEANUP_VALIDATION.json).
+The uploaded evidence was checked against the published source hashes.
+
+[The Codex task](../../../docs/CODEX_PALOMAR_TASK.md) specifies the remaining
+arithmetic interface, correspondence proofs, and real Comparator checks.
+The earlier 4.32.2 development and initial export remain documented as provenance;
+the manuscript is unchanged.
 
 ## The nine selected declarations
 
@@ -48,19 +51,16 @@ merely another syntactic graph quotient. The generated congruence is defined
 by intersection of all composition-compatible equivalence relations
 containing pointwise provability.
 
-## Current blockers
+## Verified toolchain and remaining blockers
 
-The requirements were checked on September 24, 2026 against
+The requirements were checked on September 25, 2026 against
 the [submitter policy at `792c7c0`](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md)
-and [PalomarSubmission at `1703d7b`](https://github.com/PalomarRegistry/PalomarSubmission/tree/1703d7babd984ccc3831cdf89c28221abe34808f).
+and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarSubmission/tree/a59f25bd8a66bf6faf3a4f4260d412989c0185ea).
 
-1. **Toolchain compatibility.** Its
-   [`toolchains.json`](https://github.com/PalomarRegistry/PalomarSubmission/blob/1703d7babd984ccc3831cdf89c28221abe34808f/toolchains.json)
-   requires at least `v4.35.0-rc2`. Lean 4.32.2 is ineligible. Any compatibility
-   port must align Lean, the authenticated Mathlib revision and its exact
-   toolchain, and a compatible Foundation revision. Merely changing the
-   toolchain string is not a successful port. Preserve the checked baseline
-   while performing and verifying that work separately.
+1. **Toolchain compatibility is resolved.** Its
+   [`toolchains.json`](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/toolchains.json)
+   requires at least `v4.35.0-rc2`. The accepted port uses that release with
+   matching Mathlib and Foundation pins and has passed the project checks.
 2. **Challenge dependency boundary.** The draft Challenge imports local
    modules whose closure includes Foundation and proved project results.
    The [dependency policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#24-dependencies)
@@ -79,9 +79,9 @@ and [PalomarSubmission at `1703d7b`](https://github.com/PalomarRegistry/PalomarS
 4. **Comparator has not run.** Local elaboration, matching declaration types,
    axiom audits, and ordinary kernel replay do not establish Palomar's
    protected Challenge/Solution comparison. Its current
-   [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/1703d7babd984ccc3831cdf89c28221abe34808f/scripts/verify_submission.py)
+   [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    uses Lean-bundled `lake comparator` and exported-proof checking, including
-   the independent kernels selected by that verifier. No successful Comparator
+   the toolchain's bundled NanoDa and con-ron kernels. No successful Comparator
    or Palomar mechanical/editorial result is asserted here.
 
 Solving the dependency boundary must preserve the statements. Adding the
@@ -89,15 +89,12 @@ desired result as a hypothesis, hiding it inside an unconstrained definition,
 weakening its quantifiers, or substituting unrelated notions of PA or
 provability would not solve this preparation task. No extra axiom is proposed.
 
-A concrete port candidate is Foundation's
-[`e72cfe981aa65166f37fa4e2584f4806bc48d72f`](https://github.com/FormalizedFormalLogic/Foundation/commit/e72cfe981aa65166f37fa4e2584f4806bc48d72f),
-which selects Lean `4.35.0-rc2` and Mathlib
-`065356127b1dc0016f66b7283ce0ce2c4055aa55`. It is a candidate, not a validated
-replacement: intervening Foundation changes include `LO` to `FFL` namespace
-renaming, relocated imports, and changes to induction-scheme APIs. Build and
-audit a port in its own checkout and dependency tree before replacing the
-verified pins. The permitted arithmetic statement interface is a separate
-requirement and needs a proved correspondence with the existing notions.
+The Foundation port, namespace migration, and evaluator style cleanup are
+complete. The permitted arithmetic statement interface still needs a proved
+correspondence with the existing notions. Comparator follows the bodies of
+ordinary definitions in the statement's dependency graph; replacing definitions
+by Foundation aliases does not establish this correspondence or make different
+definitions compare identically.
 
 ## Files and eventual selection paths
 
@@ -140,14 +137,15 @@ every unrelated probe or fixture in the repository is hole-free.
 
 ## Run the local paired check in WSL
 
-From this repository, select a new persistent Linux mirror for this source
-checkout and run the draft checker there. Keep the original repository's
-`~/src/FailureOfComposition` mirror separate:
+The existing Linux port checkout already has the accepted toolchain and
+dependency installations. When a changed draft needs checking, use it directly:
 
 ```bash
-export FAILCOMP_DST="$HOME/src/FailureOfCompositionStandalone"
-bash scripts/syncfailcomp.sh --sync-only
-python3 "$FAILCOMP_DST/Lean/FailureOfComposition/Palomar/check_draft.py"
+cd /home/flengyel/src/FailureOfComposition-port
+export LEAN_NUM_THREADS=1 FAILCOMP_STYLE_JOBS=1
+mkdir -p .codex-work/tmp
+export TMPDIR="$PWD/.codex-work/tmp"
+python3 Lean/FailureOfComposition/Palomar/check_draft.py
 ```
 
 The checker reuses the validated pinned dependency checkouts, incrementally
@@ -155,10 +153,9 @@ builds the maintained proof library, elaborates Challenge and Solution
 separately, and runs `CheckInterface.lean` to compare the nine types and their
 axiom envelopes. The deliberate Challenge-hole warnings are expected. The
 Solution is checked with strict Mathlib style linting and warnings as errors.
-The local checker has passed for all nine declarations in the preparation
-environment. This result is separate from the author's user-reported full WSL
-baseline verification; rerunning the commands records the result on that WSL
-instance. It is not Comparator, a toolchain port, or Palomar verification.
+The local checker passed all nine declarations during the September 25 WSL
+acceptance run. It is not Comparator or Palomar mechanical verification. The
+next task adds those checks without repeating the completed toolchain port.
 
 ## Scope, provenance, and review
 

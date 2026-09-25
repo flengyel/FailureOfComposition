@@ -13,9 +13,12 @@ The independently rerun port checkpoint is
 `065356127b1dc0016f66b7283ce0ce2c4055aa55`, and Foundation
 `e72cfe981aa65166f37fa4e2584f4806bc48d72f`. The earlier 4.32.2 task remains
 documented in `docs/CODEX_PORT_TASK.md`; its pre-setup checkpoint is
-`93fc6536f17f84933edf6d223eb41c8e3a9f866c`. Subsequent evaluator style cleanup
-requires its own build and audits; see
-`Lean/FailureOfComposition/Porting/STYLE_CLEANUP.md`.
+`93fc6536f17f84933edf6d223eb41c8e3a9f866c`. The subsequent evaluator style
+cleanup passed its full WSL acceptance suite and was published on main at
+`073e95e54907eb26b6af9070302f5afdde04d963`; see
+`Lean/FailureOfComposition/Porting/STYLE_CLEANUP_VALIDATION.json`.
+The next task is `docs/CODEX_PALOMAR_TASK.md`: construct the eligible statement
+interface, prove correspondence, and run actual Comparator verification.
 
 Preserve theorem types, quantifiers, and mathematical hypotheses. In particular:
 
@@ -44,8 +47,8 @@ or depend on its holes. The permitted proof axioms are `propext`,
   a separate, explicit record and corresponding validation.
 - The author is preparing manuscript v37. A toolchain port does not authorize
   edits to `manuscript/failure_of_composition_2026-09-21_v36.tex`.
-- Work in the dedicated Linux Git checkout and migration branch described in
-  `docs/CODEX_WSL_SETUP.md`. Never develop in a syncfailcomp-managed mirror.
+- Work in the dedicated Linux Git checkout described in `docs/CODEX_WSL_SETUP.md`
+  and the branch named by the current task. Never develop in a syncfailcomp-managed mirror.
 - The maintainer's source path is
   `/mnt/c/Users/fleng/Zettelkasten/Projects/FailureOfComposition`; the existing
   execution path is `/home/flengyel/src/FailureOfComposition`. Keep the isolated

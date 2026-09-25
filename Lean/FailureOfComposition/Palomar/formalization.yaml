@@ -16,9 +16,9 @@ project:
     is extensional equality when the theory is Sigma-one sound and universal
     otherwise. In the sound case its quotient is isomorphic to the monoid of
     actual unary partial recursive functions. This package is a draft Palomar
-    statement interface; current toolchain and Challenge-import requirements remain
-    unresolved, the added manuscript retains its existing licensing, and
-    Comparator has not been run.
+    statement interface. The Lean 4.35.0-rc2 port and evaluator cleanup have
+    passed project verification; Challenge-import eligibility remains unresolved,
+    the manuscript retains its existing licensing, and Comparator has not run.
   authors:
     - "Florian Lengyel"
   responsible_maintainers:
@@ -106,9 +106,11 @@ automation:
     review; that disclosure is not evidence that Claude produced these Lean
     proofs. The maintained baseline's automated checks and agent reviews are
     retained in the historical development repository linked below. The
-    author's successful full WSL verification
-    run is user-reported; this package does not present it as a newly observed
-    independent machine run. Preparation does not include a Palomar submission.
+    author supplied independent port-review and subsequent cleanup WSL evidence
+    on September 25, 2026. The cleanup evidence hashes and all 103 style-checked
+    source hashes were reviewed against published commit
+    073e95e54907eb26b6af9070302f5afdde04d963. Evidence review is distinct from
+    executing another build. Preparation does not include a Palomar submission.
 
 fidelity:
   divergences: >-
@@ -140,10 +142,11 @@ review:
     style checks, and kernel replay. See ../MANUSCRIPT_COVERAGE.md and the
     historical reviews linked there at Categorical_Rice_Shapiro commit
     6c3fe13979f31fed5c6da73098cbc323c2647f15.
-    This is automated review, not external human peer review. The local draft
-    checker has compared all nine elaborated types and checked their axiom
-    envelopes; the preparation verification report records its evidence and
-    limits. Comparator and Palomar editorial review have not run.
+    This is automated review, not external human peer review. The accepted
+    checkpoint 073e95e54907eb26b6af9070302f5afdde04d963 records the full cleanup
+    acceptance run, including 103 strict style checks and nine paired draft
+    type/axiom checks. See ../Porting/STYLE_CLEANUP_VALIDATION.json.
+    Comparator and Palomar editorial review have not run.
 
 alignment:
   namespace: "FailureOfComposition.Palomar"
@@ -196,7 +199,7 @@ alignment:
 
 palomar_preparation:
   status: "DRAFT NOT SUBMISSION READY"
-  checked_on: "2026-09-24"
+  checked_on: "2026-09-25"
   current_repository: "flengyel/FailureOfComposition"
   initial_standalone_commit: "c9814f8afe0597b14df5942d59e49bb2402fa607"
   baseline_repository: "flengyel/Categorical_Rice_Shapiro"
@@ -204,11 +207,10 @@ palomar_preparation:
   selected_project: "Lean"
   comparator_path: "Lean/FailureOfComposition/Palomar/comparator.json"
   metadata_path: "Lean/FailureOfComposition/Palomar/formalization.yaml"
-  submission_policy_reference: "https://github.com/PalomarRegistry/PalomarSubmission/tree/1703d7babd984ccc3831cdf89c28221abe34808f"
+  submission_policy_reference: "https://github.com/PalomarRegistry/PalomarSubmission/tree/a59f25bd8a66bf6faf3a4f4260d412989c0185ea"
   policy_document: "https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md"
   comparator_run: false
   blockers:
-    - "Lean 4.32.2 is below Palomar's current minimum v4.35.0-rc2."
     - "Challenge imports reach prohibited Foundation and project-local sources, including proved results."
     - "Root LICENSE is present for the code; account for the manuscript's existing licensing in any submitted snapshot."
     - "No successful Comparator, independent exported-proof checker, or Palomar mechanical run is recorded."
