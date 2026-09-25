@@ -32,18 +32,24 @@ fi
 unset LEAN_PATH LEAN_SRC_PATH
 export GIT_TERMINAL_PROMPT=0
 export PYTHONDONTWRITEBYTECODE=1
-# Lake's worker pool and independent style processes have separate controls.
-# These reduce scheduling concurrency; they are not a total memory limit.
+# Lake's runtime pool and independent style processes have separate controls.
+# The bounded launcher also gives every Lean compiler `-j 1 -M 12288`.
 export LEAN_NUM_THREADS=${LEAN_NUM_THREADS-1}
 export FAILCOMP_STYLE_JOBS=${FAILCOMP_STYLE_JOBS-1}
-if [[ ! $LEAN_NUM_THREADS =~ ^[1-9][0-9]*$ || ! $FAILCOMP_STYLE_JOBS =~ ^[1-9][0-9]*$ ]]; then
-  echo "LEAN_NUM_THREADS and FAILCOMP_STYLE_JOBS must be positive integers" >&2
+if [[ $LEAN_NUM_THREADS != 1 || $FAILCOMP_STYLE_JOBS != 1 ]]; then
+  echo "The port verifier requires LEAN_NUM_THREADS=1 and FAILCOMP_STYLE_JOBS=1" >&2
   exit 2
 fi
-echo "RESOURCE Lake workers: $LEAN_NUM_THREADS; style processes: $FAILCOMP_STYLE_JOBS"
+echo "RESOURCE Lake runtime threads: $LEAN_NUM_THREADS; style processes: $FAILCOMP_STYLE_JOBS; Lean: -j 1 -M 12288"
 script_root=$(cd -- "$(dirname -- "$0")" && pwd)
 lean_root=$(cd -- "$script_root/.." && pwd)
-evidence_root="$lean_root/../Audit/failure-composition-v36/evidence"
+evidence_root="$lean_root/../.codex-work/logs/port-verification"
+bounded_lake="$script_root/bounded_lake.sh"
+active=$(ps -eo comm=,args= | awk '$1 == "lean" || $1 == "lake"')
+if [[ -n $active ]]; then
+  printf 'Refusing overlapping Lean/Lake processes:\n%s\n' "$active" >&2
+  exit 75
+fi
 cd "$lean_root"
 package_work=$(mktemp -d)
 trap 'rm -rf -- "$package_work"' EXIT
@@ -55,15 +61,24 @@ from pathlib import Path
 
 manifest = json.loads(Path("lake-manifest.json").read_text())
 versions = {package["name"]: package["rev"] for package in manifest["packages"]}
+provenance = json.loads(
+    Path("FailureOfComposition/Porting/EVALUATOR_PROVENANCE.json").read_text()
+)
 expected = {
-    "Foundation": "a3dd617f88bda178eb6c206dd5db91f88b6a2a42",
-    "mathlib": "905b95818eb32af7874a58b427f50c1711a5e96c",
+    "Foundation": "e72cfe981aa65166f37fa4e2584f4806bc48d72f",
+    "mathlib": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
 }
 for package, revision in expected.items():
     if versions.get(package) != revision:
         raise SystemExit(f"Unexpected {package} revision: {versions.get(package)}")
-if Path("lean-toolchain").read_text().strip() != "leanprover/lean4:v4.32.2":
+if Path("lean-toolchain").read_text().strip() != "leanprover/lean4:v4.35.0-rc2":
     raise SystemExit("Unexpected Lean toolchain")
+if provenance["toolchain"] != "leanprover/lean4:v4.35.0-rc2":
+    raise SystemExit("Unexpected toolchain in port provenance")
+if provenance["foundation_revision"] != expected["Foundation"]:
+    raise SystemExit("Unexpected Foundation revision in port provenance")
+if provenance["mathlib_revision"] != expected["mathlib"]:
+    raise SystemExit("Unexpected Mathlib revision in port provenance")
 print("PASS dependency and toolchain pins", flush=True)
 PY
 
@@ -82,12 +97,12 @@ if "$check_environment"; then
 fi
 
 run_lake() {
-  lake --packages="$packages" "$@"
+  "$bounded_lake" --packages="$packages" "$@"
 }
 
 # The report describes the actual native build, independently of later audits.
 # Its exit code is propagated; no manual-compilation fallback can mask failure.
-python3 - "$evidence_root" "$packages" <<'PY'
+python3 - "$evidence_root" "$packages" "$bounded_lake" <<'PY'
 from datetime import datetime, timezone
 import json
 import os
@@ -100,7 +115,9 @@ import time
 project = Path.cwd()
 evidence = Path(sys.argv[1]).resolve()
 evidence.mkdir(parents=True, exist_ok=True)
-pins = json.loads((evidence / "evaluator-source-pins.json").read_text())
+pins = json.loads(
+    (project / "FailureOfComposition/Porting/EVALUATOR_PROVENANCE.json").read_text()
+)
 umbrella = project / "FailureOfComposition.lean"
 imports = re.findall(
     r"^import\s+(FailureOfComposition\.[\w.]+)\s*$",
@@ -122,7 +139,10 @@ verification_sources = sorted(
 )
 manifest = json.loads((project / "lake-manifest.json").read_text())
 versions = {package["name"]: package["rev"] for package in manifest["packages"]}
-command = ["lake", "--packages=" + sys.argv[2], "build", "FailureOfComposition"]
+command = [
+    sys.argv[3], "--no-cache", "--packages=" + sys.argv[2],
+    "build", "FailureOfComposition",
+]
 report = {
     "verification_mode": "native_lake",
     "project": "Lean",
@@ -135,7 +155,8 @@ report = {
     "lean_toolchain": (project / "lean-toolchain").read_text().strip(),
     "foundation_revision": versions["Foundation"],
     "mathlib_revision": versions["mathlib"],
-    "evaluator_pin_commit": pins["commit"],
+    "original_evaluator_pin_commit": pins["original_evaluator_commit"],
+    "evaluator_port_checkpoint": pins["port_source_checkpoint"],
     "mathematical_module_counts": {
         "FailureOfComposition": len(library_modules),
         "CategoricalRiceShapiro": len(evaluator_modules),
@@ -189,4 +210,5 @@ done
 run_lake env leanchecker --verbose FailureOfComposition
 run_lake env leanchecker --verbose CategoricalRiceShapiro
 python3 "$script_root/prepare_packages.py" --project "$lean_root" --check "$packages"
-echo "PASS native build, strict style gate, theorem audits, dependency audit, and kernel replays"
+python3 "$script_root/Palomar/check_draft.py"
+echo "PASS native build, module inventory, strict style gate, theorem/type and axiom audits, dependency audit, both kernel replays, and nine paired draft checks"

@@ -38,6 +38,15 @@ def clean_environment():
     return environment
 
 
+def bounded_lake_command(project, *arguments):
+    """Return the pinned Lake launcher with the port's compiler resource bound."""
+    project = Path(project).resolve(strict=True)
+    launcher = project / "FailureOfComposition" / "bounded_lake.sh"
+    if not launcher.is_file() or not os.access(launcher, os.X_OK):
+        raise SystemExit(f"Bounded Lake launcher is missing or not executable: {launcher}")
+    return [str(launcher), *map(str, arguments)]
+
+
 def check_runtime(project):
     """Check the installed compiler directly, without invoking Lake."""
     if sys.version_info < (3, 9):

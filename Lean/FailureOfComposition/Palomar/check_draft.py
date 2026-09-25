@@ -26,7 +26,9 @@ def main():
     environment = prepare_packages.clean_environment()
 
     def run(*arguments):
-        command = ["lake", f"--packages={override}", *arguments]
+        command = prepare_packages.bounded_lake_command(
+            PROJECT, "--no-cache", f"--packages={override}", *arguments
+        )
         print("RUN " + " ".join(command), flush=True)
         subprocess.run(command, cwd=PROJECT, env=environment, check=True)
 

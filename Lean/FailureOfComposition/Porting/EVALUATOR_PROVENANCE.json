@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "accepted_project_checkpoint": "93fc6536f17f84933edf6d223eb41c8e3a9f866c",
+  "original_source_pins": "Audit/failure-composition-v36/evidence/evaluator-source-pins.json",
+  "original_evaluator_repository": "flengyel/Categorical_Rice_Shapiro",
+  "original_evaluator_commit": "97484e4988a3e632e2c255c641edbe5292a86ea3",
+  "port_source_checkpoint": "37c8f82391357e22f2722e0c7b0b35396fdb9f78",
+  "toolchain": "leanprover/lean4:v4.35.0-rc2",
+  "mathlib_revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+  "foundation_revision": "e72cfe981aa65166f37fa4e2584f4806bc48d72f",
+  "changed_files": [
+    "CategoricalRiceShapiro/ArithmeticCode/Arithmetic.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/EvaluationCongruence.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/Minimization.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/NumeralEvaluation.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/Recursion.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean",
+    "CategoricalRiceShapiro/Evaluator/CellCongruence.lean",
+    "CategoricalRiceShapiro/Evaluator/CellEvaluation.lean",
+    "CategoricalRiceShapiro/Evaluator/Certificate.lean",
+    "CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean",
+    "CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean",
+    "CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean",
+    "CategoricalRiceShapiro/Evaluator/PairPersistence.lean",
+    "CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean",
+    "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean",
+    "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean",
+    "CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean",
+    "CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean"
+  ],
+  "unchanged_files": [
+    "CategoricalRiceShapiro/ArithmeticCode/Basic.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/Conditional.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/EncodedList.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/Pairing.lean",
+    "CategoricalRiceShapiro/ArithmeticCode/PartialRecursive.lean",
+    "CategoricalRiceShapiro/Evaluator/Cell.lean",
+    "CategoricalRiceShapiro/Evaluator/History.lean",
+    "CategoricalRiceShapiro/Evaluator/TableLookup.lean"
+  ],
+  "files": [
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Arithmetic.lean",
+      "blob_sha1": "90969ae341319fd625ac14a35e622d724c635c65",
+      "sha256": "f36eefb8cfd227a8db4f11d74d46e4473631656ca82f991459c4ee8cfaf496ec"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Basic.lean",
+      "blob_sha1": "df62923a5bae6a1653dd9bc6aae5966a1c1d8b86",
+      "sha256": "6e3113c13b04924b49e5cbbf979a3a65228e185bd68de2bac0af57a6a34b4bcf"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean",
+      "blob_sha1": "69c342ac8cb623d58388766ffabc5558c6126b0f",
+      "sha256": "183023b42853dbf250ad979d3e11964b879c3f4ca419191baa996caefeefd59e"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Conditional.lean",
+      "blob_sha1": "c5532358b6fc5eac41ea28990ce40381c7db550f",
+      "sha256": "e057c95560665c74eacb336c9401ad1657de6cb787d4087f621f3d9804f6331f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/EncodedList.lean",
+      "blob_sha1": "c10544b69e1a3014e142e7b239875cb707b66836",
+      "sha256": "d6aa5a314e2e4e84333bcbb678f978c13d52ea05da639fc95a92fb222b332564"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean",
+      "blob_sha1": "332cfdd9b83d2f76a5677a4240a62a2baf5d1db3",
+      "sha256": "856c405faec106d9cbea20d31fc58da0d1e9bbc977784cdfbe33d57b0ea316fe"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean",
+      "blob_sha1": "c5dc7ff5600bd1c2965c65cff0f5304db453c0e5",
+      "sha256": "b02e20cc01a879ce61f829a8d421b4e3c98bed1a820742d2d73251014f048bfe"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/EvaluationCongruence.lean",
+      "blob_sha1": "cf868e4901a8957a9f07b8b56cbd7b05aab26cf4",
+      "sha256": "a4d0313470e176ebada3aca13470dd0d9c94ca3f24d0ba3580e2b6f0ebae790f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean",
+      "blob_sha1": "9072294c1cca5e929c814725c8c0fc338a61968f",
+      "sha256": "604f86436afcbca130b788a807d9432f89970a06acf3157f66d5b2bc6c4138b4"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Minimization.lean",
+      "blob_sha1": "19fe6d7df55cca5fb149d656b6972724f8eb26f7",
+      "sha256": "a06770847fbe82ad10a2b0d8c2190f991ef4791d6fe8ef50fd5661537bc24b17"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/NumeralEvaluation.lean",
+      "blob_sha1": "7440a1e650ed8b6d773601464da30153f9f79b55",
+      "sha256": "7bb67493eef9180b1bf952f4d07c7969c5089957ce85ca910fbcf8b55435102a"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Pairing.lean",
+      "blob_sha1": "d8363cca4ae349eb31774a97b2ae9e950be49265",
+      "sha256": "cfcae652a2613a615ea1fd36bf79fa1a7832c8cfcc146f01f2c245d18208a7c0"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/PartialRecursive.lean",
+      "blob_sha1": "1e720c6d699487dcbc9bfa487b6a186453977fd4",
+      "sha256": "d10d5204f3ef1ecf4d9faf3dabe7720a8361ef04a9bff4474c46bb3b6e8d615d"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean",
+      "blob_sha1": "26228ea3f313513dcec675e05f212463936437ca",
+      "sha256": "8e3aff8c77afb28e7c28667114c9c5137b5e73cfdb11775e3cb470ea53204751"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/Recursion.lean",
+      "blob_sha1": "34aadeec97e715e468bc653b872e1b6a7275c77b",
+      "sha256": "7d004ad8b06486c1504cee085bce11b091280bfbfa92806e827e547d94dfa99e"
+    },
+    {
+      "path": "CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean",
+      "blob_sha1": "fb7f2177f8897b5aad2ccc957ddbd7a9ab96fb36",
+      "sha256": "df962142e000dd70043a4809012cf65dc812477629fe1331b29f340a1cdfff87"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/Cell.lean",
+      "blob_sha1": "223b369fde94da4ae3bc3c8e8b043995af6eaf81",
+      "sha256": "d209a381758d00616bab06dd98ed4ff893a4faf677a23e46ae585aae255af18f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CellCongruence.lean",
+      "blob_sha1": "d3794612723fc705050133578801dc1320b9e0e2",
+      "sha256": "24e2a211b75e19aa58368de8873ab961726d4c94166434f0b8bc5634c4a80f95"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CellEvaluation.lean",
+      "blob_sha1": "def9ba80ae924f4f7e2fc1ea25b927c8f8615928",
+      "sha256": "41947816b3a780d387dd42b6cdd020914e2b8f408be26c237dab1a0be93a972d"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/Certificate.lean",
+      "blob_sha1": "731aac081be7db997d4170fe5bf23be794746402",
+      "sha256": "090f76779eac61e2725f898506e421cae2122f2d69bb4f5152752720e88acd62"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean",
+      "blob_sha1": "f13166a9cbafba70dce4a7d7e6190affdeb628eb",
+      "sha256": "46ae9aef658084d1fc265c72a7d98f82290f07b44970b310b823d3b40f0b9098"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean",
+      "blob_sha1": "1b9612e37bfe3ac48e4e4481ab4b95e7d97768ce",
+      "sha256": "a532c55cf6bfac6e6104a5947e5e1d32cbfa7244a34bfd2792f07360e07e7123"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/History.lean",
+      "blob_sha1": "b664dd0e74c37b64a0ed4150e9486c1e89d00001",
+      "sha256": "e5794c3e25495d139fdfede7d8731db5b8fcf989b77b3bc91e199e1ccd7823f7"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean",
+      "blob_sha1": "a3b3d05cace1f997db15c9989141cb9bab643a92",
+      "sha256": "e59bdc7c7ac73c7a8566bcf5a4e5ca1fd9156d290cba75d0c25ea691c47f93a6"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PairPersistence.lean",
+      "blob_sha1": "22dc96804415cc4d955a9beae760c09cb020eb13",
+      "sha256": "c1de6f33818e49e806f03d986e8c4a129881b0569304e349ba68bbf9d8c09c91"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean",
+      "blob_sha1": "330e57f6434091558c53b24c4d2ad2817126d51a",
+      "sha256": "53eab9f42efc59cdfe22f04e09ccfa0de6f625472bd33619055c6e3817d0c767"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean",
+      "blob_sha1": "16fbd752bcae2d7282bb833f4fa77c87f93550e3",
+      "sha256": "d3965eb3b7f03b6cca0f2448ec65d98b258b8281cfa8c836377035642334a1ca"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean",
+      "blob_sha1": "1dc2d58c3f6674d60777aa74fc689906b583bd3c",
+      "sha256": "158a84d94be7bd1db6eb8db87da06130876c872b9124dbfb79256371a38f1a7c"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/TableLookup.lean",
+      "blob_sha1": "2d42133a35fd9615b114033893af396c778451bc",
+      "sha256": "efb374355395de303938f4d62db643b73c80ae76202da3464da895831d16f672"
+    },
+    {
+      "path": "CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean",
+      "blob_sha1": "d6a70e775fb2bd573cad57ce27032980b4a781d4",
+      "sha256": "b1045c8aeb33303bd9d9f01a0980281c80d0c435d41e1a89aaddde063e60572f"
+    },
+    {
+      "path": "CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean",
+      "blob_sha1": "1ddf7385203f774a788eda3e47d8eebd14698431",
+      "sha256": "43ce123c9067b01c5d65725e59057409adae93f33f62cad8192d5cd4327e53b1"
+    }
+  ]
+}

@@ -13,18 +13,23 @@ import sys
 import time
 
 sys.dont_write_bytecode = True
-from prepare_packages import clean_environment, positive_setting, validated_packages
+from prepare_packages import (
+    bounded_lake_command,
+    clean_environment,
+    positive_setting,
+    validated_packages,
+)
 
 
 def check_style(project, packages):
     workers = positive_setting("FAILCOMP_STYLE_JOBS")
     library = project / "FailureOfComposition"
-    evidence = project.parent / "Audit/failure-composition-v36/evidence"
+    evidence = project.parent / ".codex-work/logs/port-verification"
     sources = [project / "FailureOfComposition.lean", *sorted(library.glob("*.lean"))]
-    command = [
-        "lake", "--packages=" + str(packages), "env", "lean", "--json",
+    command = bounded_lake_command(
+        project, "--packages=" + str(packages), "env", "lean", "--json",
         "-Dlinter.mathlibStandardSet=true", "-DwarningAsError=true",
-    ]
+    )
     report = {
         "status": "running",
         "started_at": datetime.now(timezone.utc).isoformat(),
