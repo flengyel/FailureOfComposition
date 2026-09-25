@@ -3,7 +3,7 @@
 # May be invoked as: git show FETCH_HEAD:scripts/finish-evaluator-style-cleanup.sh | bash
 set -euo pipefail
 if [[ ${1-} == --help ]]; then
-  echo 'Run from the clean FailureOfComposition port checkout. Verifies cleanup and pushes main without force.'
+  echo 'Run from the FailureOfComposition port checkout. Recovers the exact staged cleanup, verifies, and pushes main without force.'
   exit 0
 fi
 [[ $# == 0 ]] || { echo 'No arguments are supported except --help.' >&2; exit 2; }
@@ -13,7 +13,22 @@ for command in git python3 ps awk tee tar date grep; do
 done
 root=$(git rev-parse --show-toplevel) || fail 'Run inside the existing port checkout.'
 [[ $(pwd -P) == "$(cd "$root" && pwd -P)" ]] || fail 'Run from the Git repository root.'
-[[ -z $(git status --porcelain) ]] || fail 'Working tree has changes; preserve them before running.'
+known=7506b26a5bb92c036fc13bdae7262f26b21368e0
+is_staged_cleanup_snapshot() {
+  [[ -z $(git ls-files --others --exclude-standard) ]] &&
+    git diff --quiet &&
+    git diff --cached --quiet "$known" &&
+    git merge-base --is-ancestor HEAD "$known"
+}
+recover_staged=false
+if [[ -n $(git status --porcelain) ]]; then
+  if is_staged_cleanup_snapshot; then
+    recover_staged=true
+  else
+    git status --short --branch --untracked-files=all >&2
+    fail 'Local changes differ from the exact published cleanup; all changes were retained.'
+  fi
+fi
 fetch_urls=$(git remote get-url --all origin)
 push_urls=$(git remote get-url --push --all origin)
 while IFS= read -r url; do
@@ -27,7 +42,6 @@ git var GIT_AUTHOR_IDENT >/dev/null || fail 'Configure the existing Git author i
 git var GIT_COMMITTER_IDENT >/dev/null || fail 'Configure the existing Git committer identity first.'
 active=$(ps -eo comm=,args= | awk '$1 == "lean" || $1 == "lake" || $1 == "leanchecker"')
 [[ -z $active ]] || fail "Another Lean/Lake process is active. Wait for completion, then rerun: $active"
-known=7506b26a5bb92c036fc13bdae7262f26b21368e0
 stamp=$(date -u +%Y%m%dT%H%M%SZ)-$$
 run_dir="$root/.codex-work/logs/evaluator-style-cleanup-$stamp"
 mkdir -p "$run_dir" "$root/.codex-work/tmp"
@@ -86,6 +100,12 @@ work() {
   git merge-base --is-ancestor "$known" "$target" || fail 'Cleanup branch no longer contains the reviewed cleanup.'
   git merge-base --is-ancestor main "$target" || fail 'Local main has independent changes; no branch was moved.'
   git merge-base --is-ancestor refs/remotes/origin/main "$target" || fail 'Remote main has independent changes; no branch was moved.'
+  if [[ $recover_staged == true ]]; then
+    is_staged_cleanup_snapshot || fail 'Local changes changed during preflight; all changes were retained.'
+    echo 'Recovering the exact published cleanup left staged by the failed tracking switch.'
+    git switch --detach "$known"
+    [[ -z $(git status --porcelain) ]] || fail 'Checkout changed during recovery; all changes were retained.'
+  fi
   git switch --detach "$target"
   printf '%s\n' "$target" > "$run_dir/verified-source-commit.txt"
   python3 Lean/FailureOfComposition/Verification/test_style_gate.py </dev/null 2>&1 | tee "$run_dir/gate-tests.log"

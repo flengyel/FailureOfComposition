@@ -93,6 +93,13 @@ git show FETCH_HEAD:scripts/finish-evaluator-style-cleanup.sh | bash
 The explicit fetch supplies the script even in a single-branch clone; it needs
 no tracking-branch setup. Run after any existing Lean verification has finished.
 
+A failed `git switch --track` in an older single-branch clone can leave the
+cleanup files staged while `HEAD` still points to `main`. The completion script
+recovers this state only when the index exactly matches the published `7506b26`
+tree, tracked files match the index, there are no untracked files, and `HEAD` is
+an ancestor of that commit. It completes an ordinary detached switch to that
+snapshot before continuing. Additional local changes are reported and retained.
+
 The existing `/home/flengyel/src/FailureOfComposition` execution environment is
 not the port checkout. Do not point `syncfailcomp.sh` at the port checkout or run
 synchronization over Codex's edits. Git carries changes between the independent

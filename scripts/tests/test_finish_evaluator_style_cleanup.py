@@ -80,7 +80,11 @@ PY
 echo 'ALL_TEST_OUTPUT_IS_SYNTHETIC_NO_LEAN_RAN'
 echo ''' + repr(PASS) + '\n')
         cases=['single_branch_success','verifier_failure','bad_style_report','reuse_complete_run',
-               'reuse_invalid_tail','environment_failure','dirty_checkout']
+               'reuse_invalid_tail','environment_failure','dirty_checkout',
+               'recover_staged_cleanup','recover_with_extra_staged',
+               'recover_with_extra_unstaged','recover_with_untracked']
+        recovery_cases=set(cases[-4:])
+        recovery_refusals=recovery_cases-{'recover_staged_cleanup'}
         for case in cases:
             origin=root/(case+'-origin.git')
             run([REAL_GIT,'clone','--quiet','--bare','--no-hardlinks',prep,origin])
@@ -108,11 +112,39 @@ echo ''' + repr(PASS) + '\n')
                 result=run([REAL_BASH,fake],cwd=work,env=env);log.write_text(result.stdout)
                 if case=='reuse_invalid_tail':log.write_text(log.read_text()+'fixture trailing failure\n')
             if case=='dirty_checkout':(work/'README.md').write_text('uncommitted user change\n')
+            if case in recovery_cases:
+                # Exercise the real partial switch, rather than manufacturing its index.
+                git(origin,'update-ref','refs/heads/codex/evaluator-style-cleanup',CLEANUP)
+                run([str(shim/'git'),'fetch','origin',
+                     'refs/heads/codex/evaluator-style-cleanup:refs/remotes/origin/codex/evaluator-style-cleanup'],
+                    cwd=work,env=env)
+                failed_switch=run([REAL_GIT,'switch','--track','origin/codex/evaluator-style-cleanup'],
+                                  cwd=work,env=env,check=False)
+                assert failed_switch.returncode==128,(case,failed_switch.stdout)
+                assert 'cannot set up tracking information' in failed_switch.stdout
+                assert git(work,'rev-parse','HEAD')==BASE
+                assert git(work,'symbolic-ref','--short','HEAD')=='main'
+                git(work,'diff','--quiet')
+                git(work,'diff','--cached','--quiet',CLEANUP)
+                assert git(work,'status','--porcelain')
+                git(origin,'update-ref','refs/heads/codex/evaluator-style-cleanup',candidate)
+                if case in {'recover_with_extra_staged','recover_with_extra_unstaged'}:
+                    readme=work/'README.md'
+                    readme.write_text(readme.read_text()+'\nUncommitted independent user edit.\n')
+                    if case=='recover_with_extra_staged':git(work,'add','README.md')
+                if case=='recover_with_untracked':(work/'notes.txt').write_text('Preserve untracked user notes.\n')
+            if case in recovery_refusals:
+                before_head=git(work,'rev-parse','HEAD')
+                before_index=git(work,'ls-files','--stage','-z')
+                before_status=git(work,'status','--porcelain')
+                paths=git(work,'ls-files','--cached','--others','--exclude-standard','-z').split('\0')
+                before_content={name:(work/name).read_bytes() for name in paths if name}
             # Match the documented git-show-to-Bash bootstrap, including stdin.
             result=run([REAL_BASH],cwd=work,env=env,check=False,
                        input_text=(SOURCE/'scripts/finish-evaluator-style-cleanup.sh').read_text())
             (root/(case+'.output')).write_text(result.stdout)
-            require_success=case in {'single_branch_success','reuse_complete_run','reuse_invalid_tail'}
+            require_success=case in {'single_branch_success','reuse_complete_run','reuse_invalid_tail',
+                                    'recover_staged_cleanup'}
             if require_success:
                 assert result.returncode==0,(case,result.returncode,result.stdout)
                 head=git(work,'rev-parse','HEAD')
@@ -126,9 +158,15 @@ echo ''' + repr(PASS) + '\n')
                 assert git(work,'rev-parse','main')==BASE
                 assert git(origin,'rev-parse','main')==BASE
                 if case=='dirty_checkout':assert (work/'README.md').read_text()=='uncommitted user change\n'
+                if case in recovery_refusals:
+                    assert git(work,'rev-parse','HEAD')==before_head
+                    assert git(work,'symbolic-ref','--short','HEAD')=='main'
+                    assert git(work,'ls-files','--stage','-z')==before_index
+                    assert git(work,'status','--porcelain')==before_status
+                    assert all((work/name).read_bytes()==content for name,content in before_content.items())
             counter=Path(env['MOCK_COUNTER'])
             count=len(counter.read_text().splitlines()) if counter.exists() else 0
-            expected=0 if case in {'dirty_checkout','environment_failure'} else 2 if case=='reuse_invalid_tail' else 1
+            expected=0 if case in ({'dirty_checkout','environment_failure'}|recovery_refusals) else 2 if case=='reuse_invalid_tail' else 1
             assert count==expected,(case,count,result.stdout)
             assert sentinel.read_text()=='do not alter existing cache'
             print('PASS',case,'exit',result.returncode,'verifier executions',count,flush=True)
