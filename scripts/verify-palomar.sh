@@ -64,11 +64,13 @@ Modes:
       retained below .codex-work/palomar/runs/.
   --resume-local-comparator PREVIOUS_RUN
       Retry only the interrupted Comparator stage after confirming that
-      PREVIOUS_RUN contains a completed contained paired check whose recorded
-      input manifest exactly matches current source, configuration, toolchain,
-      and resolved dependencies. Historical runs without that manifest are
-      reported as stale and are never relabeled. A new evidence directory is
-      always used.
+      PREVIOUS_RUN contains an atomically completed contained paired check.
+      Its clean assessment, initial and final input manifests, stability
+      result, and raw supervisor evidence must match its sealed completion
+      record, and its input identity must exactly match current source,
+      configuration, toolchain, and resolved dependencies. Historical runs
+      without that completion protocol are reported as stale and are never
+      relabeled. A new evidence directory is always used.
   --full-verifier EVENT_JSON RUN_DIR
       Run prepare, capacity, and execute from the pinned PalomarSubmission
       checkout already present at .codex-work/palomar/upstream/. This mode
@@ -512,6 +514,25 @@ compare_precheck_manifests() {
     --actual "$actual" --report "$report"
 }
 
+publish_precheck_completion() {
+  local run=$1
+  python3 "$launcher_checks" publish-precheck-completion --run "$run" \
+    --memory-high "$(size_bytes "$precheck_memory_high")" \
+    --memory-max "$(size_bytes "$precheck_memory_max")" \
+    --memory-swap-max "$(size_bytes "$precheck_swap_max")" \
+    --cpu-list "$comparator_cpu_list"
+}
+
+validate_precheck_completion() {
+  local previous=$1 current=$2 report=$3
+  python3 "$launcher_checks" validate-precheck-completion --run "$previous" \
+    --current-manifest "$current" --report "$report" \
+    --memory-high "$(size_bytes "$precheck_memory_high")" \
+    --memory-max "$(size_bytes "$precheck_memory_max")" \
+    --memory-swap-max "$(size_bytes "$precheck_swap_max")" \
+    --cpu-list "$comparator_cpu_list"
+}
+
 run_precheck_phase() {
   [[ $# -ge 2 ]] || fail "run_precheck_phase needs an evidence directory and command"
   local run=$1
@@ -663,7 +684,7 @@ PY
 
 local_comparator() {
   local mode=$1 previous=${2:-} run config command_log comparator_log time_log prefix
-  local precheck_manifest precheck_after precheck_run resume_of=none rc
+  local precheck_manifest precheck_after precheck_run precheck_completion resume_of=none rc
   check_environment_static
   check_delegated_cgroup
   check_no_checker_processes
@@ -675,6 +696,7 @@ local_comparator() {
   precheck_manifest="$run/precheck-inputs.json"
   precheck_after="$run/precheck-inputs.after.json"
   precheck_run="$run/precheck"
+  precheck_completion="$run/precheck-completion.json"
   write_protected_config "$config"
   prefix=$(cd "$lean_root" && lean --print-prefix)
   write_precheck_manifest "$precheck_manifest"
@@ -682,35 +704,13 @@ local_comparator() {
   if [[ $mode == resume ]]; then
     previous=$(readlink -f -- "$previous")
     [[ $previous == "$work_root"/runs/* ]] || fail "resume path is outside Palomar runs"
-    if [[ ! -f $previous/precheck-inputs.json ]]; then
-      set +e
-      compare_precheck_manifests "$previous/precheck-inputs.json" "$precheck_manifest" \
-        "$run/precheck-reuse.json"
-      set -e
-      echo "Comparator evidence: $run"
-      fail "resume evidence has no content-bound precheck manifest; use --local-comparator"
-    fi
-    [[ -f $previous/precheck/precheck-status.env ]] || {
-      printf '%s\n' \
-        'classification=precheck_reuse' \
-        'result=stale' \
-        'reason=missing contained precheck status' >"$run/precheck-reuse.env"
-      echo "Comparator evidence: $run"
-      fail "resume evidence has no contained precheck status; use --local-comparator"
-    }
-    grep -Fxq 'result=pass' "$previous/precheck/precheck-status.env" ||
-      fail "the previous contained precheck did not pass"
-    grep -Fxq 'infrastructure_clean=true' "$previous/precheck/precheck-status.env" ||
-      fail "the previous precheck infrastructure was not clean"
-    grep -Fxq 'computational_success=true' "$previous/precheck/precheck-status.env" ||
-      fail "the previous paired check did not succeed"
-    compare_precheck_manifests "$previous/precheck-inputs.json" "$precheck_manifest" \
+    validate_precheck_completion "$previous" "$precheck_manifest" \
       "$run/precheck-reuse.json" || {
         echo "Comparator evidence: $run"
-        fail "resume precheck inputs are stale; use --local-comparator"
+        fail "resume precheck evidence is incomplete, inconsistent, or stale; use --local-comparator"
       }
     resume_of=$previous
-    printf 'Reused content-matched contained precheck from %s\n' "$previous" \
+    printf 'Reused atomically completed, content-matched contained precheck from %s\n' "$previous" \
       >"$run/precheck-reused.log"
   else
     check_phase_capacity precheck "$precheck_memory_max" "$precheck_swap_max" \
@@ -734,6 +734,7 @@ local_comparator() {
         echo "Precheck evidence: $precheck_run"
         fail "precheck inputs changed while the contained check was running"
       }
+    publish_precheck_completion "$run"
   fi
 
   {
@@ -754,11 +755,18 @@ local_comparator() {
     printf 'capacity_snapshot_only=true\n'
     printf 'precheck_input_manifest_sha256=%s\n' \
       "$(sha256sum "$precheck_manifest" | cut -d' ' -f1)"
+    if [[ $mode == resume ]]; then
+      printf 'precheck_completion_sha256=%s\n' \
+        "$(sha256sum "$previous/precheck-completion.json" | cut -d' ' -f1)"
+    else
+      printf 'precheck_completion_sha256=%s\n' \
+        "$(sha256sum "$precheck_completion" | cut -d' ' -f1)"
+    fi
     printf 'precheck_memory_high=%s\n' "$precheck_memory_high"
     printf 'precheck_memory_max=%s\n' "$precheck_memory_max"
     printf 'precheck_memory_swap_max=%s\n' "$precheck_swap_max"
     if [[ $mode == resume ]]; then
-      printf 'precheck=reused content-matched contained paired check from %s\n' "$previous"
+      printf 'precheck=reused atomically completed content-matched contained paired check from %s\n' "$previous"
     else
       printf 'precheck=contained inspect_challenge and python3 Lean/FailureOfComposition/Palomar/check_draft.py\n'
     fi

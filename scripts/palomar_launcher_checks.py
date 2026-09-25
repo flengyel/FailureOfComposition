@@ -38,6 +38,20 @@ REQUIRED_LIMITS = {
     "pids.max",
 }
 SOURCE_SUFFIXES = {".json", ".lean", ".py", ".sh", ".toml", ".yaml", ".yml"}
+PRECHECK_COMPLETION_SCHEMA = "failure-of-composition-reusable-precheck-v1"
+PRECHECK_SUCCESS_MARKERS = {
+    "paired_check_accepts": "PASS local paired draft check",
+}
+PRECHECK_EVIDENCE_PATHS = {
+    "initial_manifest": "precheck-inputs.json",
+    "final_manifest": "precheck-inputs.after.json",
+    "stability_report": "precheck-stability.json",
+    "assessment": "precheck/precheck-status.env",
+    "supervisor_status": "precheck/cgroup-status.json",
+    "containment": "precheck/containment.env",
+    "systemd_completion": "precheck/systemd-run.exit",
+    "paired_check_log": "precheck/paired-check.log",
+}
 
 
 class EvidenceError(RuntimeError):
@@ -722,6 +736,179 @@ def compare_command(args: argparse.Namespace) -> int:
     return 1
 
 
+def evidence_file_record(run: Path, relative: str) -> dict[str, Any]:
+    """Return a content identity for one required, regular in-run evidence file."""
+
+    run = run.resolve(strict=True)
+    path = run / relative
+    if path.is_symlink() or not path.is_file():
+        raise EvidenceError(f"required precheck evidence is missing or not regular: {relative}")
+    resolved = path.resolve(strict=True)
+    if not resolved.is_relative_to(run):
+        raise EvidenceError(f"precheck evidence escapes its run directory: {relative}")
+    return {
+        "path": relative,
+        "bytes": path.stat().st_size,
+        "sha256": sha256_file(path),
+    }
+
+
+def expected_precheck_status(assessment: dict[str, Any]) -> dict[str, str]:
+    status = assessment["status"]
+    events = assessment["events"]
+    return {
+        "verification_kind": "local_paired_precheck",
+        "official_palomar_verification": "false",
+        "resume_of": "",
+        "result": "pass",
+        "infrastructure_clean": "true",
+        "computational_success": "true",
+        "payload_exit_status": shell_value(status.get("exit_status")),
+        "term_signal": shell_value(status.get("term_signal")),
+        "systemd_exit_status": shell_value(assessment["systemd_exit_status"]),
+        "elapsed_seconds": shell_value(status.get("elapsed")),
+        "memory_peak_bytes": shell_value(status.get("memory_peak")),
+        "memory_high_events": shell_value(events.get("high")),
+        "memory_max_events": shell_value(events.get("max")),
+        "memory_oom_events": shell_value(events.get("oom")),
+        "memory_oom_kill_events": shell_value(events.get("oom_kill")),
+        "deadline_fired": str(status.get("deadline_fired")).lower(),
+        "liveness_lost": str(status.get("liveness_lost")).lower(),
+        "placement_ok": str(status.get("placement_ok")).lower(),
+        "populated_after_kill": str(status.get("populated_after_kill")).lower(),
+        "paired_check_accepts": "true",
+        "infrastructure_errors": "",
+        "computational_errors": "",
+    }
+
+
+def build_precheck_completion(
+    run: Path, expected: dict[str, str]
+) -> dict[str, Any]:
+    """Validate all reusable-precheck evidence and return its sealed identity."""
+
+    run = run.resolve(strict=True)
+    initial = run / PRECHECK_EVIDENCE_PATHS["initial_manifest"]
+    final = run / PRECHECK_EVIDENCE_PATHS["final_manifest"]
+    equal, differences = compare_manifests(initial, final)
+    if not equal:
+        raise EvidenceError(
+            "initial and final precheck manifests differ: " + ", ".join(differences)
+        )
+
+    stability_path = run / PRECHECK_EVIDENCE_PATHS["stability_report"]
+    stability = read_json_object(stability_path)
+    if stability.get("classification") != "precheck_input_manifest_comparison":
+        raise EvidenceError("precheck stability report has the wrong classification")
+    if stability.get("result") != "match" or stability.get("differing_sections") != []:
+        raise EvidenceError("precheck stability report does not record an exact match")
+    try:
+        recorded_initial = Path(stability["expected"]).resolve(strict=True)
+        recorded_final = Path(stability["actual"]).resolve(strict=True)
+    except (KeyError, OSError, TypeError) as error:
+        raise EvidenceError("precheck stability report has malformed paths") from error
+    if recorded_initial != initial.resolve() or recorded_final != final.resolve():
+        raise EvidenceError("precheck stability report names different manifests")
+
+    precheck = run / "precheck"
+    assessment = assess_supervised_run(precheck, expected, PRECHECK_SUCCESS_MARKERS)
+    if not assessment["passed"]:
+        problems = assessment["errors"] + assessment["computational_errors"]
+        raise EvidenceError("precheck assessment is not clean: " + "; ".join(problems))
+    recorded_status = parse_env(precheck / "precheck-status.env")
+    wanted_status = expected_precheck_status(assessment)
+    if recorded_status != wanted_status:
+        differing = sorted(
+            key
+            for key in recorded_status.keys() | wanted_status.keys()
+            if recorded_status.get(key) != wanted_status.get(key)
+        )
+        raise EvidenceError(
+            "precheck assessment record is malformed or inconsistent: "
+            + ", ".join(differing)
+        )
+
+    evidence = {
+        name: evidence_file_record(run, relative)
+        for name, relative in PRECHECK_EVIDENCE_PATHS.items()
+    }
+    return {
+        "schema": PRECHECK_COMPLETION_SCHEMA,
+        "result": "complete",
+        "reusable": True,
+        "input_manifest_sha256": evidence["initial_manifest"]["sha256"],
+        "initial_final_manifests_equal": True,
+        "assessment_clean": True,
+        "evidence": evidence,
+    }
+
+
+def precheck_expected(args: argparse.Namespace) -> dict[str, str]:
+    return {
+        "memory_high": str(args.memory_high),
+        "memory_max": str(args.memory_max),
+        "memory_swap_max": str(args.memory_swap_max),
+        "cpu_list": args.cpu_list,
+        "output_name": "paired-check.log",
+    }
+
+
+def publish_precheck_completion_command(args: argparse.Namespace) -> int:
+    run = Path(args.run)
+    completion = build_precheck_completion(run, precheck_expected(args))
+    destination = run / "precheck-completion.json"
+    atomic_json(destination, completion)
+    print(f"PRECHECK_REUSABLE {destination} sha256={sha256_file(destination)}")
+    return 0
+
+
+def validate_precheck_completion_command(args: argparse.Namespace) -> int:
+    run = Path(args.run)
+    completion_path = run / "precheck-completion.json"
+    report_path = Path(args.report)
+    try:
+        recorded = read_json_object(completion_path)
+        reconstructed = build_precheck_completion(run, precheck_expected(args))
+        if recorded != reconstructed:
+            raise EvidenceError("precheck completion record does not match its evidence")
+        equal, differences = compare_manifests(
+            run / PRECHECK_EVIDENCE_PATHS["initial_manifest"],
+            Path(args.current_manifest),
+        )
+        if not equal:
+            raise EvidenceError(
+                "current inputs differ from the completed precheck: "
+                + ", ".join(differences)
+            )
+        report = {
+            "classification": "atomic_precheck_reuse_validation",
+            "result": "reusable",
+            "completion": {
+                "path": str(completion_path.resolve()),
+                "sha256": sha256_file(completion_path),
+            },
+            "completed_input_manifest_sha256": reconstructed[
+                "input_manifest_sha256"
+            ],
+            "current_input_manifest": {
+                "path": str(Path(args.current_manifest).resolve()),
+                "sha256": sha256_file(Path(args.current_manifest)),
+            },
+        }
+        atomic_json(report_path, report)
+        print("PASS atomic reusable precheck evidence matches current inputs")
+        return 0
+    except (EvidenceError, OSError, ValueError) as error:
+        report = {
+            "classification": "atomic_precheck_reuse_validation",
+            "result": "stale",
+            "error": str(error),
+        }
+        atomic_json(report_path, report)
+        print(f"STALE reusable precheck evidence: {error}", file=sys.stderr)
+        return 1
+
+
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     subparsers = result.add_subparsers(dest="command", required=True)
@@ -764,6 +951,21 @@ def parser() -> argparse.ArgumentParser:
     compare.add_argument("--actual", required=True)
     compare.add_argument("--report")
     compare.set_defaults(function=compare_command)
+
+    for name, function in (
+        ("publish-precheck-completion", publish_precheck_completion_command),
+        ("validate-precheck-completion", validate_precheck_completion_command),
+    ):
+        completion = subparsers.add_parser(name)
+        completion.add_argument("--run", required=True)
+        completion.add_argument("--memory-high", type=int, required=True)
+        completion.add_argument("--memory-max", type=int, required=True)
+        completion.add_argument("--memory-swap-max", type=int, required=True)
+        completion.add_argument("--cpu-list", required=True)
+        if name == "validate-precheck-completion":
+            completion.add_argument("--current-manifest", required=True)
+            completion.add_argument("--report", required=True)
+        completion.set_defaults(function=function)
     return result
 
 

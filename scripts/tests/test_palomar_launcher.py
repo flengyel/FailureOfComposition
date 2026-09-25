@@ -290,6 +290,239 @@ run_precheck_phase {evidence!s} /usr/bin/true
             self.assertEqual(fields[6], "/usr/bin/true")
 
 
+class PrecheckCompletionTests(unittest.TestCase):
+    expected = {
+        "memory_high": 12 * CHECKS.GIB,
+        "memory_max": 12800 * 1024**2,
+        "memory_swap_max": 12 * CHECKS.GIB,
+        "cpu_list": "0",
+    }
+
+    def helper_arguments(self, command: str, run: Path):
+        return [
+            command,
+            "--run",
+            str(run),
+            "--memory-high",
+            str(self.expected["memory_high"]),
+            "--memory-max",
+            str(self.expected["memory_max"]),
+            "--memory-swap-max",
+            str(self.expected["memory_swap_max"]),
+            "--cpu-list",
+            self.expected["cpu_list"],
+        ]
+
+    def write_supervisor_evidence(self, run: Path):
+        precheck = run / "precheck"
+        precheck.mkdir(parents=True)
+        status = {
+            "state": "finished",
+            "cgroup": "/sys/fs/cgroup/user.slice/example/palomar-precheck",
+            "supervisor_pid": 101,
+            "exit_status": 0,
+            "term_signal": None,
+            "deadline_fired": False,
+            "liveness_lost": False,
+            "elapsed": 1.25,
+            "placement_ok": True,
+            "placement_error": None,
+            "launch_error": None,
+            "sandbox_started": None,
+            "cpu_delegated": True,
+            "limits_applied": {key: True for key in CHECKS.REQUIRED_LIMITS},
+            "rlimits_applied": {},
+            "memory_events": {
+                "low": 0,
+                "high": 2,
+                "max": 0,
+                "oom": 0,
+                "oom_kill": 0,
+                "oom_group_kill": 0,
+            },
+            "memory_peak": 4096,
+            "pids_events": {"max": 0},
+            "cpu_stat": {},
+            "populated_after_kill": False,
+        }
+        (precheck / "cgroup-status.json").write_text(
+            json.dumps(status), encoding="utf-8"
+        )
+        (precheck / "systemd-run.exit").write_text("0\n", encoding="ascii")
+        (precheck / "containment.env").write_text(
+            "classification=aggregate_process_tree_containment\n"
+            "cgroup_limits=/sys/fs/cgroup/user.slice/example/palomar-precheck\n"
+            "cgroup_leaf=/sys/fs/cgroup/user.slice/example/palomar-precheck/leaf\n"
+            f"memory_high={self.expected['memory_high']}\n"
+            f"memory_max={self.expected['memory_max']}\n"
+            f"memory_swap_max={self.expected['memory_swap_max']}\n"
+            "memory_oom_group=1\n"
+            "cpu_request=0\n"
+            "nproc=1\n"
+            "cpus_allowed_list=0\n",
+            encoding="utf-8",
+        )
+        (precheck / "paired-check.log").write_text(
+            "PASS local paired draft check\n", encoding="utf-8"
+        )
+        finalize = [
+            "finalize",
+            "--kind",
+            "precheck",
+            "--run",
+            str(precheck),
+            "--destination",
+            "precheck-status.env",
+            "--verification-kind",
+            "local_paired_precheck",
+            "--memory-high",
+            str(self.expected["memory_high"]),
+            "--memory-max",
+            str(self.expected["memory_max"]),
+            "--memory-swap-max",
+            str(self.expected["memory_swap_max"]),
+            "--cpu-list",
+            "0",
+            "--output-name",
+            "paired-check.log",
+        ]
+        self.assertEqual(CHECKS.main(finalize), 0)
+
+    def write_manifests(self, run: Path, final_value="same"):
+        initial = {"schema": "fixture", "files": [{"sha256": "same"}]}
+        final = {
+            "schema": "fixture",
+            "files": [{"sha256": final_value}],
+        }
+        initial_path = run / "precheck-inputs.json"
+        final_path = run / "precheck-inputs.after.json"
+        initial_path.write_text(json.dumps(initial), encoding="utf-8")
+        final_path.write_text(json.dumps(final), encoding="utf-8")
+        result = CHECKS.main(
+            [
+                "compare-manifests",
+                "--expected",
+                str(initial_path),
+                "--actual",
+                str(final_path),
+                "--report",
+                str(run / "precheck-stability.json"),
+            ]
+        )
+        return result
+
+    def validate(self, run: Path, current: Path):
+        report = run.parent / f"{run.name}-reuse.json"
+        arguments = self.helper_arguments("validate-precheck-completion", run)
+        arguments.extend(["--current-manifest", str(current), "--report", str(report)])
+        return CHECKS.main(arguments), report
+
+    def complete_run(self, root: Path):
+        run = root / "run"
+        run.mkdir()
+        self.write_supervisor_evidence(run)
+        self.assertEqual(self.write_manifests(run), 0)
+        self.assertEqual(
+            CHECKS.main(self.helper_arguments("publish-precheck-completion", run)), 0
+        )
+        return run
+
+    def test_interruption_after_status_before_stability_is_not_reusable(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            run = root / "run"
+            run.mkdir()
+            self.write_supervisor_evidence(run)
+            initial = run / "precheck-inputs.json"
+            initial.write_text('{"fixture":"same"}\n', encoding="utf-8")
+            result, report = self.validate(run, initial)
+            self.assertEqual(result, 1)
+            self.assertEqual(json.loads(report.read_text())["result"], "stale")
+
+    def test_failed_stability_then_restored_initial_inputs_is_not_reusable(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            run = root / "run"
+            run.mkdir()
+            self.write_supervisor_evidence(run)
+            self.assertEqual(self.write_manifests(run, final_value="changed"), 1)
+            self.assertEqual(
+                CHECKS.main(self.helper_arguments("publish-precheck-completion", run)), 2
+            )
+            current = root / "current.json"
+            current.write_bytes((run / "precheck-inputs.json").read_bytes())
+            result, _ = self.validate(run, current)
+            self.assertEqual(result, 1)
+
+    def test_missing_malformed_and_mismatched_completion_are_rejected(self):
+        for corruption in ("missing", "malformed", "mismatched"):
+            with self.subTest(corruption=corruption), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                run = self.complete_run(root)
+                completion = run / "precheck-completion.json"
+                if corruption == "missing":
+                    completion.unlink()
+                elif corruption == "malformed":
+                    completion.write_text("{not-json", encoding="utf-8")
+                else:
+                    value = json.loads(completion.read_text(encoding="utf-8"))
+                    value["input_manifest_sha256"] = "0" * 64
+                    completion.write_text(json.dumps(value), encoding="utf-8")
+                result, _ = self.validate(run, run / "precheck-inputs.json")
+                self.assertEqual(result, 1)
+
+    def test_complete_matching_precheck_is_reusable(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            run = self.complete_run(root)
+            current = root / "current.json"
+            current.write_bytes((run / "precheck-inputs.json").read_bytes())
+            result, report = self.validate(run, current)
+            self.assertEqual(result, 0)
+            value = json.loads(report.read_text(encoding="utf-8"))
+            self.assertEqual(value["result"], "reusable")
+
+    def test_resume_branch_rejects_status_only_evidence_before_workload(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "Lean/FailureOfComposition/Palomar").mkdir(parents=True)
+            (root / "Lean/FailureOfComposition/Palomar/comparator.json").write_text(
+                "{}\n", encoding="utf-8"
+            )
+            previous = root / ".codex-work/palomar/runs/previous"
+            previous.mkdir(parents=True)
+            self.write_supervisor_evidence(previous)
+            (previous / "precheck-inputs.json").write_text(
+                '{"fixture":"same"}\n', encoding="utf-8"
+            )
+            (root / "current.json").write_text(
+                '{"fixture":"same"}\n', encoding="utf-8"
+            )
+            shell = f"""
+source {LAUNCHER!s}
+repository_root={root!s}
+lean_root="$repository_root/Lean"
+palomar_dir="$lean_root/FailureOfComposition/Palomar"
+work_root="$repository_root/.codex-work/palomar"
+launcher_checks={HELPER_PATH!s}
+check_environment_static() {{ :; }}
+check_delegated_cgroup() {{ :; }}
+check_no_checker_processes() {{ :; }}
+lean() {{ printf '/mock-toolchain\n'; }}
+new_run_directory() {{ mkdir -p "$work_root/runs/new"; printf '%s\n' "$work_root/runs/new"; }}
+write_protected_config() {{ printf '{{}}\n' >"$1"; }}
+write_precheck_manifest() {{ cp "$repository_root/current.json" "$1"; }}
+run_supervised() {{ printf 'reached\n' >"$repository_root/workload-reached"; }}
+local_comparator resume "$work_root/runs/previous"
+"""
+            completed = subprocess.run(
+                ["bash", "-c", shell], cwd=REPOSITORY, text=True, capture_output=True
+            )
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertFalse((root / "workload-reached").exists())
+            self.assertIn("incomplete, inconsistent, or stale", completed.stderr)
+
+
 class SyntaxTests(unittest.TestCase):
     def test_launcher_syntax(self):
         subprocess.run(["bash", "-n", str(LAUNCHER)], cwd=REPOSITORY, check=True)

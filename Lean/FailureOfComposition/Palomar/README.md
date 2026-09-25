@@ -80,13 +80,16 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    its existing licensing preserved; the code license is not a new grant for
    the paper. Its scope must be settled for any final submitted snapshot under
    the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
-4. **Comparator has not run.** Local elaboration, matching declaration types,
-   axiom audits, and ordinary kernel replay do not establish Palomar's
-   protected Challenge/Solution comparison. Its current
+4. **The retained Comparator pass is local and ineligible.** Run
+   `20260925T162212Z-45800` passed all nine declarations with Lean's default
+   kernel and the bundled NanoDa and con-ron kernels, but it checked the current
+   Foundation-dependent Challenge at commit `a2234663fa95d376cc6b11f82278753d19690b87`.
+   It is not a Comparator pass for an eligible Challenge and is not a complete
+   Palomar mechanical or editorial result. Local elaboration, matching
+   declaration types, axiom audits, and ordinary kernel replay likewise do not
+   establish those later results. The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
-   uses Lean-bundled `lake comparator` and exported-proof checking, including
-   the toolchain's bundled NanoDa and con-ron kernels. No successful Comparator
-   or Palomar mechanical/editorial result is asserted here.
+   additionally performs protected source-provenance and exported-proof checks.
 
 Solving the dependency boundary must preserve the statements. Adding the
 desired result as a hypothesis, hiding it inside an unconstrained definition,
