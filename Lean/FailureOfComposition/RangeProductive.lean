@@ -33,7 +33,7 @@ theorem historyPositive_refutable_of_divergence (d : ℕ)
       ∼(historyPositiveFormula d).val/[n] := by
     apply complete.{0} 𝗣𝗔
     intro M _ _
-    haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+    have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     simp only [models_iff, LogicalConnective.HomClass.map_imply,
       LogicalConnective.HomClass.map_neg, eqAt_eval]
     intro he
@@ -50,7 +50,7 @@ theorem history_absence_iff_divergence (d : ℕ) :
     𝗣𝗔 ⊢ absenceSentence (historyPositiveFormula d) 🡘 ∼diagonalHistoryFormula/[d] := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp only [models_iff, LogicalConnective.HomClass.map_iff,
     LogicalConnective.HomClass.map_neg, absenceSentence_eval]
   rw [diagonalHistory_iff d]

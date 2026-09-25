@@ -41,8 +41,8 @@ theorem deltaGraph_pointwise_identity (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
   intro n
   apply complete.{0} T
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hs : M↓[ℒₒᵣ] ⊧ σ.val := consequence_iff.mp (Theory.Proof.sound hp) M inferInstance
   simp only [models_iff] at hs
   simp [models_iff, eqAt_eval, deltaGraph_eval, hs]

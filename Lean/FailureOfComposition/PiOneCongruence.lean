@@ -26,7 +26,7 @@ theorem pointwise_comp_left (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
   have h : 𝗣𝗔 ⊢ eqAt G H n 🡒 eqAt (comp F G) (comp F H) n := by
     apply complete.{0} 𝗣𝗔
     intro M _ _
-    haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+    have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     simp only [Semantics.Imp.models_imply, models_iff, eqAt_eval, Nat.succ_eq_add_one,
       Nat.reduceAdd, comp_eval, Fin.isValue, Matrix.cons_val_zero, Matrix.cons_val_one,
       Fin.Fin1.eq_one, Matrix.cons_val_fin_one]

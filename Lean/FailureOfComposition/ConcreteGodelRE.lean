@@ -28,7 +28,7 @@ theorem index_noncongruence_via_godel_of_re_axioms
       ¬PointwiseIndex T
         (canonicalPartrecCompIndex f g) (canonicalPartrecCompIndex i g) := by
   obtain ⟨S, ⟨hS⟩, hST, hTS⟩ := CraigPresentation.exists_craig_presentation T hT
-  letI : S.Δ₁ := hS
+  let : S.Δ₁ := hS
   exact index_noncongruence_via_godel_of_equivalent_presentation S T hST hTS
 
 /-- The Gödel-II route, with the same r.e.-axiom assumptions as the independent

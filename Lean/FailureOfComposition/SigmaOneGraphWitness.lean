@@ -52,7 +52,7 @@ theorem realize_of_semidecides (F : ProofSearch.Graph) (hF : ProofSearch.Functio
     ProofSearch.Uniform 𝗣𝗔 (ConcreteEvaluator.eventualGraph (encode (graphProgram c))) F := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hf : V↓[ℒₒᵣ] ⊧ ProofSearch.functionalSentence F :=
     consequence_iff.mp (Theory.Proof.sound hF) V inferInstance
   rw [models_iff, ProofSearch.functionalSentence_eval] at hf

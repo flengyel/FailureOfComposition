@@ -93,7 +93,7 @@ theorem normalFormGraph_realizes (q : ℕ) :
     Uniform 𝗣𝗔 (eventualGraph q) (normalFormGraph q) := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, uniformSentence_eval]
   intro x y
   exact (normalFormGraph_eval_iff q x y).symm
@@ -131,7 +131,7 @@ theorem outputGraph_nat (w y : ℕ) : outputGraph.val.Evalb ![w,y] ↔ Kleene.U 
 theorem outputGraph_functional : Functional outputGraph := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro w y z hy hz
   exact ((outputGraph_eval w y).mp hy).trans ((outputGraph_eval w z).mp hz).symm
@@ -147,7 +147,7 @@ theorem computationPredicate_primrec : PrimrecPred
 theorem normalFormGraph_functional (q : ℕ) : Functional (normalFormGraph q) := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro x y z hy hz
   exact eventualGraph_output_unique q x y z

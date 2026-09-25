@@ -35,7 +35,7 @@ theorem kleeneEqAt_iff_eqAt (F G : Graph) (hF : Functional F) (hG : Functional G
     (n : ℕ) : 𝗣𝗔 ⊢ kleeneEqAt F G n 🡘 eqAt F G n := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hf : V↓[ℒₒᵣ] ⊧ functionalSentence F :=
     consequence_iff.mp (Theory.Proof.sound hF) V inferInstance
   have hg : V↓[ℒₒᵣ] ⊧ functionalSentence G :=
@@ -84,7 +84,7 @@ theorem uniform_to_pointwise (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
   apply WeakerThan.pbl (𝓢 := 𝗣𝗔)
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hu : V↓[ℒₒᵣ] ⊧ uniformSentence F G :=
     consequence_iff.mp (Theory.Proof.sound h) V inferInstance
   simp only [models_iff, uniformSentence_eval] at hu

@@ -30,7 +30,7 @@ theorem graph_noncongruence_of_unprovable_divergence (T : ArithmeticTheory)
       ProofSearch.Functional F ∧ ProofSearch.Functional I ∧ ProofSearch.Functional G ∧
       ProofSearch.Pointwise T F I ∧
       ¬ProofSearch.Pointwise T (ProofSearch.comp F G) (ProofSearch.comp I G) := by
-  letI : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
+  let : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
   obtain ⟨d, hdiv, hnot⟩ := hex
   let σ : ArithmeticSentence := diagonalHaltingFormula/[d]
   have hσ : Hierarchy 𝚺 1 σ := by simp [σ, diagonalHaltingFormula_sigma]

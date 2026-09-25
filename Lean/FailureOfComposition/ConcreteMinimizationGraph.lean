@@ -111,8 +111,8 @@ private theorem rfind_forward (f : Nat.Partrec.Code) :
     ∀ s a m y : M, sc (encode (Nat.Partrec.Code.rfind' f)) s a m y →
       m ≤ y ∧ egp (encode f) a y 0 ∧
         ∀ k : M, m ≤ k → k < y → ∃ v : M, v ≠ 0 ∧ egp (encode f) a k v := by
-  haveI := models_inductionScheme_univ (M := M)
-  haveI : Inhabited M := ⟨0⟩
+  have := models_inductionScheme_univ (M := M)
+  have : Inhabited M := ⟨0⟩
   intro s
   apply InductionScheme.succ_induction (C := Set.univ)
     (P := fun s : M => ∀ a m y : M, sc (encode (Nat.Partrec.Code.rfind' f)) s a m y →
@@ -206,8 +206,8 @@ private theorem rfind_reverse (f : Nat.Partrec.Code) :
     ∀ l a m : M, (egp (encode f) a (m + l) 0 ∧
       ∀ k : M, m ≤ k → k < m + l → ∃ v : M, v ≠ 0 ∧ egp (encode f) a k v) →
       egp (encode (Nat.Partrec.Code.rfind' f)) a m (m + l) := by
-  haveI := models_inductionScheme_univ (M := M)
-  haveI : Inhabited M := ⟨0⟩
+  have := models_inductionScheme_univ (M := M)
+  have : Inhabited M := ⟨0⟩
   intro l
   apply InductionScheme.succ_induction (C := Set.univ)
     (P := fun l : M => ∀ a m : M, (egp (encode f) a (m + l) 0 ∧

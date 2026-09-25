@@ -49,8 +49,8 @@ private theorem ground_proof_of_pointwise (T : ArithmeticTheory) [𝗣𝗔 ⪯ T
     WeakerThan.pbl (true_graph_instance_provable F n m hF)
   apply complete.{0} T
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hEq : M↓[ℒₒᵣ] ⊧ eqAt F G n :=
     consequence_iff.mp (Theory.Proof.sound (hFG n)) M inferInstance
   have hVal : M↓[ℒₒᵣ] ⊧ graphInstance F n m :=

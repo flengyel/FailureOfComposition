@@ -130,7 +130,7 @@ private theorem positive_search_domain (d : Code 2) (x : M)
     (htotal : ∀ a : M, ∃ z : M, Semiformula.Evalb ![z,a,x] (code d)) :
     (∃ w : M, Semiformula.Evalb ![w,x] (code (codeRfindPos d))) ↔
       ∃ w z : M, 0 < z ∧ Semiformula.Evalb ![z,w,x] (code d) := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   constructor
   · rintro ⟨w,hw⟩
     exact ⟨w,((eval_codeRfindPos_iff d w ![x]).mp hw).1⟩

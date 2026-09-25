@@ -321,7 +321,7 @@ theorem eventualGraph_pair_eval
     (eventualGraph (canonicalPartrecPairIndex f g)).val.Evalb ![u,y] ↔
       ∃ a b : M, (eventualGraph f).val.Evalb ![u,a] ∧
         (eventualGraph g).val.Evalb ![u,b] ∧ y = FFL.FirstOrder.Arithmetic.pair a b := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   constructor
   · intro h
     obtain ⟨s,hs⟩ := (eventualGraph_eval _ _).mp h

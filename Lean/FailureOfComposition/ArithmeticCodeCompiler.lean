@@ -246,7 +246,7 @@ theorem unaryCompile_realizes (c : ACode 1) :
       (sourceGraph c) := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, ProofSearch.uniformSentence_eval]
   intro x y
   rw [sourceGraph_eval]

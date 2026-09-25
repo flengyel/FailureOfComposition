@@ -117,13 +117,13 @@ theorem universal_negative_bridge :
     𝗣𝗔 ⊢ “(∀ p, ¬!(proofTarget U σ).sigma p) ↔ ¬!(provabilityPred U σ)” := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp [models_iff, proofTarget, provabilityPred, Bootstrapping.Provable]
 
 theorem guard_functional : Functional (guard U σ) := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro x y z hy hz
   exact (guard_eval U σ _).mp hy |>.2 |>.trans ((guard_eval U σ _).mp hz).2.symm
@@ -131,13 +131,13 @@ theorem guard_functional : Functional (guard U σ) := by
 theorem identity_functional : Functional identity := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp [models_iff]
 
 theorem search_functional : Functional (search U σ) := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro x y z hy hz
   rw [search_eval] at hy hz
@@ -158,7 +158,7 @@ theorem guard_pointwise_identity (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
 theorem guard_search_empty : Uniform 𝗣𝗔 (comp (guard U σ) (search U σ)) empty := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp only [models_iff, uniformSentence_eval, Nat.succ_eq_add_one, Nat.reduceAdd, comp_eval,
     Fin.isValue, Matrix.cons_val_zero, search_eval, Matrix.cons_val_one, Fin.Fin1.eq_one,
     Matrix.cons_val_fin_one, guard_eval, exists_eq_right_right', empty_eval, iff_false, not_and,
@@ -169,14 +169,14 @@ theorem guard_search_empty : Uniform 𝗣𝗔 (comp (guard U σ) (search U σ)) 
 theorem identity_comp (G : Graph) : Uniform 𝗣𝗔 (comp identity G) G := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp [models_iff]
 
 theorem search_empty_implies_absence :
     𝗣𝗔 ⊢ eqAt (search U σ) empty 0 🡒 ∼provabilityPred U σ := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp only [provabilityPred, Semantics.Imp.models_imply, models_iff, eqAt_eval,
     Nat.succ_eq_add_one, Nat.reduceAdd, Nat.cast_zero, search_eval, Fin.isValue,
     Matrix.cons_val_one, Fin.Fin1.eq_one, Matrix.cons_val_fin_one, empty_eval, iff_false, not_and,
@@ -199,7 +199,7 @@ theorem composites_not_pointwise_equal (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
       eqAt (search U σ) empty 0 := by
     apply complete.{0} 𝗣𝗔
     intro V _ _
-    haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+    have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     simp only [Semantics.Imp.models_imply, models_iff, eqAt_eval, Nat.succ_eq_add_one,
       Nat.reduceAdd, Nat.cast_zero, comp_eval, Fin.isValue, Matrix.cons_val_zero, search_eval,
       Matrix.cons_val_one, Fin.Fin1.eq_one, Matrix.cons_val_fin_one, guard_eval,

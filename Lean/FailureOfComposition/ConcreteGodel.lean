@@ -68,10 +68,10 @@ theorem index_noncongruence_via_godel_of_equivalent_presentation
     ∃ f i g : ℕ, PointwiseIndex T f i ∧
       ¬PointwiseIndex T
         (canonicalPartrecCompIndex f g) (canonicalPartrecCompIndex i g) := by
-  letI : S ⪯ T := hST
-  letI : T ⪯ S := hTS
-  haveI : 𝗣𝗔 ⪯ S := WeakerThan.trans (𝓣 := T) inferInstance hTS
-  haveI : Consistent S := consistent_iff_unprovable_bot.mpr fun h =>
+  let : S ⪯ T := hST
+  let : T ⪯ S := hTS
+  have : 𝗣𝗔 ⪯ S := WeakerThan.trans (𝓣 := T) inferInstance hTS
+  have : Consistent S := consistent_iff_unprovable_bot.mpr fun h =>
     consistent_iff_unprovable_bot.mp (inferInstance : Consistent T) (WeakerThan.pbl h)
   obtain ⟨f, i, g, hfi, hcomp⟩ := index_noncongruence_via_godel S
   refine ⟨f, i, g, fun n => WeakerThan.pbl (hfi n), ?_⟩

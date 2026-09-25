@@ -33,7 +33,7 @@ theorem guardIndex_realizes (d : ℕ) :
     Uniform 𝗣𝗔 (eventualGraph (guardIndex d)) (guardGraph d) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff,uniformSentence_eval]
   intro x y
   exact (computes_unaryCompile (guardCode d) x y).trans (guardCode_eval d x y)
@@ -42,7 +42,7 @@ theorem searchIndex_realizes (d : ℕ) :
     Uniform 𝗣𝗔 (eventualGraph (searchIndex d)) (searchGraph d) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff,uniformSentence_eval]
   intro x y
   exact (computes_unaryCompile (searchCode d) x y).trans (searchCode_eval d x y)

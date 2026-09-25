@@ -57,8 +57,8 @@ theorem pa_formula_induction {P : M → Prop} (φ : ArithmeticSemiformula M 1)
     (hφ : ∀ x, P x ↔ φ.Eval ![x] id)
     (hz : P 0) (hs : ∀ x, P x → P (x + 1)) : ∀ x, P x := by
   classical
-  haveI := models_inductionScheme_univ (M := M)
-  haveI : Inhabited M := ⟨0⟩
+  have := models_inductionScheme_univ (M := M)
+  have : Inhabited M := ⟨0⟩
   exact InductionScheme.succ_induction (C := Set.univ) (by
     refine ⟨φ.enumerateFVar, Rew.rewriteMap φ.idxOfFVar ▹ φ, trivial, ?_⟩
     intro x

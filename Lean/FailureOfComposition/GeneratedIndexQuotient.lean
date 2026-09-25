@@ -125,7 +125,7 @@ theorem generatedIndexQuotient_subsingleton_of_graph_universal (A : Arithmetizat
     (T : ArithmeticTheory) [𝗣𝗔 ⪯ T]
     (h : ∀ F G : FunctionalGraph, GeneratedCongruence.Rel T F G) :
     Subsingleton (GeneratedIndexQuotient A T) := by
-  haveI := GeneratedCongruence.quotient_subsingleton_of_universal T h
+  have := GeneratedCongruence.quotient_subsingleton_of_universal T h
   constructor
   intro a b
   exact (generatedQuotientEquiv A T).injective (Subsingleton.elim _ _)

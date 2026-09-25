@@ -100,7 +100,7 @@ theorem range_probe_empty_implies_absence (P : 𝚺₁.Semisentence 1) :
     𝗣𝗔 ⊢ eqAt (rangeOfGraph (probeGraph P)) empty 0 🡒 absenceSentence P := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp only [models_iff, LogicalConnective.HomClass.map_imply,
     eqAt_eval, absenceSentence_eval]
   intro he p hp

@@ -165,7 +165,7 @@ private theorem provable_iff_finiteImplication (T : ArithmeticTheory) (σ : Arit
 codes. The theory need not have a Delta-one presentation. -/
 theorem theorem_codes_re_of_axiom_codes (T : ArithmeticTheory)
     (hT : REPred (AxiomCodes T)) : REPred (TheoremCodes T) := by
-  letI : Inhabited ArithmeticSentence := ⟨⊤⟩
+  let : Inhabited ArithmeticSentence := ⟨⊤⟩
   have ha : REPred (fun σ : ArithmeticSentence => σ ∈ T) := by
     apply REPred.of_eq (hT.comp Computable.encode)
     intro σ

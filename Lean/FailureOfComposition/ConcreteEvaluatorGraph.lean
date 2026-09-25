@@ -36,7 +36,7 @@ theorem evaluator_persistence_provable (q : ℕ) :
       !evalnCertificateFormula.val t !!(q) x y” := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simpa [models_iff, numeral_eq_natCast] using
     (evalnCertificateFormula_natCode_persist (M := M) q)
 
@@ -59,7 +59,7 @@ theorem eventualGraph_output_unique
     (q : ℕ) (x y z : M)
     (hy : (eventualGraph q).val.Evalb ![x, y])
     (hz : (eventualGraph q).val.Evalb ![x, z]) : y = z := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   obtain ⟨s, hs⟩ := (eventualGraph_eval q _).mp hy
   obtain ⟨t, ht⟩ := (eventualGraph_eval q _).mp hz
   simp only [numeral_eq_natCast_app, Matrix.cons_val_zero, Matrix.cons_val_one] at hs ht
@@ -84,7 +84,7 @@ theorem eventualGraph_comp_eval
     (eventualGraph (canonicalPartrecCompIndex fCode gCode)).val.Evalb ![x, z] ↔
       ∃ y : M, (eventualGraph gCode).val.Evalb ![x, y] ∧
         (eventualGraph fCode).val.Evalb ![y, z] := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   constructor
   · intro h
     obtain ⟨s, hs⟩ := (eventualGraph_eval _ _).mp h
@@ -121,7 +121,7 @@ theorem eventualGraph_identity :
     Uniform 𝗣𝗔 (eventualGraph Kleene.identityIndex) identity := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, uniformSentence_eval]
   intro x y
   rw [identity_eval]
@@ -143,7 +143,7 @@ theorem eventualGraph_empty :
     Uniform 𝗣𝗔 (eventualGraph ConcreteEmptyGraph.concreteEmptyIndex) empty := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp only [models_iff, uniformSentence_eval, empty_eval, eventualGraph_eval,
     numeral_eq_natCast_app, Matrix.cons_val_zero, Matrix.cons_val_one]
   exact ConcreteEmptyGraph.concreteEmpty_unbounded_computation_iff

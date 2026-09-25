@@ -257,7 +257,7 @@ private theorem tagSix_predecessor_argument [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M�
         ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (codePair (codeUnpair₁ (Code.proj (2 : Fin 3)))
         (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1)))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hproj : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
       ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
@@ -284,7 +284,7 @@ private theorem tagSix_step_argument [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒ�
       (code (codePair (codeLift (codeUnpair₁ (Code.proj (2 : Fin 3))))
         (codePair (codeLift (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1)))
           (codeHead (n := 3))))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hproj : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
       ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
@@ -323,7 +323,7 @@ theorem evaln_tag_six_zero_iff
     FFL.FirstOrder.Arithmetic.pair z 0 < s ∧
     Semiformula.Evalb ![s, (partrecCodePayload₁ q : M), z, y]
       (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- the argument codes of the primitive-recursion branch of the dispatcher, named once
   set dtable : Code 3 := codeEvaluatorHistoryBeforeCell with hdtable
   set dk' : Code 3 :=
@@ -413,7 +413,7 @@ theorem evaln_tag_six_succ_iff
       Semiformula.Evalb ![k + 1, (partrecCodePayload₂ q : M),
         FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x), y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- the argument codes of the primitive-recursion branch, named once
   set dtable : Code 3 := codeEvaluatorHistoryBeforeCell with hdtable
   set dk' : Code 3 :=
@@ -516,7 +516,7 @@ theorem eventualGraph_prec_zero_eval
     (eventualGraph (canonicalPartrecPrecIndex fCode gCode)).val.Evalb
       ![FFL.FirstOrder.Arithmetic.pair z 0, y] ↔
     (eventualGraph fCode).val.Evalb ![z, y] := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   let q := canonicalPartrecPrecIndex fCode gCode
   have hq : partrecCodeTag q = 6 := canonicalPartrecPrecIndex_constructor_number fCode gCode
   have hf : partrecCodePayload₁ q = fCode := canonicalPartrecPrecIndex_base_index fCode gCode
@@ -557,7 +557,7 @@ theorem eventualGraph_prec_succ_eval
         ![FFL.FirstOrder.Arithmetic.pair z a, x] ∧
       (eventualGraph gCode).val.Evalb
         ![FFL.FirstOrder.Arithmetic.pair z (FFL.FirstOrder.Arithmetic.pair a x), y] := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   let q := canonicalPartrecPrecIndex fCode gCode
   have hq : partrecCodeTag q = 6 := canonicalPartrecPrecIndex_constructor_number fCode gCode
   have hg : partrecCodePayload₂ q = gCode := canonicalPartrecPrecIndex_step_index fCode gCode

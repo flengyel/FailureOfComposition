@@ -30,7 +30,7 @@ theorem graph_noncongruence_of_true_unprovable_pi_one (T : ArithmeticTheory)
       ProofSearch.Functional F ∧ ProofSearch.Functional H ∧
       ProofSearch.Functional G ∧ ProofSearch.Pointwise T F H ∧
       ¬ProofSearch.Pointwise T (ProofSearch.comp F G) (ProofSearch.comp H G) := by
-  letI : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
+  let : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
   have hneg : Hierarchy 𝚺 1 (∼σ) := by simpa using hσ
   have hPA : 𝗣𝗔 ⊬ ∼σ := by
     intro hp

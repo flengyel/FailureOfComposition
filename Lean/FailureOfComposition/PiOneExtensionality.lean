@@ -71,8 +71,8 @@ private theorem ground_proof_of_pointwise (T : ArithmeticTheory) [𝗣𝗔 ⪯ T
     WeakerThan.pbl (true_graph_instance_provable F n m hF)
   apply complete.{0} T
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hEq : M↓[ℒₒᵣ] ⊧ eqAt F G n :=
     consequence_iff.mp (Theory.Proof.sound (hFG n)) M inferInstance
   have hVal : M↓[ℒₒᵣ] ⊧ graphInstance F n m :=
@@ -103,7 +103,7 @@ private theorem eqAt_provable_of_common_value (F G : Graph)
   have hpG := true_graph_instance_provable G n m hnG
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hf : M↓[ℒₒᵣ] ⊧ functionalSentence F :=
     consequence_iff.mp (Theory.Proof.sound hF) M inferInstance
   have hg : M↓[ℒₒᵣ] ⊧ functionalSentence G :=
@@ -132,8 +132,8 @@ private theorem eqAt_provable_of_divergence (T : ArithmeticTheory) [𝗣𝗔 ⪯
     (by simpa only [models_iff, divergesAt_eval, natCast_nat] using hG)
   apply complete.{0} T
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗣𝗔 := models_of_subtheory (U := T) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hf : M↓[ℒₒᵣ] ⊧ divergesAt F n :=
     consequence_iff.mp (Theory.Proof.sound hdF) M inferInstance
   have hg : M↓[ℒₒᵣ] ⊧ divergesAt G n :=

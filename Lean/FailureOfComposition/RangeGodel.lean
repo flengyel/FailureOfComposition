@@ -36,7 +36,7 @@ theorem proofBotPredicate_numeral_refutation
       ∼(proofBotPredicate T).val/[n] := by
     apply complete.{0} 𝗣𝗔
     intro M _ _
-    haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+    have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     simp [models_iff, Semiformula.eval_substs, proofBotPredicate]
   exact Entailment.mdp h (numeral_nonproof_of_consistency T n)
 
@@ -45,7 +45,7 @@ own consistency, which Gödel's second incompleteness theorem excludes. -/
 theorem proofBotPredicate_absence_unprovable
     (T : ArithmeticTheory) [T.Δ₁] [𝗣𝗔 ⪯ T] [Consistent T] :
     T ⊬ absenceSentence (proofBotPredicate T) := by
-  haveI : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
+  have : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
   have hb : 𝗣𝗔 ⊢ absenceSentence (proofBotPredicate T) 🡘 T.consistent.val := by
     apply complete.{0} 𝗣𝗔
     intro M _ _
@@ -82,10 +82,10 @@ theorem range_counterexample_of_equivalent_presentation
     (hST : S ⪯ T) (hTS : T ⪯ S) :
     ∃ u : ℕ, PointwiseIndex T u concreteEmptyIndex ∧
       ¬PointwiseIndex T (rangeIndex u) (rangeIndex concreteEmptyIndex) := by
-  letI : S ⪯ T := hST
-  letI : T ⪯ S := hTS
-  haveI : 𝗣𝗔 ⪯ S := WeakerThan.trans (𝓣 := T) inferInstance hTS
-  haveI : Consistent S := consistent_iff_unprovable_bot.mpr fun h =>
+  let : S ⪯ T := hST
+  let : T ⪯ S := hTS
+  have : 𝗣𝗔 ⪯ S := WeakerThan.trans (𝓣 := T) inferInstance hTS
+  have : Consistent S := consistent_iff_unprovable_bot.mpr fun h =>
     consistent_iff_unprovable_bot.mp (inferInstance : Consistent T) (WeakerThan.pbl h)
   obtain ⟨hu, hrange⟩ := range_counterexample_via_godel S
   refine ⟨probeIndex (proofBotPredicate S), fun n => WeakerThan.pbl (hu n), ?_⟩
@@ -100,7 +100,7 @@ theorem range_counterexample_of_re_axioms
     ∃ u : ℕ, PointwiseIndex T u concreteEmptyIndex ∧
       ¬PointwiseIndex T (rangeIndex u) (rangeIndex concreteEmptyIndex) := by
   obtain ⟨S, ⟨hS⟩, hST, hTS⟩ := CraigPresentation.exists_craig_presentation T hT
-  letI : S.Δ₁ := hS
+  let : S.Δ₁ := hS
   exact range_counterexample_of_equivalent_presentation S T hST hTS
 
 /-- The range assignment does not descend to the quotient in the manuscript's

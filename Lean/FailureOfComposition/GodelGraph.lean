@@ -22,7 +22,7 @@ theorem proofBot_consistency_bridge (T : ArithmeticTheory) [T.Δ₁] :
     𝗣𝗔 ⊢ “(∀ p, ¬!(ProofSearch.proofTarget T ⊥).sigma p) ↔ !T.consistent.val” := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp [models_iff, Theory.consistent, Bootstrapping.Provable]
 
 theorem numeral_nonproof_of_consistency (T : ArithmeticTheory) [T.Δ₁]
@@ -38,7 +38,7 @@ theorem graph_noncongruence_via_godel (T : ArithmeticTheory) [T.Δ₁]
       ProofSearch.Functional F ∧ ProofSearch.Functional I ∧ ProofSearch.Functional G ∧
       ProofSearch.Pointwise T F I ∧
       ¬ProofSearch.Pointwise T (ProofSearch.comp F G) (ProofSearch.comp I G) := by
-  letI : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
+  let : 𝗜𝚺₁ ⪯ T := WeakerThan.trans (𝓣 := 𝗣𝗔) inferInstance inferInstance
   apply ProofSearch.functional_graph_noncongruence T ⊥ T
   · exact consistent_iff_unprovable_bot.mp (inferInstance : Consistent T)
   · simpa [Theory.consistent] using consistent_unprovable T

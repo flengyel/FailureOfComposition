@@ -53,7 +53,7 @@ private theorem standard_stage_implies_graph (e : ℕ) (G : Graph)
     (y : M) (hy : Semiformula.Evalb ![(s : M), (e : M), (x : M), y]
       (evalnCertificateFormula : ArithmeticSemisentence 4)) :
     G.val.Evalb ![(x : M), y] := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   obtain ⟨z, hz⟩ := eval_codeHistoryEvaluator_exists (s : ℕ) e x
   have hzM := history_output_at_numerals e s x z hz (M := M)
   have hyz := eval_unique ((evalnCertificateFormula_eval_history_iff _ _ _ _).mp hy) hzM
@@ -84,7 +84,7 @@ theorem AGraph_eqAt_B_pair (e : ℕ) (G : Graph)
     𝗣𝗔 ⊢ eqAt (AGraph e G) (BGraph e) (Nat.pair s x) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, eqAt_eval]
   intro y
   rw [coe_pair_eq_pair_coe, AGraph_pair_eval, BGraph_pair_eval]

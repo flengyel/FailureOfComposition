@@ -67,7 +67,7 @@ theorem convergenceAt_provable_of_pointwise_identity (e : ℕ)
   have himp : 𝗣𝗔 ⊢ eqAt (eventualGraph e) identity n 🡒 convergenceAt e n := by
     apply complete.{0} 𝗣𝗔
     intro M _ _
-    haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+    have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     simp only [models_iff, LogicalConnective.HomClass.map_imply,
       eqAt_eval, convergenceAt_eval]
     intro h

@@ -44,8 +44,8 @@ private theorem noComputationFormula_eval [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲
 theorem concreteEmpty_no_computation [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] :
     ∀ s u y : M, ¬Semiformula.Evalb ![s, (concreteEmptyIndex : M), u, y]
       (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  haveI := models_inductionScheme_univ (M := M)
-  haveI : Inhabited M := ⟨0⟩
+  have := models_inductionScheme_univ (M := M)
+  have : Inhabited M := ⟨0⟩
   have hzero : ∀ u y : M, ¬Semiformula.Evalb ![(0 : M), (concreteEmptyIndex : M), u, y]
       (evalnCertificateFormula : ArithmeticSemisentence 4) := by
     intro u y h

@@ -88,7 +88,7 @@ theorem search_empty_implies_absence (d : ℕ) :
     𝗣𝗔 ⊢ eqAt (searchGraph d) empty 0 🡒 ∼diagonalHistoryFormula/[d] := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   simp only [models_iff, LogicalConnective.HomClass.map_imply, LogicalConnective.HomClass.map_neg]
   intro he hh
   obtain ⟨s, hs⟩ := (diagonalHistory_iff d).mp hh
@@ -116,7 +116,7 @@ theorem graph_noncongruence_of_history_divergence (T : ArithmeticTheory) [𝗣�
       (comp identity (searchGraph d)) 0 🡒 eqAt (searchGraph d) empty 0 := by
     apply complete.{0} 𝗣𝗔
     intro M _ _
-    haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+    have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     have hempty := consequence_iff.mp (Theory.Proof.sound (guard_search_empty d)) M inferInstance
     have hid := consequence_iff.mp
       (Theory.Proof.sound (identity_comp (searchGraph d))) M inferInstance

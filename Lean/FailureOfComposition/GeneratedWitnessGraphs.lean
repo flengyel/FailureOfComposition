@@ -165,7 +165,7 @@ theorem leastGraph_exists (e : ℕ) (x y : M)
     (hy : (eventualGraph e).val.Evalb ![x, y]) :
     ∃ s : M, (leastGraph e).val.Evalb ![x, s] ∧
       (stageGraph e).val.Evalb ![s, x, y] := by
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   obtain ⟨s, hs⟩ := (eventualGraph_eval e _).mp hy
   have hs' : (stageGraph e).val.Evalb ![s, x, y] := by
     apply (stageGraph_eval e s x y).mpr
@@ -235,7 +235,7 @@ theorem intersection_comm_uniform (F G : Graph) :
 theorem HGraph_functional (e : ℕ) : Functional (HGraph e) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro x a b ha hb
   obtain ⟨s, hs, rfl⟩ := (HGraph_eval e x a).mp ha
@@ -245,7 +245,7 @@ theorem HGraph_functional (e : ℕ) : Functional (HGraph e) := by
 theorem BGraph_functional (e : ℕ) : Functional (BGraph e) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro n a b ha hb
   rw [← pair_unpair n, BGraph_pair_eval] at ha hb
@@ -254,7 +254,7 @@ theorem BGraph_functional (e : ℕ) : Functional (BGraph e) := by
 theorem AGraph_functional (e : ℕ) (G : Graph) : Functional (AGraph e G) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro n a b ha hb
   rw [← pair_unpair n, AGraph_pair_eval] at ha hb
@@ -264,7 +264,7 @@ theorem B_comp_H (e : ℕ) :
     Uniform 𝗣𝗔 (comp (BGraph e) (HGraph e)) (eventualGraph e) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, uniformSentence_eval]
   exact B_comp_H_eval e
 
@@ -272,7 +272,7 @@ theorem A_comp_H (e : ℕ) (G : Graph) :
     Uniform 𝗣𝗔 (comp (AGraph e G) (HGraph e)) (intersection (eventualGraph e) G) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, uniformSentence_eval]
   exact A_comp_H_eval e G
 

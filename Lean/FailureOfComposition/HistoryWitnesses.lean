@@ -170,7 +170,7 @@ theorem guard_functional (d : ℕ) : Functional (guardGraph d) := by
 theorem search_functional (d : ℕ) : Functional (searchGraph d) := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, functionalSentence_eval]
   intro x y z hy hz
   obtain ⟨⟨a, ha, hay⟩, hminy⟩ := (searchGraph_eval d _).mp hy
@@ -184,7 +184,7 @@ theorem guard_search_empty (d : ℕ) :
     Uniform 𝗣𝗔 (comp (guardGraph d) (searchGraph d)) empty := by
   apply complete.{0} 𝗣𝗔
   intro M _ _
-  haveI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : M↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   rw [models_iff, uniformSentence_eval]
   intro x y
   simp only [comp_eval, empty_eval, iff_false]

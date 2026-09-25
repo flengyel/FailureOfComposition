@@ -23,14 +23,14 @@ theorem pointwise_equivalence (T : ArithmeticTheory) [𝗣𝗔 ⪯ T] :
     apply WeakerThan.pbl (𝓢 := 𝗣𝗔)
     apply complete.{0} 𝗣𝗔
     intro V _ _
-    haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+    have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
     simp [models_iff, eqAt]
   symm := by
     intro F G h n
     have hs : 𝗣𝗔 ⊢ eqAt F G n 🡒 eqAt G F n := by
       apply complete.{0} 𝗣𝗔
       intro V _ _
-      haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+      have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
       simp only [Semantics.Imp.models_imply, models_iff, eqAt_eval, Nat.succ_eq_add_one,
         Nat.reduceAdd]
       intro h y
@@ -41,7 +41,7 @@ theorem pointwise_equivalence (T : ArithmeticTheory) [𝗣𝗔 ⪯ T] :
     have ht : 𝗣𝗔 ⊢ eqAt F G n 🡒 eqAt G H n 🡒 eqAt F H n := by
       apply complete.{0} 𝗣𝗔
       intro V _ _
-      haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+      have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
       simp only [Semantics.Imp.models_imply, models_iff, eqAt_eval, Nat.succ_eq_add_one,
         Nat.reduceAdd]
       intro hfg hgh y
@@ -52,7 +52,7 @@ theorem comp_functional {F G : Graph} (hF : Functional F) (hG : Functional G) :
     Functional (comp F G) := by
   apply complete.{0} 𝗣𝗔
   intro V _ _
-  haveI : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
+  have : V↓[ℒₒᵣ] ⊧* 𝗜𝚺₁ := models_of_subtheory (U := 𝗣𝗔) inferInstance
   have hf : V↓[ℒₒᵣ] ⊧ functionalSentence F :=
     consequence_iff.mp (Theory.Proof.sound hF) V inferInstance
   have hg : V↓[ℒₒᵣ] ⊧ functionalSentence G :=
