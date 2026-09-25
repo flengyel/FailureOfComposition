@@ -73,6 +73,26 @@ Foundation or Mathlib, run Lake, build proofs, or change global settings. If a
 clone fails, inspect the directory left behind and choose a fresh destination
 for another attempt. Do not remove an existing directory without checking it.
 
+The clone retains Git's all-branch fetch mapping so that later review branches
+are available after `git fetch origin`. Earlier versions used `--single-branch`;
+those checkouts need their fetch mapping extended before branch tracking works.
+The evaluator-cleanup completion script performs that repair locally, preserving
+existing mappings, and then verifies, fast-forwards, and pushes `main` only after
+the complete acceptance suite succeeds. It runs from the existing Linux checkout
+and reuses its dependency installations:
+
+```bash
+(
+set -euo pipefail
+cd /home/flengyel/src/FailureOfComposition-port
+git fetch origin refs/heads/codex/evaluator-style-cleanup
+git show FETCH_HEAD:scripts/finish-evaluator-style-cleanup.sh | bash
+)
+```
+
+The explicit fetch supplies the script even in a single-branch clone; it needs
+no tracking-branch setup. Run after any existing Lean verification has finished.
+
 The existing `/home/flengyel/src/FailureOfComposition` execution environment is
 not the port checkout. Do not point `syncfailcomp.sh` at the port checkout or run
 synchronization over Codex's edits. Git carries changes between the independent

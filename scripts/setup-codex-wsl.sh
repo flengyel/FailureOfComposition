@@ -58,7 +58,9 @@ PY
 )
 canonical_url=https://github.com/flengyel/FailureOfComposition.git
 mkdir -p -- "$(dirname -- "$destination")"
-git clone --branch main --single-branch -- "$canonical_url" "$destination"
+# Keep the ordinary all-branch fetch mapping. A --single-branch clone prevents
+# later published review branches from being fetched and recognized for tracking.
+git clone --branch main -- "$canonical_url" "$destination"
 if [[ $(git -C "$destination" config --get remote.origin.url) != "$canonical_url" \
   || $(git -C "$destination" symbolic-ref --quiet --short HEAD) != main \
   || $(git -C "$destination" rev-parse --show-toplevel) != "$destination" ]]; then
