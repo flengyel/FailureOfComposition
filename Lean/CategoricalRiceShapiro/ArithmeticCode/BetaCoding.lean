@@ -471,7 +471,7 @@ theorem exists_codeBeta_extension
       Semiformula.Evalb (x :> ![n', l])
         (code (codeBeta
           (Code.proj (0 : Fin 2)) (Code.proj (1 : Fin 2)))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- the graph of `codeBeta` on the two projections, at an arbitrary pair
   have hbeta : ∀ a i : M, Semiformula.Evalb

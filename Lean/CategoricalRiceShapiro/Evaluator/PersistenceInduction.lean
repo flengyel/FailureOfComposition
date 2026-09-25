@@ -67,7 +67,7 @@ theorem persistenceFormula_eval_iff [M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻] 
 /-- The full induction scheme of `𝗣𝗔` holds in every model of `𝗣𝗔`. -/
 theorem models_inductionScheme_univ [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] :
     M↓[ℒₒᵣ] ⊧* InductionScheme ℒₒᵣ Set.univ := by
-  haveI : InductionScheme ℒₒᵣ Set.univ ⪯ 𝗣𝗔 :=
+  have : InductionScheme ℒₒᵣ Set.univ ⪯ 𝗣𝗔 :=
     Entailment.WeakerThan.ofSubset Set.subset_union_right
   exact models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
 
@@ -98,8 +98,8 @@ theorem certificate_persistence_of_stage_induction
           (evalnCertificateFormula : ArithmeticSemisentence 4) →
         Semiformula.Evalb ![t, ((q : ℕ) : M), u, y]
           (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  haveI := models_inductionScheme_univ (M := M)
-  haveI : Inhabited M := ⟨0⟩
+  have := models_inductionScheme_univ (M := M)
+  have : Inhabited M := ⟨0⟩
   intro s
   refine InductionScheme.succ_induction (C := Set.univ)
     (P := fun s : M => ∀ t u y : M, s ≤ t →

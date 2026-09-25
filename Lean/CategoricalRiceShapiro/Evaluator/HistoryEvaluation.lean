@@ -348,9 +348,9 @@ private theorem chain_match [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (base : Code 2) (hdc
         Semiformula.Evalb ![p, a, w₀, w₁]
           (code (codePrec base (codeListCons hdc (Code.proj (1 : Fin 4))))) ∧
         Semiformula.Evalb ![p, i, H] (code dropCore) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   refine InductionOnHierarchy.succ_induction 𝚺 1
     (definable_match (codePrec base (codeListCons hdc (Code.proj (1 : Fin 4))))
@@ -398,9 +398,9 @@ set_option maxHeartbeats 1000000 in
 private theorem drop_prefix [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (H bnd z : M)
     (hz : Semiformula.Evalb ![z, bnd, H] (code dropCore)) :
     ∀ t : M, t ≤ bnd → ∃ y : M, Semiformula.Evalb ![y, t, H] (code dropCore) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   have hD : 𝚺-[1].Definable (fun w : Fin 3 → M =>
       Semiformula.Evalb ![w 0, w 1, H] (code dropCore)) := by
@@ -465,9 +465,9 @@ private theorem drops_zero_from [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (H c bound : M)
       Semiformula.Evalb ![z, t, H] (code dropCore))
     (t : M) (hct : c ≤ t) (htb : t ≤ bound) :
     Semiformula.Evalb ![(0 : M), t, H] (code dropCore) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   have hdef : 𝚺-[1].DefinablePred (fun r : M =>
       c ≤ r → r ≤ bound → Semiformula.Evalb ![(0 : M), r, H] (code dropCore)) := by
@@ -594,9 +594,9 @@ private theorem definable_bad :
 /-- Every value of the append recursion is a cons, hence nonzero. -/
 private theorem snoc_value_ne_zero [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (m₁ H' a p : M)
     (hp : Semiformula.Evalb ![p, a, m₁, H'] (code historySnocCore)) : p ≠ 0 := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   rw [historySnocCore_eq] at hp
   rcases eq_or_lt_of_le (FFL.FirstOrder.Arithmetic.zero_le a) with h0 | hpos
@@ -618,9 +618,9 @@ private theorem length_step [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (m₁ H' H₀ n₀ :
     (hdn : ∀ t : M, t < n₀ → ∃ e : M, e ≠ 0 ∧
       Semiformula.Evalb ![e, t, H₀] (code dropCore)) :
     n₀ = m₁ + 1 := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   -- the drop chain does not run out before the recursion does
   have hdrop : ∀ t : M, t ≤ n₀ → ∃ z : M,
@@ -675,9 +675,9 @@ theorem eval_codeEvaluatorHistory_length_unique [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] 
     (hLength : Semiformula.Evalb ![n, H]
       (code (codeListLength (Code.proj (0 : Fin 1))))) :
     n = m := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   by_contra hne
   obtain ⟨m₀, ⟨H₀, n₀, hH₀, hL₀, hne₀⟩, hleast⟩ :=
@@ -799,9 +799,9 @@ theorem eval_codeHistoryEvaluator_succ_extract_index [M↓[ℒₒᵣ] ⊧* 𝗣�
     (h : Semiformula.Evalb ![y + 1, s, qCode, u] (code codeHistoryEvaluator)) :
     Semiformula.Evalb ![qCode, s, qCode, u]
       (code (codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   rw [codeHistoryEvaluator, codeTableLookup_eq] at h
   -- unwind the two option layers to the evaluated history table
@@ -879,9 +879,9 @@ private theorem eval_codeHistoryEvaluator_succ_extract_cell_core [M↓[ℒₒᵣ
       Semiformula.Evalb ![y + 1, s, qCode, u]
         (code (codeEvaluatorCell codeEvaluatorHistoryBeforeCell
           (Code.proj (2 : Fin 3)))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   have hone : ∀ w : Fin 3 → M,
       Semiformula.Evalb ((1 : M) :> w) (code (codeConst (n := 3) 1)) := by
@@ -1167,9 +1167,9 @@ private theorem getAt_of_eval [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {r : ℕ} (A B : C
     (hpos : 0 < z) :
     ∃ l i : M, Semiformula.Evalb (l :> v) (code A) ∧
       Semiformula.Evalb (i :> v) (code B) ∧ GetAt l i z := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   rw [codeListGet?] at hz
   obtain ⟨d, hd, hbr⟩ := eval_codeIfPos_cases _ _ _ _ _ hz
@@ -1211,9 +1211,9 @@ private theorem eval_of_getAt [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {r : ℕ} (A B : C
     (hB : Semiformula.Evalb (i :> v) (code B))
     (hg : GetAt l i z) :
     Semiformula.Evalb (z :> v) (code (codeListGet? A B)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   obtain ⟨d, hh, hd, hhead, hdpos, hz⟩ := hg
   have hdrop : Semiformula.Evalb (d :> v) (code (codeListDrop A B)) := by
@@ -1249,9 +1249,9 @@ private theorem getAt_step_down [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (j i z Hj1 : M)
     (hij : i < j) (hget : GetAt Hj1 i z) (hz : 1 < z) :
     ∃ Hj : M, Semiformula.Evalb ![Hj, j] (code codeEvaluatorHistory) ∧
       GetAt Hj i z := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   obtain ⟨d, hh, hd, hhead, hdpos, hzv⟩ := hget
   -- the predecessor history and the snoc that produced this one
@@ -1359,9 +1359,9 @@ private theorem getAt_step_up
     (hij : i < j)
     (hget : GetAt Hj i z) :
     GetAt Hj1 i z := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   -- the drops of the extended history up to index `i`
   have hself : Semiformula.Evalb (Hj1 :> ![Hj1]) (code (Code.proj (0 : Fin 1))) :=
@@ -1446,9 +1446,9 @@ private theorem getAt_descend [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (m i z Hm : M)
     (hget : GetAt Hm i z) (hz : 1 < z) (hle : i + 1 ≤ m) :
     ∃ H : M, Semiformula.Evalb ![H, i + 1] (code codeEvaluatorHistory) ∧
       GetAt H i z := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   have hHist : 𝚺-[1].Definable (fun w : Fin 5 → M =>
       Semiformula.Evalb ![w 2, w 3] (code codeEvaluatorHistory)) := by
@@ -1575,9 +1575,9 @@ private theorem unpair₁_arg [M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻] {r : ℕ} (X : 
 /-- An entry of the empty list is impossible. -/
 private theorem getAt_nil_absurd [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (n z : M)
     (hg : GetAt 0 n z) : False := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   obtain ⟨d, -, hd, -, hdpos, -⟩ := hg
   have hdrop := drop_prefix 0 n d hd
@@ -1612,7 +1612,7 @@ theorem eval_codeHistoryEvaluator_succ_of_prefix_lookup
             (Code.proj (2 : Fin 3))))) :
     Semiformula.Evalb ![y + 1, s, ((q : ℕ) : M), n]
       (code codeHistoryEvaluator) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hone : ∀ w : Fin 3 → M,
       Semiformula.Evalb ((1 : M) :> w) (code (codeConst (n := 3) 1)) := by
@@ -1726,9 +1726,9 @@ theorem eval_codeEvaluatorRow_exists_of_value [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {r
     ∃ row : M,
       Semiformula.Evalb (row :> v)
         (code (codeEvaluatorRow dtable)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨p, hp⟩ := eval_codeListLength_exists_of_value dtable table v htable
   have hbound := eval_codeUnpair₁ (codeListLength dtable) p v hp
@@ -1911,7 +1911,7 @@ theorem eval_codeHistoryEvaluator_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (s qCod
     ∃ z : M,
       Semiformula.Evalb ![z, s, qCode, u]
         (code codeHistoryEvaluator) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (U := 𝗜𝚺 1)
       (models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance))
   have hs : Semiformula.Evalb (s :> ![s, qCode, u]) (code (Code.proj (0 : Fin 3))) :=
@@ -1970,7 +1970,7 @@ theorem eval_prefix_lookup_succ_of_codeHistoryEvaluator
             (codeListLength codeEvaluatorHistoryBeforeCell))
           (codeConst (n := 3) q)
           (Code.proj (2 : Fin 3)))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- the Sigma-one condition of the ascent
   have hdef : ∀ P C z : M, 𝚺-[1].DefinablePred (fun t : M =>
@@ -2178,9 +2178,9 @@ theorem eval_codeHistoryEvaluator_succ_iff_cell
               (Code.proj (2 : Fin 3)))) := by
   refine ⟨eval_codeHistoryEvaluator_succ_extract_cell_core s qCode u y, ?_⟩
   rintro ⟨hus, hcell⟩
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝗢𝗽𝗲𝗻 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 from inferInstance)
   have hone : ∀ w : Fin 3 → M,
       Semiformula.Evalb ((1 : M) :> w) (code (codeConst (n := 3) 1)) := by
@@ -2389,7 +2389,7 @@ theorem eval_codeTableLookup_succ_iff_codeHistoryEvaluator_of_history
     (hn : Semiformula.Evalb (u :> v) (code dn)) :
     Semiformula.Evalb ((y + 1) :> v) (code (codeTableLookup dtable dk dq dn)) ↔
       Semiformula.Evalb ![y + 1, k, ((q : ℕ) : M), u] (code codeHistoryEvaluator) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hone : ∀ {s : ℕ} (w : Fin s → M),
       Semiformula.Evalb ((1 : M) :> w) (code (codeConst (n := s) 1)) := by
@@ -2644,7 +2644,7 @@ theorem eval_predecessor_lookup_succ_iff_codeHistoryEvaluator
           (codeUnpair₂ (codeListLength codeEvaluatorHistoryBeforeCell))
           dn)) ↔
       Semiformula.Evalb ![y + 1, k, ((q : ℕ) : M), u] (code codeHistoryEvaluator) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨H, hbefore, hH⟩ :=
     eval_codeEvaluatorHistoryBeforeCell_exists (k + 1) ((q : ℕ) : M) w

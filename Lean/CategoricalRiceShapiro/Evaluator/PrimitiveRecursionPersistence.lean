@@ -373,7 +373,7 @@ theorem evalnCertificateFormula_natCode_persist_of_tag_six_zero
       Semiformula.Evalb
         ![t, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z 0, y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   intro s t z y hst source_certificate
   -- the argument codes of the primitive-recursion branch of the dispatcher, named once
   set dtable : Code 3 := codeEvaluatorHistoryBeforeCell with hdtable
@@ -513,7 +513,8 @@ theorem evalnCertificateFormula_natCode_persist_of_tag_six_zero
       (code (codeEvaluatorCell codeEvaluatorHistoryBeforeCell (Code.proj (2 : Fin 3)))) := by
     have hbranch := tagSix_prec_branch codeEvaluatorHistoryBeforeCell
       (Code.proj (2 : Fin 3)) ![t, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z 0] w t
-      (eval_codeEvaluatorCell_fuel t ((q : ℕ) : M) (FFL.FirstOrder.Arithmetic.pair z 0)) ht htag_t hw
+      (eval_codeEvaluatorCell_fuel t ((q : ℕ) : M) (FFL.FirstOrder.Arithmetic.pair z 0))
+      ht htag_t hw
     have hwy : w = y + 1 := eval_unique hbranch target_branch
     rwa [hwy] at hw
   -- (13) target cell to target history success, then the target certificate
@@ -532,7 +533,7 @@ private theorem tagSix_predecessor_argument [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M�
         ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
       (code (codePair (codeUnpair₁ (Code.proj (2 : Fin 3)))
         (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1)))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hproj : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
       ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
@@ -559,7 +560,7 @@ private theorem tagSix_step_argument [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] [M↓[ℒ�
       (code (codePair (codeLift (codeUnpair₁ (Code.proj (2 : Fin 3))))
         (codePair (codeLift (codeSub (codeUnpair₂ (Code.proj (2 : Fin 3))) (codeConst 1)))
           (codeHead (n := 3))))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hproj : Semiformula.Evalb (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
       ![s, qCode, FFL.FirstOrder.Arithmetic.pair z (a + 1)])
@@ -624,7 +625,7 @@ theorem evalnCertificateFormula_natCode_persist_of_tag_six_succ_step
         ![t, ((q : ℕ) : M),
           FFL.FirstOrder.Arithmetic.pair z (a + 1), y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   intro t z a y hkt source_certificate
   -- the argument codes of the primitive-recursion branch, named once
   set dtable : Code 3 := codeEvaluatorHistoryBeforeCell with hdtable
@@ -821,7 +822,7 @@ theorem evalnCertificateFormula_natCode_persist_of_tag_six_succ
         (evalnCertificateFormula : ArithmeticSemisentence 4) →
       Semiformula.Evalb ![t, ((q : ℕ) : M), u, y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   intro t u y hkt source_certificate
   -- every input is the pair of its projections
   obtain ⟨z, b, rfl⟩ : ∃ z b : M, u = FFL.FirstOrder.Arithmetic.pair z b :=

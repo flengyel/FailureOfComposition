@@ -124,9 +124,9 @@ private theorem codeListDrop_eq_dropCore {n : ℕ} (dlist didx : Code n) :
 base is the list itself and the step is one tail, total at every value. -/
 private theorem eval_dropCore_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (i l : M) :
     ∃ z : M, Semiformula.Evalb (z :> ![i, l]) (code dropCore) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   exact eval_codePrec_exists_of_total (Code.proj (0 : Fin 1))
     (codeListTail (Code.proj (1 : Fin 3))) i ![l]
@@ -214,9 +214,9 @@ The bound is what makes the minimization inside `codeListLength` terminate at an
 arbitrary element of the model, well formed or not. -/
 private theorem dropCore_bound [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (l : M) : ∀ i : M,
     (∃ z : M, Semiformula.Evalb (z :> ![i, l]) (code dropCore) ∧ z + i ≤ l) ∨ l < i := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hgraph : 𝚺-[1].Definable (fun w : Fin 2 → M =>
       Semiformula.Evalb (w 0 :> ![w 1, l]) (code dropCore) ∧ w 0 + w 1 ≤ l) :=
@@ -272,7 +272,7 @@ private theorem dropCore_bound [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (l : M) : ∀ i :
 /-- The iterated tail at the list value itself is zero. -/
 private theorem eval_dropCore_zero_at_value [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] (l : M) :
     Semiformula.Evalb ((0 : M) :> ![l, l]) (code dropCore) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨z, hz, hzl⟩ := (dropCore_bound l l).resolve_right (_root_.lt_irrefl l)
   have hz0 : z = 0 := by
@@ -321,9 +321,9 @@ theorem eval_codeListLength_exists_of_value
     (hlist : Semiformula.Evalb (l :> v) (code dlist)) :
     ∃ n : M,
       Semiformula.Evalb (n :> v) (code (codeListLength dlist)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hdrop : ∀ t : M, ∃ z : M,
       Semiformula.Evalb (z :> t :> v)
@@ -362,7 +362,7 @@ theorem eval_codeListGet?_exists_of_values
     (hidx : Semiformula.Evalb (i :> v) (code didx)) :
     ∃ z : M,
       Semiformula.Evalb (z :> v) (code (codeListGet? dlist didx)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨z, hz⟩ := eval_codeListDrop_exists dlist didx l i v hlist hidx
   exact eval_codeListHead?_exists (codeListDrop dlist didx) z v hz
@@ -407,9 +407,9 @@ theorem eval_codeListSnoc_exists_of_values
     (hx : Semiformula.Evalb (x :> v) (code dx)) :
     ∃ s : M,
       Semiformula.Evalb (s :> v) (code (codeListSnoc dlist dx)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨n, hn⟩ := eval_codeListLength_exists_of_value dlist l v hlist
   have hbase : ∃ z : M, Semiformula.Evalb (z :> v)

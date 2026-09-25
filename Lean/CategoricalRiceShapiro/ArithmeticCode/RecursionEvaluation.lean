@@ -1105,9 +1105,9 @@ private theorem histories_agree [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
         (code (codeBeta (Code.proj 1) (Code.proj (0 : Fin (k + 3))))) ∧
       Semiformula.Evalb (x :> i :> hc₀ :> hc₁ :> v)
         (code (codeBeta (Code.proj 2) (Code.proj (0 : Fin (k + 3))))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hdef : 𝚺-[1].DefinablePred (fun c : M =>
       Semiformula.Evalb ((1 : M) :> c :> hc₀ :> hc₁ :> v)
@@ -1210,9 +1210,9 @@ theorem eval_codePrec_succ [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
     ∃ w : M,
       Semiformula.Evalb (w :> a :> v) (code (codePrec df dg)) ∧
       Semiformula.Evalb (z :> a :> w :> v) (code dg) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   rw [codePrec, eval_codeBind_iff] at h
   obtain ⟨hc₁, hsearch, hread⟩ := h
@@ -1363,9 +1363,9 @@ private theorem prec_step_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
       Semiformula.Evalb (w :> i :> z :> v) (code dg))
     (i hc arg : M) (hi : i ≤ a) :
     ∃ e : M, Semiformula.Evalb (e :> i :> hc :> arg :> v) (code (codePrecStep dg)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hhc : Semiformula.Evalb (hc :> i :> hc :> arg :> v)
       (code (Code.proj (1 : Fin (k + 3)))) := (eval_proj_iff _ _ _).mpr (by simp)
@@ -1427,9 +1427,9 @@ private theorem ball_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ} (dg : Code 
     (hc : M) :
     ∃ y : M, Semiformula.Evalb (y :> hc :> a :> v)
       (code (codeBall (codePrecStep dg) (1 : Fin (k + 2)))) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hposA : Semiformula.Evalb ((1 : M) :> a :> hc :> a :> v)
       (code (codeOr (codeInv (codePrecStep dg))
@@ -1475,9 +1475,9 @@ private theorem prec_predicate_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
     (hc : M) :
     ∃ q : M, Semiformula.Evalb (q :> hc :> a :> v)
       (code (codePrecPredicate df dg)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hhc : Semiformula.Evalb (hc :> hc :> a :> v)
       (code (Code.proj (0 : Fin (k + 2)))) := (eval_proj_iff _ _ _).mpr rfl
@@ -1589,9 +1589,9 @@ private theorem exists_pos_history [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
       Semiformula.Evalb (w :> i :> z :> v) (code dg)) :
     ∃ hc : M, Semiformula.Evalb ((1 : M) :> hc :> a :> v)
       (code (codePrecPredicate df dg)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hdef : 𝚺-[1].DefinablePred (fun c : M =>
       (∃ hc : M, Semiformula.Evalb ((1 : M) :> hc :> c :> v)
@@ -1709,9 +1709,9 @@ theorem eval_codePrec_exists_of_total [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
       Semiformula.Evalb (w :> i :> z :> v) (code dg)) :
     ∃ z : M,
       Semiformula.Evalb (z :> a :> v) (code (codePrec df dg)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨hc, hP⟩ := exists_pos_history df dg a v hdf hdg
   have hdefQ : 𝚺-[1].DefinablePred (fun c : M =>
@@ -1755,9 +1755,9 @@ theorem eval_codeDiv2_exists_of_value [M↓[ℒₒᵣ] ⊧* 𝗣𝗔] {k : ℕ}
     (A : Code k) (a : M) (v : Fin k → M)
     (hA : Semiformula.Evalb (a :> v) (code A)) :
     ∃ z : M, Semiformula.Evalb (z :> v) (code (codeDiv2 A)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨w, hw⟩ :
       ∃ w : M, Semiformula.Evalb (w :> a :> (![] : Fin 0 → M)) (code codeDiv2Unary) := by

@@ -42,7 +42,7 @@ theorem eval_codePartrecPayload_exists_of_value
     (hd : Semiformula.Evalb (q :> v) (code d)) :
     ∃ z : M,
       Semiformula.Evalb (z :> v) (code (codePartrecPayload d)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hfour : Semiformula.Evalb ((4 : M) :> v) (code (codeConst (n := k) 4)) := by
     rw [eval_codeConst_iff]; simp
@@ -57,7 +57,7 @@ theorem eval_codePartrecPayload₁_exists_of_value
     (hd : Semiformula.Evalb (q :> v) (code d)) :
     ∃ z : M,
       Semiformula.Evalb (z :> v) (code (codePartrecPayload₁ d)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨w, hw⟩ := eval_codePartrecPayload_exists_of_value d q v hd
   exact ⟨_, eval_codeUnpair₁ (codePartrecPayload d) w v hw⟩
@@ -69,7 +69,7 @@ theorem eval_codePartrecPayload₂_exists_of_value
     (hd : Semiformula.Evalb (q :> v) (code d)) :
     ∃ z : M,
       Semiformula.Evalb (z :> v) (code (codePartrecPayload₂ d)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨w, hw⟩ := eval_codePartrecPayload_exists_of_value d q v hd
   exact ⟨_, eval_codeUnpair₂ (codePartrecPayload d) w v hw⟩
@@ -87,9 +87,9 @@ theorem eval_codePartrecTag_exists_of_value
     (hd : Semiformula.Evalb (q :> v) (code d)) :
     ∃ z : M,
       Semiformula.Evalb (z :> v) (code (codePartrecTag d)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hfour : Semiformula.Evalb ((4 : M) :> v) (code (codeConst (n := k) 4)) := by
     rw [eval_codeConst_iff]; simp

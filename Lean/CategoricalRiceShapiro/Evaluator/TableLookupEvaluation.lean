@@ -95,7 +95,7 @@ theorem eval_codeTableLookup_exists_of_values
     ∃ z : M,
       Semiformula.Evalb (z :> v)
         (code (codeTableLookup dtable dk dq dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨c, hc⟩ := eval_codeListCons_exists_of_values dk dq key query v hkey hquery
   obtain ⟨p, hp, -⟩ := (eval_codeSucc_iff (codePair dk dq) c v).mp hc

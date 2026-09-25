@@ -275,7 +275,7 @@ theorem evalnCertificateFormula_natCode_persist_of_tag_four
         (evalnCertificateFormula : ArithmeticSemisentence 4) →
       Semiformula.Evalb ![t, ((q : ℕ) : M), u, y]
         (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ := models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- (1) arbitrary stages, argument and output, and a source certificate
   intro s t u y hst source_certificate
   -- (2) source certificate to source history success

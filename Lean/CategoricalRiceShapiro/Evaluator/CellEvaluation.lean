@@ -241,9 +241,9 @@ private theorem eval_codeBaseEvaluatorCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔
     (htable : Semiformula.Evalb (table :> v) (code dtable))
     (hindex : Semiformula.Evalb (index :> v) (code dn)) :
     ∃ z : M, Semiformula.Evalb (z :> v) (code (codeBaseEvaluatorCell dtable dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨p, hp⟩ := eval_codeListLength_exists_of_value dtable table v htable
   have hk := eval_codeUnpair₁ (codeListLength dtable) p v hp
@@ -283,9 +283,9 @@ private theorem eval_codePairEvaluatorCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔
     ∃ z : M,
       Semiformula.Evalb (z :> v)
         (code (codePairEvaluatorCell dtable dk dcf dcg dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨o₁, ho₁⟩ := eval_codeTableLookup_exists_of_values dtable dk dcf dn
     table kv cf index v htable hk hcf hn
@@ -315,7 +315,7 @@ private theorem eval_codeCompEvaluatorCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔
     ∃ z : M,
       Semiformula.Evalb (z :> v)
         (code (codeCompEvaluatorCell dtable dk dcf dcg dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨o₁, ho₁⟩ := eval_codeTableLookup_exists_of_values dtable dk dcg dn
     table kv cg index v htable hk hcg hn
@@ -341,9 +341,9 @@ private theorem eval_codePrecEvaluatorCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣𝗔
     ∃ z : M,
       Semiformula.Evalb (z :> v)
         (code (codePrecEvaluatorCell dtable dk' dq dcf dcg dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hz := eval_codeUnpair₁ dn index v hn
   have ht := eval_codeUnpair₂ dn index v hn
@@ -387,9 +387,9 @@ private theorem eval_codeRfindEvaluatorCell_exists [M↓[ℒₒᵣ] ⊧* 𝗣�
     ∃ z : M,
       Semiformula.Evalb (z :> v)
         (code (codeRfindEvaluatorCell dtable dk' dq dcf dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hz := eval_codeUnpair₁ dn index v hn
   have hm := eval_codeUnpair₂ dn index v hn
@@ -430,9 +430,9 @@ theorem eval_codeEvaluatorCell_exists_of_values
     ∃ z : M,
       Semiformula.Evalb (z :> v)
         (code (codeEvaluatorCell dtable dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   obtain ⟨p, hp⟩ := eval_codeListLength_exists_of_value dtable table v htable
   have hk := eval_codeUnpair₁ (codeListLength dtable) p v hp

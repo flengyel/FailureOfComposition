@@ -269,7 +269,7 @@ theorem eval_codeEvaluatorCell_succ_of_component_lookups
     Semiformula.Evalb ((y + 1) :> v)
       (FFL.FirstOrder.Arithmetic.code
         (codeEvaluatorCell dtable dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   simp only [numeral_eq_natCast_app] at hcode
   have htag := eval_codePartrecTag_canonicalPartrecCompIndex
@@ -529,7 +529,7 @@ theorem eval_codeEvaluatorCell_succ_of_pair_component_lookups
         (codeConst (n := r) (partrecCodePayload₂ q)) dn))) :
     Semiformula.Evalb ((FFL.FirstOrder.Arithmetic.pair a b + 1) :> v)
       (code (codeEvaluatorCell dtable dn)) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   -- the decoded readings of the standard index
   have htag := eval_codePartrecTag_natCast

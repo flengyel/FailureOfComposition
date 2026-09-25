@@ -142,7 +142,7 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_forward
       Semiformula.Evalb
           ![s, (ORingStructure.numeral fCode : M), x, y]
           (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   simp only [numeral_eq_natCast_app] at h ⊢
   rw [evalnCertificateFormula_eval_history_iff] at h
@@ -215,7 +215,7 @@ theorem evalnCertificateFormula_canonicalPartrecCompIndex_reverse
           (canonicalPartrecCompIndex fCode gCode) : M),
         u, y]
       (evalnCertificateFormula : ArithmeticSemisentence 4) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗜𝚺 1 :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   simp only [numeral_eq_natCast_app] at hinner houter ⊢
   rw [evalnCertificateFormula_eval_history_iff] at hinner houter ⊢

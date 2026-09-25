@@ -454,7 +454,7 @@ theorem eval_prec_predecessor_lookup_succ_iff_codeHistoryEvaluator
       Semiformula.Evalb
         ![x + 1, k, ((q : ℕ) : M), FFL.FirstOrder.Arithmetic.pair z a]
         (code codeHistoryEvaluator) := by
-  letI : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
+  let : M↓[ℒₒᵣ] ⊧* 𝗣𝗔⁻ :=
     models_of_subtheory (show M↓[ℒₒᵣ] ⊧* 𝗣𝗔 from inferInstance)
   have hproj : Semiformula.Evalb
       (FFL.FirstOrder.Arithmetic.pair z (a + 1) :>
