@@ -24,6 +24,18 @@ open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 
 namespace FailureOfComposition.Palomar.Arithmetic
 
+@[simp] theorem fin0_eq_zero {n : ℕ} :
+    (fin0 : Fin (n + 1)) = 0 := Fin.ext (by rfl)
+
+@[simp] theorem fin1_eq_one {n : ℕ} :
+    (fin1 : Fin (n + 2)) = 1 := Fin.ext (by rfl)
+
+@[simp] theorem fin2_eq_two {n : ℕ} :
+    (fin2 : Fin (n + 3)) = 2 := Fin.ext (by rfl)
+
+@[simp] theorem fin3_eq_three {n : ℕ} :
+    (fin3 : Fin (n + 4)) = 3 := Fin.ext (by rfl)
+
 private theorem finset_biUnion_two {α : Type} [DecidableEq α]
     (v : Fin 2 → Finset α) :
     Finset.univ.biUnion v = v 0 ∪ v 1 := by
@@ -512,7 +524,7 @@ theorem emb_toFoundation_fixFree (p : Proposition) :
       (Term.toFoundation_numeral (ξ := ℕ) (n := 1) 1)
   have hadd :
       Term.toFoundation
-          (.add (.bvar 0) .one : SyntacticTerm 1) =
+          (.add (.bvar fin0) .one : SyntacticTerm 1) =
         Semiterm.Operator.Add.add.operator
           ![(#0 : ArithmeticSemiterm ℕ 1),
             Semiterm.numeral (L := ℒₒᵣ) (ξ := ℕ) (n := 1) 1] := by
@@ -526,7 +538,7 @@ theorem emb_toFoundation_fixFree (p : Proposition) :
     exact ⟨rfl, hone⟩
   have hv :
       (Term.toFoundation ∘
-          fun _ : Fin 1 ↦ (.add (.bvar 0) .one : SyntacticTerm 1)) =
+          fun _ : Fin 1 ↦ (.add (.bvar fin0) .one : SyntacticTerm 1)) =
         ![Semiterm.Operator.Add.add.operator
           ![(#0 : ArithmeticSemiterm ℕ 1),
             Semiterm.numeral (L := ℒₒᵣ) (ξ := ℕ) (n := 1) 1]] := by
@@ -633,11 +645,12 @@ namespace PeanoCorrespondence
 @[simp] theorem peanoMinus_addZero :
     Formula.toFoundation PeanoMinus.Axiom.addZero =
       FFL.FirstOrder.Arithmetic.PeanoMinus.Axiom.addZero := by
+  have hfin0 : (fin0 : Fin 1) = 0 := Fin.ext (by rfl)
   simp only [PeanoMinus.Axiom.addZero,
     FFL.FirstOrder.Arithmetic.PeanoMinus.Axiom.addZero,
     Formula.toFoundation_all, Formula.toFoundation_equal,
     Term.toFoundation_add, Term.toFoundation_bvar,
-    Term.toFoundation_zero]
+    Term.toFoundation_zero, hfin0]
 
 @[simp] theorem peanoMinus_addAssoc :
     Formula.toFoundation PeanoMinus.Axiom.addAssoc =

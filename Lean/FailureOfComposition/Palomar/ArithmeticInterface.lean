@@ -32,6 +32,21 @@ set_option autoImplicit false
 
 namespace FailureOfComposition.Palomar.Arithmetic
 
+/-! Named low finite indices keep duplicated Challenge definitions independent
+of elaborator-generated proof declarations. -/
+
+def fin0 {n : ℕ} : Fin (n + 1) :=
+  ⟨0, Nat.zero_lt_succ n⟩
+
+def fin1 {n : ℕ} : Fin (n + 2) :=
+  (fin0 (n := n)).succ
+
+def fin2 {n : ℕ} : Fin (n + 3) :=
+  (fin1 (n := n)).succ
+
+def fin3 {n : ℕ} : Fin (n + 4) :=
+  (fin2 (n := n)).succ
+
 inductive Term (ξ : Type) : ℕ → Type
   | bvar {n : ℕ} : Fin n → Term ξ n
   | fvar {n : ℕ} : ξ → Term ξ n
@@ -67,7 +82,7 @@ def lift : Term ξ n → Term ξ (n + 1) :=
   rewrite (fun i ↦ bvar i.succ) fvar
 
 def underBinder (b : Fin n → Term ξ' m) : Fin (n + 1) → Term ξ' (m + 1) :=
-  Fin.cases (bvar 0) fun i ↦ (b i).lift
+  Fin.cases (bvar fin0) fun i ↦ (b i).lift
 
 def mapFree (f : ξ → ξ') : Term ξ n → Term ξ' n :=
   rewrite bvar (fvar ∘ f)
@@ -259,9 +274,9 @@ def fixFree (m : ℕ) (p : Proposition) : Formula Empty m :=
   p.rewrite Fin.elim0 fun x ↦
     if h : x < m then Term.bvar ⟨x, h⟩ else Term.zero
 
-def allClosure : {n : ℕ} → Formula ξ n → Formula ξ 0
-  | 0, p => p
-  | _n + 1, p => allClosure (.all p)
+def allClosure {n : ℕ} (p : Formula ξ n) : Formula ξ 0 :=
+  @Nat.rec (fun n ↦ Formula ξ n → Formula ξ 0)
+    (fun q ↦ q) (fun _ ih q ↦ ih (.all q)) n p
 
 def univClosure (p : Proposition) : Sentence :=
   allClosure (fixFree p.fvSup p)
@@ -270,7 +285,7 @@ def univClosure (p : Proposition) : Sentence :=
 def succInd (p : Semiproposition 1) : Proposition :=
   imply (p.substOne .zero)
     (imply
-      (.all (imply p (p.subst fun _ ↦ .add (.bvar 0) .one)))
+      (.all (imply p (p.subst fun _ ↦ .add (.bvar fin0) .one)))
       (.all p))
 
 end Formula
@@ -278,20 +293,20 @@ end Formula
 namespace Equality
 
 def refl : Sentence :=
-  .all (.equal (.bvar 0) (.bvar 0))
+  .all (.equal (.bvar fin0) (.bvar fin0))
 
 def symm : Sentence :=
   Formula.allClosure
     (show Formula Empty 2 from
-      .imply (.equal (.bvar 1) (.bvar 0))
-        (.equal (.bvar 0) (.bvar 1)))
+      .imply (.equal (.bvar fin1) (.bvar fin0))
+        (.equal (.bvar fin0) (.bvar fin1)))
 
 def trans : Sentence :=
   Formula.allClosure
     (show Formula Empty 3 from
-      .imply (.equal (.bvar 2) (.bvar 1))
-        (.imply (.equal (.bvar 1) (.bvar 0))
-          (.equal (.bvar 2) (.bvar 0))))
+      .imply (.equal (.bvar fin2) (.bvar fin1))
+        (.imply (.equal (.bvar fin1) (.bvar fin0))
+          (.equal (.bvar fin2) (.bvar fin0))))
 
 def zeroExt : Sentence :=
   .imply .verum (.equal .zero .zero)
@@ -300,32 +315,32 @@ def oneExt : Sentence :=
   .imply .verum (.equal .one .one)
 
 def binaryCongruenceHyp : Formula Empty 4 :=
-  .and (.equal (.bvar 0) (.bvar 2))
-    (.and (.equal (.bvar 1) (.bvar 3)) .verum)
+  .and (.equal (.bvar fin0) (.bvar fin2))
+    (.and (.equal (.bvar fin1) (.bvar fin3)) .verum)
 
 def addExt : Sentence :=
   Formula.allClosure
     (show Formula Empty 4 from .imply binaryCongruenceHyp
-      (.equal (.add (.bvar 0) (.bvar 1))
-        (.add (.bvar 2) (.bvar 3))))
+      (.equal (.add (.bvar fin0) (.bvar fin1))
+        (.add (.bvar fin2) (.bvar fin3))))
 
 def mulExt : Sentence :=
   Formula.allClosure
     (show Formula Empty 4 from .imply binaryCongruenceHyp
-      (.equal (.mul (.bvar 0) (.bvar 1))
-        (.mul (.bvar 2) (.bvar 3))))
+      (.equal (.mul (.bvar fin0) (.bvar fin1))
+        (.mul (.bvar fin2) (.bvar fin3))))
 
 def equalExt : Sentence :=
   Formula.allClosure
     (show Formula Empty 4 from .imply binaryCongruenceHyp
-      (.imply (.equal (.bvar 0) (.bvar 1))
-        (.equal (.bvar 2) (.bvar 3))))
+      (.imply (.equal (.bvar fin0) (.bvar fin1))
+        (.equal (.bvar fin2) (.bvar fin3))))
 
 def lessExt : Sentence :=
   Formula.allClosure
     (show Formula Empty 4 from .imply binaryCongruenceHyp
-      (.imply (.less (.bvar 0) (.bvar 1))
-        (.less (.bvar 2) (.bvar 3))))
+      (.imply (.less (.bvar fin0) (.bvar fin1))
+        (.less (.bvar fin2) (.bvar fin3))))
 
 end Equality
 
@@ -343,91 +358,91 @@ inductive EqualityAxiom : Theory
 namespace PeanoMinus.Axiom
 
 def addZero : Sentence :=
-  .all (.equal (.add (.bvar 0) .zero) (.bvar 0))
+  .all (.equal (.add (.bvar fin0) .zero) (.bvar fin0))
 
 def addAssoc : Sentence :=
   Formula.allClosure
     (show Formula Empty 3 from
-      .equal (.add (.add (.bvar 2) (.bvar 1)) (.bvar 0))
-      (.add (.bvar 2) (.add (.bvar 1) (.bvar 0))))
+      .equal (.add (.add (.bvar fin2) (.bvar fin1)) (.bvar fin0))
+      (.add (.bvar fin2) (.add (.bvar fin1) (.bvar fin0))))
 
 def addComm : Sentence :=
   Formula.allClosure
     (show Formula Empty 2 from
-      .equal (.add (.bvar 1) (.bvar 0))
-      (.add (.bvar 0) (.bvar 1)))
+      .equal (.add (.bvar fin1) (.bvar fin0))
+      (.add (.bvar fin0) (.bvar fin1)))
 
 def addEqOfLt : Sentence :=
   Formula.allClosure
     (show Formula Empty 2 from
-      .imply (.less (.bvar 1) (.bvar 0))
-      (.exs (.equal (.add (.bvar 2) (.bvar 0)) (.bvar 1))))
+      .imply (.less (.bvar fin1) (.bvar fin0))
+      (.exs (.equal (.add (.bvar fin2) (.bvar fin0)) (.bvar fin1))))
 
 def zeroLe : Sentence :=
-  .all (.or (.equal .zero (.bvar 0)) (.less .zero (.bvar 0)))
+  .all (.or (.equal .zero (.bvar fin0)) (.less .zero (.bvar fin0)))
 
 def zeroLtOne : Sentence :=
   .less .zero .one
 
 def oneLeOfZeroLt : Sentence :=
-  .all (.imply (.less .zero (.bvar 0))
-    (.or (.equal .one (.bvar 0)) (.less .one (.bvar 0))))
+  .all (.imply (.less .zero (.bvar fin0))
+    (.or (.equal .one (.bvar fin0)) (.less .one (.bvar fin0))))
 
 def addLtAdd : Sentence :=
   Formula.allClosure
     (show Formula Empty 3 from
-      .imply (.less (.bvar 2) (.bvar 1))
-      (.less (.add (.bvar 2) (.bvar 0))
-        (.add (.bvar 1) (.bvar 0))))
+      .imply (.less (.bvar fin2) (.bvar fin1))
+      (.less (.add (.bvar fin2) (.bvar fin0))
+        (.add (.bvar fin1) (.bvar fin0))))
 
 def mulZero : Sentence :=
-  .all (.equal (.mul (.bvar 0) .zero) .zero)
+  .all (.equal (.mul (.bvar fin0) .zero) .zero)
 
 def mulOne : Sentence :=
-  .all (.equal (.mul (.bvar 0) .one) (.bvar 0))
+  .all (.equal (.mul (.bvar fin0) .one) (.bvar fin0))
 
 def mulAssoc : Sentence :=
   Formula.allClosure
     (show Formula Empty 3 from
-      .equal (.mul (.mul (.bvar 2) (.bvar 1)) (.bvar 0))
-      (.mul (.bvar 2) (.mul (.bvar 1) (.bvar 0))))
+      .equal (.mul (.mul (.bvar fin2) (.bvar fin1)) (.bvar fin0))
+      (.mul (.bvar fin2) (.mul (.bvar fin1) (.bvar fin0))))
 
 def mulComm : Sentence :=
   Formula.allClosure
     (show Formula Empty 2 from
-      .equal (.mul (.bvar 1) (.bvar 0))
-      (.mul (.bvar 0) (.bvar 1)))
+      .equal (.mul (.bvar fin1) (.bvar fin0))
+      (.mul (.bvar fin0) (.bvar fin1)))
 
 def mulLtMul : Sentence :=
   Formula.allClosure
     (show Formula Empty 3 from .imply
-      (.and (.less (.bvar 2) (.bvar 1)) (.less .zero (.bvar 0)))
-      (.less (.mul (.bvar 2) (.bvar 0))
-        (.mul (.bvar 1) (.bvar 0))))
+      (.and (.less (.bvar fin2) (.bvar fin1)) (.less .zero (.bvar fin0)))
+      (.less (.mul (.bvar fin2) (.bvar fin0))
+        (.mul (.bvar fin1) (.bvar fin0))))
 
 def distr : Sentence :=
   Formula.allClosure
     (show Formula Empty 3 from
-      .equal (.mul (.bvar 2) (.add (.bvar 1) (.bvar 0)))
-      (.add (.mul (.bvar 2) (.bvar 1))
-        (.mul (.bvar 2) (.bvar 0))))
+      .equal (.mul (.bvar fin2) (.add (.bvar fin1) (.bvar fin0)))
+      (.add (.mul (.bvar fin2) (.bvar fin1))
+        (.mul (.bvar fin2) (.bvar fin0))))
 
 def ltIrrefl : Sentence :=
-  .all (.nless (.bvar 0) (.bvar 0))
+  .all (.nless (.bvar fin0) (.bvar fin0))
 
 def ltTrans : Sentence :=
   Formula.allClosure
     (show Formula Empty 3 from .imply
-      (.and (.less (.bvar 2) (.bvar 1))
-        (.less (.bvar 1) (.bvar 0)))
-      (.less (.bvar 2) (.bvar 0)))
+      (.and (.less (.bvar fin2) (.bvar fin1))
+        (.less (.bvar fin1) (.bvar fin0)))
+      (.less (.bvar fin2) (.bvar fin0)))
 
 def ltTri : Sentence :=
   Formula.allClosure
     (show Formula Empty 2 from
-      .or (.less (.bvar 1) (.bvar 0))
-      (.or (.equal (.bvar 1) (.bvar 0))
-        (.less (.bvar 0) (.bvar 1))))
+      .or (.less (.bvar fin1) (.bvar fin0))
+      (.or (.equal (.bvar fin1) (.bvar fin0))
+        (.less (.bvar fin0) (.bvar fin1))))
 
 end PeanoMinus.Axiom
 
@@ -461,9 +476,10 @@ inductive Peano : Theory
 namespace Coding
 
 /-- The length-delimited vector code used by the maintained arithmetic syntax. -/
-def vecCode : {k : ℕ} → (Fin k → ℕ) → ℕ
-  | 0, _ => 0
-  | _k + 1, v => Nat.pair (v 0) (vecCode (fun i ↦ v i.succ)) + 1
+def vecCode {k : ℕ} (v : Fin k → ℕ) : ℕ :=
+  @Nat.rec (fun k ↦ (Fin k → ℕ) → ℕ)
+    (fun _ ↦ 0)
+    (fun _ ih w ↦ Nat.pair (w fin0) (ih fun i ↦ w i.succ) + 1) k v
 
 def vecCodeTwo (a b : ℕ) : ℕ :=
   Nat.pair a (Nat.pair b 0 + 1) + 1
