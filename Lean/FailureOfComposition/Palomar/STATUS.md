@@ -1,5 +1,70 @@
 # Palomar eligibility status
 
+## 2026-09-26 first-result interface checkpoint
+
+Commit `76f8139b5f33cc7e7dfbaf81c0141df81c11ff75` advances the recovered
+`279001c43fd324fe48ec443858fb1bd7e47e6859` checkout through the first faithful
+target.  It adds an independent arithmetic/evaluator statement interface, the
+concrete Foundation correspondence, and a one-theorem Challenge/Solution pair
+for `obstruction_four_properties`.  The theorem retains the consistent r.e.
+deductive-PA-extension hypotheses, the external pointwise clauses, and both
+single-sentence internal uniform clauses.
+
+The correspondence is now split deliberately:
+
+- `ArithmeticInterface.lean` and `EvaluatorInterface.lean` contain the
+  independent definitions used identically by the Challenge and Solution.
+- `ArithmeticBridge.lean` and `EvaluatorBridge.lean` contain syntax,
+  derivation, evaluator, and pointwise correspondence.  The evaluator bridge
+  no longer imports the manuscript obstruction.
+- `ObstructionBridge.lean` is the only layer importing
+  `ManuscriptObstruction`; it contains uniform-index conversion and the final
+  first-result transport.
+- `ChallengeOne.lean` is 34,291 bytes and 974 lines, imports only
+  `Mathlib.Computability.RE` and `Mathlib.Data.Fin.VecNotation`, and has exactly
+  its one deliberate theorem hole.  `SolutionOne.lean` does not import it.
+
+Checked commands ran one contained workload at a time with one CPU,
+`memory.high=8G`, `memory.max=10G`, and zero swap.  The relevant retained run
+directories below `.codex-work/palomar/continuation/20260926T120622Z/` are:
+
+- `evaluator-bridge-simp-only-strict-59`: strict direct evaluator-bridge check,
+  exit 0.
+- `evaluator-bridge-simp-only-build-60`: Lake build with no warnings, exit 0.
+- `modular-solution-one-final-build-61`: modular Solution build with no
+  warnings, exit 0.
+- `modular-solution-one-final-strict-62`: strict direct Solution check, exit 0.
+- `challenge-one-final-64`: normal Challenge check allowing its deliberate
+  hole, exit 0.  The preceding strict diagnostic rejected only `uses sorry`.
+- `check-one-final-modular-17`: exact Challenge/Solution dependency comparison,
+  exit 0 and 4,062 exactly matching statement-side constants.
+
+The real one-result Comparator built and exported the pair, then reached
+`Running con-ron kernel on solution`.  Run `comparator-one-run-3` ended at its
+7,200-second guard (supervisor elapsed 7,201.855 seconds, exit 137), with
+`deadline_fired=true`, peak memory 8,710,762,496 bytes, and zero `memory.max`,
+OOM, or OOM-kill events.  The 8 GiB soft ceiling caused about 90% full memory
+pressure.  A bounded retry with a 9 GiB soft ceiling was stopped deliberately
+after the proof-architecture concern was raised; `comparator-one-run-4` exit
+143 is therefore not a checker failure.
+
+The dependency audit locates the cost precisely.  The shared Challenge
+statement closure is 4,062 constants; the current Solution proof closure is
+19,259.  The maintained
+`ConcreteIndices.obstruction_four_properties_of_re_axioms` alone closes over
+18,613 constants (13,810 from its type closure), so the independent transport
+adds only 646 constants.  Further file splitting will not reduce external
+kernel work.  A material reduction requires a direct obstruction proof over
+the independent calculus, avoiding the maintained Foundation theorem; that is
+the next proof-engineering track before another long Comparator retry.
+
+Remaining work includes that direct local obstruction route, migration from
+the one-result checkpoint to the final nine-result Challenge/Solution, the
+other eight target declarations and their exact scopes, and eligible
+Comparator verification.  The complete official verifier remains unsafe on
+this host and was not launched.  No submission, registration, merge to
+`main`, or manuscript edit has occurred.
+
 Status recorded 2026-09-25 on `codex/palomar-eligibility`. This is a truthful
 checkpoint, not a submission or a Comparator pass for an eligible Challenge.
 
