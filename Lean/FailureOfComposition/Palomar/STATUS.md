@@ -1,5 +1,44 @@
 # Palomar eligibility status
 
+## 2026-09-27 Gödel-II con-ron bottleneck diagnosis
+
+The Three mathematical checkpoint remains unchanged at tested proof commit
+`b557d255f1d0b42920440cb2d4762b1ca54b2728`.  Memoized expression-DAG
+profiling and dependency-closed stock con-ron probes localize the earlier
+resource timeout to the pinned Foundation declaration
+`FFL.FirstOrder.Arithmetic.Bootstrapping.IsUTerm.BV.construction._proof_4`.
+This auto-generated `simp [blueprint]` proof has only 583 pointer-distinct and
+583 structurally distinct body nodes, but con-ron does not complete its check
+under the checkpoint limits.
+
+The 44,002,216-byte helper-only export contains 778,146 expression records and
+8,077 declaration records.  Con-ron completes the immediately preceding
+`listMax.congr_simp` check, then reaches the 120.359-second diagnostic deadline
+without another heartbeat.  It peaks at 8,710,561,792 bytes, records 47,191
+`memory.high` events, and reaches full-memory PSI `avg10=86.6`; max, OOM,
+OOM-kill, swap, and pids events remain zero.  The larger axiom-code bridge
+reproduces the same boundary.  Its exact dependency path begins at
+`reAxiomCodes_toFoundation_iff`, enters the maintained
+`FailureOfComposition.AxiomCodes` quotation machinery, and reaches the
+Foundation construction proof through `termBVVec`.
+
+The four permitted diagnostic probe slots used 390.927 seconds of active
+checker wall time.  The first slot failed in bubblewrap before con-ron started
+and is still counted; the corrected bridge probes and helper-only probe all
+completed parsing and installation but returned no check verdict.  The early
+pressure guard was validated with a synthetic fixture.  Full profiler,
+overlap, export, and probe details are retained in
+`Audit/palomar-godel-bottleneck-20260927/` and the checkpoint archive.
+
+No narrow candidate-side repair is supported by these measurements.  The
+offending proof belongs to the pinned Foundation revision and is already
+forced by the maintained axiom-code type; changing a local wrapper would not
+remove it.  Dependencies and mathematical proofs were left unchanged.  The
+gate for a new cumulative Three Comparator attempt was therefore not met, and
+no full attempt was launched.  Three declarations remain migrated and exactly
+checked, only the first two remain locally three-kernel verified, six
+declarations remain unmigrated, and official verification remains outstanding.
+
 ## 2026-09-27 cumulative Gödel-II quotient checkpoint
 
 Tested code commit `b557d255f1d0b42920440cb2d4762b1ca54b2728`

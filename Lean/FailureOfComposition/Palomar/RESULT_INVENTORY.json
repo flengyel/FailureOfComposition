@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-27T21:45:11Z",
+  "recorded_at": "2026-09-27T23:31:47Z",
   "tested_code_commit": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
@@ -20,6 +20,26 @@
     "local_comparator_deadline_fired": true,
     "local_comparator_oom_events": 0,
     "kernels_accepted": []
+  },
+  "godel_bottleneck_diagnosis": {
+    "proof_sources_changed": false,
+    "smallest_demonstrated_boundary": "FFL.FirstOrder.Arithmetic.Bootstrapping.IsUTerm.BV.construction._proof_4",
+    "boundary_export_bytes": 44002216,
+    "boundary_expression_records": 778146,
+    "boundary_declaration_records": 8077,
+    "boundary_export_sha256": "71a0c52bab8b42b11379cc2fcfafcc01a277a56f04e2dd7e1223e2c09a1ec47a",
+    "boundary_body_physical_nodes": 583,
+    "boundary_body_structural_nodes": 583,
+    "probe_slots_used": 4,
+    "active_checker_wall_seconds": 390.927,
+    "helper_probe_result": "deadline_inconclusive_after_listMax.congr_simp",
+    "helper_probe_elapsed_seconds": 120.359,
+    "helper_probe_peak_memory_bytes": 8710561792,
+    "helper_probe_memory_high_events": 47191,
+    "helper_probe_peak_full_psi_avg10": 86.6,
+    "helper_probe_oom_events": 0,
+    "full_comparator_attempted": false,
+    "full_comparator_gate": "not_met_no_narrow_candidate_side_repair"
   },
   "last_passing_checkpoint": {
     "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",
