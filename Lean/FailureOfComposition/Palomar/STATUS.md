@@ -1,5 +1,69 @@
 # Palomar eligibility status
 
+## 2026-09-27 cumulative productive-quotient checkpoint
+
+Tested code commit `4dba750bec8c81a30e0bfe8ab4126e35cbadddb8`
+adds the second eligible result,
+`FailureOfComposition.Palomar.no_quotient_composition_productive`, as a
+corollary of the checked four-witness theorem.  `ChallengeTwo.lean` is 35,259
+bytes and 947 lines, imports only `Mathlib.Computability.RE` and
+`Mathlib.Data.Fin.VecNotation`, and has exactly the two selected theorem holes.
+`SolutionTwo.lean` owns proved wrappers for both selected declarations and
+does not import either Challenge module.
+
+The independent statement uses
+`IndexQuotient T := Quot (PointwiseIndex T)` and the explicit representative
+`indexQuotientMk`.  The Solution proves that `PointwiseIndex T` is an
+equivalence relation for deductive PA extensions, constructs the identity-on-
+representatives equivalence with the maintained quotient, proves its
+representative equation and
+`indexQuotientMk T e = indexQuotientMk T d ↔ PointwiseIndex T e d`, and proves
+equivalence of the independent and maintained no-composition assertions.  A
+separate pure-LK lemma obtains every external pointwise instance from one
+internally universal `UniformIndex` proof.  The selected corollary uses the
+owned first-result wrapper and the direct representative chain; it does not
+invoke the old complete quotient obstruction or the Gödel-II route.
+
+`CheckTwoInterface.lean` checks the two modules in separate environments,
+requires both declarations to be owned by the intended modules, compares the
+universe-renamed types and the entire recursively reachable shared statement
+graph, excludes only the two selected Challenge proof bodies, and audits each
+Solution proof closure.  The shared graph has 4,064 constants.  The first and
+second Solution closures have 17,085 and 17,107 constants respectively; their
+union has 17,107, adding 22 constants over the first-result baseline.  The
+second closure reaches the owned first-result theorem and reaches none of the
+audited old complete quotient, Gödel-II, semantic-completeness, or theorem-code
+routes.  Its recursive axioms are exactly `propext`, `Classical.choice`, and
+`Quot.sound`.  Changed shared definitions, one-result selection, legacy-module
+selection, and One-only module selection are all rejected by retained negative
+tests.  The pinned source-policy audit reports no untrusted Challenge source.
+
+The portable `comparator-two.json` contains no machine-specific kernel paths;
+its SHA-256 is
+`f9bc72802f3d52589a125b22ec1c4e0da6b68b3c02e320c6687c68e895a744c3`.
+The protected local copy differs only by the authenticated con-ron and NanoDa
+commands and has SHA-256
+`7307033e3a3c37b9db85c5da3b83cf664fd104eefc4b50e1967be6d84bf1a13f`.
+The run resolved the pinned prefix from the `Lean/` project and obtained Lean
+version and commit from that prefix's exact executable: Lean 4.35.0-rc2 at
+`11acb17ec6b07a8f9e9173e6845197929540936b`.
+
+After all focused gates passed and the tested commit was published, the single
+permitted cumulative two-result Comparator attempt passed in 131.755 seconds.
+ChallengeTwo and SolutionTwo built and exported; con-ron accepted 16,218
+declarations, NanoDa accepted, Lean's default kernel accepted, and Comparator
+reported `Your solution is okay!`.  The run used one CPU and one Lean thread,
+`memory.high=8G`, `memory.max=10G`, zero swap, a 1,200-second hard deadline,
+and 30-second termination grace.  Peak aggregate cgroup memory was 740,855,808
+bytes.  There were no pressure, high/max, deadline, swap, OOM, or OOM-kill
+events, and no verification process remained afterward.
+
+This is a local Comparator pass for exactly two results, not complete official
+verification.  The seven other declarations remain unmigrated and unchecked
+by this eligible cumulative pair.  No submission, registration, merge to
+`main`, Palomar contact, manuscript edit, or subsequent-result migration was
+performed.
+
 ## 2026-09-27 exact first-result validation and cost checkpoint
 
 The exact `ChallengeOne`/`SolutionOne` pair is now checked independently of the

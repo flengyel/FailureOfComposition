@@ -1,12 +1,16 @@
 # Palomar preparation: draft statement interface
 
 **DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
-and their proved counterparts reviewable. It is not an eligible Palomar
-submission, a Comparator success report, or a registry entry.
+and their proved counterparts reviewable.  The cumulative eligible
+`ChallengeTwo`/`SolutionTwo` checkpoint has a local three-kernel Comparator
+pass for exactly the first two declarations.  It is not complete official
+Palomar verification, a submission, or a registry entry.
 
-The current launcher-recovery and eligibility findings are recorded in
-[`STATUS.md`](STATUS.md), with the resolved import and correspondence inventory
-in [`ELIGIBILITY_INVENTORY.json`](ELIGIBILITY_INVENTORY.json).
+The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
+nine-result migration state in
+[`RESULT_INVENTORY.json`](RESULT_INVENTORY.json).  The earlier resolved-import
+and correspondence baseline remains in
+[`ELIGIBILITY_INVENTORY.json`](ELIGIBILITY_INVENTORY.json).
 
 The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
 Its accepted checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`, using
@@ -30,17 +34,17 @@ them. [`comparator.json`](comparator.json) selects them in this order and permit
 only `propext`, `Quot.sound`, and `Classical.choice`. It selects no unspecified
 definitions.
 
-| Declaration | Mathematical claim and exact assumptions | Maintained proof root in `FailureOfComposition.ConcreteIndices` |
-| --- | --- | --- |
-| `obstruction_four_properties` | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
-| `no_quotient_composition_productive` | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
-| `pi_one_characterization` | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
-| `generated_congruence_classification` | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
-| `weak_totality_counterexample` | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
-| `range_counterexample_godel` | Proposition 6: under the same consistent-r.e.-extension assumptions, an index is pointwise equivalent to empty while its PA-correct range index is inequivalent to the empty program's range index. Gödel-II route. | `range_counterexample_of_re_axioms` |
-| `range_counterexample_productive` | The identical range statement and hypotheses, by the productive route. | `range_counterexample_via_productiveness_of_re_axioms` |
-| `generated_quotient_partial_recursive` | For every Sigma-one sound PA extension, the generated quotient is monoid-isomorphic to actual unary partial recursive functions. Its representative equation sends each index class to that index's evaluation. | `generatedQuotientPartialRecursiveEquiv`, `generatedQuotientPartialRecursiveEquiv_mk` |
+| Declaration | Checkpoint status | Mathematical claim and exact assumptions | Maintained proof root in `FailureOfComposition.ConcreteIndices` |
+| --- | --- | --- | --- |
+| `obstruction_four_properties` | Migrated; locally verified in the cumulative Two pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
+| `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Two pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
+| `no_quotient_composition_godel` | Not yet migrated into the eligible cumulative pair | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `pi_one_characterization` | Not yet migrated into the eligible cumulative pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
+| `generated_congruence_classification` | Not yet migrated into the eligible cumulative pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
+| `weak_totality_counterexample` | Not yet migrated into the eligible cumulative pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
+| `range_counterexample_godel` | Not yet migrated into the eligible cumulative pair | Proposition 6: under the same consistent-r.e.-extension assumptions, an index is pointwise equivalent to empty while its PA-correct range index is inequivalent to the empty program's range index. Gödel-II route. | `range_counterexample_of_re_axioms` |
+| `range_counterexample_productive` | Not yet migrated into the eligible cumulative pair | The identical range statement and hypotheses, by the productive route. | `range_counterexample_via_productiveness_of_re_axioms` |
+| `generated_quotient_partial_recursive` | Not yet migrated into the eligible cumulative pair | For every Sigma-one sound PA extension, the generated quotient is monoid-isomorphic to actual unary partial recursive functions. Its representative equation sends each index class to that index's evaluation. | `generatedQuotientPartialRecursiveEquiv`, `generatedQuotientPartialRecursiveEquiv_mk` |
 
 Here pointwise provability means a separate T-proof for every external
 standard natural-number input. Uniform provability means one proof of the
@@ -65,13 +69,15 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    [`toolchains.json`](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/toolchains.json)
    requires at least `v4.35.0-rc2`. The accepted port uses that release with
    matching Mathlib and Foundation pins and has passed the project checks.
-2. **Challenge dependency boundary.** The draft Challenge imports local
+2. **Challenge dependency boundary.** The legacy nine-result Challenge imports local
    modules whose closure includes Foundation and proved project results.
    The [dependency policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#24-dependencies)
    permits only core, canonical Mathlib and its pinned dependencies, and
    specifically approved Tau Ceti and CSLib libraries in that closure.
-   These imports therefore fail the current policy. A legitimate readable
-   statement interface with permitted dependencies is still required.
+   These imports therefore fail the current policy.  The readable cumulative
+   `ChallengeTwo` interface for the first two declarations now imports only
+   permitted Mathlib sources and passes the pinned source audit; corresponding
+   interfaces for the other seven declarations are still required.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
 3. **Snapshot licensing scope.** This repository now has the exported
@@ -80,14 +86,15 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    its existing licensing preserved; the code license is not a new grant for
    the paper. Its scope must be settled for any final submitted snapshot under
    the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
-4. **The retained Comparator pass is local and ineligible.** Run
+4. **Comparator evidence remains local.** Run
    `20260925T162212Z-45800` passed all nine declarations with Lean's default
    kernel and the bundled NanoDa and con-ron kernels, but it checked the current
    Foundation-dependent Challenge at commit `a2234663fa95d376cc6b11f82278753d19690b87`.
-   It is not a Comparator pass for an eligible Challenge and is not a complete
-   Palomar mechanical or editorial result. Local elaboration, matching
-   declaration types, axiom audits, and ordinary kernel replay likewise do not
-   establish those later results. The current
+   It is not a Comparator pass for an eligible Challenge.  Separately, the
+   cumulative `ChallengeTwo`/`SolutionTwo` pair passed con-ron, NanoDa, and
+   Lean's kernel at tested commit `4dba750bec8c81a30e0bfe8ab4126e35cbadddb8`.
+   That pass covers exactly the first two declarations and is not a complete
+   Palomar mechanical or editorial result.  The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    additionally performs protected source-provenance and exported-proof checks.
 
@@ -97,10 +104,11 @@ weakening its quantifiers, or substituting unrelated notions of PA or
 provability would not solve this preparation task. No extra axiom is proposed.
 
 The Foundation port, namespace migration, and evaluator style cleanup are
-complete. The permitted arithmetic statement interface still needs a proved
-correspondence with the existing notions. Comparator follows the bodies of
-ordinary definitions in the statement's dependency graph; replacing definitions
-by Foundation aliases does not establish this correspondence or make different
+complete.  The permitted arithmetic statement interface and proved
+correspondence now support the first two results; they must still be extended
+faithfully for the remaining seven.  Comparator follows the bodies of ordinary
+definitions in the statement's dependency graph; replacing definitions by
+Foundation aliases does not establish this correspondence or make different
 definitions compare identically.
 
 ## Files and eventual selection paths

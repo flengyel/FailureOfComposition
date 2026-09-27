@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-27T19:47:26Z",
+  "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",
+  "branch": "codex/palomar-eligibility",
+  "checkpoint": {
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeTwo",
+    "solution_module": "FailureOfComposition.Palomar.SolutionTwo",
+    "portable_config": "Lean/FailureOfComposition/Palomar/comparator-two.json",
+    "portable_config_sha256": "f9bc72802f3d52589a125b22ec1c4e0da6b68b3c02e320c6687c68e895a744c3",
+    "selected_count": 2,
+    "remaining_count": 7,
+    "official_palomar_verification": false,
+    "local_comparator_result": "pass",
+    "local_comparator_elapsed_seconds": 131.755,
+    "local_comparator_peak_memory_bytes": 740855808,
+    "kernels_accepted": [
+      "con-ron",
+      "NanoDa",
+      "Lean default kernel"
+    ]
+  },
+  "results": [
+    {
+      "ordinal": 1,
+      "declaration": "FailureOfComposition.Palomar.obstruction_four_properties",
+      "status": "migrated_and_locally_verified",
+      "selected_by": "comparator-two.json"
+    },
+    {
+      "ordinal": 2,
+      "declaration": "FailureOfComposition.Palomar.no_quotient_composition_productive",
+      "status": "migrated_and_locally_verified",
+      "selected_by": "comparator-two.json"
+    },
+    {
+      "ordinal": 3,
+      "declaration": "FailureOfComposition.Palomar.no_quotient_composition_godel",
+      "status": "not_migrated_in_eligible_pair"
+    },
+    {
+      "ordinal": 4,
+      "declaration": "FailureOfComposition.Palomar.pi_one_characterization",
+      "status": "not_migrated_in_eligible_pair"
+    },
+    {
+      "ordinal": 5,
+      "declaration": "FailureOfComposition.Palomar.generated_congruence_classification",
+      "status": "not_migrated_in_eligible_pair"
+    },
+    {
+      "ordinal": 6,
+      "declaration": "FailureOfComposition.Palomar.weak_totality_counterexample",
+      "status": "not_migrated_in_eligible_pair"
+    },
+    {
+      "ordinal": 7,
+      "declaration": "FailureOfComposition.Palomar.range_counterexample_godel",
+      "status": "not_migrated_in_eligible_pair"
+    },
+    {
+      "ordinal": 8,
+      "declaration": "FailureOfComposition.Palomar.range_counterexample_productive",
+      "status": "not_migrated_in_eligible_pair"
+    },
+    {
+      "ordinal": 9,
+      "declaration": "FailureOfComposition.Palomar.generated_quotient_partial_recursive",
+      "status": "not_migrated_in_eligible_pair"
+    }
+  ]
+}
