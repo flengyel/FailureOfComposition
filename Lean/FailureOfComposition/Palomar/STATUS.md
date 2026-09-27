@@ -1,5 +1,84 @@
 # Palomar eligibility status
 
+## 2026-09-27 exact first-result validation and cost checkpoint
+
+The exact `ChallengeOne`/`SolutionOne` pair is now checked independently of the
+legacy nine-result pair.  `CheckOneInterface.lean` loads the two One modules in
+separate environments, requires each selected declaration to be owned by the
+intended module, and selects only
+`FailureOfComposition.Palomar.obstruction_four_properties`.  It compares the
+universe-renamed theorem type and recursively compares every reachable
+statement-side declaration type and shared body.  It also checks that Solution
+does not import Challenge, that the Challenge's only declaration using its
+deliberate hole is the selected theorem, that definition-hole selection is
+empty, and that the Solution proof closure uses only `propext`,
+`Classical.choice`, and `Quot.sound`.
+
+That exact shared declaration graph has 4,061 constants.  The corresponding
+full Challenge proof/axiom closure has 4,062 because it additionally includes
+the selected theorem's `sorryAx`; this accounts for the earlier reported 4,062
+count.  The Solution proof closure has 17,085 constants.  A disposable negative
+test with the same outer theorem type and a changed shared definition body is
+rejected, and the first-result command rejects attempts to select the legacy
+`Challenge`/`Solution` modules.  The pinned Palomar source-policy audit passes
+for the three resolved ChallengeOne dependency sources.  The existing
+`CheckInterface.lean` and `comparator.json` remain explicitly the legacy
+nine-result check and configuration.
+
+The large syntactic implication was profiled without normalization or
+reduction.  Across the complete selected Solution closure, raw recursive tree
+counting gives 2,339,825 type nodes and 146,843,997 body nodes (149,183,822
+total).  Deduplicating by actual `Expr` pointer identity separately within each
+declaration gives 3,927,585 nodes; deduplicating pointer identity globally
+across the closure gives 2,456,546.  Structural `Expr.eqv` deduplication gives
+3,918,882 per declaration and 1,958,995 globally.  These latter structural
+sets measure alpha-equivalent expression structure, not physical sharing or
+checking complexity.
+
+For `uniformSentence_imp_uniformKleeneSentence`, the 5,284,884 raw body nodes
+collapse to 3,518 physical pointer-distinct nodes and 3,437 structurally
+distinct nodes.  Its `simpa [source, target, p, q, Semiformula.free]` identity
+has 313,269 raw nodes but 792 pointer-distinct nodes.  The final
+`LK.Derivation.cast` has 4,957,443 raw nodes but 2,787 pointer-distinct nodes;
+its equality proof accounts for 4,956,721 raw and 2,781 pointer-distinct nodes.
+`uniform_one`, measured separately, has 1,067,954 raw and 4,282
+pointer-distinct body nodes.  Thus the raw recursion repeatedly recounts a
+small shared DAG.  No proof refactor was made: moving or splitting the shared
+term would not demonstrate an aggregate representation saving.
+
+The pinned exporter uses one global visited-expression map for an export, so
+its expression records are structurally deduplicated across declarations.  An
+exact Comparator-style SolutionOne export is 111,171,395 bytes, SHA-256
+`73167f386626484bfda122998a2fc5b51a70ae1ef5800efb168fe72aaa1bc6a7`,
+with 1,976,236 expression records and 16,200 declaration records.  An isolated
+export rooted at the profiled implication is 21,628,085 bytes, SHA-256
+`00fa4693703c0683cd136eb0dc5aac059bf0b421fb2b26d1342bb55279d241b8`,
+with 371,912 expression records and 4,795 declaration records.  Full export
+dumps remain local and are not evidence-bundle payloads.  A strict direct check
+of `ManuscriptObstruction.lean` passed in 21.848 seconds of supervised elapsed
+time with 340,574,208 bytes peak aggregate cgroup memory.
+
+Tested code commit `2304008d712c020bcc528412ed17c43dc46717d4`
+adds the exact checker and protected One-pair configuration; the proof sources
+are unchanged from the integrated refactor commit
+`c016ecf20e06fcb0b4b8c391fe1a2705e80d78c4`.  After the focused strict,
+interface, negative, source-policy, recursive-axiom, and profile gates passed,
+the single permitted local first-result Comparator attempt completed in
+139.167 seconds.  ChallengeOne and SolutionOne built and exported; con-ron
+accepted 16,196 declarations, NanoDa accepted, Lean's default kernel accepted,
+and Comparator reported `Your solution is okay!`.  The run used one CPU and
+one Lean thread with `memory.high=8G`, `memory.max=10G`, zero swap, a
+1,200-second deadline, and 30-second termination grace.  Peak aggregate cgroup
+memory was 2,815,442,944 bytes; there were no high/max/OOM events, no deadline,
+and no recorded memory-pressure stall time.
+
+This is a local pass for the exact first-result pair, not a complete official
+verifier pass.  The other eight declarations remain outside this checkpoint.
+The complete Solution is not claimed to be Foundation-free: the targeted
+refactors remove specific dependency routes while retaining maintained
+evaluator and witness results.  No submission, registration, merge to `main`,
+Palomar contact, or manuscript edit occurred.
+
 ## 2026-09-27 targeted modularity checkpoint
 
 The earlier inference that a complete independent reconstruction was already
