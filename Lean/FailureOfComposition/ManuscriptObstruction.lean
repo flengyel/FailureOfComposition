@@ -35,6 +35,190 @@ def uniformKleeneSentence (F G : Graph) : ArithmeticSentence :=
         ((∃ y, F.val.Evalb ![x, y]) → ∃ y, F.val.Evalb ![x, y] ∧ G.val.Evalb ![x, y]) := by
   simp [uniformKleeneSentence]
 
+/-! The implication from output-graph equality to Kleene equality is pure
+first-order logic.  The explicit LK construction below deliberately avoids the
+converse direction, functionality, PA, semantic completeness, and the later
+`uniformKleeneSentence_iff_uniformSentence`. -/
+
+private theorem implication_context
+    (a b : ArithmeticProposition)
+    (h : Nonempty (LK.Derivation ⦃a 🡒 b⦄)) :
+    Nonempty (LK.Derivation (⦃∼a⦄ + ⦃b⦄)) := by
+  rcases h with ⟨d⟩
+  have dn : LK.Derivation
+      (⦃∼a⦄ + ⦃b⦄ + ⦃∼(a 🡒 b)⦄) := by
+    refine LK.Derivation.cast (LK.Derivation.tensor
+      (Γ := ⦃∼a⦄) (Δ := ⦃b⦄)
+      (φ := a) (ψ := ∼b)
+      (Multiset.Traversal.atom _)
+      (Multiset.Traversal.atom _)
+      ((LK.Derivation.eta a).cast (by simp [add_comm]))
+      (LK.Derivation.eta b)) (by
+        simp [Semiformula.imp_eq, add_comm, add_assoc])
+  refine ⟨LK.Derivation.cast (LK.Derivation.cut
+    (Γ := 0) (Δ := ⦃∼a⦄ + ⦃b⦄) (φ := a 🡒 b)
+    (LK.Derivation.cast d (by simp)) dn) (by simp)⟩
+
+private theorem all_imp_all
+    (p q : ArithmeticSemiformula ℕ 1)
+    (h : Nonempty (LK.Derivation ⦃p.free 🡒 q.free⦄)) :
+    Nonempty (LK.Derivation ⦃(∀¹ p) 🡒 (∀¹ q)⦄) := by
+  rcases implication_context p.free q.free h with ⟨d⟩
+  refine ⟨?_⟩
+  refine LK.Derivation.cast (LK.Derivation.or
+    (Γ := 0) (φ := ∼(∀¹ p)) (ψ := ∀¹ q) ?_) (by
+      simp [Semiformula.imp_eq])
+  refine LK.Derivation.cast (LK.Derivation.all
+    (Γ := ⦃∼(∀¹ p)⦄) (φ := q) ?_) (by simp)
+  refine LK.Derivation.cast (LK.Derivation.exs
+    (Γ := ⦃q.free⦄) (φ := (∼p).shift) (t := &0)
+    (LK.Derivation.cast d (by
+      simp [Semiformula.free, add_comm]))) (by
+        simp [Rewriting.shifts, Semiformula.free, add_comm])
+
+private theorem implication_core (p q : ArithmeticSemiformula ℕ 1) :
+    Nonempty (LK.Derivation
+      (⦃(∼p).free⦄ + ⦃q.free⦄ + ⦃(∼(p 🡒 q)).free⦄)) := by
+  refine ⟨?_⟩
+  refine LK.Derivation.cast (LK.Derivation.tensor
+    (Γ := ⦃(∼p).free⦄) (Δ := ⦃q.free⦄)
+    (φ := p.free) (ψ := ∼q.free)
+    (Multiset.Traversal.atom _)
+    (Multiset.Traversal.atom _)
+    ((LK.Derivation.eta p.free).cast (by
+      simp [Semiformula.free, add_comm]))
+    (LK.Derivation.eta q.free)) (by
+      simp [Semiformula.free, Semiformula.imp_eq, add_comm, add_assoc])
+
+private theorem implication_exs_right (p q : ArithmeticSemiformula ℕ 1) :
+    Nonempty (LK.Derivation
+      (⦃(∼p).free⦄ + ⦃(∼(p 🡒 q)).free⦄ + ⦃∃¹ q.shift⦄)) := by
+  rcases implication_core p q with ⟨d⟩
+  refine ⟨LK.Derivation.cast (LK.Derivation.exs
+    (Γ := ⦃(∼p).free⦄ + ⦃(∼(p 🡒 q)).free⦄)
+    (φ := q.shift) (t := &0)
+    (LK.Derivation.cast d (by
+      simp [Semiformula.free, add_comm, add_assoc]))) (by
+        simp [add_assoc])⟩
+
+private theorem implication_exs_both
+    (p q : ArithmeticSemiformula ℕ 1) :
+    Nonempty (LK.Derivation
+      (⦃(∼p).free⦄ + ⦃∃¹ q.shift⦄ +
+        ⦃∃¹ (∼(p 🡒 q)).shift⦄)) := by
+  rcases implication_exs_right p q with ⟨d⟩
+  refine ⟨LK.Derivation.cast (LK.Derivation.exs
+    (Γ := ⦃(∼p).free⦄ + ⦃∃¹ q.shift⦄)
+    (φ := (∼(p 🡒 q)).shift) (t := &0)
+    (LK.Derivation.cast d (by
+      simp [Semiformula.free, add_comm, add_left_comm, add_assoc]))) (by
+        simp [add_assoc])⟩
+
+private theorem all_imp_exs (p q : ArithmeticSemiformula ℕ 1) :
+    Nonempty (LK.Derivation
+      ⦃(∀¹ (p 🡒 q)) 🡒 ((∃¹ p) 🡒 (∃¹ q))⦄) := by
+  rcases implication_exs_both p q with ⟨d⟩
+  refine ⟨?_⟩
+  refine LK.Derivation.cast (LK.Derivation.or (L := ℒₒᵣ) (Γ := 0)
+    (φ := ∼(∀¹ (p 🡒 q))) (ψ := (∃¹ p) 🡒 (∃¹ q)) ?_) (by
+      simp [Semiformula.imp_eq])
+  refine LK.Derivation.cast (LK.Derivation.or (L := ℒₒᵣ)
+    (Γ := ⦃∼(∀¹ (p 🡒 q))⦄) (φ := ∼(∃¹ p)) (ψ := ∃¹ q) ?_) (by
+      simp [Semiformula.imp_eq])
+  refine LK.Derivation.cast (LK.Derivation.all
+    (Γ := ⦃∼(∀¹ (p 🡒 q)), ∃¹ q⦄) (φ := ∼p) ?_) (by
+      simp [add_comm, add_left_comm, add_assoc])
+  exact LK.Derivation.cast d (by
+    simp [Rewriting.shifts, Semiformula.free, add_comm, add_assoc])
+
+private theorem uniform_one
+    (p q : ArithmeticSemiformula ℕ 1) :
+    Nonempty (LK.Derivation
+      ⦃(∀¹ (p 🡘 q)) 🡒 (((∃¹ p) 🡘 (∃¹ q)) ⋏
+        ((∃¹ p) 🡒 ∃¹ (p ⋏ q)))⦄) := by
+  have hpq₀ : Nonempty (LK.Derivation
+      ⦃(p.free 🡘 q.free) 🡒 (p.free 🡒 q.free)⦄) := by
+    change (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (p.free 🡘 q.free) 🡒 (p.free 🡒 q.free)
+    cl_prover
+  have hpq : Nonempty (LK.Derivation
+      ⦃(p 🡘 q).free 🡒 (p 🡒 q).free⦄) := by
+    simpa [Semiformula.free] using hpq₀
+  have hqp₀ : Nonempty (LK.Derivation
+      ⦃(p.free 🡘 q.free) 🡒 (q.free 🡒 p.free)⦄) := by
+    change (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (p.free 🡘 q.free) 🡒 (q.free 🡒 p.free)
+    cl_prover
+  have hqp : Nonempty (LK.Derivation
+      ⦃(p 🡘 q).free 🡒 (q 🡒 p).free⦄) := by
+    simpa [Semiformula.free] using hqp₀
+  have hconj₀ : Nonempty (LK.Derivation
+      ⦃(p.free 🡘 q.free) 🡒 (p.free 🡒 (p.free ⋏ q.free))⦄) := by
+    change (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (p.free 🡘 q.free) 🡒 (p.free 🡒 (p.free ⋏ q.free))
+    cl_prover
+  have hconj : Nonempty (LK.Derivation
+      ⦃(p 🡘 q).free 🡒 (p 🡒 (p ⋏ q)).free⦄) := by
+    simpa [Semiformula.free] using hconj₀
+  have hallPQ : (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (∀¹ (p 🡘 q)) 🡒 ∀¹ (p 🡒 q) :=
+    all_imp_all (p 🡘 q) (p 🡒 q) hpq
+  have hallQP : (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (∀¹ (p 🡘 q)) 🡒 ∀¹ (q 🡒 p) :=
+    all_imp_all (p 🡘 q) (q 🡒 p) hqp
+  have hallConj : (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (∀¹ (p 🡘 q)) 🡒 ∀¹ (p 🡒 (p ⋏ q)) :=
+    all_imp_all (p 🡘 q) (p 🡒 (p ⋏ q)) hconj
+  have hexPQ : (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (∀¹ (p 🡒 q)) 🡒 ((∃¹ p) 🡒 (∃¹ q)) :=
+    all_imp_exs p q
+  have hexQP : (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (∀¹ (q 🡒 p)) 🡒 ((∃¹ q) 🡒 (∃¹ p)) :=
+    all_imp_exs q p
+  have hexConj : (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+      (∀¹ (p 🡒 (p ⋏ q))) 🡒 ((∃¹ p) 🡒 ∃¹ (p ⋏ q)) :=
+    all_imp_exs p (p ⋏ q)
+  change (𝐋𝐊¹ : FFL.FirstOrder.LK ℒₒᵣ) ⊢
+    (∀¹ (p 🡘 q)) 🡒 (((∃¹ p) 🡘 (∃¹ q)) ⋏
+      ((∃¹ p) 🡒 ∃¹ (p ⋏ q)))
+  cl_prover [hallPQ, hallQP, hallConj, hexPQ, hexQP, hexConj]
+
+/-- Pure LK proves that an internally universal graph biconditional implies
+the manuscript's internally universal Kleene-equality sentence. -/
+theorem uniformSentence_imp_uniformKleeneSentence (F G : Graph) :
+    (∅ : ArithmeticTheory) ⊢
+      uniformSentence F G 🡒 uniformKleeneSentence F G := by
+  let p : ArithmeticSemiformula ℕ 1 :=
+    Rewriting.free
+      ((Rewriting.emb F.val : ArithmeticSemiformula ℕ 2).subst ![#1, #0])
+  let q : ArithmeticSemiformula ℕ 1 :=
+    Rewriting.free
+      ((Rewriting.emb G.val : ArithmeticSemiformula ℕ 2).subst ![#1, #0])
+  let source : ArithmeticSemiproposition 1 :=
+    “x. ∀ y, !F.val x y ↔ !G.val x y”
+  let target : ArithmeticSemiproposition 1 :=
+    “x. ((∃ y, !F.val x y) ↔ (∃ y, !G.val x y)) ∧
+      ((∃ y, !F.val x y) → ∃ y, !F.val x y ∧ !G.val x y)”
+  have hone₀ := uniform_one p q
+  have hone : Nonempty (LK.Derivation
+      ⦃source.free 🡒 target.free⦄) := by
+    simpa [source, target, p, q, Semiformula.free] using hone₀
+  have hall := all_imp_all source target hone
+  apply FFL.FirstOrder.Theory.Proof.of_LK_provable
+  rcases hall with ⟨d⟩
+  refine ⟨LK.Derivation.cast d ?_⟩
+  simp [uniformSentence, uniformKleeneSentence, source, target,
+    Semiformula.coe_subst_eq_subst_coe,
+    Matrix.fun_eq_vec_two]
+
+/-- The one direction needed by the obstruction transport, over any theory. -/
+theorem uniformKleeneSentence_of_uniformSentence (T : ArithmeticTheory)
+    (F G : Graph) (h : T ⊢ uniformSentence F G) :
+    T ⊢ uniformKleeneSentence F G := by
+  have himp : T ⊢ uniformSentence F G 🡒 uniformKleeneSentence F G :=
+    Entailment.wk! (by simp) (uniformSentence_imp_uniformKleeneSentence F G)
+  exact himp ⨀ h
+
 /-- PA functionality equates the two uniform encodings, at all internal inputs. -/
 theorem uniformKleeneSentence_iff_uniformSentence (F G : Graph)
     (hF : Functional F) (hG : Functional G) :

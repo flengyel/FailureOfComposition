@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
 import FailureOfComposition.Palomar.EvaluatorBridge
+import FailureOfComposition.Palomar.DirectDivergenceBridge
 import FailureOfComposition.ManuscriptObstruction
 
 /-!
@@ -20,6 +21,15 @@ open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic
 open FFL.Entailment
 
 namespace FailureOfComposition.Palomar.Arithmetic.Evaluator
+
+open FailureOfComposition.Palomar.DirectDerivationEnumeration
+open FailureOfComposition.ConcreteEvaluator
+
+local instance obstructionFormulaPrimcodable
+    {ξ : Type} [Primcodable ξ] {n : ℕ} :
+    Primcodable (FailureOfComposition.Palomar.Arithmetic.Formula ξ n) :=
+  Primcodable.ofEquiv (ArithmeticSemiformula ξ n)
+    FailureOfComposition.Palomar.Arithmetic.Formula.equivalence
 
 /-- The independent internally universal Kleene-equality sentence is literally
 the maintained manuscript sentence after translation. -/
@@ -68,6 +78,23 @@ theorem uniformIndex_toFoundation_iff (T : Theory)
         (FailureOfComposition.ConcreteEvaluator.eventualGraph d))) at hk
     simpa using hk
 
+/-- The one-way uniform transport needed by the obstruction theorem.  Unlike
+`uniformIndex_toFoundation_iff`, this direction is pure syntactic LK and does
+not use functionality, PA, or semantic completeness. -/
+theorem uniformIndex_of_toFoundation (T : Theory) (e d : ℕ)
+    (h : FailureOfComposition.ConcreteIndices.UniformIndex
+      (TheoryCorrespondence.toFoundation T) e d) :
+    UniformIndex T e d := by
+  unfold UniformIndex
+  apply (provable_toFoundation_iff T _).mpr
+  have hk :=
+    FailureOfComposition.ConcreteIndices.uniformKleeneSentence_of_uniformSentence
+      (TheoryCorrespondence.toFoundation T)
+      (FailureOfComposition.ConcreteEvaluator.eventualGraph e)
+      (FailureOfComposition.ConcreteEvaluator.eventualGraph d) h
+  rw [toFoundation_uniformKleeneSentence]
+  exact hk
+
 /-- The first Palomar target, transported without changing any hypothesis or
 any of its four pointwise/uniform clauses. -/
 theorem obstruction_four_properties
@@ -84,21 +111,68 @@ theorem obstruction_four_properties
     (consistent_toFoundation_iff T).mp hCons
   let _ : FFL.Entailment.WeakerThan FFL.FirstOrder.Arithmetic.Peano Tf := hpa
   let _ : FFL.Entailment.Consistent Tf := hcon
-  have hre : REPred (FailureOfComposition.AxiomCodes Tf) :=
-    (reAxiomCodes_toFoundation_iff T).mp hT
-  obtain ⟨f, g, hfi, hfg, hig, hgz⟩ :=
-    FailureOfComposition.ConcreteIndices.obstruction_four_properties_of_re_axioms
-      Tf hre
+  have hre : REPred (Provable T) :=
+    DirectDerivationEnumeration.provable_re_of_axiom_codes T hT
+  have hreDivergence : REPred (fun n ↦
+      Provable T (directHistoryDivergenceSentence n)) :=
+    hre.comp directHistoryDivergenceSentence_primrec.to_comp
+  have hsound (n : ℕ) :
+      Provable T (directHistoryDivergenceSentence n) →
+        ¬FailureOfComposition.diagonalHalts n := by
+    intro hp
+    apply FailureOfComposition.ConcreteEvaluator.provableHistoryDivergence_sound
+      Tf n
+    have hp' :=
+      (provable_toFoundation_iff T (directHistoryDivergenceSentence n)).mp hp
+    change Nonempty (FFL.FirstOrder.Theory.Proof Tf
+      (Formula.toFoundation (directHistoryDivergenceSentence n))) at hp'
+    rw [toFoundation_directHistoryDivergenceSentence] at hp'
+    change Nonempty (FFL.FirstOrder.Theory.Proof Tf
+      (foundationHistoryDivergenceSentence n))
+    exact hp'
+  obtain ⟨d, hdivNat, hnotDirect⟩ :=
+    FailureOfComposition.productive_escape_re hreDivergence hsound
+  have hdiv :
+      ¬FailureOfComposition.ConcreteEvaluator.diagonalHistoryFormula.Evalb
+        ![d] := by
+    intro hd
+    apply hdivNat
+    exact (diagonalHistoryFormula_nat d).mp hd
+  have hnot : Tf ⊬
+      ∼FailureOfComposition.ConcreteEvaluator.diagonalHistoryFormula/[d] := by
+    intro hp
+    apply hnotDirect
+    apply (provable_toFoundation_iff T
+      (directHistoryDivergenceSentence d)).mpr
+    change Nonempty (FFL.FirstOrder.Theory.Proof Tf
+      (Formula.toFoundation (directHistoryDivergenceSentence d)))
+    rw [toFoundation_directHistoryDivergenceSentence]
+    change Nonempty (FFL.FirstOrder.Theory.Proof Tf
+      (foundationHistoryDivergenceSentence d)) at hp
+    exact hp
+  obtain ⟨hfi, hfg, hig, hgz⟩ :=
+    FailureOfComposition.ConcreteIndices.index_four_witnesses_uniform_of_history_divergence
+      Tf d hdiv hnot
+  let f := FailureOfComposition.ConcreteIndices.guardIndex d
+  let g := FailureOfComposition.ConcreteIndices.searchIndex d
   refine ⟨f, g, ?_, ?_, ?_, ?_⟩
   · apply (pointwiseIndex_toFoundation_iff T f identityIndex).mpr
-    simpa using hfi
-  · apply (uniformIndex_toFoundation_iff T (compIndex f g) emptyIndex).mpr
-    simpa using hfg
-  · apply (uniformIndex_toFoundation_iff T (compIndex identityIndex g) g).mpr
-    simpa using hig
+    simpa [f] using hfi
+  · apply uniformIndex_of_toFoundation T (compIndex f g) emptyIndex
+    have hfg' : FailureOfComposition.ConcreteIndices.UniformIndex Tf
+        (CategoricalRiceShapiro.PartialRecursive.canonicalPartrecCompIndex f g)
+        FailureOfComposition.ConcreteEmptyGraph.concreteEmptyIndex :=
+      WeakerThan.pbl hfg
+    simpa [f, g] using hfg'
+  · apply uniformIndex_of_toFoundation T (compIndex identityIndex g) g
+    have hig' : FailureOfComposition.ConcreteIndices.UniformIndex Tf
+        (CategoricalRiceShapiro.PartialRecursive.canonicalPartrecCompIndex
+          FailureOfComposition.Kleene.identityIndex g) g :=
+      WeakerThan.pbl hig
+    simpa [g] using hig'
   · intro hg
     apply hgz
     have hg' := (pointwiseIndex_toFoundation_iff T g emptyIndex).mp hg
-    simpa using hg'
+    simpa [g] using hg'
 
 end FailureOfComposition.Palomar.Arithmetic.Evaluator

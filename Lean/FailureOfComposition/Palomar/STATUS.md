@@ -1,5 +1,59 @@
 # Palomar eligibility status
 
+## 2026-09-27 targeted modularity checkpoint
+
+The earlier inference that a complete independent reconstruction was already
+necessary is superseded by measured, checked refactors at two narrower
+boundaries.  The exported first-result proof now uses both replacements:
+
+- `uniformSentence_imp_uniformKleeneSentence` is an explicit syntactic LK
+  implication from the maintained uniform graph sentence to the Kleene
+  sentence.  The final transport uses its one-way corollary and no longer
+  depends on `uniformIndex_toFoundation_iff` for either middle clause.  The
+  existing biconditional remains available for other callers.
+- `DirectDerivationEnumeration.lean` implements an external effective checker
+  for every rule of the independent arithmetic calculus, finite r.e.-axiom
+  evidence, sound reconstruction of an actual `Proof`, and serialization of
+  every actual `Derivation`.  The first integrated candidate used its
+  maintained theorem-code transfer.  The final candidate instead enumerates
+  independent `Provable T` directly and composes that predicate with the
+  primitive-recursive independent history-divergence sentence in
+  `DirectDivergenceBridge.lean`.  Productiveness and the existing concrete
+  four-witness laws then meet at that smaller boundary.  The final proof no
+  longer calls
+  `reAxiomCodes_toFoundation_iff`, `theorem_codes_re_of_axiom_codes`, or
+  `obstruction_four_properties_of_re_axioms`.
+
+The first integrated candidate decreased the complete selected Solution
+closure from 19,259 to 18,970 constants.  The final direct-divergence candidate
+decreases it to 17,085, with its unchanged type closure still 4,060 constants;
+the evaluator obstruction body closes over 17,084.  A source-local
+reconstruction of the old proof measures 2,720 removed and 546 introduced
+closure names.  Excluding the two comparison-root identities on each side,
+the substantive counts are 2,718 removed and 544 introduced, a net reduction
+of 2,174.  The direct theorem-code enumerator closes over 7,189 constants, the
+generic independent-provability enumerator over 7,192, the direct divergence
+primitive-recursiveness proof over 7,294, and the retained but unused
+Foundation theorem-code transfer over 15,474.
+
+Expression-node counts are raw `Lean.Expr` tree nodes without normalization,
+not runtime or memory measurements.  The syntactic uniform implication has a
+large 5,284,884-node proof value despite its 5,217-constant closure; the direct
+enumerator theorem has 27,376 proof-value nodes.  Thus the constant closure is
+strictly smaller.  The next Comparator candidate is the exact checked
+`Palomar.SolutionOne` first-result proof from this checkpoint; the large
+explicit LK proof term remains a documented performance risk, not an
+unproved obligation.  No Comparator was launched in this checkpoint.
+
+Focused builds and strict warning-as-error checks pass for the new enumerator,
+the direct divergence bridge, `ManuscriptObstruction`, `ObstructionBridge`,
+and `SolutionOne`.  The local nine-declaration Challenge/Solution comparison
+passes with exact types.  The selected proof and new helpers use only
+`propext`, `Classical.choice`, and `Quot.sound`; they introduce no `sorry`,
+`admit`, or `native_decide`.  The Challenge type and its 4,062-constant closure
+are unchanged.  The complete official verifier was not launched, and the
+other eight selected declarations remain subsequent work.
+
 ## 2026-09-26 first-result interface checkpoint
 
 Commit `76f8139b5f33cc7e7dfbaf81c0141df81c11ff75` advances the recovered
