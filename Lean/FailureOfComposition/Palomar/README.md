@@ -2,8 +2,11 @@
 
 **DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
 and their proved counterparts reviewable.  The cumulative eligible
-`ChallengeTwo`/`SolutionTwo` checkpoint has a local three-kernel Comparator
-pass for exactly the first two declarations.  It is not complete official
+`ChallengeThree`/`SolutionThree` pair now contains the first three declarations
+and passes the exact local interface and proof-route checks.  The earlier
+`ChallengeTwo`/`SolutionTwo` checkpoint has a local three-kernel Comparator pass
+for exactly the first two declarations; the single bounded Three-pair attempt
+timed out during con-ron without a kernel verdict.  It is not complete official
 Palomar verification, a submission, or a registry entry.
 
 The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
@@ -38,7 +41,7 @@ definitions.
 | --- | --- | --- | --- |
 | `obstruction_four_properties` | Migrated; locally verified in the cumulative Two pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
 | `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Two pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | Not yet migrated into the eligible cumulative pair | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `no_quotient_composition_godel` | Migrated and exactly checked in the cumulative Three pair; the bounded Comparator attempt timed out during con-ron, so it is not locally kernel-verified | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
 | `pi_one_characterization` | Not yet migrated into the eligible cumulative pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
 | `generated_congruence_classification` | Not yet migrated into the eligible cumulative pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Not yet migrated into the eligible cumulative pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
@@ -75,9 +78,9 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    permits only core, canonical Mathlib and its pinned dependencies, and
    specifically approved Tau Ceti and CSLib libraries in that closure.
    These imports therefore fail the current policy.  The readable cumulative
-   `ChallengeTwo` interface for the first two declarations now imports only
+   `ChallengeThree` interface for the first three declarations now imports only
    permitted Mathlib sources and passes the pinned source audit; corresponding
-   interfaces for the other seven declarations are still required.
+   interfaces for the other six declarations are still required.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
 3. **Snapshot licensing scope.** This repository now has the exported
@@ -93,8 +96,13 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    It is not a Comparator pass for an eligible Challenge.  Separately, the
    cumulative `ChallengeTwo`/`SolutionTwo` pair passed con-ron, NanoDa, and
    Lean's kernel at tested commit `4dba750bec8c81a30e0bfe8ab4126e35cbadddb8`.
-   That pass covers exactly the first two declarations and is not a complete
-   Palomar mechanical or editorial result.  The current
+   That pass covers exactly the first two declarations.  The single bounded
+   `ChallengeThree`/`SolutionThree` attempt at
+   `b557d255f1d0b42920440cb2d4762b1ca54b2728` built and exported the exact
+   three-result pair, then timed out during con-ron at 1,200 seconds without a
+   kernel verdict, OOM, or hard-memory-limit event.  It is an inconclusive
+   resource result, not a rejection.  Neither checkpoint is a complete Palomar
+   mechanical or editorial result.  The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    additionally performs protected source-provenance and exported-proof checks.
 
@@ -105,8 +113,8 @@ provability would not solve this preparation task. No extra axiom is proposed.
 
 The Foundation port, namespace migration, and evaluator style cleanup are
 complete.  The permitted arithmetic statement interface and proved
-correspondence now support the first two results; they must still be extended
-faithfully for the remaining seven.  Comparator follows the bodies of ordinary
+correspondence now support the first three results; they must still be extended
+faithfully for the remaining six.  Comparator follows the bodies of ordinary
 definitions in the statement's dependency graph; replacing definitions by
 Foundation aliases does not establish this correspondence or make different
 definitions compare identically.

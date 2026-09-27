@@ -1,5 +1,72 @@
 # Palomar eligibility status
 
+## 2026-09-27 cumulative Gödel-II quotient checkpoint
+
+Tested code commit `b557d255f1d0b42920440cb2d4762b1ca54b2728`
+adds the third eligible result,
+`FailureOfComposition.Palomar.no_quotient_composition_godel`, through the
+maintained Gödel-II and Craig-presentation route.  The public theorem has the
+same independent assumptions and pointwise-quotient conclusion as the
+productive result.  `GodelQuotientBridge.lean` transports deductive PA
+extension, consistency, and r.e. axiom codes to the maintained theory, applies
+`ConcreteIndices.no_index_quotient_via_godel_of_re_axioms`, and transports the
+conclusion back through the checked identity-on-representatives quotient
+correspondence.  The Delta-one Craig presentation remains internal to the
+maintained proof.
+
+`ChallengeThree.lean` is 36,005 bytes and 963 lines, imports only the same two
+permitted Mathlib modules as ChallengeTwo, and has exactly the three selected
+theorem holes and no definition holes.  `SolutionThree.lean` owns all three
+selected declarations.  Its productive theorem still calls its owned
+first-result wrapper; its Gödel theorem instead calls the separate new bridge.
+Solution imports no Challenge module.  The exact separate-environment checker
+compares 4,065 recursively reachable statement declarations, including shared
+bodies and metadata, and rejects changed shared definitions, a Two-only
+selection, and legacy, One-only, or Two-only module overrides.  Strict source
+checks, permitted-axiom checks, and the pinned Challenge source-policy audit
+all pass.
+
+The complete proof closures contain 17,085 constants for the first root,
+17,107 for the productive quotient root, and 20,328 for the Gödel quotient
+root.  The three-root union contains 21,253 constants, adding 4,146 over the
+17,107-constant two-result baseline.  The retained complete name sets show
+that the Gödel root reaches the maintained r.e.-axiom Gödel obstruction,
+Craig presentation, equivalent-presentation bridge, concrete Gödel
+noncongruence, and graph Gödel theorem.  It reaches none of the audited
+productive escape, first-result, or productive quotient proof roots.  The
+productive root continues to reach its owned first-result theorem and reaches
+none of those Gödel/Craig declarations.  This is proof-route reachability, not
+a claim of logical independence.  Every root's recursive axiom closure is
+exactly `propext`, `Classical.choice`, and `Quot.sound`.
+
+Portable `comparator-three.json` has SHA-256
+`72d9a84010d5ac2e8fb2e0144a58adf06b623e7d266a816b468b3e2cd6da5265`
+and contains no machine-specific kernel commands.  Its protected local copy
+differs only by the authenticated con-ron and NanoDa commands and has SHA-256
+`28077cc3bc32e0b503297303fedb18b477109b0015d2f790f1d4fb8bad4b139f`.
+The run resolved the toolchain from the `Lean/` project and queried the exact
+prefix executable: Lean 4.35.0-rc2 at
+`11acb17ec6b07a8f9e9173e6845197929540936b`.
+
+After the focused gates passed and the tested commit was published, the one
+permitted cumulative three-result Comparator attempt built and exported the
+exact ChallengeThree/SolutionThree pair and started con-ron.  It reached the
+1,200-second hard deadline before con-ron returned a verdict; NanoDa and Lean's
+default kernel did not start.  Supervisor elapsed time was 1,200.657 seconds,
+exit status was 124, and `deadline_fired=true`.  Peak aggregate cgroup memory
+was 9,364,590,592 bytes.  The 8 GiB soft threshold recorded 39,846 high events
+and sustained pressure, but the 10 GiB hard maximum recorded zero events;
+swap, OOM, OOM-kill, and pids-limit events were all zero.  No verification
+process remained afterward.  This timeout is an inconclusive resource result,
+not a kernel rejection, and no retry was launched.
+
+Accordingly, three declarations are now migrated and exactly checked, but only
+the first two retain a completed local three-kernel Comparator pass.  The third
+is not recorded as locally kernel-verified.  Six declarations remain
+unmigrated, and official verification remains outstanding.  No submission,
+registration, merge to `main`, Palomar contact, manuscript edit, or later-result
+migration was performed.
+
 ## 2026-09-27 cumulative productive-quotient checkpoint
 
 Tested code commit `4dba750bec8c81a30e0bfe8ab4126e35cbadddb8`

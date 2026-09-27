@@ -1,19 +1,32 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-27T19:47:26Z",
-  "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",
+  "recorded_at": "2026-09-27T21:45:11Z",
+  "tested_code_commit": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeThree",
+    "solution_module": "FailureOfComposition.Palomar.SolutionThree",
+    "portable_config": "Lean/FailureOfComposition/Palomar/comparator-three.json",
+    "portable_config_sha256": "72d9a84010d5ac2e8fb2e0144a58adf06b623e7d266a816b468b3e2cd6da5265",
+    "selected_count": 3,
+    "migrated_count": 3,
+    "locally_kernel_verified_count": 2,
+    "remaining_count": 6,
+    "official_palomar_verification": false,
+    "local_comparator_result": "timeout_inconclusive",
+    "local_comparator_stage_reached": "con-ron_started",
+    "local_comparator_elapsed_seconds": 1200.657,
+    "local_comparator_peak_memory_bytes": 9364590592,
+    "local_comparator_deadline_fired": true,
+    "local_comparator_oom_events": 0,
+    "kernels_accepted": []
+  },
+  "last_passing_checkpoint": {
+    "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",
     "challenge_module": "FailureOfComposition.Palomar.ChallengeTwo",
     "solution_module": "FailureOfComposition.Palomar.SolutionTwo",
-    "portable_config": "Lean/FailureOfComposition/Palomar/comparator-two.json",
-    "portable_config_sha256": "f9bc72802f3d52589a125b22ec1c4e0da6b68b3c02e320c6687c68e895a744c3",
     "selected_count": 2,
-    "remaining_count": 7,
-    "official_palomar_verification": false,
     "local_comparator_result": "pass",
-    "local_comparator_elapsed_seconds": 131.755,
-    "local_comparator_peak_memory_bytes": 740855808,
     "kernels_accepted": [
       "con-ron",
       "NanoDa",
@@ -36,7 +49,8 @@
     {
       "ordinal": 3,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_godel",
-      "status": "not_migrated_in_eligible_pair"
+      "status": "migrated_and_exactly_checked_external_timeout_inconclusive",
+      "selected_by": "comparator-three.json"
     },
     {
       "ordinal": 4,
