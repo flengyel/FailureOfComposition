@@ -468,4 +468,13 @@ def PointwiseIndex (T : Theory) (e d : ℕ) : Prop :=
 def UniformIndex (T : Theory) (e d : ℕ) : Prop :=
   Provable T (uniformKleeneSentence (eventualGraph e) (eventualGraph d))
 
+/-- Quotient of program indices by the independent pointwise-provability
+relation.  Its equivalence properties are proved on the Solution side. -/
+abbrev IndexQuotient (T : Theory) :=
+  Quot (PointwiseIndex T)
+
+/-- The quotient class represented by a concrete program index. -/
+def indexQuotientMk (T : Theory) (e : ℕ) : IndexQuotient T :=
+  Quot.mk _ e
+
 end FailureOfComposition.Palomar.Arithmetic.Evaluator
