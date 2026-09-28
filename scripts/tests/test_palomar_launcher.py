@@ -63,6 +63,81 @@ class CapacityTests(unittest.TestCase):
         self.assertTrue(any("overlapping" in error for error in errors))
 
 
+class DelegatedCgroupReadinessTests(unittest.TestCase):
+    def run_check(self, *, state, state_exit, system_state=None, controllers="cpu memory pids"):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            control_group = "/user.slice/user-1000.slice/user@1000.service"
+            manager = root / control_group.removeprefix("/")
+            manager.mkdir(parents=True)
+            (manager / "cgroup.controllers").write_text(
+                controllers + "\n", encoding="ascii"
+            )
+            shown_state = system_state if system_state is not None else state
+            shell = f"""
+source {LAUNCHER!s}
+cgroup_supervisor=/bin/true
+PALOMAR_CGROUP_ROOT={root!s}
+systemctl() {{
+  case "$*" in
+    "--user is-system-running")
+      printf '%s\\n' {state!r}
+      return {state_exit}
+      ;;
+    "--user show -p ControlGroup -p SystemState")
+      printf 'ControlGroup=%s\\nSystemState=%s\\n' {control_group!r} {shown_state!r}
+      return 0
+      ;;
+    "--user --failed --no-legend --no-pager")
+      printf 'fixture.service loaded failed failed Fixture failure\\n'
+      return 0
+      ;;
+    *)
+      printf 'unexpected mock systemctl command: %s\\n' "$*" >&2
+      return 99
+      ;;
+  esac
+}}
+findmnt() {{ printf 'cgroup2 rw,nosuid,nodev,noexec\\n'; }}
+check_delegated_cgroup
+printf 'delegated_user_cgroup=%s\\n' "$delegated_user_cgroup"
+"""
+            return subprocess.run(
+                ["bash", "-c", shell], cwd=REPOSITORY, text=True, capture_output=True
+            )
+
+    def test_reachable_degraded_manager_is_accepted_with_delegation(self):
+        completed = self.run_check(state="degraded", state_exit=1)
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertIn("manager is degraded", completed.stderr)
+        self.assertIn("delegated_user_cgroup=", completed.stdout)
+
+    def test_unreachable_manager_is_rejected_distinctly(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            shell = f"""
+source {LAUNCHER!s}
+cgroup_supervisor=/bin/true
+PALOMAR_CGROUP_ROOT={temporary!s}
+systemctl() {{
+  printf 'Failed to connect to user scope bus: Operation not permitted\\n' >&2
+  return 1
+}}
+check_delegated_cgroup
+"""
+            completed = subprocess.run(
+                ["bash", "-c", shell], cwd=REPOSITORY, text=True, capture_output=True
+            )
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("query was denied", completed.stderr)
+
+    def test_missing_delegated_controller_is_rejected(self):
+        completed = self.run_check(
+            state="running", state_exit=0, controllers="cpu pids"
+        )
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("lacks the memory controller", completed.stderr)
+
+
 class SupervisorEvidenceTests(unittest.TestCase):
     expected = {
         "memory_high": str(10 * CHECKS.GIB),

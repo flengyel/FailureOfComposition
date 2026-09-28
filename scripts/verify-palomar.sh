@@ -9,7 +9,7 @@ palomar_dir="$lean_root/FailureOfComposition/Palomar"
 work_root="$repository_root/.codex-work/palomar"
 expected_toolchain=leanprover/lean4:v4.35.0-rc2
 expected_mathlib=065356127b1dc0016f66b7283ce0ce2c4055aa55
-expected_foundation=e72cfe981aa65166f37fa4e2584f4806bc48d72f
+expected_foundation=46715b758b3069351825f276f1d98de1e60f1e4f
 expected_policy=792c7c0b9e798bd02719e795ef11fa2b5929e067
 expected_submission=a59f25bd8a66bf6faf3a4f4260d412989c0185ea
 expected_template=cb5c79b69a740d2dc299071fc35994627050d77a
@@ -269,18 +269,89 @@ check_no_checker_processes() {
 }
 
 check_delegated_cgroup() {
-  local mount_options user_cgroup controllers controller
+  local cgroup_root=${PALOMAR_CGROUP_ROOT:-/sys/fs/cgroup}
+  local manager_output manager_state manager_state_rc manager_details manager_details_rc
+  local system_state user_cgroup failed_units failed_units_rc
+  local mount_details mount_type mount_options controllers controller
   [[ -x $cgroup_supervisor ]] || fail "missing pinned cgroup supervisor: $cgroup_supervisor"
-  systemctl --user is-system-running >/dev/null 2>&1 ||
-    fail "the ordinary WSL user systemd manager is unavailable"
-  mount_options=$(findmnt -no OPTIONS /sys/fs/cgroup)
+
+  set +e
+  manager_output=$(systemctl --user is-system-running 2>&1)
+  manager_state_rc=$?
+  set -e
+  manager_state=$(printf '%s\n' "$manager_output" | sed -n '1{s/[[:space:]]*$//;p;}')
+  case "$manager_state" in
+    running)
+      (( manager_state_rc == 0 )) ||
+        fail "user systemd manager returned running with status $manager_state_rc"
+      ;;
+    degraded)
+      (( manager_state_rc != 0 )) ||
+        fail "user systemd manager returned degraded with an unexpected zero status"
+      ;;
+    initializing|starting)
+      fail "user systemd manager is not ready (state=$manager_state)"
+      ;;
+    maintenance)
+      fail "user systemd manager is in maintenance state"
+      ;;
+    stopping)
+      fail "user systemd manager is stopping"
+      ;;
+    offline)
+      fail "user systemd manager is offline"
+      ;;
+    unknown)
+      fail "user systemd manager state is unknown"
+      ;;
+    *)
+      if [[ $manager_output == *"Operation not permitted"* ||
+            $manager_output == *"Permission denied"* ]]; then
+        fail "user systemd manager query was denied in this execution context: $manager_output"
+      fi
+      if [[ $manager_output == *"Failed to connect"* ||
+            $manager_output == *"No such file or directory"* ]]; then
+        fail "user systemd manager is unreachable: $manager_output"
+      fi
+      fail "user systemd manager returned an unrecognized state (status=$manager_state_rc): $manager_output"
+      ;;
+  esac
+
+  set +e
+  manager_details=$(systemctl --user show -p ControlGroup -p SystemState 2>&1)
+  manager_details_rc=$?
+  set -e
+  (( manager_details_rc == 0 )) ||
+    fail "user systemd manager state was $manager_state but manager properties were unavailable: $manager_details"
+  user_cgroup=$(sed -n 's/^ControlGroup=//p' <<<"$manager_details")
+  system_state=$(sed -n 's/^SystemState=//p' <<<"$manager_details")
+  [[ $system_state == "$manager_state" ]] ||
+    fail "user systemd manager state changed or was inconsistent: is-system-running=$manager_state show=$system_state"
+
+  if [[ $manager_state == degraded ]]; then
+    set +e
+    failed_units=$(systemctl --user --failed --no-legend --no-pager 2>&1)
+    failed_units_rc=$?
+    set -e
+    (( failed_units_rc == 0 )) ||
+      fail "degraded user manager's failed-unit list was unavailable: $failed_units"
+    [[ -n $failed_units ]] ||
+      fail "user manager reports degraded but no failed units were returned"
+    printf 'warning: user systemd manager is degraded; failed units:\n%s\n' \
+      "$failed_units" >&2
+  fi
+
+  mount_details=$(findmnt -no FSTYPE,OPTIONS "$cgroup_root")
+  read -r mount_type mount_options <<<"$mount_details"
+  [[ $mount_type == cgroup2 ]] ||
+    fail "expected cgroup v2 at $cgroup_root, found: $mount_details"
   [[ ,$mount_options, == *,rw,* ]] ||
-    fail "cgroup v2 is read-only; run this mode from an ordinary WSL terminal, not the Codex sandbox"
-  user_cgroup=$(systemctl --user show -p ControlGroup --value)
-  [[ -n $user_cgroup && -r /sys/fs/cgroup$user_cgroup/cgroup.controllers ]] ||
-    fail "cannot resolve the delegated user cgroup"
-  delegated_user_cgroup="/sys/fs/cgroup$user_cgroup"
-  controllers=$(<"/sys/fs/cgroup$user_cgroup/cgroup.controllers")
+    fail "cgroup v2 is read-only in this execution context; use the ordinary WSL context"
+  [[ $user_cgroup == /* && $user_cgroup != *..* &&
+      -r $cgroup_root$user_cgroup/cgroup.controllers ]] ||
+    fail "cannot resolve the delegated user cgroup: $user_cgroup"
+  delegated_user_cgroup="$cgroup_root$user_cgroup"
+  controllers=$(<"$delegated_user_cgroup/cgroup.controllers")
   for controller in cpu memory pids; do
     [[ " $controllers " == *" $controller "* ]] ||
       fail "the delegated user cgroup lacks the $controller controller"

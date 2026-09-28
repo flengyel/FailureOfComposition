@@ -15,8 +15,8 @@ rev = "065356127b1dc0016f66b7283ce0ce2c4055aa55"
 
 [[require]]
 name = "Foundation"
-git = "https://github.com/FormalizedFormalLogic/Foundation.git"
-rev = "e72cfe981aa65166f37fa4e2584f4806bc48d72f"
+git = "https://github.com/flengyel/foundation.git"
+rev = "46715b758b3069351825f276f1d98de1e60f1e4f"
 
 [[lean_lib]]
 name = "CategoricalRiceShapiro"
