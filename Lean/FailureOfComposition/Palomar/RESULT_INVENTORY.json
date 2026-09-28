@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-27T23:31:47Z",
+  "recorded_at": "2026-09-28T02:20:52Z",
   "tested_code_commit": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
@@ -39,7 +39,27 @@
     "helper_probe_peak_full_psi_avg10": 86.6,
     "helper_probe_oom_events": 0,
     "full_comparator_attempted": false,
-    "full_comparator_gate": "not_met_no_narrow_candidate_side_repair"
+    "full_comparator_gate": "not_met_no_narrow_candidate_side_repair_at_that_checkpoint",
+    "followup_exact_local_replacement_available": true,
+    "followup_replacement_integrated": false
+  },
+  "foundation_helper_replacement_diagnostic": {
+    "tested_diagnostic_commit": "996f70e1630602a7543a43c7ed87adec02ac841a",
+    "candidate_proof_sources_changed": false,
+    "dependency_pins_changed": false,
+    "original_export_sha256": "71a0c52bab8b42b11379cc2fcfafcc01a277a56f04e2dd7e1223e2c09a1ec47a",
+    "original_leanchecker_result": "timeout_inconclusive",
+    "original_nanoda_result": "timeout_inconclusive",
+    "replacement_exact_universe_renamed_type": true,
+    "replacement_reaches_original_helper": false,
+    "replacement_export_sha256": "80a2623ebed8a530d026cafc00e727df0287d9ad18bda80150b78f5a7a9fe9bf",
+    "replacement_stock_conron_result": "accepted_verified",
+    "replacement_stock_conron_elapsed_seconds": 65.935,
+    "replacement_stock_conron_peak_memory_bytes": 239558656,
+    "replacement_integrated_into_foundation": false,
+    "cumulative_three_comparator_attempted": false,
+    "proof_replay_attempts_used": 3,
+    "proof_replay_wall_seconds": 307.271
   },
   "last_passing_checkpoint": {
     "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",

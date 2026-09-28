@@ -1,5 +1,42 @@
 # Palomar eligibility status
 
+## 2026-09-27 exact Foundation helper replacement diagnostic
+
+The Palomar candidate remains at tested proof/configuration commit
+`b557d255f1d0b42920440cb2d4762b1ca54b2728`; no Challenge, Solution,
+comparator configuration, or dependency pin changed.  Diagnostic commit
+`996f70e1630602a7543a43c7ed87adec02ac841a` proves a project-local
+replacement for
+`FFL.FirstOrder.Arithmetic.Bootstrapping.IsUTerm.BV.construction._proof_4`.
+Its universe-renamed elaborated type exactly matches the generated helper, its
+8,661-constant recursive closure excludes the original helper, and its only
+axioms are `propext`, `Classical.choice`, and `Quot.sound`.
+
+The unchanged 44,002,216-byte helper export timed out without a verdict under
+both Lean's export checker (120.379 seconds, 8,895,926,272 bytes peak) and
+NanoDa (120.957 seconds, 5,317,881,856 bytes peak).  Thus the original input's
+bounded failure is not shown to be con-ron-specific.  A narrow conversion
+control separately localizes the source-level expense to broad definitional
+reduction of `blueprint.func.val`; the low-level cache/conversion mechanism
+remains unknown.
+
+The replacement uses targeted projection reduction, the existing
+`val_mkSigma` and substitution identities, and `listMax_defined.iff`.  Its
+44,022,108-byte dependency-closed export was explicitly accepted by the
+unchanged bundled stock con-ron in verified mode: 65.935 seconds and
+239,558,656 bytes peak, with no pressure, limit, deadline, or OOM events.  The
+replacement body has 134 distinct expression nodes versus 583 in the original;
+the export itself is slightly larger, so file-size reduction does not explain
+the result.
+
+This establishes a checked exact-type local replacement candidate, not an
+integrated Foundation repair.  The pinned Foundation checkout and candidate
+manifest remain unchanged.  No cumulative Three Comparator was run.  The
+third declaration therefore remains migrated and exactly checked but not
+locally cumulative-kernel verified; six declarations and official verification
+remain outstanding.  Full evidence is in
+`Audit/palomar-foundation-helper-replacement-20260928/`.
+
 ## 2026-09-27 Gödel-II con-ron bottleneck diagnosis
 
 The Three mathematical checkpoint remains unchanged at tested proof commit
