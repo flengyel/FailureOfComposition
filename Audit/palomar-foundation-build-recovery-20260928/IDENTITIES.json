@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-28T18:16:34Z",
+  "recorded_at": "2026-09-28T18:30:32Z",
   "project_branch": "codex/palomar-eligibility",
   "project_parent_head": "0c00303b70bdf2e7052f0a693f3b157e71a7b422",
   "three_proof_configuration_baseline": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
@@ -57,8 +57,27 @@
     "marginal_over_two": 4149
   },
   "cumulative_three_comparator": {
-    "parent_attempts": 0,
-    "payload_launches": 0,
-    "result": "not_yet_attempted_at_pre_comparator_identity"
+    "tested_project_commit": "8094240bb8bfedc34fb875140111f95aabdf79b8",
+    "parent_attempts": 2,
+    "payload_launches": 1,
+    "first_parent_result": "setup_failure_before_payload_missing_usr_bin_time",
+    "first_parent_elapsed_seconds": 0.247,
+    "second_parent_result": "pressure_stop_inconclusive_during_con_ron",
+    "second_parent_elapsed_seconds": 275.973,
+    "aggregate_cpu_seconds": 195.02181,
+    "memory_peak_bytes": 8959299584,
+    "memory_high_events": 8666,
+    "memory_max_events": 0,
+    "oom_events": 0,
+    "pressure_peak_full_avg10": 97.62,
+    "deadline_fired": false,
+    "challenge_build_and_export_completed": true,
+    "solution_build_and_export_completed": true,
+    "con_ron_started": true,
+    "con_ron_verdict": null,
+    "nanoda_started": false,
+    "lean_replay_started": false,
+    "kernels_accepted": [],
+    "retry_after_payload": false
   }
 }

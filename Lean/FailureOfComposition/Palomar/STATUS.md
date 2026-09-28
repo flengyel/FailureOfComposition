@@ -1,5 +1,59 @@
 # Palomar eligibility status
 
+## 2026-09-28 downstream build recovery and cumulative Three checkpoint
+
+The unchanged public Foundation repair remains pinned at
+`46715b758b3069351825f276f1d98de1e60f1e4f`.  The unchanged
+`Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Functions` target
+first demonstrated a contained hard-cap resource failure under the authorized
+build-only 10 GiB profile: 223.424 seconds, exactly 10,737,418,240 bytes peak,
+142,817 `memory.max` events, one OOM event, and three OOM kills.  This was a
+compiler resource result, not a Lean theorem rejection, and qualified the
+single 12 GiB fallback.
+
+The same target then built successfully under the admitted build-only 12 GiB
+profile in 208.406 seconds at 12,884,889,600 bytes peak.  Its live host reserve
+guard never crossed the 2 GiB floor.  The downstream `SolutionThree` target
+subsequently built in 959.000 seconds at 2,057,461,760 bytes peak.  One Lean
+compiler at a time was observed.  These build-only limits are local development
+settings and are not the Comparator or official-verifier profile.
+
+The new-pin strict checks, exact Three ownership/type/shared-body comparison,
+pinned Challenge source policy, permitted-axiom audit, per-root dependency and
+proof-route audit, negative regressions, and portable-configuration check all
+passed.  The cumulative closure is 21,256 constants: 17,085 for the first root,
+17,107 for the productive root, and 20,331 for the Gödel root, adding 4,149 over
+the first-two union.  The only three additional constants relative to the old
+Foundation pin are the named factored proof helpers.  Productive and
+Gödel/Craig reachability remain separated, and the recursive axioms remain
+exactly `propext`, `Classical.choice`, and `Quot.sound`.
+
+The exact tested project/configuration commit is
+`8094240bb8bfedc34fb875140111f95aabdf79b8`.  The cumulative Comparator used
+the unchanged checker containment: 8 GiB high, 10 GiB max, zero swap, one CPU
+and Lean thread, 4 GiB available reserve, and the 1,200-second deadline.  Its
+first parent invocation failed before any payload because `/usr/bin/time` was
+absent; telemetry contains no Lake, Lean, exporter, Comparator, or checker
+process.  After the specifically allowed GNU-time correction, the second
+parent was the only actual Comparator payload.
+
+That payload built and exported the exact ChallengeThree and SolutionThree,
+then started stock con-ron.  The pressure guard stopped the owned workload at
+275.973 seconds after full-memory PSI stayed at least 80% for 60 seconds.
+Aggregate CPU was 195.022 seconds, peak memory 8,959,299,584 bytes, and there
+were 8,666 `memory.high` events, zero hard-max events, and zero OOM events.
+Con-ron issued no verdict; NanoDa and Lean replay did not start.  The deadline
+did not fire, cleanup left the owned cgroup empty, and no retry was made.  This
+is an inconclusive resource result, not a rejection or a local three-result
+pass.
+
+The first two declarations retain their historical complete local
+three-kernel pass for the recorded Two checkpoint.  The third declaration is
+migrated and exactly checked on the repaired pin but still lacks cumulative
+external verification.  Six migrations and complete official verification
+remain.  Detailed evidence is indexed in
+`Audit/palomar-foundation-build-recovery-20260928/`.
+
 ## 2026-09-28 containment continuation and public repair pin checkpoint
 
 The ordinary WSL workload context reports an operational systemd 257.13 user

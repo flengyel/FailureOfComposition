@@ -47,8 +47,32 @@ zero swap, CPU 0 and `nproc=1` in both parent and child, then stopped the owned
 tree at 1.032 seconds and emptied it in 0.051 seconds.  Every timed run retained
 an exact source snapshot.
 
-This record is the pre-Comparator identity.  A cumulative Three Comparator
-attempt, if made, uses the separate unchanged checker profile:
-`memory.high=8 GiB`, `memory.max=10 GiB`, zero swap, one CPU/Lean thread,
-4 GiB available-memory reserve, the established PSI stop, and a 1,200-second
-deadline.
+The tested pre-Comparator project/configuration identity is
+`8094240bb8bfedc34fb875140111f95aabdf79b8`.  The cumulative Three launch used
+the separate unchanged checker profile: `memory.high=8 GiB`,
+`memory.max=10 GiB`, zero swap, one CPU/Lean thread, 4 GiB available-memory
+reserve, the established PSI stop, and a 1,200-second deadline.
+
+There were two parent invocations but only one Comparator payload.  The first
+parent exited 127 in 0.247 seconds because `/usr/bin/time` was absent in the
+workload context.  Process telemetry shows that no Lake, Lean, exporter,
+Comparator, or external-kernel process started, so the specifically authorized
+second parent used the already authenticated project-local GNU `time` fallback.
+That correction was checked with a harmless `/bin/true` fixture.
+
+The second parent built and exported the exact cumulative Three Challenge and
+Solution and then started stock con-ron.  It was stopped by the prescribed
+pressure guard after 275.973 seconds, when full-memory PSI had remained at
+least 80% for 60 seconds.  Aggregate CPU time was 195.022 seconds and peak
+memory was 8,959,299,584 bytes; there were 8,666 `memory.high` events, no
+hard-max or OOM event, and peak full PSI `avg10=97.62`.  Con-ron emitted no
+acceptance or rejection verdict.  NanoDa and Lean replay did not start.  The
+deadline did not fire, the owned cgroup was empty after termination, and no
+retry was made.  This is an inconclusive cumulative resource result, not a
+kernel rejection or a local three-result pass.
+
+Accordingly, the repaired Foundation pin, downstream build, and exact focused
+Three gates are checked.  Only the first two declarations retain a complete
+local three-kernel Comparator pass (for their recorded Two checkpoint).  The
+third declaration remains migrated and exactly checked but externally
+unverified; the other six migrations and complete official verification remain.

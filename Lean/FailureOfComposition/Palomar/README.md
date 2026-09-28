@@ -11,11 +11,14 @@ the replay bottleneck to the pinned Foundation auto-generated theorem
 `FFL.FirstOrder.Arithmetic.Bootstrapping.IsUTerm.BV.construction._proof_4`;
 a later exact-type replacement was compiled in the real Foundation context and
 its integrated construction export passed stock con-ron.  The exact repair is
-now publicly pinned.  Its active downstream rebuild, however, was
-pressure-aborted in Foundation's `Syntax.Term.Functions` module before the
-project bridge rebuilt, so the strict Three gates and a second full Comparator
-attempt were not reached.  This is not complete official Palomar verification,
-a submission, or a registry entry.
+now publicly pinned.  A build-only recovery checkpoint rebuilt the unchanged
+Foundation `Syntax.Term.Functions` target under an admitted 12 GiB development
+profile, rebuilt `SolutionThree`, and passed the new-pin strict, exact-interface,
+source-policy, axiom, dependency-route, and negative-regression gates.  The one
+new cumulative Three Comparator payload then reached con-ron and was stopped by
+the prescribed sustained-memory-pressure guard without a verdict; NanoDa and
+Lean replay did not start.  This is not complete official Palomar verification,
+a local three-result pass, a submission, or a registry entry.
 
 The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
 nine-result migration state in
@@ -29,8 +32,9 @@ using Lean 4.35.0-rc2, Mathlib
 `065356127b1dc0016f66b7283ce0ce2c4055aa55`, and Foundation
 `e72cfe981aa65166f37fa4e2584f4806bc48d72f`.  The current eligibility branch
 pins the one-proof Foundation repair
-`46715b758b3069351825f276f1d98de1e60f1e4f`; its downstream validation is
-blocked as described above. The independent port rerun and subsequent
+`46715b758b3069351825f276f1d98de1e60f1e4f`; its downstream compilation and
+focused Three validation now pass, while cumulative external replay remains
+incomplete as described above. The independent port rerun and subsequent
 evaluator cleanup passed their WSL checks. The cleanup's
 103-source style gate, build, audits, kernel replays, and nine paired draft
 checks are recorded in [STYLE_CLEANUP_VALIDATION.json](../Porting/STYLE_CLEANUP_VALIDATION.json).
@@ -53,7 +57,7 @@ definitions.
 | --- | --- | --- | --- |
 | `obstruction_four_properties` | Migrated; locally verified in the cumulative Two pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
 | `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Two pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | Migrated and exactly checked at the earlier cumulative Three checkpoint; that Comparator attempt timed out during con-ron. The exact Foundation helper repair is now public and its construction export passes stock con-ron, but the active downstream Foundation rebuild was pressure-aborted before the new-pin Three gates, so this result remains not locally cumulative-kernel verified | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `no_quotient_composition_godel` | Migrated and exactly checked on the repaired public Foundation pin. Its focused gates pass, but the bounded cumulative Comparator payload was pressure-stopped during con-ron without a verdict; it remains not locally cumulative-kernel verified | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
 | `pi_one_characterization` | Not yet migrated into the eligible cumulative pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
 | `generated_congruence_classification` | Not yet migrated into the eligible cumulative pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Not yet migrated into the eligible cumulative pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
@@ -120,10 +124,15 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    checker started; a separately authorized continuation repaired and
    smoke-tested the launch path, and the unchanged integrated export was then
    explicitly accepted by stock con-ron.  The exact repair was published and
-   pinned.  Rebuilding the new public pin reached sustained memory pressure in
-   the affected downstream Foundation `Syntax.Term.Functions` module and was
-   stopped by policy before the Three project gates.  No second cumulative
-   Comparator attempt was launched.
+   pinned.  A later build-only recovery first demonstrated a contained 10 GiB
+   hard-cap OOM for the unchanged Foundation `Syntax.Term.Functions` target,
+   then rebuilt that target under the one authorized 12 GiB profile, rebuilt
+   `SolutionThree`, and passed every focused new-pin Three gate.  The one
+   authorized cumulative Comparator payload built and exported both exact
+   modules and reached con-ron, then the PSI guard stopped it after 275.973
+   seconds with no kernel verdict.  Peak memory was 8,959,299,584 bytes, there
+   were no hard-max or OOM events, and NanoDa and Lean replay never started.
+   This remains an inconclusive resource result; no retry was made.
    Neither checkpoint is a complete Palomar mechanical or editorial result. The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    additionally performs protected source-provenance and exported-proof checks.
