@@ -1,5 +1,63 @@
 # Palomar eligibility status
 
+## 2026-09-28 containment continuation and public repair pin checkpoint
+
+The ordinary WSL workload context reports an operational systemd 257.13 user
+manager (`running`, no failed units) and a writable delegated cgroup v2 with
+`cpu`, `memory`, and `pids`. The Codex filesystem sandbox instead receives
+`Operation not permitted` from the same manager query. The earlier launcher's
+generic error discarded this distinction, so its archived message alone did
+not identify the old manager state. The launcher now classifies operational,
+degraded, transitional, unreachable, permission-denied, and missing/read-only
+delegation states separately. Its 21 regressions pass, including reachable
+degraded, unreachable, and missing-controller fixtures.
+
+Two harmless exact-path smoke launches were recorded. The first exposed only
+a diagnostic mistake caused by bubblewrap's private cgroup namespace. After
+passing the authenticated host leaf to the diagnostic payload, the second
+verified the actual pressure supervisor, cgroup placement and cleanup, one CPU,
+`memory.high=8G`, `memory.max=10G`, zero swap, bubblewrap read-only input, and a
+parent/child/grandchild process tree. No resource event occurred.
+
+The continuation then made one actual stock con-ron launch against the retained
+integrated-construction export, SHA-256
+`8d1ae06a757442846b5f3ad7190433adb7b462d97147f9132e2ed7011038ac63`.
+Con-ron explicitly accepted 8,090 declarations in verified mode and completed
+all 7,707 checks in 22.052 seconds, at 247,754,752 bytes aggregate peak memory,
+with no pressure, high/max, deadline, swap, OOM, OOM-kill, or pids event. The
+previous checkpoint remains one parent invocation, zero checker launches, and
+a setup failure; it has not been reclassified as a pass.
+
+The exact Foundation repair
+`46715b758b3069351825f276f1d98de1e60f1e4f` was published without altering its
+parentage at `https://github.com/flengyel/foundation.git`, branch
+`palomar-helper-repair-20260928`, and confirmed publicly fetchable. Project
+checkpoint `53afd6ae8a056eb0dbd5618e49b6025066bb2199` pins that full commit. Lake
+resolved the active dependency from the public URL; all unrelated manifest
+entries stayed unchanged, and the repaired source hash matches the tested
+isolated build. The active repaired `Basic` module rebuilt successfully in
+47.681 seconds at 992,169,984 bytes peak without a resource event.
+
+The affected downstream build then stopped at
+`Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Functions`. The
+mandated pressure guard terminated it after 205.856 seconds when full-memory
+PSI had remained at least 80% for 60 seconds. Peak memory was 8,974,295,040
+bytes, with 6,898 `memory.high` events and last full PSI `avg10=97.38`; hard-max,
+swap, OOM, OOM-kill, and pids events were zero. This is an inconclusive build
+resource result, not a Lean theorem rejection. Under the task's stop rule, the
+strict/interface/source-policy/dependency gates were not rerun on the new pin
+and no cumulative Three Comparator parent or payload was launched.
+
+Thus the repair is publicly pinned and its actual construction export is
+stock-con-ron accepted, but the Three candidate is not fully rebuilt or locally
+cumulative-kernel verified on the new pin. ChallengeThree, SolutionThree, the
+Gödel bridge, and the portable configuration are byte-unchanged from
+`b557d255f1d0b42920440cb2d4762b1ca54b2728`. The first two declarations retain
+their historical Two-pair pass for its recorded pin. Third-result external
+verification, six migrations, and complete official verification remain.
+Detailed evidence is indexed in
+`Audit/palomar-foundation-continuation-20260928/`.
+
 ## 2026-09-28 local Foundation integration checkpoint
 
 The factored proof was integrated into an isolated checkout of Foundation at

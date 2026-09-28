@@ -9,13 +9,13 @@ for exactly the first two declarations; the single bounded Three-pair attempt
 timed out during con-ron without a kernel verdict.  Focused diagnosis localizes
 the replay bottleneck to the pinned Foundation auto-generated theorem
 `FFL.FirstOrder.Arithmetic.Bootstrapping.IsUTerm.BV.construction._proof_4`;
-a later exact-type project-local replacement passes stock con-ron cheaply.  The
-replacement has now been compiled and audited in an isolated real Foundation
-source context, but its one permitted integrated con-ron parent invocation
-failed at containment setup before the checker started.  It therefore has not
-been published or pinned, and no second full Three attempt was launched.  This
-is not complete official Palomar verification, a submission, or a registry
-entry.
+a later exact-type replacement was compiled in the real Foundation context and
+its integrated construction export passed stock con-ron.  The exact repair is
+now publicly pinned.  Its active downstream rebuild, however, was
+pressure-aborted in Foundation's `Syntax.Term.Functions` module before the
+project bridge rebuilt, so the strict Three gates and a second full Comparator
+attempt were not reached.  This is not complete official Palomar verification,
+a submission, or a registry entry.
 
 The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
 nine-result migration state in
@@ -24,10 +24,14 @@ and correspondence baseline remains in
 [`ELIGIBILITY_INVENTORY.json`](ELIGIBILITY_INVENTORY.json).
 
 The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
-Its accepted checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`, using
-Lean 4.35.0-rc2, Mathlib `065356127b1dc0016f66b7283ce0ce2c4055aa55`, and
-Foundation `e72cfe981aa65166f37fa4e2584f4806bc48d72f`. The independent port
-rerun and subsequent evaluator cleanup passed their WSL checks. The cleanup's
+Its accepted port checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`,
+using Lean 4.35.0-rc2, Mathlib
+`065356127b1dc0016f66b7283ce0ce2c4055aa55`, and Foundation
+`e72cfe981aa65166f37fa4e2584f4806bc48d72f`.  The current eligibility branch
+pins the one-proof Foundation repair
+`46715b758b3069351825f276f1d98de1e60f1e4f`; its downstream validation is
+blocked as described above. The independent port rerun and subsequent
+evaluator cleanup passed their WSL checks. The cleanup's
 103-source style gate, build, audits, kernel replays, and nine paired draft
 checks are recorded in [STYLE_CLEANUP_VALIDATION.json](../Porting/STYLE_CLEANUP_VALIDATION.json).
 The uploaded evidence was checked against the published source hashes.
@@ -49,7 +53,7 @@ definitions.
 | --- | --- | --- | --- |
 | `obstruction_four_properties` | Migrated; locally verified in the cumulative Two pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
 | `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Two pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | Migrated and exactly checked in the cumulative Three pair; the bounded Comparator attempt timed out during con-ron. The helper replacement is checked in an isolated real Foundation build, but its integrated con-ron gate failed before launch and it is not published or pinned, so this result is not locally cumulative-kernel verified | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `no_quotient_composition_godel` | Migrated and exactly checked at the earlier cumulative Three checkpoint; that Comparator attempt timed out during con-ron. The exact Foundation helper repair is now public and its construction export passes stock con-ron, but the active downstream Foundation rebuild was pressure-aborted before the new-pin Three gates, so this result remains not locally cumulative-kernel verified | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
 | `pi_one_characterization` | Not yet migrated into the eligible cumulative pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
 | `generated_congruence_classification` | Not yet migrated into the eligible cumulative pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Not yet migrated into the eligible cumulative pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
@@ -110,13 +114,16 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    three-result pair, then timed out during con-ron at 1,200 seconds without a
    kernel verdict, OOM, or hard-memory-limit event.  It is an inconclusive
    resource result, not a rejection.  Subsequent diagnostics produced an
-   exact-type local replacement for the isolated Foundation helper; its
-   standalone project-local dependency-closed export is accepted by stock
-   con-ron.  A later isolated build validates the proof in the actual
-   Foundation record context, but its sole authorized integrated con-ron parent
-   invocation failed at containment setup before con-ron started.  The repair
-   therefore was not published or pinned, and the Three candidate has not been
-   changed or replayed.
+   exact-type replacement for the isolated Foundation helper.  A later isolated
+   build validated it in the actual Foundation record context.  The first
+   integrated con-ron parent invocation failed at containment setup before the
+   checker started; a separately authorized continuation repaired and
+   smoke-tested the launch path, and the unchanged integrated export was then
+   explicitly accepted by stock con-ron.  The exact repair was published and
+   pinned.  Rebuilding the new public pin reached sustained memory pressure in
+   the affected downstream Foundation `Syntax.Term.Functions` module and was
+   stopped by policy before the Three project gates.  No second cumulative
+   Comparator attempt was launched.
    Neither checkpoint is a complete Palomar mechanical or editorial result. The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    additionally performs protected source-provenance and exported-proof checks.

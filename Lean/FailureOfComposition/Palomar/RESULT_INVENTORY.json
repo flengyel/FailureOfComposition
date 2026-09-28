@@ -1,7 +1,8 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-28T04:53:36Z",
+  "recorded_at": "2026-09-28T16:36:15Z",
   "tested_code_commit": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
+  "current_pin_launcher_commit": "53afd6ae8a056eb0dbd5618e49b6025066bb2199",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
     "challenge_module": "FailureOfComposition.Palomar.ChallengeThree",
@@ -89,6 +90,38 @@
     "cumulative_three_comparator_attempted": false,
     "publication_gate_passed": false
   },
+  "foundation_continuation_checkpoint": {
+    "foundation_parent": "e72cfe981aa65166f37fa4e2584f4806bc48d72f",
+    "foundation_repair_commit": "46715b758b3069351825f276f1d98de1e60f1e4f",
+    "foundation_public_url": "https://github.com/flengyel/foundation.git",
+    "foundation_public_branch": "palomar-helper-repair-20260928",
+    "repair_publicly_fetchable": true,
+    "project_dependency_pin_changed": true,
+    "project_pin_launcher_commit": "53afd6ae8a056eb0dbd5618e49b6025066bb2199",
+    "prior_parent_invocations": 1,
+    "prior_internal_checker_launches": 0,
+    "prior_result": "setup_failure_before_checker_start",
+    "infrastructure_smoke_launches": 2,
+    "successful_smoke_launches": 1,
+    "continuation_conron_parent_invocations": 1,
+    "continuation_internal_checker_launches": 1,
+    "integrated_conron_result": "accepted_verified",
+    "integrated_conron_elapsed_seconds": 22.052,
+    "integrated_conron_peak_memory_bytes": 247754752,
+    "active_basic_build_result": "pass",
+    "downstream_solution_three_build_result": "pressure_aborted_inconclusive",
+    "downstream_last_failed_target": "Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Functions",
+    "downstream_elapsed_seconds": 205.856,
+    "downstream_peak_memory_bytes": 8974295040,
+    "downstream_memory_high_events": 6898,
+    "downstream_memory_max_events": 0,
+    "downstream_oom_events": 0,
+    "downstream_pressure_peak_full_avg10": 97.38,
+    "new_pin_focused_three_gates_completed": false,
+    "cumulative_three_comparator_parent_attempts": 0,
+    "cumulative_three_comparator_payload_launches": 0,
+    "cumulative_three_comparator_result": "not_attempted_downstream_build_gate_failed"
+  },
   "last_passing_checkpoint": {
     "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",
     "challenge_module": "FailureOfComposition.Palomar.ChallengeTwo",
@@ -117,7 +150,7 @@
     {
       "ordinal": 3,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_godel",
-      "status": "migrated_and_exactly_checked_external_timeout_inconclusive",
+      "status": "migrated_exactly_checked_at_prior_pin_new_pin_downstream_build_blocked",
       "selected_by": "comparator-three.json"
     },
     {

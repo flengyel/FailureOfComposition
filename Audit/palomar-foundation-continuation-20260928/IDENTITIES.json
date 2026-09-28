@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-28T16:36:15Z",
+  "project_branch": "codex/palomar-eligibility",
+  "project_start_checkpoint": "cd8c349fe813840c2814d496da8be84d61ebe488",
+  "project_pin_launcher_checkpoint": "53afd6ae8a056eb0dbd5618e49b6025066bb2199",
+  "unchanged_three_proof_configuration_baseline": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
+  "foundation": {
+    "public_url": "https://github.com/flengyel/foundation.git",
+    "public_branch": "palomar-helper-repair-20260928",
+    "parent": "e72cfe981aa65166f37fa4e2584f4806bc48d72f",
+    "repair_commit": "46715b758b3069351825f276f1d98de1e60f1e4f",
+    "changed_file": "Foundation/FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Basic.lean",
+    "repaired_file_sha256": "6a95b78fe707869e908b1b4a06f33826c4a670ddb2e9b8f7892764d3589b05dc",
+    "public_fetch_confirmed": true,
+    "project_pin_resolved_by_lake": true,
+    "unrelated_manifest_entries_changed": false
+  },
+  "toolchain": {
+    "lean_version": "4.35.0-rc2",
+    "lean_commit": "11acb17ec6b07a8f9e9173e6845197929540936b",
+    "mathlib": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+    "palomar_submission": "a59f25bd8a66bf6faf3a4f4260d412989c0185ea",
+    "conron_sha256": "4e5616d94374cae37324dad2594f6230c2bb2297240249fc78ff508f3bc5acef"
+  },
+  "integrated_export": {
+    "bytes": 44064407,
+    "sha256": "8d1ae06a757442846b5f3ad7190433adb7b462d97147f9132e2ed7011038ac63",
+    "included_in_archive": false
+  },
+  "prior_checkpoint_accounting": {
+    "conron_parent_invocations": 1,
+    "internal_checker_launches": 0,
+    "result": "setup_failure_before_checker_start"
+  },
+  "continuation_infrastructure": {
+    "smoke_parent_launches": 2,
+    "successful_smoke_launches": 1,
+    "manager_state_in_workload_context": "running",
+    "launcher_regression_tests": 21,
+    "launcher_regression_result": "pass"
+  },
+  "continuation_integrated_conron": {
+    "parent_invocations": 1,
+    "internal_checker_launches": 1,
+    "result": "accepted_verified",
+    "accepted_declarations": 8090,
+    "completed_checks": 7707,
+    "elapsed_seconds": 22.052,
+    "aggregate_cpu_seconds": 21.887753,
+    "peak_memory_bytes": 247754752,
+    "memory_high_events": 0,
+    "memory_max_events": 0,
+    "oom_events": 0,
+    "deadline_fired": false,
+    "pressure_fired": false
+  },
+  "active_basic_build": {
+    "result": "pass",
+    "elapsed_seconds": 47.681,
+    "peak_memory_bytes": 992169984,
+    "memory_high_events": 0,
+    "pressure_fired": false
+  },
+  "downstream_solution_three_build": {
+    "result": "pressure_aborted_inconclusive",
+    "last_failed_target": "Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Functions",
+    "elapsed_seconds": 205.856,
+    "aggregate_cpu_seconds": 125.259607,
+    "peak_memory_bytes": 8974295040,
+    "memory_high_events": 6898,
+    "memory_max_events": 0,
+    "oom_events": 0,
+    "pressure_peak_full_avg10": 97.38,
+    "pressure_fired": true,
+    "deadline_fired": false,
+    "systemd_exit_status": 137
+  },
+  "cumulative_three_comparator": {
+    "parent_attempts": 0,
+    "payload_launches": 0,
+    "result": "not_attempted_downstream_build_gate_failed"
+  }
+}
