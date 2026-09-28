@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Summarize the bounded con-ron diagnostic probes and telemetry."""
+"""Summarize bounded kernel probes without inferring verdicts from progress."""
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 from pathlib import Path
@@ -16,6 +17,113 @@ LABELS = [
     "probe-03-re-bridge-stride1",
     "probe-04-hotspot",
 ]
+
+ACCEPTED = "accepted"
+REJECTED = "rejected"
+DECLINED = "declined"
+LAUNCH_FAILURE = "launch_failure"
+TIMEOUT = "timeout"
+PRESSURE_STOP = "pressure_stop"
+INTERNAL_ERROR = "internal_error"
+
+
+def _exit_status(status: dict) -> int | None:
+    value = status.get("exit_status")
+    return value if isinstance(value, int) else None
+
+
+def _stopped_classification(status: dict) -> str | None:
+    if status.get("deadline_fired"):
+        return TIMEOUT
+    if status.get("pressure_fired"):
+        return PRESSURE_STOP
+    return None
+
+
+def classify_conron(output: str, status: dict, *, launched: bool) -> str:
+    """Classify stock con-ron; a timing summary is never an acceptance marker."""
+    stopped = _stopped_classification(status)
+    if stopped is not None:
+        return stopped
+    if not launched or status.get("launch_error"):
+        return LAUNCH_FAILURE
+    exit_status = _exit_status(status)
+    if exit_status == 1:
+        return REJECTED
+    if exit_status == 2:
+        return DECLINED
+    if exit_status != 0:
+        return INTERNAL_ERROR
+
+    verified_acceptance = re.search(
+        r"(?m)^con-ron: accepted \d+ declarations \(--verified\)$", output
+    ) is not None
+    progress_enabled = any(
+        line.startswith(("con-ron: parse ", "con-ron: install ", "con-ron: check "))
+        for line in output.splitlines()
+    )
+    checking_complete = (
+        "con-ron: check done:" in output if progress_enabled else verified_acceptance
+    )
+    contradictory = any(
+        marker in output
+        for marker in (
+            "con-ron: install failed at",
+            "con-ron: check failed at",
+            "con-ron: rejected",
+            "con-ron: declined",
+        )
+    )
+    if verified_acceptance and checking_complete and not contradictory:
+        return ACCEPTED
+    return INTERNAL_ERROR
+
+
+def classify_leanchecker(output: str, status: dict, *, launched: bool) -> str:
+    """Classify `leanchecker --from-export` by its explicit stock verdict."""
+    stopped = _stopped_classification(status)
+    if stopped is not None:
+        return stopped
+    if not launched or status.get("launch_error"):
+        return LAUNCH_FAILURE
+    exit_status = _exit_status(status)
+    accepts = "Lean default kernel accepts the solution" in output
+    rejects = (
+        "Lean default kernel rejects the solution" in output
+        or "Quotient post-check rejects the solution" in output
+    )
+    if exit_status == 0 and accepts and not rejects:
+        return ACCEPTED
+    if exit_status == 1 and rejects:
+        return REJECTED
+    return INTERNAL_ERROR
+
+
+def classify_nanoda(output: str, status: dict, *, launched: bool) -> str:
+    """Classify NanoDa with `print_success_message: true`."""
+    stopped = _stopped_classification(status)
+    if stopped is not None:
+        return stopped
+    if not launched or status.get("launch_error"):
+        return LAUNCH_FAILURE
+    exit_status = _exit_status(status)
+    accepts = re.search(
+        r"(?m)^Checked \d+ declarations with no errors(?:, skipping exported but "
+        r"unpermitted axioms .*)?$",
+        output,
+    ) is not None
+    if exit_status == 0 and accepts:
+        return ACCEPTED
+    if exit_status != 0 and any(
+        marker in output
+        for marker in (
+            "typechecker errors",
+            "export file declares unpermitted axiom",
+            "Skipped exported but unpermitted axioms",
+        )
+    ):
+        return REJECTED
+    return INTERNAL_ERROR
 
 
 def maximum_assignment(text: str, key: str) -> int | None:
@@ -34,8 +142,8 @@ def max_rss_bytes(text: str) -> int | None:
     return max(values) if values else None
 
 
-def summarize(label: str) -> dict:
-    run = RUNS / label
+def summarize(label: str, runs: Path = RUNS) -> dict:
+    run = runs / label
     status = json.loads((run / "cgroup-status.json").read_text(encoding="utf-8"))
     workload = (run / "workload.log").read_text(encoding="utf-8")
     processes = (run / "processes.log").read_text(encoding="utf-8")
@@ -68,23 +176,18 @@ def summarize(label: str) -> dict:
         "check_done": any("check done:" in line for line in progress),
         "last_progress": progress[-1] if progress else None,
         "last_completed_check": checks[-1] if checks else None,
-        "classification": (
-            "sandbox-launch-failed-before-checker"
-            if not checker_started
-            else "accepted"
-            if any("con-ron: done:" in line for line in progress)
-            else "deadline-inconclusive"
-            if status.get("deadline_fired")
-            else "pressure-aborted-inconclusive"
-            if status.get("pressure_fired")
-            else "other-inconclusive"
-        ),
+        "classification": classify_conron(workload, status, launched=checker_started),
     }
     return result
 
 
 def main() -> None:
-    probes = [summarize(label) for label in LABELS]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--runs", type=Path, default=RUNS)
+    parser.add_argument("--output", type=Path, default=EVIDENCE / "analysis/probe-summary.json")
+    parser.add_argument("labels", nargs="*", default=LABELS)
+    args = parser.parse_args()
+    probes = [summarize(label, args.runs) for label in args.labels]
     output = {
         "probe_slots_used": len(probes),
         "probe_slot_limit": 4,
@@ -94,7 +197,8 @@ def main() -> None:
         "active_checker_wall_limit_seconds": 600,
         "probes": probes,
     }
-    destination = EVIDENCE / "analysis/probe-summary.json"
+    destination = args.output
+    destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(output, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(output, indent=2, sort_keys=True))
 

@@ -34,9 +34,11 @@ The theorem itself is not a large expression.  Its type has 183
 pointer-distinct and 183 structurally distinct nodes; its body has 583 of
 each.  The body is an auto-generated proof from
 `func_defined := .mk fun v => by simp [blueprint]` in Foundation's
-`FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Basic.lean`.  It contains 33
-observed equality applications.  The largest `Eq.trans`-headed subterm has
-545 pointer-distinct nodes.  The replay behavior therefore points to
+`FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Basic.lean`.  The profiler's
+count of 33 is a count of curried equality-application prefixes, not 33
+source-level equality steps; the printed proof contains six visible
+`Eq.trans` uses.  The largest `Eq.trans`-headed subterm has 545
+pointer-distinct nodes.  The replay behavior therefore points to
 pathological conversion/reduction while checking this small equality proof,
 not to a multi-million-node local Gödel proof term.
 
