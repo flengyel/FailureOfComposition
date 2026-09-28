@@ -25,7 +25,10 @@ its 120-second deadline.  Lean reached 8,895,926,272 bytes aggregate peak
 memory, 3,766 `memory.high` events, and full-memory PSI `avg10=93.66`;
 NanoDa reached 5,317,881,856 bytes without pressure or `memory.high` events.
 Both results are timeouts, not rejections.  They do not establish that the
-unchanged input is uniquely problematic for con-ron.
+unchanged input is uniquely problematic for con-ron.  Neither checker emitted
+a progress marker, so the retained runs do not establish that either checker
+reached the suspect helper.  Their memory profiles also differ and do not
+establish a shared mechanism.
 
 A project-local theorem was then proved with exactly the original generated
 helper's elaborated type, modulo deterministic universe-parameter renaming.
@@ -38,9 +41,10 @@ Instead of asking simplification or definitional equality to expand
 4. finishes with `Arithmetic.listMax_defined.iff` and a small coordinate
    identity.
 
-The strict compile completed in 4.644 seconds with 196,042,752 bytes peak
-aggregate memory.  The exact type/dependency/axiom audit completed in 7.449
-seconds with 249,417,728 bytes peak memory.  It established:
+The replacement compile completed in 4.644 seconds with 196,042,752 bytes peak
+aggregate memory.  That command omitted `-DwarningAsError=true`; its output
+contained no warnings.  The exact type/dependency/axiom audit completed in
+7.449 seconds with 249,417,728 bytes peak memory.  It established:
 
 - exact universe-renamed `Expr.eqv` type equality with the original helper;
 - a replacement closure of 8,661 constants which does not reach the original
@@ -69,16 +73,18 @@ Gödel proof, a cumulative Three pass, or official Palomar verification.
 
 ## Attribution
 
-The narrowest source-level control states only the definitional equality
-between `blueprint.func.val` and the substituted `listMax` formula and proves
-it by `rfl`.  Its bounded Lean elaboration did not finish: 120.349 seconds,
-8,592,031,744 bytes peak, 32,881 `memory.high` events, and no OOM.  In contrast,
-the targeted record-projection reduction and named rewrite compile cheaply.
-Together with the stock replacement acceptance, this demonstrates that broad
-definitional reduction of this blueprint projection is the active expensive
-operation and that the narrow proof avoids it.  It still does not identify a
-particular kernel cache, annotation step, conversion subroutine, or cleanup
-mechanism as the low-level cause.
+The 120.349-second attribution command named `PieceBlueprint.lean`.  That
+source was not retained, so its contents cannot be audited or reconstructed as
+historical evidence.  `BlueprintConversionControl.lean` is a later, untested
+proposed reproducer; no timing or resource measurement from the missing source
+is attributed to it.
+
+The successful factored proof avoids the original broad unfolding and is
+accepted cheaply by stock con-ron.  This does not identify the active operation
+inside con-ron, Lean's export checker, or NanoDa.  The mechanism of the original
+stall therefore remains unresolved; in particular, the evidence does not
+localize it to a kernel cache, annotation step, conversion subroutine, or
+cleanup path.
 
 The earlier profiler's “33 equality applications” count is a count of curried
 application prefixes.  The printed generated proof has six visible
@@ -118,9 +124,19 @@ user-systemd manager unavailable; it is not used as evidence and did not
 consume replay budget.  The project-local exact theorem, its export, and its
 stock con-ron replay are the tested evidence.
 
+The direct Lean-checker command used `--from-export` without Comparator's
+`--silent` option; it nevertheless emitted no progress or verdict.  A separate
+attempt to capture `leanchecker` help failed with an incompatible cached
+Lean-4.34.1 `Leanc.olean` and therefore supplies no interface evidence.  The
+diagnostic NanoDa JSON explicitly set `num_threads` to 1.  Supervisor elapsed
+time exceeded the 120-second deadlines by 0.379 seconds for Lean and 0.957
+seconds for NanoDa; these are measured end-to-end deadline overruns, not
+evidence about where either checker was executing.
+
 ## Proposed integration
 
-`proposed-foundation-change.patch` passes `git apply --unidiff-zero --check`
+At this checkpoint, `proposed-foundation-change.patch` passed
+`git apply --unidiff-zero --check`
 against pinned Foundation commit
 `e72cfe981aa65166f37fa4e2584f4806bc48d72f`.  It adds the same named
 substitution/result lemmas and changes only the source field
@@ -130,12 +146,12 @@ Foundation/FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Basic.lean
 IsUTerm.BV.construction.func_defined
 ```
 
-from the broad `simp [blueprint]` proof to the checked factored proof.  The
-pinned package was not edited and the patch has not been published as a fork.
-A future checkpoint must create and record a public Foundation revision,
-update provenance/pins deliberately, rebuild the maintained declarations,
-rerun exact interfaces/routes/axioms/source policy, and only then decide
-whether a cumulative Three Comparator attempt is warranted.
+from the broad `simp [blueprint]` proof to the checked factored proof.  It had
+not been compiled in the actual Foundation source context at this checkpoint;
+the pinned package was not edited and the patch was not published as a fork.
+The later integration checkpoint in
+`Audit/palomar-foundation-integration-20260928/` records the first actual
+source-context build and its separate bounded publication gate.
 
 ## Remaining obligations
 

@@ -9,10 +9,13 @@ for exactly the first two declarations; the single bounded Three-pair attempt
 timed out during con-ron without a kernel verdict.  Focused diagnosis localizes
 the replay bottleneck to the pinned Foundation auto-generated theorem
 `FFL.FirstOrder.Arithmetic.Bootstrapping.IsUTerm.BV.construction._proof_4`;
-a later exact-type project-local replacement passes stock con-ron cheaply, but
-it has not been integrated into a public pinned Foundation revision.  No second
-full Three attempt was launched.  This is not complete official Palomar
-verification, a submission, or a registry entry.
+a later exact-type project-local replacement passes stock con-ron cheaply.  The
+replacement has now been compiled and audited in an isolated real Foundation
+source context, but its one permitted integrated con-ron parent invocation
+failed at containment setup before the checker started.  It therefore has not
+been published or pinned, and no second full Three attempt was launched.  This
+is not complete official Palomar verification, a submission, or a registry
+entry.
 
 The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
 nine-result migration state in
@@ -46,7 +49,7 @@ definitions.
 | --- | --- | --- | --- |
 | `obstruction_four_properties` | Migrated; locally verified in the cumulative Two pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
 | `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Two pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | Migrated and exactly checked in the cumulative Three pair; the bounded Comparator attempt timed out during con-ron. An exact-type local Foundation helper replacement passes stock con-ron but is not integrated, so this result is not locally cumulative-kernel verified | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `no_quotient_composition_godel` | Migrated and exactly checked in the cumulative Three pair; the bounded Comparator attempt timed out during con-ron. The helper replacement is checked in an isolated real Foundation build, but its integrated con-ron gate failed before launch and it is not published or pinned, so this result is not locally cumulative-kernel verified | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
 | `pi_one_characterization` | Not yet migrated into the eligible cumulative pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
 | `generated_congruence_classification` | Not yet migrated into the eligible cumulative pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Not yet migrated into the eligible cumulative pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
@@ -108,8 +111,12 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    kernel verdict, OOM, or hard-memory-limit event.  It is an inconclusive
    resource result, not a rejection.  Subsequent diagnostics produced an
    exact-type local replacement for the isolated Foundation helper; its
-   dependency-closed export is accepted by stock con-ron, but the pinned
-   Foundation dependency and Three candidate have not been changed or replayed.
+   standalone project-local dependency-closed export is accepted by stock
+   con-ron.  A later isolated build validates the proof in the actual
+   Foundation record context, but its sole authorized integrated con-ron parent
+   invocation failed at containment setup before con-ron started.  The repair
+   therefore was not published or pinned, and the Three candidate has not been
+   changed or replayed.
    Neither checkpoint is a complete Palomar mechanical or editorial result. The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    additionally performs protected source-provenance and exported-proof checks.

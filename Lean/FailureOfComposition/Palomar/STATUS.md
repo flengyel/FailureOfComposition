@@ -1,5 +1,41 @@
 # Palomar eligibility status
 
+## 2026-09-28 local Foundation integration checkpoint
+
+The factored proof was integrated into an isolated checkout of Foundation at
+parent `e72cfe981aa65166f37fa4e2584f4806bc48d72f` and committed locally as
+`46715b758b3069351825f276f1d98de1e60f1e4f`.  The ordinary contextual patch
+applies cleanly to that parent and changes only
+`Foundation/FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Basic.lean`.
+It preserves the blueprint and computational record fields and replaces the
+`construction.func_defined` proof with the named factored proof.
+
+The real modified Foundation target and all 1,071 dependencies were rebuilt in
+an isolated Lake build.  The target build passed in 1,079.365 seconds at
+5,301,583,872 bytes peak, and an explicit
+`-DwarningAsError=true` recompilation of the modified module passed in 52.086
+seconds at 540,504,064 bytes peak.  Neither run recorded pressure, limit,
+deadline, swap, or OOM events.  Separate baseline/repaired environments give
+exact normalized matches for the public `blueprint` type and body,
+`construction` type, and the `func_defined` obligation.  The rebuilt
+construction directly reaches the named factored proof; its recursive axioms
+are exactly `propext`, `Classical.choice`, and `Quot.sound`.  The factored
+proof's 8,660-constant closure does not reach the former expensive generated
+proof.  The generated name `construction._proof_4` is reused for the unrelated
+`bvar_defined` field and is not evidence of a stale proof.
+
+The actual record-context export is 44,064,407 bytes with 779,210 expression
+records and 8,094 declaration records, SHA-256
+`8d1ae06a757442846b5f3ad7190433adb7b462d97147f9132e2ed7011038ac63`.
+The single authorized stock con-ron parent invocation then failed at the
+containment systemd-manager preflight, before a run directory or con-ron
+process was created.  The task expressly counts setup failures, so no retry was
+made.  Consequently the standalone acceptance gate did not pass, the local
+Foundation commit was not published, the project remains pinned to `e72cfe9`,
+and no cumulative Three Comparator attempt was authorized.  This is a checked
+local integration and a recorded gate/setup failure, not a public pinned
+repair or third-result kernel pass.
+
 ## 2026-09-27 exact Foundation helper replacement diagnostic
 
 The Palomar candidate remains at tested proof/configuration commit
@@ -15,10 +51,19 @@ axioms are `propext`, `Classical.choice`, and `Quot.sound`.
 The unchanged 44,002,216-byte helper export timed out without a verdict under
 both Lean's export checker (120.379 seconds, 8,895,926,272 bytes peak) and
 NanoDa (120.957 seconds, 5,317,881,856 bytes peak).  Thus the original input's
-bounded failure is not shown to be con-ron-specific.  A narrow conversion
-control separately localizes the source-level expense to broad definitional
-reduction of `blueprint.func.val`; the low-level cache/conversion mechanism
-remains unknown.
+bounded failure is not shown to be con-ron-specific.  Neither run emitted a
+progress marker establishing that it reached the suspect helper, and their
+resource profiles differ.  The timed attribution source was the unretained
+`PieceBlueprint.lean`; the retained `BlueprintConversionControl.lean` was not
+compiled and has no timing attached to it.  The factored proof avoids broad
+unfolding, but the original stall mechanism remains unknown.
+
+The direct Lean-checker command omitted Comparator's `--silent` option, while
+still producing no progress; its separate help capture failed on an
+incompatible cached Lean-4.34.1 `Leanc.olean` and is not interface evidence.
+The diagnostic NanoDa configuration set `num_threads` to 1.  End-to-end
+supervisor elapsed time exceeded the two 120-second deadlines by 0.379 and
+0.957 seconds respectively.
 
 The replacement uses targeted projection reduction, the existing
 `val_mkSigma` and substitution identities, and `listMax_defined.iff`.  Its
@@ -30,11 +75,13 @@ the export itself is slightly larger, so file-size reduction does not explain
 the result.
 
 This establishes a checked exact-type local replacement candidate, not an
-integrated Foundation repair.  The pinned Foundation checkout and candidate
-manifest remain unchanged.  No cumulative Three Comparator was run.  The
-third declaration therefore remains migrated and exactly checked but not
-locally cumulative-kernel verified; six declarations and official verification
-remain outstanding.  Full evidence is in
+integrated Foundation repair at that historical checkpoint.  Its compile
+omitted `-DwarningAsError=true`, although no warnings were printed.  The pinned
+Foundation checkout and candidate manifest remained unchanged, and no
+cumulative Three Comparator was run.  The later local integration outcome is
+recorded above.  The third declaration therefore remains migrated and exactly
+checked but not locally cumulative-kernel verified; six declarations and
+official verification remain outstanding.  Full diagnostic evidence is in
 `Audit/palomar-foundation-helper-replacement-20260928/`.
 
 ## 2026-09-27 Gödel-II con-ron bottleneck diagnosis

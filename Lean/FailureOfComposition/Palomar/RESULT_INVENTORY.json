@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-28T02:20:52Z",
+  "recorded_at": "2026-09-28T04:53:36Z",
   "tested_code_commit": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
@@ -41,7 +41,8 @@
     "full_comparator_attempted": false,
     "full_comparator_gate": "not_met_no_narrow_candidate_side_repair_at_that_checkpoint",
     "followup_exact_local_replacement_available": true,
-    "followup_replacement_integrated": false
+    "followup_replacement_integrated_into_pinned_candidate": false,
+    "followup_replacement_integrated_locally_in_isolated_foundation": true
   },
   "foundation_helper_replacement_diagnostic": {
     "tested_diagnostic_commit": "996f70e1630602a7543a43c7ed87adec02ac841a",
@@ -60,6 +61,33 @@
     "cumulative_three_comparator_attempted": false,
     "proof_replay_attempts_used": 3,
     "proof_replay_wall_seconds": 307.271
+  },
+  "foundation_integration_checkpoint": {
+    "foundation_parent": "e72cfe981aa65166f37fa4e2584f4806bc48d72f",
+    "local_repair_commit": "46715b758b3069351825f276f1d98de1e60f1e4f",
+    "repair_publicly_published": false,
+    "project_dependency_pin_changed": false,
+    "actual_source_context_build_passed": true,
+    "warning_as_error_compile_passed": true,
+    "public_blueprint_type_and_body_match": true,
+    "public_construction_type_match": true,
+    "func_defined_obligation_match": true,
+    "factored_proof_closure_count": 8660,
+    "construction_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "integrated_export_bytes": 44064407,
+    "integrated_export_expression_records": 779210,
+    "integrated_export_declaration_records": 8094,
+    "integrated_export_sha256": "8d1ae06a757442846b5f3ad7190433adb7b462d97147f9132e2ed7011038ac63",
+    "standalone_conron_parent_invocations": 1,
+    "standalone_conron_internal_launches": 0,
+    "standalone_conron_result": "setup_failure_systemd_manager_unavailable",
+    "standalone_conron_retry_performed": false,
+    "cumulative_three_comparator_attempted": false,
+    "publication_gate_passed": false
   },
   "last_passing_checkpoint": {
     "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",
