@@ -1,0 +1,13 @@
+FIRST_INTEGRATED_TYPE_DIFFERENCE path=root.body.body.body
+RAW_TYPE_EQUAL false
+PASS construction body directly uses constructionBvarDefined
+PASS kernel conversion witness assigns the inferred replacement to the field obligation
+PASS named field proof directly uses constructionBvarEvaluation
+PASS exact proof is projected from the new field proof
+PASS new field and exact proof closures exclude TermSubst.construction
+PASS integrated construction closure reaches both named replacement proofs
+PASS integrated recursive axiom closure: [Classical.choice, Quot.sound, propext]
+INTEGRATED_CLOSURE count=8552
+DIRECT_CONSTRUCTION_DEPENDENCIES count=24
+FIELD_PROOF_CLOSURE count=8523
+EXACT_PROOF_CLOSURE count=8524

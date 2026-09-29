@@ -1,0 +1,17 @@
+PASS blueprint type is structurally identical
+PASS blueprint body is structurally identical
+PASS construction public type is structurally identical
+PASS construction head and constructor-argument count are identical
+PASS baseline exposes ten constructor arguments
+PASS patched module exposes ten constructor arguments
+PASS construction argument 0 is structurally identical after documented generated-name renaming
+PASS construction argument 1 is structurally identical after documented generated-name renaming
+PASS construction argument 2 is structurally identical after documented generated-name renaming
+PASS construction argument 3 is structurally identical after documented generated-name renaming
+PASS construction argument 4 is structurally identical after documented generated-name renaming
+PASS construction argument 5 is structurally identical after documented generated-name renaming
+PASS construction argument 6 is structurally identical after documented generated-name renaming
+PASS fvar_defined record argument is structurally identical after documented generated-name renaming
+PASS func_defined record argument is structurally identical after documented generated-name renaming
+PASS only the intended bvar_defined record argument changes
+PASS patched bvar_defined argument names the factored field proof

@@ -1,0 +1,24 @@
+{
+  "bytes": 43708676,
+  "command_scope": "exact command is retained in the matching run script and GNU-time record; targets include Quot, the selected root, permitted axioms, and pinned Comparator primitives",
+  "declaration_records": 7984,
+  "expression_records": 774125,
+  "format": "Lean 4 NDJSON export 3.1.0",
+  "level_records": 287,
+  "lines": 836568,
+  "name_records": 54171,
+  "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/exports/termsubst-construction.ndjson",
+  "record_kinds": {
+    "axiom": 3,
+    "def": 2490,
+    "ie": 774125,
+    "il": 287,
+    "in": 54171,
+    "inductive": 388,
+    "meta": 1,
+    "opaque": 2,
+    "quot": 4,
+    "thm": 5097
+  },
+  "sha256": "e1e79e14a42c5cf31b3c12c0ecc0a146399a8f62ed9550df7d3c843e56e5ba6d"
+}

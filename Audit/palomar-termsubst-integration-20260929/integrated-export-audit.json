@@ -1,0 +1,17 @@
+{
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "declaration_names_seen": 7596,
+  "export": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/exports/termsubst-construction.ndjson",
+  "roots_missing": [],
+  "roots_required": [
+    "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.construction",
+    "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.constructionBvarDefined",
+    "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.constructionBvarDefinedExact",
+    "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.constructionBvarEvaluation"
+  ],
+  "unexpected_axioms": []
+}

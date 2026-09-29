@@ -1,0 +1,24 @@
+{
+  "bytes": 14380640,
+  "command_scope": "exact command is retained in the matching run script and GNU-time record; targets include Quot, the selected root, permitted axioms, and pinned Comparator primitives",
+  "declaration_records": 3697,
+  "expression_records": 244925,
+  "format": "Lean 4 NDJSON export 3.1.0",
+  "level_records": 79,
+  "lines": 272684,
+  "name_records": 23982,
+  "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/exports/comparator-three-challenge.ndjson",
+  "record_kinds": {
+    "axiom": 4,
+    "def": 1545,
+    "ie": 244925,
+    "il": 79,
+    "in": 23982,
+    "inductive": 219,
+    "meta": 1,
+    "opaque": 2,
+    "quot": 4,
+    "thm": 1923
+  },
+  "sha256": "d4082d08628fff75f298333d2aa71944a22a73ab25d163439679f9908fc513ae"
+}

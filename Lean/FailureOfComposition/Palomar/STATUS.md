@@ -1,5 +1,53 @@
 # Palomar eligibility status
 
+## 2026-09-29 integrated TermSubst repair and cumulative Three pass
+
+The exact TermSubst bound-variable replacement was integrated in the actual
+Foundation `Functions.lean` context.  The strictly compiled source preserves
+the blueprint, all three computational fields, and the unchanged fvar/func
+proof fields.  `constructionBvarDefinedExact` is inferred from the new field
+theorem's projection: its raw type is not expression-identical to the unfolded
+field obligation, while an ordinary Lean theorem checks their kernel
+convertibility.  The new proof path excludes the former expensive proof body
+and uses only `propext`, `Classical.choice`, and `Quot.sound`.
+
+The integrated construction export is 43,708,676 bytes, with 774,125
+expression records and 7,984 declaration records, SHA-256
+`e1e79e14a42c5cf31b3c12c0ecc0a146399a8f62ed9550df7d3c843e56e5ba6d`.
+Stock verified con-ron accepted its 7,980 declarations and completed 7,602
+checks in 24.250 seconds (24.481 seconds contained elapsed), peaking at
+253,480,960 bytes with no pressure, limit, deadline, swap, or OOM event.
+
+The scoped Foundation repair is public at
+`https://github.com/flengyel/foundation.git`, branch
+`palomar-termsubst-bvar-repair-20260929`, exact commit
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`, parent
+`46715b758b3069351825f276f1d98de1e60f1e4f`.  Project commit
+`9dc0a581dcc023fa0918cdf05e38c7c5288907de` pins that immutable revision;
+Mathlib, Lean, and the verifier remain unchanged.  The active Functions target
+and `SolutionThree` rebuilt successfully, and all focused strict, exact
+interface/ownership/shared-body, Challenge source-policy, recursive
+axiom/dependency, route-separation, configuration, and negative-regression
+gates passed.  The selected closure is 21,260 constants (4,153 marginal over
+the first-two union).
+
+The cumulative Three Comparator used stable authenticated exports.  Challenge
+is 14,380,640 bytes, SHA-256
+`d4082d08628fff75f298333d2aa71944a22a73ab25d163439679f9908fc513ae`;
+Solution is 154,914,915 bytes, SHA-256
+`f67bbf4bb981e813f60061cc54b5bd6d097ceb8ca92104ef838e71aee507d7e6`.
+Comparator accepted the exact three selected declarations through con-ron,
+NanoDa, and Lean's default kernel and printed `Your solution is okay!`.
+Contained elapsed time was 161.947 seconds, peak aggregate memory was
+779,714,560 bytes, and no pressure, high/max, deadline, swap, or OOM event
+occurred.  This is a complete local Comparator pass for the cumulative Three
+pair, not official Palomar verification or verification of the six remaining
+declarations.
+
+Three declarations are now migrated and locally kernel verified.  Six
+declaration migrations and complete official verification remain.  Detailed
+evidence is indexed in `Audit/palomar-termsubst-integration-20260929/`.
+
 ## 2026-09-29 TermSubst bound-variable proof experiment
 
 The exact standalone replacement for

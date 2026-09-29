@@ -1,0 +1,205 @@
+{
+  "attempt_accounting_before_launch": {
+    "checkpoint_parent_attempts": 0,
+    "checkpoint_payload_launches": 0,
+    "prior_cumulative_three_attempts": 2,
+    "prior_results": [
+      "timeout_inconclusive_on_original_Foundation_pin",
+      "pressure_stop_inconclusive_on_first_repaired_Foundation_pin"
+    ]
+  },
+  "branch": "codex/palomar-eligibility",
+  "checker_profile": {
+    "available_reserve_bytes": 4294967296,
+    "con_ron_configured_arguments": [],
+    "cpu_list": "0",
+    "deadline_seconds": 1200,
+    "lean_num_threads": 1,
+    "memory_high_bytes": 8589934592,
+    "memory_max_bytes": 10737418240,
+    "memory_swap_max_bytes": 0,
+    "nanoda_generated_config_num_threads": 4,
+    "note": "Lake appends the export path to con-ron and a generated JSON config to NanoDa; CPU affinity remains one for the entire process tree.",
+    "physical_headroom_bytes": 2147483648,
+    "pressure_consecutive_seconds": 60,
+    "pressure_full_avg10_threshold": 80,
+    "termination_grace_seconds": 30
+  },
+  "configs": {
+    "portable": {
+      "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/analysis/comparator-inputs/portable-comparator-three.json",
+      "sha256": "72d9a84010d5ac2e8fb2e0144a58adf06b623e7d266a816b468b3e2cd6da5265"
+    },
+    "protected": {
+      "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/analysis/comparator-inputs/protected-comparator-three.json",
+      "sha256": "28077cc3bc32e0b503297303fedb18b477109b0015d2f790f1d4fb8bad4b139f"
+    },
+    "source": {
+      "path": "/home/flengyel/src/FailureOfComposition-port/Lean/FailureOfComposition/Palomar/comparator-three.json",
+      "sha256": "72d9a84010d5ac2e8fb2e0144a58adf06b623e7d266a816b468b3e2cd6da5265"
+    },
+    "transformation": "add only authenticated absolute con-ron and nanoda commands"
+  },
+  "exports": {
+    "challenge": {
+      "bytes": 14380640,
+      "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/exports/comparator-three-challenge.ndjson",
+      "sha256": "d4082d08628fff75f298333d2aa71944a22a73ab25d163439679f9908fc513ae"
+    },
+    "solution": {
+      "bytes": 154914915,
+      "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/exports/comparator-three-solution.ndjson",
+      "sha256": "f67bbf4bb981e813f60061cc54b5bd6d097ceb8ca92104ef838e71aee507d7e6"
+    }
+  },
+  "focused_gates": [
+    {
+      "elapsed_seconds": 7,
+      "exit_status": 0,
+      "gate": "strict-godel-bridge"
+    },
+    {
+      "elapsed_seconds": 6,
+      "exit_status": 0,
+      "gate": "strict-solution-three"
+    },
+    {
+      "elapsed_seconds": 69,
+      "exit_status": 0,
+      "gate": "exact-three-interface"
+    },
+    {
+      "elapsed_seconds": 19,
+      "exit_status": 0,
+      "gate": "challenge-three"
+    },
+    {
+      "elapsed_seconds": 3,
+      "exit_status": 0,
+      "gate": "challenge-three-source-deps"
+    },
+    {
+      "elapsed_seconds": 1,
+      "exit_status": 0,
+      "gate": "challenge-three-source-policy"
+    },
+    {
+      "elapsed_seconds": 22,
+      "exit_status": 0,
+      "gate": "three-dependency-route-audit"
+    },
+    {
+      "elapsed_seconds": 25,
+      "exit_status": 0,
+      "gate": "checker-negative-regressions"
+    },
+    {
+      "elapsed_seconds": 0,
+      "exit_status": 0,
+      "gate": "portable-config"
+    }
+  ],
+  "foundation": "01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d",
+  "generated_at": "2026-09-29T19:50:37.113138Z",
+  "lean_prefix": "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2",
+  "lean_version": "Lean (version 4.35.0-rc2, x86_64-unknown-linux-gnu, commit 11acb17ec6b07a8f9e9173e6845197929540936b, Release)",
+  "mathlib": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+  "official_verification": false,
+  "origin_branch": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
+  "palomar_submission": "a59f25bd8a66bf6faf3a4f4260d412989c0185ea",
+  "project_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
+  "project_tree": "2d1f7081108815dbe56013257c592b071e4b6a90",
+  "scope": "one local cumulative Three Comparator attempt on repaired Foundation pin",
+  "selected_theorems": [
+    "FailureOfComposition.Palomar.obstruction_four_properties",
+    "FailureOfComposition.Palomar.no_quotient_composition_productive",
+    "FailureOfComposition.Palomar.no_quotient_composition_godel"
+  ],
+  "source_files": {
+    "Lean/.lake/packages/Foundation/Foundation/FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Basic.lean": {
+      "bytes": 40512,
+      "git_blob": "8104c2fc0629575d273a46ac977e02da75899377",
+      "sha256": "6a95b78fe707869e908b1b4a06f33826c4a670ddb2e9b8f7892764d3589b05dc"
+    },
+    "Lean/.lake/packages/Foundation/Foundation/FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Functions.lean": {
+      "bytes": 36353,
+      "git_blob": "f4d50552e125a7f366ee917690b2a4f96878fc6f",
+      "sha256": "5afddf2a1c32bb0100dc3099053dfc853f96d6f93611e0ccf7ad1b1bd308ee82"
+    },
+    "Lean/FailureOfComposition/ConcreteGodel.lean": {
+      "bytes": 3945,
+      "git_blob": "2af218e0e9401b949dbc48ca5a8b4101f3d0f594",
+      "sha256": "f205caee29cc907e7df345e0f0ab07daaac9bf231a94c6b6d9f9bd5ea5d36d03"
+    },
+    "Lean/FailureOfComposition/ConcreteGodelRE.lean": {
+      "bytes": 2103,
+      "git_blob": "5b56e7d5a86a0ed1c5943fc091ab046335a2ec0f",
+      "sha256": "2997a778d8ffcf377cca4d3e53620301cafebfeb9018fbcda363543a2d1b2e6f"
+    },
+    "Lean/FailureOfComposition/CraigPresentation.lean": {
+      "bytes": 9655,
+      "git_blob": "ef7ec6cd29e1b7fff645886466f4b0b136cf0a50",
+      "sha256": "94a86a48bc11d9d3003fedf64b702c1e3541aefc8fa536c590dce2c89da9c7d9"
+    },
+    "Lean/FailureOfComposition/Palomar/ArithmeticBridge.lean": {
+      "bytes": 57796,
+      "git_blob": "e2aba2c168075c965ba242148f67b0f234041c77",
+      "sha256": "32c906f376f04b758601872674f35ae4ecf6d3ad3330e0d213c62d6db2a39286"
+    },
+    "Lean/FailureOfComposition/Palomar/ChallengeThree.lean": {
+      "bytes": 36005,
+      "git_blob": "f6b9c2c2d7f29806bd37cf6f64763ef1071c980d",
+      "sha256": "3278113aa6033b45b8b42ef3d4f8e7183c58bf8883e89af541f3ea62bb5cdf74"
+    },
+    "Lean/FailureOfComposition/Palomar/CheckThreeInterface.lean": {
+      "bytes": 15893,
+      "git_blob": "5a7c8eecf2f0442bd7e2ea197720b6c8a53a5159",
+      "sha256": "94fc07185243a42726ea297f7e8c16456f59454b3722289468960b10901452fc"
+    },
+    "Lean/FailureOfComposition/Palomar/GodelQuotientBridge.lean": {
+      "bytes": 1773,
+      "git_blob": "b25531fa83ad14c38bbc1c0d1f5c70f290e0a6b6",
+      "sha256": "6572ffde96df5e1d7806ed028d0b7b3fe3c6348fe75cc7b5c7506c981e51ebe4"
+    },
+    "Lean/FailureOfComposition/Palomar/QuotientBridge.lean": {
+      "bytes": 10044,
+      "git_blob": "78cb9a6a6a48ab11f2d9a5de32c21a082b289705",
+      "sha256": "9e6860f069944ec6acf61d44dcd8b6ee217ed73de808356505cddacf14318b3b"
+    },
+    "Lean/FailureOfComposition/Palomar/SolutionThree.lean": {
+      "bytes": 2906,
+      "git_blob": "0a541d14aaf3d2bbf7e83761d4413f99aa51fc44",
+      "sha256": "1bb5a940a507b31e9fe5459b6d3941a894a420585dce73516422f54f8776b777"
+    }
+  },
+  "tools": {
+    "con-ron": {
+      "path": "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron",
+      "sha256": "4e5616d94374cae37324dad2594f6230c2bb2297240249fc78ff508f3bc5acef"
+    },
+    "gnu_time": {
+      "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/tmp/gnu-time/usr/bin/time",
+      "sha256": "efc0d1112e36ec76c14bf7508e287935cf1631d9d0d91fb532802d07aef51cea"
+    },
+    "lake": {
+      "path": "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/lake",
+      "sha256": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1"
+    },
+    "lean": {
+      "path": "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/lean",
+      "sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38"
+    },
+    "leanchecker": {
+      "path": "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/leanchecker",
+      "sha256": "9e36e955a251b1313c8eb5b7fa101282d51df109d34d8bb7c1cfdf51985aba29"
+    },
+    "leanexport": {
+      "path": "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/leanexport",
+      "sha256": "c5bc1a10a21e22cbb3671d65987cdef2076833b14182d823ccb2153adf2fa954"
+    },
+    "nanoda_bin": {
+      "path": "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin",
+      "sha256": "8241c5e6baa29490aa118d382f97961b208ae730fdb96545c2abed74c9ece5a8"
+    }
+  }
+}

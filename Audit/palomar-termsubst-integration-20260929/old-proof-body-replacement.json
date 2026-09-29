@@ -1,0 +1,59 @@
+{
+  "interpretation": "The generated name is reused for a different internal proof; the old expansive proof body occurs under no declaration name in the integrated export. The field contract is checked separately by the contextual Lean audit.",
+  "new_export": {
+    "bytes": 43708676,
+    "expression_records": 774125,
+    "level_records": 287,
+    "name_records": 54171,
+    "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/termsubst-integration/20260929T062653Z/exports/termsubst-construction.ndjson",
+    "sha256": "e1e79e14a42c5cf31b3c12c0ecc0a146399a8f62ed9550df7d3c843e56e5ba6d",
+    "target": {
+      "all_names": [
+        "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.construction._proof_2"
+      ],
+      "kind": "thm",
+      "level_params": [
+        "u_1"
+      ],
+      "line": 831645,
+      "name": "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.construction._proof_2",
+      "raw_record_sha256": "faab8dfdbf5e238f3644adeef36cb5d1bb544e0d959c27dc55d2b4f477bc5401",
+      "type_expr_index": 769210,
+      "type_structural_sha256": "8871903a69b3525318f25975af9d997f13c321d4271e15df425bf0793657632a",
+      "value_expr_index": 769361,
+      "value_structural_sha256": "e547a048ae146e547670d5104bb4c73f29e3d530c9f954f5e778a6bf1422a61c"
+    }
+  },
+  "new_value_structural_sha256": "e547a048ae146e547670d5104bb4c73f29e3d530c9f954f5e778a6bf1422a61c",
+  "old_body_matches_any_new_declaration": [],
+  "old_export": {
+    "bytes": 43376011,
+    "expression_records": 767800,
+    "level_records": 287,
+    "name_records": 53923,
+    "path": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/three-conron-localization/20260928T230001Z/exports/termsubst-proof2.ndjson",
+    "sha256": "58120b32d32e3bab1b355e1fc77e52c2707b6e28e2bdd9641a7afbe29f79de7b",
+    "target": {
+      "all_names": [
+        "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.construction._proof_2"
+      ],
+      "kind": "thm",
+      "level_params": [
+        "u_1"
+      ],
+      "line": 829903,
+      "name": "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.construction._proof_2",
+      "raw_record_sha256": "e577f58a115eeb9de20b748d89196d860f0b56b8a4d206f0bed7707332c9af8e",
+      "type_expr_index": 767558,
+      "type_structural_sha256": "eb8ebe9d06a2a8603540fb78bdd6b60fa1a7f5ff1bf18e8f4d7abd74ed78bb24",
+      "value_expr_index": 767767,
+      "value_structural_sha256": "15444cbdbe6934c770744e1c455684bbef08651c2f63de01da96ae7d2da20ffa"
+    }
+  },
+  "old_value_structural_sha256": "15444cbdbe6934c770744e1c455684bbef08651c2f63de01da96ae7d2da20ffa",
+  "same_kind": true,
+  "same_name": true,
+  "same_type_structure": false,
+  "same_value_structure": false,
+  "target_name": "FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.construction._proof_2"
+}

@@ -1,0 +1,165 @@
+{
+  "artifacts": {
+    "capacity.json": {
+      "bytes": 2212,
+      "sha256": "c268c11a00a697f412b2d818778c51b7d086c861edec6c66ef746309dafb27c8"
+    },
+    "comparator.log": {
+      "bytes": 454,
+      "sha256": "7ae834ca5aab552609807f5182e33b8d7027995f04e993dd9aea447c3ccc4c9b"
+    },
+    "identity.json": {
+      "bytes": 8631,
+      "sha256": "5af5461833c891cbd94073b729d8b65cec24c779cdcff01d88ea02bcec60f5e7"
+    },
+    "portable-comparator-three.json": {
+      "bytes": 476,
+      "sha256": "72d9a84010d5ac2e8fb2e0144a58adf06b623e7d266a816b468b3e2cd6da5265"
+    },
+    "processes.log": {
+      "bytes": 172371,
+      "sha256": "364c0f2a5d4cac842745a37177b320a5573c464ade03a09e4bc8b172e0b8b09a"
+    },
+    "protected-comparator-three.json": {
+      "bytes": 722,
+      "sha256": "28077cc3bc32e0b503297303fedb18b477109b0015d2f790f1d4fb8bad4b139f"
+    },
+    "time.log": {
+      "bytes": 1321,
+      "sha256": "3221feeccd31eec05852db22a7e8f3f242a01e68a10aa91693c7e7a906baac27"
+    }
+  },
+  "attempt_ordinal_for_checkpoint": 1,
+  "attempt_scope": "local cumulative three-result Comparator only",
+  "con_ron_accepted_declarations": 20286,
+  "cumulative_three_attempt_ordinal_overall": 3,
+  "exact_selection": true,
+  "kernel_stages": {
+    "challenge_input_authenticated": true,
+    "comparator_accepted": true,
+    "con_ron_accepted": true,
+    "con_ron_started": true,
+    "lean_kernel_accepted": true,
+    "lean_kernel_started": true,
+    "nanoda_accepted": true,
+    "nanoda_started": true,
+    "solution_input_authenticated": true
+  },
+  "memory_pressure": {
+    "first": {
+      "full": {
+        "avg10": 0.0,
+        "avg300": 0.0,
+        "avg60": 0.0,
+        "total_usec": 0
+      },
+      "some": {
+        "avg10": 0.0,
+        "avg300": 0.0,
+        "avg60": 0.0,
+        "total_usec": 0
+      }
+    },
+    "last": {
+      "full": {
+        "avg10": 0.0,
+        "avg300": 0.0,
+        "avg60": 0.0,
+        "total_usec": 0
+      },
+      "some": {
+        "avg10": 0.0,
+        "avg300": 0.0,
+        "avg60": 0.0,
+        "total_usec": 0
+      }
+    },
+    "sample_count": 32
+  },
+  "official_palomar_verification": false,
+  "other_six_declarations_verified": false,
+  "result": "pass",
+  "selected_modules": {
+    "challenge": "FailureOfComposition.Palomar.ChallengeThree",
+    "solution": "FailureOfComposition.Palomar.SolutionThree"
+  },
+  "selected_theorems": [
+    "FailureOfComposition.Palomar.obstruction_four_properties",
+    "FailureOfComposition.Palomar.no_quotient_composition_productive",
+    "FailureOfComposition.Palomar.no_quotient_composition_godel"
+  ],
+  "supervisor": {
+    "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/palomar-build-comparatorthreetermsubst01.service/palomar-6abb78564b6125b042ef953e",
+    "cpu_delegated": true,
+    "cpu_stat": {
+      "burst_usec": 0,
+      "nr_bursts": 0,
+      "nr_periods": 0,
+      "nr_throttled": 0,
+      "system_usec": 2521353,
+      "throttled_usec": 0,
+      "usage_usec": 161567360,
+      "user_usec": 159046007
+    },
+    "deadline_fired": false,
+    "elapsed": 161.947,
+    "exit_status": 0,
+    "final_cleanup_elapsed": 0.001,
+    "host_memavailable_last": null,
+    "host_memavailable_minimum": null,
+    "host_memavailable_threshold": null,
+    "host_memory_sample_seconds": 1.0,
+    "host_memory_samples": 0,
+    "host_monitor_error": null,
+    "host_monitor_failed": false,
+    "host_reserve_fired": false,
+    "immediate_cleanup_elapsed": null,
+    "immediate_cleanup_emptied": null,
+    "launch_error": null,
+    "limits_applied": {
+      "memory.high": true,
+      "memory.max": true,
+      "memory.oom.group": true,
+      "memory.swap.max": true,
+      "pids.max": true
+    },
+    "liveness_lost": false,
+    "memory_events": {
+      "high": 0,
+      "low": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_group_kill": 0,
+      "oom_kill": 0
+    },
+    "memory_peak": 779714560,
+    "pids_events": {
+      "max": 0
+    },
+    "placement_error": null,
+    "placement_ok": true,
+    "populated_after_kill": false,
+    "pressure_consecutive_seconds": 60.0,
+    "pressure_fired": false,
+    "pressure_full_avg10_threshold": 80.0,
+    "pressure_last_full_avg10": 0.0,
+    "pressure_peak_full_avg10": 0.0,
+    "pressure_sample_seconds": 5.0,
+    "pressure_samples": 33,
+    "rlimits_applied": {},
+    "sandbox_started": null,
+    "state": "finished",
+    "stop_reason": "completed",
+    "stop_trigger_elapsed": null,
+    "supervisor_pid": 3913332,
+    "term_signal": null
+  },
+  "systemd_exit_status": 0,
+  "time": {
+    "gnu_time_exit_status": 0,
+    "gnu_time_max_rss_kib": 354488,
+    "system_seconds": 0.32,
+    "user_seconds": 9.86,
+    "wall_clock_text": "2:41.77"
+  }
+}

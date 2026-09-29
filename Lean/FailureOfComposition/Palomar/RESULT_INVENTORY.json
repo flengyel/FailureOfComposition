@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-29T03:42:28Z",
-  "tested_code_commit": "b557d255f1d0b42920440cb2d4762b1ca54b2728",
-  "current_pin_launcher_commit": "8094240bb8bfedc34fb875140111f95aabdf79b8",
+  "recorded_at": "2026-09-29T19:55:09Z",
+  "tested_code_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
+  "current_pin_launcher_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
     "challenge_module": "FailureOfComposition.Palomar.ChallengeThree",
@@ -11,18 +11,22 @@
     "portable_config_sha256": "72d9a84010d5ac2e8fb2e0144a58adf06b623e7d266a816b468b3e2cd6da5265",
     "selected_count": 3,
     "migrated_count": 3,
-    "locally_kernel_verified_count": 2,
+    "locally_kernel_verified_count": 3,
     "remaining_count": 6,
     "official_palomar_verification": false,
-    "local_comparator_result": "pressure_stop_inconclusive_on_repaired_foundation_pin",
-    "local_comparator_stage_reached": "con-ron_started",
-    "local_comparator_elapsed_seconds": 275.973,
-    "local_comparator_peak_memory_bytes": 8959299584,
+    "local_comparator_result": "pass",
+    "local_comparator_stage_reached": "complete",
+    "local_comparator_elapsed_seconds": 161.947,
+    "local_comparator_peak_memory_bytes": 779714560,
     "local_comparator_deadline_fired": false,
-    "local_comparator_pressure_stop_fired": true,
-    "local_comparator_memory_high_events": 8666,
+    "local_comparator_pressure_stop_fired": false,
+    "local_comparator_memory_high_events": 0,
     "local_comparator_oom_events": 0,
-    "kernels_accepted": []
+    "kernels_accepted": [
+      "con-ron",
+      "NanoDa",
+      "Lean default kernel"
+    ]
   },
   "godel_bottleneck_diagnosis": {
     "proof_sources_changed": false,
@@ -227,11 +231,56 @@
     "cumulative_three_comparator_attempted": false,
     "active_compiled_artifact_overlay_error_remediated": true
   },
+  "termsubst_integration_checkpoint": {
+    "foundation_parent": "46715b758b3069351825f276f1d98de1e60f1e4f",
+    "foundation_repair_commit": "01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d",
+    "foundation_public_url": "https://github.com/flengyel/foundation.git",
+    "foundation_public_branch": "palomar-termsubst-bvar-repair-20260929",
+    "repair_publicly_fetchable": true,
+    "tested_project_code_configuration_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
+    "contextual_functions_strict_compile": true,
+    "public_contracts_preserved": true,
+    "auxiliary_raw_type_equal": false,
+    "auxiliary_kernel_convertible": true,
+    "integrated_closure_reaches_old_proof_body": false,
+    "integrated_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "integrated_export_bytes": 43708676,
+    "integrated_export_expression_records": 774125,
+    "integrated_export_declaration_records": 7984,
+    "integrated_export_sha256": "e1e79e14a42c5cf31b3c12c0ecc0a146399a8f62ed9550df7d3c843e56e5ba6d",
+    "integrated_stock_conron_result": "accepted_verified",
+    "integrated_stock_conron_accepted_declarations": 7980,
+    "integrated_stock_conron_completed_checks": 7602,
+    "integrated_stock_conron_elapsed_seconds": 24.25,
+    "integrated_stock_conron_peak_memory_bytes": 253480960,
+    "solution_three_build_result": "pass",
+    "focused_three_gates_result": "pass",
+    "selected_union_constants": 21260,
+    "challenge_export_sha256": "d4082d08628fff75f298333d2aa71944a22a73ab25d163439679f9908fc513ae",
+    "solution_export_sha256": "f67bbf4bb981e813f60061cc54b5bd6d097ceb8ca92104ef838e71aee507d7e6",
+    "cumulative_three_comparator_result": "pass",
+    "cumulative_three_comparator_elapsed_seconds": 161.947,
+    "cumulative_three_comparator_peak_memory_bytes": 779714560,
+    "cumulative_three_comparator_memory_high_events": 0,
+    "cumulative_three_comparator_memory_max_events": 0,
+    "cumulative_three_comparator_oom_events": 0,
+    "con_ron_accepted_declarations": 20286,
+    "kernels_accepted": [
+      "con-ron",
+      "NanoDa",
+      "Lean default kernel"
+    ],
+    "official_palomar_verification": false
+  },
   "last_passing_checkpoint": {
-    "tested_code_commit": "4dba750bec8c81a30e0bfe8ab4126e35cbadddb8",
-    "challenge_module": "FailureOfComposition.Palomar.ChallengeTwo",
-    "solution_module": "FailureOfComposition.Palomar.SolutionTwo",
-    "selected_count": 2,
+    "tested_code_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeThree",
+    "solution_module": "FailureOfComposition.Palomar.SolutionThree",
+    "selected_count": 3,
     "local_comparator_result": "pass",
     "kernels_accepted": [
       "con-ron",
@@ -244,18 +293,18 @@
       "ordinal": 1,
       "declaration": "FailureOfComposition.Palomar.obstruction_four_properties",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-two.json"
+      "selected_by": "comparator-three.json"
     },
     {
       "ordinal": 2,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_productive",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-two.json"
+      "selected_by": "comparator-three.json"
     },
     {
       "ordinal": 3,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_godel",
-      "status": "migrated_exactly_checked_on_repaired_pin_cumulative_conron_pressure_stop_inconclusive",
+      "status": "migrated_and_locally_verified",
       "selected_by": "comparator-three.json"
     },
     {

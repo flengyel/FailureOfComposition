@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "foundation": {
+    "parent": "46715b758b3069351825f276f1d98de1e60f1e4f",
+    "repair_commit": "01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d",
+    "repair_tree": "4f6d06e90aacdc5688064d089fa7160e109ce2dc",
+    "public_url": "https://github.com/flengyel/foundation.git",
+    "public_branch": "palomar-termsubst-bvar-repair-20260929",
+    "changed_file": "Foundation/FirstOrder/Arithmetic/Bootstrapping/Syntax/Term/Functions.lean",
+    "patch_sha256": "c51a7647699214f47344ce6caef24b3b690b1697d199149ad1b35f519f3a44f0"
+  },
+  "project": {
+    "tested_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
+    "tested_tree": "2d1f7081108815dbe56013257c592b071e4b6a90",
+    "branch": "codex/palomar-eligibility",
+    "selected_count": 3,
+    "remaining_migrations": 6
+  },
+  "contract_audit": {
+    "strict_contextual_compile": true,
+    "blueprint_type_and_body_unchanged": true,
+    "construction_public_type_unchanged": true,
+    "computational_assignment_types_and_bodies_unchanged": true,
+    "fvar_and_func_proof_fields_unchanged": true,
+    "only_bvar_proof_field_changed": true,
+    "auxiliary_raw_type_equal": false,
+    "auxiliary_kernel_convertible": true,
+    "replacement_reaches_old_proof_body": false,
+    "integrated_closure_constants": 8552,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "integrated_construction": {
+    "export_bytes": 43708676,
+    "expression_records": 774125,
+    "declaration_records": 7984,
+    "export_sha256": "e1e79e14a42c5cf31b3c12c0ecc0a146399a8f62ed9550df7d3c843e56e5ba6d",
+    "con_ron_result": "accepted_verified",
+    "accepted_declarations": 7980,
+    "completed_checks": 7602,
+    "checker_seconds": 24.25,
+    "contained_elapsed_seconds": 24.481,
+    "peak_memory_bytes": 253480960
+  },
+  "focused_three": {
+    "result": "pass",
+    "selected_union_constants": 21260,
+    "first_root_constants": 17085,
+    "productive_root_constants": 17107,
+    "godel_root_constants": 20335,
+    "marginal_over_two_union": 4153,
+    "routes_separated": true
+  },
+  "cumulative_comparator": {
+    "result": "pass",
+    "challenge_export_bytes": 14380640,
+    "challenge_export_sha256": "d4082d08628fff75f298333d2aa71944a22a73ab25d163439679f9908fc513ae",
+    "solution_export_bytes": 154914915,
+    "solution_export_sha256": "f67bbf4bb981e813f60061cc54b5bd6d097ceb8ca92104ef838e71aee507d7e6",
+    "con_ron_accepted_declarations": 20286,
+    "con_ron_accepted": true,
+    "nanoda_accepted": true,
+    "lean_default_kernel_accepted": true,
+    "comparator_accepted": true,
+    "contained_elapsed_seconds": 161.947,
+    "peak_memory_bytes": 779714560,
+    "memory_high_events": 0,
+    "memory_max_events": 0,
+    "oom_events": 0,
+    "pressure_stop": false,
+    "deadline_fired": false,
+    "official_palomar_verification": false
+  }
+}
