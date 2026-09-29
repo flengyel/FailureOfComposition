@@ -1,0 +1,16 @@
+{
+  "challenge_module": "FailureOfComposition.Palomar.ChallengeFour",
+  "solution_module": "FailureOfComposition.Palomar.SolutionFour",
+  "theorem_names": [
+    "FailureOfComposition.Palomar.obstruction_four_properties",
+    "FailureOfComposition.Palomar.no_quotient_composition_productive",
+    "FailureOfComposition.Palomar.no_quotient_composition_godel",
+    "FailureOfComposition.Palomar.pi_one_characterization"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

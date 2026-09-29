@@ -11,6 +11,7 @@ Apache-2.0 licensed.
 -/
 import FailureOfComposition.Palomar.ArithmeticInterface
 import Mathlib.Data.Fin.VecNotation
+import Mathlib.Computability.PartrecCode
 
 /-!
 # Independent evaluator statement interface
@@ -476,5 +477,25 @@ abbrev IndexQuotient (T : Theory) :=
 /-- The quotient class represented by a concrete program index. -/
 def indexQuotientMk (T : Theory) (e : ℕ) : IndexQuotient T :=
   Quot.mk _ e
+
+
+/-- The actual partial function denoted by a Mathlib program index. -/
+def actualEval (e x : ℕ) : Part ℕ :=
+  Nat.Partrec.Code.eval (Denumerable.ofNat Nat.Partrec.Code e) x
+
+/-- Right composition replaces the outer index and fixes the inner index. -/
+def RightCompatible (T : Theory) : Prop :=
+  ∀ f h g : ℕ, PointwiseIndex T f h →
+    PointwiseIndex T (compIndex f g) (compIndex h g)
+
+/-- Pointwise equality is preserved when both composition arguments change. -/
+def CompositionCongruence (T : Theory) : Prop :=
+  ∀ f f' g g' : ℕ, PointwiseIndex T f f' → PointwiseIndex T g g' →
+    PointwiseIndex T (compIndex f g) (compIndex f' g')
+
+/-- Pointwise provability agrees with equality of actual partial functions. -/
+def AgreesWithExtensional (T : Theory) : Prop :=
+  ∀ e d : ℕ, PointwiseIndex T e d ↔ actualEval e = actualEval d
+
 
 end FailureOfComposition.Palomar.Arithmetic.Evaluator

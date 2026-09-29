@@ -12,6 +12,7 @@ Foundation sources are Apache-2.0 licensed; the relevant upstream files are
 e72cfe981aa65166f37fa4e2584f4806bc48d72f.
 -/
 import Mathlib.Computability.RE
+import Mathlib.Data.Fin.VecNotation
 
 /-!
 # Explicit arithmetic statement interface (development source)
@@ -517,5 +518,92 @@ end Coding
 /-- Codes of the actual axioms of `T`, not codes of its deductive closure. -/
 def AxiomCodes (T : Theory) (n : ℕ) : Prop :=
   ∃ p : Sentence, Coding.sentenceCode p = n ∧ p ∈ T
+
+namespace Term
+
+variable {ξ : Type} {n : ℕ}
+
+/-- Evaluation of an independent arithmetic term in the standard naturals. -/
+def standardEval (b : Fin n → ℕ) (f : ξ → ℕ) : Term ξ n → ℕ
+  | .bvar i => b i
+  | .fvar x => f x
+  | .zero => 0
+  | .one => 1
+  | .add s t => standardEval b f s + standardEval b f t
+  | .mul s t => standardEval b f s * standardEval b f t
+
+end Term
+
+namespace Formula
+
+variable {ξ : Type} {n : ℕ}
+
+/-- Standard truth under assignments for bound and free variables. -/
+def standardEval {ξ : Type} : {n : ℕ} →
+    (Fin n → ℕ) → (ξ → ℕ) → Formula ξ n → Prop
+  | _, _, _, .verum => True
+  | _, _, _, .falsum => False
+  | _, b, f, .equal s t => s.standardEval b f = t.standardEval b f
+  | _, b, f, .nequal s t => s.standardEval b f ≠ t.standardEval b f
+  | _, b, f, .less s t => s.standardEval b f < t.standardEval b f
+  | _, b, f, .nless s t => ¬s.standardEval b f < t.standardEval b f
+  | _, b, f, .and p q => standardEval b f p ∧ standardEval b f q
+  | _, b, f, .or p q => standardEval b f p ∨ standardEval b f q
+  | _, b, f, .all p => ∀ x : ℕ, standardEval (Matrix.vecCons x b) f p
+  | _, b, f, .exs p => ∃ x : ℕ, standardEval (Matrix.vecCons x b) f p
+
+/-- A bounded universal quantifier in the independent syntax. -/
+def ball (t : Term ξ n) (p : Formula ξ (n + 1)) : Formula ξ n :=
+  .all (.or (.nless (.bvar fin0) t.lift) p)
+
+/-- A bounded existential quantifier in the independent syntax. -/
+def bexs (t : Term ξ n) (p : Formula ξ (n + 1)) : Formula ξ n :=
+  .exs (.and (.less (.bvar fin0) t.lift) p)
+
+end Formula
+
+/-- Truth of a closed independent arithmetic formula in standard naturals. -/
+def StandardTrue (p : Sentence) : Prop :=
+  Formula.standardEval Fin.elim0 Empty.elim p
+
+namespace Hierarchy
+
+/-- Bounded arithmetic formulas in negation-normal form. -/
+inductive DeltaZero {ξ : Type} : {n : ℕ} → Formula ξ n → Prop
+  | verum : DeltaZero .verum
+  | falsum : DeltaZero .falsum
+  | equal {n : ℕ} (s t : Term ξ n) : DeltaZero (.equal s t)
+  | nequal {n : ℕ} (s t : Term ξ n) : DeltaZero (.nequal s t)
+  | less {n : ℕ} (s t : Term ξ n) : DeltaZero (.less s t)
+  | nless {n : ℕ} (s t : Term ξ n) : DeltaZero (.nless s t)
+  | and {n : ℕ} {p q : Formula ξ n} :
+      DeltaZero p → DeltaZero q → DeltaZero (.and p q)
+  | or {n : ℕ} {p q : Formula ξ n} :
+      DeltaZero p → DeltaZero q → DeltaZero (.or p q)
+  | ball {n : ℕ} {p : Formula ξ (n + 1)} (t : Term ξ n) :
+      DeltaZero p → DeltaZero (Formula.ball t p)
+  | bexs {n : ℕ} {p : Formula ξ (n + 1)} (t : Term ξ n) :
+      DeltaZero p → DeltaZero (Formula.bexs t p)
+
+/-- Π₁ formulas: bounded formulas closed under Boolean connectives, bounded
+quantifiers, and unbounded universal quantification. -/
+inductive PiOne {ξ : Type} : {n : ℕ} → Formula ξ n → Prop
+  | delta {n : ℕ} {p : Formula ξ n} : DeltaZero p → PiOne p
+  | and {n : ℕ} {p q : Formula ξ n} :
+      PiOne p → PiOne q → PiOne (.and p q)
+  | or {n : ℕ} {p q : Formula ξ n} :
+      PiOne p → PiOne q → PiOne (.or p q)
+  | ball {n : ℕ} {p : Formula ξ (n + 1)} (t : Term ξ n) :
+      PiOne p → PiOne (Formula.ball t p)
+  | bexs {n : ℕ} {p : Formula ξ (n + 1)} (t : Term ξ n) :
+      PiOne p → PiOne (Formula.bexs t p)
+  | all {n : ℕ} {p : Formula ξ (n + 1)} : PiOne p → PiOne (.all p)
+
+end Hierarchy
+
+/-- Every true independent Π₁ sentence is derivable in the theory. -/
+def PiOneComplete (T : Theory) : Prop :=
+  ∀ p : Sentence, Hierarchy.PiOne p → StandardTrue p → Provable T p
+
 
 end FailureOfComposition.Palomar.Arithmetic
