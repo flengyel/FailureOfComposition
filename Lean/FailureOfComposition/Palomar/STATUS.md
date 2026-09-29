@@ -1,5 +1,56 @@
 # Palomar eligibility status
 
+## 2026-09-28 cumulative Three con-ron declaration localization
+
+The tested mathematical candidate and configuration remain
+`8094240bb8bfedc34fb875140111f95aabdf79b8`; Challenge/Solution sources,
+dependency pins, and the portable Comparator configuration were unchanged.
+The surviving 154,905,023-byte cumulative Solution export was copied to stable
+local evidence before replay and now has SHA-256
+`64877ccc19f40fc23b59545e0f7afd26f0a6e9dd7ff00c2921620476be5dfe62`.
+Because the earlier archive omitted this hash, it authenticates the diagnostic
+input but cannot retroactively prove byte identity with the previous Comparator
+input.  Source, pin, compiled-module, root, axiom, and command provenance all
+match the recorded candidate.
+
+Stock con-ron was run with `--verified --jobs=1 --progress=1` under the unchanged
+8 GiB high/10 GiB max, zero-swap, one-CPU containment.  The full export
+completed 16,967 of 19,728 checks, last completing
+`TermSubst.construction._proof_7` at 61.079 seconds.  The next installed and
+exported declaration was `TermSubst.construction._proof_2`.  The PSI guard
+stopped the run at 215.675 seconds (139.527 aggregate CPU), 8,955,527,168 bytes
+peak, 8,207 high events, full PSI `avg10=98.32`, and zero max/OOM events.  No
+verdict was issued.
+
+The pending `_proof_2` theorem has an 8,516-constant closure with exactly the
+permitted axioms.  Its 43,376,011-byte dependency-closed export has SHA-256
+`58120b32d32e3bab1b355e1fc77e52c2707b6e28e2bdd9641a7afbe29f79de7b`.
+Alpha-normalized structural hashes show that its exact type and body match the
+full export.  In the isolated replay, con-ron completed 7,562 of 7,568 checks,
+last completing `nth.congr_simp`; `_proof_2` was again the next installed and
+exported declaration.  This run pressure-stopped at 170.616 seconds (90.799
+aggregate CPU), 8,973,803,520 bytes peak, 6,484 high events, full PSI
+`avg10=98.36`, and zero max/OOM events.  `_proof_7` is absent from this closure,
+and the full replay had already passed `nth.congr_simp`, so the two runs
+reproduce the common `_proof_2` check boundary rather than merely naming the
+last completed predecessor.
+
+The generated theorem is reached by the `bvar_defined` field proof
+`by simp [blueprint]` at Foundation
+`Bootstrapping/Syntax/Term/Functions.lean:25`.  This localizes a stock con-ron
+performance boundary; it does not identify the checker's internal reduction or
+allocation mechanism and is not a theorem rejection.  No proof rewrite or full
+Comparator run was made.  The smallest proposed follow-up is an exact-type,
+one-field factoring through an explicit evaluation/substitution identity and
+the existing `nth_defined.iff`, followed by unchanged stock-kernel validation.
+
+Exactly two checker payloads used 386.291 seconds of the 540-second budget.
+Both owned cgroups were empty after cleanup.  Cumulative Three still has no
+con-ron, NanoDa, or Lean verdict on the repaired pin.  The first two results
+retain their historical complete local pass; six migrations and complete
+official verification remain.  Detailed evidence is indexed in
+`Audit/palomar-three-conron-localization-20260928/`.
+
 ## 2026-09-28 downstream build recovery and cumulative Three checkpoint
 
 The unchanged public Foundation repair remains pinned at
