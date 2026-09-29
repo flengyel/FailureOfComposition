@@ -599,11 +599,29 @@ inductive PiOne {ξ : Type} : {n : ℕ} → Formula ξ n → Prop
       PiOne p → PiOne (Formula.bexs t p)
   | all {n : ℕ} {p : Formula ξ (n + 1)} : PiOne p → PiOne (.all p)
 
+/-- Σ₁ formulas: bounded formulas closed under Boolean connectives, bounded
+quantifiers, and unbounded existential quantification. -/
+inductive SigmaOne {ξ : Type} : {n : ℕ} → Formula ξ n → Prop
+  | delta {n : ℕ} {p : Formula ξ n} : DeltaZero p → SigmaOne p
+  | and {n : ℕ} {p q : Formula ξ n} :
+      SigmaOne p → SigmaOne q → SigmaOne (.and p q)
+  | or {n : ℕ} {p q : Formula ξ n} :
+      SigmaOne p → SigmaOne q → SigmaOne (.or p q)
+  | ball {n : ℕ} {p : Formula ξ (n + 1)} (t : Term ξ n) :
+      SigmaOne p → SigmaOne (Formula.ball t p)
+  | bexs {n : ℕ} {p : Formula ξ (n + 1)} (t : Term ξ n) :
+      SigmaOne p → SigmaOne (Formula.bexs t p)
+  | exs {n : ℕ} {p : Formula ξ (n + 1)} : SigmaOne p → SigmaOne (.exs p)
+
 end Hierarchy
 
 /-- Every true independent Π₁ sentence is derivable in the theory. -/
 def PiOneComplete (T : Theory) : Prop :=
   ∀ p : Sentence, Hierarchy.PiOne p → StandardTrue p → Provable T p
+
+/-- Every derivable independent Σ₁ sentence is true in the standard naturals. -/
+def SigmaOneSound (T : Theory) : Prop :=
+  ∀ p : Sentence, Hierarchy.SigmaOne p → Provable T p → StandardTrue p
 
 
 end FailureOfComposition.Palomar.Arithmetic

@@ -497,5 +497,18 @@ def CompositionCongruence (T : Theory) : Prop :=
 def AgreesWithExtensional (T : Theory) : Prop :=
   ∀ e d : ℕ, PointwiseIndex T e d ↔ actualEval e = actualEval d
 
+/-- A relation is an equivalence relation compatible with the concrete
+composition operation in both arguments. -/
+def IsCompositionCongruence (R : ℕ → ℕ → Prop) : Prop :=
+  Equivalence R ∧
+    ∀ a a' b b' : ℕ, R a a' → R b b' →
+      R (compIndex a b) (compIndex a' b')
+
+/-- The least composition-compatible equivalence relation containing external
+pointwise provability, expressed as the intersection of all such relations. -/
+def GeneratedRel (T : Theory) (e d : ℕ) : Prop :=
+  ∀ R : ℕ → ℕ → Prop, IsCompositionCongruence R →
+    (∀ x y : ℕ, PointwiseIndex T x y → R x y) → R e d
+
 
 end FailureOfComposition.Palomar.Arithmetic.Evaluator
