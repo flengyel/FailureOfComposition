@@ -1,5 +1,45 @@
 # Palomar eligibility status
 
+## 2026-09-29 TermSubst bound-variable proof experiment
+
+The exact standalone replacement for
+`FFL.FirstOrder.Arithmetic.Bootstrapping.TermSubst.construction._proof_2`
+strictly compiles, has the same universe-renamed/alpha-normalized type, excludes
+the original helper from its 1,719-declaration recursive closure, and uses only
+`propext`, `Classical.choice`, and `Quot.sound`.  Its 43,394,988-byte export has
+SHA-256
+`1234ba6a1a2533a797a0c3a8f1482b849e3b2d24cc3acae85deab90aaf0351ce`.
+Stock verified con-ron accepted 7,953 declarations and completed all 7,576
+checks in 29.239 seconds; the contained workload elapsed 29.495 seconds and
+peaked at 247,910,400 bytes with no pressure, limit, deadline, swap, or OOM
+event.
+
+The actual one-field Foundation patch also strictly compiled.  Body-sensitive
+snapshots preserve the blueprint, the three computational fields, and the
+unchanged fvar/func proof fields (modulo generated-name renumbering), while the
+construction's 8,551-declaration closure reaches the new field proof under only
+the permitted axioms.  Its final exact-contract gate failed, however: an
+explicitly stated named theorem is definitionally equivalent to the field
+obligation but differs as a raw expression (`OfNat.ofNat` versus `HAdd.hAdd` at
+the first normalized difference).  Both authorized actual-context compile
+payloads were already consumed, so no third source revision was compiled.  The
+single checker allowance was therefore used on the expressly permitted
+standalone fallback, not an integrated construction.
+
+No local Foundation repair commit was created, nothing was published, and the
+project/Foundation pins remain unchanged.  An audit-overlay symlink-copy error
+temporarily overwrote four active compiled companion files, but no source,
+manifest, pin, public `.olean`, or `.ilean`.  Exact setup-based reconstruction
+reproduced the retained public artifacts byte for byte and restored all
+companions; the active Foundation checkout is clean at
+`46715b758b3069351825f276f1d98de1e60f1e4f`.  Detailed evidence is indexed in
+`Audit/palomar-termsubst-repair-20260929/`.
+
+The next bounded step is to infer the integrated exact theorem's type directly
+from the named field projection, then recompile and audit that source before an
+integrated replay.  Publication/pinning, downstream validation, cumulative
+Three verification, six migrations, and complete official verification remain.
+
 ## 2026-09-28 cumulative Three con-ron declaration localization
 
 The tested mathematical candidate and configuration remain

@@ -1,6 +1,7 @@
 {
   "active_foundation_commit": "46715b758b3069351825f276f1d98de1e60f1e4f",
   "active_project_candidate_commit": "8094240bb8bfedc34fb875140111f95aabdf79b8",
+  "diagnostic_commit": "be2e3d72cfda093857dc0a245c0173a21c7bbd9b",
   "actual_context": {
     "blueprint_and_computational_contract_preserved": true,
     "construction_recursive_axioms": [

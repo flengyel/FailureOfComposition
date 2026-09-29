@@ -5,7 +5,8 @@ This checkpoint investigates
 without changing the active FailureOfComposition dependency pin or any
 mathematical statement.  The exact tested project candidate remains
 `8094240bb8bfedc34fb875140111f95aabdf79b8`, and the active public Foundation
-revision remains `46715b758b3069351825f276f1d98de1e60f1e4f`.
+revision remains `46715b758b3069351825f276f1d98de1e60f1e4f`.  The checked
+diagnostic source commit is `be2e3d72cfda093857dc0a245c0173a21c7bbd9b`.
 
 ## Result
 
