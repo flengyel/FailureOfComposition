@@ -1,23 +1,23 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-29T19:55:09Z",
-  "tested_code_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
-  "current_pin_launcher_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
+  "recorded_at": "2026-09-29T21:34:00Z",
+  "tested_code_commit": "9701db331411efb2af66ce25440e696373b1df79",
+  "current_pin_launcher_commit": "9701db331411efb2af66ce25440e696373b1df79",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
-    "challenge_module": "FailureOfComposition.Palomar.ChallengeThree",
-    "solution_module": "FailureOfComposition.Palomar.SolutionThree",
-    "portable_config": "Lean/FailureOfComposition/Palomar/comparator-three.json",
-    "portable_config_sha256": "72d9a84010d5ac2e8fb2e0144a58adf06b623e7d266a816b468b3e2cd6da5265",
-    "selected_count": 3,
-    "migrated_count": 3,
-    "locally_kernel_verified_count": 3,
-    "remaining_count": 6,
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeFour",
+    "solution_module": "FailureOfComposition.Palomar.SolutionFour",
+    "portable_config": "Lean/FailureOfComposition/Palomar/comparator-four.json",
+    "portable_config_sha256": "1e4e764a0081f22e848f938a094146d347fc39b8649c59b8ef29d6ab0f9d77c1",
+    "selected_count": 4,
+    "migrated_count": 4,
+    "locally_kernel_verified_count": 4,
+    "remaining_count": 5,
     "official_palomar_verification": false,
     "local_comparator_result": "pass",
     "local_comparator_stage_reached": "complete",
-    "local_comparator_elapsed_seconds": 161.947,
-    "local_comparator_peak_memory_bytes": 779714560,
+    "local_comparator_elapsed_seconds": 142.732,
+    "local_comparator_peak_memory_bytes": 771825664,
     "local_comparator_deadline_fired": false,
     "local_comparator_pressure_stop_fired": false,
     "local_comparator_memory_high_events": 0,
@@ -27,6 +27,35 @@
       "NanoDa",
       "Lean default kernel"
     ]
+  },
+  "four_pi_one_checkpoint": {
+    "proof_interface_commit": "97f2b1fd80d64d31b9609fe2e4954a44cc4545e9",
+    "tested_code_configuration_commit": "9701db331411efb2af66ce25440e696373b1df79",
+    "foundation_revision": "01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d",
+    "focused_gates_result": "pass",
+    "statement_closure_constants": 4429,
+    "selected_union_constants": 21396,
+    "marginal_constants_over_three": 136,
+    "challenge_bytes": 40928,
+    "challenge_lines": 915,
+    "source_policy_result": "pass_with_preferred_surface_warning",
+    "challenge_export_bytes": 15610269,
+    "challenge_export_sha256": "a26f6ea34d668a5892c4cfcba13969b945b915ab612d23e029c418fbe9c4789f",
+    "solution_export_bytes": 155636209,
+    "solution_export_sha256": "0159636259a723892090969b9f4d06909c4ce09c2d6526d4b71d248221b6e766",
+    "cumulative_four_comparator_result": "pass",
+    "cumulative_four_comparator_elapsed_seconds": 142.732,
+    "cumulative_four_comparator_peak_memory_bytes": 771825664,
+    "cumulative_four_comparator_memory_high_events": 0,
+    "cumulative_four_comparator_memory_max_events": 0,
+    "cumulative_four_comparator_oom_events": 0,
+    "con_ron_accepted_declarations": 20404,
+    "kernels_accepted": [
+      "con-ron",
+      "NanoDa",
+      "Lean default kernel"
+    ],
+    "official_palomar_verification": false
   },
   "godel_bottleneck_diagnosis": {
     "proof_sources_changed": false,
@@ -277,10 +306,10 @@
     "official_palomar_verification": false
   },
   "last_passing_checkpoint": {
-    "tested_code_commit": "9dc0a581dcc023fa0918cdf05e38c7c5288907de",
-    "challenge_module": "FailureOfComposition.Palomar.ChallengeThree",
-    "solution_module": "FailureOfComposition.Palomar.SolutionThree",
-    "selected_count": 3,
+    "tested_code_commit": "9701db331411efb2af66ce25440e696373b1df79",
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeFour",
+    "solution_module": "FailureOfComposition.Palomar.SolutionFour",
+    "selected_count": 4,
     "local_comparator_result": "pass",
     "kernels_accepted": [
       "con-ron",
@@ -293,24 +322,25 @@
       "ordinal": 1,
       "declaration": "FailureOfComposition.Palomar.obstruction_four_properties",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-three.json"
+      "selected_by": "comparator-four.json"
     },
     {
       "ordinal": 2,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_productive",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-three.json"
+      "selected_by": "comparator-four.json"
     },
     {
       "ordinal": 3,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_godel",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-three.json"
+      "selected_by": "comparator-four.json"
     },
     {
       "ordinal": 4,
       "declaration": "FailureOfComposition.Palomar.pi_one_characterization",
-      "status": "not_migrated_in_eligible_pair"
+      "status": "migrated_and_locally_verified",
+      "selected_by": "comparator-four.json"
     },
     {
       "ordinal": 5,

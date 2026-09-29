@@ -1,5 +1,44 @@
 # Palomar eligibility status
 
+## 2026-09-29 Π₁ characterization and cumulative Four pass
+
+The independent interface now includes the full Π₁ characterization for
+every consistent deductive extension of PA, with no enumerability or soundness
+hypothesis.  The checked bridge proves standard term/formula evaluation under
+all environments and binders, two-way bounded and Π₁ hierarchy
+correspondence, true-Π₁-completeness correspondence, and both directions of
+the right-compatibility, composition-congruence, and extensional-agreement
+translations.  It transports the maintained
+`ConcreteIndices.pi_one_characterization` theorem without changing its
+signature.
+
+`ChallengeFour`/`SolutionFour` own exactly the four selected declarations.  The
+exact separate-environment checker compared 4,429 recursively reachable
+statement constants and found exactly four Challenge theorem holes, no
+definition holes, and only `propext`, `Classical.choice`, and `Quot.sound` in
+the Solution proof closures.  The pinned source audit passes.  ChallengeFour is
+40,928 bytes and 915 lines: within the 100 KiB/1,000-line hard limits and above
+the preferred 32 KiB/300-line review surface.  The complete selected proof
+union is 21,396 constants, 136 marginal over the accepted Three union; the
+productive and Gödel/Craig routes remain separated.
+
+The tested code/configuration/harness commit is
+`9701db331411efb2af66ce25440e696373b1df79` (proof/interface commit
+`97f2b1fd80d64d31b9609fe2e4954a44cc4545e9`).  Stable Challenge and Solution
+exports are respectively 15,610,269 bytes,
+`a26f6ea34d668a5892c4cfcba13969b945b915ab612d23e029c418fbe9c4789f`,
+and 155,636,209 bytes,
+`0159636259a723892090969b9f4d06909c4ce09c2d6526d4b71d248221b6e766`.
+The one cumulative Four Comparator payload accepted the exact pair through
+con-ron, NanoDa, and Lean's default kernel and printed `Your solution is okay!`.
+Contained elapsed time was 142.732 seconds; aggregate peak memory was
+771,825,664 bytes, with zero pressure, high/max, deadline, swap, or OOM events.
+
+Four declarations are migrated and locally kernel verified.  Five migrations
+and complete official Palomar verification remain.  This local pass is not an
+official submission or registry acceptance.  Detailed evidence is indexed in
+`Audit/palomar-four-pi-one-20260929/`.
+
 ## 2026-09-29 integrated TermSubst repair and cumulative Three pass
 
 The exact TermSubst bound-variable replacement was integrated in the actual
