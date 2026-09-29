@@ -6,7 +6,9 @@ The mathematical candidate, Challenge/Solution sources, portable Comparator
 configuration, and dependency pins were not changed.  The tested candidate and
 configuration remain commit
 `8094240bb8bfedc34fb875140111f95aabdf79b8`; the starting documentation head was
-`d6f5b162ccf7832e92efa8035511c1c3bef9da08`.
+`d6f5b162ccf7832e92efa8035511c1c3bef9da08`.  The checked diagnostic sources,
+compact evidence, and initial status update are commit
+`d734d8aa53ffc79d639848281ce76db19f57e551`.
 
 ## Result
 
@@ -156,4 +158,3 @@ the repaired pin.  The first two declarations retain their historical complete
 local Three-kernel pass for their recorded Two checkpoint.  Six declarations
 remain to migrate, and complete official verification remains outstanding.  No
 checker or verifier was left running.
-

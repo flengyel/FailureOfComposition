@@ -4,7 +4,8 @@
 
 The tested mathematical candidate and configuration remain
 `8094240bb8bfedc34fb875140111f95aabdf79b8`; Challenge/Solution sources,
-dependency pins, and the portable Comparator configuration were unchanged.
+dependency pins, and the portable Comparator configuration were unchanged.  The
+checked diagnostic commit is `d734d8aa53ffc79d639848281ce76db19f57e551`.
 The surviving 154,905,023-byte cumulative Solution export was copied to stable
 local evidence before replay and now has SHA-256
 `64877ccc19f40fc23b59545e0f7afd26f0a6e9dd7ff00c2921620476be5dfe62`.

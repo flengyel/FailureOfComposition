@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "candidate_commit": "8094240bb8bfedc34fb875140111f95aabdf79b8",
+  "diagnostic_commit": "d734d8aa53ffc79d639848281ce76db19f57e551",
   "starting_documentation_head": "d6f5b162ccf7832e92efa8035511c1c3bef9da08",
   "proof_sources_changed": false,
   "dependency_pins_changed": false,
