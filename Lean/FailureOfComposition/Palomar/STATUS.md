@@ -1,5 +1,42 @@
 # Palomar eligibility status
 
+## 2026-09-29 generated-congruence classification and cumulative Five pass
+
+The independent interface now includes the full generated-congruence
+classification for every deductive extension of PA. The checked bridge proves
+two-way Σ₁ hierarchy membership for every formula and binder environment,
+standard Σ₁-soundness correspondence, and an independent intersection
+definition of the least two-sided composition congruence. Generator
+containment, equivalence, composition closure, and leastness are named Lean
+theorems. The relation correspondence is audited as independent of the
+classification theorem. Neither consistency nor enumerability was added.
+
+`ChallengeFive`/`SolutionFive` own exactly the five selected declarations. The
+exact separate-environment checker compared 4,440 recursively reachable
+statement constants and found exactly five Challenge theorem holes, no
+definition holes, and only `propext`, `Classical.choice`, and `Quot.sound` in
+the Solution proof closures. The pinned source audit passes. ChallengeFive is
+42,977 bytes and 948 lines: within the 100 KiB/1,000-line hard limits and above
+the preferred 32 KiB/300-line review surface. The complete selected proof
+union is 21,556 constants, 160 marginal over Four; the productive and
+Gödel/Craig routes remain separated.
+
+The tested code/configuration/harness commit is
+`e9ff8aaf06f38322197e81042723418aab6a8987`. Stable Challenge and Solution
+exports are respectively 15,637,707 bytes,
+`b43649cc83c40522d546e324582b391410ea56eaf2e0b24c4a29ecd9893d8a9c`,
+and 156,465,976 bytes,
+`46565a171f8585298f47bfa7a9176110cf0736e561e90c49fbd5f6eeecbbd82f`.
+The one cumulative Five Comparator payload accepted the exact pair through
+con-ron, NanoDa, and Lean's default kernel and printed `Your solution is okay!`.
+Contained elapsed time was 175.855 seconds; aggregate peak memory was
+806,871,040 bytes, with zero pressure, high/max, deadline, swap, or OOM events.
+
+Five declarations are migrated and locally kernel verified. Four migrations
+and complete official Palomar verification remain. This local pass is not an
+official submission or registry acceptance. Detailed evidence is indexed in
+`Audit/palomar-five-generated-congruence-20260929/`.
+
 ## 2026-09-29 Π₁ characterization and cumulative Four pass
 
 The independent interface now includes the full Π₁ characterization for

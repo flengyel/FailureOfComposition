@@ -2,20 +2,20 @@
 
 **DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
 and their proved counterparts reviewable.  The cumulative eligible
-`ChallengeFour`/`SolutionFour` pair now contains the first four declarations
+`ChallengeFive`/`SolutionFive` pair now contains the first five declarations
 and has a complete local Comparator pass.  The exact separate-environment
 interface and proof-route checks pass, and the preserved exports were accepted
 by stock con-ron, NanoDa, and Lean's default kernel at project commit
-`9701db331411efb2af66ce25440e696373b1df79`.
+`e9ff8aaf06f38322197e81042723418aab6a8987`.
 
 That pass uses a narrowly factored proof for Foundation's `TermSubst`
 bound-variable field.  The repair preserves the computational blueprint and
 record fields, excludes the former expensive proof body from the replacement
 path, and is published as immutable Foundation commit
-`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`.  The cumulative Four run took
-142.732 seconds and peaked at 771,825,664 bytes without pressure or limit
-events.  This is local verification of exactly four declarations; it is not
-complete official Palomar verification, verification of the other five declarations, a
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`.  The cumulative Five run took
+175.855 seconds and peaked at 806,871,040 bytes without pressure or limit
+events.  This is local verification of exactly five declarations; it is not
+complete official Palomar verification, verification of the other four declarations, a
 submission, or a registry entry.
 
 The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
@@ -31,7 +31,7 @@ using Lean 4.35.0-rc2, Mathlib
 `e72cfe981aa65166f37fa4e2584f4806bc48d72f`.  The current eligibility branch
 pins the two-proof Foundation repair
 `01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`; its downstream compilation,
-focused Four validation, and cumulative three-kernel Comparator replay pass.
+focused Five validation, and cumulative three-kernel Comparator replay pass.
 The independent port rerun and subsequent
 evaluator cleanup passed their WSL checks. The cleanup's
 103-source style gate, build, audits, kernel replays, and nine paired draft
@@ -53,11 +53,11 @@ definitions.
 
 | Declaration | Checkpoint status | Mathematical claim and exact assumptions | Maintained proof root in `FailureOfComposition.ConcreteIndices` |
 | --- | --- | --- | --- |
-| `obstruction_four_properties` | Migrated; locally verified in the cumulative Four pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
-| `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Four pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | Migrated and locally verified in the cumulative Four pair on the repaired public Foundation pin | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
-| `pi_one_characterization` | Migrated and locally verified in the cumulative Four pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
-| `generated_congruence_classification` | Not yet migrated into the eligible cumulative pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
+| `obstruction_four_properties` | Migrated; locally verified in the cumulative Five pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
+| `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Five pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
+| `no_quotient_composition_godel` | Migrated and locally verified in the cumulative Five pair on the repaired public Foundation pin | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `pi_one_characterization` | Migrated and locally verified in the cumulative Five pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
+| `generated_congruence_classification` | Migrated and locally verified in the cumulative Five pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Not yet migrated into the eligible cumulative pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
 | `range_counterexample_godel` | Not yet migrated into the eligible cumulative pair | Proposition 6: under the same consistent-r.e.-extension assumptions, an index is pointwise equivalent to empty while its PA-correct range index is inequivalent to the empty program's range index. Gödel-II route. | `range_counterexample_of_re_axioms` |
 | `range_counterexample_productive` | Not yet migrated into the eligible cumulative pair | The identical range statement and hypotheses, by the productive route. | `range_counterexample_via_productiveness_of_re_axioms` |
@@ -92,9 +92,9 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    permits only core, canonical Mathlib and its pinned dependencies, and
    specifically approved Tau Ceti and CSLib libraries in that closure.
    These imports therefore fail the current policy.  The readable cumulative
-   `ChallengeFour` interface for the first four declarations now imports only
+   `ChallengeFive` interface for the first five declarations now imports only
    permitted Mathlib sources and passes the pinned source audit; corresponding
-   interfaces for the other five declarations are still required.
+   interfaces for the other four declarations are still required.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
 3. **Snapshot licensing scope.** This repository now has the exported
@@ -104,17 +104,17 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    the paper. Its scope must be settled for any final submitted snapshot under
    the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
 4. **Comparator evidence remains local.** The cumulative eligible
-   `ChallengeFour`/`SolutionFour` pair at tested project commit
-   `9701db331411efb2af66ce25440e696373b1df79` passed con-ron, NanoDa, and Lean's
+   `ChallengeFive`/`SolutionFive` pair at tested project commit
+   `e9ff8aaf06f38322197e81042723418aab6a8987` passed con-ron, NanoDa, and Lean's
    default kernel.  The exact selected declarations are
    `obstruction_four_properties`, `no_quotient_composition_productive`,
-   `no_quotient_composition_godel`, and `pi_one_characterization`; no definition
-   holes are selected.  The run
+   `no_quotient_composition_godel`, `pi_one_characterization`, and
+   `generated_congruence_classification`; no definition holes are selected. The run
    consumed authenticated stable Challenge/Solution exports and completed in
-   142.732 seconds at 771,825,664 bytes peak with no pressure, limit, deadline,
+   175.855 seconds at 806,871,040 bytes peak with no pressure, limit, deadline,
    swap, or OOM event.  Earlier timeouts and pressure stops remain valid
    historical resource results for their recorded dependency revisions, not
-   theorem rejections.  The local pass does not cover the six unmigrated
+   theorem rejections.  The local pass does not cover the four unmigrated
    declarations and is not an official Palomar mechanical or editorial result.
    The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
@@ -127,8 +127,8 @@ provability would not solve this preparation task. No extra axiom is proposed.
 
 The Foundation port, namespace migration, and evaluator style cleanup are
 complete.  The permitted arithmetic statement interface and proved
-correspondence now support the first three results; they must still be extended
-faithfully for the remaining six.  Comparator follows the bodies of ordinary
+correspondence now supports the first five results; it must still be extended
+faithfully for the remaining four.  Comparator follows the bodies of ordinary
 definitions in the statement's dependency graph; replacing definitions by
 Foundation aliases does not establish this correspondence or make different
 definitions compare identically.
