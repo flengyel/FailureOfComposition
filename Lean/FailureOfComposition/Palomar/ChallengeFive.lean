@@ -874,7 +874,7 @@ def GeneratedRel (T : Theory) (e d : ℕ) : Prop :=
 end FailureOfComposition.Palomar.Arithmetic.Evaluator
 namespace FailureOfComposition.Palomar
 open Arithmetic Arithmetic.Evaluator
-/-- Theorem 1: four witnesses for every consistent recursively enumerable
+/-- Theorem 1: four witness properties for every consistent recursively enumerable
 extension of PA; the middle clauses are single uniform proofs. -/
 theorem obstruction_four_properties
     (T : Arithmetic.Theory)
@@ -889,7 +889,7 @@ theorem obstruction_four_properties
         (Arithmetic.Evaluator.compIndex Arithmetic.Evaluator.identityIndex g) g ∧
       ¬Arithmetic.Evaluator.PointwiseIndex T g Arithmetic.Evaluator.emptyIndex := by
   sorry
-/-- Corollary 2: no operation on the pointwise-provability quotient can obey
+/-- Theorem 1 and Corollary 2: no operation on the pointwise-provability quotient can obey
 the representative composition equation. -/
 theorem no_quotient_composition_productive
     (T : Arithmetic.Theory)
@@ -905,7 +905,7 @@ theorem no_quotient_composition_productive
           Arithmetic.Evaluator.indexQuotientMk T
             (Arithmetic.Evaluator.compIndex e d) := by
   sorry
-/-- Corollary 3 with the identical statement and assumptions, proved on the
+/-- Theorem 1 and Corollary 2, with the identical statement and assumptions, proved on the
 Solution side through the separate maintained Gödel-II route. -/
 theorem no_quotient_composition_godel
     (T : Arithmetic.Theory)
@@ -921,7 +921,7 @@ theorem no_quotient_composition_godel
           Arithmetic.Evaluator.indexQuotientMk T
             (Arithmetic.Evaluator.compIndex e d) := by
   sorry
-/-- Theorem 4: right compatibility, composition congruence, true-Π₁
+/-- Theorem 3: right compatibility, composition congruence, true-Π₁
 completeness, and agreement with actual partial-function equality coincide. -/
 theorem pi_one_characterization
     (T : Arithmetic.Theory)
@@ -934,7 +934,7 @@ theorem pi_one_characterization
     (Arithmetic.PiOneComplete T ↔
       Arithmetic.Evaluator.AgreesWithExtensional T) := by
   sorry
-/-- Theorem 5: the generated composition congruence is extensional under Σ₁
+/-- Theorem 4: the generated composition congruence is extensional under Σ₁
 soundness and universal when Σ₁ soundness fails. -/
 theorem generated_congruence_classification
     (T : Arithmetic.Theory)

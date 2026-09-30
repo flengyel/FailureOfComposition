@@ -226,7 +226,7 @@ theorem no_quotient_composition_of_four_properties
     _ = indexQuotientMk T emptyIndex := Quot.sound hfg'
 
 /-- Productive failure of representative-respecting composition on the actual
-pointwise-provability quotient, derived from the checked four witnesses. -/
+pointwise-provability quotient, derived from the checked four witness properties. -/
 theorem no_quotient_composition_productive
     (T : Theory) (hPA : DeductivelyExtends Peano T) (hCons : Consistent T)
     (hT : REPred (AxiomCodes T)) :

@@ -1,12 +1,18 @@
 # Palomar preparation: draft statement interface
 
 **DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
-and their proved counterparts reviewable.  The cumulative eligible
-`ChallengeSix`/`SolutionSix` pair now contains the first six declarations
+and their proved counterparts reviewable. The latest reviewed verification is
+the cumulative eligible `ChallengeSix`/`SolutionSix` pair, containing the first six declarations
 and has a complete local Comparator pass.  The exact separate-environment
 interface and proof-route checks pass, and the preserved exports were accepted
 by stock con-ron, NanoDa, and Lean's default kernel at project commit
 `b923699c670857f174ab445483d1508a453eaab0`.
+
+A [Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
+at `16e73188e12244f651c7ce57207095bd0d223a44` adds the Gödel range declaration.
+Its validation remains pending; source availability does not establish a Seven
+Comparator pass or acceptance. Declarations 8 and 9, the productive range and
+quotient-monoid statements, still require eligible migration.
 
 That pass uses a narrowly factored proof for Foundation's `TermSubst`
 bound-variable field.  The repair preserves the computational blueprint and
@@ -19,8 +25,8 @@ verification of exactly six declarations; it is not complete official Palomar
 verification, verification of the other three declarations, a
 submission, or a registry entry.
 
-The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
-nine-result migration state in
+The reviewed Six findings are recorded in [`STATUS.md`](STATUS.md), with that
+checkpoint's nine-result migration state in
 [`RESULT_INVENTORY.json`](RESULT_INVENTORY.json).  The earlier resolved-import
 and correspondence baseline remains in
 [`ELIGIBILITY_INVENTORY.json`](ELIGIBILITY_INVENTORY.json).
@@ -46,6 +52,11 @@ the manuscript is unchanged.
 
 ## The nine selected declarations
 
+The [statement correspondence](../MANUSCRIPT_STATEMENTS.md) gives each
+manuscript result in mathematical notation alongside its Lean signature.
+The counts One through Seven refer to selected declarations, including alternate
+proof routes, rather than manuscript theorem numbers.
+
 The names below have prefix `FailureOfComposition.Palomar`. Both
 [`Challenge.lean`](Challenge.lean) and [`Solution.lean`](Solution.lean) declare
 them. [`comparator.json`](comparator.json) selects them in this order and permits
@@ -56,11 +67,11 @@ definitions.
 | --- | --- | --- | --- |
 | `obstruction_four_properties` | Migrated; locally verified in the cumulative Six pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
 | `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Six pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | Migrated and locally verified in the cumulative Six pair on the repaired public Foundation pin | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `no_quotient_composition_godel` | Migrated and locally verified in the cumulative Six pair on the repaired public Foundation pin | Theorem 1/Corollary 2: the identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
 | `pi_one_characterization` | Migrated and locally verified in the cumulative Six pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
 | `generated_congruence_classification` | Migrated and locally verified in the cumulative Six pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Migrated and locally verified in the cumulative Six pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
-| `range_counterexample_godel` | Not yet migrated into the eligible cumulative pair | Proposition 6: under the same consistent-r.e.-extension assumptions, an index is pointwise equivalent to empty while its PA-correct range index is inequivalent to the empty program's range index. Gödel-II route. | `range_counterexample_of_re_axioms` |
+| `range_counterexample_godel` | Seven source candidate at `16e7318`; validation pending | Proposition 6: under the same consistent-r.e.-extension assumptions, an index is pointwise equivalent to empty while its PA-correct range index is inequivalent to the empty program's range index. Gödel-II route. | `range_counterexample_of_re_axioms` |
 | `range_counterexample_productive` | Not yet migrated into the eligible cumulative pair | The identical range statement and hypotheses, by the productive route. | `range_counterexample_via_productiveness_of_re_axioms` |
 | `generated_quotient_partial_recursive` | Not yet migrated into the eligible cumulative pair | For every Sigma-one sound PA extension, the generated quotient is monoid-isomorphic to actual unary partial recursive functions. Its representative equation sends each index class to that index's evaluation. | `generatedQuotientPartialRecursiveEquiv`, `generatedQuotientPartialRecursiveEquiv_mk` |
 
@@ -94,8 +105,9 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    specifically approved Tau Ceti and CSLib libraries in that closure.
    These imports therefore fail the current policy.  The readable cumulative
    `ChallengeSix` interface for the first six declarations now imports only
-   permitted Mathlib sources and passes the pinned source audit; corresponding
-   interfaces for the other three declarations are still required.
+   permitted Mathlib sources and passes the pinned source audit. The Seven
+   source candidate extends the interface to the Gödel range declaration and
+   awaits validation; interfaces for declarations 8 and 9 are still required.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
 3. **Snapshot licensing scope.** This repository now has the exported
@@ -117,8 +129,9 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    no pressure, limit, deadline,
    swap, or OOM event.  Earlier timeouts and pressure stops remain valid
    historical resource results for their recorded dependency revisions, not
-   theorem rejections.  The local pass does not cover the three unmigrated
-   declarations and is not an official Palomar mechanical or editorial result.
+   theorem rejections. The local Six pass does not cover declarations 7–9,
+   including the unvalidated Seven source candidate, and is not an official
+   Palomar mechanical or editorial result.
    The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    additionally performs protected source-provenance and exported-proof checks.
@@ -130,8 +143,9 @@ provability would not solve this preparation task. No extra axiom is proposed.
 
 The Foundation port, namespace migration, and evaluator style cleanup are
 complete.  The permitted arithmetic statement interface and proved
-correspondence now supports the first six results; it must still be extended
-faithfully for the remaining three.  Comparator follows the bodies of ordinary
+correspondence has reviewed verification for the first six selected declarations.
+The Seven source candidate requires validation; declarations 8 and 9 still need
+faithful interface and correspondence extensions. Comparator follows the bodies of ordinary
 definitions in the statement's dependency graph; replacing definitions by
 Foundation aliases does not establish this correspondence or make different
 definitions compare identically.
@@ -193,9 +207,9 @@ builds the maintained proof library, elaborates Challenge and Solution
 separately, and runs `CheckInterface.lean` to compare the nine types and their
 axiom envelopes. The deliberate Challenge-hole warnings are expected. The
 Solution is checked with strict Mathlib style linting and warnings as errors.
-The local checker passed all nine declarations during the September 25 WSL
-acceptance run. It is not Comparator or Palomar mechanical verification. The
-next task adds those checks without repeating the completed toolchain port.
+The local checker passed all nine legacy declarations during the September 25
+WSL acceptance run. That paired check is distinct from the later six-declaration
+Comparator pass and from complete official Palomar verification.
 
 ## Scope, provenance, and review
 

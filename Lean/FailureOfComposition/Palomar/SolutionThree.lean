@@ -13,7 +13,7 @@ namespace FailureOfComposition.Palomar
 
 open Arithmetic Arithmetic.Evaluator
 
-/-- Theorem 1: four productive witnesses with two internal uniform clauses. -/
+/-- Theorem 1: four properties of the productive indices with two internal uniform clauses. -/
 theorem obstruction_four_properties
     (T : Arithmetic.Theory)
     (hPA : Arithmetic.DeductivelyExtends Arithmetic.Peano T)
@@ -28,7 +28,7 @@ theorem obstruction_four_properties
       ¬Arithmetic.Evaluator.PointwiseIndex T g Arithmetic.Evaluator.emptyIndex := by
   exact Arithmetic.Evaluator.obstruction_four_properties T hPA hCons hT
 
-/-- Corollary 2, productive route: no operation on the pointwise-provability
+/-- Theorem 1 and Corollary 2, productive route: no operation on the pointwise-provability
 quotient can obey the representative composition equation. -/
 theorem no_quotient_composition_productive
     (T : Arithmetic.Theory)
@@ -46,7 +46,7 @@ theorem no_quotient_composition_productive
   exact Arithmetic.Evaluator.no_quotient_composition_of_four_properties T hPA
     (obstruction_four_properties T hPA hCons hT)
 
-/-- Corollary 3 with the identical statement and assumptions, by the separate
+/-- Theorem 1 and Corollary 2, with the identical statement and assumptions, by the separate
 maintained Gödel-II and Craig-presentation route. -/
 theorem no_quotient_composition_godel
     (T : Arithmetic.Theory)
