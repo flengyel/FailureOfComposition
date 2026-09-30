@@ -1,0 +1,19 @@
+{
+  "challenge_module": "FailureOfComposition.Palomar.ChallengeSeven",
+  "solution_module": "FailureOfComposition.Palomar.SolutionSeven",
+  "theorem_names": [
+    "FailureOfComposition.Palomar.obstruction_four_properties",
+    "FailureOfComposition.Palomar.no_quotient_composition_productive",
+    "FailureOfComposition.Palomar.no_quotient_composition_godel",
+    "FailureOfComposition.Palomar.pi_one_characterization",
+    "FailureOfComposition.Palomar.generated_congruence_classification",
+    "FailureOfComposition.Palomar.weak_totality_counterexample",
+    "FailureOfComposition.Palomar.range_counterexample_godel"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
