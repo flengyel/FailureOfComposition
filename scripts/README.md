@@ -24,8 +24,12 @@ The mirror retains its build tree, logs, reports, and temporary package mappings
 Synchronization refuses local edits to managed files and preserves its lock
 through verification; interrupted source updates are journaled for recovery.
 
-Both entry points reuse the exact 16 pinned checkouts supplied by
-`${PCATS_DST:-$HOME/src/PCats}/.lake/packages` or `CRS_LAKE_PACKAGES`. They do not
+Both entry points reuse dependency checkouts validated against the checked-out
+revision's manifest and verifier pins. The historical mirror setup used 16
+checkouts supplied by `${PCATS_DST:-$HOME/src/PCats}/.lake/packages` or
+`CRS_LAKE_PACKAGES`; the isolated port and eligibility checkout has its own
+dependency tree. A mapping with older Foundation pins is not interchangeable
+with the current eligibility branch. They do not
 clone, fetch, pull, or update dependencies. Each Lake command receives a validated
 path override. Use the provided environment check instead of bare `lake env`.
 Defaults `LEAN_NUM_THREADS=1` and `FAILCOMP_STYLE_JOBS=1` reduce concurrency;
@@ -37,6 +41,8 @@ they are not an aggregate memory limit. Failures propagate nonzero exit codes.
 `~/src/FailureOfComposition-port` on the migration branch. This helper clones
 only the repository: it does not run Lean, fetch proof dependencies, or alter
 existing mirrors. Keep that checkout outside the synchronization workflow.
-See [Codex WSL setup](../docs/CODEX_WSL_SETUP.md) for installation, launch, and
-verification instructions, and [the first task](../docs/CODEX_PORT_TASK.md) for
-the exact port scope and candidate dependency revisions.
+The setup and [first port task](../docs/CODEX_PORT_TASK.md) are historical
+instructions for a completed migration. Resume the existing port checkout
+using [the Palomar task](../docs/CODEX_PALOMAR_TASK.md); do not recreate it or
+restore historical dependency pins. [Palomar preparation](../Lean/FailureOfComposition/Palomar/README.md)
+distinguishes local Comparator checkpoints from complete official verification.

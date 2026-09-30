@@ -1,5 +1,10 @@
 # First Codex task: port the verified development
 
+> Historical setup and port instructions: this work was completed in September
+> 2026. Do not rerun the initial setup or restore its starting pins for current
+> work. Continue from [the Palomar task](CODEX_PALOMAR_TASK.md) and the
+> [recorded Six checkpoint](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md).
+
 Work in the dedicated Linux checkout on `codex/lean-4.35.0-rc2`, following
 `AGENTS.md`. Complete the toolchain port and its verification. Do not stop after
 writing a plan or listing likely incompatibilities. If a concrete external or

@@ -1,5 +1,11 @@
 # Manuscript v36: mathematical coverage
 
+The [mathematical statements and Lean signatures](MANUSCRIPT_STATEMENTS.md)
+state every numbered manuscript result and the quotient-monoid consequence.
+Theorem, corollary, and proposition numbers share the manuscript's counter;
+the nine selected Palomar declarations include alternate proofs and do not
+form a second manuscript numbering.
+
 This map preserves the final source review from the original development
 repository. The reviewed manuscript is now stored locally as
 [`failure_of_composition_2026-09-21_v36.tex`](../../manuscript/failure_of_composition_2026-09-21_v36.tex),
@@ -8,7 +14,7 @@ manuscript blob is `e0a2bd4b3570235fa4ea89ffe8dcf9d5445499f9`.
 The review starts from commit `355316179c294071d087b04bef0d08bb4329dcb0`
 and includes the three coverage additions below. The manuscript is unchanged.
 
-**Coverage review and integrated verification passed on 2026-09-23.**
+**Historical checkpoint: coverage review and integrated verification passed on 2026-09-23.**
 No unproved mathematical claim was identified within the program-index scope
 specified here after the additions. The native build, all 72 strict style
 checks, theorem and dependency audits, and all 103 kernel replays passed. Runtime evidence is recorded separately in
@@ -24,7 +30,7 @@ those laws instead of assuming them.
 
 | Manuscript statement | Lean declaration and source | Hypotheses and conclusion checked |
 | --- | --- | --- |
-| Theorem 1, `thm:obstruction`: four witnesses | `ConcreteIndices.obstruction_four_properties_of_re_axioms` in [ManuscriptObstruction](ManuscriptObstruction.lean) | PA extension, consistency, and r.e. axiom codes. The two middle equalities retain **uniform** T-provability. Their stronger PA-uniform forms are also proved. |
+| Theorem 1, `thm:obstruction`: four witness properties | `ConcreteIndices.obstruction_four_properties_of_re_axioms` in [ManuscriptObstruction](ManuscriptObstruction.lean) | PA extension, consistency, and r.e. axiom codes. The two middle equalities retain **uniform** T-provability. Their stronger PA-uniform forms are also proved. |
 | Theorem 1: no quotient composition | `ConcreteIndices.no_index_quotient_of_re_axioms` in [ConcreteIndexObstruction](ConcreteIndexObstruction.lean); `no_index_quotient_via_godel_of_re_axioms` in [ConcreteGodelRE](ConcreteGodelRE.lean) | The same theory hypotheses. Excludes every binary operation on the actual pointwise quotient satisfying the representative composition equation. Productive and Gödel-II routes have separate checked proof dependencies. |
 | Corollary 2, `cor:not-category`: proposed composition already fails on endomorphisms of omega | `ConcreteIndices.NoIndexQuotientComposition` and the preceding no-operation theorems; `pa_no_index_quotient_via_godel` in [ConcreteGodel](ConcreteGodel.lean) | Failure of any representative-respecting binary operation on this endomorphism quotient supplies the categorical obstruction, before associativity or units can be imposed. The PA specialization is closed. |
 | Theorem 3, `thm:characterization`: right compatibility, congruence, Pi-one completeness, and extensional agreement | `ConcreteIndices.pi_one_characterization` in [ConcretePiOneCharacterization](ConcretePiOneCharacterization.lean) | Exactly PA extension and consistency; no enumerability assumption. Extensional equality means equality of actual partial functions, including their domains. |
@@ -58,7 +64,7 @@ those laws instead of assuming them.
 
 The review closed three omissions in the public statement packaging:
 
-1. The four-witness tuple now preserves uniform provability in its middle
+1. The four-property statement now preserves uniform provability in its middle
    clauses. `uniformKleeneSentence_iff_uniformSentence` also proves the
    equivalence with the manuscript's uniformly quantified partial-program
    equality formula, rather than relying on an informal encoding convention.
@@ -99,15 +105,24 @@ two unspecified formal sentences.
 
 ## Verification and preparation boundary
 
-The maintained mathematical library has 71 modules plus its umbrella.
-The strict style gate re-elaborates all 72 sources with
-`linter.mathlibStandardSet=true` and `warningAsError=true`, rejects linter
-suppressions, and records source hashes. Diagnostic audit scripts and the
-31 pinned evaluator modules are outside this style-editing scope; the
-verifier still runs the audits and kernel-replays the evaluator modules.
-The complete kernel inventory is 103 modules.
+At the September 23 checkpoint, the mathematical library comprised 71
+modules plus its umbrella. Its style gate checked those 72 sources and its
+kernel inventory included 31 evaluator modules, for 103 modules in total.
+The later [evaluator cleanup](Porting/STYLE_CLEANUP.md) extended strict style
+checking to all 103 sources. These historical counts exclude the subsequent
+Palomar interface and bridge modules.
+
+The [Six checkpoint](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md) on
+`codex/palomar-eligibility` records local Comparator acceptance of the first
+six selected declarations at `b923699c670857f174ab445483d1508a453eaab0`.
+The two range declarations and the quotient-monoid declaration remain outside
+that verified checkpoint. A
+[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
+now adds the Gödel range declaration, with validation still pending. Six is the
+latest reviewed verification; declarations 8 and 9 still need eligible migration.
+No complete official Palomar verification is claimed.
 
 The review is a collaborating-agent semantic review, separately documented in
 [`coverage-review.md`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/coverage-review.md).
-It is not external human acceptance. Palomar preparation and the author's
-arXiv version 37 remain subsequent work.
+It is not external human acceptance. The remaining Palomar preparation and
+the author's planned version 37 are separate from that historical review.

@@ -17,8 +17,21 @@ documented in `docs/CODEX_PORT_TASK.md`; its pre-setup checkpoint is
 cleanup passed its full WSL acceptance suite and was published on main at
 `073e95e54907eb26b6af9070302f5afdde04d963`; see
 `Lean/FailureOfComposition/Porting/STYLE_CLEANUP_VALIDATION.json`.
-The next task is `docs/CODEX_PALOMAR_TASK.md`: construct the eligible statement
-interface, prove correspondence, and run actual Comparator verification.
+Continue with `docs/CODEX_PALOMAR_TASK.md` on `codex/palomar-eligibility`.
+Its cumulative Six pair passed local Comparator verification at
+`b923699c670857f174ab445483d1508a453eaab0`, using Foundation
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. This is the latest reviewed
+verification checkpoint. The Seven source candidate at
+`16e73188e12244f651c7ce57207095bd0d223a44` adds the Gödel range declaration;
+validate it before claiming acceptance. The productive range and quotient-monoid
+declarations (8 and 9) still need eligible migration; complete official
+verification remains.
+Historical port pins above are not the current eligibility-branch pins.
+
+Use `Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md` for mathematical
+statements, Lean signatures, and exact manuscript numbering. Keep these
+correspondences synchronized when statements or manuscript numbering change.
+Selected-declaration ordinals and proof-route counts are not theorem numbers.
 
 Preserve theorem types, quantifiers, and mathematical hypotheses. In particular:
 
@@ -34,7 +47,8 @@ Preserve theorem types, quantifiers, and mathematical hypotheses. In particular:
 
 Do not add axioms, weaken statements, assume an obligation, or introduce proof
 holes into the maintained proofs. The nine deliberate holes in the separate
-Palomar Challenge are the existing exception. Solution must not import Challenge
+legacy Palomar Challenge and the corresponding theorem holes in the cumulative
+Challenge checkpoints are the existing exception. Solution must not import Challenge
 or depend on its holes. The permitted proof axioms are `propext`,
 `Classical.choice`, and `Quot.sound`; do not introduce `native_decide` dependencies.
 
@@ -86,7 +100,10 @@ Record actual commands, revisions, exit codes, and remaining failures.
 ## Palomar
 
 Read `Lean/FailureOfComposition/Palomar/README.md`. Foundation is permitted in
-Solution, but the current Challenge's transitive imports are ineligible. A port
-alone does not fix that boundary. Preserve faithful arithmetic statements;
+Solution. The legacy nine-declaration Challenge has ineligible transitive
+imports; the cumulative Six interface on the eligibility branch passed its
+pinned source audit and local Comparator run. The seventh declaration has a
+source candidate awaiting validation; declarations 8 and 9 still require
+eligible interfaces and correspondence proofs. Preserve faithful arithmetic statements;
 replacing their content with assumptions or unconstrained definitions is not a
 solution. Do not submit, register, or contact Palomar unless explicitly asked.

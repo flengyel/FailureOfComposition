@@ -8,7 +8,7 @@ For consistent extensions, pointwise provable equality itself is a composition
 congruence exactly when the theory proves every true Pi-one sentence; in that
 case it is extensional equality of the computed partial functions.
 For recursively enumerable axiom codes, the concrete obstruction is also proved
-by two independent routes. The quotient uses
+by productive and Gödel-II routes with separately audited dependencies. The quotient uses
 natural-number Mathlib program indices, the production history evaluator's
 arithmetical graphs, and Montagna's external pointwise provability relation.
 The theorem has no `Arithmetization` or graph-realization hypothesis.
@@ -17,7 +17,8 @@ The concrete weak-totality and range-assignment obstructions are also proved.
 The development now constructs the complete arithmetization, including
 realization of every PA-functional Sigma-one graph. PA-provable translations
 compare its representation with any other arithmetization satisfying the
-manuscript's stated laws. The [coverage map](MANUSCRIPT_COVERAGE.md) records
+manuscript's stated laws. The [statement correspondence](MANUSCRIPT_STATEMENTS.md) gives the
+mathematical statements and Lean signatures. The [coverage map](MANUSCRIPT_COVERAGE.md) records
 all numbered results and the covered program-index consequences. Literal historical code-table
 identities and a reconstruction of every historical syntactic category
 remain outside that formalization claim. The maintained library lives in
@@ -48,10 +49,17 @@ The [Palomar preparation draft](Palomar/README.md) packages nine selected claims
 and their proved counterparts with provenance metadata and a local comparison
 check. Its deliberate Challenge holes are outside the production umbrella and
 the 72-source style gate. The Solution is checked separately without holes.
-Palomar eligibility remains blocked by the newer required toolchain and the
-Challenge's Foundation/project import closure; see the draft for the exact
-remaining steps. The author's successful full WSL mirror run is recorded as
-user-reported evidence, separately from checks performed here.
+The Lean 4.35.0-rc2 port and evaluator cleanup passed their recorded WSL
+checks. The legacy nine-declaration Challenge retains ineligible imports;
+the separate eligible Six checkpoint on `codex/palomar-eligibility` passed
+local Comparator verification at `b923699c670857f174ab445483d1508a453eaab0`.
+This is the latest reviewed verification checkpoint. The
+[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
+adds the Gödel range declaration but awaits validation. The productive range
+and quotient-monoid declarations (8 and 9) still need eligible migration, and
+complete official Palomar verification remains; see
+[Palomar preparation](Palomar/README.md). Verification evidence belongs to
+the recorded commits and is not a new verification of later documentation edits.
 
 ## Main result
 
@@ -526,9 +534,11 @@ transport the obstruction separately across every generated object.
 - The required representation comparison is proved under the manuscript's
   explicit arithmetization laws. Literal identity with a separately specified
   historical formula or numerical code table is not claimed.
-- The manuscript coverage and strict style gates have passed. The next
-  milestone is preparation of the Lean code for Palomar; the author will
-  then prepare version 37 for arXiv with the formalization description.
+- The maintained-library coverage and recorded strict style checks passed.
+  The latest reviewed Palomar verification is the local Six checkpoint. A
+  seventh source candidate awaits validation; declarations 8 and 9 still need
+  eligible migration, and complete official verification remains. The planned
+  manuscript version 37 is a separate revision.
 - External human acceptance remains separate from the checked development.
 
 Full PA graph realization, both concrete obstruction proofs, their

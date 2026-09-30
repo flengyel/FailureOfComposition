@@ -95,7 +95,7 @@ theorem weak_totality_counterexample
       Arithmetic.Evaluator.WeaklyTotalIndex T Arithmetic.Evaluator.identityIndex := by
   exact Arithmetic.Evaluator.weak_totality_counterexample T hPA hCons hT
 
-/-- Theorem 7: pointwise equality with empty is not preserved by the fixed
+/-- Proposition 6, Gödel-II route: pointwise equality with empty is not preserved by the fixed
 PA-uniform range assignment. -/
 theorem range_counterexample_godel
     (T : Arithmetic.Theory)

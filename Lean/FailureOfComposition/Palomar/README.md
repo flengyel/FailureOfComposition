@@ -1,7 +1,7 @@
 # Palomar preparation: draft statement interface
 
 **DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
-and their proved counterparts reviewable.  The cumulative eligible
+and their proved counterparts reviewable. The cumulative eligible
 `ChallengeSeven`/`SolutionSeven` pair now contains the first seven declarations
 and has a complete local Comparator pass.  The exact separate-environment
 interface and proof-route checks pass, and the preserved exports were accepted
@@ -46,6 +46,11 @@ the manuscript is unchanged.
 
 ## The nine selected declarations
 
+The [statement correspondence](../MANUSCRIPT_STATEMENTS.md) gives each
+manuscript result in mathematical notation alongside its Lean signature.
+The counts One through Seven refer to selected declarations, including alternate
+proof routes, rather than manuscript theorem numbers.
+
 The names below have prefix `FailureOfComposition.Palomar`. Both
 [`Challenge.lean`](Challenge.lean) and [`Solution.lean`](Solution.lean) declare
 them. [`comparator.json`](comparator.json) selects them in this order and permits
@@ -56,7 +61,7 @@ definitions.
 | --- | --- | --- | --- |
 | `obstruction_four_properties` | Migrated; locally verified in the cumulative Seven pair | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
 | `no_quotient_composition_productive` | Migrated; locally verified in the cumulative Seven pair | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | Migrated and locally verified in the cumulative Seven pair on the repaired public Foundation pin | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `no_quotient_composition_godel` | Migrated and locally verified in the cumulative Seven pair on the repaired public Foundation pin | Theorem 1/Corollary 2: the identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
 | `pi_one_characterization` | Migrated and locally verified in the cumulative Seven pair | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
 | `generated_congruence_classification` | Migrated and locally verified in the cumulative Seven pair | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Migrated and locally verified in the cumulative Seven pair | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
@@ -95,7 +100,7 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    These imports therefore fail the current policy.  The readable cumulative
    `ChallengeSeven` interface for the first seven declarations now imports only
    permitted Mathlib sources and passes the pinned source audit; corresponding
-   interfaces for the other two declarations are still required.
+   interfaces for declarations 8 and 9 are still required.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
 3. **Snapshot licensing scope.** This repository now has the exported
@@ -194,9 +199,9 @@ builds the maintained proof library, elaborates Challenge and Solution
 separately, and runs `CheckInterface.lean` to compare the nine types and their
 axiom envelopes. The deliberate Challenge-hole warnings are expected. The
 Solution is checked with strict Mathlib style linting and warnings as errors.
-The local checker passed all nine declarations during the September 25 WSL
-acceptance run. It is not Comparator or Palomar mechanical verification. The
-next task adds those checks without repeating the completed toolchain port.
+The local checker passed all nine legacy declarations during the September 25
+WSL acceptance run. That paired check is distinct from the later six-declaration
+Comparator pass and from complete official Palomar verification.
 
 ## Scope, provenance, and review
 

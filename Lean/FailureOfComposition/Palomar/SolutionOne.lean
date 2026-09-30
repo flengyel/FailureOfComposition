@@ -13,7 +13,7 @@ namespace FailureOfComposition.Palomar
 
 open Arithmetic Arithmetic.Evaluator
 
-/-- Theorem 1: four witnesses for every consistent recursively enumerable
+/-- Theorem 1: four witness properties for every consistent recursively enumerable
 extension of PA; the middle clauses are single uniform proofs. -/
 theorem obstruction_four_properties
     (T : Arithmetic.Theory)

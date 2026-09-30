@@ -912,7 +912,7 @@ def indexQuotientMk (T : Theory) (e : ℕ) : IndexQuotient T :=
 end FailureOfComposition.Palomar.Arithmetic.Evaluator
 namespace FailureOfComposition.Palomar
 open Arithmetic Arithmetic.Evaluator
-/-- Theorem 1: four witnesses for every consistent recursively enumerable
+/-- Theorem 1: four witness properties for every consistent recursively enumerable
 extension of PA; the middle clauses are single uniform proofs. -/
 theorem obstruction_four_properties
     (T : Arithmetic.Theory)
@@ -927,7 +927,7 @@ theorem obstruction_four_properties
         (Arithmetic.Evaluator.compIndex Arithmetic.Evaluator.identityIndex g) g ∧
       ¬Arithmetic.Evaluator.PointwiseIndex T g Arithmetic.Evaluator.emptyIndex := by
   sorry
-/-- Corollary 2: no operation on the pointwise-provability quotient can obey
+/-- Theorem 1 and Corollary 2: no operation on the pointwise-provability quotient can obey
 the representative composition equation. -/
 theorem no_quotient_composition_productive
     (T : Arithmetic.Theory)
@@ -943,7 +943,7 @@ theorem no_quotient_composition_productive
           Arithmetic.Evaluator.indexQuotientMk T
             (Arithmetic.Evaluator.compIndex e d) := by
   sorry
-/-- Corollary 3 with the identical statement and assumptions, proved on the
+/-- Theorem 1 and Corollary 2, with the identical statement and assumptions, proved on the
 Solution side through the separate maintained Gödel-II route. -/
 theorem no_quotient_composition_godel
     (T : Arithmetic.Theory)

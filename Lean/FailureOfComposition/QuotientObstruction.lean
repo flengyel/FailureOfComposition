@@ -6,7 +6,7 @@ Authors: Florian Lengyel
 import Mathlib.Init
 
 /-!
-The algebraic consequence of the four witnesses in v36.
+The algebraic consequence of the four witness properties in v36.
 This file alone makes no assertion about arithmetic or program indices.
 -/
 

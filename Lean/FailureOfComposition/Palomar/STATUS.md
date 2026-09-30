@@ -1,5 +1,13 @@
 # Palomar eligibility status
 
+The entries below are dated verification records. Counts such as Seven refer to
+selected declarations, including alternate proof routes, not manuscript theorem
+numbers. The [statement correspondence](../MANUSCRIPT_STATEMENTS.md) gives the
+mathematical statements, Lean signatures, and source numbering. Later
+documentation and doccomment corrections do not constitute another build or
+Comparator run; recorded hashes and resource measurements refer to their
+original tested commits.
+
 ## 2026-09-30 Gödel-II range counterexample and cumulative Seven pass
 
 The independent interface now includes the exact PA-uniform range graph and a

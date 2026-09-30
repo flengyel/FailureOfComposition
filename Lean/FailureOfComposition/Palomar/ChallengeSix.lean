@@ -919,7 +919,7 @@ def WeaklyTotalIndex (T : Theory) (e : ℕ) : Prop :=
 end FailureOfComposition.Palomar.Arithmetic.Evaluator
 namespace FailureOfComposition.Palomar
 open Arithmetic Arithmetic.Evaluator
-/-- Four witnesses; the middle clauses are single uniform proofs. -/
+/-- Theorem 1: four witness properties; the middle clauses are single uniform proofs. -/
 theorem obstruction_four_properties
     (T : Arithmetic.Theory)
     (hPA : Arithmetic.DeductivelyExtends Arithmetic.Peano T)
@@ -933,7 +933,7 @@ theorem obstruction_four_properties
         (Arithmetic.Evaluator.compIndex Arithmetic.Evaluator.identityIndex g) g ∧
       ¬Arithmetic.Evaluator.PointwiseIndex T g Arithmetic.Evaluator.emptyIndex := by
   sorry
-/-- Productive failure of representative-respecting quotient composition. -/
+/-- Theorem 1 / Corollary 2: productive quotient-composition obstruction. -/
 theorem no_quotient_composition_productive
     (T : Arithmetic.Theory)
     (hPA : Arithmetic.DeductivelyExtends Arithmetic.Peano T)
@@ -948,7 +948,7 @@ theorem no_quotient_composition_productive
           Arithmetic.Evaluator.indexQuotientMk T
             (Arithmetic.Evaluator.compIndex e d) := by
   sorry
-/-- The identical quotient result through the separate Gödel-II route. -/
+/-- Theorem 1 / Corollary 2: the same quotient obstruction, Gödel-II route. -/
 theorem no_quotient_composition_godel
     (T : Arithmetic.Theory)
     (hPA : Arithmetic.DeductivelyExtends Arithmetic.Peano T)
@@ -963,7 +963,7 @@ theorem no_quotient_composition_godel
           Arithmetic.Evaluator.indexQuotientMk T
             (Arithmetic.Evaluator.compIndex e d) := by
   sorry
-/-- The four equivalent compatibility, completeness, and extensionality conditions. -/
+/-- Theorem 3: compatibility, completeness, and extensionality are equivalent. -/
 theorem pi_one_characterization
     (T : Arithmetic.Theory)
     (hPA : Arithmetic.DeductivelyExtends Arithmetic.Peano T)
@@ -975,7 +975,7 @@ theorem pi_one_characterization
     (Arithmetic.PiOneComplete T ↔
       Arithmetic.Evaluator.AgreesWithExtensional T) := by
   sorry
-/-- Generated congruence is extensional when Σ₁-sound and otherwise universal. -/
+/-- Theorem 4: generated congruence is extensional if Σ₁-sound, universal otherwise. -/
 theorem generated_congruence_classification
     (T : Arithmetic.Theory)
     (hPA : Arithmetic.DeductivelyExtends Arithmetic.Peano T) :
@@ -985,7 +985,7 @@ theorem generated_congruence_classification
     (¬Arithmetic.SigmaOneSound T →
       ∀ e d : ℕ, Arithmetic.Evaluator.GeneratedRel T e d) := by
   sorry
-/-- A fixed guard equals identity pointwise but differs in weak totality. -/
+/-- Proposition 5: a guard equals identity pointwise but differs in weak totality. -/
 theorem weak_totality_counterexample
     (T : Arithmetic.Theory)
     (hPA : Arithmetic.DeductivelyExtends Arithmetic.Peano T)
