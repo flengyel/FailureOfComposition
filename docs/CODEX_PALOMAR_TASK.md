@@ -22,8 +22,15 @@ candidate instead targets PalomarSubmission
 `65f0154ed776cd26c224254aa57b379137f28b0d` and PalomarPolicy
 `96b034cc31a72a63d4f4041911dce337a85c9a04`, including their module-source
 requirement. Its focused source scope is documented in
-[`PALOMAR_SUBMISSION_SCOPE.md`](PALOMAR_SUBMISSION_SCOPE.md). Preserve subsequent
-commits. Service submission, editorial review, and registration remain.
+[`PALOMAR_SUBMISSION_SCOPE.md`](PALOMAR_SUBMISSION_SCOPE.md). Public candidate
+`6adc1084e57ca3e9011dbd3765e99b803842ee17` passes the focused source, build,
+interface, dependency, axiom, policy, and negative gates. Current-verifier
+preparation and capacity passed; its one execution was terminated during
+Solution build by the external host monitor after a transient `/proc`
+`ProcessLookupError`, before any kernel ran. This is an incomplete
+infrastructure result, not a theorem rejection or current-verifier pass.
+Preserve subsequent commits. Service submission, editorial review, and
+registration remain.
 See the [recorded Nine status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.

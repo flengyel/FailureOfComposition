@@ -82,8 +82,12 @@ completed its protected build/export/comparison/kernel workflow under
 identifies the exact scope.
 That pass predates the current module-header requirement. The focused candidate
 now retains 124 Lean modules, no maintained Lean code under `Audit/`, and the
-same nine mathematical contracts; it is being validated separately with the
-current verifier at `65f0154ed776cd26c224254aa57b379137f28b0d`.
+same nine mathematical contracts. Current verifier preparation and capacity
+checks passed for public candidate
+`6adc1084e57ca3e9011dbd3765e99b803842ee17`, but the one full execution was
+terminated during Solution build by an external host-monitor `/proc` race
+before any kernel ran. It is neither a rejection nor a current-verifier pass;
+the exact result is recorded separately in the status file.
 These declaration counts are distinct from
 manuscript numbering. The submitted snapshot includes the distinct manuscript
 and code licensing notices. No Palomar service submission, editorial

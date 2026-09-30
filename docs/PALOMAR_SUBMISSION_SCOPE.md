@@ -93,3 +93,21 @@ The current Palomar source scan at PalomarSubmission
 `65f0154ed776cd26c224254aa57b379137f28b0d` checks 124 Lean files and reports no
 module-header, symlink, UTF-8, or 10,000-line violation. ChallengeNine remains
 subject to its separate limits and is 44,261 bytes and 999 physical lines.
+
+## Current-verifier outcome
+
+The focused public candidate is
+`6adc1084e57ca3e9011dbd3765e99b803842ee17`. The current verifier fetched that
+commit, accepted its preparation metadata and source requirements, and passed
+the `palomar-standard-v1` capacity check. Its one full execution reached
+`solution-build` before the separately maintained host guard encountered a
+transient `ProcessLookupError` while reading the live process tree. The guard's
+fail-closed behavior terminated only the owned cgroup after 654.137 seconds;
+cleanup found no remaining owned workload. No con-ron, NanoDa, or Lean verdict
+was reached. This leaves the module candidate mechanically focused and prepared,
+but not yet completely accepted by the current verifier.
+
+The smallest continuation is to make the host guard tolerate the normal race in
+which a process exits between enumeration and inspection, validate that change
+with a harmless fixture, and authorize a new current-verifier execution. The
+single payload authorized for this checkpoint was not retried.

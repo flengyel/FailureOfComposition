@@ -139,12 +139,20 @@ immutable snapshot; it does not by itself satisfy the newer module-source rule.
    also accepted. The execution took 3,034.009 seconds and had no deadline,
    OOM, pressure-stop, or host-reserve event. This is a complete local run of
    the pinned official verifier, not a Palomar service or editorial result.
-6. **Service submission remains separate.** No event was uploaded, no service
+6. **The current immutable candidate is prepared but not yet completely
+   reverified.** PalomarSubmission `65f0154` fetched public commit
+   `6adc1084e57ca3e9011dbd3765e99b803842ee17`; preparation and the explicit
+   `palomar-standard-v1` capacity check passed. The sole authorized execution
+   reached Solution build and was then terminated fail-closed by the external
+   host guard after a transient `ProcessLookupError` while sampling `/proc`.
+   The run lasted 654.137 seconds, did not start the external kernels, recorded
+   no deadline/OOM/pressure stop, and cleaned its owned cgroup. This is an
+   incomplete infrastructure result, not a verifier rejection or acceptance.
+7. **Service submission remains separate.** No event was uploaded, no service
    submission was made, and no registration or editorial review occurred. The
    default 16-CPU profile was unavailable on this four-CPU host; the approved
-   standard profile qualified and was selected explicitly. The module-based
-   snapshot requires its own one-time current-verifier execution before a
-   current-readiness claim.
+   standard profile qualified and was selected explicitly. A successful
+   current-verifier execution remains before a current-readiness claim.
 
 Solving the dependency boundary must preserve the statements. Adding the
 desired result as a hypothesis, hiding it inside an unconstrained definition,

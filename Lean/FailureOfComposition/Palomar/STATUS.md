@@ -36,9 +36,22 @@ Lean parser accepts `--deps-json` for all 124. ChallengeNine is 44,261 bytes and
 full-environment dependency/axiom audit, current Challenge source policy, and
 the maintained negative regressions pass. The selected ChallengeNine and
 SolutionNine source is unchanged from the accepted snapshot after normalizing
-only module/public-visibility commands and blank lines. A fresh immutable public
-candidate and one current official-verifier execution remain before current
-submission readiness is claimed.
+only module/public-visibility commands and blank lines. The immutable public
+candidate containing these results is
+`6adc1084e57ca3e9011dbd3765e99b803842ee17`.
+
+The current verifier fetched that exact candidate. Preparation passed with
+`status: pending`, `stage: prepared`; the `palomar-standard-v1` capacity check
+also passed. One authorized `execute` payload reached `solution-build`, then the
+external host guard encountered `ProcessLookupError: [Errno 3] No such process`
+while sampling the changing process tree. Its fail-closed path terminated the
+owned cgroup after 654.137 seconds and left no owned workload. This was not a
+Palomar verifier rejection or a kernel verdict: con-ron, NanoDa, Lean replay,
+and the final comparison had not started. Host available memory stayed above
+14,510,592,000 bytes, full-memory PSI `avg10` peaked at 0.0, and completed
+verifier phases recorded no deadline or OOM event. A new current-verifier pass
+therefore remains necessary before current submission readiness is claimed;
+the authorized payload was not retried.
 
 The manuscript notice now records the existing arXiv perpetual, non-exclusive
 distribution license while preserving the author's copyright and the separate
