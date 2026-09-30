@@ -51,10 +51,10 @@ check. Its deliberate Challenge holes are outside the production umbrella and
 the 72-source style gate. The Solution is checked separately without holes.
 The Lean 4.35.0-rc2 port and evaluator cleanup passed their recorded WSL
 checks. The legacy nine-declaration Challenge retains ineligible imports;
-the separate eligible Seven checkpoint on `codex/palomar-eligibility` passed
-local Comparator verification at `16e73188e12244f651c7ce57207095bd0d223a44`.
-This is the latest reviewed verification checkpoint. The productive range
-and quotient-monoid declarations (8 and 9) still need eligible migration, and
+the separate eligible Eight checkpoint on `codex/palomar-eligibility` passed
+local Comparator verification at `5435b5b528795590f250a82bf8937779b4fc86b4`.
+This is the latest reviewed verification checkpoint. The quotient-monoid
+declaration (9) still needs eligible migration, and
 complete official Palomar verification remains; see
 [Palomar preparation](Palomar/README.md). Verification evidence belongs to
 the recorded commits and is not a new verification of later documentation edits.
@@ -533,8 +533,8 @@ transport the obstruction separately across every generated object.
   explicit arithmetization laws. Literal identity with a separately specified
   historical formula or numerical code table is not claimed.
 - The maintained-library coverage and recorded strict style checks passed.
-  The latest reviewed Palomar verification is the local Seven checkpoint;
-  declarations 8 and 9 still need
+  The latest reviewed Palomar verification is the local Eight checkpoint;
+  declaration 9 still needs
   eligible migration, and complete official verification remains. The planned
   manuscript version 37 is a separate revision.
 - External human acceptance remains separate from the checked development.

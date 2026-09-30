@@ -8,11 +8,11 @@ separate two proof routes and include an unnumbered monoid consequence; they
 are not nine successive manuscript theorem numbers.
 
 The maintained proofs of all nine selections are present. The latest reviewed
-verification evidence is for the independently defined cumulative **Seven** pair
-at `16e73188e12244f651c7ce57207095bd0d223a44`, including the Gödel-II range
-selection. It passed local Comparator verification through con-ron, NanoDa,
-and the Lean default kernel. Selections eight and nine
-still await migration into the cumulative interface. The
+verification evidence is for the independently defined cumulative **Eight** pair
+at `5435b5b528795590f250a82bf8937779b4fc86b4`, including both proof routes for
+the Proposition 6 range counterexample. It passed local Comparator verification
+through con-ron, NanoDa, and the Lean default kernel. Selection nine still
+awaits migration into the cumulative interface. The
 [selection table](#the-nine-palomar-selections) distinguishes these statuses.
 This document does not claim a new verification run or registry acceptance.
 
@@ -404,34 +404,35 @@ All selected names below have prefix `FailureOfComposition.Palomar.`. Correspond
 names have prefix `FailureOfComposition.ConcreteIndices.`. The legacy
 [Challenge](Palomar/Challenge.lean)/[Solution](Palomar/Solution.lean) pair contains
 all nine. The independently defined cumulative
-[SolutionSeven at the tested commit](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
-contains the first seven, with explicit independent arithmetic theory, extension,
+[SolutionEight at the tested commit](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/SolutionEight.lean)
+contains the first eight, with explicit independent arithmetic theory, extension,
 consistency and r.e.-axiom predicates. These separate environments reuse the
 selected declaration names; the legacy and independent signatures are connected
 by proved correspondence, not asserted to be the same raw representation.
 
-The locally verified source at `16e73188e12244f651c7ce57207095bd0d223a44` includes
-[ChallengeSeven](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/ChallengeSeven.lean),
-[SolutionSeven](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean),
-and [RangeBridge](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/RangeBridge.lean).
-The pinned evidence below records the cumulative Seven acceptance and the
-correspondence for the Gödel-II range selection.
+The locally verified source at `5435b5b528795590f250a82bf8937779b4fc86b4` includes
+[ChallengeEight](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/ChallengeEight.lean),
+[SolutionEight](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/SolutionEight.lean),
+[RangeBridge](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/RangeBridge.lean),
+and [RangeProductiveBridge](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/RangeProductiveBridge.lean).
+The pinned evidence below records the cumulative Eight acceptance and the
+correspondence and dependency routes for both Proposition 6 selections.
 
 | Selection | Mathematical statement | Corresponding maintained declaration | Independent cumulative status |
 | --- | --- | --- | --- |
-| `obstruction_four_properties` | Theorem 1, four witness properties including two uniform clauses | `obstruction_four_properties_of_re_axioms` | Locally verified in Seven |
-| `no_quotient_composition_productive` | Theorem 1 consequence / Corollary 2, productive route | `no_index_quotient_of_re_axioms` | Locally verified in Seven |
-| `no_quotient_composition_godel` | Same no-operation statement, Gödel-II route | `no_index_quotient_via_godel_of_re_axioms` | Locally verified in Seven |
-| `pi_one_characterization` | Theorem 3 | `pi_one_characterization` | Locally verified in Seven |
-| `generated_congruence_classification` | Theorem 4 | `generated_congruence_classification` | Locally verified in Seven |
-| `weak_totality_counterexample` | Proposition 5, explicit guard witness | `weak_totality_counterexample_of_re_axioms` | Locally verified in Seven |
-| `range_counterexample_godel` | Proposition 6, Gödel-II route | `range_counterexample_of_re_axioms` | Locally verified in Seven |
-| `range_counterexample_productive` | Proposition 6, productive route | `range_counterexample_via_productiveness_of_re_axioms` | Maintained proof; migration pending |
+| `obstruction_four_properties` | Theorem 1, four witness properties including two uniform clauses | `obstruction_four_properties_of_re_axioms` | Locally verified in Eight |
+| `no_quotient_composition_productive` | Theorem 1 consequence / Corollary 2, productive route | `no_index_quotient_of_re_axioms` | Locally verified in Eight |
+| `no_quotient_composition_godel` | Same no-operation statement, Gödel-II route | `no_index_quotient_via_godel_of_re_axioms` | Locally verified in Eight |
+| `pi_one_characterization` | Theorem 3 | `pi_one_characterization` | Locally verified in Eight |
+| `generated_congruence_classification` | Theorem 4 | `generated_congruence_classification` | Locally verified in Eight |
+| `weak_totality_counterexample` | Proposition 5, explicit guard witness | `weak_totality_counterexample_of_re_axioms` | Locally verified in Eight |
+| `range_counterexample_godel` | Proposition 6, Gödel-II route | `range_counterexample_of_re_axioms` | Locally verified in Eight |
+| `range_counterexample_productive` | Proposition 6, productive route | `range_counterexample_via_productiveness_of_re_axioms` | Locally verified in Eight |
 | `generated_quotient_partial_recursive` | Unnumbered sound generated-quotient monoid consequence | `generatedQuotientPartialRecursiveEquiv` and its `_mk` theorem | Maintained proof; migration pending |
 
-For the latest reviewed verification checkpoint, Seven, see the
-[pinned verification record](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/RESULT.json)
-and [correspondence record](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/CORRESPONDENCE.md).
+For the latest reviewed verification checkpoint, Eight, see the
+[pinned verification record](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Audit/palomar-eight-productive-range-20260930/RESULT.json)
+and [correspondence record](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Audit/palomar-eight-productive-range-20260930/CORRESPONDENCE.md).
 Those records concern local checks, including Comparator, at the recorded pins.
 They are not a verification of a nine-result eligible pair or a Palomar
 publication/acceptance record. Productive and Gödel-II routes are distinguished

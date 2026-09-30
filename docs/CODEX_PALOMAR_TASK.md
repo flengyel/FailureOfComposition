@@ -10,14 +10,14 @@ task; the Lean version port and evaluator style cleanup are complete.
 ## Current continuation point
 
 The instructions below originated at the September 25 port checkpoint.
-Resume the existing `codex/palomar-eligibility` branch: the first seven selected
+Resume the existing `codex/palomar-eligibility` branch: the first eight selected
 declarations passed local Comparator verification at
-`16e73188e12244f651c7ce57207095bd0d223a44`. Foundation is now pinned there to
+`5435b5b528795590f250a82bf8937779b4fc86b4`. Foundation is now pinned there to
 `01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. Preserve subsequent commits.
-Seven remains the latest reviewed verification checkpoint. The productive
-range statement and quotient-monoid statement (declarations 8 and 9) still need
-eligible migration; complete official verification remains.
-See the [recorded Seven status](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Lean/FailureOfComposition/Palomar/STATUS.md) and
+Eight remains the latest reviewed verification checkpoint. The quotient-monoid
+statement (declaration 9) still needs eligible migration; complete official
+verification remains.
+See the [recorded Eight status](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.
 

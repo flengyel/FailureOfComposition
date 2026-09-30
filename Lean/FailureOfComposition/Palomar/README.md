@@ -3,19 +3,19 @@
 **DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
 and their proved counterparts reviewable. It is not an eligible Palomar
 submission or a registry entry. The legacy files on `main` predate the
-independent eligible interface. On `codex/palomar-eligibility`, the first seven
+independent eligible interface. On `codex/palomar-eligibility`, the first eight
 selected declarations passed local Comparator verification at
-`16e73188e12244f651c7ce57207095bd0d223a44` through con-ron, NanoDa, and the
+`5435b5b528795590f250a82bf8937779b4fc86b4` through con-ron, NanoDa, and the
 Lean default kernel. See the
-[recorded Seven checkpoint](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Lean/FailureOfComposition/Palomar/STATUS.md),
+[recorded Eight checkpoint](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Lean/FailureOfComposition/Palomar/STATUS.md),
 the latest reviewed verification checkpoint, and its
-[verification record](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/RESULT.json).
-The tested [SolutionSeven](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
-includes the Gödel-II range declaration, with the
-[range correspondence](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/CORRESPONDENCE.md)
-recorded separately. The cumulative run took 199.537 seconds with peak memory
-787,070,976 bytes. The productive range and quotient-monoid declarations
-(8 and 9) still require eligible migration. Complete official verification remains pending.
+[verification record](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Audit/palomar-eight-productive-range-20260930/RESULT.json).
+The tested [SolutionEight](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/SolutionEight.lean)
+includes both proof routes for the Proposition 6 range declaration, with the
+[range correspondence](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Audit/palomar-eight-productive-range-20260930/CORRESPONDENCE.md)
+recorded separately. The cumulative run took 190.419 seconds with peak memory
+794,050,560 bytes. The quotient-monoid declaration (9) still requires eligible
+migration. Complete official verification remains pending.
 
 The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
 Its historical port-and-cleanup checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`, using
@@ -25,7 +25,7 @@ rerun and subsequent evaluator cleanup passed their WSL checks. The cleanup's
 103-source style gate, build, audits, kernel replays, and nine paired draft
 checks are recorded in [STYLE_CLEANUP_VALIDATION.json](../Porting/STYLE_CLEANUP_VALIDATION.json).
 The uploaded evidence was checked against the published source hashes.
-The later Seven checkpoint uses Foundation
+The later Eight checkpoint uses Foundation
 `01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d` with the same Lean and Mathlib pins.
 
 [The Codex task](../../../docs/CODEX_PALOMAR_TASK.md) specifies the remaining
@@ -37,7 +37,7 @@ the manuscript is unchanged.
 
 The [statement correspondence](../MANUSCRIPT_STATEMENTS.md) gives each
 manuscript result in mathematical notation alongside its Lean signature.
-The counts One through Seven refer to selected declarations, including alternate
+The counts One through Eight refer to selected declarations, including alternate
 proof routes, rather than manuscript theorem numbers.
 
 The names below have prefix `FailureOfComposition.Palomar`. Both
@@ -88,7 +88,7 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    specifically approved Tau Ceti and CSLib libraries in that closure.
    These imports therefore fail the current policy. A legitimate readable
    statement interface with permitted dependencies must still be completed
-   for the full nine-declaration selection. The eligible Seven interface on the separate eligibility
+   for the full nine-declaration selection. The eligible Eight interface on the separate eligibility
    branch already passed its pinned source audit and local Comparator run.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
@@ -99,13 +99,13 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    the paper. Its scope must be settled for any final submitted snapshot under
    the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
 4. **The full nine-declaration configuration has not passed Comparator.**
-   The separate eligible Seven checkpoint passed locally at the tested commit above.
+   The separate eligible Eight checkpoint passed locally at the tested commit above.
    Local elaboration, matching declaration types,
    axiom audits, and ordinary kernel replay do not establish Palomar's
    protected Challenge/Solution comparison. Its current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    uses Lean-bundled `lake comparator` and exported-proof checking, including
-   the toolchain's bundled NanoDa and con-ron kernels. The Seven pass does not
+   the toolchain's bundled NanoDa and con-ron kernels. The Eight pass does not
    establish a successful full nine-declaration comparison or an official
    Palomar mechanical/editorial result.
 
@@ -116,8 +116,8 @@ provability would not solve this preparation task. No extra axiom is proposed.
 
 The Foundation port, namespace migration, and evaluator style cleanup are
 complete. The permitted arithmetic statement interface and its correspondence
-are locally verified for the first seven declarations on the eligibility branch.
-Declarations eight and nine still need eligible migration. Comparator follows the bodies of
+are locally verified for the first eight declarations on the eligibility branch.
+Declaration nine still needs eligible migration. Comparator follows the bodies of
 ordinary definitions in the statement's dependency graph; replacing definitions
 by Foundation aliases does not establish this correspondence or make different
 definitions compare identically.
