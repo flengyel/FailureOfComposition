@@ -3,12 +3,16 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import Mathlib.Computability.RE
+module
+
+public import Mathlib.Computability.RE
 
 /-!
 The productiveness step in v36, for Mathlib's program numbering.
 The productivity function is the identity on program numbers.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

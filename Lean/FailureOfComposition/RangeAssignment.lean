@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteIndexObstruction
-import FailureOfComposition.SigmaOneRealization
-import FailureOfComposition.ConcreteAdequacy
+module
+
+public import FailureOfComposition.ConcreteIndexObstruction
+public import FailureOfComposition.SigmaOneRealization
+public import FailureOfComposition.ConcreteAdequacy
 
 /-!
 The range partial identity of a Sigma-one graph and its realization by an index
@@ -13,6 +15,8 @@ of the fixed evaluator. The defining range equation holds in every PA model.
 PA-uniformly equivalent choices of realizing indices are pointwise equivalent
 over every PA extension.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

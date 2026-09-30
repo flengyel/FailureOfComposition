@@ -11,8 +11,10 @@ Foundation sources are Apache-2.0 licensed; the relevant upstream files are
 `Foundation/FirstOrder/LK/Basic.lean` at revision
 e72cfe981aa65166f37fa4e2584f4806bc48d72f.
 -/
-import Mathlib.Computability.RE
-import Mathlib.Data.Fin.VecNotation
+module
+
+public import Mathlib.Computability.RE
+public import Mathlib.Data.Fin.VecNotation
 
 /-!
 # Explicit arithmetic statement interface (development source)
@@ -28,6 +30,8 @@ first-order sequent calculus, and `Proof` records the finite theory axioms used
 by a derivation.  No semantic consequence relation or supplied realization
 field is used.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ProgramGraph
-import FailureOfComposition.ConcreteConstructorGraphs
-import FailureOfComposition.ConcreteRecursionGraph
+module
+
+public import FailureOfComposition.ProgramGraph
+public import FailureOfComposition.ConcreteConstructorGraphs
+public import FailureOfComposition.ConcreteRecursionGraph
 
 /-!
 Arithmetic correctness of the compiled program operations.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 4096

@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteEvaluatorGraph
+module
+
+public import FailureOfComposition.ConcreteEvaluatorGraph
 
 /-!
 Functional Sigma-one witnesses for adjoining composition to pointwise equality.
 The first witness records the least successful evaluator stage and the input;
 the other two read that computation, with an optional second graph condition.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

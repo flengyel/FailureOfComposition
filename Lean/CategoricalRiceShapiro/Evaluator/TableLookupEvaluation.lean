@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.TableLookup
-import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
-import CategoricalRiceShapiro.ArithmeticCode.EncodedListEvaluation
+module
+
+public import CategoricalRiceShapiro.Evaluator.TableLookup
+public import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
+public import CategoricalRiceShapiro.ArithmeticCode.EncodedListEvaluation
 
 /-!
 # Evaluation of the table-lookup code
@@ -27,6 +29,8 @@ the two encoded-list reads and the two subtractions of the option offset.  It
 asserts existence only.  The value is not identified with a decoded table entry,
 and no list semantics is attached to an arbitrary element of the model.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

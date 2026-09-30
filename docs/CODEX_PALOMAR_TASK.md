@@ -13,13 +13,17 @@ The instructions below originated at the September 25 port checkpoint.
 Resume the existing `codex/palomar-eligibility` branch: all nine selected
 declarations passed local Comparator verification at
 `381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. Foundation is pinned to
-`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. The pinned official verifier at
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. The earlier official verifier at
 PalomarSubmission revision `a59f25bd8a66bf6faf3a4f4260d412989c0185ea`
 subsequently fetched immutable source commit
 `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and completed with
-`status: pass`, `stage: complete` under `palomar-standard-v1`. Preserve
-subsequent commits. Service submission, editorial review, registration, and
-the manuscript-license scope decision remain.
+`status: pass`, `stage: complete` under `palomar-standard-v1`. The current
+candidate instead targets PalomarSubmission
+`65f0154ed776cd26c224254aa57b379137f28b0d` and PalomarPolicy
+`96b034cc31a72a63d4f4041911dce337a85c9a04`, including their module-source
+requirement. Its focused source scope is documented in
+[`PALOMAR_SUBMISSION_SCOPE.md`](PALOMAR_SUBMISSION_SCOPE.md). Preserve subsequent
+commits. Service submission, editorial review, and registration remain.
 See the [recorded Nine status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.
@@ -72,13 +76,14 @@ Do not copy dependency build trees into `/tmp` or start another toolchain port.
 
 ## 1. Fix the reference point and inspect the actual requirements
 
-These public upstream revisions were inspected on September 25, 2026:
+The current candidate uses these authenticated revisions. The older revisions
+remain part of the dated pass above:
 
 | Repository | Revision | Relevant files |
 | --- | --- | --- |
-| [PalomarPolicy](https://github.com/PalomarRegistry/PalomarPolicy/tree/792c7c0b9e798bd02719e795ef11fa2b5929e067) | `792c7c0b9e798bd02719e795ef11fa2b5929e067` | `CONTRIBUTING.md`, protocol |
-| [PalomarSubmission](https://github.com/PalomarRegistry/PalomarSubmission/tree/a59f25bd8a66bf6faf3a4f4260d412989c0185ea) | `a59f25bd8a66bf6faf3a4f4260d412989c0185ea` | `toolchains.json`, `scripts/verify_submission.py`, `docs/comparator-declaration-closure.md`, execution profiles |
-| [PalomarTemplate](https://github.com/PalomarRegistry/PalomarTemplate/tree/cb5c79b69a740d2dc299071fc35994627050d77a) | `cb5c79b69a740d2dc299071fc35994627050d77a` | `scripts/verify-comparator.sh`, metadata validation |
+| [PalomarPolicy](https://github.com/PalomarRegistry/PalomarPolicy/tree/96b034cc31a72a63d4f4041911dce337a85c9a04) | `96b034cc31a72a63d4f4041911dce337a85c9a04` | `CONTRIBUTING.md`, protocol and module-source policy |
+| [PalomarSubmission](https://github.com/PalomarRegistry/PalomarSubmission/tree/65f0154ed776cd26c224254aa57b379137f28b0d) | `65f0154ed776cd26c224254aa57b379137f28b0d` | `toolchains.json`, `scripts/verify_submission.py`, source requirements and execution profiles |
+| [PalomarTemplate](https://github.com/PalomarRegistry/PalomarTemplate/tree/128a6c5ce5f48622e69927ccd639cbff401022e8) | `128a6c5ce5f48622e69927ccd639cbff401022e8` | metadata and Comparator authoring contracts |
 
 Fetch reference sources under `.codex-work/palomar/upstream/`. Inspect current
 upstream heads and record any changes before adopting a newer verifier. Keep an
@@ -210,9 +215,10 @@ Use authentic selected-toolchain judge binaries. Do not replace them with mock
 commands or silently disable a kernel, sandbox, axiom check, or definition check.
 
 The resulting evidence must identify all nine compared declarations and successful
-Lean-kernel, NanoDa, and con-ron replay. Keep `check_draft.py` as a separate project
-check; its success is not a Comparator result. A Template-style Comparator pass
-alone does not verify Palomar's protected Challenge source provenance.
+Lean-kernel, NanoDa, and con-ron replay. The maintained focused suite is
+`scripts/run-palomar-nine-focused.sh`; its success is not a Comparator result.
+A Template-style Comparator pass alone does not verify Palomar's protected
+Challenge source provenance.
 
 ### Complete mechanical eligibility
 

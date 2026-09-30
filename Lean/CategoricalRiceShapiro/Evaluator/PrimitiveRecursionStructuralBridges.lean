@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.PartialRecursive.CanonicalComposition
-import CategoricalRiceShapiro.Evaluator.CellEvaluation
-import CategoricalRiceShapiro.Evaluator.HistoryEvaluation
+module
+
+public import CategoricalRiceShapiro.PartialRecursive.CanonicalComposition
+public import CategoricalRiceShapiro.Evaluator.CellEvaluation
+public import CategoricalRiceShapiro.Evaluator.HistoryEvaluation
 
 /-!
 # Structural bridges for the primitive-recursion constructor
@@ -49,6 +51,8 @@ evaluation at stage `k` on `⟪z, a⟫`, through
 This is structural infrastructure.  The file proves neither tag-6 persistence of
 the evaluator certificate nor persistence for every standard index.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

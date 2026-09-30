@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.RangeInterface
-import FailureOfComposition.Palomar.EvaluatorBridge
-import FailureOfComposition.RangeGodel
+module
+
+public import FailureOfComposition.Palomar.RangeInterface
+public import FailureOfComposition.Palomar.EvaluatorBridge
+public import FailureOfComposition.RangeGodel
 
 /-!
 # Range-assignment correspondence
@@ -14,6 +16,8 @@ The independent and maintained selectors need not be the same natural number.
 Their PA-uniform graph equations imply pointwise equivalence over every
 deductive extension of PA.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

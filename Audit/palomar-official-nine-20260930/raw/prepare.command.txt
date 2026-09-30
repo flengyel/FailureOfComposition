@@ -1,2 +1,0 @@
-cwd=/home/flengyel/src/FailureOfComposition-port
-command=.codex-work/palomar/official-nine/20260930T063526Z/tools/verifier-venv/bin/python .codex-work/palomar/upstream/PalomarSubmission/scripts/verify_submission.py prepare --event .codex-work/palomar/official-nine/20260930T063526Z/prepare/event.json --work-dir .codex-work/palomar/official-nine/20260930T063526Z/prepare/work --output .codex-work/palomar/official-nine/20260930T063526Z/prepare/mechanical-report.json --licensee .codex-work/palomar/official-nine/20260930T063526Z/tools/bundle-local.sh 

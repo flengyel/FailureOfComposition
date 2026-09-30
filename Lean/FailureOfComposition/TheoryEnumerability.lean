@@ -3,12 +3,16 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ProductiveDivergence
-import Foundation.FirstOrder.Syntax.Classical.PrimrecCoding
+module
+
+public import FailureOfComposition.ProductiveDivergence
+public import Foundation.FirstOrder.Syntax.Classical.PrimrecCoding
 
 /-! Enumerability of deductive closure from enumerability of the axioms.
 The general result uses pure-logic proofs of finite implications and does not
 assume a Delta-one presentation of the given theory. -/
+
+@[expose] public section
 
 set_option autoImplicit false
 open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic

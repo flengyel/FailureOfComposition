@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteEvaluatorGraph
+module
+
+public import FailureOfComposition.ConcreteEvaluatorGraph
 
 /-!
 Constructor equations for the concrete evaluator over arbitrary models of PA.
@@ -11,6 +13,8 @@ The local decoder and forward pairing helpers are reproduced from production
 PairPersistence; the new public results remove fuel and synchronize component
 computations using unconditional persistence.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,12 +3,14 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.Recursion
-import CategoricalRiceShapiro.ArithmeticCode.Evaluation
-import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
-import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
-import CategoricalRiceShapiro.ArithmeticCode.BetaCoding
-import Foundation.FirstOrder.Arithmetic.Schemata
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.Recursion
+public import CategoricalRiceShapiro.ArithmeticCode.Evaluation
+public import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
+public import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
+public import CategoricalRiceShapiro.ArithmeticCode.BetaCoding
+public import Foundation.FirstOrder.Arithmetic.Schemata
 
 /-!
 # Evaluation properties of primitive-recursion codes
@@ -31,6 +33,8 @@ syntax trees and assumes no arithmetic theory: `ORingStructure M` alone.  The
 existence theorem below instead uses arithmetic evaluation and beta extension
 under `𝗣𝗔`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

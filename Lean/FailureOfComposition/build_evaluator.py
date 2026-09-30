@@ -24,8 +24,10 @@ def main() -> int:
     parser.add_argument("--packages", type=Path, help="existing package mapping to validate")
     args = parser.parse_args()
     lean_root = Path(__file__).resolve().parent.parent
-    evidence = lean_root.parent / "Audit/failure-composition-v36/evidence"
-    original_pins = json.loads((evidence / "evaluator-source-pins.json").read_text())
+    original_pins_path = (
+        Path(__file__).resolve().parent / "Provenance/evaluator-source-pins.json"
+    )
+    original_pins = json.loads(original_pins_path.read_text())
     provenance_path = Path(__file__).resolve().parent / "Porting/EVALUATOR_PROVENANCE.json"
     pins = json.loads(provenance_path.read_text())
     if pins.get("original_evaluator_repository") != original_pins.get("repository"):

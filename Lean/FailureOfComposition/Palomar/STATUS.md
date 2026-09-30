@@ -8,6 +8,46 @@ documentation and doccomment corrections do not constitute another build or
 Comparator run; recorded hashes and resource measurements refer to their
 original tested commits.
 
+## 2026-09-30 current-verifier module candidate
+
+PalomarSubmission `65f0154ed776cd26c224254aa57b379137f28b0d` and
+PalomarPolicy `96b034cc31a72a63d4f4041911dce337a85c9a04` require every submitted
+Lean source to use the module system and limit each file to 10,000 physical
+lines. The earlier complete pass below remains valid for its pinned verifier,
+but it does not establish this newer eligibility condition.
+Their upstream heads still match those revisions. PalomarTemplate has advanced
+from the verifier-pinned `128a6c5ce5f48622e69927ccd639cbff401022e8` to
+`2891de4c48955af824969a263d31b25e7a9a1406`; the inspected change applies the
+same module/source-size rule to the starter template and does not change this
+submission's selected paths or nine-result contract.
+
+The focused candidate retains 124 Lean modules from the 197-source baseline.
+It moves the active Nine dependency audit and four negative fixtures from
+`Audit/` into maintained `Checks/` and `Tests/` modules, moves the evaluator pin
+record into `Provenance/`, and omits 73 superseded or out-of-scope Lean sources.
+No file remains under `Audit/` in the candidate. Omitted sources and reports
+remain at immutable commit `5586bae3730e49f866da1d4e2f0ebb1dadacc2ca` and in
+the previously verified evidence archives. See
+[`PALOMAR_SUBMISSION_SCOPE.md`](../../../docs/PALOMAR_SUBMISSION_SCOPE.md).
+
+The current official static scan checks all 124 files with no issue; the pinned
+Lean parser accepts `--deps-json` for all 124. ChallengeNine is 44,261 bytes and
+999 lines. Strict selected builds, the exact nine-result interface check, the
+full-environment dependency/axiom audit, current Challenge source policy, and
+the maintained negative regressions pass. The selected ChallengeNine and
+SolutionNine source is unchanged from the accepted snapshot after normalizing
+only module/public-visibility commands and blank lines. A fresh immutable public
+candidate and one current official-verifier execution remain before current
+submission readiness is claimed.
+
+The manuscript notice now records the existing arXiv perpetual, non-exclusive
+distribution license while preserving the author's copyright and the separate
+Apache-2.0 code license. This is a clarification, not a new license grant.
+
+Historical sections below refer to paths and artifacts as they existed at their
+recorded commits. Their removal from the focused candidate does not alter those
+results.
+
 ## 2026-09-30 pinned official verifier pass for cumulative Nine
 
 Pinned PalomarSubmission revision

@@ -3,10 +3,12 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.History
-import CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation
-import CategoricalRiceShapiro.Evaluator.CellCongruence
-import CategoricalRiceShapiro.Evaluator.CellEvaluation
+module
+
+public import CategoricalRiceShapiro.Evaluator.History
+public import CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation
+public import CategoricalRiceShapiro.Evaluator.CellCongruence
+public import CategoricalRiceShapiro.Evaluator.CellEvaluation
 
 /-!
 # The length of a constructed evaluation history
@@ -77,6 +79,8 @@ constructs the eager row and the history that appends it, using
 `eval_codeEvaluatorHistory_exists` and `eval_codeListLength_exists_of_value`,
 and locates the supplied cell in them with `chain_match`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

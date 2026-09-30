@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.GeneratedQuotientInterface
-import FailureOfComposition.Palomar.GeneratedCongruenceBridge
-import FailureOfComposition.PartialRecursiveQuotient
+module
+
+public import FailureOfComposition.Palomar.GeneratedQuotientInterface
+public import FailureOfComposition.Palomar.GeneratedCongruenceBridge
+public import FailureOfComposition.PartialRecursiveQuotient
 
 /-!
 # Generated-quotient partial-recursive correspondence
@@ -15,6 +17,8 @@ soundness.  The resulting bijection preserves concrete program composition.
 Identity-on-representatives quotient and target equivalences then compare the
 construction with the maintained quotient, multiplication, and unit.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -195,7 +199,7 @@ def unaryPartrecMulEquivToFoundation :
     unaryPartrecMulEquivToFoundation (1 : UnaryPartrec) =
       (1 : FailureOfComposition.UnaryPartrec) := rfl
 
-private theorem foundationWeakerThan (T : Theory)
+theorem generatedFoundationWeakerThan (T : Theory)
     (hPA : DeductivelyExtends Peano T) :
     FFL.Entailment.WeakerThan FFL.FirstOrder.Arithmetic.Peano
       (TheoryCorrespondence.toFoundation T) :=
@@ -209,7 +213,7 @@ theorem generatedQuotientToFoundation_one (T : Theory)
       (1 : FailureOfComposition.ConcreteIndices.GeneratedQuotient
         (TheoryCorrespondence.toFoundation T)) := by
   let _ : FFL.Entailment.WeakerThan FFL.FirstOrder.Arithmetic.Peano
-      (TheoryCorrespondence.toFoundation T) := foundationWeakerThan T hPA
+      (TheoryCorrespondence.toFoundation T) := generatedFoundationWeakerThan T hPA
   let A := FailureOfComposition.ConcreteEvaluator.arithmetization
   let E := FailureOfComposition.ProgramIndices.generatedQuotientEquiv A
     (TheoryCorrespondence.toFoundation T)
@@ -234,11 +238,11 @@ theorem generatedQuotientPartialRecursiveEquiv_toFoundation
         (generatedQuotientPartialRecursiveEquiv T hPA hT q) =
       @FailureOfComposition.ConcreteIndices.generatedQuotientPartialRecursiveEquiv
         (TheoryCorrespondence.toFoundation T)
-        (foundationWeakerThan T hPA)
+        (generatedFoundationWeakerThan T hPA)
         ((Arithmetic.sigmaOneSound_toFoundation_iff T).mp hT)
         (generatedQuotientToFoundation T q) := by
   let _ : FFL.Entailment.WeakerThan FFL.FirstOrder.Arithmetic.Peano
-      (TheoryCorrespondence.toFoundation T) := foundationWeakerThan T hPA
+      (TheoryCorrespondence.toFoundation T) := generatedFoundationWeakerThan T hPA
   induction q using Quot.ind with
   | _ e => rfl
 

@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.EncodedList
-import CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.EncodedList
+public import CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation
 
 /-!
 # Evaluation existence for the encoded-list codes
@@ -33,6 +35,8 @@ indices whose iterated tail is zero.
 The head, tail and iterated tail lemmas stay private; the file exposes only the
 five existence statements the evaluator layers consume.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.Evaluation
-import CategoricalRiceShapiro.ArithmeticCode.EncodedList
-import CategoricalRiceShapiro.ArithmeticCode.Pairing
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.Evaluation
+public import CategoricalRiceShapiro.ArithmeticCode.EncodedList
+public import CategoricalRiceShapiro.ArithmeticCode.Pairing
 
 /-!
 # Valuation-local congruence for the minimized constructors
@@ -24,6 +26,8 @@ translates to a conjunction of two occurrences of the body formula, one at the
 found value and one under a bounded quantifier, and an equivalence of bodies at
 every extended assignment transports both.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.Certificate
+module
+
+public import CategoricalRiceShapiro.Evaluator.Certificate
 
 /-!
 # The conditional induction principle for certificate persistence
@@ -32,6 +34,8 @@ constructor-`6` cases and the full tag-6 theorem are in
 which needs the external induction on the index, is not proved anywhere in the
 library.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.PiOneDefinitions
+module
+
+public import FailureOfComposition.PiOneDefinitions
 
 /-!
 Pi-one completeness identifies external pointwise provability with equality
 of functional Sigma-one graphs on the natural numbers. No enumerability
 assumption is used.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

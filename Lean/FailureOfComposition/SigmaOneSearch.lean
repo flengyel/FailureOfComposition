@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ArithmeticCodeCompiler
-import FailureOfComposition.HistoryWitnesses
+module
+
+public import FailureOfComposition.ArithmeticCodeCompiler
+public import FailureOfComposition.HistoryWitnesses
 
 /-!
 Fair search and disjunction for the concrete program numbering. The searched
@@ -12,6 +14,8 @@ arithmetic tests are total history-evaluator computations, so a divergent
 candidate does not prevent the search from reaching a different candidate.
 All graph laws hold at arbitrary elements of every PA model.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -23,17 +27,17 @@ open CategoricalRiceShapiro.ArithmeticCode CategoricalRiceShapiro.Evaluator
 namespace FailureOfComposition.SigmaOneSearch
 open ProgramGraph ArithmeticCodeCompiler ConcreteEvaluator
 
-private def historyAt {n : ℕ} (c : PCode) (s x : Code n) : Code n :=
+def historyAt {n : ℕ} (c : PCode) (s x : Code n) : Code n :=
   codeHistoryEvaluator.comp ![s, codeConst (encode c), x]
 
-private def successAt {n : ℕ} (c : PCode) (s x : Code n) : Code n :=
+def successAt {n : ℕ} (c : PCode) (s x : Code n) : Code n :=
   codeEq (historyAt c s x) (Code.one n)
 
-private def existsTest (c : PCode) : Code 2 :=
+def existsTest (c : PCode) : Code 2 :=
   successAt c (codeUnpair₁ (Code.proj 0))
     (codePair (codeUnpair₂ (Code.proj 0)) (Code.proj 1))
 
-private def unionTest (c d : PCode) : Code 2 :=
+def unionTest (c d : PCode) : Code 2 :=
   codeOr (successAt c (Code.proj 0) (Code.proj 1))
     (successAt d (Code.proj 0) (Code.proj 1))
 

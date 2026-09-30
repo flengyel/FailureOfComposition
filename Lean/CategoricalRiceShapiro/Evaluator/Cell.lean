@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.TableLookup
-import CategoricalRiceShapiro.ArithmeticCode.PartialRecursive
+module
+
+public import CategoricalRiceShapiro.Evaluator.TableLookup
+public import CategoricalRiceShapiro.ArithmeticCode.PartialRecursive
 
 /-!
 # The evaluator-cell code
@@ -22,6 +24,8 @@ The conditional is arithmetic and eager: `codeIfPos` evaluates both branches.
 Only the code constructions are given here.  The standard computation theorems
 over the natural numbers are not part of this migration.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

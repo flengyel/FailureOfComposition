@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.RangeBridge
-import FailureOfComposition.RangeProductive
+module
+
+public import FailureOfComposition.Palomar.RangeBridge
+public import FailureOfComposition.RangeProductive
 
 /-!
 # Productive range-obstruction correspondence
@@ -14,6 +16,8 @@ correspondence already established for the independent interface.  It keeps the
 maintained witness and does not identify the two classically chosen range
 indices as natural numbers.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

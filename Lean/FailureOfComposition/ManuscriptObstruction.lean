@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteWeakTotality
+module
+
+public import FailureOfComposition.ConcreteWeakTotality
 
 /-!
 The four conclusions of manuscript Theorem 1, retaining uniform provable
 equality in its two middle clauses. The concrete productive witnesses have
 these uniform graph equations already in PA, before passing to the theory T.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

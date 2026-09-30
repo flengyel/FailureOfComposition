@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.EvaluatorBridge
-import FailureOfComposition.ConcreteWeakTotality
+module
+
+public import FailureOfComposition.Palomar.EvaluatorBridge
+public import FailureOfComposition.ConcreteWeakTotality
 
 /-!
 # Exact guard-index and weak-totality correspondence
@@ -13,6 +15,8 @@ The compiler equalities below preserve the concrete program syntax, so the
 same natural-number witness is transported to the maintained theorem.  The
 weak-totality bridge is proved independently of the counterexample theorem.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

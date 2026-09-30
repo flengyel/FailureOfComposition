@@ -9,9 +9,11 @@ FormalizedFormalLogic/Foundation's `Nat.ArithPart₁.Code` and
 e72cfe981aa65166f37fa4e2584f4806bc48d72f.  The Foundation sources are
 Apache-2.0 licensed.
 -/
-import FailureOfComposition.Palomar.ArithmeticInterface
-import Mathlib.Data.Fin.VecNotation
-import Mathlib.Computability.PartrecCode
+module
+
+public import FailureOfComposition.Palomar.ArithmeticInterface
+public import Mathlib.Data.Fin.VecNotation
+public import Mathlib.Computability.PartrecCode
 
 /-!
 # Independent evaluator statement interface
@@ -21,6 +23,8 @@ partial-recursive code language and compiles each code to the independent
 arithmetic syntax.  Later declarations construct the repository's concrete
 evaluator code without importing Foundation or maintained project proofs.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

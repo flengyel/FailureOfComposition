@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.SigmaOneRealization
-import FailureOfComposition.ConcreteAdequacy
-import FailureOfComposition.ConcreteIndexObstruction
+module
+
+public import FailureOfComposition.SigmaOneRealization
+public import FailureOfComposition.ConcreteAdequacy
+public import FailureOfComposition.ConcreteIndexObstruction
 
 /-!
 The complete arithmetization for the production history evaluator, and the
@@ -13,6 +15,8 @@ independent second-incompleteness proof for theories with a Delta-one axiom
 presentation. The realization field is proved by the formula compiler; no
 arithmetization structure or realization premise is supplied by the caller.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

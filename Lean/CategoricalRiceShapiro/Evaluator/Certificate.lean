@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.HistoryEvaluation
-import CategoricalRiceShapiro.Evaluator.CompositionDispatch
+module
+
+public import CategoricalRiceShapiro.Evaluator.HistoryEvaluation
+public import CategoricalRiceShapiro.Evaluator.CompositionDispatch
 
 /-!
 # The raw evaluator certificate
@@ -27,6 +29,8 @@ directions as an equivalence at one supplied stage.  None of these theorems
 brings certificates supplied at unrelated stages to a common stage, and none
 concerns first-success minimality or standard-model semantics.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "accepted_project_checkpoint": "93fc6536f17f84933edf6d223eb41c8e3a9f866c",
-  "original_source_pins": "Audit/failure-composition-v36/evidence/evaluator-source-pins.json",
+  "original_source_pins": "Lean/FailureOfComposition/Provenance/evaluator-source-pins.json",
   "original_evaluator_repository": "flengyel/Categorical_Rice_Shapiro",
   "original_evaluator_commit": "97484e4988a3e632e2c255c641edbe5292a86ea3",
   "port_source_checkpoint": "defc4bd198260adbc8729c9b25e293223d746770",

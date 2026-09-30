@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GodelGraph
-import FailureOfComposition.ProductiveGraph
+module
+
+public import FailureOfComposition.GodelGraph
+public import FailureOfComposition.ProductiveGraph
 
 /-!
 Index-level consequence of the arithmetization assumptions explicitly stated
@@ -14,6 +16,8 @@ in v36, equations (composition-graph) and (graph-realization).
 evaluator. In particular, the realization field is not discharged here.
 No theorem in this file identifies standard-model equivalence with PA provability.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedIndexClassification
-import FailureOfComposition.GeneratedIndexQuotient
-import FailureOfComposition.ConcreteGodel
+module
+
+public import FailureOfComposition.GeneratedIndexClassification
+public import FailureOfComposition.GeneratedIndexQuotient
+public import FailureOfComposition.ConcreteGodel
 
 /-!
 Generated-congruence classification for the concrete evaluator indices.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

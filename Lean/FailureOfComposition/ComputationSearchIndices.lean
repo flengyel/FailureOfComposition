@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.KleeneNormalForm
+module
+
+public import FailureOfComposition.KleeneNormalForm
 
 /-!
 Concrete natural-number indices for the direct computation-search construction.
 The graph equations proved here are standard-model equations. Their PA-provable
 counterparts for the repository's arithmetized evaluator remain a separate task.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

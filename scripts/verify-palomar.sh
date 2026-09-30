@@ -7,15 +7,16 @@ repository_root=$(CDPATH= cd -- "$script_dir/.." && pwd)
 lean_root="$repository_root/Lean"
 palomar_dir="$lean_root/FailureOfComposition/Palomar"
 work_root="$repository_root/.codex-work/palomar"
+upstream_root=${PALOMAR_UPSTREAM_ROOT:-$work_root/upstream}
 selected_config="$palomar_dir/comparator-nine.json"
 selected_challenge="$palomar_dir/ChallengeNine.lean"
 expected_toolchain=leanprover/lean4:v4.35.0-rc2
 expected_mathlib=065356127b1dc0016f66b7283ce0ce2c4055aa55
 expected_foundation=01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d
-expected_policy=792c7c0b9e798bd02719e795ef11fa2b5929e067
-expected_submission=a59f25bd8a66bf6faf3a4f4260d412989c0185ea
-expected_template=cb5c79b69a740d2dc299071fc35994627050d77a
-gnu_time=/usr/bin/time
+expected_policy=96b034cc31a72a63d4f4041911dce337a85c9a04
+expected_submission=65f0154ed776cd26c224254aa57b379137f28b0d
+expected_template=128a6c5ce5f48622e69927ccd639cbff401022e8
+gnu_time=${PALOMAR_GNU_TIME:-/usr/bin/time}
 if [[ ! -x $gnu_time ]]; then
   gnu_time="$repository_root/.codex-work/tmp/gnu-time/usr/bin/time"
 fi
@@ -42,7 +43,7 @@ precheck_memory_headroom_bytes=${PALOMAR_PRECHECK_MEMORY_HEADROOM_BYTES:-2147483
 precheck_memory_available_reserve_bytes=${PALOMAR_PRECHECK_MEMORY_AVAILABLE_RESERVE_BYTES:-1073741824}
 precheck_swap_headroom_bytes=${PALOMAR_PRECHECK_SWAP_HEADROOM_BYTES:-2147483648}
 precheck_deadline_seconds=${PALOMAR_PRECHECK_DEADLINE_SECONDS:-14400}
-cgroup_supervisor="$work_root/upstream/PalomarSubmission/scripts/supervise_cgroup.py"
+cgroup_supervisor="$upstream_root/PalomarSubmission/scripts/supervise_cgroup.py"
 delegated_user_cgroup=
 
 usage() {
@@ -75,7 +76,8 @@ Modes:
       relabeled. A new evidence directory is always used.
   --full-verifier EVENT_JSON RUN_DIR
       Run prepare, capacity, and execute from the pinned PalomarSubmission
-      checkout already present at .codex-work/palomar/upstream/. This mode
+      checkout selected by PALOMAR_UPSTREAM_ROOT (default:
+      .codex-work/palomar/upstream/). This mode
       requires an isolated Python environment containing requirements.txt,
       Licensee/Bundler, a verifier-built bubblewrap 0.12.0 named by
       PALOMAR_BWRAP, and delegated cgroup-v2 memory/pids controllers. It uses
@@ -132,8 +134,8 @@ check_pins() {
 check_upstream() {
   local name expected directory actual
   while read -r name expected; do
-    directory="$work_root/upstream/$name"
-    [[ -d $directory/.git ]] || fail "missing pinned upstream checkout: $directory"
+    directory="$upstream_root/$name"
+    [[ -e $directory/.git ]] || fail "missing pinned upstream checkout: $directory"
     actual=$(git -C "$directory" rev-parse HEAD)
     [[ $actual == "$expected" ]] || fail "$name is at $actual, expected $expected"
   done <<EOF
@@ -867,35 +869,36 @@ local_comparator() {
 
 full_verifier() {
   [[ $# -eq 2 ]] || fail "--full-verifier requires EVENT_JSON and RUN_DIR"
-  local event=$1 run=$2 pipeline output bwrap_path bundle_path workflow_url
-  pipeline="$work_root/upstream/PalomarSubmission"
+  local event=$1 run=$2 pipeline output bwrap_path licensee_path workflow_url verifier_python
+  pipeline="$upstream_root/PalomarSubmission"
   output="$run/mechanical-report.json"
   bwrap_path=${PALOMAR_BWRAP:-}
   workflow_url=${PALOMAR_WORKFLOW_URL:-}
-  bundle_path=$(command -v bundle || true)
+  licensee_path=${PALOMAR_LICENSEE:-$(command -v licensee || true)}
+  verifier_python=${PALOMAR_PYTHON:-python3}
   [[ -n $bwrap_path && -x $bwrap_path ]] || fail "PALOMAR_BWRAP must name verifier-built bwrap 0.12.0"
   [[ -n $workflow_url ]] || fail "PALOMAR_WORKFLOW_URL must name an honest local provenance URL"
-  [[ -n $bundle_path ]] || fail "Bundler/Licensee is required"
+  [[ -n $licensee_path && -x $licensee_path ]] || fail "PALOMAR_LICENSEE must name Licensee"
   [[ -f $event ]] || fail "event file does not exist: $event"
   mkdir -p "$run"
   check_upstream
   export PALOMAR_EXECUTION_PROFILE=palomar-standard-v1
   (
     cd "$pipeline"
-    python3 scripts/verify_submission.py prepare --event "$event" --work-dir "$run/work" \
-      --output "$output" --licensee "$bundle_path"
-    python3 - "$output" <<'PY'
+    "$verifier_python" scripts/verify_submission.py prepare --event "$event" --work-dir "$run/work" \
+      --output "$output" --licensee "$licensee_path"
+    "$verifier_python" - "$output" <<'PY'
 import json, pathlib, sys
 value = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
 if value.get("status") != "pending" or value.get("stage") != "prepared":
     raise SystemExit("prepare did not produce status=pending, stage=prepared")
 PY
-    python3 scripts/verify_submission.py check-capacity --disk-path "$run" --output "$output"
-    python3 scripts/verify_submission.py execute --work-dir "$run/work" --output "$output" \
+    "$verifier_python" scripts/verify_submission.py check-capacity --disk-path "$run" --output "$output"
+    "$verifier_python" scripts/verify_submission.py execute --work-dir "$run/work" --output "$output" \
       --bwrap "$bwrap_path" --bwrap-source-tag v0.12.0 \
       --execution-budget-seconds 19800 --workflow-url "$workflow_url"
   )
-  python3 - "$output" <<'PY'
+  "$verifier_python" - "$output" <<'PY'
 import json, pathlib, sys
 value = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
 if value.get("status") != "pass" or value.get("stage") != "complete":

@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.PersistenceInduction
+module
+
+public import CategoricalRiceShapiro.Evaluator.PersistenceInduction
 
 /-!
 Persistence for constructor 7 of the existing Mathlib-index history evaluator.
 The subsidiary-index premise is discharged by the external induction on indices;
 the same-index recursive lookup is handled by PA induction on the source stage.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

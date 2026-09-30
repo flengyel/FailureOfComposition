@@ -3,11 +3,13 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.ArithmeticBridge
-import FailureOfComposition.Palomar.EvaluatorInterface
-import FailureOfComposition.ConcreteEvaluatorGraph
-import FailureOfComposition.ConcreteIndexObstruction
-import Foundation.FirstOrder.Arithmetic.R0.Representation
+module
+
+public import FailureOfComposition.Palomar.ArithmeticBridge
+public import FailureOfComposition.Palomar.EvaluatorInterface
+public import FailureOfComposition.ConcreteEvaluatorGraph
+public import FailureOfComposition.ConcreteIndexObstruction
+public import Foundation.FirstOrder.Arithmetic.R0.Representation
 
 /-!
 # Correspondence for the independent evaluator statement interface
@@ -15,6 +17,8 @@ import Foundation.FirstOrder.Arithmetic.R0.Representation
 The independent code language and formula compiler are mapped to the pinned
 Foundation definitions used by the maintained concrete evaluator.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

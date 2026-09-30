@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import Lean
+module
+
+public import Lean
 
 /-!
 # Exact local check of the cumulative nine-result Palomar interface
@@ -20,15 +22,17 @@ external-kernel replay.  The separate source-policy command checks the Challenge
 import closure.
 -/
 
+@[expose] public section
+
 set_option autoImplicit false
 
 open Lean
 
 namespace FailureOfComposition.Palomar.NineInterfaceCheck
 
-private def challengeModule : Name := `FailureOfComposition.Palomar.ChallengeNine
-private def solutionModule : Name := `FailureOfComposition.Palomar.SolutionNine
-private def selected : Array Name := #[
+def challengeModule : Name := `FailureOfComposition.Palomar.ChallengeNine
+def solutionModule : Name := `FailureOfComposition.Palomar.SolutionNine
+def selected : Array Name := #[
   `FailureOfComposition.Palomar.obstruction_four_properties,
   `FailureOfComposition.Palomar.no_quotient_composition_productive,
   `FailureOfComposition.Palomar.no_quotient_composition_godel,
@@ -40,15 +44,15 @@ private def selected : Array Name := #[
   `FailureOfComposition.Palomar.generated_quotient_partial_recursive
 ]
 
-private def permittedAxiom (name : Name) : Bool :=
+def permittedAxiom (name : Name) : Bool :=
   name == `propext || name == `Quot.sound || name == `Classical.choice
 
-private def normalized (info : ConstantInfo) (expr : Expr) : Expr :=
+def normalized (info : ConstantInfo) (expr : Expr) : Expr :=
   let levels := (List.range info.levelParams.length).map fun index =>
     Level.param (Name.num `_interface_universe index)
   expr.instantiateLevelParams info.levelParams levels
 
-private def kindName (info : ConstantInfo) : String :=
+def kindName (info : ConstantInfo) : String :=
   match info with
   | .axiomInfo _ => "axiom"
   | .defnInfo _ => "definition"
@@ -59,7 +63,7 @@ private def kindName (info : ConstantInfo) : String :=
   | .ctorInfo _ => "constructor"
   | .recInfo _ => "recursor"
 
-private def sameKind (left right : ConstantInfo) : Bool :=
+def sameKind (left right : ConstantInfo) : Bool :=
   match left, right with
   | .axiomInfo _, .axiomInfo _
   | .defnInfo _, .defnInfo _
@@ -71,7 +75,7 @@ private def sameKind (left right : ConstantInfo) : Bool :=
   | .recInfo _, .recInfo _ => true
   | _, _ => false
 
-private def sameRecursorRules (leftInfo rightInfo : ConstantInfo) :
+def sameRecursorRules (leftInfo rightInfo : ConstantInfo) :
     List RecursorRule → List RecursorRule → Bool
   | [], [] => true
   | left :: leftRest, right :: rightRest =>
@@ -81,7 +85,7 @@ private def sameRecursorRules (leftInfo rightInfo : ConstantInfo) :
   | _, _ => false
 
 /-- Compare the non-expression declaration data that the kernel/exporter keeps. -/
-private def sameMetadata (left right : ConstantInfo) : Bool :=
+def sameMetadata (left right : ConstantInfo) : Bool :=
   match left, right with
   | .axiomInfo a, .axiomInfo b => a.isUnsafe == b.isUnsafe
   | .defnInfo a, .defnInfo b =>
@@ -105,7 +109,7 @@ private def sameMetadata (left right : ConstantInfo) : Bool :=
         a.isUnsafe == b.isUnsafe && sameRecursorRules left right a.rules b.rules
   | _, _ => false
 
-private def sharedBody? (name : Name) (info : ConstantInfo) : Option Expr :=
+def sharedBody? (name : Name) (info : ConstantInfo) : Option Expr :=
   if selected.contains name then none else info.value? (allowOpaque := true)
 
 /--
@@ -116,7 +120,7 @@ since ChallengeNine deliberately replaces those proofs with its nine holes.  Thi
 stronger traversal explains why its count is much larger than a definitions-only
 statement graph.
 -/
-private def statementDependencies (name : Name) (info : ConstantInfo) : Array Name :=
+def statementDependencies (name : Name) (info : ConstantInfo) : Array Name :=
   match info with
   | .axiomInfo value => value.type.getUsedConstants
   | .defnInfo value => value.type.getUsedConstants ++ value.value.getUsedConstants
@@ -129,7 +133,7 @@ private def statementDependencies (name : Name) (info : ConstantInfo) : Array Na
   | .inductInfo value => value.type.getUsedConstants ++ value.ctors.toArray
   | .quotInfo value => value.type.getUsedConstants
 
-private def allDependencies (info : ConstantInfo) : Array Name :=
+def allDependencies (info : ConstantInfo) : Array Name :=
   match info with
   | .axiomInfo value => value.type.getUsedConstants
   | .defnInfo value => value.type.getUsedConstants ++ value.value.getUsedConstants
@@ -140,7 +144,7 @@ private def allDependencies (info : ConstantInfo) : Array Name :=
   | .inductInfo value => value.type.getUsedConstants ++ value.ctors.toArray
   | .quotInfo value => value.type.getUsedConstants
 
-private partial def statementClosure (env : Environment) (todo : List Name)
+partial def statementClosure (env : Environment) (todo : List Name)
     (seen : NameSet := {}) : Except String NameSet := do
   match todo with
   | [] => return seen
@@ -154,7 +158,7 @@ private partial def statementClosure (env : Environment) (todo : List Name)
         ((statementDependencies name info).toList ++ rest) (seen.insert name)
 
 /-- Full recursive type/proof/definition closure, used only for axiom auditing. -/
-private partial def proofClosure (env : Environment) (todo : List Name)
+partial def proofClosure (env : Environment) (todo : List Name)
     (seen : NameSet := {}) : Except String NameSet := do
   match todo with
   | [] => return seen
@@ -167,7 +171,7 @@ private partial def proofClosure (env : Environment) (todo : List Name)
       let more := allDependencies info
       proofClosure env (more.toList ++ rest) (seen.insert name)
 
-private def ownedTheorem (env : Environment) (moduleName name : Name) : IO TheoremVal := do
+def ownedTheorem (env : Environment) (moduleName name : Name) : IO TheoremVal := do
   let some index := env.getModuleIdxFor? name
     | throw <| IO.userError s!"No defining module for {name}"
   unless env.header.moduleNames[index.toNat]! == moduleName do
@@ -176,12 +180,12 @@ private def ownedTheorem (env : Environment) (moduleName name : Name) : IO Theor
     | throw <| IO.userError s!"Missing theorem declaration: {name}"
   return value
 
-private def normalizedTheoremType (value : TheoremVal) : Expr :=
+def normalizedTheoremType (value : TheoremVal) : Expr :=
   let levels := (List.range value.levelParams.length).map fun index =>
     Level.param (Name.num `_interface_universe index)
   value.type.instantiateLevelParams value.levelParams levels
 
-private def compareDeclaration (challenge solution : Environment) (name : Name) : IO Unit := do
+def compareDeclaration (challenge solution : Environment) (name : Name) : IO Unit := do
   let some left := challenge.checked.get.find? name
     | throw <| IO.userError s!"Challenge statement dependency is unresolved: {name}"
   let some right := solution.checked.get.find? name
@@ -202,7 +206,7 @@ private def compareDeclaration (challenge solution : Environment) (name : Name) 
   | none, none => pure ()
   | _, _ => throw <| IO.userError s!"Definition-body availability mismatch: {name}"
 
-private def auditAxioms (env : Environment) (name : Name) (challenge : Bool) : IO NameSet := do
+def auditAxioms (env : Environment) (name : Name) (challenge : Bool) : IO NameSet := do
   let visited ← match proofClosure env [name] with
     | .ok result => pure result
     | .error message => throw <| IO.userError message
@@ -224,7 +228,7 @@ private def auditAxioms (env : Environment) (name : Name) (challenge : Bool) : I
   IO.println s!"PASS {side} recursive axiom closure: {axioms}; {visited.size} declarations"
   return visited
 
-private def auditOwnedHoles (env : Environment) : IO Unit := do
+def auditOwnedHoles (env : Environment) : IO Unit := do
   let mut holes : Array Name := #[]
   let mut definitionHoles : Array Name := #[]
   for (name, info) in env.constants do
@@ -243,11 +247,11 @@ private def auditOwnedHoles (env : Environment) : IO Unit := do
   unless definitionHoles.isEmpty do
     throw <| IO.userError s!"ChallengeNine contains selected definition holes: {definitionHoles}"
 
-private def requireExactSelection (names : Array Name) : IO Unit := do
+def requireExactSelection (names : Array Name) : IO Unit := do
   unless names == selected do
     throw <| IO.userError s!"Nine-result selection must be exactly {selected}; got {names}"
 
-private def checkExactPair : IO Unit := do
+def checkExactPair : IO Unit := do
   initSearchPath (← findSysroot)
   requireExactSelection selected
   IO.println s!"Challenge module: {challengeModule}"
@@ -281,7 +285,7 @@ private def checkExactPair : IO Unit := do
   IO.println "PASS exact cumulative nine-result local interface check"
   IO.println "This check is not Palomar Comparator or an external-kernel replay."
 
-private def checkExpectedSelectionRejection : IO Unit := do
+def checkExpectedSelectionRejection : IO Unit := do
   let mut rejected := false
   try
     requireExactSelection #[selected[0]!, selected[1]!, selected[2]!, selected[3]!,
@@ -296,7 +300,7 @@ private def checkExpectedSelectionRejection : IO Unit := do
   IO.println "PASS negative regression: an Eight-only selection is rejected by the nine-result checker"
 
 /-- Generic comparison entry used only by the isolated negative regression. -/
-private def checkExpectedDefinitionRejection
+def checkExpectedDefinitionRejection
     (leftModule rightModule declaration expectedDefinition : Name) : IO Unit := do
   initSearchPath (← findSysroot)
   let left ← importModules #[{ module := leftModule }] {}

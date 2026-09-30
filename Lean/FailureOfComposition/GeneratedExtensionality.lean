@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedGraphDefinitions
-import FailureOfComposition.GeneratedWitnessPointwise
-import FailureOfComposition.SigmaOneRealization
+module
+
+public import FailureOfComposition.GeneratedGraphDefinitions
+public import FailureOfComposition.GeneratedWitnessPointwise
+public import FailureOfComposition.SigmaOneRealization
 
 /-!
 Extensional containment in the generated composition congruence.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

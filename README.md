@@ -65,8 +65,9 @@ to its source directory.
 ## Licensing and Palomar
 
 The Lean formalization and supporting code use the existing
-[Apache-2.0 license](LICENSE). The manuscript retains its existing licensing;
-placing its source here does not assign it a new code license. See the
+[Apache-2.0 license](LICENSE). The author retains copyright in the manuscript,
+which was submitted under arXiv's perpetual, non-exclusive distribution
+license; that grant is not a general public reuse license. See the
 [manuscript notes](manuscript/README.md).
 
 The [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md) contains
@@ -79,7 +80,11 @@ completed its protected build/export/comparison/kernel workflow under
 `palomar-standard-v1`. The
 [recorded Nine checkpoint](Lean/FailureOfComposition/Palomar/STATUS.md)
 identifies the exact scope.
+That pass predates the current module-header requirement. The focused candidate
+now retains 124 Lean modules, no maintained Lean code under `Audit/`, and the
+same nine mathematical contracts; it is being validated separately with the
+current verifier at `65f0154ed776cd26c224254aa57b379137f28b0d`.
 These declaration counts are distinct from
-manuscript numbering. The manuscript's licensing scope must also be accounted
-for in any submitted snapshot. No Palomar service submission, editorial
+manuscript numbering. The submitted snapshot includes the distinct manuscript
+and code licensing notices. No Palomar service submission, editorial
 acceptance, or registration is claimed.

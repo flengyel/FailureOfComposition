@@ -4,6 +4,8 @@
   "tested_code_commit": "381de9db4d2214b8fd8d05bf74b56bc9597f01c5",
   "official_verifier_source_commit": "48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb",
   "current_pin_launcher_commit": "48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb",
+  "current_verifier_revision": "65f0154ed776cd26c224254aa57b379137f28b0d",
+  "current_policy_revision": "96b034cc31a72a63d4f4041911dce337a85c9a04",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
     "challenge_module": "FailureOfComposition.Palomar.ChallengeNine",
@@ -32,6 +34,28 @@
       "NanoDa",
       "Lean default kernel"
     ]
+  },
+  "current_module_submission_candidate": {
+    "baseline_commit": "5586bae3730e49f866da1d4e2f0ebb1dadacc2ca",
+    "lean_sources_before": 197,
+    "audit_lean_sources_before": 40,
+    "lean_sources_retained": 124,
+    "lean_sources_omitted": 73,
+    "audit_lean_sources_moved": 5,
+    "audit_lean_sources_omitted": 35,
+    "audit_files_retained": 0,
+    "module_source_scan": "pass_124_of_124",
+    "lean_deps_json": "pass_124_of_124",
+    "challenge_bytes": 44261,
+    "challenge_lines": 999,
+    "challenge_source_policy": "pass_with_preferred_surface_warning",
+    "exact_interface": "pass_9_types_5149_shared_constants",
+    "permitted_axioms_and_routes": "pass_full_environment",
+    "negative_regressions": "pass",
+    "selected_source_contract_comparison": "pass_after_module_surface_normalization",
+    "current_official_verifier": "pending_immutable_candidate",
+    "palomar_service_submission": false,
+    "palomar_registry_acceptance": false
   },
   "official_nine_local_verifier_checkpoint": {
     "source_commit": "48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb",

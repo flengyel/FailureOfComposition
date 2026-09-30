@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.PiOneInterface
-import FailureOfComposition.Palomar.EvaluatorBridge
-import FailureOfComposition.ConcretePiOneCharacterization
+module
+
+public import FailureOfComposition.Palomar.PiOneInterface
+public import FailureOfComposition.Palomar.EvaluatorBridge
+public import FailureOfComposition.ConcretePiOneCharacterization
 
 /-!
 # Π₁ characterization bridge
@@ -16,6 +18,8 @@ for every true Π₁ sentence, and the three index-level relations.  The final
 theorem transports the maintained concrete characterization without adding an
 enumerability or soundness assumption.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

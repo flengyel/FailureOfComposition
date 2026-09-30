@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.RangeWitness
+module
+
+public import FailureOfComposition.RangeWitness
 
 /-!
 An independent productive-set proof of the range-assignment obstruction.
@@ -11,6 +13,8 @@ The probe tests whether the concrete diagonal history has a positive result
 at the supplied stage. Every standard stage is separately PA-refutable, while
 the internally quantified absence sentence is unprovable in the ambient theory.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

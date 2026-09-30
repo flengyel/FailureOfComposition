@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
-import Foundation.FirstOrder.Arithmetic.Induction
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
+public import Foundation.FirstOrder.Arithmetic.Induction
 
 /-!
 # Extending a Gödel beta code inside a model of Peano arithmetic
@@ -36,6 +38,8 @@ supporting development is built here and kept private:
 
 Nothing here uses `Nat.beta`, `Computes` or evaluation over standard `ℕ`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

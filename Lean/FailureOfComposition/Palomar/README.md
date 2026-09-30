@@ -25,11 +25,11 @@ seconds, including a clean 2,560.077-second Solution build and a
 of the snapshot, not a Palomar service submission, editorial decision,
 registration, or registry entry.
 
-The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
-nine-result migration state in
-[`RESULT_INVENTORY.json`](RESULT_INVENTORY.json).  The earlier resolved-import
-and correspondence baseline remains in
-[`ELIGIBILITY_INVENTORY.json`](ELIGIBILITY_INVENTORY.json).
+The current findings are recorded in [`STATUS.md`](STATUS.md), with the
+nine-result migration state in [`RESULT_INVENTORY.json`](RESULT_INVENTORY.json).
+The focused submitted-source inventory is
+[`SUBMISSION_SOURCE_INVENTORY.json`](SUBMISSION_SOURCE_INVENTORY.json); historical
+inventories remain available at their immutable commits and evidence archives.
 
 The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
 Its accepted port checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`,
@@ -89,33 +89,33 @@ merely another syntactic graph quotient. The generated congruence is defined
 by intersection of all composition-compatible equivalence relations
 containing pointwise provability.
 
-## Verified toolchain and remaining submission decisions
+## Current toolchain and submission preparation
 
-The requirements were checked on September 25, 2026 against
-the [submitter policy at `792c7c0`](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md)
-and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarSubmission/tree/a59f25bd8a66bf6faf3a4f4260d412989c0185ea).
+The module-based candidate is checked against the
+[policy at `96b034c`](https://github.com/PalomarRegistry/PalomarPolicy/blob/96b034cc31a72a63d4f4041911dce337a85c9a04/CONTRIBUTING.md)
+and [PalomarSubmission at `65f0154`](https://github.com/PalomarRegistry/PalomarSubmission/tree/65f0154ed776cd26c224254aa57b379137f28b0d).
+The complete earlier pass under `a59f25b` remains historical evidence for its
+immutable snapshot; it does not by itself satisfy the newer module-source rule.
 
 1. **Toolchain compatibility is resolved.** Its
-   [`toolchains.json`](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/toolchains.json)
+   [`toolchains.json`](https://github.com/PalomarRegistry/PalomarSubmission/blob/65f0154ed776cd26c224254aa57b379137f28b0d/toolchains.json)
    requires at least `v4.35.0-rc2`. The accepted port uses that release with
    matching Mathlib and Foundation pins and has passed the project checks.
-2. **Challenge dependency boundary.** The legacy nine-result Challenge imports local
-   modules whose closure includes Foundation and proved project results.
-   The [dependency policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#24-dependencies)
-   permits only core, canonical Mathlib and its pinned dependencies, and
-   specifically approved Tau Ceti and CSLib libraries in that closure.
-   These imports therefore fail the current policy.  The readable cumulative
-   `ChallengeNine` interface for all nine declarations now imports only
-   permitted Mathlib sources and passes the pinned source audit.
+2. **Challenge dependency boundary is resolved.** The readable cumulative
+   `ChallengeNine` interface imports only permitted Mathlib sources and passes
+   the current source audit.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
-3. **Snapshot licensing scope.** This repository now has the exported
-   Apache-2.0 code license at its root as `LICENSE`. The historical missing-root
-   issue is resolved. The manuscript has been added under `manuscript/` with
-   its existing licensing preserved; the code license is not a new grant for
-   the paper. Its scope must be settled for any final submitted snapshot under
-   the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
-4. **Comparator and official-verifier evidence remains local.** The cumulative eligible
+3. **Submitted-source scope and modules.** The focused tree contains 124 Lean
+   modules and no Lean source under `Audit/`. The current static scan reports
+   no source-policy issue. ChallengeNine is 44,261 bytes and 999 lines. See
+   [`PALOMAR_SUBMISSION_SCOPE.md`](../../../docs/PALOMAR_SUBMISSION_SCOPE.md).
+4. **Licensing notices are explicit.** Apache-2.0 covers the formalization and
+   supporting code. The manuscript README records the author's retained
+   copyright and arXiv's perpetual, non-exclusive distribution license; that
+   grant is not a general public reuse license. No demonstrated mechanical
+   licensing failure is pending.
+5. **Comparator and official-verifier evidence remains local.** The cumulative eligible
    `ChallengeNine`/`SolutionNine` pair at tested project commit
    `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` passed con-ron, NanoDa, and Lean's
    default kernel.  The exact selected declarations are
@@ -130,7 +130,7 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    no pressure, limit, deadline,
    swap, or OOM event.  Earlier timeouts and pressure stops remain valid
    historical resource results for their recorded dependency revisions, not
-   theorem rejections. The current
+   theorem rejections. The older pinned
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    then fetched public commit `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb`,
    performed its protected source-provenance, clean build, export, comparison,
@@ -139,11 +139,12 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    also accepted. The execution took 3,034.009 seconds and had no deadline,
    OOM, pressure-stop, or host-reserve event. This is a complete local run of
    the pinned official verifier, not a Palomar service or editorial result.
-5. **Service submission remains separate.** No event was uploaded, no service
+6. **Service submission remains separate.** No event was uploaded, no service
    submission was made, and no registration or editorial review occurred. The
    default 16-CPU profile was unavailable on this four-CPU host; the approved
-   standard profile qualified and was selected explicitly. The manuscript
-   license-scope decision in item 3 remains before any service submission.
+   standard profile qualified and was selected explicitly. The module-based
+   snapshot requires its own one-time current-verifier execution before a
+   current-readiness claim.
 
 Solving the dependency boundary must preserve the statements. Adding the
 desired result as a hypothesis, hiding it inside an unconstrained definition,
@@ -164,7 +165,7 @@ The repository contains the substantive formalization, so
 block. The separate wrapper declarations in this directory do not turn the
 whole repository into a thin-wrapper repository.
 
-The immutable all-nine handoff tested here is:
+The all-nine handoff paths are:
 
 | Setting | Repository-relative value |
 | --- | --- |
@@ -175,7 +176,8 @@ The immutable all-nine handoff tested here is:
 | Challenge module | `FailureOfComposition.Palomar.ChallengeNine` |
 | Solution module | `FailureOfComposition.Palomar.SolutionNine` |
 | Local Comparator-tested revision | `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` |
-| Pinned official-verifier source revision | `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` |
+| Earlier official-verifier source revision | `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` |
+| Current verifier revision | `65f0154ed776cd26c224254aa57b379137f28b0d` |
 | Official-verifier profile | `palomar-standard-v1` |
 
 Any later submission revision must be an immutable full SHA. A changed snapshot,
@@ -189,17 +191,18 @@ nested `Lean` project layout and contains the maintained code and manuscript.
 The old repository remains linked only for historical provenance and evidence.
 `ROOTPROVENANCE.json` is the frozen initial export record, not an assertion that
 this repository is still unpublished or that later files match the export hashes.
-The retained `export_repository.py` helper reproduces the original code-export
-workflow; it is not a complete backup tool for this repository's added manuscript.
+The focused submission omits the superseded export helper and cumulative
+One-through-Eight interfaces; their exact sources remain in immutable history.
 
-`Challenge.lean` contains nine deliberate theorem holes to expose the intended
-types. It stays outside the maintained proof umbrella. `Solution.lean` does
+`ChallengeNine.lean` contains exactly nine deliberate theorem holes to expose
+the intended types. It stays outside the maintained proof umbrella.
+`SolutionNine.lean` does
 not import Challenge and supplies its proofs from the maintained library.
 Do not import both same-name interfaces into one Lean environment. The holes
 are excluded explicitly from metadata proof counts; this is not a claim that
 every unrelated probe or fixture in the repository is hole-free.
 
-## Run the local paired check in WSL
+## Run the focused local gates in WSL
 
 The existing Linux port checkout already has the accepted toolchain and
 dependency installations. When a changed draft needs checking, use it directly:
@@ -209,17 +212,17 @@ cd /home/flengyel/src/FailureOfComposition-port
 export LEAN_NUM_THREADS=1 FAILCOMP_STYLE_JOBS=1
 mkdir -p .codex-work/tmp
 export TMPDIR="$PWD/.codex-work/tmp"
-python3 Lean/FailureOfComposition/Palomar/check_draft.py
+PALOMAR_SUBMISSION_CHECKOUT=/path/to/PalomarSubmission-at-65f0154 \
+  PALOMAR_PYTHON=/path/to/its-python \
+  bash scripts/run-palomar-nine-focused.sh .codex-work/palomar/nine-focused
 ```
 
-The checker reuses the validated pinned dependency checkouts, incrementally
-builds the maintained proof library, elaborates Challenge and Solution
-separately, and runs `CheckInterface.lean` to compare the nine types and their
-axiom envelopes. The deliberate Challenge-hole warnings are expected. The
-Solution is checked with strict Mathlib style linting and warnings as errors.
-The local checker passed all nine legacy declarations during the September 25
-WSL acceptance run. That paired check is distinct from the later eight-declaration
-Comparator pass and from complete official Palomar verification.
+The maintained suite builds the selected modules, compiles the bridges strictly,
+checks Challenge and Solution in separate environments, walks full proof bodies
+for axioms and route separation, applies the current Challenge source policy,
+and runs the retained negative fixtures. The nine deliberate Challenge-hole
+warnings are expected. These focused gates remain distinct from Comparator and
+the complete official verifier.
 
 ## Scope, provenance, and review
 

@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.Arithmetic
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.Arithmetic
 
 /-!
 # Bounded search and primitive recursion
@@ -21,6 +23,8 @@ the standard-model bridge, which turns a computation over `ℕ` into evaluation 
 standard numerals in an arbitrary model.
 -/
 
+@[expose] public section
+
 set_option autoImplicit false
 
 open Nat Nat.ArithPart₁
@@ -36,7 +40,7 @@ def codeBall {n : ℕ} (dφ : Code (n + 1)) (i : Fin n) : Code n :=
 
 /-- The arguments at which the step function is applied inside a history: the
 history index, the entry recorded at that index, and the ambient arguments. -/
-private def precStepArgs {n : ℕ} : Fin (n + 2) → Code (n + 3) :=
+def precStepArgs {n : ℕ} : Fin (n + 2) → Code (n + 3) :=
   Fin.cases (Code.proj 0)
     (Fin.cases (codeBeta (Code.proj 1) (Code.proj 0))
       (fun j => Code.proj j.succ.succ.succ))
@@ -48,7 +52,7 @@ def codePrecStep {n : ℕ} (dg : Code (n + 2)) : Code (n + 3) :=
     (dg.comp precStepArgs)
 
 /-- Reindex a code past the history and index arguments. -/
-private def codeTailTail {n : ℕ} (df : Code n) : Code (n + 2) :=
+def codeTailTail {n : ℕ} (df : Code n) : Code (n + 2) :=
   df.comp (fun j => Code.proj j.succ.succ)
 
 /-- A candidate history is correct: its initial entry is the base value, and

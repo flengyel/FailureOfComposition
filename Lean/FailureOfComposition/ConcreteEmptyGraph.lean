@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteWitnessGraphs
-import FailureOfComposition.MinimizationPersistence
+module
+
+public import FailureOfComposition.ConcreteWitnessGraphs
+public import FailureOfComposition.MinimizationPersistence
 
 /-!
 A concrete nowhere-defined program in the accepted Mathlib numbering.
 The program searches for a zero of successor; its index is 11.
 Its graph is proved empty inside every model of PA, including nonstandard models.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

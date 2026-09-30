@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.PiOneExtensionality
+module
+
+public import FailureOfComposition.PiOneExtensionality
 
 /-!
 Sigma-one soundness is enough to make pointwise provability sound for the
 standard extensions of arbitrary Sigma-one graphs. This statement needs
 neither graph functionality nor an enumerability assumption on the theory.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

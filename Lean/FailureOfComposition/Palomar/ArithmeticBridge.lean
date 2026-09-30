@@ -3,10 +3,12 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.ArithmeticInterface
-import FailureOfComposition.TheoryEnumerability
-import Foundation.FirstOrder.Arithmetic.Schemata
-import Foundation.FirstOrder.LK.Basic
+module
+
+public import FailureOfComposition.Palomar.ArithmeticInterface
+public import FailureOfComposition.TheoryEnumerability
+public import Foundation.FirstOrder.Arithmetic.Schemata
+public import Foundation.FirstOrder.LK.Basic
 
 /-!
 # Correspondence for the explicit Palomar arithmetic interface
@@ -17,6 +19,8 @@ translations between the independent Mathlib-only syntax in
 translations are inverse on terms and formulas; subsequent sections transport
 rewriting and actual LK derivations.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.Certificate
+module
+
+public import CategoricalRiceShapiro.Evaluator.Certificate
 
 /-!
 # The tag-5 induction case of certificate persistence
@@ -27,6 +29,8 @@ the canonical index at stage `t`.
 The file states one induction case.  It proves neither the cases for the other constructor
 numbers nor persistence for all standard indices.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

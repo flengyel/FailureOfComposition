@@ -3,15 +3,19 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedIndexTransport
-import FailureOfComposition.GeneratedClassification
-import FailureOfComposition.PiOneIndexCharacterization
+module
+
+public import FailureOfComposition.GeneratedIndexTransport
+public import FailureOfComposition.GeneratedClassification
+public import FailureOfComposition.PiOneIndexCharacterization
 
 /-!
 Classification of the least composition congruence on program indices.
 Sigma-one soundness gives equality of denoted partial functions; otherwise
 the generated relation is universal. No effective presentation is required.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,0 @@
-{
-  "output": "con-ron: parse done: 10 fold records t=0.1s\ncon-ron: install done: 10/10, 2 checks pending t=0.2s\ncon-ron: done: parse 0.1s, install 0.1s, check 0.0s, 1 workers\n",
-  "status": {"exit_status": 0, "deadline_fired": false, "pressure_fired": false},
-  "launched": true,
-  "expected": "internal_error"
-}

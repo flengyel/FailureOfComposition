@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteIndexObstruction
+module
+
+public import FailureOfComposition.ConcreteIndexObstruction
 
 /-!
 Concrete weak-totality witnesses for the manuscript's external pointwise
@@ -11,6 +13,8 @@ provability relation. The guard agrees pointwise with identity, but annihilates
 a search program that is not provably empty. Consequently weak totality cannot
 be assigned to the pointwise quotient independently of a representative.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.ObstructionBridge
-import FailureOfComposition.QuotientObstruction
+module
+
+public import FailureOfComposition.Palomar.ObstructionBridge
+public import FailureOfComposition.QuotientObstruction
 
 /-!
 # Productive quotient obstruction for the independent Palomar interface
@@ -14,6 +16,8 @@ the maintained pointwise-index quotient, proves the representative equality
 criterion, and derives the quotient obstruction from the four checked
 productive witnesses.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -78,7 +82,7 @@ theorem uniformIndex_imp_pointwiseIndex (T : Theory) (e d : ℕ) :
       FailureOfComposition.ConcreteIndices.uniformKleeneSentence] using b
   simpa [F, G] using hs'
 
-private theorem foundationWeakerThan (T : Theory)
+theorem foundationWeakerThan (T : Theory)
     (hPA : DeductivelyExtends Peano T) :
     FFL.Entailment.WeakerThan FFL.FirstOrder.Arithmetic.Peano
       (TheoryCorrespondence.toFoundation T) :=

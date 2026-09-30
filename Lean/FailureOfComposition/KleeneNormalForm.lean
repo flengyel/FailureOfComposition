@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Productiveness
+module
+
+public import FailureOfComposition.Productiveness
 
 /-!
 A concrete primitive recursive normal-form predicate for Mathlib's numbering.
@@ -11,6 +13,8 @@ A witness pairs a fuel bound with the output. It is not asserted to be the
 historical computation-history coding of Odifreddi or Di Paola--Montagna.
 All theorems in this module concern standard natural numbers, not PA derivations.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

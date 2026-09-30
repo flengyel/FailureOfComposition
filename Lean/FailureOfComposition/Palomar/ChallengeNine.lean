@@ -1,10 +1,12 @@
 /- Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0; authors: Florian Lengyel. Independent definitions are
 adapted from Foundation e72cfe981aa65166f37fa4e2584f4806bc48d72f. -/
-import Mathlib.Computability.RE
-import Mathlib.Data.Fin.VecNotation
-import Mathlib.Computability.PartrecCode
+module
+public import Mathlib.Computability.RE
+public import Mathlib.Data.Fin.VecNotation
+public import Mathlib.Computability.PartrecCode
 /-! Eligible cumulative statement boundary for all nine selected results. -/
+@[expose] public section
 set_option autoImplicit false
 namespace FailureOfComposition.Palomar.Arithmetic
 def fin0 {n : ℕ} : Fin (n + 1) := ⟨0, Nat.zero_lt_succ n⟩
@@ -994,5 +996,4 @@ theorem generated_quotient_partial_recursive
       ∀ e : ℕ, E (Arithmetic.Evaluator.generatedQuotientMk T e) =
         Arithmetic.Evaluator.UnaryPartrec.ofIndex e := by
   sorry
-
 end FailureOfComposition.Palomar

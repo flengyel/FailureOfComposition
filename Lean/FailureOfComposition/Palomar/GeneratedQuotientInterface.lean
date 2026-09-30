@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.GeneratedCongruenceInterface
+module
+
+public import FailureOfComposition.Palomar.GeneratedCongruenceInterface
 
 /-!
 # Independent generated quotient and partial-recursive target
@@ -12,6 +14,8 @@ These definitions expose the quotient and actual-function target used by the
 ninth eligible statement.  The generated relation and concrete composition
 operation are the independent definitions already used by the classification.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

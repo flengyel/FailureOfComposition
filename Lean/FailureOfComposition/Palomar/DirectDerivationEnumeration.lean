@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.TheoryEnumerability
-import FailureOfComposition.Palomar.ArithmeticBridge
-import Foundation.FirstOrder.LK.Simplified
+module
+
+public import FailureOfComposition.TheoryEnumerability
+public import FailureOfComposition.Palomar.ArithmeticBridge
+public import Foundation.FirstOrder.LK.Simplified
 
 /-!
 # Direct enumeration of independent arithmetic derivations
@@ -15,6 +17,8 @@ independent LK calculus.  Its theorem-code enumeration uses finite evidence
 from an r.e. axiom predicate; it does not decide theory membership or pass
 through internal arithmetized provability.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

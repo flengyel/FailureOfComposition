@@ -3,17 +3,21 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.SigmaOneSemidecisionCore
-import FailureOfComposition.ArithmeticFormulaAtoms
-import FailureOfComposition.BoundedSemidecision
-import FailureOfComposition.SigmaOneSearch
-import FailureOfComposition.SigmaOneGraphWitness
+module
+
+public import FailureOfComposition.SigmaOneSemidecisionCore
+public import FailureOfComposition.ArithmeticFormulaAtoms
+public import FailureOfComposition.BoundedSemidecision
+public import FailureOfComposition.SigmaOneSearch
+public import FailureOfComposition.SigmaOneGraphWitness
 
 /-!
 Internal semidecision and program realization of Sigma-one arithmetic formulas.
 Every program is constructed from concrete Mathlib program descriptions, and
 every correctness assertion quantifies over PA models rather than just ℕ.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.EncodedList
-import CategoricalRiceShapiro.ArithmeticCode.Pairing
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.EncodedList
+public import CategoricalRiceShapiro.ArithmeticCode.Pairing
 
 /-!
 # The table-lookup code
@@ -22,6 +24,8 @@ not only about the function it realizes over the natural numbers, so it must not
 be replaced by an extensionally equivalent one.
 -/
 
+@[expose] public section
+
 set_option autoImplicit false
 
 open Nat Nat.ArithPart₁
@@ -31,7 +35,7 @@ namespace CategoricalRiceShapiro.Evaluator
 open CategoricalRiceShapiro.ArithmeticCode
 
 /-- Flatten an encoded `Option (Option ℕ)` to an encoded `Option ℕ`. -/
-private def codeOptionJoin {r : ℕ} (d : Code r) : Code r :=
+def codeOptionJoin {r : ℕ} (d : Code r) : Code r :=
   codeSub d (codeConst 1)
 
 /-- Entry `dn` of the row of `dtable` indexed by the pair of `dk` and `dq`. -/

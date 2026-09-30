@@ -3,11 +3,15 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.QuotientObstruction
+module
+
+public import FailureOfComposition.QuotientObstruction
 
 /-!
 Composition on program quotients and its obstruction.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

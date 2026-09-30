@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.Palomar.EvaluatorBridge
-import FailureOfComposition.Palomar.DirectDivergenceBridge
-import FailureOfComposition.ManuscriptObstruction
+module
+
+public import FailureOfComposition.Palomar.EvaluatorBridge
+public import FailureOfComposition.Palomar.DirectDivergenceBridge
+public import FailureOfComposition.ManuscriptObstruction
 
 /-!
 # Obstruction transport for the independent Palomar interface
@@ -14,6 +16,8 @@ This top bridge is intentionally separate from the evaluator/compiler
 correspondence.  It is the only layer that imports the maintained manuscript
 obstruction and its uniform-index formulation.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

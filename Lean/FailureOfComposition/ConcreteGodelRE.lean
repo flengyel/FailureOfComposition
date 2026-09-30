@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteGodel
-import FailureOfComposition.CraigPresentation
+module
+
+public import FailureOfComposition.ConcreteGodel
+public import FailureOfComposition.CraigPresentation
 
 /-!
 The concrete second-incompleteness obstruction for every consistent extension
 of PA with recursively enumerable axiom codes. Craig's padded presentation
 discharges the Delta-one presentation requirement of the proof predicate.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

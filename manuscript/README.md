@@ -23,9 +23,14 @@ The manuscript is now maintained in this repository alongside its formalization.
 - Git blob: `e0a2bd4b3570235fa4ea89ffe8dcf9d5445499f9`
 - SHA-256: `65a7b8e1485452f5db9c2f3f1e0c172d6c40a8acc1c5d3a37e06fc80424bed2c`
 
-The manuscript retains its existing licensing. The repository's Apache-2.0
-code license covers the Lean formalization and supporting code; this source
-move does not grant an additional license for the paper or its cited works.
+The manuscript was submitted under arXiv's
+[perpetual, non-exclusive distribution license](https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html).
+The author retains copyright. That grant authorizes arXiv to distribute the
+submission; it is not a general public reuse license. The repository's
+Apache-2.0 license applies to the Lean formalization and supporting code, not to
+the manuscript or its cited works. This notice records the existing license and
+does not make a new grant or claim that an arXiv-deposited version is
+byte-identical to repository v36.
 
 ## Build
 
