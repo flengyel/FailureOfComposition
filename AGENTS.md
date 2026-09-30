@@ -18,14 +18,12 @@ cleanup passed its full WSL acceptance suite and was published on main at
 `073e95e54907eb26b6af9070302f5afdde04d963`; see
 `Lean/FailureOfComposition/Porting/STYLE_CLEANUP_VALIDATION.json`.
 Continue with `docs/CODEX_PALOMAR_TASK.md` on `codex/palomar-eligibility`.
-Its cumulative Six pair passed local Comparator verification at
-`b923699c670857f174ab445483d1508a453eaab0`, using Foundation
-`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. Six remains the latest reviewed
-verification checkpoint. The
-[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
-at `16e73188e12244f651c7ce57207095bd0d223a44` adds the Gödel-II range declaration;
-validation is pending. The productive range and quotient-monoid declarations
-still require eligible migration. Complete official verification remains pending.
+Its cumulative Seven pair passed local Comparator verification at
+`16e73188e12244f651c7ce57207095bd0d223a44`, using Foundation
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. This is the latest reviewed
+verification checkpoint. The productive range and quotient-monoid
+declarations (8 and 9) still need eligible migration; complete official
+verification remains.
 Historical port pins above are not the current eligibility-branch pins.
 
 Use `Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md` for mathematical
@@ -101,9 +99,8 @@ Record actual commands, revisions, exit codes, and remaining failures.
 
 Read `Lean/FailureOfComposition/Palomar/README.md`. Foundation is permitted in
 Solution. The legacy nine-declaration Challenge has ineligible transitive
-imports; the cumulative Six interface on the eligibility branch passed its
-pinned source audit and local Comparator run. The Seven source candidate awaits
-validation; declarations eight and nine still require eligible interfaces and
-correspondence proofs. Preserve faithful arithmetic statements;
+imports; the cumulative Seven interface on the eligibility branch passed its
+pinned source audit and local Comparator run. Declarations 8 and 9 still require
+eligible interfaces and correspondence proofs. Preserve faithful arithmetic statements;
 replacing their content with assumptions or unconstrained definitions is not a
 solution. Do not submit, register, or contact Palomar unless explicitly asked.

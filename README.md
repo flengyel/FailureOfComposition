@@ -71,14 +71,13 @@ placing its source here does not assign it a new code license. See the
 
 The [Palomar draft](Lean/FailureOfComposition/Palomar/README.md) contains nine
 paired statements and proved counterparts. The toolchain port has passed its
-project verification. On `codex/palomar-eligibility`, the first six selected declarations passed a
+project verification. On `codex/palomar-eligibility`, the first seven selected declarations passed a
 local con-ron, NanoDa, and Lean Comparator run at
-`b923699c670857f174ab445483d1508a453eaab0`; the
-[recorded Six checkpoint](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md) identifies its exact scope.
-Six remains the latest reviewed verification checkpoint. A
-[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
-adds the Gödel-II range declaration at `16e73188e12244f651c7ce57207095bd0d223a44`;
-its validation is pending. The productive range and quotient-monoid declarations
-still require eligible migration, and complete official Palomar verification
-remains pending. These declaration counts are distinct from manuscript numbering. The manuscript's licensing scope must also be accounted
+`16e73188e12244f651c7ce57207095bd0d223a44`; the
+[recorded Seven checkpoint](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Lean/FailureOfComposition/Palomar/STATUS.md)
+identifies its exact scope. This remains the latest reviewed verification
+checkpoint. The productive range and quotient-monoid
+declarations (8 and 9) still require eligible migration, followed by complete
+official Palomar verification. These declaration counts are distinct from
+manuscript numbering. The manuscript's licensing scope must also be accounted
 for in any submitted snapshot. No Palomar submission or registration is claimed.
