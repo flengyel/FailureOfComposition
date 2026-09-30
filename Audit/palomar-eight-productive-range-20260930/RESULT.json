@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "scope": "local cumulative Eight Comparator checkpoint",
+  "tested_code_configuration_commit": "5435b5b528795590f250a82bf8937779b4fc86b4",
+  "foundation": "01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d",
+  "mathlib": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+  "palomar_submission": "a59f25bd8a66bf6faf3a4f4260d412989c0185ea",
+  "selected_theorems": [
+    "FailureOfComposition.Palomar.obstruction_four_properties",
+    "FailureOfComposition.Palomar.no_quotient_composition_productive",
+    "FailureOfComposition.Palomar.no_quotient_composition_godel",
+    "FailureOfComposition.Palomar.pi_one_characterization",
+    "FailureOfComposition.Palomar.generated_congruence_classification",
+    "FailureOfComposition.Palomar.weak_totality_counterexample",
+    "FailureOfComposition.Palomar.range_counterexample_godel",
+    "FailureOfComposition.Palomar.range_counterexample_productive"
+  ],
+  "manuscript_alignment": {
+    "eighth_selection": "Proposition 6, productive proof route",
+    "new_numbered_manuscript_result": false
+  },
+  "focused_gates": "pass",
+  "source_policy": "pass_with_preferred_surface_warning",
+  "statement_closure_constants": 4482,
+  "selected_root_closure_constants": {
+    "obstruction_four_properties": 17085,
+    "no_quotient_composition_productive": 17107,
+    "no_quotient_composition_godel": 20335,
+    "pi_one_characterization": 19476,
+    "generated_congruence_classification": 16007,
+    "weak_totality_counterexample": 19305,
+    "range_counterexample_godel": 20257,
+    "range_counterexample_productive": 19413
+  },
+  "selected_union_constants": 21811,
+  "marginal_constants_over_seven": 13,
+  "challenge_source": {
+    "bytes": 42885,
+    "lines": 979,
+    "sha256": "a8016af64351f20ee6ea7089c48f584a164950969db0bba09c85ceecdfaa325f"
+  },
+  "challenge_export": {
+    "bytes": 15693866,
+    "expression_records": 267450,
+    "declaration_records": 4059,
+    "sha256": "a4b1ea1dea71d2252fe847cb4f8a9f342657258a09194dc4a0408902d2489032"
+  },
+  "solution_export": {
+    "bytes": 158212339,
+    "expression_records": 2814181,
+    "declaration_records": 20814,
+    "sha256": "bf599e27742336ee02f751be4e46b20cdc25606e610a4c2b4549a411b1baca13"
+  },
+  "configurations": {
+    "portable_sha256": "f7d4ff89972022aaf48e9cb8fe1471ed5f2250da167123869bed5050b3ba0644",
+    "protected_sha256": "f4a182682cfef3af625285d3860ac4c025de0e166db414391e582dd19e8cf232",
+    "protected_transformation": "add only authenticated absolute con-ron and NanoDa commands"
+  },
+  "comparator": {
+    "parent_attempts": 1,
+    "payload_launches": 1,
+    "result": "pass",
+    "started_at": "2026-09-30T02:50:39Z",
+    "finished_at": "2026-09-30T02:53:49Z",
+    "contained_elapsed_seconds": 190.419,
+    "command_elapsed_seconds": 188.46,
+    "aggregate_cpu_seconds": 189.566473,
+    "peak_memory_bytes": 794050560,
+    "memory_high_events": 0,
+    "memory_max_events": 0,
+    "oom_events": 0,
+    "swap_events": 0,
+    "peak_full_psi_avg10": 0.0,
+    "pressure_stop": false,
+    "deadline_fired": false,
+    "export_configuration_hashes_unchanged": true,
+    "con_ron_accepted_declarations": 20810,
+    "kernels_accepted": ["con-ron", "NanoDa", "Lean default kernel"],
+    "final_message": "Your solution is okay!"
+  },
+  "official_palomar_verification": false,
+  "remaining_migrations": 1
+}

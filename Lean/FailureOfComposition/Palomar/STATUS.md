@@ -1,12 +1,52 @@
 # Palomar eligibility status
 
-The entries below are dated verification records. Counts such as Seven refer to
+The entries below are dated verification records. Counts such as Eight refer to
 selected declarations, including alternate proof routes, not manuscript theorem
 numbers. The [statement correspondence](../MANUSCRIPT_STATEMENTS.md) gives the
 mathematical statements, Lean signatures, and source numbering. Later
 documentation and doccomment corrections do not constitute another build or
 Comparator run; recorded hashes and resource measurements refer to their
 original tested commits.
+
+## 2026-09-30 productive range counterexample and cumulative Eight pass
+
+The eligible interface now includes the productive proof route for the same
+Proposition 6 range counterexample already selected through Gödel II. The new
+bridge reuses the checked PA-uniform range selector and transports the maintained
+`range_counterexample_via_productiveness_of_re_axioms` theorem with the same
+natural-number witness. Its closure reaches the maintained history-divergence
+and productive-escape route and excludes the public and maintained Gödel-II/Craig
+range roots. The seventh root retains the converse exclusion, and the common
+range correspondence reaches neither counterexample route.
+
+`ChallengeEight`/`SolutionEight` own exactly the eight selected declarations.
+The exact separate-environment checker compared 4,482 recursively reachable
+statement constants and found exactly eight Challenge theorem holes, no
+definition holes, and only `propext`, `Classical.choice`, and `Quot.sound` in
+the Solution proof closures. The pinned source audit passes. ChallengeEight is
+42,885 bytes and 979 lines: within the 100 KiB/1,000-line hard limits and above
+the preferred 32 KiB/300-line review surface. The complete selected proof union
+is 21,811 constants, 13 marginal over Seven; the two range proof routes remain
+separated.
+
+The tested code/configuration/harness commit is
+`5435b5b528795590f250a82bf8937779b4fc86b4`. Stable Challenge and Solution
+exports are respectively 15,693,866 bytes,
+`a4b1ea1dea71d2252fe847cb4f8a9f342657258a09194dc4a0408902d2489032`,
+and 158,212,339 bytes,
+`bf599e27742336ee02f751be4e46b20cdc25606e610a4c2b4549a411b1baca13`.
+The sole cumulative Eight Comparator payload accepted the exact pair through
+con-ron, NanoDa, and Lean's default kernel and printed `Your solution is okay!`.
+Contained elapsed time was 190.419 seconds (188.46 seconds for Comparator);
+aggregate peak memory was 794,050,560 bytes, with zero pressure, high/max,
+deadline, swap, or OOM events. Timestamped before/after records and an exit-zero
+comparison confirm that both exports and both configurations were unchanged.
+Cleanup left no owned workload.
+
+Eight declarations are migrated and locally kernel verified. Declaration 9 and
+complete official Palomar verification remain. This local pass is not an
+official submission or registry acceptance. Detailed evidence is indexed in
+`Audit/palomar-eight-productive-range-20260930/`.
 
 ## 2026-09-30 Gödel-II range counterexample and cumulative Seven pass
 

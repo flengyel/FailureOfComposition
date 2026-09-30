@@ -18,11 +18,11 @@ cleanup passed its full WSL acceptance suite and was published on main at
 `073e95e54907eb26b6af9070302f5afdde04d963`; see
 `Lean/FailureOfComposition/Porting/STYLE_CLEANUP_VALIDATION.json`.
 Continue with `docs/CODEX_PALOMAR_TASK.md` on `codex/palomar-eligibility`.
-Its cumulative Seven pair passed local Comparator verification at
-`16e73188e12244f651c7ce57207095bd0d223a44`, using Foundation
+Its cumulative Eight pair passed local Comparator verification at
+`5435b5b528795590f250a82bf8937779b4fc86b4`, using Foundation
 `01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. This is the latest reviewed
-verification checkpoint. The productive range and quotient-monoid
-declarations (8 and 9) still need eligible migration; complete official
+verification checkpoint. The quotient-monoid declaration (9) still needs
+eligible migration; complete official
 verification remains.
 Historical port pins above are not the current eligibility-branch pins.
 
@@ -99,8 +99,8 @@ Record actual commands, revisions, exit codes, and remaining failures.
 
 Read `Lean/FailureOfComposition/Palomar/README.md`. Foundation is permitted in
 Solution. The legacy nine-declaration Challenge has ineligible transitive
-imports; the cumulative Seven interface on the eligibility branch passed its
-pinned source audit and local Comparator run. Declarations 8 and 9 still require
-eligible interfaces and correspondence proofs. Preserve faithful arithmetic statements;
+imports; the cumulative Eight interface on the eligibility branch passed its
+pinned source audit and local Comparator run. Declaration 9 still requires an
+eligible interface and correspondence proof. Preserve faithful arithmetic statements;
 replacing their content with assumptions or unconstrained definitions is not a
 solution. Do not submit, register, or contact Palomar unless explicitly asked.

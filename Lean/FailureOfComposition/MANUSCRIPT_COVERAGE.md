@@ -112,16 +112,15 @@ The later [evaluator cleanup](Porting/STYLE_CLEANUP.md) extended strict style
 checking to all 103 sources. These historical counts exclude the subsequent
 Palomar interface and bridge modules.
 
-The [Seven checkpoint](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Lean/FailureOfComposition/Palomar/STATUS.md) on
-`codex/palomar-eligibility` records local Comparator acceptance of the first
-seven selected declarations at `16e73188e12244f651c7ce57207095bd0d223a44`,
-including the Gödel-II range declaration. The
-[verification record](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/RESULT.json)
+The [Eight checkpoint](Palomar/STATUS.md) on `codex/palomar-eligibility`
+records local Comparator acceptance of the first eight selected declarations at
+`5435b5b528795590f250a82bf8937779b4fc86b4`, including both proof routes for
+Proposition 6. The [verification record](../../Audit/palomar-eight-productive-range-20260930/RESULT.json)
 records acceptance through con-ron, NanoDa, and the Lean default kernel; the
-[correspondence record](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/CORRESPONDENCE.md)
-documents the range bridge. Seven is the latest reviewed verification. The
-productive range and quotient-monoid declarations (8 and 9) remain outside
-that verified checkpoint and still need eligible migration.
+[correspondence record](../../Audit/palomar-eight-productive-range-20260930/CORRESPONDENCE.md)
+documents the shared range bridge and productive transport. Eight is the latest
+reviewed verification. The quotient-monoid declaration (9) remains outside
+that verified checkpoint and still needs eligible migration.
 No complete official Palomar verification is claimed.
 
 The review is a collaborating-agent semantic review, separately documented in

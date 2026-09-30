@@ -15,3 +15,9 @@ The portable configuration under `Lean/` contains no machine-local kernel
 commands. `prepare_comparator.py` creates a protected local copy by adding only
 the authenticated con-ron and NanoDa commands. Full exports remain in the
 retained `.codex-work` run tree and are identified by hashes in the final result.
+
+The exact tested code/configuration/harness commit is
+`5435b5b528795590f250a82bf8937779b4fc86b4`. The focused gates and the sole
+cumulative payload passed. Stock con-ron, NanoDa, and Lean's default kernel all
+accepted; this remains local verification rather than official Palomar
+verification or registry acceptance.

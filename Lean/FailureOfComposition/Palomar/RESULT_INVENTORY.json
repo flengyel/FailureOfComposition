@@ -1,26 +1,27 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-30T01:31:13Z",
-  "tested_code_commit": "16e73188e12244f651c7ce57207095bd0d223a44",
-  "current_pin_launcher_commit": "16e73188e12244f651c7ce57207095bd0d223a44",
+  "recorded_at": "2026-09-30T02:53:49Z",
+  "tested_code_commit": "5435b5b528795590f250a82bf8937779b4fc86b4",
+  "current_pin_launcher_commit": "5435b5b528795590f250a82bf8937779b4fc86b4",
   "branch": "codex/palomar-eligibility",
   "checkpoint": {
-    "challenge_module": "FailureOfComposition.Palomar.ChallengeSeven",
-    "solution_module": "FailureOfComposition.Palomar.SolutionSeven",
-    "portable_config": "Lean/FailureOfComposition/Palomar/comparator-seven.json",
-    "portable_config_sha256": "4ad22159bca49f36f345a176eb946720ba87e3b043b39fa4bc0404a6ac6335d0",
-    "selected_count": 7,
-    "migrated_count": 7,
-    "locally_kernel_verified_count": 7,
-    "remaining_count": 2,
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeEight",
+    "solution_module": "FailureOfComposition.Palomar.SolutionEight",
+    "portable_config": "Lean/FailureOfComposition/Palomar/comparator-eight.json",
+    "portable_config_sha256": "f7d4ff89972022aaf48e9cb8fe1471ed5f2250da167123869bed5050b3ba0644",
+    "selected_count": 8,
+    "migrated_count": 8,
+    "locally_kernel_verified_count": 8,
+    "remaining_count": 1,
     "official_palomar_verification": false,
     "local_comparator_result": "pass",
     "local_comparator_stage_reached": "complete",
-    "local_comparator_elapsed_seconds": 199.537,
-    "local_comparator_peak_memory_bytes": 787070976,
+    "local_comparator_elapsed_seconds": 190.419,
+    "local_comparator_peak_memory_bytes": 794050560,
     "local_comparator_deadline_fired": false,
     "local_comparator_pressure_stop_fired": false,
     "local_comparator_memory_high_events": 0,
+    "local_comparator_memory_max_events": 0,
     "local_comparator_oom_events": 0,
     "kernels_accepted": [
       "con-ron",
@@ -143,6 +144,38 @@
     "cumulative_seven_comparator_oom_events": 0,
     "export_configuration_hashes_unchanged": true,
     "con_ron_accepted_declarations": 20797,
+    "kernels_accepted": [
+      "con-ron",
+      "NanoDa",
+      "Lean default kernel"
+    ],
+    "official_palomar_verification": false
+  },
+  "eight_productive_range_checkpoint": {
+    "tested_code_configuration_commit": "5435b5b528795590f250a82bf8937779b4fc86b4",
+    "foundation_revision": "01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d",
+    "focused_gates_result": "pass",
+    "statement_closure_constants": 4482,
+    "selected_union_constants": 21811,
+    "marginal_constants_over_seven": 13,
+    "challenge_bytes": 42885,
+    "challenge_lines": 979,
+    "source_policy_result": "pass_with_preferred_surface_warning",
+    "challenge_export_bytes": 15693866,
+    "challenge_export_sha256": "a4b1ea1dea71d2252fe847cb4f8a9f342657258a09194dc4a0408902d2489032",
+    "solution_export_bytes": 158212339,
+    "solution_export_sha256": "bf599e27742336ee02f751be4e46b20cdc25606e610a4c2b4549a411b1baca13",
+    "comparator_parent_attempts": 1,
+    "comparator_payload_launches": 1,
+    "cumulative_eight_comparator_result": "pass",
+    "cumulative_eight_comparator_elapsed_seconds": 190.419,
+    "cumulative_eight_comparator_command_elapsed_seconds": 188.46,
+    "cumulative_eight_comparator_peak_memory_bytes": 794050560,
+    "cumulative_eight_comparator_memory_high_events": 0,
+    "cumulative_eight_comparator_memory_max_events": 0,
+    "cumulative_eight_comparator_oom_events": 0,
+    "export_configuration_hashes_unchanged": true,
+    "con_ron_accepted_declarations": 20810,
     "kernels_accepted": [
       "con-ron",
       "NanoDa",
@@ -399,10 +432,10 @@
     "official_palomar_verification": false
   },
   "last_passing_checkpoint": {
-    "tested_code_commit": "16e73188e12244f651c7ce57207095bd0d223a44",
-    "challenge_module": "FailureOfComposition.Palomar.ChallengeSeven",
-    "solution_module": "FailureOfComposition.Palomar.SolutionSeven",
-    "selected_count": 7,
+    "tested_code_commit": "5435b5b528795590f250a82bf8937779b4fc86b4",
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeEight",
+    "solution_module": "FailureOfComposition.Palomar.SolutionEight",
+    "selected_count": 8,
     "local_comparator_result": "pass",
     "kernels_accepted": [
       "con-ron",
@@ -415,48 +448,49 @@
       "ordinal": 1,
       "declaration": "FailureOfComposition.Palomar.obstruction_four_properties",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-seven.json"
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 2,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_productive",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-seven.json"
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 3,
       "declaration": "FailureOfComposition.Palomar.no_quotient_composition_godel",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-seven.json"
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 4,
       "declaration": "FailureOfComposition.Palomar.pi_one_characterization",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-seven.json"
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 5,
       "declaration": "FailureOfComposition.Palomar.generated_congruence_classification",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-seven.json"
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 6,
       "declaration": "FailureOfComposition.Palomar.weak_totality_counterexample",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-seven.json"
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 7,
       "declaration": "FailureOfComposition.Palomar.range_counterexample_godel",
       "status": "migrated_and_locally_verified",
-      "selected_by": "comparator-seven.json"
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 8,
       "declaration": "FailureOfComposition.Palomar.range_counterexample_productive",
-      "status": "not_migrated_in_eligible_pair"
+      "status": "migrated_and_locally_verified",
+      "selected_by": "comparator-eight.json"
     },
     {
       "ordinal": 9,
