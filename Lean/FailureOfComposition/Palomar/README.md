@@ -2,7 +2,16 @@
 
 **DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
 and their proved counterparts reviewable. It is not an eligible Palomar
-submission, a Comparator success report, or a registry entry.
+submission or a registry entry. The legacy files on `main` predate the
+independent eligible interface. On `codex/palomar-eligibility`, the first six
+selected declarations passed local Comparator verification at
+`b923699c670857f174ab445483d1508a453eaab0` through con-ron, NanoDa, and Lean.
+See the [recorded Six checkpoint](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md),
+which remains the latest reviewed verification checkpoint. The
+[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
+at `16e73188e12244f651c7ce57207095bd0d223a44` adds the Gödel-II range declaration;
+validation is pending. The productive range and quotient-monoid declarations
+still require eligible migration. Complete official verification remains pending.
 
 The maintained repository is [flengyel/FailureOfComposition](https://github.com/flengyel/FailureOfComposition).
 Its accepted checkpoint is `073e95e54907eb26b6af9070302f5afdde04d963`, using
@@ -20,6 +29,11 @@ the manuscript is unchanged.
 
 ## The nine selected declarations
 
+The [statement correspondence](../MANUSCRIPT_STATEMENTS.md) gives each
+manuscript result in mathematical notation alongside its Lean signature.
+The counts One through Seven refer to selected declarations, including alternate
+proof routes, rather than manuscript theorem numbers.
+
 The names below have prefix `FailureOfComposition.Palomar`. Both
 [`Challenge.lean`](Challenge.lean) and [`Solution.lean`](Solution.lean) declare
 them. [`comparator.json`](comparator.json) selects them in this order and permits
@@ -30,7 +44,7 @@ definitions.
 | --- | --- | --- |
 | `obstruction_four_properties` | Theorem 1: every consistent PA extension with r.e. axiom codes has guard/search indices satisfying all four witness properties. The two composition clauses are uniformly provable in T. | `obstruction_four_properties_of_re_axioms` |
 | `no_quotient_composition_productive` | Theorem 1/Corollary 2: for such T, no binary operation on the actual pointwise quotient satisfies the representative composition equation. Productive route. | `no_index_quotient_of_re_axioms` |
-| `no_quotient_composition_godel` | The identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
+| `no_quotient_composition_godel` | Theorem 1/Corollary 2: the identical quotient statement and hypotheses, by the separate Gödel-II route. | `no_index_quotient_via_godel_of_re_axioms` |
 | `pi_one_characterization` | Theorem 3: for every consistent PA extension, right compatibility, composition congruence, true-Pi-one completeness, and agreement with actual partial-function equality are equivalent. No r.e. hypothesis. | `pi_one_characterization` |
 | `generated_congruence_classification` | Theorem 4: for every PA extension, the least generated congruence is extensional equality if T is Sigma-one sound, and universal otherwise. Neither consistency nor r.e. axiomatizability is required. | `generated_congruence_classification` |
 | `weak_totality_counterexample` | Proposition 5: every consistent r.e. PA extension has a guard pointwise equivalent to identity that fails weak totality, while identity is weakly total. | `weak_totality_counterexample_of_re_axioms` |
@@ -51,7 +65,7 @@ merely another syntactic graph quotient. The generated congruence is defined
 by intersection of all composition-compatible equivalence relations
 containing pointwise provability.
 
-## Verified toolchain and remaining blockers
+## Legacy nine-declaration interface and remaining blockers
 
 The requirements were checked on September 25, 2026 against
 the [submitter policy at `792c7c0`](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md)
@@ -67,7 +81,9 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    permits only core, canonical Mathlib and its pinned dependencies, and
    specifically approved Tau Ceti and CSLib libraries in that closure.
    These imports therefore fail the current policy. A legitimate readable
-   statement interface with permitted dependencies is still required.
+   statement interface with permitted dependencies must still be completed
+   for the full nine-declaration selection. The eligible Six interface on the separate eligibility
+   branch already passed its pinned source audit and local Comparator run.
    Solution-only Foundation dependencies are a different matter and are
    permitted when their source and pins satisfy the dependency rules.
 3. **Snapshot licensing scope.** This repository now has the exported
@@ -76,13 +92,16 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    its existing licensing preserved; the code license is not a new grant for
    the paper. Its scope must be settled for any final submitted snapshot under
    the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
-4. **Comparator has not run.** Local elaboration, matching declaration types,
+4. **The full nine-declaration configuration has not passed Comparator.**
+   The separate eligible Six checkpoint passed locally at the commit above.
+   Local elaboration, matching declaration types,
    axiom audits, and ordinary kernel replay do not establish Palomar's
    protected Challenge/Solution comparison. Its current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
    uses Lean-bundled `lake comparator` and exported-proof checking, including
-   the toolchain's bundled NanoDa and con-ron kernels. No successful Comparator
-   or Palomar mechanical/editorial result is asserted here.
+   the toolchain's bundled NanoDa and con-ron kernels. The Six pass does not
+   establish a successful full nine-declaration comparison or an official
+   Palomar mechanical/editorial result.
 
 Solving the dependency boundary must preserve the statements. Adding the
 desired result as a hypothesis, hiding it inside an unconstrained definition,
@@ -90,8 +109,10 @@ weakening its quantifiers, or substituting unrelated notions of PA or
 provability would not solve this preparation task. No extra axiom is proposed.
 
 The Foundation port, namespace migration, and evaluator style cleanup are
-complete. The permitted arithmetic statement interface still needs a proved
-correspondence with the existing notions. Comparator follows the bodies of
+complete. The permitted arithmetic statement interface and its correspondence
+are locally verified for the first six declarations on the eligibility branch.
+The seventh declaration has a source candidate awaiting validation; declarations
+eight and nine still need eligible migration. Comparator follows the bodies of
 ordinary definitions in the statement's dependency graph; replacing definitions
 by Foundation aliases does not establish this correspondence or make different
 definitions compare identically.
@@ -153,9 +174,9 @@ builds the maintained proof library, elaborates Challenge and Solution
 separately, and runs `CheckInterface.lean` to compare the nine types and their
 axiom envelopes. The deliberate Challenge-hole warnings are expected. The
 Solution is checked with strict Mathlib style linting and warnings as errors.
-The local checker passed all nine declarations during the September 25 WSL
-acceptance run. It is not Comparator or Palomar mechanical verification. The
-next task adds those checks without repeating the completed toolchain port.
+The local checker passed all nine legacy declarations during the September 25
+WSL acceptance run. That paired check is distinct from the later six-declaration
+Comparator pass and from complete official Palomar verification.
 
 ## Scope, provenance, and review
 

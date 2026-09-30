@@ -6,6 +6,7 @@ of Florian Lengyel's *Pointwise provable equality and the failure of composition
 - [Lean development and verification guide](Lean/FailureOfComposition/README.md)
 - [Manuscript source, version 36](manuscript/failure_of_composition_2026-09-21_v36.tex)
   and [manuscript provenance and build instructions](manuscript/README.md)
+- [Mathematical statements and Lean signatures](Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
 - [Manuscript-to-Lean coverage map](Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
 - [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md)
 - [Codex setup in WSL2](docs/CODEX_WSL_SETUP.md) and
@@ -70,6 +71,14 @@ placing its source here does not assign it a new code license. See the
 
 The [Palomar draft](Lean/FailureOfComposition/Palomar/README.md) contains nine
 paired statements and proved counterparts. The toolchain port has passed its
-project verification. Submission still requires a Challenge with permitted
-imports and actual Comparator verification. The manuscript's licensing scope must also be accounted
+project verification. On `codex/palomar-eligibility`, the first six selected declarations passed a
+local con-ron, NanoDa, and Lean Comparator run at
+`b923699c670857f174ab445483d1508a453eaab0`; the
+[recorded Six checkpoint](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md) identifies its exact scope.
+Six remains the latest reviewed verification checkpoint. A
+[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
+adds the Gödel-II range declaration at `16e73188e12244f651c7ce57207095bd0d223a44`;
+its validation is pending. The productive range and quotient-monoid declarations
+still require eligible migration, and complete official Palomar verification
+remains pending. These declaration counts are distinct from manuscript numbering. The manuscript's licensing scope must also be accounted
 for in any submitted snapshot. No Palomar submission or registration is claimed.

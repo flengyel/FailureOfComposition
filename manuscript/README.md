@@ -6,6 +6,10 @@ This directory contains the LaTeX source of Florian Lengyel's
 [Version 36](failure_of_composition_2026-09-21_v36.tex), dated September 21, 2026,
 is the unchanged manuscript used by the
 [Lean coverage map](../Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md).
+The [statement correspondence](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
+gives each numbered result in mathematical notation and its Lean signature,
+including the hypotheses and the distinction between manuscript numbering
+and selected-declaration order.
 The author plans a separate version 37 discussing the formalization and its
 consequences for the earlier constructions. This move does not create or edit
 that revision.

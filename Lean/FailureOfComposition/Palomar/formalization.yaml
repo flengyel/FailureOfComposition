@@ -17,8 +17,16 @@ project:
     otherwise. In the sound case its quotient is isomorphic to the monoid of
     actual unary partial recursive functions. This package is a draft Palomar
     statement interface. The Lean 4.35.0-rc2 port and evaluator cleanup have
-    passed project verification; Challenge-import eligibility remains unresolved,
-    the manuscript retains its existing licensing, and Comparator has not run.
+    passed project verification. On codex/palomar-eligibility, the eligible
+    cumulative Six pair passed local con-ron, NanoDa, and Lean Comparator
+    verification at b923699c670857f174ab445483d1508a453eaab0, the latest reviewed
+    verification checkpoint. A Seven source candidate at
+    16e73188e12244f651c7ce57207095bd0d223a44 adds the Gödel-II range declaration;
+    validation is pending. The productive range and quotient-monoid declarations
+    still require eligible migration; complete official Palomar verification
+    remains pending. The legacy
+    nine-declaration Challenge retains ineligible imports. The manuscript
+    retains its existing licensing.
   authors:
     - "Florian Lengyel"
   responsible_maintainers:
@@ -37,7 +45,7 @@ sources:
     type: "paper"
     relationship: "formalizes"
     id: "https://github.com/flengyel/Categorical_Rice_Shapiro/blob/202194e54e883648f0d9f22a65afee6987ef2134/research/notes/failure_of_composition_2026-09-21_v36.tex"
-    location: "manuscript/failure_of_composition_2026-09-21_v36.tex; dated September 21, 2026; Theorem 1 through Proposition 6 and the generated-quotient corollary."
+    location: "manuscript/failure_of_composition_2026-09-21_v36.tex; dated September 21, 2026; Theorem 1 through Proposition 6 and the unnumbered quotient-monoid consequence following Theorem 4."
     author_endorsement: "participated"
     note: >-
       The unchanged source is maintained locally at the path above. Its id
@@ -73,16 +81,17 @@ status:
     The maintained FailureOfComposition development proves the six numbered
     manuscript results as concrete program-index statements, with the
     documented arithmetization conventions. The draft Comparator configuration
-    selects nine theorem declarations: four-witness obstruction; productive
+    selects nine theorem declarations: four-property obstruction; productive
     and Gödel-II quotient-composition obstructions; Pi-one characterization;
     generated-congruence classification; weak-totality counterexample;
     Gödel-II and productive range counterexamples; and the sound generated
     quotient's evaluation-preserving monoid isomorphism. Auxiliary results in
     the maintained library are described in MANUSCRIPT_COVERAGE.md but are not
-    all independently selected in this configuration. Deliberate holes occur
-    only in the draft Challenge and are excluded from the following proof
-    counts. Historical Audit probes and test fixtures in the original
-    development repository are outside this statement count. No Palomar eligibility or acceptance is claimed.
+    all independently selected in this configuration. These proof counts and
+    alignment statuses describe the maintained legacy Solution, not completed
+    eligible migration of all nine declarations. Theorem holes in the separate
+    Challenge interfaces and historical Audit probes and test fixtures are
+    outside this proof count. No official Palomar acceptance is claimed.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Quot.sound", "Classical.choice"]
@@ -146,7 +155,14 @@ review:
     checkpoint 073e95e54907eb26b6af9070302f5afdde04d963 records the full cleanup
     acceptance run, including 103 strict style checks and nine paired draft
     type/axiom checks. See ../Porting/STYLE_CLEANUP_VALIDATION.json.
-    Comparator and Palomar editorial review have not run.
+    The later cumulative Six pair passed local Comparator verification at
+    b923699c670857f174ab445483d1508a453eaab0 on codex/palomar-eligibility.
+    This remains the latest reviewed verification checkpoint. The Seven source
+    candidate at 16e73188e12244f651c7ce57207095bd0d223a44 awaits validation.
+    Complete official verification and Palomar editorial review remain.
+    Mathematical notation, Lean signatures, and numbering are documented in
+    ../MANUSCRIPT_STATEMENTS.md. These are records of the named checkpoints,
+    not a new build or kernel replay of subsequent documentation changes.
 
 alignment:
   namespace: "FailureOfComposition.Palomar"
@@ -199,7 +215,8 @@ alignment:
 
 palomar_preparation:
   status: "DRAFT NOT SUBMISSION READY"
-  checked_on: "2026-09-25"
+  checked_on: "2026-09-30"
+  policy_checked_on: "2026-09-25"
   current_repository: "flengyel/FailureOfComposition"
   initial_standalone_commit: "c9814f8afe0597b14df5942d59e49bb2402fa607"
   baseline_repository: "flengyel/Categorical_Rice_Shapiro"
@@ -210,16 +227,26 @@ palomar_preparation:
   submission_policy_reference: "https://github.com/PalomarRegistry/PalomarSubmission/tree/a59f25bd8a66bf6faf3a4f4260d412989c0185ea"
   policy_document: "https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md"
   comparator_run: false
+  comparator_scope: "The legacy nine-declaration comparator.json selected above."
+  local_six_comparator_run: true
+  local_six_tested_commit: "b923699c670857f174ab445483d1508a453eaab0"
+  local_six_configuration: "Lean/FailureOfComposition/Palomar/comparator-six.json"
+  local_six_evidence: "https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md"
+  full_nine_comparator_verified: false
+  official_palomar_verification: false
   blockers:
-    - "Challenge imports reach prohibited Foundation and project-local sources, including proved results."
+    - "The legacy nine-declaration Challenge retains ineligible imports. The Seven source candidate at 16e73188e12244f651c7ce57207095bd0d223a44 adds declaration 7 but awaits validation; declarations 8–9 still need eligible migration."
     - "Root LICENSE is present for the code; account for the manuscript's existing licensing in any submitted snapshot."
-    - "No successful Comparator, independent exported-proof checker, or Palomar mechanical run is recorded."
+    - "The local Six pass does not establish verification of all nine declarations or complete official Palomar verification."
   statement_policy: >-
     Eligibility must be achieved without weakening the mathematical statements,
     adding the desired conclusions as hypotheses, hiding semantics in
     unconstrained definitions, or replacing actual PA/provability/index notions
-    with a convenient surrogate. A legitimate permitted Challenge interface
-    must still be constructed and checked against the proved Solution.
+    with a convenient surrogate. Six remains the latest reviewed verification
+    checkpoint. Validate the Seven source candidate, then extend the eligible
+    interface to declarations eight and nine and prove the corresponding
+    translations before full verification. The source candidate is recorded at
+    https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean.
 
 acknowledgements: >-
   The development builds on Lean, Mathlib, and the FormalizedFormalLogic

@@ -51,7 +51,7 @@ namespace FailureOfComposition.Palomar
 
 open ConcreteIndices ConcreteEmptyGraph
 
-/-- Theorem 1: four witnesses for every consistent r.e. extension of PA.
+/-- Theorem 1: four witness properties for every consistent r.e. extension of PA.
 The middle clauses retain uniform provability, rather than only its instances. -/
 theorem obstruction_four_properties
     (T : ArithmeticTheory) [𝗣𝗔 ⪯ T] [Consistent T]

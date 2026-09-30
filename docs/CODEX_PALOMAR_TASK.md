@@ -7,7 +7,24 @@ Challenge/Solution pair with the actual Comparator. Complete the implementation
 and checks, not just an assessment or plan. This is a new mathematical interface
 task; the Lean version port and evaluator style cleanup are complete.
 
-## Accepted starting point
+## Current continuation point
+
+The instructions below originated at the September 25 port checkpoint.
+Resume the existing `codex/palomar-eligibility` branch: the first six selected
+declarations passed local Comparator verification at
+`b923699c670857f174ab445483d1508a453eaab0`, with documentation at
+`e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3`. Foundation is now pinned there to
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. Preserve subsequent commits.
+Six remains the latest reviewed verification checkpoint. The
+[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
+at `16e73188e12244f651c7ce57207095bd0d223a44` adds the Gödel-II range statement;
+its validation is pending. The productive range and quotient-monoid statements
+still require eligible migration. Complete official verification remains pending.
+See the [recorded Six status](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md) and
+[mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
+The historical starting pins below must not replace the active branch pins.
+
+## Historical accepted starting point
 
 The accepted mathematical checkpoint is
 `073e95e54907eb26b6af9070302f5afdde04d963` on `main`. Its parent
@@ -31,9 +48,8 @@ The older `docs/CODEX_PORT_TASK.md` describes completed work, not this task.
 
 Inspect Git status, origin, HEAD, disk space, available memory, package mappings,
 and running Lean processes. Confirm that the accepted checkpoint is an ancestor
-of HEAD and preserve subsequent work. Start a local branch
-`codex/palomar-eligibility` from the updated, clean `main`; if that branch already
-exists, inspect and resume it instead of resetting or recreating it. Retain the
+of HEAD and preserve subsequent work. Resume the existing
+`codex/palomar-eligibility` branch instead of resetting or recreating it. Retain the
 existing compatible dependency installations in this checkout.
 
 Run the environment check once. A repeat of the full accepted baseline suite is
@@ -138,7 +154,7 @@ Extend the same construction to all nine, preserving these distinctions:
 
 | Selected result | Required scope |
 | --- | --- |
-| Four witnesses; both no-composition routes; weak totality; both range routes | Every consistent PA extension with r.e. axiom codes; no added soundness, presentation, or realization hypothesis |
+| Four witness properties; both no-composition routes; weak totality; both range routes | Every consistent PA extension with r.e. axiom codes; no added soundness, presentation, or realization hypothesis |
 | Pi-one characterization | Every consistent PA extension; no r.e. hypothesis |
 | Generated-congruence classification | Every PA extension; no consistency or r.e. hypothesis |
 | Partial-recursive quotient isomorphism | Every Sigma-one sound PA extension, with the explicit representative equation into actual unary partial recursive functions |
