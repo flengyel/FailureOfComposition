@@ -1,5 +1,44 @@
 # Palomar eligibility status
 
+## 2026-09-30 Gödel-II range counterexample and cumulative Seven pass
+
+The independent interface now includes the exact PA-uniform range graph and a
+fixed classical selector for a realizing index. The checked bridge proves
+uniform realization and choice independence against the maintained range
+index, then transports pointwise equality for both range operands and the
+maintained counterexample with the same natural-number witness. The seventh
+proof reaches the maintained Gödel-II/Craig root and excludes the productive
+range route.
+
+`ChallengeSeven`/`SolutionSeven` own exactly the seven selected declarations.
+The exact separate-environment checker compared 4,481 recursively reachable
+statement constants and found exactly seven Challenge theorem holes, no
+definition holes, and only `propext`, `Classical.choice`, and `Quot.sound` in
+the Solution proof closures. The pinned source audit passes. ChallengeSeven is
+42,249 bytes and 966 lines: within the 100 KiB/1,000-line hard limits and above
+the preferred 32 KiB/300-line review surface. The complete selected proof
+union is 21,798 constants, 82 marginal over Six; the productive and Gödel/Craig
+routes remain separated.
+
+The tested code/configuration/harness commit is
+`16e73188e12244f651c7ce57207095bd0d223a44`. Stable Challenge and Solution
+exports are respectively 15,691,644 bytes,
+`20e1cac661f1947ed9fd0bc7b5d39d7ac9a2f27a12705ecd5b0f95c44c5db5db`,
+and 158,127,081 bytes,
+`784ca63776a83356b0d63ed4ad9b6a3c1bd14e7ac936f9ed5b19850a3e4463f4`.
+The sole cumulative Seven Comparator payload accepted the exact pair through
+con-ron, NanoDa, and Lean's default kernel and printed `Your solution is okay!`.
+Contained elapsed time was 199.537 seconds (197.88 seconds for Comparator);
+aggregate peak memory was 787,070,976 bytes, with zero pressure, high/max,
+deadline, swap, or OOM events. Timestamped before/after records and an
+exit-zero comparison confirm that both exports and both configurations were
+unchanged. Cleanup left no owned workload.
+
+Seven declarations are migrated and locally kernel verified. Declarations 8–9
+and complete official Palomar verification remain. This local pass is not an
+official submission or registry acceptance. Detailed evidence is indexed in
+`Audit/palomar-seven-godel-range-20260930/`.
+
 ## 2026-09-29 weak-totality counterexample and cumulative Six pass
 
 The independent interface now includes the exact productive-history guard

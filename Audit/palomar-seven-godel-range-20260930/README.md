@@ -12,3 +12,9 @@ logs, hash records, and cgroup telemetry under the same run directory.
 The portable configuration remains under `Lean/` and contains no machine-local
 kernel commands.  `prepare_comparator.py` makes a protected local copy by adding
 only the authenticated con-ron and NanoDa commands.
+
+The completed checkpoint is summarized in `REPORT.md` and `RESULT.json`.
+The tested code/configuration commit is
+`16e73188e12244f651c7ce57207095bd0d223a44`; its sole cumulative payload was
+accepted by con-ron, NanoDa, and Lean's default kernel. Full exports remain in
+the retained `.codex-work` run tree and are identified by hashes in the report.
