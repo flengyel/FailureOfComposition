@@ -112,14 +112,16 @@ The later [evaluator cleanup](Porting/STYLE_CLEANUP.md) extended strict style
 checking to all 103 sources. These historical counts exclude the subsequent
 Palomar interface and bridge modules.
 
-The [Six checkpoint](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md) on
+The [Seven checkpoint](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Lean/FailureOfComposition/Palomar/STATUS.md) on
 `codex/palomar-eligibility` records local Comparator acceptance of the first
-six selected declarations at `b923699c670857f174ab445483d1508a453eaab0`.
-The two range declarations and the quotient-monoid declaration remain outside
-that verified checkpoint. A
-[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
-now adds the Gödel range declaration, with validation still pending. Six is the
-latest reviewed verification; declarations 8 and 9 still need eligible migration.
+seven selected declarations at `16e73188e12244f651c7ce57207095bd0d223a44`,
+including the Gödel-II range declaration. The
+[verification record](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/RESULT.json)
+records acceptance through con-ron, NanoDa, and the Lean default kernel; the
+[correspondence record](https://github.com/flengyel/FailureOfComposition/blob/7a5089f00e27ae94da550e11c38cd3cf31965fdf/Audit/palomar-seven-godel-range-20260930/CORRESPONDENCE.md)
+documents the range bridge. Seven is the latest reviewed verification. The
+productive range and quotient-monoid declarations (8 and 9) remain outside
+that verified checkpoint and still need eligible migration.
 No complete official Palomar verification is claimed.
 
 The review is a collaborating-agent semantic review, separately documented in
