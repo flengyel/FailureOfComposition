@@ -69,13 +69,17 @@ The Lean formalization and supporting code use the existing
 placing its source here does not assign it a new code license. See the
 [manuscript notes](manuscript/README.md).
 
-The [Palomar draft](Lean/FailureOfComposition/Palomar/README.md) contains nine
-paired statements and proved counterparts. The toolchain port has passed its
-project verification. On `codex/palomar-eligibility`, all nine selected declarations passed a
-local con-ron, NanoDa, and Lean Comparator run at
-`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`; the
+The [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md) contains
+nine paired statements and proved counterparts. The toolchain port has passed
+its project verification. On `codex/palomar-eligibility`, all nine selected
+declarations passed a local con-ron, NanoDa, and Lean Comparator run at
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. The pinned official verifier then
+fetched public commit `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and
+completed its protected build/export/comparison/kernel workflow under
+`palomar-standard-v1`. The
 [recorded Nine checkpoint](Lean/FailureOfComposition/Palomar/STATUS.md)
-identifies its exact scope. Complete official Palomar verification remains.
+identifies the exact scope.
 These declaration counts are distinct from
 manuscript numbering. The manuscript's licensing scope must also be accounted
-for in any submitted snapshot. No Palomar submission or registration is claimed.
+for in any submitted snapshot. No Palomar service submission, editorial
+acceptance, or registration is claimed.

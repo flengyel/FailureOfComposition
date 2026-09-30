@@ -1,0 +1,1620 @@
+{
+  "build_log_tail": "\n\u2714 [993/1008] Built FailureOfComposition.Palomar.ArithmeticInterface (23s)\n\u2714 [994/1008] Built Foundation.Vorspiel.Matrix (15s)\n\u2714 [995/1009] Built Foundation.Vorspiel.AdjunctiveSet (9.4s)\n\u2714 [996/1015] Built Foundation.Vorspiel.Finset.Basic (9.3s)\n\u2714 [997/1020] Built Foundation.Vorspiel.String (3.0s)\n\u2714 [998/1029] Built FailureOfComposition.Productiveness (10s)\n\u2714 [999/1029] Built Foundation.Vorspiel.List.Basic (11s)\n\u2714 [1000/1029] Built Foundation.Vorspiel.Option (6.3s)\n\u2714 [1001/1036] Built Foundation.Vorspiel.IsEmpty (4.5s)\n\u2714 [1002/1038] Built Foundation.Vorspiel.Function (7.3s)\n\u2714 [1003/1070] Built Foundation.Vorspiel.Empty (6.0s)\n\u2714 [1046/1087] Built Foundation.Vorspiel.Fin.Matrix (7.8s)\n\u2714 [1047/1101] Built Foundation.Vorspiel.Nat.Matrix (9.6s)\n\u2714 [1055/1116] Built Foundation.Vorspiel.Finset.Card (9.6s)\n\u2714 [1058/1117] Built Foundation.FirstOrder.Tarski.AesopInit (6.9s)\n\u2714 [1059/1129] Built Foundation.Vorspiel.Quotient (13s)\n\u2714 [1064/1137] Built Foundation.Vorspiel.Order.Dense (13s)\n\u2714 [1111/1212] Built Foundation.Vorspiel.Graph (5.3s)\n\u2714 [1120/1222] Built Foundation.Vorspiel.ExistsUnique (5.3s)\n\u2714 [1121/1222] Built Foundation.Vorspiel.Part (8.4s)\n\u2714 [1122/1222] Built Foundation.Logic.LogicSymbol (37s)\n\u2714 [1123/1222] Built FailureOfComposition.Palomar.EvaluatorInterface (17s)\n\u2714 [1124/1222] Built Foundation.Vorspiel.Arithmetic (20s)\n\u2714 [1125/1222] Built Foundation.Vorspiel.Computability (18s)\n\u2714 [1126/1225] Built Foundation.Logic.ForcingRelation (17s)\n\u2714 [1127/1225] Built Foundation.Logic.Semantics (18s)\n\u2714 [1128/1225] Built Foundation.Syntax.Predicate.Quantifier (20s)\n\u2714 [1129/1281] Built Foundation.Meta.Lit (13s)\n\u2714 [1131/1282] Built CategoricalRiceShapiro.ArithmeticCode.Basic (14s)\n\u2714 [1132/1282] Built FailureOfComposition.QuotientObstruction (5.6s)\n\u2714 [1133/1282] Built FailureOfComposition.KleeneNormalForm (12s)\n\u2714 [1134/1307] Built CategoricalRiceShapiro.ArithmeticCode.Minimization (13s)\n\u2714 [1135/1314] Built CategoricalRiceShapiro.ArithmeticCode.Conditional (15s)\n\u2714 [1136/1314] Built Foundation.Logic.Entailment (25s)\n\u2714 [1137/1314] Built FailureOfComposition.ComputationSearchIndices (15s)\n\u2714 [1138/1314] Built FailureOfComposition.Palomar.PiOneInterface (12s)\n\u2714 [1139/1323] Built CategoricalRiceShapiro.ArithmeticCode.Pairing (12s)\n\u2714 [1140/1323] Built CategoricalRiceShapiro.ArithmeticCode.Arithmetic (16s)\n\u2714 [1141/1324] Built Foundation.Syntax.Predicate.Language (16s)\n\u2714 [1142/1324] Built FailureOfComposition.QuotientComposition (6.5s)\n\u2714 [1143/1324] Built CategoricalRiceShapiro.ArithmeticCode.Recursion (14s)\n\u2714 [1144/1324] Built FailureOfComposition.Palomar.GeneratedCongruenceInterface (12s)\n\u2714 [1145/1324] Built Foundation.Syntax.Predicate.Term (18s)\n\u2714 [1146/1324] Built CategoricalRiceShapiro.ArithmeticCode.EncodedList (15s)\n\u2714 [1147/1324] Built CategoricalRiceShapiro.ArithmeticCode.PartialRecursive (15s)\n\u2714 [1148/1327] Built CategoricalRiceShapiro.Evaluator.TableLookup (20s)\n\u2714 [1149/1327] Built FailureOfComposition.CompositionClosure (11s)\n\u2714 [1150/1340] Built Foundation.Syntax.Predicate.Rew (53s)\n\u2714 [1151/1340] Built Foundation.FirstOrder.Syntax.Classical.Formula (49s)\n\u2714 [1152/1344] Built CategoricalRiceShapiro.Evaluator.Cell (15s)\n\u2714 [1153/1344] Built Foundation.Propositional.Entailment.Minimal (92s)\n\u2714 [1154/1344] Built FailureOfComposition.Palomar.RangeInterface (10s)\n\u2714 [1155/1344] Built CategoricalRiceShapiro.Evaluator.History (13s)\n\u2714 [1157/1350] Built Foundation.FirstOrder.Syntax.Intuitionistic.Formula (23s)\n\u2714 [1158/1350] Built Foundation.Propositional.Entailment.Int (28s)\n\u2714 [1159/1350] Built FailureOfComposition.Palomar.GeneratedQuotientInterface (21s)\n\u2714 [1160/1350] Built Foundation.FirstOrder.Syntax.Classical.Rew (53s)\n\u2714 [1161/1350] Built Foundation.Propositional.Entailment.Cl (20s)\n\u2714 [1162/1350] Built Foundation.FirstOrder.Syntax.Intuitionistic.Rew (32s)\n\u2714 [1163/1350] Built Foundation.Meta.TwoSided (42s)\n\u2714 [1164/1350] Built Foundation.Logic.Calculus (43s)\n\u2714 [1165/1350] Built Foundation.FirstOrder.Syntax.Classical.Operator (47s)\n\u2714 [1166/1350] Built Foundation.FirstOrder.Tarski.Basic (51s)\n\u2714 [1167/1350] Built Foundation.Meta.ClProver (26s)\n\u2714 [1168/1350] Built Foundation.FirstOrder.Tarski.Elementary (25s)\n\u2714 [1169/1350] Built Foundation.FirstOrder.Tarski.Ultraproduct (18s)\n\u2714 [1170/1350] Built Foundation.FirstOrder.Tarski.Operator (15s)\n\u2714 [1171/1350] Built Foundation.FirstOrder.Tarski.Model (16s)\n\u2714 [1172/1350] Built Foundation.FirstOrder.LK.Basic (70s)\n\u2714 [1173/1350] Built Foundation.FirstOrder.LK.Completeness.CountableSublanguage (34s)\n\u2714 [1174/1350] Built Foundation.FirstOrder.Syntax.Classical.Padding (19s)\n\u2714 [1175/1350] Built Foundation.FirstOrder.LK.Soundness (28s)\n\u2714 [1176/1350] Built Foundation.FirstOrder.LK.Simplified (112s)\n\u2714 [1177/1350] Built Foundation.FirstOrder.LK.CutFree (118s)\n\u2714 [1178/1350] Built Foundation.FirstOrder.LJ.Basic (226s)\n\u2139 [1179/1350] Built Foundation.FirstOrder.Syntax.Classical.BinderNotation (171s)\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:256:0: op(+).operator\n  ![op(+).operator\n      ![&1,\n        op(+).operator\n          ![\u21914,\n            op(*).operator\n              ![&0, (Operator.npow \u2112\u2092\u1d63 2).operator ![op(+).operator ![(Operator.npow \u2112\u2092\u1d63 4).operator ![#0], #2]]]]],\n    \u21914] : Semiterm \u2112\u2092\u1d63 \u2115 1\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:257:0: #0 : Semiterm ?m.1 ?m.2 ?m.3\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:339:0: \u2018(&4 + (((4 + 2) * #0) + #1))\u2019 : Semiterm ?m.69 \u2115 ?m.71\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:381:0: HTilde.hTilde : ?m.3 \u2192 ?m.3\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:512:0: \u2200\u00b9 \u2200\u00b9 \u2200\u00b9 \u2200\u00b9 \u2200\u00b9 op(=).operator ![\u2018((((#4 + #3) + #2) + #1) + #0)\u2019, \u21910] : Semiformula ?m.95 ?m.99 ?m.3\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:513:0: \u2200\u00b9 \u2200\u00b9 \u2200\u00b9 \u2200\u00b9 \u2200\u00b9 op(=).operator ![\u2018((((#4 + #3) + #2) + #1) + #0)\u2019, \u21910] : Semiformula ?m.95 ?m.99 ?m.3\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:514:0: \u2203\u00b9\n  \u2203\u00b9\n    ballLT (\u2018((&2 + #1) + 7)\u2019)\n      (\u2200\u00b9\n        (op(=).operator ![\u2018((&0 + &1) + #3)\u2019, &0] \ud83e\udc58\n          op(=).operator ![&2, (Rew.embSubsts ![&0, &1]) (\u2018(#0 + #1)\u2019)])) : Semiformula ?m.159 \u2115 ?m.3\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:515:0: ballLT (\u21910) (ballLT (#2) (op(=).operator ![#2, \u2018(#1 + #0)\u2019])) : Semiformula ?m.52 ?m.53 ?m.10\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:692:0: \u2203\u00b9 \u2203\u00b9 ballLT (\u2018(#4 + #1)\u2019) (\u201c((#4 + #2) \u2264 #3 \u2194 #5 = #1)\u201d) : Semiformula ?m.86 ?m.87 ?m.3\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:693:0: (\u201c&0 = &1\u201d) \ud83e\udc52 (\u201c&1 = &0\u201d) : Semiformula ?m.42 \u2115 ?m.44\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:694:0: (\u201c#0 = #1\u201d) \ud83e\udc52 (\u201c(4 * #1) = 3\u201d) : Semiformula ?m.61 ?m.65 ?m.66\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:695:0: \u2200\u00b9 \u2200\u00b9 ((\u201c#1 = #0\u201d) \ud83e\udc52 (\u201c#0 = #1\u201d)) : Semiformula ?m.48 ?m.49 ?m.3\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:805:0: \u201c#0 = #1\u201d : Semiformula ?m.16 ?m.17 ?m.18\ninfo: Foundation/FirstOrder/Syntax/Classical/BinderNotation.lean:817:0: \u2200\u00b9 ((\u201c#0 = #1\u201d) \ud83e\udc52 \u2200\u00b9 ((\u201c#0 = #3\u201d) \ud83e\udc52 (\u201c#1 = #0\u201d))) : Semiformula ?m.43 ?m.44 ?m.3\n\u2714 [1180/1350] Built Foundation.FirstOrder.Syntax.Classical.Eq (25s)\n\u2714 [1181/1350] Built Foundation.FirstOrder.LJ.GoedelGentzen (34s)\n\u2714 [1182/1350] Built Foundation.FirstOrder.Syntax.Classical.Coding (33s)\n\u2714 [1183/1350] Built Foundation.FirstOrder.Tarski.Eq (67s)\n\u2714 [1184/1350] Built Foundation.FirstOrder.Tarski.Definability (93s)\n\u2714 [1185/1350] Built Foundation.FirstOrder.LK.Eq (11s)\n\u2714 [1186/1350] Built Foundation.FirstOrder.Syntax.Classical.PrimrecCoding (76s)\n\u2714 [1187/1350] Built Foundation.FirstOrder.LK.Hauptsatz (100s)\n\u2714 [1188/1350] Built Foundation.FirstOrder.LK.Completeness.CanonicalModel (6.5s)\n\u2714 [1189/1350] Built Foundation.FirstOrder.LK.Completeness.CounterModel (10s)\n\u2714 [1190/1350] Built Foundation.FirstOrder.LK.Completeness (2.2s)\n\u2714 [1191/1350] Built Foundation.FirstOrder.Arithmetic.LE (1.0s)\n\u2714 [1192/1350] Built Foundation.FirstOrder.Arithmetic.Basic.Misc (3.7s)\n\u2714 [1193/1350] Built Foundation.FirstOrder.Arithmetic.Basic.Monotone (6.1s)\n\u2714 [1194/1350] Built Foundation.FirstOrder.Arithmetic.Basic.Model (7.9s)\n\u2714 [1195/1350] Built Foundation.FirstOrder.Arithmetic.Basic.Hierarchy (18s)\n\u2714 [1196/1350] Built Foundation.FirstOrder.Arithmetic.Basic.StrictHierarchy (4.7s)\n\u2714 [1197/1350] Built Foundation.FirstOrder.Arithmetic.Basic (1.9s)\n\u2714 [1198/1350] Built Foundation.FirstOrder.Arithmetic.TA.Basic (6.6s)\n\u2714 [1199/1350] Built Foundation.FirstOrder.Incompleteness.ProvabilityAbstraction.Basic (14s)\n\u2714 [1200/1350] Built Foundation.FirstOrder.Arithmetic.R0.Basic (18s)\n\u2714 [1201/1350] Built Foundation.FirstOrder.Arithmetic.Q.Basic (8.1s)\n\u2714 [1202/1350] Built Foundation.FirstOrder.Arithmetic.PeanoMinus.Basic (24s)\n\u2714 [1203/1350] Built Foundation.FirstOrder.Arithmetic.Definability.Hierarchy (8.8s)\n\u2714 [1204/1350] Built Foundation.FirstOrder.Arithmetic.Definability.Definable (19s)\n\u2714 [1205/1350] Built Foundation.FirstOrder.Arithmetic.Definability.BoundedDefinable (23s)\n\u2714 [1206/1350] Built Foundation.FirstOrder.Arithmetic.R0.Representation (26s)\n\u2714 [1207/1350] Built Foundation.FirstOrder.Arithmetic.Definability.Absoluteness (7.6s)\n\u2714 [1208/1350] Built Foundation.FirstOrder.Arithmetic.Definability (3.5s)\n\u2714 [1209/1350] Built CategoricalRiceShapiro.ArithmeticCode.FoundationCompat (18s)\n\u2714 [1210/1350] Built Foundation.FirstOrder.Arithmetic.PeanoMinus.Functions (14s)\n\u2714 [1211/1350] Built CategoricalRiceShapiro.ArithmeticCode.Evaluation (13s)\n\u2714 [1212/1350] Built CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence (13s)\n\u2714 [1213/1350] Built Foundation.FirstOrder.Arithmetic.Schemata (27s)\n\u2714 [1214/1350] Built CategoricalRiceShapiro.Evaluator.CellCongruence (11s)\n\u2714 [1215/1350] Built Foundation.FirstOrder.Arithmetic.BoundedCollection (10s)\n\u2714 [1216/1350] Built Foundation.FirstOrder.Arithmetic.Prenex (43s)\n\u2714 [1217/1350] Built Foundation.FirstOrder.Arithmetic.IOpen.Basic (55s)\n\u2714 [1218/1350] Built Foundation.FirstOrder.Arithmetic.ISigma1.Prenex (6.1s)\n\u2714 [1219/1350] Built Foundation.FirstOrder.Arithmetic.Exponential.Pow2 (43s)\n\u2714 [1220/1350] Built CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation (45s)\n\u2714 [1221/1350] Built FailureOfComposition.ArithmeticFormulaAtoms (12s)\n\u2714 [1222/1350] Built CategoricalRiceShapiro.PartialRecursive.CanonicalComposition (17s)\n\u2714 [1223/1350] Built Foundation.FirstOrder.Arithmetic.Exponential.PPow2 (23s)\n\u2714 [1224/1350] Built Foundation.FirstOrder.Arithmetic.Exponential.Exp (36s)\n\u2714 [1225/1350] Built Foundation.FirstOrder.Arithmetic.Exponential.Log (19s)\n\u2714 [1226/1350] Built Foundation.FirstOrder.Arithmetic.Exponential.Bit (18s)\n\u2714 [1227/1350] Built Foundation.FirstOrder.Arithmetic.Exponential (1.9s)\n\u2714 [1228/1350] Built Foundation.FirstOrder.Arithmetic.HFS.Basic (25s)\n\u2714 [1229/1350] Built Foundation.FirstOrder.Arithmetic.HFS.Seq (70s)\n\u2714 [1230/1350] Built Foundation.FirstOrder.Arithmetic.HFS.PRF (12s)\n\u2714 [1231/1350] Built Foundation.FirstOrder.Arithmetic.HFS.Fixpoint (22s)\n\u2714 [1232/1350] Built Foundation.FirstOrder.Arithmetic.HFS.Vec (53s)\n\u2714 [1233/1350] Built Foundation.FirstOrder.Arithmetic.HFS.Coding (2.2s)\n\u2714 [1234/1350] Built Foundation.FirstOrder.Arithmetic.HFS (1.6s)\n\u2714 [1235/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Language (16s)\n\u2714 [1236/1350] Built Foundation.FirstOrder.Arithmetic.Induction (21s)\n\u2714 [1237/1350] Built CategoricalRiceShapiro.ArithmeticCode.BetaCoding (70s)\n\u2714 [1238/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Basic (123s)\n\u2714 [1239/1350] Built CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation (50s)\n\u2714 [1240/1350] Built CategoricalRiceShapiro.ArithmeticCode.PartialRecursiveEvaluation (19s)\n\u2714 [1241/1350] Built CategoricalRiceShapiro.ArithmeticCode.EncodedListEvaluation (25s)\n\u2714 [1242/1350] Built CategoricalRiceShapiro.Evaluator.TableLookupEvaluation (11s)\n\u2714 [1243/1350] Built CategoricalRiceShapiro.Evaluator.CellEvaluation (26s)\n\u2714 [1244/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Functions (77s)\n\u2714 [1245/1350] Built CategoricalRiceShapiro.Evaluator.CompositionDispatch (40s)\n\u2714 [1246/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Typed (55s)\n\u2714 [1247/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Term.Coding (31s)\n\u2714 [1248/1350] Built CategoricalRiceShapiro.Evaluator.HistoryEvaluation (145s)\n\u2714 [1249/1350] Built CategoricalRiceShapiro.Evaluator.Certificate (22s)\n\u2714 [1250/1350] Built CategoricalRiceShapiro.Evaluator.PrimitiveRecursionStructuralBridges (23s)\n\u2714 [1251/1350] Built CategoricalRiceShapiro.Evaluator.CompositionPersistence (12s)\n\u2714 [1252/1350] Built CategoricalRiceShapiro.Evaluator.PersistenceInduction (14s)\n\u2714 [1253/1350] Built CategoricalRiceShapiro.Evaluator.PairPersistence (19s)\n\u2714 [1254/1350] Built FailureOfComposition.ConcreteWitnessGraphs (28s)\n\u2714 [1255/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Formula.Basic (283s)\n\u2714 [1256/1350] Built FailureOfComposition.MinimizationPersistence (28s)\n\u2714 [1257/1350] Built CategoricalRiceShapiro.Evaluator.PrimitiveRecursionPersistence (36s)\n\u2714 [1258/1350] Built FailureOfComposition.ConcreteEmptyGraph (9.6s)\n\u2714 [1259/1350] Built FailureOfComposition.ConcretePersistence (7.3s)\n\u2714 [1260/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Formula.Functions (73s)\n\u2714 [1261/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Formula.Iteration (24s)\n\u2714 [1262/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Formula.Typed (18s)\n\u2714 [1263/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Formula.Coding (15s)\n\u2714 [1264/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Theory (3.9s)\n\u2714 [1265/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.CraigTrick (11s)\n\u2714 [1266/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Proof.Basic (54s)\n\u2714 [1267/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Proof.Typed (32s)\n\u2714 [1268/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax.Proof.Coding (19s)\n\u2714 [1269/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.Syntax (1.6s)\n\u2714 [1270/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.D2 (6.6s)\n\u2714 [1271/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.D1 (7.1s)\n\u2714 [1272/1350] Built FailureOfComposition.ProductiveDivergence (14s)\n\u2714 [1273/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.FixedPoint (32s)\n\u2714 [1274/1350] Built FailureOfComposition.TheoryEnumerability (18s)\n\u2714 [1275/1350] Built FailureOfComposition.AxiomEnumeration (10s)\n\u2714 [1276/1350] Built FailureOfComposition.Palomar.ArithmeticBridge (33s)\n\u2714 [1277/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.EquationalTheory (75s)\n\u2714 [1278/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.PeanoMinus (46s)\n\u2714 [1279/1350] Built FailureOfComposition.Palomar.DirectDerivationEnumeration (57s)\n\u2714 [1280/1350] Built Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.D3 (9.5s)\n\u2714 [1281/1350] Built Foundation.FirstOrder.Incompleteness.StandardProvability (2.8s)\n\u2714 [1282/1350] Built Foundation.FirstOrder.Incompleteness.Consistency (15s)\n\u2714 [1283/1350] Built Foundation.FirstOrder.Incompleteness.First (17s)\n\u2714 [1284/1350] Built Foundation.FirstOrder.Incompleteness.WitnessComparison (22s)\n\u2714 [1285/1350] Built FailureOfComposition.ProofSearchTemplate (34s)\n\u2714 [1286/1350] Built Foundation.FirstOrder.Incompleteness.RosserProvability (14s)\n\u2714 [1287/1350] Built FailureOfComposition.GraphQuotient (8.3s)\n\u2714 [1288/1350] Built Foundation.FirstOrder.Incompleteness.Second (6.9s)\n\u2714 [1289/1350] Built FailureOfComposition.ConcreteEvaluatorGraph (12s)\n\u2714 [1290/1350] Built FailureOfComposition.PiOneDefinitions (9.2s)\n\u2714 [1291/1350] Built FailureOfComposition.GeneratedWitnessGraphs (36s)\n\u2714 [1292/1350] Built FailureOfComposition.ConcreteMinimizationGraph (49s)\n\u2714 [1293/1350] Built FailureOfComposition.ConcreteRecursionGraph (46s)\n\u2714 [1294/1350] Built FailureOfComposition.ConcreteConstructorGraphs (27s)\n\u2714 [1295/1350] Built FailureOfComposition.PiOneCongruence (14s)\n\u2714 [1296/1350] Built FailureOfComposition.HistoryWitnesses (23s)\n\u2714 [1297/1350] Built FailureOfComposition.PiOneExtensionality (18s)\n\u2714 [1298/1350] Built FailureOfComposition.ProgramGraph (18s)\n\u2714 [1299/1350] Built FailureOfComposition.ConcreteAdequacy (19s)\n\u2714 [1300/1350] Built FailureOfComposition.GeneratedSoundness (12s)\n\u2714 [1301/1350] Built FailureOfComposition.GeneratedWitnessPointwise (14s)\n\u2714 [1302/1350] Built FailureOfComposition.ConcreteDiagonal (17s)\n\u2714 [1303/1350] Built FailureOfComposition.ArithmeticProgramOperations (21s)\n\u2714 [1304/1350] Built FailureOfComposition.Palomar.DirectDivergenceBridge (13s)\n\u2714 [1305/1350] Built FailureOfComposition.HistoryObstruction (23s)\n\u2714 [1306/1350] Built FailureOfComposition.ArithmeticCodeCompiler (22s)\n\u2714 [1307/1350] Built Foundation.FirstOrder.Incompleteness.Definability (144s)\n\u2714 [1308/1350] Built FailureOfComposition.BoundedSemidecision (22s)\n\u2714 [1309/1350] Built FailureOfComposition.SigmaOneSemidecisionCore (12s)\n\u2714 [1310/1350] Built FailureOfComposition.PiOneNecessity (16s)\n\u2714 [1311/1350] Built FailureOfComposition.SigmaOneSearch (28s)\n\u2714 [1312/1350] Built FailureOfComposition.GodelGraph (17s)\n\u2714 [1313/1350] Built FailureOfComposition.ProductiveGraph (17s)\n\u2714 [1314/1350] Built FailureOfComposition.PiOneCharacterization (11s)\n\u2714 [1315/1350] Built FailureOfComposition.SigmaOneGraphWitness (12s)\n\u2714 [1316/1350] Built FailureOfComposition.ProgramIndices (15s)\n\u2714 [1317/1350] Built FailureOfComposition.SigmaOneRealization (16s)\n\u2714 [1318/1350] Built FailureOfComposition.GeneratedGraphDefinitions (13s)\n\u2714 [1319/1350] Built FailureOfComposition.ConcreteIndexObstruction (15s)\n\u2714 [1320/1350] Built FailureOfComposition.PiOneIndexCharacterization (12s)\n\u2714 [1321/1350] Built FailureOfComposition.GeneratedExtensionality (12s)\n\u2714 [1322/1350] Built FailureOfComposition.GeneratedCollapse (14s)\n\u2714 [1323/1350] Built FailureOfComposition.GeneratedIndexTransport (17s)\n\u2714 [1324/1350] Built FailureOfComposition.ConcreteGodel (17s)\n\u2714 [1325/1350] Built FailureOfComposition.Palomar.EvaluatorBridge (30s)\n\u2714 [1326/1350] Built FailureOfComposition.RangeAssignment (20s)\n\u2714 [1327/1350] Built FailureOfComposition.ConcreteWeakTotality (20s)\n\u2714 [1328/1350] Built FailureOfComposition.GeneratedQuotient (15s)\n\u2714 [1329/1350] Built FailureOfComposition.ConcretePiOneCharacterization (14s)\n\u2714 [1330/1350] Built FailureOfComposition.RangeWitness (17s)\n\u2714 [1331/1350] Built FailureOfComposition.Palomar.WeakTotalityBridge (17s)\n\u2714 [1332/1350] Built FailureOfComposition.GeneratedIndexQuotient (18s)\n\u2714 [1333/1350] Built FailureOfComposition.GeneratedClassification (21s)\n\u2714 [1334/1350] Built FailureOfComposition.Palomar.PiOneBridge (27s)\n\u2714 [1335/1350] Built FailureOfComposition.RangeProductive (21s)\n\u2714 [1336/1350] Built FailureOfComposition.ManuscriptObstruction (57s)\n\u2714 [1337/1350] Built FailureOfComposition.GeneratedIndexClassification (17s)\n\u2714 [1338/1350] Built FailureOfComposition.Palomar.ObstructionBridge (13s)\n\u2714 [1339/1350] Built FailureOfComposition.ConcreteGeneratedCongruence (13s)\n\u2714 [1340/1350] Built FailureOfComposition.Palomar.QuotientBridge (20s)\n\u2714 [1341/1350] Built FailureOfComposition.PartialRecursiveQuotient (16s)\n\u2714 [1342/1350] Built FailureOfComposition.Palomar.GeneratedCongruenceBridge (17s)\n\u2714 [1343/1350] Built FailureOfComposition.Palomar.GeneratedQuotientBridge (7.9s)\n\u2714 [1344/1350] Built FailureOfComposition.CraigPresentation (236s)\n\u2714 [1345/1350] Built FailureOfComposition.ConcreteGodelRE (7.1s)\n\u2714 [1346/1350] Built FailureOfComposition.Palomar.GodelQuotientBridge (5.9s)\n\u2714 [1347/1350] Built FailureOfComposition.RangeGodel (13s)\n\u2714 [1348/1350] Built FailureOfComposition.Palomar.RangeBridge (2.8s)\n\u2714 [1349/1350] Built FailureOfComposition.Palomar.RangeProductiveBridge (2.3s)\n\u2714 [1350/1350] Built FailureOfComposition.Palomar.SolutionNine (2.5s)\nBuild completed successfully (1350 jobs).",
+  "bwrap_source_tag": "v0.12.0",
+  "challenge": {
+    "bytes": 44209,
+    "canonical_olean_sha256": "3391bcbcd78723fd6e21a171fc4a320b026f14cbc6ab51855a4afb4624c865c9",
+    "dependencies": [
+      {
+        "provenance": "allowlisted",
+        "repository": "leanprover-community/mathlib4"
+      }
+    ],
+    "direct_imports": [
+      "Mathlib.Computability.PartrecCode",
+      "Mathlib.Computability.RE",
+      "Mathlib.Data.Fin.VecNotation"
+    ],
+    "lines": 998,
+    "module": "FailureOfComposition.Palomar.ChallengeNine",
+    "path": "Lean/FailureOfComposition/Palomar/ChallengeNine.lean",
+    "sha256": "a6ce52700c627a567cdcdbcc518595299520dca6ff698118bf454598c9e26786",
+    "transitive_source_count": 4,
+    "trust_level": "high",
+    "untrusted_sources": []
+  },
+  "checked_at": "2026-09-30T08:48:56Z",
+  "classification": {
+    "arxiv": [
+      {
+        "code": "math.LO",
+        "name": "Logic"
+      }
+    ],
+    "msc2020": [
+      {
+        "code": "03D75",
+        "name": "Abstract and axiomatic computability and recursion theory"
+      },
+      {
+        "code": "03F40",
+        "name": "G\u00f6del numberings and issues of incompleteness"
+      },
+      {
+        "code": "08A30",
+        "name": "Subalgebras, congruence relations"
+      },
+      {
+        "code": "18B10",
+        "name": "Categories of spans/cospans, relations, or partial maps"
+      }
+    ]
+  },
+  "comparator": {
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeNine",
+    "definition_names": [],
+    "path": "Lean/FailureOfComposition/Palomar/comparator-nine.json",
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "sha256": "06b21bdcdc7f97f2b332b876a5f86ad63ea1b14e5d792d7c135531d9090cd2e2",
+    "solution_module": "FailureOfComposition.Palomar.SolutionNine",
+    "theorem_names": [
+      "FailureOfComposition.Palomar.obstruction_four_properties",
+      "FailureOfComposition.Palomar.no_quotient_composition_productive",
+      "FailureOfComposition.Palomar.no_quotient_composition_godel",
+      "FailureOfComposition.Palomar.pi_one_characterization",
+      "FailureOfComposition.Palomar.generated_congruence_classification",
+      "FailureOfComposition.Palomar.weak_totality_counterexample",
+      "FailureOfComposition.Palomar.range_counterexample_godel",
+      "FailureOfComposition.Palomar.range_counterexample_productive",
+      "FailureOfComposition.Palomar.generated_quotient_partial_recursive"
+    ]
+  },
+  "comparator_log_tail": "Running con-ron kernel on solution\ncon-ron: accepted 20847 declarations (--verified)\ncon-ron kernel accepts the solution\nRunning nanoda kernel on solution\nnanoda kernel accepts the solution\nRunning Lean default kernel on solution\nLean default kernel accepts the solution\nYour solution is okay!\n\ncon-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)",
+  "errors": [],
+  "existing_id": null,
+  "formalization": {
+    "automation_method_count": 1,
+    "path": "Lean/FailureOfComposition/Palomar/formalization.yaml",
+    "project_name": "Pointwise provable equality and the failure of composition",
+    "review_status": "agent-reviewed",
+    "sha256": "b93e197e2ccb0d9db1e971a74b09b70c618f366300196f6f55eba9357212dd62",
+    "source_count": 3
+  },
+  "kernels": [
+    {
+      "argv": [
+        "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin"
+      ],
+      "name": "nanoda"
+    },
+    {
+      "argv": [
+        "/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron"
+      ],
+      "name": "con-ron"
+    }
+  ],
+  "lake_manifest": {
+    "path": "Lean/lake-manifest.json",
+    "sha256": "8683f2bdb42efd0e3ed4b9bf0da32e8a6d022baf60dae5a9e1440da957d453f5"
+  },
+  "lakefile": {
+    "format": "toml",
+    "path": "Lean/lakefile.toml",
+    "sha256": "8dcdf09248b3a9ddef0fac6eb4eaff3de3871ffde8a4b24c502fff74caf26b0a"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc2",
+  "lean_toolchain_path": "Lean/lean-toolchain",
+  "license": {
+    "declared_identifier": "Apache-2.0",
+    "detected_identifier": "Apache-2.0",
+    "path": "LICENSE",
+    "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+  },
+  "mathlib_cache": {
+    "available": true,
+    "required": true
+  },
+  "mathlib_toolchain": [
+    {
+      "revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "toolchain": "leanprover/lean4:v4.35.0-rc2"
+    }
+  ],
+  "orcid_validation": {
+    "checked_at": "2026-09-30T07:47:53Z",
+    "records": [],
+    "registry": "https://orcid.org",
+    "schema_version": 1
+  },
+  "phase": "verification",
+  "project_dependencies": [
+    {
+      "name": "Foundation",
+      "repository": "flengyel/foundation",
+      "revision": "01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d",
+      "url": "https://github.com/flengyel/foundation.git"
+    },
+    {
+      "name": "mathlib",
+      "repository": "leanprover-community/mathlib4",
+      "revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "url": "https://github.com/leanprover-community/mathlib4"
+    },
+    {
+      "name": "Forgive",
+      "repository": "FormalizedFormalLogic/forgive",
+      "revision": "f20b5646a391cf3b1231d67415b44ed4a2ff3055",
+      "url": "https://github.com/FormalizedFormalLogic/forgive"
+    },
+    {
+      "name": "doc-gen4",
+      "repository": "leanprover/doc-gen4",
+      "revision": "d736b237948ab1bdf316407a575f0d3c7f6ba772",
+      "url": "https://github.com/leanprover/doc-gen4"
+    },
+    {
+      "name": "plausible",
+      "repository": "leanprover-community/plausible",
+      "revision": "e50948299c4dc4a4c21b1c34b6a6a4fddc19f912",
+      "url": "https://github.com/leanprover-community/plausible"
+    },
+    {
+      "name": "LeanSearchClient",
+      "repository": "leanprover-community/LeanSearchClient",
+      "revision": "95e037bfdc31d3916ac615446847fb01960e2719",
+      "url": "https://github.com/leanprover-community/LeanSearchClient"
+    },
+    {
+      "name": "importGraph",
+      "repository": "leanprover-community/import-graph",
+      "revision": "10930f8138f0462dbd744a91fc03a16fae0e046f",
+      "url": "https://github.com/leanprover-community/import-graph"
+    },
+    {
+      "name": "proofwidgets",
+      "repository": "leanprover-community/ProofWidgets4",
+      "revision": "4c70ac059693669e5756e32a7a94b57ee1e99dc5",
+      "url": "https://github.com/leanprover-community/ProofWidgets4"
+    },
+    {
+      "name": "aesop",
+      "repository": "leanprover-community/aesop",
+      "revision": "75d936c7af167cc93fac0d31237682fc2204591d",
+      "url": "https://github.com/leanprover-community/aesop"
+    },
+    {
+      "name": "Qq",
+      "repository": "leanprover-community/quote4",
+      "revision": "786b7acdca7eb4e9c76c5d1d5bd810e7e5c56334",
+      "url": "https://github.com/leanprover-community/quote4"
+    },
+    {
+      "name": "batteries",
+      "repository": "leanprover-community/batteries",
+      "revision": "ed9b316aabe389fec1ef43c3326ab48c7e59be42",
+      "url": "https://github.com/leanprover-community/batteries"
+    },
+    {
+      "name": "Cli",
+      "repository": "leanprover/lean4-cli",
+      "revision": "2842b9871b04862f944c032e34052cb9448ccb71",
+      "url": "https://github.com/leanprover/lean4-cli"
+    },
+    {
+      "name": "leansqlite",
+      "repository": "leanprover/leansqlite",
+      "revision": "0d36e6d34f6861ed37185646b2e5d7a9eff46281",
+      "url": "https://github.com/leanprover/leansqlite"
+    },
+    {
+      "name": "UnicodeBasic",
+      "repository": "fgdorais/lean4-unicode-basic",
+      "revision": "1daff5db5b332b2aa094cecd6b6fea657ef9ced4",
+      "url": "https://github.com/fgdorais/lean4-unicode-basic"
+    },
+    {
+      "name": "BibtexQuery",
+      "repository": "dupuisf/BibtexQuery",
+      "revision": "d73123f5b70ae67d3650bfea3b74faf4eaee2cfc",
+      "url": "https://github.com/dupuisf/BibtexQuery"
+    },
+    {
+      "name": "MD4Lean",
+      "repository": "acmepjz/md4lean",
+      "revision": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "url": "https://github.com/acmepjz/md4lean"
+    }
+  ],
+  "protected_config": "{\n  \"challenge_module\": \"PalomarCanonical0a7f7368b550bced339ef22e.Challenge\",\n  \"definition_names\": [],\n  \"external_kernels\": {\n    \"con-ron\": [\n      \"/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron\"\n    ],\n    \"nanoda\": [\n      \"/home/flengyel/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin\"\n    ]\n  },\n  \"permitted_axioms\": [\n    \"propext\",\n    \"Quot.sound\",\n    \"Classical.choice\"\n  ],\n  \"solution_module\": \"FailureOfComposition.Palomar.SolutionNine\",\n  \"theorem_names\": [\n    \"FailureOfComposition.Palomar.obstruction_four_properties\",\n    \"FailureOfComposition.Palomar.no_quotient_composition_productive\",\n    \"FailureOfComposition.Palomar.no_quotient_composition_godel\",\n    \"FailureOfComposition.Palomar.pi_one_characterization\",\n    \"FailureOfComposition.Palomar.generated_congruence_classification\",\n    \"FailureOfComposition.Palomar.weak_totality_counterexample\",\n    \"FailureOfComposition.Palomar.range_counterexample_godel\",\n    \"FailureOfComposition.Palomar.range_counterexample_productive\",\n    \"FailureOfComposition.Palomar.generated_quotient_partial_recursive\"\n  ]\n}\n",
+  "protected_config_sha256": "6a4f25dff28e13825eac5c11fe0204b75e9300f4992ea03d56e508da3c580b6b",
+  "provenance": {
+    "mathematical_sources": [
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Florian Lengyel"
+          }
+        ],
+        "identifier": "https://github.com/flengyel/Categorical_Rice_Shapiro/blob/202194e54e883648f0d9f22a65afee6987ef2134/research/notes/failure_of_composition_2026-09-21_v36.tex",
+        "location": "manuscript/failure_of_composition_2026-09-21_v36.tex; dated September 21, 2026; Theorem 1 through Proposition 6 and the unnumbered quotient-monoid consequence following Theorem 4.",
+        "note": "The unchanged source is maintained locally at the path above. Its id records the historical immutable source, not the current code repository. This is source-based formalization of a result already presented in the manuscript, not an original-proof provenance claim. The concrete evaluator and historical coding qualifications are recorded under fidelity.",
+        "relationship": "formalizes",
+        "title": "Pointwise provable equality and the failure of composition, version 36",
+        "type": "paper"
+      },
+      {
+        "authors": [
+          {
+            "name": "F. Montagna"
+          }
+        ],
+        "identifier": "https://doi.org/10.1305/ndjfl/1093634998",
+        "location": "Notre Dame Journal of Formal Logic 30 (1989), 105\u2013116.",
+        "note": "Historical source of the pointwise quotient, weak-totality discussion, and range construction examined by the manuscript. The formalization does not reconstruct Montagna's literal proof binumeration or every generated object of his proposed syntactic category.",
+        "relationship": "background",
+        "title": "Pathologies in two syntactic categories of partial maps",
+        "type": "paper"
+      },
+      {
+        "authors": [
+          {
+            "name": "R. A. Di Paola"
+          },
+          {
+            "name": "F. Montagna"
+          }
+        ],
+        "identifier": "https://doi.org/10.2307/2274707",
+        "location": "Journal of Symbolic Logic 56 (1991), 643\u2013660.",
+        "note": "Historical setting for extensions of PA. Failure on the proposed endomorphisms of omega is formalized at the program-index level.",
+        "relationship": "background",
+        "title": "Some properties of the syntactic p-recursion categories generated by consistent, recursively enumerable extensions of Peano arithmetic",
+        "type": "paper"
+      }
+    ],
+    "related_formalizations": [],
+    "repository_role": "substantive-development",
+    "responsible_maintainers": [
+      {
+        "name": "Florian Lengyel"
+      }
+    ],
+    "result_origin": "source-based"
+  },
+  "resource_usage": [
+    {
+      "elapsed_seconds": 0.047,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.044,
+      "user_cpu_seconds": 0.044,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 99418000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8830976,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.083,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.071,
+      "user_cpu_seconds": 0.051,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 131477000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12947456,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.054,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.051,
+      "user_cpu_seconds": 0.043,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 105708000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8744960,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.084,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.067,
+      "user_cpu_seconds": 0.055,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 133813000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13254656,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.075,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.05,
+      "user_cpu_seconds": 0.065,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 125115000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13242368,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.064,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.039,
+      "user_cpu_seconds": 0.063,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 109989000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13103104,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.06,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.048,
+      "user_cpu_seconds": 0.06,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 115303000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12812288,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.367,
+      "max_rss_kib": 78804,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.193,
+      "user_cpu_seconds": 0.205,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 405295000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80707584,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.89,
+      "max_rss_kib": 350764,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.506,
+      "user_cpu_seconds": 0.415,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 928618000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 359194624,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.289,
+      "max_rss_kib": 76236,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.147,
+      "user_cpu_seconds": 0.178,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 333169000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 78077952,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.732,
+      "max_rss_kib": 350500,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.393,
+      "user_cpu_seconds": 0.358,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 760891000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 358924288,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.298,
+      "max_rss_kib": 76488,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.123,
+      "user_cpu_seconds": 0.207,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 337030000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 78336000,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.704,
+      "max_rss_kib": 350732,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.358,
+      "user_cpu_seconds": 0.382,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 746060000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 359161856,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 9.934,
+      "max_rss_kib": 141240,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.363,
+      "user_cpu_seconds": 9.559,
+      "workspace_disk_peak_bytes": 24576
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 9931349000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 144642048,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.176,
+      "max_rss_kib": 33200,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.052,
+      "user_cpu_seconds": 0.16,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 219159000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 34009088,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 9.652,
+      "max_rss_kib": 148320,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.279,
+      "user_cpu_seconds": 9.35,
+      "workspace_disk_peak_bytes": 36864
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 9636634000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 151891968,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 10.733,
+      "max_rss_kib": 238168,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 1.405,
+      "user_cpu_seconds": 9.141,
+      "workspace_disk_peak_bytes": 5390336
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 10553908000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 243896320,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.092,
+      "max_rss_kib": 23076,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 0.054,
+      "user_cpu_seconds": 0.078,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 139557000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 23642112,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 168.658,
+      "max_rss_kib": 8936672,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 68.484,
+      "user_cpu_seconds": 97.188,
+      "workspace_disk_peak_bytes": 7897460736
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 165681022000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9151164416,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 14.565,
+      "max_rss_kib": 297780,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 3.918,
+      "user_cpu_seconds": 10.525,
+      "workspace_disk_peak_bytes": 1552384
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 14456052000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 304939008,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 3.866,
+      "max_rss_kib": 154788,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 1.135,
+      "user_cpu_seconds": 2.701,
+      "workspace_disk_peak_bytes": 811008
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 3846282000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 158515200,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 9.377,
+      "max_rss_kib": 661996,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 1.435,
+      "user_cpu_seconds": 6.021,
+      "workspace_disk_peak_bytes": 81920
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 7473102000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 677896192,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.09,
+      "max_rss_kib": 22868,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.064,
+      "user_cpu_seconds": 0.068,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 137668000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 23429120,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.069,
+      "max_rss_kib": 22892,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.054,
+      "user_cpu_seconds": 0.054,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 116292000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 23453696,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.036,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.027,
+      "user_cpu_seconds": 0.062,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 96244000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8986624,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.1,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.035,
+      "user_cpu_seconds": 0.067,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 108988000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12791808,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.031,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.04,
+      "user_cpu_seconds": 0.036,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 82213000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9146368,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.061,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.036,
+      "user_cpu_seconds": 0.076,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 119417000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13139968,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.057,
+      "max_rss_kib": 13312,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.05,
+      "user_cpu_seconds": 0.046,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 102508000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13275136,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.06,
+      "max_rss_kib": 13312,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.04,
+      "user_cpu_seconds": 0.072,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 118767000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13230080,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.098,
+      "max_rss_kib": 13312,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.063,
+      "user_cpu_seconds": 0.083,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 154922000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13160448,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.08,
+      "max_rss_kib": 13184,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.056,
+      "user_cpu_seconds": 0.06,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 130324000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12541952,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 2.537,
+      "max_rss_kib": 115236,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 1.466,
+      "user_cpu_seconds": 1.049,
+      "workspace_disk_peak_bytes": 8192
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2523073000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 118013952,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 2.527,
+      "max_rss_kib": 114800,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 1.313,
+      "user_cpu_seconds": 1.211,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2534638000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 117567488,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 2.901,
+      "max_rss_kib": 458204,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "challenge-export",
+      "returncode": 0,
+      "system_cpu_seconds": 1.031,
+      "user_cpu_seconds": 1.832,
+      "workspace_disk_peak_bytes": 9904128
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2876404000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 469213184,
+      "phase": "challenge-export:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 2560.077,
+      "max_rss_kib": 4774008,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "solution-build",
+      "returncode": 0,
+      "system_cpu_seconds": 262.668,
+      "user_cpu_seconds": 2280.278,
+      "workspace_disk_peak_bytes": 516632576
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2542979495000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 4888596480,
+      "phase": "solution-build:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 18.681,
+      "max_rss_kib": 714336,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "solution-export",
+      "returncode": 0,
+      "system_cpu_seconds": 2.016,
+      "user_cpu_seconds": 16.605,
+      "workspace_disk_peak_bytes": 158359552
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 18629233000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 731492352,
+      "phase": "solution-export:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 143.344,
+      "max_rss_kib": 767904,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator",
+      "returncode": 0,
+      "system_cpu_seconds": 2.197,
+      "user_cpu_seconds": 140.719,
+      "workspace_disk_peak_bytes": 757760
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 142924541000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 786345984,
+      "phase": "comparator:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 1048576
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    }
+  ],
+  "schema_version": 2,
+  "solution": {
+    "module": "FailureOfComposition.Palomar.SolutionNine",
+    "path": "Lean/FailureOfComposition/Palomar/SolutionNine.lean",
+    "sha256": "2fae7a328183d4184d3c9ab68514aafa3312839e09e67b0328f39a8f57f272a2"
+  },
+  "source": {
+    "bytes": 3411381,
+    "commit": "48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb",
+    "project_path": "Lean",
+    "repository": "flengyel/FailureOfComposition",
+    "repository_url": "https://github.com/flengyel/FailureOfComposition",
+    "tree_url": "https://github.com/flengyel/FailureOfComposition/tree/48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb/Lean"
+  },
+  "stage": "complete",
+  "status": "pass",
+  "submission": {
+    "authorization": {
+      "evidence": "Local verifier execution authorized by the repository maintainer in the Codex task; no Palomar service submission or registration.",
+      "relationship": "maintainer"
+    },
+    "requested_paths": {
+      "comparator_config_path": "Lean/FailureOfComposition/Palomar/comparator-nine.json",
+      "formalization_metadata_path": "Lean/FailureOfComposition/Palomar/formalization.yaml",
+      "project_path": "Lean"
+    },
+    "submission_id": "445ece2fb2ad"
+  },
+  "tool_digests": {
+    "bwrap": "636192e7fa50bfc6a19820aed6538f0b85194fcb1f92be405f1ec70d188d91ba",
+    "con-ron": "4e5616d94374cae37324dad2594f6230c2bb2297240249fc78ff508f3bc5acef",
+    "lake": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+    "lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "leanchecker": "9e36e955a251b1313c8eb5b7fa101282d51df109d34d8bb7c1cfdf51985aba29",
+    "leanexport": "c5bc1a10a21e22cbb3671d65987cdef2076833b14182d823ccb2153adf2fa954",
+    "nanoda_bin": "8241c5e6baa29490aa118d382f97961b208ae730fdb96545c2abed74c9ece5a8"
+  },
+  "toolchain_commit": "11acb17ec6b07a8f9e9173e6845197929540936b",
+  "verification_profile": {
+    "id": "palomar-standard-v1",
+    "limits": {
+      "execution_budget_seconds": 19800,
+      "file_size_max_bytes": 1099511627776,
+      "job_timeout_minutes": 350,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536,
+      "minimum_workspace_free_bytes": 21474836480,
+      "open_files_max": 1048576,
+      "tasks_max": 32768
+    },
+    "observed_host": {
+      "architecture": "x86_64",
+      "effective_cpus": 4.0,
+      "memory_bytes": 16772218880,
+      "memory_high_bytes": 15933607936,
+      "memory_max_bytes": 16436774502,
+      "workspace_free_bytes": 875995172864
+    },
+    "runner": {
+      "architecture": "x86_64",
+      "label": "ubuntu-24.04",
+      "provider": "github-hosted"
+    },
+    "sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "trusted_tools": {
+      "bwrap_source_tag": "v0.12.0",
+      "toolchain_floor": "v4.35.0-rc2"
+    }
+  },
+  "warnings": [
+    "configured Challenge source exceeds the preferred 32 KiB / 300-line review surface"
+  ],
+  "workflow_url": "https://github.com/flengyel/FailureOfComposition/commit/48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb"
+}

@@ -1,0 +1,26 @@
+PASS status is pass
+PASS stage is complete
+PASS phase is verification
+PASS error list is empty
+PASS immutable source SHA matches
+PASS project path matches
+PASS Comparator path matches
+PASS metadata path matches
+PASS submitted Challenge module matches
+PASS Solution module matches
+PASS ordered Nine roots match
+PASS definition selection is empty
+PASS permitted axioms match
+PASS protected Challenge was canonically renamed
+PASS protected roots match
+PASS execution profile matches
+PASS Lean toolchain commit matches
+PASS root license passed
+PASS con-ron accepted
+PASS NanoDa accepted
+PASS Lean accepted
+PASS Comparator final acceptance is present
+PASS no phase deadline fired
+PASS no OOM event
+PASS no OOM kill
+validated complete local mechanical pass

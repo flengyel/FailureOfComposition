@@ -1,0 +1,11 @@
+{
+  "inputs": {
+    "repository": "flengyel/FailureOfComposition",
+    "commit": "48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb",
+    "pipeline_commit": "a59f25bd8a66bf6faf3a4f4260d412989c0185ea",
+    "request_id": "445ece2fb2ad",
+    "mode": "full",
+    "execution_profile": "palomar-standard-v1",
+    "options": "{\"project_path\":\"Lean\",\"comparator_config_path\":\"Lean/FailureOfComposition/Palomar/comparator-nine.json\",\"formalization_metadata_path\":\"Lean/FailureOfComposition/Palomar/formalization.yaml\",\"authorization_relationship\":\"I am a responsible author or maintainer\",\"authorization_evidence\":\"Local verifier execution authorized by the repository maintainer in the Codex task; no Palomar service submission or registration.\"}"
+  }
+}

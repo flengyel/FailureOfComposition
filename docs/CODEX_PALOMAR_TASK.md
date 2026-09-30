@@ -12,10 +12,14 @@ task; the Lean version port and evaluator style cleanup are complete.
 The instructions below originated at the September 25 port checkpoint.
 Resume the existing `codex/palomar-eligibility` branch: all nine selected
 declarations passed local Comparator verification at
-`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. Foundation is now pinned there to
-`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. Preserve subsequent commits.
-Nine is the latest reviewed local verification checkpoint; complete official
-verification remains.
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. Foundation is pinned to
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. The pinned official verifier at
+PalomarSubmission revision `a59f25bd8a66bf6faf3a4f4260d412989c0185ea`
+subsequently fetched immutable source commit
+`48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and completed with
+`status: pass`, `stage: complete` under `palomar-standard-v1`. Preserve
+subsequent commits. Service submission, editorial review, registration, and
+the manuscript-license scope decision remain.
 See the [recorded Nine status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.

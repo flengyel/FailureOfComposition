@@ -8,6 +8,43 @@ documentation and doccomment corrections do not constitute another build or
 Comparator run; recorded hashes and resource measurements refer to their
 original tested commits.
 
+## 2026-09-30 pinned official verifier pass for cumulative Nine
+
+Pinned PalomarSubmission revision
+`a59f25bd8a66bf6faf3a4f4260d412989c0185ea` fetched the public immutable
+snapshot `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and selected project `Lean`,
+`comparator-nine.json`, `formalization.yaml`, `ChallengeNine`, and
+`SolutionNine`. Preparation reported `status: pending`, `stage: prepared` with
+the matching source SHA and paths. The snapshot is a packaging-only descendant
+of local Comparator-tested code/configuration commit
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`; the Challenge, Solution, and
+portable configuration hashes are unchanged.
+
+The default `palomar-namespace-16x32-v1` capacity check failed because the host
+had four rather than sixteen effective CPUs. The approved
+`palomar-standard-v1` profile passed with 16,772,218,880 bytes effective RAM,
+15,933,607,936-byte `memory.high`, 16,436,774,502-byte `memory.max`, and more
+than 875 GB workspace free. Pinned bubblewrap v0.12.0, nested namespaces, and
+delegated cgroup supervision passed harmless preflights.
+
+The one official `execute` payload returned zero after 3,034.009 seconds. The
+final report says `status: pass`, `stage: complete`, `phase: verification`, and
+has no errors. A clean Solution build took 2,560.077 seconds, Solution export
+took 18.681 seconds, and Comparator took 143.344 seconds. Con-ron accepted
+20,847 declarations in verified mode; NanoDa and Lean's default kernel also
+accepted, and Comparator printed `Your solution is okay!`. The largest recorded
+phase cgroup peak was 9,151,164,416 bytes during trusted-cache work; Comparator
+peaked at 786,345,984 bytes. No deadline, OOM, OOM-kill, external pressure, or
+host-reserve stop occurred. Cleanup took 0.002 seconds and left no owned cgroup.
+
+The verifier detected the root Apache-2.0 license and emitted only the existing
+preferred Challenge review-surface warning. This is a complete local mechanical
+pass under the named pinned official-verifier profile. It is not a Palomar
+service submission, editorial decision, registration, or registry acceptance.
+The manuscript retains its own notice, so its licensing scope remains a
+maintainer/editorial decision before service submission. Detailed evidence is
+in `Audit/palomar-official-nine-20260930/`.
+
 ## 2026-09-30 generated quotient and cumulative Nine pass
 
 The eligible interface now includes the unnumbered sound generated-quotient

@@ -1,22 +1,29 @@
-# Palomar preparation: draft statement interface
+# Palomar preparation: mechanically verified Nine interface
 
-**DRAFT NOT SUBMISSION READY.** This directory makes nine intended declarations
-and their proved counterparts reviewable. The cumulative eligible
-`ChallengeNine`/`SolutionNine` pair now contains all nine declarations
-and has a complete local Comparator pass.  The exact separate-environment
-interface and proof-route checks pass, and the preserved exports were accepted
-by stock con-ron, NanoDa, and Lean's default kernel at project commit
+**COMPLETE LOCAL MECHANICAL PASS; NOT SUBMITTED OR REGISTERED.** This directory
+makes nine intended declarations and their proved counterparts reviewable. The
+cumulative eligible `ChallengeNine`/`SolutionNine` pair contains all nine
+declarations. The exact separate-environment interface and proof-route checks
+pass, and stock con-ron, NanoDa, and Lean's default kernel accepted the local
+Comparator candidate at project commit
 `381de9db4d2214b8fd8d05bf74b56bc9597f01c5`.
 
 That pass uses a narrowly factored proof for Foundation's `TermSubst`
 bound-variable field.  The repair preserves the computational blueprint and
 record fields, excludes the former expensive proof body from the replacement
 path, and is published as immutable Foundation commit
-`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`.  The cumulative Nine run took
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. The cumulative Nine run took
 181.897 seconds under aggregate containment (178.69 seconds for Comparator)
-and peaked at 989,483,008 bytes without pressure or limit events.  This is local
-verification of exactly nine declarations; it is not complete official Palomar
-verification, a submission, or a registry entry.
+and peaked at 989,483,008 bytes without pressure or limit events.
+
+The pinned official Palomar verifier subsequently fetched public immutable
+commit `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and completed with
+`status: pass`, `stage: complete`, and all three kernel acceptances under the
+approved `palomar-standard-v1` profile. The complete invocation took 3,034.009
+seconds, including a clean 2,560.077-second Solution build and a
+143.344-second Comparator phase. This is complete local mechanical verification
+of the snapshot, not a Palomar service submission, editorial decision,
+registration, or registry entry.
 
 The current findings are recorded in [`STATUS.md`](STATUS.md), with the current
 nine-result migration state in
@@ -38,8 +45,9 @@ evaluator cleanup passed their WSL checks. The cleanup's
 checks are recorded in [STYLE_CLEANUP_VALIDATION.json](../Porting/STYLE_CLEANUP_VALIDATION.json).
 The uploaded evidence was checked against the published source hashes.
 
-[The Codex task](../../../docs/CODEX_PALOMAR_TASK.md) specifies the remaining
-arithmetic interface, correspondence proofs, and real Comparator checks.
+[The Codex task](../../../docs/CODEX_PALOMAR_TASK.md) records the completed
+eligible interface, correspondence proofs, Comparator checks, and local pinned
+official-verifier procedure.
 The earlier 4.32.2 development and initial export remain documented as provenance;
 the manuscript is unchanged.
 
@@ -81,7 +89,7 @@ merely another syntactic graph quotient. The generated congruence is defined
 by intersection of all composition-compatible equivalence relations
 containing pointwise provability.
 
-## Verified toolchain and remaining blockers
+## Verified toolchain and remaining submission decisions
 
 The requirements were checked on September 25, 2026 against
 the [submitter policy at `792c7c0`](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md)
@@ -107,7 +115,7 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    its existing licensing preserved; the code license is not a new grant for
    the paper. Its scope must be settled for any final submitted snapshot under
    the [repository-license policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md#25-repository-licence).
-4. **Comparator evidence remains local.** The cumulative eligible
+4. **Comparator and official-verifier evidence remains local.** The cumulative eligible
    `ChallengeNine`/`SolutionNine` pair at tested project commit
    `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` passed con-ron, NanoDa, and Lean's
    default kernel.  The exact selected declarations are
@@ -122,11 +130,20 @@ and [PalomarSubmission at `a59f25b`](https://github.com/PalomarRegistry/PalomarS
    no pressure, limit, deadline,
    swap, or OOM event.  Earlier timeouts and pressure stops remain valid
    historical resource results for their recorded dependency revisions, not
-   theorem rejections. The local all-nine pass is not an official Palomar
-   mechanical or editorial result.
-   The current
+   theorem rejections. The current
    [verifier](https://github.com/PalomarRegistry/PalomarSubmission/blob/a59f25bd8a66bf6faf3a4f4260d412989c0185ea/scripts/verify_submission.py)
-   additionally performs protected source-provenance and exported-proof checks.
+   then fetched public commit `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb`,
+   performed its protected source-provenance, clean build, export, comparison,
+   and kernel checks, and reported a complete pass under
+   `palomar-standard-v1`. Con-ron accepted 20,847 declarations; NanoDa and Lean
+   also accepted. The execution took 3,034.009 seconds and had no deadline,
+   OOM, pressure-stop, or host-reserve event. This is a complete local run of
+   the pinned official verifier, not a Palomar service or editorial result.
+5. **Service submission remains separate.** No event was uploaded, no service
+   submission was made, and no registration or editorial review occurred. The
+   default 16-CPU profile was unavailable on this four-CPU host; the approved
+   standard profile qualified and was selected explicitly. The manuscript
+   license-scope decision in item 3 remains before any service submission.
 
 Solving the dependency boundary must preserve the statements. Adding the
 desired result as a hypothesis, hiding it inside an unconstrained definition,
@@ -147,7 +164,7 @@ The repository contains the substantive formalization, so
 block. The separate wrapper declarations in this directory do not turn the
 whole repository into a thin-wrapper repository.
 
-The immutable local all-nine handoff tested here is:
+The immutable all-nine handoff tested here is:
 
 | Setting | Repository-relative value |
 | --- | --- |
@@ -157,12 +174,15 @@ The immutable local all-nine handoff tested here is:
 | Metadata | `Lean/FailureOfComposition/Palomar/formalization.yaml` |
 | Challenge module | `FailureOfComposition.Palomar.ChallengeNine` |
 | Solution module | `FailureOfComposition.Palomar.SolutionNine` |
-| Locally tested revision | `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` |
+| Local Comparator-tested revision | `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` |
+| Pinned official-verifier source revision | `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` |
+| Official-verifier profile | `palomar-standard-v1` |
 
-Any later submission revision must be the full SHA of its separately official-
-verified snapshot. These paths are preparation data, not an instruction to
-submit the local checkpoint. One configuration containing all nine declarations would be one
-registry entry; each selected declaration would be reviewed.
+Any later submission revision must be an immutable full SHA. A changed snapshot,
+including changed submission metadata, is not covered by the pass above unless
+prepared and verified again. These paths are preparation data, not an instruction
+to submit. One configuration containing all nine declarations would be one
+registry entry; each selected declaration would still be reviewed.
 
 The separate repository has been created and published. It preserves the
 nested `Lean` project layout and contains the maintained code and manuscript.

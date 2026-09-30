@@ -1,0 +1,204 @@
+{
+  "challenge": {
+    "module": "FailureOfComposition.Palomar.ChallengeNine"
+  },
+  "checked_at": "2026-09-30T07:47:53Z",
+  "classification": {
+    "arxiv": [
+      {
+        "code": "math.LO",
+        "name": "Logic"
+      }
+    ],
+    "msc2020": [
+      {
+        "code": "03D75",
+        "name": "Abstract and axiomatic computability and recursion theory"
+      },
+      {
+        "code": "03F40",
+        "name": "G\u00f6del numberings and issues of incompleteness"
+      },
+      {
+        "code": "08A30",
+        "name": "Subalgebras, congruence relations"
+      },
+      {
+        "code": "18B10",
+        "name": "Categories of spans/cospans, relations, or partial maps"
+      }
+    ]
+  },
+  "comparator": {
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeNine",
+    "definition_names": [],
+    "path": "Lean/FailureOfComposition/Palomar/comparator-nine.json",
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "sha256": "06b21bdcdc7f97f2b332b876a5f86ad63ea1b14e5d792d7c135531d9090cd2e2",
+    "solution_module": "FailureOfComposition.Palomar.SolutionNine",
+    "theorem_names": [
+      "FailureOfComposition.Palomar.obstruction_four_properties",
+      "FailureOfComposition.Palomar.no_quotient_composition_productive",
+      "FailureOfComposition.Palomar.no_quotient_composition_godel",
+      "FailureOfComposition.Palomar.pi_one_characterization",
+      "FailureOfComposition.Palomar.generated_congruence_classification",
+      "FailureOfComposition.Palomar.weak_totality_counterexample",
+      "FailureOfComposition.Palomar.range_counterexample_godel",
+      "FailureOfComposition.Palomar.range_counterexample_productive",
+      "FailureOfComposition.Palomar.generated_quotient_partial_recursive"
+    ]
+  },
+  "errors": [],
+  "existing_id": null,
+  "formalization": {
+    "automation_method_count": 1,
+    "path": "Lean/FailureOfComposition/Palomar/formalization.yaml",
+    "project_name": "Pointwise provable equality and the failure of composition",
+    "review_status": "agent-reviewed",
+    "sha256": "b93e197e2ccb0d9db1e971a74b09b70c618f366300196f6f55eba9357212dd62",
+    "source_count": 3
+  },
+  "lake_manifest": {
+    "path": "Lean/lake-manifest.json",
+    "sha256": "8683f2bdb42efd0e3ed4b9bf0da32e8a6d022baf60dae5a9e1440da957d453f5"
+  },
+  "lakefile": {
+    "format": "toml",
+    "path": "Lean/lakefile.toml",
+    "sha256": "8dcdf09248b3a9ddef0fac6eb4eaff3de3871ffde8a4b24c502fff74caf26b0a"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc2",
+  "lean_toolchain_path": "Lean/lean-toolchain",
+  "license": {
+    "declared_identifier": "Apache-2.0",
+    "detected_identifier": "Apache-2.0",
+    "path": "LICENSE",
+    "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+  },
+  "orcid_validation": {
+    "checked_at": "2026-09-30T07:47:53Z",
+    "records": [],
+    "registry": "https://orcid.org",
+    "schema_version": 1
+  },
+  "phase": "preparation",
+  "provenance": {
+    "mathematical_sources": [
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Florian Lengyel"
+          }
+        ],
+        "identifier": "https://github.com/flengyel/Categorical_Rice_Shapiro/blob/202194e54e883648f0d9f22a65afee6987ef2134/research/notes/failure_of_composition_2026-09-21_v36.tex",
+        "location": "manuscript/failure_of_composition_2026-09-21_v36.tex; dated September 21, 2026; Theorem 1 through Proposition 6 and the unnumbered quotient-monoid consequence following Theorem 4.",
+        "note": "The unchanged source is maintained locally at the path above. Its id records the historical immutable source, not the current code repository. This is source-based formalization of a result already presented in the manuscript, not an original-proof provenance claim. The concrete evaluator and historical coding qualifications are recorded under fidelity.",
+        "relationship": "formalizes",
+        "title": "Pointwise provable equality and the failure of composition, version 36",
+        "type": "paper"
+      },
+      {
+        "authors": [
+          {
+            "name": "F. Montagna"
+          }
+        ],
+        "identifier": "https://doi.org/10.1305/ndjfl/1093634998",
+        "location": "Notre Dame Journal of Formal Logic 30 (1989), 105\u2013116.",
+        "note": "Historical source of the pointwise quotient, weak-totality discussion, and range construction examined by the manuscript. The formalization does not reconstruct Montagna's literal proof binumeration or every generated object of his proposed syntactic category.",
+        "relationship": "background",
+        "title": "Pathologies in two syntactic categories of partial maps",
+        "type": "paper"
+      },
+      {
+        "authors": [
+          {
+            "name": "R. A. Di Paola"
+          },
+          {
+            "name": "F. Montagna"
+          }
+        ],
+        "identifier": "https://doi.org/10.2307/2274707",
+        "location": "Journal of Symbolic Logic 56 (1991), 643\u2013660.",
+        "note": "Historical setting for extensions of PA. Failure on the proposed endomorphisms of omega is formalized at the program-index level.",
+        "relationship": "background",
+        "title": "Some properties of the syntactic p-recursion categories generated by consistent, recursively enumerable extensions of Peano arithmetic",
+        "type": "paper"
+      }
+    ],
+    "related_formalizations": [],
+    "repository_role": "substantive-development",
+    "responsible_maintainers": [
+      {
+        "name": "Florian Lengyel"
+      }
+    ],
+    "result_origin": "source-based"
+  },
+  "schema_version": 1,
+  "solution": {
+    "module": "FailureOfComposition.Palomar.SolutionNine"
+  },
+  "source": {
+    "bytes": 3411381,
+    "commit": "48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb",
+    "project_path": "Lean",
+    "repository": "flengyel/FailureOfComposition",
+    "repository_url": "https://github.com/flengyel/FailureOfComposition",
+    "tree_url": "https://github.com/flengyel/FailureOfComposition/tree/48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb/Lean"
+  },
+  "stage": "prepared",
+  "status": "pending",
+  "submission": {
+    "authorization": {
+      "evidence": "Local verifier execution authorized by the repository maintainer in the Codex task; no Palomar service submission or registration.",
+      "relationship": "maintainer"
+    },
+    "requested_paths": {
+      "comparator_config_path": "Lean/FailureOfComposition/Palomar/comparator-nine.json",
+      "formalization_metadata_path": "Lean/FailureOfComposition/Palomar/formalization.yaml",
+      "project_path": "Lean"
+    },
+    "submission_id": "445ece2fb2ad"
+  },
+  "toolchain_commit": "11acb17ec6b07a8f9e9173e6845197929540936b",
+  "verification_profile": {
+    "id": "palomar-standard-v1",
+    "limits": {
+      "execution_budget_seconds": 19800,
+      "file_size_max_bytes": 1099511627776,
+      "job_timeout_minutes": 350,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536,
+      "minimum_workspace_free_bytes": 21474836480,
+      "open_files_max": 1048576,
+      "tasks_max": 32768
+    },
+    "observed_host": {
+      "architecture": "x86_64",
+      "effective_cpus": 4.0,
+      "memory_bytes": 16772218880,
+      "memory_high_bytes": 15933607936,
+      "memory_max_bytes": 16436774502,
+      "workspace_free_bytes": 875995172864
+    },
+    "runner": {
+      "architecture": "x86_64",
+      "label": "ubuntu-24.04",
+      "provider": "github-hosted"
+    },
+    "sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "trusted_tools": {
+      "bwrap_source_tag": "v0.12.0",
+      "toolchain_floor": "v4.35.0-rc2"
+    }
+  },
+  "warnings": []
+}

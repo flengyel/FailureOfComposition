@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-30T08:52:23Z",
+  "result": "pass",
+  "scope": "local_complete_mechanical_verification_with_pinned_official_verifier",
+  "source": {
+    "repository": "flengyel/FailureOfComposition",
+    "commit": "48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb",
+    "prior_local_comparator_tested_commit": "381de9db4d2214b8fd8d05bf74b56bc9597f01c5",
+    "project_path": "Lean"
+  },
+  "selection": {
+    "configuration": "Lean/FailureOfComposition/Palomar/comparator-nine.json",
+    "metadata": "Lean/FailureOfComposition/Palomar/formalization.yaml",
+    "challenge_module": "FailureOfComposition.Palomar.ChallengeNine",
+    "solution_module": "FailureOfComposition.Palomar.SolutionNine",
+    "selected_count": 9,
+    "definition_names": [],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "verifier": {
+    "palomar_submission_revision": "a59f25bd8a66bf6faf3a4f4260d412989c0185ea",
+    "palomar_policy_revision": "792c7c0b9e798bd02719e795ef11fa2b5929e067",
+    "request_id": "445ece2fb2ad",
+    "profile": "palomar-standard-v1",
+    "prepare_status": "pending",
+    "prepare_stage": "prepared",
+    "execute_status": "pass",
+    "execute_stage": "complete",
+    "execute_phase": "verification",
+    "parent_attempts": 1,
+    "payload_launches": 1,
+    "exit_status": 0,
+    "elapsed_seconds": 3034.009,
+    "cleanup_seconds": 0.002,
+    "stop_reason": null
+  },
+  "capacity": {
+    "effective_cpus": 4.0,
+    "effective_memory_bytes": 16772218880,
+    "memory_high_bytes": 15933607936,
+    "memory_max_bytes": 16436774502,
+    "workspace_free_bytes": 875995172864,
+    "default_profile_qualified": false,
+    "standard_profile_qualified": true
+  },
+  "resources": {
+    "max_recorded_phase_cgroup_peak_bytes": 9151164416,
+    "solution_build_elapsed_seconds": 2560.077,
+    "solution_build_peak_bytes": 4888596480,
+    "solution_export_elapsed_seconds": 18.681,
+    "solution_export_peak_bytes": 731492352,
+    "comparator_elapsed_seconds": 143.344,
+    "comparator_peak_bytes": 786345984,
+    "minimum_host_available_bytes": 11049693184,
+    "peak_host_full_memory_psi_avg10": 10.97,
+    "deadline_fired": false,
+    "oom_events": 0,
+    "oom_kill_events": 0,
+    "pressure_stop": false,
+    "host_reserve_stop": false,
+    "owned_cgroups_after_cleanup": 0
+  },
+  "kernels": {
+    "con_ron": "accepted",
+    "con_ron_accepted_declarations": 20847,
+    "nanoda": "accepted",
+    "lean_default": "accepted",
+    "comparator_final_message": "Your solution is okay!"
+  },
+  "hashes": {
+    "challenge_source_sha256": "a6ce52700c627a567cdcdbcc518595299520dca6ff698118bf454598c9e26786",
+    "solution_source_sha256": "2fae7a328183d4184d3c9ab68514aafa3312839e09e67b0328f39a8f57f272a2",
+    "portable_configuration_sha256": "06b21bdcdc7f97f2b332b876a5f86ad63ea1b14e5d792d7c135531d9090cd2e2",
+    "metadata_sha256": "b93e197e2ccb0d9db1e971a74b09b70c618f366300196f6f55eba9357212dd62",
+    "protected_configuration_sha256": "6a4f25dff28e13825eac5c11fe0204b75e9300f4992ea03d56e508da3c580b6b",
+    "protected_challenge_export_sha256": "f97afa062e1ba7c6eaabe8489b590d763a9bd11c5e174be819115b0255665b1e",
+    "solution_export_sha256": "5ddfa3701144f56f12ac354f3eabc5e0a8414c4cac923630cc06769a33f5259e",
+    "bubblewrap_sha256": "636192e7fa50bfc6a19820aed6538f0b85194fcb1f92be405f1ec70d188d91ba",
+    "mechanical_report_sha256": "0959a82f4900bafbcf5af37ea794bbcc64b2b931b139bace6d0cecd87b9b1ec5"
+  },
+  "warning": "ChallengeNine exceeds the preferred 32 KiB / 300-line review surface but remains below the hard limits.",
+  "license": {
+    "root_declared": "Apache-2.0",
+    "root_detected": "Apache-2.0",
+    "mechanical_gate": "pass",
+    "manuscript_scope_decision": "remaining_before_service_submission"
+  },
+  "palomar_service_submission": false,
+  "palomar_registry_acceptance": false,
+  "official_registration": false
+}
+
