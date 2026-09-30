@@ -112,15 +112,15 @@ The later [evaluator cleanup](Porting/STYLE_CLEANUP.md) extended strict style
 checking to all 103 sources. These historical counts exclude the subsequent
 Palomar interface and bridge modules.
 
-The [Eight checkpoint](Palomar/STATUS.md) on `codex/palomar-eligibility`
-records local Comparator acceptance of the first eight selected declarations at
-`5435b5b528795590f250a82bf8937779b4fc86b4`, including both proof routes for
-Proposition 6. The [verification record](../../Audit/palomar-eight-productive-range-20260930/RESULT.json)
+The [Nine checkpoint](Palomar/STATUS.md) on `codex/palomar-eligibility`
+records local Comparator acceptance of all nine selected declarations at
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`, including both proof routes for
+Proposition 6 and the unnumbered quotient-monoid consequence. The
+[verification record](../../Audit/palomar-nine-generated-quotient-20260930/RESULT.json)
 records acceptance through con-ron, NanoDa, and the Lean default kernel; the
-[correspondence record](../../Audit/palomar-eight-productive-range-20260930/CORRESPONDENCE.md)
-documents the shared range bridge and productive transport. Eight is the latest
-reviewed verification. The quotient-monoid declaration (9) remains outside
-that verified checkpoint and still needs eligible migration.
+[correspondence record](../../Audit/palomar-nine-generated-quotient-20260930/CORRESPONDENCE.md)
+documents the quotient, representative, multiplication, unit, and actual-function
+correspondences. Nine is the latest reviewed local verification.
 No complete official Palomar verification is claimed.
 
 The review is a collaborating-agent semantic review, separately documented in

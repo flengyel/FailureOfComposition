@@ -8,11 +8,11 @@ separate two proof routes and include an unnumbered monoid consequence; they
 are not nine successive manuscript theorem numbers.
 
 The maintained proofs of all nine selections are present. The latest reviewed
-verification evidence is for the independently defined cumulative **Eight** pair
-at `5435b5b528795590f250a82bf8937779b4fc86b4`, including both proof routes for
-the Proposition 6 range counterexample. It passed local Comparator verification
-through con-ron, NanoDa, and the Lean default kernel. Selection nine still
-awaits migration into the cumulative interface. The
+verification evidence is for the independently defined cumulative **Nine** pair
+at `381de9db4d2214b8fd8d05bf74b56bc9597f01c5`, including both proof routes for
+the Proposition 6 range counterexample and the unnumbered quotient-monoid
+consequence. It passed local Comparator verification through con-ron, NanoDa,
+and the Lean default kernel. The
 [selection table](#the-nine-palomar-selections) distinguishes these statuses.
 This document does not claim a new verification run or registry acceptance.
 
@@ -363,9 +363,10 @@ theorem FailureOfComposition.Palomar.generated_quotient_partial_recursive
       ∀ e : ℕ, E (generatedQuotientMk T e) = UnaryPartrec.ofIndex e
 ```
 
-Sources: [PartialRecursiveQuotient](PartialRecursiveQuotient.lean) and the
-[legacy nine-result Solution](Palomar/Solution.lean). This ninth selection still
-awaits migration into the cumulative interface. The complementary result is:
+Sources: [PartialRecursiveQuotient](PartialRecursiveQuotient.lean), the
+[independent Nine solution](Palomar/SolutionNine.lean), and its checked
+[correspondence bridge](Palomar/GeneratedQuotientBridge.lean). The complementary
+result is:
 
 ```lean
 theorem FailureOfComposition.ConcreteIndices.generated_quotient_subsingleton_iff_not_sound
@@ -404,37 +405,37 @@ All selected names below have prefix `FailureOfComposition.Palomar.`. Correspond
 names have prefix `FailureOfComposition.ConcreteIndices.`. The legacy
 [Challenge](Palomar/Challenge.lean)/[Solution](Palomar/Solution.lean) pair contains
 all nine. The independently defined cumulative
-[SolutionEight at the tested commit](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/SolutionEight.lean)
-contains the first eight, with explicit independent arithmetic theory, extension,
+[SolutionNine at the tested commit](https://github.com/flengyel/FailureOfComposition/blob/381de9db4d2214b8fd8d05bf74b56bc9597f01c5/Lean/FailureOfComposition/Palomar/SolutionNine.lean)
+contains all nine, with explicit independent arithmetic theory, extension,
 consistency and r.e.-axiom predicates. These separate environments reuse the
 selected declaration names; the legacy and independent signatures are connected
 by proved correspondence, not asserted to be the same raw representation.
 
-The locally verified source at `5435b5b528795590f250a82bf8937779b4fc86b4` includes
-[ChallengeEight](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/ChallengeEight.lean),
-[SolutionEight](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/SolutionEight.lean),
-[RangeBridge](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/RangeBridge.lean),
-and [RangeProductiveBridge](https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/RangeProductiveBridge.lean).
-The evidence below records the cumulative Eight acceptance and the separate
-correspondence and dependency routes for both Proposition 6 selections.
+The locally verified source at `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` includes
+[ChallengeNine](https://github.com/flengyel/FailureOfComposition/blob/381de9db4d2214b8fd8d05bf74b56bc9597f01c5/Lean/FailureOfComposition/Palomar/ChallengeNine.lean),
+[SolutionNine](https://github.com/flengyel/FailureOfComposition/blob/381de9db4d2214b8fd8d05bf74b56bc9597f01c5/Lean/FailureOfComposition/Palomar/SolutionNine.lean),
+[GeneratedQuotientInterface](https://github.com/flengyel/FailureOfComposition/blob/381de9db4d2214b8fd8d05bf74b56bc9597f01c5/Lean/FailureOfComposition/Palomar/GeneratedQuotientInterface.lean),
+and [GeneratedQuotientBridge](https://github.com/flengyel/FailureOfComposition/blob/381de9db4d2214b8fd8d05bf74b56bc9597f01c5/Lean/FailureOfComposition/Palomar/GeneratedQuotientBridge.lean).
+The evidence below records cumulative Nine acceptance and the representative,
+multiplication, unit, and maintained-quotient correspondences.
 
 | Selection | Mathematical statement | Corresponding maintained declaration | Independent cumulative status |
 | --- | --- | --- | --- |
-| `obstruction_four_properties` | Theorem 1, four witness properties including two uniform clauses | `obstruction_four_properties_of_re_axioms` | Locally verified in Eight |
-| `no_quotient_composition_productive` | Theorem 1 consequence / Corollary 2, productive route | `no_index_quotient_of_re_axioms` | Locally verified in Eight |
-| `no_quotient_composition_godel` | Same no-operation statement, Gödel-II route | `no_index_quotient_via_godel_of_re_axioms` | Locally verified in Eight |
-| `pi_one_characterization` | Theorem 3 | `pi_one_characterization` | Locally verified in Eight |
-| `generated_congruence_classification` | Theorem 4 | `generated_congruence_classification` | Locally verified in Eight |
-| `weak_totality_counterexample` | Proposition 5, explicit guard witness | `weak_totality_counterexample_of_re_axioms` | Locally verified in Eight |
-| `range_counterexample_godel` | Proposition 6, Gödel-II route | `range_counterexample_of_re_axioms` | Locally verified in Eight |
-| `range_counterexample_productive` | Proposition 6, productive route | `range_counterexample_via_productiveness_of_re_axioms` | Locally verified in Eight |
-| `generated_quotient_partial_recursive` | Unnumbered sound generated-quotient monoid consequence | `generatedQuotientPartialRecursiveEquiv` and its `_mk` theorem | Maintained proof; migration pending |
+| `obstruction_four_properties` | Theorem 1, four witness properties including two uniform clauses | `obstruction_four_properties_of_re_axioms` | Locally verified in Nine |
+| `no_quotient_composition_productive` | Theorem 1 consequence / Corollary 2, productive route | `no_index_quotient_of_re_axioms` | Locally verified in Nine |
+| `no_quotient_composition_godel` | Same no-operation statement, Gödel-II route | `no_index_quotient_via_godel_of_re_axioms` | Locally verified in Nine |
+| `pi_one_characterization` | Theorem 3 | `pi_one_characterization` | Locally verified in Nine |
+| `generated_congruence_classification` | Theorem 4 | `generated_congruence_classification` | Locally verified in Nine |
+| `weak_totality_counterexample` | Proposition 5, explicit guard witness | `weak_totality_counterexample_of_re_axioms` | Locally verified in Nine |
+| `range_counterexample_godel` | Proposition 6, Gödel-II route | `range_counterexample_of_re_axioms` | Locally verified in Nine |
+| `range_counterexample_productive` | Proposition 6, productive route | `range_counterexample_via_productiveness_of_re_axioms` | Locally verified in Nine |
+| `generated_quotient_partial_recursive` | Unnumbered sound generated-quotient monoid consequence | `generatedQuotientPartialRecursiveEquiv` and its `_mk` theorem | Locally verified in Nine |
 
-For the latest reviewed verification checkpoint, Eight, see the
-[verification record](../../Audit/palomar-eight-productive-range-20260930/RESULT.json)
-and [correspondence record](../../Audit/palomar-eight-productive-range-20260930/CORRESPONDENCE.md).
+For the latest reviewed verification checkpoint, Nine, see the
+[verification record](../../Audit/palomar-nine-generated-quotient-20260930/RESULT.json)
+and [correspondence record](../../Audit/palomar-nine-generated-quotient-20260930/CORRESPONDENCE.md).
 Those records concern local checks, including Comparator, at the recorded pins.
-They are not a verification of a nine-result eligible pair or a Palomar
+They are not complete official Palomar verification or a Palomar
 publication/acceptance record. Productive and Gödel-II routes are distinguished
 by declaration dependencies, not by a claim of logical independence.
 

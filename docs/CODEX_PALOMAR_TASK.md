@@ -10,14 +10,13 @@ task; the Lean version port and evaluator style cleanup are complete.
 ## Current continuation point
 
 The instructions below originated at the September 25 port checkpoint.
-Resume the existing `codex/palomar-eligibility` branch: the first eight selected
+Resume the existing `codex/palomar-eligibility` branch: all nine selected
 declarations passed local Comparator verification at
-`5435b5b528795590f250a82bf8937779b4fc86b4`. Foundation is now pinned there to
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. Foundation is now pinned there to
 `01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. Preserve subsequent commits.
-Eight remains the latest reviewed verification checkpoint. The quotient-monoid
-statement (declaration 9) still needs eligible migration; complete official
+Nine is the latest reviewed local verification checkpoint; complete official
 verification remains.
-See the [recorded Eight status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
+See the [recorded Nine status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.
 

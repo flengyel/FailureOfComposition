@@ -8,6 +8,53 @@ documentation and doccomment corrections do not constitute another build or
 Comparator run; recorded hashes and resource measurements refer to their
 original tested commits.
 
+## 2026-09-30 generated quotient and cumulative Nine pass
+
+The eligible interface now includes the unnumbered sound generated-quotient
+consequence after Theorem 4. The independent proof descends actual evaluation
+through the migrated generated-congruence classification, obtains all unary
+partial recursive functions from Mathlib's code-existence theorem, and proves
+multiplication using the concrete evaluator composition law. Checked bridges
+identify representatives, multiplication, the actual-function target, and the
+maintained equivalence. The quotient unit is matched to the maintained chosen
+identity realization by equality of quotient classes, without asserting that
+the underlying chosen indices are literally equal.
+
+`ChallengeNine`/`SolutionNine` own exactly all nine selected declarations. The
+exact separate-environment checker compared 5,149 recursively reachable
+statement constants and found exactly nine Challenge theorem holes, no
+definition holes, and only `propext`, `Classical.choice`, and `Quot.sound` in
+the Solution proof closures. The pinned source audit passes. ChallengeNine is
+44,209 bytes and 998 lines: within the 100 KiB/1,000-line hard limits and above
+the preferred 32 KiB/300-line review surface. The ninth root has 16,160
+constants; the complete selected proof union has 21,850, 39 marginal over
+Eight. The earlier productive/Gödel route separations remain checked.
+
+The proof/interface parent is
+`6bcb9f691053bfa9ea16939be1950fa25e4e8753`. The exact tested
+code/configuration/harness commit is
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`; it adds a one-line correction to
+the launcher's evidence-directory guard. The first stable-export parent failed
+before payload start on that stale path, and its setup classification is
+preserved. Stable Challenge and Solution exports are respectively 18,976,072
+bytes, `cbc5f32f3da1b7c40612c3bf07f5d1da9f663ed0100225c1f2701d726c8fff03`,
+and 158,336,512 bytes,
+`5ddfa3701144f56f12ac354f3eabc5e0a8414c4cac923630cc06769a33f5259e`.
+
+The sole cumulative Nine Comparator payload accepted the exact pair through
+con-ron, NanoDa, and Lean's default kernel and printed `Your solution is okay!`.
+Con-ron accepted 20,847 declarations. Contained elapsed time was 181.897
+seconds (178.69 seconds for Comparator); aggregate peak memory was 989,483,008
+bytes, with zero pressure, high/max, deadline, swap, or OOM events. Separate
+timestamped before/after records and an exit-zero comparison confirm that both
+exports and both configurations were unchanged. Cleanup left no owned workload.
+
+All nine selected declarations are migrated and locally kernel verified.
+Complete official Palomar verification, final submission-snapshot/licensing
+review, submission, and registration remain. This local pass is not an official
+submission or registry acceptance. Detailed evidence is indexed in
+`Audit/palomar-nine-generated-quotient-20260930/`.
+
 ## 2026-09-30 productive range counterexample and cumulative Eight pass
 
 The eligible interface now includes the productive proof route for the same

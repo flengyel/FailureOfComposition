@@ -18,11 +18,10 @@ project:
     actual unary partial recursive functions. This package is a draft Palomar
     statement interface. The Lean 4.35.0-rc2 port and evaluator cleanup have
     passed project verification. On codex/palomar-eligibility, the eligible
-    cumulative Eight pair passed local con-ron, NanoDa, and Lean Comparator
-    verification at 5435b5b528795590f250a82bf8937779b4fc86b4, the latest reviewed
-    verification checkpoint, including both proof routes for Proposition 6.
-    The quotient-monoid declaration (9) still requires eligible migration;
-    complete official Palomar
+    cumulative Nine pair passed local con-ron, NanoDa, and Lean Comparator
+    verification at 381de9db4d2214b8fd8d05bf74b56bc9597f01c5, the latest reviewed
+    local verification checkpoint, including both proof routes for Proposition 6
+    and the unnumbered quotient-monoid consequence. Complete official Palomar
     verification remains. The legacy
     nine-declaration Challenge retains ineligible imports. The manuscript
     retains its existing licensing.
@@ -86,9 +85,9 @@ status:
     Gödel-II and productive range counterexamples; and the sound generated
     quotient's evaluation-preserving monoid isomorphism. Auxiliary results in
     the maintained library are described in MANUSCRIPT_COVERAGE.md but are not
-    all independently selected in this configuration. These proof counts and
-    alignment statuses describe the maintained legacy Solution, not completed
-    eligible migration of all nine declarations. Theorem holes in the separate
+    all independently selected in this configuration. The cumulative independent
+    Nine pair has completed local eligible migration and local Comparator checking;
+    the legacy `comparator.json` remains distinct from that checked pair. Theorem holes in the separate
     Challenge interfaces and historical Audit probes and test fixtures are
     outside this proof count. No official Palomar acceptance is claimed.
   sorry_count: 0
@@ -154,8 +153,8 @@ review:
     checkpoint 073e95e54907eb26b6af9070302f5afdde04d963 records the full cleanup
     acceptance run, including 103 strict style checks and nine paired draft
     type/axiom checks. See ../Porting/STYLE_CLEANUP_VALIDATION.json.
-    The later cumulative Eight pair passed local Comparator verification at
-    5435b5b528795590f250a82bf8937779b4fc86b4 on codex/palomar-eligibility.
+    The later cumulative Nine pair passed local Comparator verification at
+    381de9db4d2214b8fd8d05bf74b56bc9597f01c5 on codex/palomar-eligibility.
     Complete official verification and Palomar editorial review remain.
     Mathematical notation, Lean signatures, and numbering are documented in
     ../MANUSCRIPT_STATEMENTS.md. These are records of the named checkpoints,
@@ -166,47 +165,47 @@ alignment:
   statements:
     - source: "v36 Theorem 1, four witness properties"
       lean: "FailureOfComposition.Palomar.obstruction_four_properties"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Uses the maintained productive witness theorem; both middle clauses retain uniform provability."
     - source: "v36 Theorem 1 and Corollary 2, productive route"
       lean: "FailureOfComposition.Palomar.no_quotient_composition_productive"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "No quotient operation can satisfy the representative composition equation."
     - source: "v36 Theorem 1 and Corollary 2, Gödel-II route"
       lean: "FailureOfComposition.Palomar.no_quotient_composition_godel"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Same statement via the separately audited Gödel-II proof and r.e. presentation bridge."
     - source: "v36 Theorem 3"
       lean: "FailureOfComposition.Palomar.pi_one_characterization"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Consistency and PA extension; no enumerability hypothesis."
     - source: "v36 Theorem 4"
       lean: "FailureOfComposition.Palomar.generated_congruence_classification"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Every PA extension, including inconsistent theories."
     - source: "v36 Proposition 5"
       lean: "FailureOfComposition.Palomar.weak_totality_counterexample"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Concrete productive guard and concrete identity have different weak-totality values."
     - source: "v36 Proposition 6, Gödel-II route"
       lean: "FailureOfComposition.Palomar.range_counterexample_godel"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Range is specified by a PA-uniform graph equation, not only standard extensional equality."
     - source: "v36 Proposition 6, additional productive route"
       lean: "FailureOfComposition.Palomar.range_counterexample_productive"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Same range counterexample statement with a separate productive proof root."
     - source: "v36 section 5, quotient-monoid consequence of Theorem 4"
       lean: "FailureOfComposition.Palomar.generated_quotient_partial_recursive"
-      module: "FailureOfComposition.Palomar.Solution"
+      module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Actual unary partial recursive functions, with the representative equation fixing evaluation."
 
@@ -219,12 +218,12 @@ palomar_preparation:
   baseline_repository: "flengyel/Categorical_Rice_Shapiro"
   baseline_commit: "202194e54e883648f0d9f22a65afee6987ef2134"
   selected_project: "Lean"
-  comparator_path: "Lean/FailureOfComposition/Palomar/comparator.json"
+  comparator_path: "Lean/FailureOfComposition/Palomar/comparator-nine.json"
   metadata_path: "Lean/FailureOfComposition/Palomar/formalization.yaml"
   submission_policy_reference: "https://github.com/PalomarRegistry/PalomarSubmission/tree/a59f25bd8a66bf6faf3a4f4260d412989c0185ea"
   policy_document: "https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/CONTRIBUTING.md"
-  comparator_run: false
-  comparator_scope: "The legacy nine-declaration comparator.json selected above."
+  comparator_run: true
+  comparator_scope: "Local cumulative Nine only; complete official Palomar verification has not run."
   local_six_comparator_run: true
   local_six_tested_commit: "b923699c670857f174ab445483d1508a453eaab0"
   local_six_configuration: "Lean/FailureOfComposition/Palomar/comparator-six.json"
@@ -241,20 +240,25 @@ palomar_preparation:
   local_eight_source: "https://github.com/flengyel/FailureOfComposition/blob/5435b5b528795590f250a82bf8937779b4fc86b4/Lean/FailureOfComposition/Palomar/SolutionEight.lean"
   local_eight_evidence: "Audit/palomar-eight-productive-range-20260930/RESULT.json"
   local_eight_correspondence: "Audit/palomar-eight-productive-range-20260930/CORRESPONDENCE.md"
-  latest_reviewed_verification: "Local cumulative Eight at 5435b5b528795590f250a82bf8937779b4fc86b4, accepted by con-ron, NanoDa, and the Lean default kernel."
-  full_nine_comparator_verified: false
+  local_nine_comparator_run: true
+  local_nine_tested_commit: "381de9db4d2214b8fd8d05bf74b56bc9597f01c5"
+  local_nine_configuration: "Lean/FailureOfComposition/Palomar/comparator-nine.json"
+  local_nine_source: "Lean/FailureOfComposition/Palomar/SolutionNine.lean"
+  local_nine_evidence: "Audit/palomar-nine-generated-quotient-20260930/RESULT.json"
+  local_nine_correspondence: "Audit/palomar-nine-generated-quotient-20260930/CORRESPONDENCE.md"
+  latest_reviewed_verification: "Local cumulative Nine at 381de9db4d2214b8fd8d05bf74b56bc9597f01c5, accepted by con-ron, NanoDa, and the Lean default kernel."
+  full_nine_comparator_verified: true
   official_palomar_verification: false
   blockers:
-    - "The legacy nine-declaration Challenge retains ineligible imports; declaration 9 still needs eligible migration."
+    - "The checked eligible all-nine pair is separate from the legacy nine-declaration Challenge, which retains ineligible imports."
     - "Root LICENSE is present for the code; account for the manuscript's existing licensing in any submitted snapshot."
-    - "The local Eight pass does not establish verification of all nine declarations or complete official Palomar verification."
+    - "The local Nine pass does not establish complete official Palomar verification."
   statement_policy: >-
     Eligibility must be achieved without weakening the mathematical statements,
     adding the desired conclusions as hypotheses, hiding semantics in
     unconstrained definitions, or replacing actual PA/provability/index notions
-    with a convenient surrogate. Extend the verified Eight interface to
-    declaration 9 and prove the corresponding translation before full
-    verification.
+    with a convenient surrogate. Preserve the checked Nine interface and its
+    proved correspondence during complete official verification.
 
 acknowledgements: >-
   The development builds on Lean, Mathlib, and the FormalizedFormalLogic

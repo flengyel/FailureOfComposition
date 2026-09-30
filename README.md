@@ -71,13 +71,11 @@ placing its source here does not assign it a new code license. See the
 
 The [Palomar draft](Lean/FailureOfComposition/Palomar/README.md) contains nine
 paired statements and proved counterparts. The toolchain port has passed its
-project verification. On `codex/palomar-eligibility`, the first eight selected declarations passed a
+project verification. On `codex/palomar-eligibility`, all nine selected declarations passed a
 local con-ron, NanoDa, and Lean Comparator run at
-`5435b5b528795590f250a82bf8937779b4fc86b4`; the
-[recorded Eight checkpoint](Lean/FailureOfComposition/Palomar/STATUS.md)
-identifies its exact scope. This remains the latest reviewed verification
-checkpoint. The quotient-monoid declaration (9) still requires eligible
-migration, followed by complete
-official Palomar verification. These declaration counts are distinct from
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`; the
+[recorded Nine checkpoint](Lean/FailureOfComposition/Palomar/STATUS.md)
+identifies its exact scope. Complete official Palomar verification remains.
+These declaration counts are distinct from
 manuscript numbering. The manuscript's licensing scope must also be accounted
 for in any submitted snapshot. No Palomar submission or registration is claimed.
