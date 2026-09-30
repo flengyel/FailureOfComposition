@@ -1,5 +1,50 @@
 # Palomar eligibility status
 
+## 2026-09-29 weak-totality counterexample and cumulative Six pass
+
+The independent interface now includes the exact productive-history guard
+family and weak-totality cancellation predicate.  The checked bridge proves
+literal equality of the independently compiled guard index with the maintained
+natural-number index, proves weak-totality correspondence in both directions,
+and transports the maintained counterexample with the same witness.  The sixth
+proof reaches the maintained productive root and does not reach the audited
+Gödel-II/Craig roots.
+
+`ChallengeSix`/`SolutionSix` own exactly the six selected declarations.  The
+exact separate-environment checker compared 4,470 recursively reachable
+statement constants and found exactly six Challenge theorem holes, no
+definition holes, and only `propext`, `Classical.choice`, and `Quot.sound` in
+the Solution proof closures.  The pinned source audit passes. ChallengeSix is
+45,265 bytes and 999 lines: within the 100 KiB/1,000-line hard limits and above
+the preferred 32 KiB/300-line review surface.  The complete selected proof
+union is 21,716 constants, 160 marginal over Five; the productive and
+Gödel/Craig routes remain separated.
+
+The tested code/configuration/harness commit is
+`b923699c670857f174ab445483d1508a453eaab0`. Stable Challenge and Solution
+exports are respectively 15,675,974 bytes,
+`fde6894a5cb94f001c54509fdbe4077e6db3e97b96240e2c90c9b121d9854280`,
+and 157,753,313 bytes,
+`b2941e09078256c52b1b6d76c87d5c2027b79ee31e8ad3a6837ca42c76d32c4a`.
+The one cumulative Six Comparator payload accepted the exact pair through
+con-ron, NanoDa, and Lean's default kernel and printed `Your solution is okay!`.
+Contained elapsed time was 199.351 seconds (197.78 seconds for Comparator);
+aggregate peak memory was 803,315,712 bytes, with zero pressure, high/max,
+deadline, swap, or OOM events.  Separate before/after records confirm that both
+exports and both configurations were unchanged.
+
+The first parent invocation failed before payload start because its script path
+was relative to the `Lean/` workload directory.  The preserved exit-127 record
+contains no Comparator artifacts.  The permitted corrected parent invocation
+launched the checkpoint's sole payload; its child evidence was written to the
+script's fixed `comparator-six-01` artifact directory while its containment
+telemetry is in `comparator-six-02`.
+
+Six declarations are migrated and locally kernel verified.  Declarations 7–9
+and complete official Palomar verification remain.  This local pass is not an
+official submission or registry acceptance. Detailed evidence is indexed in
+`Audit/palomar-six-weak-totality-20260929/`.
+
 ## 2026-09-29 generated-congruence classification and cumulative Five pass
 
 The independent interface now includes the full generated-congruence
