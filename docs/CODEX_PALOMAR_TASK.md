@@ -10,18 +10,14 @@ task; the Lean version port and evaluator style cleanup are complete.
 ## Current continuation point
 
 The instructions below originated at the September 25 port checkpoint.
-Resume the existing `codex/palomar-eligibility` branch: the first six selected
+Resume the existing `codex/palomar-eligibility` branch: the first seven selected
 declarations passed local Comparator verification at
-`b923699c670857f174ab445483d1508a453eaab0`, with documentation at
-`e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3`. Foundation is now pinned there to
+`16e73188e12244f651c7ce57207095bd0d223a44`. Foundation is now pinned there to
 `01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. Preserve subsequent commits.
-Six remains the latest reviewed verification checkpoint. The
-[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
-at `16e73188e12244f651c7ce57207095bd0d223a44` adds the Gödel range statement;
-its validation must be completed before claiming acceptance. The productive
+Seven remains the latest reviewed verification checkpoint. The productive
 range statement and quotient-monoid statement (declarations 8 and 9) still need
 eligible migration; complete official verification remains.
-See the [recorded Six status](https://github.com/flengyel/FailureOfComposition/blob/e20d8c5f9477b2da32d5dd31f6cb18e9ed5c5cf3/Lean/FailureOfComposition/Palomar/STATUS.md) and
+See the [recorded Seven status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.
 

@@ -51,11 +51,9 @@ check. Its deliberate Challenge holes are outside the production umbrella and
 the 72-source style gate. The Solution is checked separately without holes.
 The Lean 4.35.0-rc2 port and evaluator cleanup passed their recorded WSL
 checks. The legacy nine-declaration Challenge retains ineligible imports;
-the separate eligible Six checkpoint on `codex/palomar-eligibility` passed
-local Comparator verification at `b923699c670857f174ab445483d1508a453eaab0`.
-This is the latest reviewed verification checkpoint. The
-[Seven source candidate](https://github.com/flengyel/FailureOfComposition/blob/16e73188e12244f651c7ce57207095bd0d223a44/Lean/FailureOfComposition/Palomar/SolutionSeven.lean)
-adds the Gödel range declaration but awaits validation. The productive range
+the separate eligible Seven checkpoint on `codex/palomar-eligibility` passed
+local Comparator verification at `16e73188e12244f651c7ce57207095bd0d223a44`.
+This is the latest reviewed verification checkpoint. The productive range
 and quotient-monoid declarations (8 and 9) still need eligible migration, and
 complete official Palomar verification remains; see
 [Palomar preparation](Palomar/README.md). Verification evidence belongs to
@@ -535,8 +533,8 @@ transport the obstruction separately across every generated object.
   explicit arithmetization laws. Literal identity with a separately specified
   historical formula or numerical code table is not claimed.
 - The maintained-library coverage and recorded strict style checks passed.
-  The latest reviewed Palomar verification is the local Six checkpoint. A
-  seventh source candidate awaits validation; declarations 8 and 9 still need
+  The latest reviewed Palomar verification is the local Seven checkpoint;
+  declarations 8 and 9 still need
   eligible migration, and complete official verification remains. The planned
   manuscript version 37 is a separate revision.
 - External human acceptance remains separate from the checked development.
