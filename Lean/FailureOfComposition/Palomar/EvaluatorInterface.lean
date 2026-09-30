@@ -510,5 +510,87 @@ def GeneratedRel (T : Theory) (e d : ℕ) : Prop :=
   ∀ R : ℕ → ℕ → Prop, IsCompositionCongruence R →
     (∀ x y : ℕ, PointwiseIndex T x y → R x y) → R e d
 
+namespace IndexCompiler
+
+abbrev PCode := Nat.Partrec.Code
+
+def addProgram : PCode :=
+  .prec Nat.Partrec.Code.id (.comp .succ (.comp .right .right))
+
+def mulProgram : PCode :=
+  .prec .zero (.comp addProgram (.pair .left (.comp .right .right)))
+
+def predProgram : PCode :=
+  .comp (.prec .zero (.comp .left .right)) (.pair .zero Nat.Partrec.Code.id)
+
+def subProgram : PCode :=
+  .prec Nat.Partrec.Code.id (.comp predProgram (.comp .right .right))
+
+def isZeroProgram : PCode :=
+  .comp (.prec (Nat.Partrec.Code.const 1) .zero)
+    (.pair .zero Nat.Partrec.Code.id)
+
+def ltProgram : PCode :=
+  .comp isZeroProgram (.comp subProgram (.pair (.comp .succ .left) .right))
+
+def eqProgram : PCode :=
+  .comp isZeroProgram (.comp addProgram
+    (.pair subProgram (.comp subProgram (.pair .right .left))))
+
+def projectionCode : (n : ℕ) → Fin n → PCode
+  | 0, i => Fin.elim0 i
+  | n + 1, i => Fin.cases .left (fun j => .comp (projectionCode n j) .right) i
+
+def tupleCode : (n : ℕ) → (Fin n → PCode) → PCode
+  | 0, _ => .zero
+  | n + 1, d => .pair (d 0) (tupleCode n (fun i => d i.succ))
+
+def swapCode : PCode := .pair .right .left
+
+def searchZeroCode (c : PCode) : PCode :=
+  .comp (.rfind' (.comp c swapCode)) (.pair Nat.Partrec.Code.id .zero)
+
+/-- Structural compilation of the independent finite-arity code language. -/
+def compile : {n : ℕ} → Code n → PCode
+  | _, .zero _ => .zero
+  | _, .one _ => Nat.Partrec.Code.const 1
+  | n, .add i j => .comp addProgram
+      (.pair (projectionCode n i) (projectionCode n j))
+  | n, .mul i j => .comp mulProgram
+      (.pair (projectionCode n i) (projectionCode n j))
+  | n, .proj i => projectionCode n i
+  | n, .equal i j => .comp eqProgram
+      (.pair (projectionCode n i) (projectionCode n j))
+  | n, .lt i j => .comp ltProgram
+      (.pair (projectionCode n i) (projectionCode n j))
+  | _, @Code.comp _ n c d => .comp (compile c)
+      (tupleCode n (fun i => compile (d i)))
+  | _, .rfind c => searchZeroCode (compile c)
+
+/-- Unary programs accept their ordinary input directly. -/
+def unaryCompile (c : Code 1) : PCode :=
+  .comp (compile c) (.pair Nat.Partrec.Code.id .zero)
+
+end IndexCompiler
+
+open Construction
+
+/-- The evaluator-history code specialized to its diagonal program argument. -/
+def historyCode (d : ℕ) : Code 1 :=
+  codeHistoryEvaluator.comp ![Code.proj 0, codeConst d, codeConst d]
+
+/-- The exact arithmetic guard code used by the maintained construction. -/
+def guardCode (d : ℕ) : Code 1 :=
+  codeBind (codeLift (historyCode d)).rfind (Code.proj 1)
+
+/-- The exact natural-number index of the compiled guard program. -/
+def guardIndex (d : ℕ) : ℕ :=
+  Encodable.encode (IndexCompiler.unaryCompile (guardCode d))
+
+/-- Cancellation against the empty program for external pointwise provability. -/
+def WeaklyTotalIndex (T : Theory) (e : ℕ) : Prop :=
+  ∀ d : ℕ, PointwiseIndex T (compIndex e d) emptyIndex →
+    PointwiseIndex T d emptyIndex
+
 
 end FailureOfComposition.Palomar.Arithmetic.Evaluator
