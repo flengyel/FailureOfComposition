@@ -8,7 +8,7 @@ workload_dir=${3:?workload directory required}
 shift 3
 
 case "$run" in
-  "$repository_root"/.codex-work/palomar/nine-productive-range/*/runs/*) ;;
+  "$repository_root"/.codex-work/palomar/nine-generated-quotient/*/runs/*) ;;
   *) echo "run directory is outside the Nine evidence hierarchy: $run" >&2; exit 2 ;;
 esac
 [[ $deadline =~ ^[0-9]+$ ]] && (( deadline > 0 && deadline <= 1200 )) || {
