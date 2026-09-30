@@ -39,7 +39,7 @@ checks passed. These results are recorded in
 
 Keep these pins. Read `AGENTS.md`, the root README, the manuscript coverage map,
 `Lean/FailureOfComposition/Palomar/README.md`, Challenge, Solution,
-`comparator.json`, `formalization.yaml`, and the existing verification scripts.
+`comparator-nine.json`, `formalization.yaml`, and the existing verification scripts.
 The older `docs/CODEX_PORT_TASK.md` describes completed work, not this task.
 
 Inspect Git status, origin, HEAD, disk space, available memory, package mappings,
@@ -191,7 +191,7 @@ inspect actual child processes and pressure before allowing a long run.
 ### Local Comparator
 
 Adapt the pinned Template helper to this project's `Lean/` directory and
-`FailureOfComposition/Palomar/comparator.json`. Check `bwrap` and the selected
+`FailureOfComposition/Palomar/comparator-nine.json`. Check `bwrap` and the selected
 toolchain's bundled `lake`, `leanexport`, `leanchecker`, `nanoda_bin`, and
 `con-ron`. Generate a separate protected configuration registering both bundled
 independent kernels. `external_kernels` belongs in that generated configuration,
@@ -224,7 +224,7 @@ The selected paths are:
 | --- | --- |
 | Repository | `flengyel/FailureOfComposition` |
 | Selected project | `Lean` |
-| Comparator configuration | `Lean/FailureOfComposition/Palomar/comparator.json` |
+| Comparator configuration | `Lean/FailureOfComposition/Palomar/comparator-nine.json` |
 | Metadata | `Lean/FailureOfComposition/Palomar/formalization.yaml` |
 
 Paths in the verifier request are repository-relative. Build a local event from

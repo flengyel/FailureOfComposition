@@ -7,9 +7,11 @@ repository_root=$(CDPATH= cd -- "$script_dir/.." && pwd)
 lean_root="$repository_root/Lean"
 palomar_dir="$lean_root/FailureOfComposition/Palomar"
 work_root="$repository_root/.codex-work/palomar"
+selected_config="$palomar_dir/comparator-nine.json"
+selected_challenge="$palomar_dir/ChallengeNine.lean"
 expected_toolchain=leanprover/lean4:v4.35.0-rc2
 expected_mathlib=065356127b1dc0016f66b7283ce0ce2c4055aa55
-expected_foundation=46715b758b3069351825f276f1d98de1e60f1e4f
+expected_foundation=01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d
 expected_policy=792c7c0b9e798bd02719e795ef11fa2b5929e067
 expected_submission=a59f25bd8a66bf6faf3a4f4260d412989c0185ea
 expected_template=cb5c79b69a740d2dc299071fc35994627050d77a
@@ -162,7 +164,7 @@ check_tools() {
 }
 
 validate_config() {
-  python3 - "$palomar_dir/comparator.json" <<'PY'
+  python3 - "$selected_config" <<'PY'
 import json
 import pathlib
 import sys
@@ -181,30 +183,30 @@ expected = [
     "FailureOfComposition.Palomar.generated_quotient_partial_recursive",
 ]
 if value.get("theorem_names") != expected:
-    raise SystemExit("comparator.json does not select the nine declarations in order")
+    raise SystemExit("comparator-nine.json does not select the nine declarations in order")
 if value.get("definition_names", []) != []:
-    raise SystemExit("comparator.json must not declare definition holes")
+    raise SystemExit("comparator-nine.json must not declare definition holes")
 if set(value.get("permitted_axioms", [])) != {
     "propext", "Quot.sound", "Classical.choice"
 }:
-    raise SystemExit("comparator.json has the wrong permitted-axiom set")
+    raise SystemExit("comparator-nine.json has the wrong permitted-axiom set")
 if "external_kernels" in value:
-    raise SystemExit("submitted comparator.json must not contain external_kernels")
+    raise SystemExit("submitted comparator-nine.json must not contain external_kernels")
 print("PASS comparator configuration selects all nine declarations and no definition holes")
 PY
 }
 
 inspect_challenge() {
   local bytes lines
-  bytes=$(wc -c <"$palomar_dir/Challenge.lean")
-  lines=$(wc -l <"$palomar_dir/Challenge.lean")
+  bytes=$(wc -c <"$selected_challenge")
+  lines=$(wc -l <"$selected_challenge")
   (( bytes <= 102400 )) || fail "Challenge exceeds 100 KiB"
   (( lines <= 1000 )) || fail "Challenge exceeds 1,000 lines"
   echo "Challenge bytes=$bytes lines=$lines"
   (
     cd "$lean_root"
-    lake env lean --deps-json FailureOfComposition/Palomar/Challenge.lean
-    lake env lean --src-deps FailureOfComposition/Palomar/Challenge.lean
+    lake env lean --deps-json FailureOfComposition/Palomar/ChallengeNine.lean
+    lake env lean --src-deps FailureOfComposition/Palomar/ChallengeNine.lean
   )
 }
 
@@ -234,7 +236,7 @@ new_run_directory() {
 write_protected_config() {
   local destination=$1 prefix
   prefix=$(cd "$lean_root" && lean --print-prefix)
-  python3 - "$palomar_dir/comparator.json" "$destination" "$prefix" <<'PY'
+  python3 - "$selected_config" "$destination" "$prefix" <<'PY'
 import json
 import pathlib
 import sys
@@ -817,7 +819,7 @@ local_comparator() {
     printf 'resume_of=%s\n' "$resume_of"
     printf 'verification_kind=local_comparator\n'
     printf 'official_palomar_verification=false\n'
-    printf 'submitted_config_sha256=%s\n' "$(sha256sum "$palomar_dir/comparator.json" | cut -d' ' -f1)"
+    printf 'submitted_config_sha256=%s\n' "$(sha256sum "$selected_config" | cut -d' ' -f1)"
     printf 'protected_config_sha256=%s\n' "$(sha256sum "$config" | cut -d' ' -f1)"
     printf 'memory_high=%s\n' "$comparator_memory_high"
     printf 'memory_max=%s\n' "$comparator_memory_max"
@@ -865,12 +867,14 @@ local_comparator() {
 
 full_verifier() {
   [[ $# -eq 2 ]] || fail "--full-verifier requires EVENT_JSON and RUN_DIR"
-  local event=$1 run=$2 pipeline output bwrap_path bundle_path
+  local event=$1 run=$2 pipeline output bwrap_path bundle_path workflow_url
   pipeline="$work_root/upstream/PalomarSubmission"
   output="$run/mechanical-report.json"
   bwrap_path=${PALOMAR_BWRAP:-}
+  workflow_url=${PALOMAR_WORKFLOW_URL:-}
   bundle_path=$(command -v bundle || true)
   [[ -n $bwrap_path && -x $bwrap_path ]] || fail "PALOMAR_BWRAP must name verifier-built bwrap 0.12.0"
+  [[ -n $workflow_url ]] || fail "PALOMAR_WORKFLOW_URL must name an honest local provenance URL"
   [[ -n $bundle_path ]] || fail "Bundler/Licensee is required"
   [[ -f $event ]] || fail "event file does not exist: $event"
   mkdir -p "$run"
@@ -889,7 +893,7 @@ PY
     python3 scripts/verify_submission.py check-capacity --disk-path "$run" --output "$output"
     python3 scripts/verify_submission.py execute --work-dir "$run/work" --output "$output" \
       --bwrap "$bwrap_path" --bwrap-source-tag v0.12.0 \
-      --execution-budget-seconds 19800 --workflow-url local-independent-review
+      --execution-budget-seconds 19800 --workflow-url "$workflow_url"
   )
   python3 - "$output" <<'PY'
 import json, pathlib, sys
