@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.Basic
-import CategoricalRiceShapiro.ArithmeticCode.FoundationCompat
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.Basic
+public import CategoricalRiceShapiro.ArithmeticCode.FoundationCompat
 
 /-!
 # Evaluation of arithmetic codes in an arbitrary model
@@ -25,6 +27,8 @@ The equivalences for the primitive constructors and for composition are the
 reusable core; the derived constructors and the congruence law under a
 composed-code context are proved from them.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

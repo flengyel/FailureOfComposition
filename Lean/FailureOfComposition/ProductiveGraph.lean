@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GraphQuotient
-import FailureOfComposition.ProductiveDivergence
-import Foundation.FirstOrder.Incompleteness.Definability
+module
+
+public import FailureOfComposition.GraphQuotient
+public import FailureOfComposition.ProductiveDivergence
+public import Foundation.FirstOrder.Incompleteness.Definability
 
 /-!
 Productiveness supplies a true unprovable divergence sentence. Searching for PA
@@ -14,6 +16,8 @@ Sigma-one completeness connects absence of those proofs to divergence.
 This proof does not invoke the second incompleteness theorem.
 The proof-search witnesses are a variant of v36's direct computation search.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

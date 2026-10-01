@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedGraphDefinitions
+module
+
+public import FailureOfComposition.GeneratedGraphDefinitions
 
 /-!
 The least composition congruence on indices agrees with the least congruence
 on their functional arithmetic graphs. Realization and composition are used
 at the level of PA proofs, including for the chosen inverse representatives.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

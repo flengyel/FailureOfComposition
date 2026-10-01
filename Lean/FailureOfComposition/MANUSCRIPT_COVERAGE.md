@@ -1,4 +1,4 @@
-# Manuscript v36: mathematical coverage
+# Manuscript v37: mathematical coverage
 
 The [mathematical statements and Lean signatures](MANUSCRIPT_STATEMENTS.md)
 state every numbered manuscript result and the quotient-monoid consequence.
@@ -6,13 +6,19 @@ Theorem, corollary, and proposition numbers share the manuscript's counter;
 the nine selected Palomar declarations include alternate proofs and do not
 form a second manuscript numbering.
 
+The current manuscript is
+[version 37](../../manuscript/failure_of_composition_2026-09-30_v37.tex).
+Its mathematical statements, proofs, and numbering are preserved from v36,
+so the coverage below also applies to v37 and its corresponding unchanged Lean
+development in this repository revision.
+
 This map preserves the final source review from the original development
 repository. The reviewed manuscript is now stored locally as
 [`failure_of_composition_2026-09-21_v36.tex`](../../manuscript/failure_of_composition_2026-09-21_v36.tex),
 *Pointwise provable equality and the failure of composition*. The reviewed
 manuscript blob is `e0a2bd4b3570235fa4ea89ffe8dcf9d5445499f9`.
 The review starts from commit `355316179c294071d087b04bef0d08bb4329dcb0`
-and includes the three coverage additions below. The manuscript is unchanged.
+and includes the three coverage additions below. The archived v36 source is unchanged.
 
 **Historical checkpoint: coverage review and integrated verification passed on 2026-09-23.**
 No unproved mathematical claim was identified within the program-index scope
@@ -112,19 +118,22 @@ The later [evaluator cleanup](Porting/STYLE_CLEANUP.md) extended strict style
 checking to all 103 sources. These historical counts exclude the subsequent
 Palomar interface and bridge modules.
 
-The [Eight checkpoint](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Lean/FailureOfComposition/Palomar/STATUS.md) on
-`codex/palomar-eligibility` records local Comparator acceptance of the first
-eight selected declarations at `5435b5b528795590f250a82bf8937779b4fc86b4`,
-including both proof routes for Proposition 6. The
-[verification record](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Audit/palomar-eight-productive-range-20260930/RESULT.json)
+The [Nine checkpoint](Palomar/STATUS.md) on `codex/palomar-eligibility`
+records local Comparator acceptance of all nine selected declarations at
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`, including both proof routes for
+Proposition 6 and the unnumbered quotient-monoid consequence. The
+[verification record](../../Audit/palomar-nine-generated-quotient-20260930/RESULT.json)
 records acceptance through con-ron, NanoDa, and the Lean default kernel; the
-[correspondence record](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Audit/palomar-eight-productive-range-20260930/CORRESPONDENCE.md)
-documents the shared range bridge and productive transport. Eight is the latest
-reviewed verification. The quotient-monoid declaration (9) remains outside
-that verified checkpoint and still needs eligible migration.
-No complete official Palomar verification is claimed.
+[correspondence record](../../Audit/palomar-nine-generated-quotient-20260930/CORRESPONDENCE.md)
+documents the quotient, representative, multiplication, unit, and actual-function
+correspondences. These records describe the earlier local checkpoint. The
+subsequent complete official local verification at
+`6adc1084e57ca3e9011dbd3765e99b803842ee17` is recorded in
+[Palomar status](Palomar/STATUS.md); the v37 package retains its Lean sources,
+configuration, and pins unchanged.
 
 The review is a collaborating-agent semantic review, separately documented in
 [`coverage-review.md`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/coverage-review.md).
-It is not external human acceptance. The remaining Palomar preparation and
-the author's planned version 37 are separate from that historical review.
+It is not external human acceptance. The current v37 submission package is
+separate from that historical review; its correspondence is established by
+preservation of the mathematical statements, proofs, and numbering.

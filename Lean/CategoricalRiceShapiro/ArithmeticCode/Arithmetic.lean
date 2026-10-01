@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.Minimization
-import CategoricalRiceShapiro.ArithmeticCode.Conditional
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.Minimization
+public import CategoricalRiceShapiro.ArithmeticCode.Conditional
 
 /-!
 # Arithmetic operations obtained by minimization
@@ -18,6 +20,8 @@ function over the natural numbers.  Those `Computes` theorems are the input of
 the standard-model bridge, which turns a computation over `ℕ` into evaluation at
 standard numerals in an arbitrary model.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

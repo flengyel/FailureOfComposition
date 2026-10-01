@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import Foundation.FirstOrder.Arithmetic.R0.Representation
+module
+
+public import Foundation.FirstOrder.Arithmetic.R0.Representation
 
 /-!
 # Compatibility results for Foundation's arithmetic codes
@@ -17,6 +19,8 @@ supplies the corresponding active result.
 `eval_unique` states that the evaluation relation of an arithmetic code is
 functional in every model of `𝗣𝗔⁻`, under an arbitrary assignment.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

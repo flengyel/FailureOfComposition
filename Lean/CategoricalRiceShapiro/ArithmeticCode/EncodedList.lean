@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.Pairing
-import CategoricalRiceShapiro.ArithmeticCode.Recursion
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.Pairing
+public import CategoricalRiceShapiro.ArithmeticCode.Recursion
 
 /-!
 # Codes acting on an encoded list
@@ -20,6 +22,8 @@ minimizes the number of entries that must be dropped to reach the empty list, an
 Only the code constructions are given here.  The standard computation theorems
 over the natural numbers are not part of this migration.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -38,7 +42,7 @@ def codeListTail {n : ℕ} (d : Code n) : Code n :=
   codeUnpair₂ (codeSub d (codeConst 1))
 
 /-- Iterated tail of an encoded list, as a code in the index and the list. -/
-private def codeListDropCore : Code 2 :=
+def codeListDropCore : Code 2 :=
   codePrec
     (Code.proj (0 : Fin 1))
     (codeListTail (Code.proj (1 : Fin 3)))
@@ -91,7 +95,7 @@ def codeListCons {n : ℕ} (dx dt : Code n) : Code n :=
 /-- The recursion that rebuilds an encoded list with one entry appended: at
 recursion argument `i` the entry at index `length - (i + 1)` is consed onto the
 list built so far, starting from the singleton `[dx]`. -/
-private def codeListSnocCore {r : ℕ} (dlist dx : Code r) : Code (r + 1) :=
+def codeListSnocCore {r : ℕ} (dlist dx : Code r) : Code (r + 1) :=
   codePrec
     (codeListCons dx (codeListNil (n := r)))
     (codeListCons

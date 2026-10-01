@@ -3,15 +3,19 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import Foundation.Meta.ClProver
-import FailureOfComposition.Productiveness
-import Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.D1
-import Foundation.FirstOrder.Arithmetic.R0.Representation
+module
+
+public import Foundation.Meta.ClProver
+public import FailureOfComposition.Productiveness
+public import Foundation.FirstOrder.Arithmetic.Bootstrapping.DerivabilityCondition.D1
+public import Foundation.FirstOrder.Arithmetic.R0.Representation
 
 /-!
 The productiveness proof of a true unprovable divergence sentence.
 This module does not import or invoke second incompleteness.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

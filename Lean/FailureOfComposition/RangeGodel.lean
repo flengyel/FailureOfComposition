@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GodelGraph
-import FailureOfComposition.CraigPresentation
-import FailureOfComposition.RangeWitness
+module
+
+public import FailureOfComposition.GodelGraph
+public import FailureOfComposition.CraigPresentation
+public import FailureOfComposition.RangeWitness
 
 /-!
 The manuscript's range obstruction via Gödel's second incompleteness theorem.
@@ -14,6 +16,8 @@ pointwise with the empty program. Its range at zero encodes the existence
 of a contradiction proof.
 Craig's presentation removes the Delta-one axiom-presentation hypothesis.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedCollapse
+module
+
+public import FailureOfComposition.GeneratedCollapse
 
 /-!
 Composition descends to the quotient by the generated congruence. The PA
@@ -11,6 +13,8 @@ proofs of associativity and the identity laws make this quotient a monoid
 for every theory extending PA. A universal congruence gives a singleton
 quotient.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

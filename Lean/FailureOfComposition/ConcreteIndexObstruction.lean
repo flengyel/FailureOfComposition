@@ -3,10 +3,12 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.HistoryObstruction
-import FailureOfComposition.ArithmeticCodeCompiler
-import FailureOfComposition.ProgramIndices
-import FailureOfComposition.AxiomEnumeration
+module
+
+public import FailureOfComposition.HistoryObstruction
+public import FailureOfComposition.ArithmeticCodeCompiler
+public import FailureOfComposition.ProgramIndices
+public import FailureOfComposition.AxiomEnumeration
 
 /-!
 Concrete natural-number witnesses for the failure of quotient composition.
@@ -14,6 +16,8 @@ The graphs are the production history evaluator, and the guard/search indices
 are obtained by the proved structural compiler, without an Arithmetization
 parameter or a graph-realization hypothesis.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

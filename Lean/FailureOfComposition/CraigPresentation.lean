@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.TheoryEnumerability
-import Foundation.FirstOrder.Incompleteness.Definability
+module
+
+public import FailureOfComposition.TheoryEnumerability
+public import Foundation.FirstOrder.Incompleteness.Definability
 
 /-! A decidable presentation of an r.e. arithmetic theory.
 Each axiom is padded by a tautology carrying a PA derivation that its original
 code belongs to the represented axiom set. The derivation checker and syntax
 operations are provably Delta-one over IΣ1. -/
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 4096
@@ -20,26 +24,26 @@ open scoped FFL.FirstOrder.Arithmetic FFL.FirstOrder.Arithmetic.Bootstrapping
 namespace FailureOfComposition.CraigPresentation
 noncomputable section
 
-private def axiomFormula (T : ArithmeticTheory) : ArithmeticSemisentence 1 :=
+def axiomFormula (T : ArithmeticTheory) : ArithmeticSemisentence 1 :=
   codeOfREPred (AxiomCodes T)
 
-private def padded (σ : ArithmeticSentence) (d : ℕ) : ArithmeticSentence :=
+def padded (σ : ArithmeticSentence) (d : ℕ) : ArithmeticSentence :=
   σ ⋏ (“!!(d) = !!(d)” ⋎ “!!(d) ≠ !!(d)”)
 
-private def padGraph : 𝚺₁.Semisentence 3 := .mkSigma
+def padGraph : 𝚺₁.Semisentence 3 := .mkSigma
   “f s d. ∃ nd e ne t,
     !Bootstrapping.Arithmetic.numeralGraph nd d ∧ !qqEQDef e nd nd ∧
     !qqNEQDef ne nd nd ∧ !qqOrDef t e ne ∧ !qqAndDef f s t”
 
-private def checkSigma (T : ArithmeticTheory) : 𝚺₁.Semisentence 2 := .mkSigma
+def checkSigma (T : ArithmeticTheory) : 𝚺₁.Semisentence 2 := .mkSigma
   “s d. ∃ ns a, !Bootstrapping.Arithmetic.numeralGraph ns s ∧
     !(substs1Graph ℒₒᵣ) a ns !!(⌜axiomFormula T⌝) ∧ !(proof 𝗣𝗔).sigma d a”
 
-private def checkPi (T : ArithmeticTheory) : 𝚷₁.Semisentence 2 := .mkPi
+def checkPi (T : ArithmeticTheory) : 𝚷₁.Semisentence 2 := .mkPi
   “s d. ∀ ns a, !Bootstrapping.Arithmetic.numeralGraph ns s →
     !(substs1Graph ℒₒᵣ) a ns !!(⌜axiomFormula T⌝) → !(proof 𝗣𝗔).pi d a”
 
-private def characteristic (T : ArithmeticTheory) : 𝚫₁.Semisentence 1 := .mkDelta
+def characteristic (T : ArithmeticTheory) : 𝚫₁.Semisentence 1 := .mkDelta
   (.mkSigma “f. ∃ s < f, ∃ d < f, !padGraph f s d ∧ !(checkSigma T) s d”)
   (.mkPi “f. ∃ s < f, ∃ d < f, !padGraph.graphDelta.pi f s d ∧ !(checkPi T) s d”)
 
@@ -80,7 +84,7 @@ private instance checkPi_defined (T : ArithmeticTheory) :
       (substs1 ℒₒᵣ (Bootstrapping.Arithmetic.numeral s) (⌜axiomFormula T⌝ : M))) via checkPi T :=
   .mk (by intro v; simp [checkPi])
 
-private theorem characteristic_proper (T : ArithmeticTheory) :
+theorem characteristic_proper (T : ArithmeticTheory) :
     (characteristic T).ProperOn M := by
   intro v
   simp only [characteristic, HierarchySymbol.Semiformula.sigma_mkDelta,
@@ -172,7 +176,7 @@ private theorem padded_bounds (σ : ArithmeticSentence) (d : ℕ) :
   rw [padded_quote]
   exact ⟨padCode_lt_left _ _, padCode_lt_right _ _⟩
 
-private theorem characteristic_mem_iff
+theorem characteristic_mem_iff
     (T : ArithmeticTheory) (hT : REPred (AxiomCodes T))
     (φ : Proposition ℒₒᵣ) :
     (characteristic T).val.Evalb ![(⌜φ⌝ : ℕ)] ↔

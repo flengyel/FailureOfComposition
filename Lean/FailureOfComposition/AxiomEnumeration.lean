@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.TheoryEnumerability
-import FailureOfComposition.KleeneNormalForm
+module
+
+public import FailureOfComposition.TheoryEnumerability
+public import FailureOfComposition.KleeneNormalForm
 
 /-!
 From a partial-recursive axiom enumerator in Mathlib's fixed program numbering
 to enumerability of theorem codes. The enumerator may diverge on inputs; its
 range, rather than totality, specifies the axioms.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

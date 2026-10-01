@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.Certificate
-import CategoricalRiceShapiro.Evaluator.PersistenceInduction
-import CategoricalRiceShapiro.Evaluator.PrimitiveRecursionStructuralBridges
+module
+
+public import CategoricalRiceShapiro.Evaluator.Certificate
+public import CategoricalRiceShapiro.Evaluator.PersistenceInduction
+public import CategoricalRiceShapiro.Evaluator.PrimitiveRecursionStructuralBridges
 
 /-!
 # Tag-6 certificate persistence
@@ -102,6 +104,8 @@ Scope:
 * it proves no persistence theorem for every standard index;
 * it proves no theorem of Appendix B.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ProgramGraph
-import FailureOfComposition.ArithmeticCodeCompiler
-import FailureOfComposition.ConcreteEmptyGraph
+module
+
+public import FailureOfComposition.ProgramGraph
+public import FailureOfComposition.ArithmeticCodeCompiler
+public import FailureOfComposition.ConcreteEmptyGraph
 
 /-!
 Concrete zero-valued semidecision programs. The defining equivalences hold
 for every input vector in every model of PA.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
 
 /-!
 Arithmetic terms and atomic formulas compiled to arithmetic programs. Evaluation
 is proved in arbitrary arithmetic structures for terms and positive atoms,
 and in arbitrary models of PA⁻ for their Boolean complements.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

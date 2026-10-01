@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import Mathlib.Init
+module
+
+public import Mathlib.Init
 
 /-!
 The least congruence containing a relation, defined as the intersection of
 all equivalence relations compatible with the given binary operation.
 No associativity, identity, or arithmetic hypothesis is required.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

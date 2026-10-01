@@ -3,12 +3,16 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ProofSearchTemplate
-import FailureOfComposition.QuotientObstruction
+module
+
+public import FailureOfComposition.ProofSearchTemplate
+public import FailureOfComposition.QuotientObstruction
 
 /-!
 Pointwise graph equality and quotient operations.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.Certificate
-import FailureOfComposition.ComputationSearchIndices
+module
+
+public import CategoricalRiceShapiro.Evaluator.Certificate
+public import FailureOfComposition.ComputationSearchIndices
 
 /-!
 PA-model equations for the four base program indices of the repository's
@@ -12,6 +14,8 @@ arithmetized Mathlib evaluator. These equations quantify over all elements of
 an arbitrary PA model, including the fuel and input; they are not merely
 standard-natural-number equations.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 4096

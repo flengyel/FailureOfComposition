@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import Foundation.Meta.ClProver
-import Foundation.FirstOrder.Incompleteness.StandardProvability
+module
+
+public import Foundation.Meta.ClProver
+public import Foundation.FirstOrder.Incompleteness.StandardProvability
 
 /-!
 Common arithmetic proof-search obstruction. This module does not use Gödel II.
 U is the theory whose proofs are searched; T is the theory of pointwise equality.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

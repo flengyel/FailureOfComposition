@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import Foundation.Vorspiel.Arithmetic
+module
+
+public import Foundation.Vorspiel.Arithmetic
 
 /-!
 # Total arithmetic codes and their standard computations
@@ -18,6 +20,8 @@ computation theorem for each.
 These are statements about the natural numbers.  Arbitrary-model evaluation is
 the subject of `CategoricalRiceShapiro.ArithmeticCode.Evaluation`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedIndexTransport
-import FailureOfComposition.GeneratedQuotient
+module
+
+public import FailureOfComposition.GeneratedIndexTransport
+public import FailureOfComposition.GeneratedQuotient
 
 /-!
 The generated quotient of program indices is a monoid, with multiplication
 given by the compiler's composition operation. Interpreting indices as
 functional graphs gives a monoid equivalence to the generated graph quotient.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -30,7 +34,7 @@ def GeneratedIndexQuotient (A : Arithmetization) (T : ArithmeticTheory) :=
 def generatedIndexMk (A : Arithmetization) (T : ArithmeticTheory) (e : ℕ) :
     GeneratedIndexQuotient A T := Quotient.mk (generatedSetoid A T) e
 
-private theorem realizationIndex_respects_generated (A : Arithmetization)
+theorem realizationIndex_respects_generated (A : Arithmetization)
     (T : ArithmeticTheory) [𝗣𝗔 ⪯ T] {F G : FunctionalGraph}
     (h : GeneratedCongruence.Rel T F G) :
     GeneratedRel A T (realizationIndex A F) (realizationIndex A G) := by

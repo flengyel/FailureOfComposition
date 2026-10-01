@@ -4,8 +4,9 @@ This is the maintained repository for the Lean formalization and LaTeX source
 of Florian Lengyel's *Pointwise provable equality and the failure of composition*.
 
 - [Lean development and verification guide](Lean/FailureOfComposition/README.md)
-- [Manuscript source, version 36](manuscript/failure_of_composition_2026-09-21_v36.tex)
-  and [manuscript provenance and build instructions](manuscript/README.md)
+- Manuscript version 37: [source](manuscript/failure_of_composition_2026-09-30_v37.tex),
+  [PDF](manuscript/failure_of_composition_2026-09-30_v37.pdf), and
+  [provenance and build instructions](manuscript/README.md)
 - [Mathematical statements and Lean signatures](Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
 - [Manuscript-to-Lean coverage map](Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
 - [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md)
@@ -16,8 +17,14 @@ The development proves the failure of induced composition on pointwise
 provability classes, the Pi-one completeness characterization, the classification
 of the generated composition congruence, and the weak-totality and range
 obstructions. The coverage map states the exact program-index scope.
-The manuscript is the unchanged v36 source underlying that coverage review;
-the author's planned v37 revision will be added separately.
+Version 37 revises the exposition and related work while preserving the
+mathematical statements, proofs, and theorem numbering. The submission target
+is the revision containing v37 and the corresponding Lean development together;
+the metadata and correspondence documents identify this version. All 124 Lean
+sources, the Comparator configuration, and the dependency pins are unchanged
+from the complete official local verification at
+`6adc1084e57ca3e9011dbd3765e99b803842ee17`. That SHA identifies the verification
+run's source; it is not the submission target for the revised manuscript.
 
 ## Repository layout and history
 
@@ -65,19 +72,31 @@ to its source directory.
 ## Licensing and Palomar
 
 The Lean formalization and supporting code use the existing
-[Apache-2.0 license](LICENSE). The manuscript retains its existing licensing;
-placing its source here does not assign it a new code license. See the
+[Apache-2.0 license](LICENSE). The author retains copyright in the manuscript,
+which was submitted under arXiv's perpetual, non-exclusive distribution
+license; that grant is not a general public reuse license. See the
 [manuscript notes](manuscript/README.md).
 
-The [Palomar draft](Lean/FailureOfComposition/Palomar/README.md) contains nine
-paired statements and proved counterparts. The toolchain port has passed its
-project verification. On `codex/palomar-eligibility`, the first eight selected declarations passed a
-local con-ron, NanoDa, and Lean Comparator run at
-`5435b5b528795590f250a82bf8937779b4fc86b4`; the
-[recorded Eight checkpoint](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Lean/FailureOfComposition/Palomar/STATUS.md)
-identifies its exact scope. This remains the latest reviewed verification
-checkpoint. The quotient-monoid declaration (9) still requires eligible
-migration, followed by complete
-official Palomar verification. These declaration counts are distinct from
-manuscript numbering. The manuscript's licensing scope must also be accounted
-for in any submitted snapshot. No Palomar submission or registration is claimed.
+The [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md) contains
+nine paired statements and proved counterparts. The toolchain port has passed
+its project verification. On `codex/palomar-eligibility`, all nine selected
+declarations passed a local con-ron, NanoDa, and Lean Comparator run at
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. The pinned official verifier then
+fetched public commit `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and
+completed its protected build/export/comparison/kernel workflow under
+`palomar-standard-v1`. The
+[recorded Nine checkpoint](Lean/FailureOfComposition/Palomar/STATUS.md)
+identifies the exact scope.
+That pass predates the current module-header requirement. The focused candidate
+now retains 124 Lean modules, no maintained Lean code under `Audit/`, and the
+same nine mathematical contracts. The current verifier at `65f0154` fetched
+public candidate `6adc1084e57ca3e9011dbd3765e99b803842ee17` and completed its
+protected build, export, comparison, and three-kernel workflow under
+`palomar-standard-v1`. An earlier execution of that same candidate was aborted
+during Solution build by an external host-monitor `/proc` race; the repaired
+monitor and the subsequent complete pass are recorded separately in the status
+file.
+These declaration counts are distinct from
+manuscript numbering. The package includes the distinct manuscript and code
+licensing notices. No Palomar service submission, editorial
+acceptance, or registration is claimed.

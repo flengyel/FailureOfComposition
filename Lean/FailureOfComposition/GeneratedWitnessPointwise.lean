@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.PiOneExtensionality
-import FailureOfComposition.GeneratedWitnessGraphs
+module
+
+public import FailureOfComposition.PiOneExtensionality
+public import FailureOfComposition.GeneratedWitnessGraphs
 
 /-!
 The stage-restricted witnesses are pointwise PA-equivalent whenever the
@@ -12,6 +14,8 @@ underlying graphs agree on the standard naturals. A true ground equation for
 the total history evaluator fixes all possible internal outputs at that
 standard stage and input. No uniform equivalence premise is assumed.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

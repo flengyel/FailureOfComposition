@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteEvaluatorGraph
-import Mathlib.Tactic.FinCases
+module
+
+public import FailureOfComposition.ConcreteEvaluatorGraph
+public import Mathlib.Tactic.FinCases
 
 /-!
 Arithmetic programs for the direct computation-search obstruction. The checked
 function is the existing history evaluator at the diagonal input. All graph
 equations in this file concern arbitrary PA-model inputs, not only numerals.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -30,7 +34,7 @@ def guardCode (d : ℕ) : Code 1 :=
 def searchCode (d : ℕ) : Code 1 :=
   codeRfindPos ((historyCode d).comp ![Code.proj 0])
 
-private def rawHistoryGraph (d : ℕ) : Graph :=
+def rawHistoryGraph (d : ℕ) : Graph :=
   .mkSigma (code (historyCode d)) (code_sigma_one (historyCode d))
 
 def historyGraph (d : ℕ) : Graph :=

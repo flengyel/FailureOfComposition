@@ -3,12 +3,16 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ArithmeticProgramOperations
-import FailureOfComposition.ConcreteMinimizationGraph
+module
+
+public import FailureOfComposition.ArithmeticProgramOperations
+public import FailureOfComposition.ConcreteMinimizationGraph
 
 /-! Sequential bounded universal semidecision in arbitrary models of PA.
 Each body call must return zero. A primitive-recursion program combines these
 calls, and PA induction proves its graph equation also at nonstandard bounds. -/
+
+@[expose] public section
 
 set_option autoImplicit false
 open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic

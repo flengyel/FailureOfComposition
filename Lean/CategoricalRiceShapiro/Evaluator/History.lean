@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.Cell
+module
+
+public import CategoricalRiceShapiro.Evaluator.Cell
 
 /-!
 # The evaluator-history codes
@@ -20,6 +22,8 @@ over the natural numbers are not part of this migration, and no arithmetic
 property of the encoding is asserted.
 -/
 
+@[expose] public section
+
 set_option autoImplicit false
 
 open Nat Nat.ArithPart₁
@@ -31,7 +35,7 @@ open CategoricalRiceShapiro.ArithmeticCode
 /-- The recursion that builds one row of the evaluation table: at recursion
 argument `i` the cell at index `k - (i + 1)` is consed onto the row built so
 far, where `k` is the fuel read from the table length. -/
-private def codeEvaluatorRowCore {r : ℕ} (dtable : Code r) : Code (r + 1) :=
+def codeEvaluatorRowCore {r : ℕ} (dtable : Code r) : Code (r + 1) :=
   codePrec
     (codeListNil (n := r))
     (codeListCons

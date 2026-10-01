@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.PiOneNecessity
-import FailureOfComposition.PiOneExtensionality
-import FailureOfComposition.PiOneCongruence
-import FailureOfComposition.QuotientComposition
+module
+
+public import FailureOfComposition.PiOneNecessity
+public import FailureOfComposition.PiOneExtensionality
+public import FailureOfComposition.PiOneCongruence
+public import FailureOfComposition.QuotientComposition
 
 /-!
 Characterization of congruence by Pi-one completeness.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

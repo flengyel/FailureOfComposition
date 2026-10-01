@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ProgramIndices
-import FailureOfComposition.PiOneCharacterization
+module
+
+public import FailureOfComposition.ProgramIndices
+public import FailureOfComposition.PiOneCharacterization
 
 /-!
 The Pi-one characterization at program indices.  Realization transports the
@@ -12,6 +14,8 @@ functional graph statements to every index in the given arithmetization;
 standard adequacy identifies graph equality with equality of partial functions.
 No effective presentation of the ambient theory is required.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

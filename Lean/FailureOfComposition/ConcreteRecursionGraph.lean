@@ -3,10 +3,14 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteEvaluatorGraph
+module
+
+public import FailureOfComposition.ConcreteEvaluatorGraph
 
 /-! Arithmetic graph equations for actual primitive-recursion program indices.
 The equations hold over arbitrary PA models, including nonstandard inputs. -/
+
+@[expose] public section
 
 set_option autoImplicit false
 open FFL FFL.FirstOrder FFL.FirstOrder.Arithmetic

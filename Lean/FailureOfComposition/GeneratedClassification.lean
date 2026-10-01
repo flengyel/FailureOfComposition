@@ -3,12 +3,16 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedExtensionality
-import FailureOfComposition.GeneratedQuotient
+module
+
+public import FailureOfComposition.GeneratedExtensionality
+public import FailureOfComposition.GeneratedQuotient
 
 /-!
 Classification of the generated composition congruence.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

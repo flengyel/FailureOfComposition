@@ -10,14 +10,29 @@ task; the Lean version port and evaluator style cleanup are complete.
 ## Current continuation point
 
 The instructions below originated at the September 25 port checkpoint.
-Resume the existing `codex/palomar-eligibility` branch: the first eight selected
+Resume the existing `codex/palomar-eligibility` branch: all nine selected
 declarations passed local Comparator verification at
-`5435b5b528795590f250a82bf8937779b4fc86b4`. Foundation is now pinned there to
-`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. Preserve subsequent commits.
-Eight remains the latest reviewed verification checkpoint. The quotient-monoid
-statement (declaration 9) still needs eligible migration; complete official
-verification remains.
-See the [recorded Eight status](https://github.com/flengyel/FailureOfComposition/blob/960bd733f67e27842c84f76146f65da4405c9c06/Lean/FailureOfComposition/Palomar/STATUS.md) and
+`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. Foundation is pinned to
+`01f617fbe240a84aaf1c45b31b9d65e0a2e21c1d`. The earlier official verifier at
+PalomarSubmission revision `a59f25bd8a66bf6faf3a4f4260d412989c0185ea`
+subsequently fetched immutable source commit
+`48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and completed with
+`status: pass`, `stage: complete` under `palomar-standard-v1`. The current
+candidate instead targets PalomarSubmission
+`65f0154ed776cd26c224254aa57b379137f28b0d` and PalomarPolicy
+`96b034cc31a72a63d4f4041911dce337a85c9a04`, including their module-source
+requirement. Its focused source scope is documented in
+[`PALOMAR_SUBMISSION_SCOPE.md`](PALOMAR_SUBMISSION_SCOPE.md). Public candidate
+`6adc1084e57ca3e9011dbd3765e99b803842ee17` passes the focused source, build,
+interface, dependency, axiom, policy, and negative gates. Its first
+current-verifier execution was terminated during Solution build by an external
+host-monitor `/proc` race before any kernel ran; that infrastructure abort is
+preserved. After the external monitor was narrowly repaired and tested, one
+newly authorized execution of the unchanged candidate completed with
+`status: pass`, `stage: complete`, `phase: verification`; con-ron, NanoDa, and
+Lean accepted all nine selected roots. Preserve subsequent commits. Service
+submission, editorial review, and registration remain separate.
+See the [recorded Nine status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.
 
@@ -40,7 +55,7 @@ checks passed. These results are recorded in
 
 Keep these pins. Read `AGENTS.md`, the root README, the manuscript coverage map,
 `Lean/FailureOfComposition/Palomar/README.md`, Challenge, Solution,
-`comparator.json`, `formalization.yaml`, and the existing verification scripts.
+`comparator-nine.json`, `formalization.yaml`, and the existing verification scripts.
 The older `docs/CODEX_PORT_TASK.md` describes completed work, not this task.
 
 Inspect Git status, origin, HEAD, disk space, available memory, package mappings,
@@ -69,13 +84,14 @@ Do not copy dependency build trees into `/tmp` or start another toolchain port.
 
 ## 1. Fix the reference point and inspect the actual requirements
 
-These public upstream revisions were inspected on September 25, 2026:
+The current candidate uses these authenticated revisions. The older revisions
+remain part of the dated pass above:
 
 | Repository | Revision | Relevant files |
 | --- | --- | --- |
-| [PalomarPolicy](https://github.com/PalomarRegistry/PalomarPolicy/tree/792c7c0b9e798bd02719e795ef11fa2b5929e067) | `792c7c0b9e798bd02719e795ef11fa2b5929e067` | `CONTRIBUTING.md`, protocol |
-| [PalomarSubmission](https://github.com/PalomarRegistry/PalomarSubmission/tree/a59f25bd8a66bf6faf3a4f4260d412989c0185ea) | `a59f25bd8a66bf6faf3a4f4260d412989c0185ea` | `toolchains.json`, `scripts/verify_submission.py`, `docs/comparator-declaration-closure.md`, execution profiles |
-| [PalomarTemplate](https://github.com/PalomarRegistry/PalomarTemplate/tree/cb5c79b69a740d2dc299071fc35994627050d77a) | `cb5c79b69a740d2dc299071fc35994627050d77a` | `scripts/verify-comparator.sh`, metadata validation |
+| [PalomarPolicy](https://github.com/PalomarRegistry/PalomarPolicy/tree/96b034cc31a72a63d4f4041911dce337a85c9a04) | `96b034cc31a72a63d4f4041911dce337a85c9a04` | `CONTRIBUTING.md`, protocol and module-source policy |
+| [PalomarSubmission](https://github.com/PalomarRegistry/PalomarSubmission/tree/65f0154ed776cd26c224254aa57b379137f28b0d) | `65f0154ed776cd26c224254aa57b379137f28b0d` | `toolchains.json`, `scripts/verify_submission.py`, source requirements and execution profiles |
+| [PalomarTemplate](https://github.com/PalomarRegistry/PalomarTemplate/tree/128a6c5ce5f48622e69927ccd639cbff401022e8) | `128a6c5ce5f48622e69927ccd639cbff401022e8` | metadata and Comparator authoring contracts |
 
 Fetch reference sources under `.codex-work/palomar/upstream/`. Inspect current
 upstream heads and record any changes before adopting a newer verifier. Keep an
@@ -192,7 +208,7 @@ inspect actual child processes and pressure before allowing a long run.
 ### Local Comparator
 
 Adapt the pinned Template helper to this project's `Lean/` directory and
-`FailureOfComposition/Palomar/comparator.json`. Check `bwrap` and the selected
+`FailureOfComposition/Palomar/comparator-nine.json`. Check `bwrap` and the selected
 toolchain's bundled `lake`, `leanexport`, `leanchecker`, `nanoda_bin`, and
 `con-ron`. Generate a separate protected configuration registering both bundled
 independent kernels. `external_kernels` belongs in that generated configuration,
@@ -207,9 +223,10 @@ Use authentic selected-toolchain judge binaries. Do not replace them with mock
 commands or silently disable a kernel, sandbox, axiom check, or definition check.
 
 The resulting evidence must identify all nine compared declarations and successful
-Lean-kernel, NanoDa, and con-ron replay. Keep `check_draft.py` as a separate project
-check; its success is not a Comparator result. A Template-style Comparator pass
-alone does not verify Palomar's protected Challenge source provenance.
+Lean-kernel, NanoDa, and con-ron replay. The maintained focused suite is
+`scripts/run-palomar-nine-focused.sh`; its success is not a Comparator result.
+A Template-style Comparator pass alone does not verify Palomar's protected
+Challenge source provenance.
 
 ### Complete mechanical eligibility
 
@@ -225,7 +242,7 @@ The selected paths are:
 | --- | --- |
 | Repository | `flengyel/FailureOfComposition` |
 | Selected project | `Lean` |
-| Comparator configuration | `Lean/FailureOfComposition/Palomar/comparator.json` |
+| Comparator configuration | `Lean/FailureOfComposition/Palomar/comparator-nine.json` |
 | Metadata | `Lean/FailureOfComposition/Palomar/formalization.yaml` |
 
 Paths in the verifier request are repository-relative. Build a local event from

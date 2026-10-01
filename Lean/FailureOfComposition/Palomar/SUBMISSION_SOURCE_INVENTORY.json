@@ -1,0 +1,1026 @@
+{
+  "baseline_commit": "5586bae3730e49f866da1d4e2f0ebb1dadacc2ca",
+  "disposition_counts": {
+    "moved_audit_files": 6,
+    "moved_audit_lean": 5,
+    "omitted_all_files": 251,
+    "omitted_audit_lean": 35,
+    "omitted_lean": 73,
+    "retained_lean": 124
+  },
+  "historical_reproduction": "All omitted files remain at the baseline commit and in the previously verified timestamped evidence archives; see docs/PALOMAR_SUBMISSION_SCOPE.md.",
+  "initial_counts": {
+    "initial_audit_lean": 40,
+    "initial_tracked_lean": 197
+  },
+  "lean_sources": [
+    {
+      "bytes": 12486,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.Arithmetic",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Arithmetic.lean",
+      "physical_lines": 282,
+      "sha256": "3d0d3bd073624c1a6256d6ca814d29ca16b5ebef368afb332fa35f47303c5f55"
+    },
+    {
+      "bytes": 8850,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.Basic",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Basic.lean",
+      "physical_lines": 202,
+      "sha256": "2f0921222768cf0e4192d833b5e67c0ef0795984dc5ee94fe013a25626180b22"
+    },
+    {
+      "bytes": 24927,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.BetaCoding",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/BetaCoding.lean",
+      "physical_lines": 532,
+      "sha256": "cff30359ea0865379d315af5825e3f9d378dbb5413f0fb5eb4bd5e534be32c05"
+    },
+    {
+      "bytes": 2608,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.Conditional",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Conditional.lean",
+      "physical_lines": 66,
+      "sha256": "d9b0eaa7cdb3ea9ddaf0186fdcc7d46e0c918990880acbe7256b77cf29f803c5"
+    },
+    {
+      "bytes": 5046,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.EncodedList",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedList.lean",
+      "physical_lines": 131,
+      "sha256": "8def195e918f2a7496c095c8572fb68971b97fecda3a46a10a67cf5dbc991260"
+    },
+    {
+      "bytes": 21706,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.EncodedListEvaluation",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EncodedListEvaluation.lean",
+      "physical_lines": 455,
+      "sha256": "f26a7b1fe30f6bcd776d6f22e6be8c2efa74c2cdbeec6d64aec0137671632356"
+    },
+    {
+      "bytes": 21682,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.Evaluation",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Evaluation.lean",
+      "physical_lines": 516,
+      "sha256": "f23ec17490ed3a1c5932eba6997697bcfd00dcb234f694716b756ca4740b8784"
+    },
+    {
+      "bytes": 26281,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/EvaluationCongruence.lean",
+      "physical_lines": 579,
+      "sha256": "b401c66be83b2dd6d62a23b8fe3992e01bb025815285076435aa2935ce5bde5e"
+    },
+    {
+      "bytes": 3577,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.FoundationCompat",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/FoundationCompat.lean",
+      "physical_lines": 103,
+      "sha256": "73c9acfb8bac1d512ccca564b960197e5fb6fce84ed5a9b8d04c5e06caa52976"
+    },
+    {
+      "bytes": 3053,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.Minimization",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Minimization.lean",
+      "physical_lines": 84,
+      "sha256": "23bf4c99cca3ef2da66ca869be98025d521bf53b04835ec7eda401c83eaed6a0"
+    },
+    {
+      "bytes": 51995,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/NumeralEvaluation.lean",
+      "physical_lines": 1044,
+      "sha256": "45e792eb8b7a6923f9194b01ab08912ecc707660797c095e91ac9994b29c1b62"
+    },
+    {
+      "bytes": 1005,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.Pairing",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Pairing.lean",
+      "physical_lines": 35,
+      "sha256": "7248273f33dfd05024a161709e478cbf59c51c503c20dede2cb4d7733cbc31f7"
+    },
+    {
+      "bytes": 4519,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.PartialRecursive",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursive.lean",
+      "physical_lines": 128,
+      "sha256": "8e2f820e33e7282668c34cb5a627534ec38aceb46a60d09d18f17bc8180b541b"
+    },
+    {
+      "bytes": 6355,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.PartialRecursiveEvaluation",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/PartialRecursiveEvaluation.lean",
+      "physical_lines": 132,
+      "sha256": "ab9fae305d614307598ed0bb849db5bc95829721adb0907c0599295b995aae9a"
+    },
+    {
+      "bytes": 10923,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.Recursion",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/Recursion.lean",
+      "physical_lines": 268,
+      "sha256": "73ac456f48429087a884417d930e2e94a96eaa409feb8a1a229fcaf33ac5eed4"
+    },
+    {
+      "bytes": 86109,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation",
+      "path": "Lean/CategoricalRiceShapiro/ArithmeticCode/RecursionEvaluation.lean",
+      "physical_lines": 1796,
+      "sha256": "aa23209d4e4614c1ee157d6917fceb6c43e2c76c4c7f488630f0a32485175ac3"
+    },
+    {
+      "bytes": 4765,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.Cell",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/Cell.lean",
+      "physical_lines": 128,
+      "sha256": "7b3944077cb11933b1de8a94ff0acb3631e8142f36270c8906d2fe0f993f64d8"
+    },
+    {
+      "bytes": 26717,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.CellCongruence",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CellCongruence.lean",
+      "physical_lines": 570,
+      "sha256": "e87ffd1cc198a4bb37e59b5066066900d8cd5444f69ef9e77c9fb5999c5608e4"
+    },
+    {
+      "bytes": 25515,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.CellEvaluation",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CellEvaluation.lean",
+      "physical_lines": 474,
+      "sha256": "923b697332c106fe135bed5c16ac52e58bbaad38805e6a5b1af8e6d482e9d1d1"
+    },
+    {
+      "bytes": 16939,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.Certificate",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/Certificate.lean",
+      "physical_lines": 364,
+      "sha256": "e963377521eb0d81856e369ce4645aa16fb6f8b0e0a4863d0ce9aae33a85a1e7"
+    },
+    {
+      "bytes": 30439,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.CompositionDispatch",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CompositionDispatch.lean",
+      "physical_lines": 614,
+      "sha256": "f32abd883392ae98ff75af6822d1fa7d672d210644e7d8cbc00a09b219fc9d45"
+    },
+    {
+      "bytes": 5931,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.CompositionPersistence",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/CompositionPersistence.lean",
+      "physical_lines": 119,
+      "sha256": "25377da9ebd98c71abe0f1b1c6c5aa66fc74025dcb105f3314eeceae646221a9"
+    },
+    {
+      "bytes": 3618,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.History",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/History.lean",
+      "physical_lines": 97,
+      "sha256": "0fa92a82f1503f4430b0b6bf1fdba0590d8492cc62a012384477beb22b279505"
+    },
+    {
+      "bytes": 131203,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.HistoryEvaluation",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/HistoryEvaluation.lean",
+      "physical_lines": 2670,
+      "sha256": "40d83ef2fe469da5ae32b8a1d8baae1b56cf0619762703ad0e06619e45222862"
+    },
+    {
+      "bytes": 18917,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.PairPersistence",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PairPersistence.lean",
+      "physical_lines": 349,
+      "sha256": "1175e784702a0be6aa0a3cdbe41aa0f998bbb8f269c8bc04a87c2fa262c0aff7"
+    },
+    {
+      "bytes": 7505,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.PersistenceInduction",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PersistenceInduction.lean",
+      "physical_lines": 153,
+      "sha256": "f69effe76080b55be3a37e0b4fa6ea2e2f61fa24fe98af4ecadf13d4ecd83634"
+    },
+    {
+      "bytes": 49791,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.PrimitiveRecursionPersistence",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionPersistence.lean",
+      "physical_lines": 872,
+      "sha256": "b8f8ab78719d5049086f5c5f1688107983c103d3b33c86b45d3ed9bffb377340"
+    },
+    {
+      "bytes": 24308,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.PrimitiveRecursionStructuralBridges",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/PrimitiveRecursionStructuralBridges.lean",
+      "physical_lines": 480,
+      "sha256": "a6f29544dcaca5dbe63559841d563f195129c0ad36e4a1ed8921b3039f2afe49"
+    },
+    {
+      "bytes": 1922,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.TableLookup",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/TableLookup.lean",
+      "physical_lines": 60,
+      "sha256": "a090abff60ae43f554ad4029d70842a9e6125fc07179b4564d050f33c6328ee8"
+    },
+    {
+      "bytes": 5459,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.Evaluator.TableLookupEvaluation",
+      "path": "Lean/CategoricalRiceShapiro/Evaluator/TableLookupEvaluation.lean",
+      "physical_lines": 117,
+      "sha256": "331875deb885c3e799898196664aa551023a862602f2196a210be4eeaa036b9b"
+    },
+    {
+      "bytes": 9871,
+      "category": "evaluator-proof-dependency",
+      "module": "CategoricalRiceShapiro.PartialRecursive.CanonicalComposition",
+      "path": "Lean/CategoricalRiceShapiro/PartialRecursive/CanonicalComposition.lean",
+      "physical_lines": 208,
+      "sha256": "e3bf2cda810245c6239e46f578e50a53d971175eae5d38e35ac40ca06a343127"
+    },
+    {
+      "bytes": 546,
+      "category": "focused-default-root",
+      "module": "FailureOfComposition",
+      "path": "Lean/FailureOfComposition.lean",
+      "physical_lines": 16,
+      "sha256": "8d0bc18c455701fda3d7a30565c3155234afa5ba8f42d1ce56d91148d095d3db"
+    },
+    {
+      "bytes": 11122,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ArithmeticCodeCompiler",
+      "path": "Lean/FailureOfComposition/ArithmeticCodeCompiler.lean",
+      "physical_lines": 259,
+      "sha256": "798c7ee691d5e25985e543d9deebf77a45bad793a654165ca23c5e732109a0b5"
+    },
+    {
+      "bytes": 7441,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ArithmeticFormulaAtoms",
+      "path": "Lean/FailureOfComposition/ArithmeticFormulaAtoms.lean",
+      "physical_lines": 176,
+      "sha256": "0608d5cb7e007a8db79b3c58dbda06838b5421b0c15986e63199cade3af6b49a"
+    },
+    {
+      "bytes": 12137,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ArithmeticProgramOperations",
+      "path": "Lean/FailureOfComposition/ArithmeticProgramOperations.lean",
+      "physical_lines": 262,
+      "sha256": "4d1e5fd35a63f5a786b53bd9367a9d53c854b2d38af0f1cc21d5834de6fe20a4"
+    },
+    {
+      "bytes": 2194,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.AxiomEnumeration",
+      "path": "Lean/FailureOfComposition/AxiomEnumeration.lean",
+      "physical_lines": 56,
+      "sha256": "8c5cc87ddf92e45cb9ffca890907beaaa8926df31f3f1e81819b51735366f302"
+    },
+    {
+      "bytes": 5432,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.BoundedSemidecision",
+      "path": "Lean/FailureOfComposition/BoundedSemidecision.lean",
+      "physical_lines": 125,
+      "sha256": "9a03145c8af56ff1147d09c7656ea8867a6475fbc3d4dfb2276a6ab96b0dc032"
+    },
+    {
+      "bytes": 4111,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.CompositionClosure",
+      "path": "Lean/FailureOfComposition/CompositionClosure.lean",
+      "physical_lines": 113,
+      "sha256": "f159d179d41910cf5fe7ee37cc19b21f3c0527f1c649037bd4bfbd224988ef00"
+    },
+    {
+      "bytes": 3945,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ComputationSearchIndices",
+      "path": "Lean/FailureOfComposition/ComputationSearchIndices.lean",
+      "physical_lines": 106,
+      "sha256": "4eacb62d6fcf18314d25b23f296a4f3f82f6f0b3a0aa3e707762109a9147257c"
+    },
+    {
+      "bytes": 9835,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteAdequacy",
+      "path": "Lean/FailureOfComposition/ConcreteAdequacy.lean",
+      "physical_lines": 215,
+      "sha256": "fc9484195746bea948504674d944c965e3a139e030ca693bcd852155a3b42fde"
+    },
+    {
+      "bytes": 20833,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteConstructorGraphs",
+      "path": "Lean/FailureOfComposition/ConcreteConstructorGraphs.lean",
+      "physical_lines": 392,
+      "sha256": "b5a2bdfd5a20524bcfd264542be04b24aacd1922429f8681a5900c307fe39296"
+    },
+    {
+      "bytes": 7388,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteDiagonal",
+      "path": "Lean/FailureOfComposition/ConcreteDiagonal.lean",
+      "physical_lines": 159,
+      "sha256": "8c408844736f707fb4235e2dd74de73f5f38d038a36119373012293f3ee2e55d"
+    },
+    {
+      "bytes": 4669,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteEmptyGraph",
+      "path": "Lean/FailureOfComposition/ConcreteEmptyGraph.lean",
+      "physical_lines": 100,
+      "sha256": "1cd97c08737fcc0c7fca8fc08208186a56a5e93d9b94899bbdca58e60e0fb772"
+    },
+    {
+      "bytes": 6977,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteEvaluatorGraph",
+      "path": "Lean/FailureOfComposition/ConcreteEvaluatorGraph.lean",
+      "physical_lines": 156,
+      "sha256": "47320ae8f51b7382c59da5948c9ae3abbe4d68e99c9716d5521a59680e61ea98"
+    },
+    {
+      "bytes": 4287,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteGeneratedCongruence",
+      "path": "Lean/FailureOfComposition/ConcreteGeneratedCongruence.lean",
+      "physical_lines": 94,
+      "sha256": "409033970a14455502b110f81ddd3542b68f83e563eebe217b5222bdf93cc776"
+    },
+    {
+      "bytes": 4000,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteGodel",
+      "path": "Lean/FailureOfComposition/ConcreteGodel.lean",
+      "physical_lines": 93,
+      "sha256": "f0687db6d78acf75bd51b38110bca8c74a94e654f25ff537ae9216dee423421f"
+    },
+    {
+      "bytes": 2151,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteGodelRE",
+      "path": "Lean/FailureOfComposition/ConcreteGodelRE.lean",
+      "physical_lines": 54,
+      "sha256": "731ca43a1428e53ca39b0337647cb2ff9732c74737da52b6bcdedb864254d8e6"
+    },
+    {
+      "bytes": 7592,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteIndexObstruction",
+      "path": "Lean/FailureOfComposition/ConcreteIndexObstruction.lean",
+      "physical_lines": 160,
+      "sha256": "df36872c24eae41caecf544415fba9d594f562dc903fca213e9bbf3585682209"
+    },
+    {
+      "bytes": 11499,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteMinimizationGraph",
+      "path": "Lean/FailureOfComposition/ConcreteMinimizationGraph.lean",
+      "physical_lines": 266,
+      "sha256": "1bb913e36ae3bd5e917951fef3dd2fb82b72c50635acf6051efc2f82c42c63a9"
+    },
+    {
+      "bytes": 2877,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcretePersistence",
+      "path": "Lean/FailureOfComposition/ConcretePersistence.lean",
+      "physical_lines": 71,
+      "sha256": "be082ebaf15702d8d06995ba2e6b080918d01520f67a24f1fe976052151f10d9"
+    },
+    {
+      "bytes": 4173,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcretePiOneCharacterization",
+      "path": "Lean/FailureOfComposition/ConcretePiOneCharacterization.lean",
+      "physical_lines": 88,
+      "sha256": "4cbd31a6c153bd618f49bb0e83bff4535d10278b7998dbaf9db6565433e5b0fb"
+    },
+    {
+      "bytes": 34373,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteRecursionGraph",
+      "path": "Lean/FailureOfComposition/ConcreteRecursionGraph.lean",
+      "physical_lines": 605,
+      "sha256": "9536d3afca1dc25efc56bddf07939058768149dfc840ac1a4caacaa4e6d1626b"
+    },
+    {
+      "bytes": 9396,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteWeakTotality",
+      "path": "Lean/FailureOfComposition/ConcreteWeakTotality.lean",
+      "physical_lines": 180,
+      "sha256": "ddea06f220174632644c71d00f93df4b9793d563b5eb2cd705f707a6d37e1ac9"
+    },
+    {
+      "bytes": 12698,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ConcreteWitnessGraphs",
+      "path": "Lean/FailureOfComposition/ConcreteWitnessGraphs.lean",
+      "physical_lines": 255,
+      "sha256": "cd93f5fb1b0589bd71537ceca01a83824ea354c8af172a8af8a48e815bd3aac2"
+    },
+    {
+      "bytes": 9639,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.CraigPresentation",
+      "path": "Lean/FailureOfComposition/CraigPresentation.lean",
+      "physical_lines": 213,
+      "sha256": "8a3fd16f33a8a98fd40eea20a6cb25618e1147a17f946ff4532dba2610175ad0"
+    },
+    {
+      "bytes": 3039,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedClassification",
+      "path": "Lean/FailureOfComposition/GeneratedClassification.lean",
+      "physical_lines": 70,
+      "sha256": "d2c8c9e95afea97fa75ac0f0fd2cfd7ad9c424192a24877946d73b9db067a2de"
+    },
+    {
+      "bytes": 6118,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedCollapse",
+      "path": "Lean/FailureOfComposition/GeneratedCollapse.lean",
+      "physical_lines": 141,
+      "sha256": "bb12dd59b8057656e2efdbe4317c6606c087ed9b4fdd40b652bc9db2be3e23bd"
+    },
+    {
+      "bytes": 3953,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedExtensionality",
+      "path": "Lean/FailureOfComposition/GeneratedExtensionality.lean",
+      "physical_lines": 80,
+      "sha256": "5cefe1d8f5982c69beaf4587681930863757aca84a309376b1b74aff0677008a"
+    },
+    {
+      "bytes": 2103,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedGraphDefinitions",
+      "path": "Lean/FailureOfComposition/GeneratedGraphDefinitions.lean",
+      "physical_lines": 64,
+      "sha256": "a98b35b4fbf484511503a052ab76c81b3f6f2e2def4e86f54859665a0cb76ba2"
+    },
+    {
+      "bytes": 4338,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedIndexClassification",
+      "path": "Lean/FailureOfComposition/GeneratedIndexClassification.lean",
+      "physical_lines": 99,
+      "sha256": "b809d5d569ccfed02830668ccd2ba8ee03f344ba6fafb9055a561b7051387b8c"
+    },
+    {
+      "bytes": 6262,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedIndexQuotient",
+      "path": "Lean/FailureOfComposition/GeneratedIndexQuotient.lean",
+      "physical_lines": 138,
+      "sha256": "e0fd203baf9b6435c10873ee4415bf32fb0bf85788a93b33cae008493a663413"
+    },
+    {
+      "bytes": 6157,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedIndexTransport",
+      "path": "Lean/FailureOfComposition/GeneratedIndexTransport.lean",
+      "physical_lines": 131,
+      "sha256": "cbdc83d3f97d4c0c474655f38d0e330a65cc0a5167a17d71f00ab8ac99913fd3"
+    },
+    {
+      "bytes": 3086,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedQuotient",
+      "path": "Lean/FailureOfComposition/GeneratedQuotient.lean",
+      "physical_lines": 89,
+      "sha256": "99fc0784cd9c52736e4f8a96d87a4bfd1698d83c684b1a14bff85b7c85aa1b11"
+    },
+    {
+      "bytes": 3276,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedSoundness",
+      "path": "Lean/FailureOfComposition/GeneratedSoundness.lean",
+      "physical_lines": 79,
+      "sha256": "b942f0e511a7dc0eb14680b9ffa44304ebe1d5626a7d48d325331e1ced8c254f"
+    },
+    {
+      "bytes": 10690,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedWitnessGraphs",
+      "path": "Lean/FailureOfComposition/GeneratedWitnessGraphs.lean",
+      "physical_lines": 283,
+      "sha256": "ec7ee43a8888537bd321e30f1753ef2c5a745e091e83dc1e00a005556ab61d0f"
+    },
+    {
+      "bytes": 4850,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GeneratedWitnessPointwise",
+      "path": "Lean/FailureOfComposition/GeneratedWitnessPointwise.lean",
+      "physical_lines": 111,
+      "sha256": "46335e677b84d92cc67c6d26a6f58d3928fdfadbb0ded65b181161c10f36f9f7"
+    },
+    {
+      "bytes": 2615,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GodelGraph",
+      "path": "Lean/FailureOfComposition/GodelGraph.lean",
+      "physical_lines": 62,
+      "sha256": "45afcbd5e965d4f5356e2023d0c0a8e9ee688f4c7ba68b8cf7f35c9ccf542314"
+    },
+    {
+      "bytes": 4116,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.GraphQuotient",
+      "path": "Lean/FailureOfComposition/GraphQuotient.lean",
+      "physical_lines": 100,
+      "sha256": "214f67f017c5eb331fe3972086e83ae218fbbbf5b503259a6fb5dc9e337e7bc8"
+    },
+    {
+      "bytes": 5949,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.HistoryObstruction",
+      "path": "Lean/FailureOfComposition/HistoryObstruction.lean",
+      "physical_lines": 134,
+      "sha256": "3381f5e6978c3ab7b8f107943eca381f748e2e9c3367a50a00f18a798d655b69"
+    },
+    {
+      "bytes": 8387,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.HistoryWitnesses",
+      "path": "Lean/FailureOfComposition/HistoryWitnesses.lean",
+      "physical_lines": 200,
+      "sha256": "cd11259e3449da3e9bc30c765e19073d5d6b1c0431d7f5e9625bba04553001ea"
+    },
+    {
+      "bytes": 4376,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.KleeneNormalForm",
+      "path": "Lean/FailureOfComposition/KleeneNormalForm.lean",
+      "physical_lines": 122,
+      "sha256": "408197fa8b74ffd18dd92fcfcf681ed83770bd3398d81d985c168f06325f4597"
+    },
+    {
+      "bytes": 16166,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ManuscriptObstruction",
+      "path": "Lean/FailureOfComposition/ManuscriptObstruction.lean",
+      "physical_lines": 344,
+      "sha256": "9e5bf0a0220096edcf7a2fb7a08dba43dcf1eb449ee93c0aea51f181dacb8583"
+    },
+    {
+      "bytes": 20389,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.MinimizationPersistence",
+      "path": "Lean/FailureOfComposition/MinimizationPersistence.lean",
+      "physical_lines": 391,
+      "sha256": "013e5d39a3c84f3913f4e1516c3411eb4a39bbf243a37e247298cdc1312d86d6"
+    },
+    {
+      "bytes": 57858,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.ArithmeticBridge",
+      "path": "Lean/FailureOfComposition/Palomar/ArithmeticBridge.lean",
+      "physical_lines": 1416,
+      "sha256": "58544e8e9db5f185bf12d9088be28af23fc7c319593de40fbbec72133215e967"
+    },
+    {
+      "bytes": 22638,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.ArithmeticInterface",
+      "path": "Lean/FailureOfComposition/Palomar/ArithmeticInterface.lean",
+      "physical_lines": 631,
+      "sha256": "246fcd9e8dd6912994af9163751d1b9bd1b617426b9aa8f79815322c33ab397d"
+    },
+    {
+      "bytes": 44261,
+      "category": "selected-challenge",
+      "module": "FailureOfComposition.Palomar.ChallengeNine",
+      "path": "Lean/FailureOfComposition/Palomar/ChallengeNine.lean",
+      "physical_lines": 999,
+      "sha256": "ac9a6a1d82f75360ddd251ef11158e990ec0a1b3498eee40e4e8a82279a80a62"
+    },
+    {
+      "bytes": 16222,
+      "category": "active-interface-check",
+      "module": "FailureOfComposition.Palomar.CheckNineInterface",
+      "path": "Lean/FailureOfComposition/Palomar/CheckNineInterface.lean",
+      "physical_lines": 343,
+      "sha256": "d7bb54992d91e79e94bb6f18f57ea5ee2a18787d5bdb2d48087980011c6eafb2"
+    },
+    {
+      "bytes": 24322,
+      "category": "active-dependency-check",
+      "module": "FailureOfComposition.Palomar.Checks.NineDependencyAudit",
+      "path": "Lean/FailureOfComposition/Palomar/Checks/NineDependencyAudit.lean",
+      "physical_lines": 392,
+      "sha256": "9f60427c51adbbbd2c5206be99956f47ffdd5448c54139f70cd490394af0b17b"
+    },
+    {
+      "bytes": 157571,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.DirectDerivationEnumeration",
+      "path": "Lean/FailureOfComposition/Palomar/DirectDerivationEnumeration.lean",
+      "physical_lines": 3616,
+      "sha256": "8b5e25653649a9ecbdce738201eefb588caeaf2b1469ecf8ecbecf73995feff2"
+    },
+    {
+      "bytes": 4063,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.DirectDivergenceBridge",
+      "path": "Lean/FailureOfComposition/Palomar/DirectDivergenceBridge.lean",
+      "physical_lines": 96,
+      "sha256": "794b066d21b6130abc0c37773a599fc4d12180f0f8ace5cff3e9f77700c259d8"
+    },
+    {
+      "bytes": 30580,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.EvaluatorBridge",
+      "path": "Lean/FailureOfComposition/Palomar/EvaluatorBridge.lean",
+      "physical_lines": 739,
+      "sha256": "e589db471bf58f0e21a62ed05391b38cecfa854f116d964126d09287f04c09bc"
+    },
+    {
+      "bytes": 21913,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.EvaluatorInterface",
+      "path": "Lean/FailureOfComposition/Palomar/EvaluatorInterface.lean",
+      "physical_lines": 600,
+      "sha256": "2f43296b98c2b165ef553e950e81686ccb11020dcf9ed793cb9f60b20b42199a"
+    },
+    {
+      "bytes": 10782,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.GeneratedCongruenceBridge",
+      "path": "Lean/FailureOfComposition/Palomar/GeneratedCongruenceBridge.lean",
+      "physical_lines": 263,
+      "sha256": "bc2eef5a17c0af6807768b9971e5fda604d62219fda80aef2d6222c89e76c7d4"
+    },
+    {
+      "bytes": 567,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.GeneratedCongruenceInterface",
+      "path": "Lean/FailureOfComposition/Palomar/GeneratedCongruenceInterface.lean",
+      "physical_lines": 18,
+      "sha256": "d73a21b774b543e8091c955a17acc40c9c8bf3ec2ec4ae21e4e93014ea498276"
+    },
+    {
+      "bytes": 11088,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.GeneratedQuotientBridge",
+      "path": "Lean/FailureOfComposition/Palomar/GeneratedQuotientBridge.lean",
+      "physical_lines": 259,
+      "sha256": "4fe0a5c24ef853776b3747a94862b616ae6c6e2ccaf571d6627510d120a929e9"
+    },
+    {
+      "bytes": 2515,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.GeneratedQuotientInterface",
+      "path": "Lean/FailureOfComposition/Palomar/GeneratedQuotientInterface.lean",
+      "physical_lines": 71,
+      "sha256": "e464a3d812a6daa75cb6f10b6ed74795167b027da59d1d15a3c135e0395c4aea"
+    },
+    {
+      "bytes": 1821,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.GodelQuotientBridge",
+      "path": "Lean/FailureOfComposition/Palomar/GodelQuotientBridge.lean",
+      "physical_lines": 46,
+      "sha256": "8da5607f1e156bb3f439cb89256463c3bbb50c10df32edb144aa95a649b27b82"
+    },
+    {
+      "bytes": 8241,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.ObstructionBridge",
+      "path": "Lean/FailureOfComposition/Palomar/ObstructionBridge.lean",
+      "physical_lines": 182,
+      "sha256": "f2d9f19393d7785f28903bb9c8b0208ac613915434f403772f95337f09304206"
+    },
+    {
+      "bytes": 15112,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.PiOneBridge",
+      "path": "Lean/FailureOfComposition/Palomar/PiOneBridge.lean",
+      "physical_lines": 376,
+      "sha256": "e1c9d7753a96835f1fff6d18cc80b08e0b1b232f0c890200bdc27f9c83608ec5"
+    },
+    {
+      "bytes": 596,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.PiOneInterface",
+      "path": "Lean/FailureOfComposition/Palomar/PiOneInterface.lean",
+      "physical_lines": 18,
+      "sha256": "0764839d8a720bb6dfa79e4b971088f934f2273942aaa13db7e1f53e564fc06b"
+    },
+    {
+      "bytes": 10093,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.QuotientBridge",
+      "path": "Lean/FailureOfComposition/Palomar/QuotientBridge.lean",
+      "physical_lines": 244,
+      "sha256": "9c1f14260658dac4166c3160d775f3a981605dadcfabfc49fabf45ea8beaa9ed"
+    },
+    {
+      "bytes": 6003,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.RangeBridge",
+      "path": "Lean/FailureOfComposition/Palomar/RangeBridge.lean",
+      "physical_lines": 136,
+      "sha256": "23d34a721f37ae7296493779fdcf515b079894aed6b8644d30ba6f1cdbb780fd"
+    },
+    {
+      "bytes": 1554,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.RangeInterface",
+      "path": "Lean/FailureOfComposition/Palomar/RangeInterface.lean",
+      "physical_lines": 47,
+      "sha256": "616e06dab2e7aba7d6d74f5043327ede40df79c695e561d84cb8ad3f3b97632a"
+    },
+    {
+      "bytes": 1849,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.RangeProductiveBridge",
+      "path": "Lean/FailureOfComposition/Palomar/RangeProductiveBridge.lean",
+      "physical_lines": 51,
+      "sha256": "1f2d9419ca0ba5c9c2e2763b07d304733c9b821623f56b284920c0cd9add106b"
+    },
+    {
+      "bytes": 6598,
+      "category": "selected-solution",
+      "module": "FailureOfComposition.Palomar.SolutionNine",
+      "path": "Lean/FailureOfComposition/Palomar/SolutionNine.lean",
+      "physical_lines": 144,
+      "sha256": "f1332fb7aea9691cc46a43d0f08ffb91f731f10bb5353782f513cc98de67c63e"
+    },
+    {
+      "bytes": 256,
+      "category": "active-negative-regression",
+      "module": "FailureOfComposition.Palomar.Tests.NineResultNegativeChallenge",
+      "path": "Lean/FailureOfComposition/Palomar/Tests/NineResultNegativeChallenge.lean",
+      "physical_lines": 13,
+      "sha256": "ee96a06c0b747a5117e1ddef506b0d5cbbdec7a8948fd79650b34a2928629a27"
+    },
+    {
+      "bytes": 255,
+      "category": "active-negative-regression",
+      "module": "FailureOfComposition.Palomar.Tests.NineResultNegativeSolution",
+      "path": "Lean/FailureOfComposition/Palomar/Tests/NineResultNegativeSolution.lean",
+      "physical_lines": 13,
+      "sha256": "152bf217ea7ba81cfaf373dfe25889810b355e83eeaa2aca36372704bc68d01a"
+    },
+    {
+      "bytes": 3424,
+      "category": "active-negative-regression",
+      "module": "FailureOfComposition.Palomar.Tests.NineWrongRouteAudit",
+      "path": "Lean/FailureOfComposition/Palomar/Tests/NineWrongRouteAudit.lean",
+      "physical_lines": 75,
+      "sha256": "9600a717401743bd812ac52c42036e2b563f7b25168b0b3824156a44c316d15e"
+    },
+    {
+      "bytes": 1044,
+      "category": "active-negative-regression",
+      "module": "FailureOfComposition.Palomar.Tests.NineWrongRouteSolution",
+      "path": "Lean/FailureOfComposition/Palomar/Tests/NineWrongRouteSolution.lean",
+      "physical_lines": 29,
+      "sha256": "54783d44534c4341fdcae38c9bff5faa3dff824905c7b8417164938d52306527"
+    },
+    {
+      "bytes": 7360,
+      "category": "nine-correspondence",
+      "module": "FailureOfComposition.Palomar.WeakTotalityBridge",
+      "path": "Lean/FailureOfComposition/Palomar/WeakTotalityBridge.lean",
+      "physical_lines": 175,
+      "sha256": "5ef954e51d40960c5d3acf3aa4c1a2c6539ebdeaaf7e6a5a158b93f9e60a876b"
+    },
+    {
+      "bytes": 4546,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.PartialRecursiveQuotient",
+      "path": "Lean/FailureOfComposition/PartialRecursiveQuotient.lean",
+      "physical_lines": 124,
+      "sha256": "65827370fd21dd255783065c0b360cfb75060108edac7386308831473874ad35"
+    },
+    {
+      "bytes": 3316,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.PiOneCharacterization",
+      "path": "Lean/FailureOfComposition/PiOneCharacterization.lean",
+      "physical_lines": 80,
+      "sha256": "2ffe524a2760f600133c9e6d5bedc2db5d7cdc169b2a1945a6ea7bd9afb5d98a"
+    },
+    {
+      "bytes": 3400,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.PiOneCongruence",
+      "path": "Lean/FailureOfComposition/PiOneCongruence.lean",
+      "physical_lines": 80,
+      "sha256": "4de845b5b554e12ef637a452941131721ac9e28147c458674dc2fa04f5be3afc"
+    },
+    {
+      "bytes": 1734,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.PiOneDefinitions",
+      "path": "Lean/FailureOfComposition/PiOneDefinitions.lean",
+      "physical_lines": 48,
+      "sha256": "1b41f0b906811f6508927a998257b978f80f6a09ba88d3da3e761b1752cccc92"
+    },
+    {
+      "bytes": 7931,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.PiOneExtensionality",
+      "path": "Lean/FailureOfComposition/PiOneExtensionality.lean",
+      "physical_lines": 176,
+      "sha256": "c6c71932f9f3c8e2bf3d595acbd1c4fe0d894009613c7fbda6da3ac476d9126c"
+    },
+    {
+      "bytes": 10087,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.PiOneIndexCharacterization",
+      "path": "Lean/FailureOfComposition/PiOneIndexCharacterization.lean",
+      "physical_lines": 210,
+      "sha256": "f818fab0e0ba38f162b788b2a002c7ab45d05e6d91aa2fdd578120902b2cc621"
+    },
+    {
+      "bytes": 2528,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.PiOneNecessity",
+      "path": "Lean/FailureOfComposition/PiOneNecessity.lean",
+      "physical_lines": 63,
+      "sha256": "a92a9fc92b7ece8e40ff471017dae1823b3375cde601f9b59495025ecbf1a6f3"
+    },
+    {
+      "bytes": 4515,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ProductiveDivergence",
+      "path": "Lean/FailureOfComposition/ProductiveDivergence.lean",
+      "physical_lines": 112,
+      "sha256": "1ab9442bd5188ebb8f7d6f0a2f24967ee01b9b61650c93f5d63c021b875dbf2b"
+    },
+    {
+      "bytes": 3902,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ProductiveGraph",
+      "path": "Lean/FailureOfComposition/ProductiveGraph.lean",
+      "physical_lines": 86,
+      "sha256": "62dfd082610e3e125f968c026a7b67d225441f2bfe414c20d02d39d7f33bd39b"
+    },
+    {
+      "bytes": 1966,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.Productiveness",
+      "path": "Lean/FailureOfComposition/Productiveness.lean",
+      "physical_lines": 60,
+      "sha256": "03881840d2dcbe82aabdd56f02e14c1a3f3be3c8b27fb364db2d3f129f51f429"
+    },
+    {
+      "bytes": 4093,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ProgramGraph",
+      "path": "Lean/FailureOfComposition/ProgramGraph.lean",
+      "physical_lines": 95,
+      "sha256": "aa7c02e90de39b7b80c099ab53c7a644a6f35edc03fde14839737b97b8b7e5ed"
+    },
+    {
+      "bytes": 8734,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ProgramIndices",
+      "path": "Lean/FailureOfComposition/ProgramIndices.lean",
+      "physical_lines": 186,
+      "sha256": "24c70514b2acb261417ec4f0912b473c2f99f47d9ed970ac30ffd98c7485bb61"
+    },
+    {
+      "bytes": 9866,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.ProofSearchTemplate",
+      "path": "Lean/FailureOfComposition/ProofSearchTemplate.lean",
+      "physical_lines": 229,
+      "sha256": "3d93a9beee75fe5b92ec07dc456ef20ca73bd51597a161537204a5472120e4f0"
+    },
+    {
+      "bytes": 1362,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.QuotientComposition",
+      "path": "Lean/FailureOfComposition/QuotientComposition.lean",
+      "physical_lines": 44,
+      "sha256": "b2ead947bacc13948a2fdafc824b67b2e49fd0da71bcdfda1e9432134c14fe3d"
+    },
+    {
+      "bytes": 2332,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.QuotientObstruction",
+      "path": "Lean/FailureOfComposition/QuotientObstruction.lean",
+      "physical_lines": 71,
+      "sha256": "35a0067b5e1904a917949ac0530a7c68048df551e80bc599b315d17455093342"
+    },
+    {
+      "bytes": 6406,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.RangeAssignment",
+      "path": "Lean/FailureOfComposition/RangeAssignment.lean",
+      "physical_lines": 148,
+      "sha256": "c471845ffa418c50a13553928cb16174764dafe34e233d7fc167abc0e4831605"
+    },
+    {
+      "bytes": 7115,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.RangeGodel",
+      "path": "Lean/FailureOfComposition/RangeGodel.lean",
+      "physical_lines": 143,
+      "sha256": "bc92f48e834e4ed7f299cb181f5e4f03b97a0c4a2c4551e4a6d8819cbe7dd19f"
+    },
+    {
+      "bytes": 5968,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.RangeProductive",
+      "path": "Lean/FailureOfComposition/RangeProductive.lean",
+      "physical_lines": 119,
+      "sha256": "152ed19326296fa5332a34b5bb5f2af2d6d2ca7bdb4eec5fa64a8f3ef1d96476"
+    },
+    {
+      "bytes": 8388,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.RangeWitness",
+      "path": "Lean/FailureOfComposition/RangeWitness.lean",
+      "physical_lines": 179,
+      "sha256": "ab9d7d9109f2502fd8940f8b0f54f17862a55911d131adac0c25dc11fee4fb15"
+    },
+    {
+      "bytes": 3216,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.SigmaOneGraphWitness",
+      "path": "Lean/FailureOfComposition/SigmaOneGraphWitness.lean",
+      "physical_lines": 77,
+      "sha256": "dcd22f5bb2369e49d312ff712c2458528ec9fa90c1334238ba524c8badcec6a7"
+    },
+    {
+      "bytes": 6810,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.SigmaOneRealization",
+      "path": "Lean/FailureOfComposition/SigmaOneRealization.lean",
+      "physical_lines": 160,
+      "sha256": "d580bd57b8cd91b86ec18f5be607a12a4a4fc0bc545567b3f691b076998d00df"
+    },
+    {
+      "bytes": 14677,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.SigmaOneSearch",
+      "path": "Lean/FailureOfComposition/SigmaOneSearch.lean",
+      "physical_lines": 322,
+      "sha256": "587f3b93a0f7f27515b8514a4a0efc3d820cbd47ebbe5bef7c58797b2cb7fcfe"
+    },
+    {
+      "bytes": 2726,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.SigmaOneSemidecisionCore",
+      "path": "Lean/FailureOfComposition/SigmaOneSemidecisionCore.lean",
+      "physical_lines": 71,
+      "sha256": "d295a6edf7ac222aa7c1b51b8048c15a7e0f36ae34f98df13f8e678cabb7a6e8"
+    },
+    {
+      "bytes": 8651,
+      "category": "maintained-proof-dependency",
+      "module": "FailureOfComposition.TheoryEnumerability",
+      "path": "Lean/FailureOfComposition/TheoryEnumerability.lean",
+      "physical_lines": 191,
+      "sha256": "ce266e9c8c7a7128cb7fd104538b5b65e579d1dc086dd13afa0e77f92115325f"
+    }
+  ],
+  "schema": 1,
+  "scope": "focused Palomar cumulative Nine submission",
+  "selection_method": {
+    "header_graph": "/home/flengyel/src/FailureOfComposition-port/.codex-work/palomar/current-modules/20260930T161603Z/inventory/deps-json-headers.json",
+    "note": "Lean's --deps-json headers supplied the transitive local import graph; the focused default root is retained separately.",
+    "seeds": [
+      "FailureOfComposition.Palomar.SolutionNine",
+      "FailureOfComposition.Palomar.ChallengeNine",
+      "FailureOfComposition.Palomar.CheckNineInterface",
+      "FailureOfComposition.Palomar.Checks.NineDependencyAudit",
+      "FailureOfComposition.Palomar.Tests.NineResultNegativeChallenge",
+      "FailureOfComposition.Palomar.Tests.NineResultNegativeSolution",
+      "FailureOfComposition.Palomar.Tests.NineWrongRouteSolution",
+      "FailureOfComposition.Palomar.Tests.NineWrongRouteAudit"
+    ]
+  }
+}

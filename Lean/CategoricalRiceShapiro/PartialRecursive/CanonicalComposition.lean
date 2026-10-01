@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
 
 /-!
 # The canonical index of a composed partial-recursive program
@@ -22,6 +24,8 @@ The evaluation results then read those numbers off inside an arbitrary model of
 assignment, the graph of the constructor number at `5` and of the two subcodes
 at `fCode` and `gCode`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

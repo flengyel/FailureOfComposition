@@ -3,11 +3,13 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteWitnessGraphs
-import FailureOfComposition.MinimizationPersistence
-import CategoricalRiceShapiro.Evaluator.PairPersistence
-import CategoricalRiceShapiro.Evaluator.CompositionPersistence
-import CategoricalRiceShapiro.Evaluator.PrimitiveRecursionPersistence
+module
+
+public import FailureOfComposition.ConcreteWitnessGraphs
+public import FailureOfComposition.MinimizationPersistence
+public import CategoricalRiceShapiro.Evaluator.PairPersistence
+public import CategoricalRiceShapiro.Evaluator.CompositionPersistence
+public import CategoricalRiceShapiro.Evaluator.PrimitiveRecursionPersistence
 
 /-!
 Persistence of the repository's concrete evaluator at every standard program
@@ -15,6 +17,8 @@ index. The induction is external on the natural-number index. The stage, input,
 and output range over an arbitrary model of PA, including its nonstandard
 elements. The constructor lemmas discharge every induction case.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

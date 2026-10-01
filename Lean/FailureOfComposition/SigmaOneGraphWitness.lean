@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.SigmaOneSemidecisionCore
-import FailureOfComposition.SigmaOneSearch
+module
+
+public import FailureOfComposition.SigmaOneSemidecisionCore
+public import FailureOfComposition.SigmaOneSearch
 
 /-!
 Extracting an output from a semidecision program for a functional arithmetic
 graph. The search ranges over candidate outputs together with computation
 stages, so divergent rejected candidates do not block later outputs.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

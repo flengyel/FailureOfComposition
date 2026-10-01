@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.Cell
-import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
+module
+
+public import CategoricalRiceShapiro.Evaluator.Cell
+public import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
 
 /-!
 # Heterogeneous congruence for the evaluator cell
@@ -20,6 +22,8 @@ tag is unused.  The derived constructors are delta-reduced as syntax trees only.
 No arithmetic meaning is attached to any of them, no totality is asserted, and
 the results hold in an arbitrary `ORingStructure`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

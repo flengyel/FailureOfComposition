@@ -3,10 +3,12 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.CellEvaluation
-import CategoricalRiceShapiro.Evaluator.CellCongruence
-import CategoricalRiceShapiro.Evaluator.TableLookupEvaluation
-import CategoricalRiceShapiro.PartialRecursive.CanonicalComposition
+module
+
+public import CategoricalRiceShapiro.Evaluator.CellEvaluation
+public import CategoricalRiceShapiro.Evaluator.CellCongruence
+public import CategoricalRiceShapiro.Evaluator.TableLookupEvaluation
+public import CategoricalRiceShapiro.PartialRecursive.CanonicalComposition
 
 /-!
 # Fixed component indices and evaluator-cell reconstruction
@@ -52,6 +54,8 @@ branch using positive fuel and the decoded tag, and identifies the result with
 This result does not transport certificates between stages or prove persistence
 for recursively referenced subcodes.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

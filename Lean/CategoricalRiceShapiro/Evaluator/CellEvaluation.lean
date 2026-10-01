@@ -3,10 +3,12 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.Evaluator.Cell
-import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
-import CategoricalRiceShapiro.ArithmeticCode.PartialRecursiveEvaluation
-import CategoricalRiceShapiro.Evaluator.TableLookupEvaluation
+module
+
+public import CategoricalRiceShapiro.Evaluator.Cell
+public import CategoricalRiceShapiro.ArithmeticCode.NumeralEvaluation
+public import CategoricalRiceShapiro.ArithmeticCode.PartialRecursiveEvaluation
+public import CategoricalRiceShapiro.Evaluator.TableLookupEvaluation
 
 /-!
 # Success and totality of an evaluator cell
@@ -29,6 +31,8 @@ every lookup and every option continuation inside them, whichever branch the tag
 comparisons end up selecting.  It asserts existence only and identifies no
 value.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

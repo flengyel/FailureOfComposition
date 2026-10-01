@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.PiOneDefinitions
-import Foundation.FirstOrder.Incompleteness.Definability
+module
+
+public import FailureOfComposition.PiOneDefinitions
+public import Foundation.FirstOrder.Incompleteness.Definability
 
 /-!
 Right compatibility forces every true Pi-one sentence to be provable. The
 witnesses search for PA proofs of the negation of the proposed sentence.
 Only PA standard soundness is used; no soundness or consistency of T is assumed.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

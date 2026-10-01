@@ -3,13 +3,17 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.PiOneIndexCharacterization
-import FailureOfComposition.ConcreteGodel
+module
+
+public import FailureOfComposition.PiOneIndexCharacterization
+public import FailureOfComposition.ConcreteGodel
 
 /-!
 The manuscript's four-way characterization for the actual natural-number
 program indices and history graphs. The ambient theory may be non-enumerable.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

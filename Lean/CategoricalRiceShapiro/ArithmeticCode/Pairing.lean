@@ -3,7 +3,9 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.Conditional
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.Conditional
 
 /-!
 # Cantor pairing
@@ -15,6 +17,8 @@ conditional, not minimization, and so does not depend on that module.
 Only the code construction is given here.  The standard computation theorem
 over the natural numbers is not part of this migration.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

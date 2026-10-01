@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcretePersistence
-import FailureOfComposition.ConcreteEmptyGraph
-import FailureOfComposition.ProofSearchTemplate
+module
+
+public import FailureOfComposition.ConcretePersistence
+public import FailureOfComposition.ConcreteEmptyGraph
+public import FailureOfComposition.ProofSearchTemplate
 
 /-!
 The existential-stage graph of the repository's concrete evaluator.
@@ -14,6 +16,8 @@ Persistence of successful computations brings two possibly nonstandard stages
 to a common stage. It therefore supplies PA proofs of functionality and of the
 composition equation for the actual canonical composition indices.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

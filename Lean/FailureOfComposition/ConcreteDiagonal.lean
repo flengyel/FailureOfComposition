@@ -3,14 +3,18 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteAdequacy
-import FailureOfComposition.ProductiveDivergence
+module
+
+public import FailureOfComposition.ConcreteAdequacy
+public import FailureOfComposition.ProductiveDivergence
 
 /-!
 Productiveness for the diagonal halting formula of the actual history
 evaluator. The formula is built directly from `evalnCertificateFormula`;
 no representation chosen by `codeOfREPred` occurs in its definition.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

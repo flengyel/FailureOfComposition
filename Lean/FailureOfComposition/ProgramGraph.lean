@@ -3,10 +3,14 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.ConcreteEvaluatorGraph
-import FailureOfComposition.ConcreteConstructorGraphs
+module
+
+public import FailureOfComposition.ConcreteEvaluatorGraph
+public import FailureOfComposition.ConcreteConstructorGraphs
 
 /-! Program graphs indexed by actual Mathlib program descriptions. -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -3,15 +3,19 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import FailureOfComposition.GeneratedGraphDefinitions
-import FailureOfComposition.PiOneCongruence
-import FailureOfComposition.GeneratedSoundness
+module
+
+public import FailureOfComposition.GeneratedGraphDefinitions
+public import FailureOfComposition.PiOneCongruence
+public import FailureOfComposition.GeneratedSoundness
 
 /-!
 The two algebraic halves of the generated-congruence dichotomy. Sigma-one
 soundness makes the closure extensionally sound; a false proved Sigma-one
 sentence collapses it once extensional containment has been established.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

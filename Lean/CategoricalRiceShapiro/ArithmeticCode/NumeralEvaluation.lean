@@ -3,9 +3,11 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
-import CategoricalRiceShapiro.ArithmeticCode.PartialRecursive
-import Foundation.FirstOrder.Arithmetic.IOpen.Basic
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.EvaluationCongruence
+public import CategoricalRiceShapiro.ArithmeticCode.PartialRecursive
+public import Foundation.FirstOrder.Arithmetic.IOpen.Basic
 
 /-!
 # Evaluation of the derived constructors at standard numerals
@@ -25,6 +27,8 @@ images of standard arguments.  It is the only route by which a construction
 proved correct over `ℕ` — here halving, defined by primitive recursion — becomes
 usable in an arbitrary model.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

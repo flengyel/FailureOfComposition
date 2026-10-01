@@ -3,8 +3,10 @@ Copyright (c) 2026 Florian Lengyel. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Florian Lengyel
 -/
-import CategoricalRiceShapiro.ArithmeticCode.PartialRecursive
-import CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation
+module
+
+public import CategoricalRiceShapiro.ArithmeticCode.PartialRecursive
+public import CategoricalRiceShapiro.ArithmeticCode.RecursionEvaluation
 
 /-!
 # Evaluation existence for the partial-recursive index decoders
@@ -23,6 +25,8 @@ The tag is an eager conditional, so both of its branches are evaluated before
 the test selects one: the index itself, and the compound tag built from the two
 parity bits of the shifted index.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
