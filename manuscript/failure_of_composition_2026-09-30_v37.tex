@@ -19,24 +19,17 @@
 \maketitle
 
 \begin{abstract}
-Montagna (1989) and Di Paola--Montagna (1991) claim that the
-algebraic systems $S'$ and $S'_T$, respectively, are categories.
-We show that the proposed composition is not independent of the choice
-of representatives.
-For every consistent recursively enumerable
-extension $T$ of Peano arithmetic ($\PA$), we exhibit two program indices that are
-pointwise provably equal in $T$ but yield inequivalent composites
-when each is run after the same program. Montagna's $S'$ is the
-case $T=\PA$. The failure already occurs for partial maps from $\omega$
-to itself.
-More generally, for consistent $T\supseteq\PA$, pointwise provable equality
-is a composition congruence exactly when $T$ proves every true $\Pi^0_1$
-sentence, in which case it is extensional equality.
-This completeness condition fails for every consistent recursively
-enumerable $T\supseteq\PA$ by G\"odel's second incompleteness theorem.
-For every extension $T\supseteq\PA$, the least composition congruence
-containing pointwise provable equality is extensional equality if $T$
-is $\Sigma^0_1$-sound and the universal relation otherwise.
+Montagna (1989) and Di Paola--Montagna (1991) claim that the algebraic systems $S'$ and $S'_T$, respectively, are categories. 
+We show that the proposed composition is not independent of the choice of representatives. 
+For every consistent recursively enumerable extension $T$ of Peano arithmetic ($\mathrm{PA}$), we exhibit two unary 
+programs whose partial functions are provably equal in $T$, separately at each standard input. Composing each after a 
+program that searches for a $T$-proof of contradiction and returns its code yields programs that are not
+equivalent in this sense. An alternative proof uses the productivity of the complement of the diagonal halting set. 
+Montagna's $S'$ isthe case $T=\mathrm{PA}$. More generally, for consistent $T\supseteq\mathrm{PA}$, pointwise provable 
+equality is a composition congruence exactly when $T$ proves every true $\Pi^0_1$ sentence, in which case it 
+is extensional equality. This completeness condition fails for every consistent recursively enumerable $T\supseteq\mathrm{PA}$ 
+by G\"odel's second incompleteness theorem. For every extension $T\supseteq\mathrm{PA}$, the least composition congruence 
+containing pointwise provable equality is extensional equality if $T$ is $\Sigma^0_1$-sound and the universal relation otherwise.
 \end{abstract}
 
 \noindent\textit{2020 Mathematics Subject Classification.}\\
@@ -428,8 +421,8 @@ Di Paola--Heller prove a creativity theorem for the diagonal halting
 domain in dominical recursion categories
 \cite[Theorem~8.5, pp.~622--623]{DiPaolaHeller}.
 
-The existence assertion in Theorem~\ref{thm:obstruction} also follows from
-the productivity of the diagonal nonhalting set
+The existence assertion in Theorem~\ref{thm:obstruction} also follows
+from the productivity of the complement of the diagonal halting set
 \cite[Section~5.3, p.~136]{GallierQuaintance}.
 Put
 \[
