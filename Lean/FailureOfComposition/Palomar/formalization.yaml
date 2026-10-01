@@ -1,4 +1,4 @@
-# CURRENT MODULE CANDIDATE; NOT SUBMITTED OR REGISTERED.
+# V37 SUBMISSION PACKAGE WITH VERIFIED LEAN SOURCES; NOT SUBMITTED OR REGISTERED.
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 version: "v0.4"
 
@@ -23,7 +23,11 @@ project:
     routes for Proposition 6 and the unnumbered quotient-monoid consequence.
     The older pinned official verifier also completed on immutable commit
     48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb. This focused module-based
-    candidate retains 124 Lean sources and awaits its one current-verifier run.
+    candidate retains 124 Lean sources. These sources completed the current
+    official local verifier at 6adc1084e57ca3e9011dbd3765e99b803842ee17 with
+    pass / complete / verification and all three kernel acceptances. The
+    submission package in this revision pairs those unchanged Lean sources
+    with manuscript v37; its statements, proofs, and numbering are preserved.
     The manuscript and code retain their distinct licensing notices.
   authors:
     - "Florian Lengyel"
@@ -38,16 +42,20 @@ classification:
   msc2020: ["03D75", "03F40", "08A30", "18B10"]
 
 sources:
-  - title: "Pointwise provable equality and the failure of composition, version 36"
+  - title: "Pointwise provable equality and the failure of composition, version 37"
     authors: ["Florian Lengyel"]
     type: "paper"
     relationship: "formalizes"
-    id: "https://github.com/flengyel/Categorical_Rice_Shapiro/blob/202194e54e883648f0d9f22a65afee6987ef2134/research/notes/failure_of_composition_2026-09-21_v36.tex"
-    location: "manuscript/failure_of_composition_2026-09-21_v36.tex; dated September 21, 2026; Theorem 1 through Proposition 6 and the unnumbered quotient-monoid consequence following Theorem 4."
+    id: "https://api.github.com/repos/flengyel/FailureOfComposition/git/blobs/9269decb69c8c4e5824375efd568cd8f34d10c7e"
+    location: "manuscript/failure_of_composition_2026-09-30_v37.tex; dated September 30, 2026; Theorem 1 through Proposition 6 and the unnumbered quotient-monoid consequence following Theorem 4."
     author_endorsement: "participated"
     note: >-
-      The unchanged source is maintained locally at the path above. Its id
-      records the historical immutable source, not the current code repository.
+      The source and compiled PDF are maintained in this repository revision
+      alongside the corresponding Lean development. The id identifies the
+      exact immutable v37 source blob; its SHA-256 is
+      821a5a23632c8100c543430c973b8bd3546e1f9af298d1e52ec7953f3f15697c.
+      Version 37 revises exposition and related work while preserving the
+      mathematical statements, proofs, and numbering from v36.
       This is source-based formalization of a result already presented in the
       manuscript, not an original-proof provenance claim. The concrete evaluator
       and historical coding qualifications are recorded under fidelity.
@@ -155,7 +163,15 @@ review:
     type/axiom checks. See ../Porting/STYLE_CLEANUP_VALIDATION.json.
     The later cumulative Nine pair passed local Comparator verification at
     381de9db4d2214b8fd8d05bf74b56bc9597f01c5 on codex/palomar-eligibility.
-    Complete official verification and Palomar editorial review remain.
+    The same Lean development subsequently completed current official local
+    verification at 6adc1084e57ca3e9011dbd3765e99b803842ee17 under
+    PalomarSubmission 65f0154ed776cd26c224254aa57b379137f28b0d.
+    Version 37 was checked against the v36 source at that accepted snapshot:
+    all 11 formal statement/proof environments are byte-identical, and the
+    remaining definitions and arguments retain their mathematical content.
+    All 124 Lean sources, the Comparator configuration, and dependency pins
+    in this package are identical to that run's inputs. Service submission
+    and Palomar editorial review remain separate.
     Mathematical notation, Lean signatures, and numbering are documented in
     ../MANUSCRIPT_STATEMENTS.md. These are records of the named checkpoints,
     not a new build or kernel replay of subsequent documentation changes.
@@ -163,57 +179,62 @@ review:
 alignment:
   namespace: "FailureOfComposition.Palomar"
   statements:
-    - source: "v36 Theorem 1, four witness properties"
+    - source: "v37 Theorem 1, four witness properties"
       lean: "FailureOfComposition.Palomar.obstruction_four_properties"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Uses the maintained productive witness theorem; both middle clauses retain uniform provability."
-    - source: "v36 Theorem 1 and Corollary 2, productive route"
+    - source: "v37 Theorem 1 and Corollary 2, productive route"
       lean: "FailureOfComposition.Palomar.no_quotient_composition_productive"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "No quotient operation can satisfy the representative composition equation."
-    - source: "v36 Theorem 1 and Corollary 2, Gödel-II route"
+    - source: "v37 Theorem 1 and Corollary 2, Gödel-II route"
       lean: "FailureOfComposition.Palomar.no_quotient_composition_godel"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Same statement via the separately audited Gödel-II proof and r.e. presentation bridge."
-    - source: "v36 Theorem 3"
+    - source: "v37 Theorem 3"
       lean: "FailureOfComposition.Palomar.pi_one_characterization"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Consistency and PA extension; no enumerability hypothesis."
-    - source: "v36 Theorem 4"
+    - source: "v37 Theorem 4"
       lean: "FailureOfComposition.Palomar.generated_congruence_classification"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Every PA extension, including inconsistent theories."
-    - source: "v36 Proposition 5"
+    - source: "v37 Proposition 5"
       lean: "FailureOfComposition.Palomar.weak_totality_counterexample"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Concrete productive guard and concrete identity have different weak-totality values."
-    - source: "v36 Proposition 6, Gödel-II route"
+    - source: "v37 Proposition 6, Gödel-II route"
       lean: "FailureOfComposition.Palomar.range_counterexample_godel"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Range is specified by a PA-uniform graph equation, not only standard extensional equality."
-    - source: "v36 Proposition 6, additional productive route"
+    - source: "v37 Proposition 6, additional productive route"
       lean: "FailureOfComposition.Palomar.range_counterexample_productive"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Same range counterexample statement with a separate productive proof root."
-    - source: "v36 section 5, quotient-monoid consequence of Theorem 4"
+    - source: "v37 section 5, quotient-monoid consequence of Theorem 4"
       lean: "FailureOfComposition.Palomar.generated_quotient_partial_recursive"
       module: "FailureOfComposition.Palomar.SolutionNine"
       status: "proved"
       note: "Actual unary partial recursive functions, with the representative equation fixing evaluation."
 
 palomar_preparation:
-  status: "CURRENT MODULE CANDIDATE; LOCAL VERIFIER PENDING"
-  checked_on: "2026-09-30"
+  status: "V37 SUBMISSION PACKAGE; VERIFIED LEAN SOURCES; NOT SUBMITTED"
+  checked_on: "2026-10-01"
   policy_checked_on: "2026-09-30"
   current_repository: "flengyel/FailureOfComposition"
+  submission_target: >-
+    The immutable repository revision containing this metadata, manuscript v37,
+    and its corresponding unchanged Lean development; not the older verifier
+    source commit listed below.
+  manuscript_path: "manuscript/failure_of_composition_2026-09-30_v37.tex"
   selected_project: "Lean"
   comparator_path: "Lean/FailureOfComposition/Palomar/comparator-nine.json"
   metadata_path: "Lean/FailureOfComposition/Palomar/formalization.yaml"
@@ -236,9 +257,19 @@ palomar_preparation:
   current_verifier_revision: "65f0154ed776cd26c224254aa57b379137f28b0d"
   full_nine_comparator_verified: true
   earlier_official_palomar_verification: true
-  current_official_palomar_verification: false
-  blockers:
-    - "Run the current verifier once against the immutable public module candidate."
+  official_verifier_evidence:
+    source_commit: "6adc1084e57ca3e9011dbd3765e99b803842ee17"
+    status: "pass"
+    stage: "complete"
+    phase: "verification"
+    profile: "palomar-standard-v1"
+    kernels: ["con-ron", "NanoDa", "Lean default kernel"]
+    scope: >-
+      Complete official local verification of the named source commit. This
+      v37 submission package contains identical Lean sources, Comparator
+      configuration, and dependency pins. The manuscript and metadata were
+      updated afterward; no new complete run on this revision is claimed.
+  service_submission: false
   statement_policy: >-
     Eligibility must be achieved without weakening the mathematical statements,
     adding the desired conclusions as hypotheses, hiding semantics in
@@ -253,3 +284,4 @@ acknowledgements: >-
   Apache-2.0 license, also present at repository root. The author retains
   copyright in the manuscript and granted arXiv a perpetual, non-exclusive
   distribution license; that grant is not a general public reuse license.
+

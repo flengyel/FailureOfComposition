@@ -8,6 +8,21 @@ documentation and doccomment corrections do not constitute another build or
 Comparator run; recorded hashes and resource measurements refer to their
 original tested commits.
 
+## 2026-10-01 manuscript v37 and corresponding Lean submission package
+
+The submission target is the repository revision containing manuscript v37,
+its reviewed PDF, the updated metadata, and the corresponding Lean development.
+Version 37 changes exposition and related work; its mathematical statements,
+proofs, and theorem numbering are preserved. All 11 formal statement/proof
+environments were compared byte for byte with the v36 source at the accepted
+snapshot. All 124 Lean sources, the Comparator configuration, and dependency
+pins match `6adc1084e57ca3e9011dbd3765e99b803842ee17` exactly.
+
+The complete official local pass below records execution on that earlier SHA.
+It supplies the verification evidence for these unchanged Lean sources; it is
+not the submission target for v37 or a newly executed check of the revised
+paper and metadata. No service submission or registration has occurred.
+
 ## 2026-09-30 current-verifier module candidate
 
 PalomarSubmission `65f0154ed776cd26c224254aa57b379137f28b0d` and
@@ -1177,3 +1192,4 @@ under `.codex-work/palomar/`; review bundles export only focused evidence.
 
 No merge to `main`, submission, registration, or Palomar contact has occurred.
 Manuscript edits remain deferred.
+

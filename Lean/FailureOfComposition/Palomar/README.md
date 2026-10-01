@@ -1,7 +1,15 @@
 # Palomar preparation: mechanically verified Nine interface
 
-**COMPLETE LOCAL MECHANICAL PASS; NOT SUBMITTED OR REGISTERED.** This directory
-makes nine intended declarations and their proved counterparts reviewable. The
+**V37 SUBMISSION PACKAGE WITH VERIFIED LEAN SOURCES; NOT SUBMITTED OR REGISTERED.**
+The submission target is the repository revision containing
+[manuscript v37](../../../manuscript/failure_of_composition_2026-09-30_v37.tex)
+and its corresponding Lean development together. Metadata and correspondence
+links identify v37. All 124 Lean sources, the Comparator configuration, and
+dependency pins match the complete official local run at `6adc1084`.
+That earlier commit identifies the run's source, not the new submission target.
+
+This directory makes nine intended declarations and their proved counterparts
+reviewable. The
 cumulative eligible `ChallengeNine`/`SolutionNine` pair contains all nine
 declarations. The exact separate-environment interface and proof-route checks
 pass, and stock con-ron, NanoDa, and Lean's default kernel accepted the local
@@ -58,7 +66,7 @@ The uploaded evidence was checked against the published source hashes.
 eligible interface, correspondence proofs, Comparator checks, and local pinned
 official-verifier procedure.
 The earlier 4.32.2 development and initial export remain documented as provenance;
-the manuscript is unchanged.
+v37 preserves the mathematical statements, proofs, and numbering.
 
 ## The nine selected declarations
 
@@ -148,7 +156,7 @@ immutable snapshot; it does not by itself satisfy the newer module-source rule.
    also accepted. The execution took 3,034.009 seconds and had no deadline,
    OOM, pressure-stop, or host-reserve event. This is a complete local run of
    the pinned official verifier, not a Palomar service or editorial result.
-6. **The current immutable candidate has a complete local mechanical pass.**
+6. **The unchanged Lean sources have a complete local mechanical pass.**
    PalomarSubmission `65f0154` fetched public commit
    `6adc1084e57ca3e9011dbd3765e99b803842ee17`. After preserving one earlier
    host-monitor abort, a narrowly repaired external monitor guarded the one
@@ -160,7 +168,8 @@ immutable snapshot; it does not by itself satisfy the newer module-source rule.
    submission was made, and no registration or editorial review occurred. The
    default 16-CPU profile was unavailable on this four-CPU host; the approved
    standard profile qualified and was selected explicitly. Technical
-   preparation is complete for this immutable snapshot; upload, service review,
+   preparation of the verified Lean sources is complete; the v37 manuscript and
+   metadata update is recorded separately below. Upload, service review,
    registration, and editorial acceptance remain separate decisions.
 
 Solving the dependency boundary must preserve the statements. Adding the
@@ -187,6 +196,8 @@ The all-nine handoff paths are:
 | Setting | Repository-relative value |
 | --- | --- |
 | Repository | `flengyel/FailureOfComposition` |
+| Submission target | The immutable revision containing this v37 metadata, manuscript, and corresponding Lean sources |
+| Manuscript | `manuscript/failure_of_composition_2026-09-30_v37.tex` |
 | Selected project | `Lean` |
 | Comparator configuration | `Lean/FailureOfComposition/Palomar/comparator-nine.json` |
 | Metadata | `Lean/FailureOfComposition/Palomar/formalization.yaml` |
@@ -194,14 +205,17 @@ The all-nine handoff paths are:
 | Solution module | `FailureOfComposition.Palomar.SolutionNine` |
 | Local Comparator-tested revision | `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` |
 | Earlier official-verifier source revision | `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` |
-| Current official-verifier source revision | `6adc1084e57ca3e9011dbd3765e99b803842ee17` |
+| Official-verifier run source revision | `6adc1084e57ca3e9011dbd3765e99b803842ee17` |
 | Current verifier revision | `65f0154ed776cd26c224254aa57b379137f28b0d` |
 | Official-verifier profile | `palomar-standard-v1` |
 
-Any later submission revision must be an immutable full SHA. A changed snapshot,
-including changed submission metadata, is not covered by the pass above unless
-prepared and verified again. These paths are preparation data, not an instruction
-to submit. One configuration containing all nine declarations would be one
+The submission must identify this v37 package by its immutable full commit SHA.
+The source comparison establishes that its Lean files, configuration, and pins
+are identical to the accepted run. The complete report remains a record of that
+run at `6adc1084`. A changed snapshot, including changed submission metadata,
+is not covered by that complete report unless prepared and verified again.
+These paths are preparation data, not an instruction to submit. One
+configuration containing all nine declarations would be one
 registry entry; each selected declaration would still be reviewed.
 
 The separate repository has been created and published. It preserves the
@@ -245,7 +259,7 @@ the complete official verifier.
 ## Scope, provenance, and review
 
 The mathematical source is Florian Lengyel's
-[version 36 manuscript](../../../manuscript/failure_of_composition_2026-09-21_v36.tex).
+[version 37 manuscript](../../../manuscript/failure_of_composition_2026-09-30_v37.tex).
 Metadata therefore records `relationship: formalizes`, rather than treating
 the Lean development as the result's first presentation. The manuscript's
 classifications are retained. Montagna (1989) and Di Paola–Montagna (1991)
@@ -271,15 +285,14 @@ in the [manuscript coverage map](../MANUSCRIPT_COVERAGE.md).
 The productive and Gödel proofs were checked for separate dependency routes.
 This is not a claim of logical independence between two formal sentences.
 Review and automation metadata credit AI assistance honestly and distinguish
-agent source reviews from human peer review. Any local checks of this draft
-are separate from Palomar's checks and do not remove the blockers above.
+agent source reviews from human peer review. Local verification and the source
+correspondence review remain separate from Palomar service review.
 
-## Deferred manuscript work
+## Manuscript version 37
 
-The author plans version 37 to mention the Lean formalization. The proposed
-Appendix B revision would replace the primed constructions with a citation to
-the obstruction results. That manuscript revision remains separate from this
-preparation. Any reassurance about the unprimed constructions `S` and `S_T`
-requires checking their actual source definitions and identifying which later
-theorems use each construction. That affected-theorem inventory is pending;
-this draft makes no blanket claim about all later results in either paper.
+Version 37 revises the exposition and relation to previous work while preserving
+all mathematical statements, proofs, and numbering. Its source and reviewed PDF
+are committed with the corresponding Lean development. The introduction's
+statement about `S` and `S_T` is limited to the composition obstruction proved
+here: their equality uses one universally quantified proof. It is not a blanket
+claim about all later results in either historical paper.

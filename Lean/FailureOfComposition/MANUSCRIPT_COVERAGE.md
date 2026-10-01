@@ -1,4 +1,4 @@
-# Manuscript v36: mathematical coverage
+# Manuscript v37: mathematical coverage
 
 The [mathematical statements and Lean signatures](MANUSCRIPT_STATEMENTS.md)
 state every numbered manuscript result and the quotient-monoid consequence.
@@ -6,13 +6,19 @@ Theorem, corollary, and proposition numbers share the manuscript's counter;
 the nine selected Palomar declarations include alternate proofs and do not
 form a second manuscript numbering.
 
+The current manuscript is
+[version 37](../../manuscript/failure_of_composition_2026-09-30_v37.tex).
+Its mathematical statements, proofs, and numbering are preserved from v36,
+so the coverage below also applies to v37 and its corresponding unchanged Lean
+development in this repository revision.
+
 This map preserves the final source review from the original development
 repository. The reviewed manuscript is now stored locally as
 [`failure_of_composition_2026-09-21_v36.tex`](../../manuscript/failure_of_composition_2026-09-21_v36.tex),
 *Pointwise provable equality and the failure of composition*. The reviewed
 manuscript blob is `e0a2bd4b3570235fa4ea89ffe8dcf9d5445499f9`.
 The review starts from commit `355316179c294071d087b04bef0d08bb4329dcb0`
-and includes the three coverage additions below. The manuscript is unchanged.
+and includes the three coverage additions below. The archived v36 source is unchanged.
 
 **Historical checkpoint: coverage review and integrated verification passed on 2026-09-23.**
 No unproved mathematical claim was identified within the program-index scope
@@ -120,10 +126,14 @@ Proposition 6 and the unnumbered quotient-monoid consequence. The
 records acceptance through con-ron, NanoDa, and the Lean default kernel; the
 [correspondence record](../../Audit/palomar-nine-generated-quotient-20260930/CORRESPONDENCE.md)
 documents the quotient, representative, multiplication, unit, and actual-function
-correspondences. Nine is the latest reviewed local verification.
-No complete official Palomar verification is claimed.
+correspondences. These records describe the earlier local checkpoint. The
+subsequent complete official local verification at
+`6adc1084e57ca3e9011dbd3765e99b803842ee17` is recorded in
+[Palomar status](Palomar/STATUS.md); the v37 package retains its Lean sources,
+configuration, and pins unchanged.
 
 The review is a collaborating-agent semantic review, separately documented in
 [`coverage-review.md`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/coverage-review.md).
-It is not external human acceptance. The remaining Palomar preparation and
-the author's planned version 37 are separate from that historical review.
+It is not external human acceptance. The current v37 submission package is
+separate from that historical review; its correspondence is established by
+preservation of the mathematical statements, proofs, and numbering.
