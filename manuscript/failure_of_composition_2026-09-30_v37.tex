@@ -705,10 +705,22 @@ Therefore $\sim_T$ is the universal relation.
 \end{proof}
 
 The quotient $\omega/{\sim_T}$ is therefore the monoid of unary partial
-recursive functions when $T$
-is $\Sigma^0_1$-sound, and the one-element monoid otherwise.
-In particular, closing $\approx_{\PA}$ under composition gives exactly
-extensional equality.
+recursive functions when $T$ is $\Sigma^0_1$-sound, and the one-element
+monoid otherwise. In particular, closing $\approx_{\PA}$ under composition 
+gives exactly extensional equality.
+
+The universal relation in the second case is the generated congruence 
+$\sim_T$. If $T$ is consistent but not $\Sigma^0_1$-sound, it proves a
+false $\Sigma^0_1$ sentence $\sigma$. Its negation is a true $\Pi^0_1$
+sentence that $T$ cannot prove, by consistency.
+Theorem~\ref{thm:characterization} therefore shows that $\approx_T$ is
+not a composition congruence, whereas
+Theorem~\ref{thm:generated-congruence} makes $\sim_T$ universal.
+Moreover, $\approx_T$ is not universal: consistency prevents the
+constant-zero and constant-one programs from being equivalent, since
+$\PA$ proves that their values differ at input $0$.
+If $T$ is inconsistent, both relations are universal; this case is
+excluded from Theorem~\ref{thm:characterization}.
 
 \section{Weak totality and ranges}\label{sec:applications}
 
