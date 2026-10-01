@@ -15,20 +15,7 @@ project:
     equality. For every PA extension, the least generated composition congruence
     is extensional equality when the theory is Sigma-one sound and universal
     otherwise. In the sound case its quotient is isomorphic to the monoid of
-    actual unary partial recursive functions. This package is a Palomar
-    statement interface. The Lean 4.35.0-rc2 port and evaluator cleanup have
-    passed project verification. On codex/palomar-eligibility, the eligible
-    cumulative Nine pair passed local con-ron, NanoDa, and Lean Comparator
-    verification at 381de9db4d2214b8fd8d05bf74b56bc9597f01c5, including both proof
-    routes for Proposition 6 and the unnumbered quotient-monoid consequence.
-    The older pinned official verifier also completed on immutable commit
-    48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb. This focused module-based
-    candidate retains 124 Lean sources. These sources completed the current
-    official local verifier at 6adc1084e57ca3e9011dbd3765e99b803842ee17 with
-    pass / complete / verification and all three kernel acceptances. The
-    submission package in this revision pairs those unchanged Lean sources
-    with manuscript v37; its statements, proofs, and numbering are preserved.
-    The manuscript and code retain their distinct licensing notices.
+    actual unary partial recursive functions.
   authors:
     - "Florian Lengyel"
   responsible_maintainers:
@@ -46,14 +33,14 @@ sources:
     authors: ["Florian Lengyel"]
     type: "paper"
     relationship: "formalizes"
-    id: "https://api.github.com/repos/flengyel/FailureOfComposition/git/blobs/9269decb69c8c4e5824375efd568cd8f34d10c7e"
+    id: "https://api.github.com/repos/flengyel/FailureOfComposition/git/blobs/f833fc8848bcabfbbbc0a077fa7505dbcf352334"
     location: "manuscript/failure_of_composition_2026-09-30_v37.tex; dated September 30, 2026; Theorem 1 through Proposition 6 and the unnumbered quotient-monoid consequence following Theorem 4."
     author_endorsement: "participated"
     note: >-
       The source and compiled PDF are maintained in this repository revision
       alongside the corresponding Lean development. The id identifies the
       exact immutable v37 source blob; its SHA-256 is
-      821a5a23632c8100c543430c973b8bd3546e1f9af298d1e52ec7953f3f15697c.
+      1170ce0f6ee35f04f626fda647b62f8c10911f3dce90a59dd2fbe6090ae97254.
       Version 37 revises exposition and related work while preserving the
       mathematical statements, proofs, and numbering from v36.
       This is source-based formalization of a result already presented in the

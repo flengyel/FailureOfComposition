@@ -7,7 +7,7 @@ This directory contains the LaTeX source of Florian Lengyel's
 is the current manuscript; its [compiled PDF](failure_of_composition_2026-09-30_v37.pdf)
 has 11 pages. It revises the exposition and related work while preserving the
 mathematical statements, proofs, and numbering from
-[version 36](failure_of_composition_2026-09-21_v36.tex).
+[version 36](https://github.com/flengyel/FailureOfComposition/blob/6adc1084e57ca3e9011dbd3765e99b803842ee17/manuscript/failure_of_composition_2026-09-21_v36.tex).
 The [Lean coverage map](../Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
 and submission metadata now identify v37.
 The [statement correspondence](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
@@ -29,8 +29,8 @@ The definitions and unlabelled arguments retain their mathematical content;
 two short composition identities were moved inline. The source and PDF committed
 here are the reviewed artifacts:
 
-- v37 source SHA-256: `821a5a23632c8100c543430c973b8bd3546e1f9af298d1e52ec7953f3f15697c`
-- v37 PDF SHA-256: `651415ef5605eb636e0790e93179c16f41b8719b41ad9c6c79aa85b238ddc168`
+- v37 source SHA-256: `1170ce0f6ee35f04f626fda647b62f8c10911f3dce90a59dd2fbe6090ae97254`
+- v37 PDF SHA-256: `4d870e4e299ad7811631a2e98f2642c1748e3151b72a11ad8d9801c4de08e10d`
 
 The v36 file was copied byte for byte from
 [`flengyel/Categorical_Rice_Shapiro` at `6c3fe13979f31fed5c6da73098cbc323c2647f15`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/research/notes/failure_of_composition_2026-09-21_v36.tex).

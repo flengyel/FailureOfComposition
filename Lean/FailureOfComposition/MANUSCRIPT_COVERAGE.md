@@ -13,8 +13,8 @@ so the coverage below also applies to v37 and its corresponding unchanged Lean
 development in this repository revision.
 
 This map preserves the final source review from the original development
-repository. The reviewed manuscript is now stored locally as
-[`failure_of_composition_2026-09-21_v36.tex`](../../manuscript/failure_of_composition_2026-09-21_v36.tex),
+repository. The reviewed v36 manuscript is preserved at the immutable accepted
+snapshot as [`failure_of_composition_2026-09-21_v36.tex`](https://github.com/flengyel/FailureOfComposition/blob/6adc1084e57ca3e9011dbd3765e99b803842ee17/manuscript/failure_of_composition_2026-09-21_v36.tex),
 *Pointwise provable equality and the failure of composition*. The reviewed
 manuscript blob is `e0a2bd4b3570235fa4ea89ffe8dcf9d5445499f9`.
 The review starts from commit `355316179c294071d087b04bef0d08bb4329dcb0`
