@@ -4,18 +4,22 @@ version: "v0.4"
 
 project:
   name: "Pointwise provable equality and the failure of composition"
-  description: |-
-    In their study of pathologies in recursion categories, Montagna (1989) and Di Paola--Montagna (1991) introduce the algebraic
-    systems $S'$ and $S'_T$, respectively, and claim that they are categories. We show that the proposed composition is not independent 
-    of the choice of representatives. For every consistent recursively enumerable extension $T$ of Peano arithmetic ($\mathrm{PA}$), 
-    we exhibit two unary programs whose partial functions are provably equal in $T$, separately at each standard input. Composing each after a 
-    program that searches for a $T$-proof of contradiction and returns its code yields programs that are not
-    equivalent in this sense. An alternative proof uses the productivity of the complement of the diagonal halting set. 
-    Montagna's $S'$ is the case $T=\mathrm{PA}$. More generally, for consistent $T\supseteq\mathrm{PA}$, pointwise provable 
-    equality is a composition congruence exactly when $T$ proves every true $\Pi^0_1$ sentence, in which case it 
-    is extensional equality. This completeness condition fails for every consistent recursively enumerable $T\supseteq\mathrm{PA}$ 
-    by G\"odel's second incompleteness theorem. For every extension $T\supseteq\mathrm{PA}$, the least composition congruence 
-    containing pointwise provable equality is extensional equality if $T$ is $\Sigma^0_1$-sound and the universal relation otherwise.
+  description: >-
+    In their study of pathologies in recursion categories, Montagna (1989) and Di
+    Paola–Montagna (1991) introduce the algebraic systems S′ and S′_T, respectively, and
+    claim that they are categories. We show that the proposed composition is not independent
+    of the choice of representatives. For every consistent recursively enumerable extension
+    T of Peano arithmetic (PA), we exhibit two unary programs whose partial functions are
+    provably equal in T, separately at each standard input. Composing each after a program
+    that searches for a T-proof of contradiction and returns its code yields programs that
+    are not equivalent in this sense. An alternative proof uses the productivity of the
+    complement of the diagonal halting set. Montagna's S′ is the case T = PA. More
+    generally, for consistent T ⊇ PA, pointwise provable equality is a composition
+    congruence exactly when T proves every true Π⁰₁ sentence, in which case it is
+    extensional equality. This completeness condition fails for every consistent recursively
+    enumerable T ⊇ PA by Gödel's second incompleteness theorem. For every extension T ⊇ PA,
+    the least composition congruence containing pointwise provable equality is extensional
+    equality if T is Σ⁰₁-sound and the universal relation otherwise.
   authors:
     - "Florian Lengyel"
   responsible_maintainers:
