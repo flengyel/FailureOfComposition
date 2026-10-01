@@ -3,13 +3,15 @@
 This is the maintained repository for the Lean formalization and LaTeX source
 of Florian Lengyel's *Pointwise provable equality and the failure of composition*.
 
+- [Palomar Registry: PALOMAR-2026-10-01-000013, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-01-000013&version=1)
+- [Paper on arXiv (math.LO): DOI 10.48550/arXiv.2609.25556](https://doi.org/10.48550/arXiv.2609.25556)
 - [Lean development and verification guide](Lean/FailureOfComposition/README.md)
 - Manuscript version 37: [source](manuscript/failure_of_composition_2026-09-30_v37.tex),
   [PDF](manuscript/failure_of_composition_2026-09-30_v37.pdf), and
   [provenance and build instructions](manuscript/README.md)
 - [Mathematical statements and Lean signatures](Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
 - [Manuscript-to-Lean coverage map](Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
-- [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md)
+- [Palomar interface and local verification history](Lean/FailureOfComposition/Palomar/README.md)
 - [Codex setup in WSL2](docs/CODEX_WSL_SETUP.md) and
   [first toolchain-port task](docs/CODEX_PORT_TASK.md)
 
@@ -18,13 +20,18 @@ provability classes, the Pi-one completeness characterization, the classificatio
 of the generated composition congruence, and the weak-totality and range
 obstructions. The coverage map states the exact program-index scope.
 Version 37 revises the exposition and related work while preserving the
-mathematical statements, proofs, and theorem numbering. The submission target
-is the revision containing v37 and the corresponding Lean development together;
-the metadata and correspondence documents identify this version. All 124 Lean
-sources, the Comparator configuration, and the dependency pins are unchanged
-from the complete official local verification at
-`6adc1084e57ca3e9011dbd3765e99b803842ee17`. That SHA identifies the verification
-run's source; it is not the submission target for the revised manuscript.
+mathematical statements, proofs, and theorem numbering. Palomar Registry
+version 1 records the manuscript and corresponding Lean development together
+at commit [`fb32a19c4883baad83b286d4594cfbc6b1d2ad5c`](https://github.com/flengyel/FailureOfComposition/tree/fb32a19c4883baad83b286d4594cfbc6b1d2ad5c).
+Later manuscript and documentation revisions on `main` do not change that
+immutable registered snapshot.
+
+## Paper
+
+[![First page of the current manuscript: Pointwise provable equality and the failure of composition](docs/images/manuscript-preview.png)](manuscript/failure_of_composition_2026-09-30_v37.pdf)
+
+[Read the current manuscript (PDF)](manuscript/failure_of_composition_2026-09-30_v37.pdf) |
+[arXiv DOI](https://doi.org/10.48550/arXiv.2609.25556)
 
 ## Repository layout and history
 
@@ -77,26 +84,17 @@ which was submitted under arXiv's perpetual, non-exclusive distribution
 license; that grant is not a general public reuse license. See the
 [manuscript notes](manuscript/README.md).
 
-The [Palomar preparation](Lean/FailureOfComposition/Palomar/README.md) contains
-nine paired statements and proved counterparts. The toolchain port has passed
-its project verification. On `codex/palomar-eligibility`, all nine selected
-declarations passed a local con-ron, NanoDa, and Lean Comparator run at
-`381de9db4d2214b8fd8d05bf74b56bc9597f01c5`. The pinned official verifier then
-fetched public commit `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` and
-completed its protected build/export/comparison/kernel workflow under
-`palomar-standard-v1`. The
-[recorded Nine checkpoint](Lean/FailureOfComposition/Palomar/STATUS.md)
-identifies the exact scope.
-That pass predates the current module-header requirement. The focused candidate
-now retains 124 Lean modules, no maintained Lean code under `Audit/`, and the
-same nine mathematical contracts. The current verifier at `65f0154` fetched
-public candidate `6adc1084e57ca3e9011dbd3765e99b803842ee17` and completed its
-protected build, export, comparison, and three-kernel workflow under
-`palomar-standard-v1`. An earlier execution of that same candidate was aborted
-during Solution build by an external host-monitor `/proc` race; the repaired
-monitor and the subsequent complete pass are recorded separately in the status
-file.
-These declaration counts are distinct from
-manuscript numbering. The package includes the distinct manuscript and code
-licensing notices. No Palomar service submission, editorial
-acceptance, or registration is claimed.
+Palomar's service verification of all nine selected declarations passed on
+October 1, 2026. Its automated editorial review identified no blocking
+problems, and version 1 was registered that day. The
+[registry entry](https://palomar-registry.org/entry?id=PALOMAR-2026-10-01-000013&version=1)
+records the exact source revision, selected declarations, verification
+evidence, and automated review. The
+[verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36824750111)
+is also public.
+
+The earlier local Comparator and official-verifier runs remain documented in
+the [local verification history](Lean/FailureOfComposition/Palomar/README.md)
+and [Nine checkpoint status](Lean/FailureOfComposition/Palomar/STATUS.md).
+Those records identify their own tested revisions and are distinct from the
+subsequent Palomar service verification and registration.
