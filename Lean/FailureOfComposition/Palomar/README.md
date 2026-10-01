@@ -25,6 +25,15 @@ seconds, including a clean 2,560.077-second Solution build and a
 of the snapshot, not a Palomar service submission, editorial decision,
 registration, or registry entry.
 
+The module-based candidate at public immutable commit
+`6adc1084e57ca3e9011dbd3765e99b803842ee17` has now also completed the current
+verifier at PalomarSubmission `65f0154` under `palomar-standard-v1`. The final
+report is `pass` / `complete` / `verification`; con-ron accepted 20,931
+declarations in verified mode, NanoDa and Lean accepted, and Comparator printed
+`Your solution is okay!`. This newer pass covers the current 124-source module
+tree and source policy. It remains a local mechanical verification, not a
+service submission or registry decision.
+
 The current findings are recorded in [`STATUS.md`](STATUS.md), with the
 nine-result migration state in [`RESULT_INVENTORY.json`](RESULT_INVENTORY.json).
 The focused submitted-source inventory is
@@ -139,20 +148,20 @@ immutable snapshot; it does not by itself satisfy the newer module-source rule.
    also accepted. The execution took 3,034.009 seconds and had no deadline,
    OOM, pressure-stop, or host-reserve event. This is a complete local run of
    the pinned official verifier, not a Palomar service or editorial result.
-6. **The current immutable candidate is prepared but not yet completely
-   reverified.** PalomarSubmission `65f0154` fetched public commit
-   `6adc1084e57ca3e9011dbd3765e99b803842ee17`; preparation and the explicit
-   `palomar-standard-v1` capacity check passed. The sole authorized execution
-   reached Solution build and was then terminated fail-closed by the external
-   host guard after a transient `ProcessLookupError` while sampling `/proc`.
-   The run lasted 654.137 seconds, did not start the external kernels, recorded
-   no deadline/OOM/pressure stop, and cleaned its owned cgroup. This is an
-   incomplete infrastructure result, not a verifier rejection or acceptance.
+6. **The current immutable candidate has a complete local mechanical pass.**
+   PalomarSubmission `65f0154` fetched public commit
+   `6adc1084e57ca3e9011dbd3765e99b803842ee17`. After preserving one earlier
+   host-monitor abort, a narrowly repaired external monitor guarded the one
+   newly authorized execution. The report is `pass` / `complete` /
+   `verification`; all three kernels and Comparator accepted. The guarded run
+   took 3,720.403 seconds, recorded no deadline/OOM/pressure/host-reserve stop,
+   and cleaned its owned cgroup.
 7. **Service submission remains separate.** No event was uploaded, no service
    submission was made, and no registration or editorial review occurred. The
    default 16-CPU profile was unavailable on this four-CPU host; the approved
-   standard profile qualified and was selected explicitly. A successful
-   current-verifier execution remains before a current-readiness claim.
+   standard profile qualified and was selected explicitly. Technical
+   preparation is complete for this immutable snapshot; upload, service review,
+   registration, and editorial acceptance remain separate decisions.
 
 Solving the dependency boundary must preserve the statements. Adding the
 desired result as a hypothesis, hiding it inside an unconstrained definition,
@@ -185,6 +194,7 @@ The all-nine handoff paths are:
 | Solution module | `FailureOfComposition.Palomar.SolutionNine` |
 | Local Comparator-tested revision | `381de9db4d2214b8fd8d05bf74b56bc9597f01c5` |
 | Earlier official-verifier source revision | `48e6eeccc420e8068f1bc6d810ddbe10cfdf39eb` |
+| Current official-verifier source revision | `6adc1084e57ca3e9011dbd3765e99b803842ee17` |
 | Current verifier revision | `65f0154ed776cd26c224254aa57b379137f28b0d` |
 | Official-verifier profile | `palomar-standard-v1` |
 

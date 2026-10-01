@@ -42,16 +42,35 @@ candidate containing these results is
 
 The current verifier fetched that exact candidate. Preparation passed with
 `status: pending`, `stage: prepared`; the `palomar-standard-v1` capacity check
-also passed. One authorized `execute` payload reached `solution-build`, then the
-external host guard encountered `ProcessLookupError: [Errno 3] No such process`
-while sampling the changing process tree. Its fail-closed path terminated the
-owned cgroup after 654.137 seconds and left no owned workload. This was not a
-Palomar verifier rejection or a kernel verdict: con-ron, NanoDa, Lean replay,
-and the final comparison had not started. Host available memory stayed above
-14,510,592,000 bytes, full-memory PSI `avg10` peaked at 0.0, and completed
-verifier phases recorded no deadline or OOM event. A new current-verifier pass
-therefore remains necessary before current submission readiness is claimed;
-the authorized payload was not retried.
+also passed. The first authorized `execute` payload reached `solution-build`,
+then the external host guard encountered `ProcessLookupError: [Errno 3] No such
+process` while sampling the changing process tree. Its fail-closed path
+terminated the owned cgroup after 654.137 seconds and left no owned workload.
+That preserved run was an infrastructure abort before any kernel, not a theorem
+rejection.
+
+The external monitor was then repaired without changing the candidate: its
+per-process inspection now treats `ProcessLookupError` as the normal race in
+which an enumerated process exits. The historical monitor hashes to
+`468a09ac37384bc44a19b8ef17d05f724acbcd4809abec05a413a5173eb01c0e`;
+the executed repaired monitor hashes to
+`a6e57d6221b0199e0cfde0f73c9103f1cc882246f6f967404667462ba8c4eaf6`.
+Three fixtures confirm that exiting PIDs are skipped, missing critical host
+telemetry remains fail-closed, and simulated resource stops clean up the owned
+workload.
+
+One newly authorized execution then completed after 3,720.403 seconds. The
+official report says `status: pass`, `stage: complete`, `phase: verification`
+and has no errors. Solution build took 3,108.072 seconds, Solution export took
+23.904 seconds, and Comparator took 207.841 seconds. Con-ron accepted 20,931
+declarations in verified mode; NanoDa and Lean's default kernel accepted, and
+Comparator printed `Your solution is okay!`. The largest recorded phase cgroup
+peak was 9,262,518,272 bytes during trusted-cache work; Comparator peaked at
+805,412,864 bytes. The host guard observed at least 10,996,350,976 bytes
+available and full-memory PSI `avg10` at most 5.49. No deadline, OOM, OOM-kill,
+pressure, host-reserve, or monitor stop occurred. Cleanup took 0.005 seconds and
+left no owned cgroup. This is a complete local mechanical pass under the current
+pinned verifier, not a Palomar service submission or registry acceptance.
 
 The manuscript notice now records the existing arXiv perpetual, non-exclusive
 distribution license while preserving the author's copyright and the separate

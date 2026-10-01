@@ -24,13 +24,14 @@ candidate instead targets PalomarSubmission
 requirement. Its focused source scope is documented in
 [`PALOMAR_SUBMISSION_SCOPE.md`](PALOMAR_SUBMISSION_SCOPE.md). Public candidate
 `6adc1084e57ca3e9011dbd3765e99b803842ee17` passes the focused source, build,
-interface, dependency, axiom, policy, and negative gates. Current-verifier
-preparation and capacity passed; its one execution was terminated during
-Solution build by the external host monitor after a transient `/proc`
-`ProcessLookupError`, before any kernel ran. This is an incomplete
-infrastructure result, not a theorem rejection or current-verifier pass.
-Preserve subsequent commits. Service submission, editorial review, and
-registration remain.
+interface, dependency, axiom, policy, and negative gates. Its first
+current-verifier execution was terminated during Solution build by an external
+host-monitor `/proc` race before any kernel ran; that infrastructure abort is
+preserved. After the external monitor was narrowly repaired and tested, one
+newly authorized execution of the unchanged candidate completed with
+`status: pass`, `stage: complete`, `phase: verification`; con-ron, NanoDa, and
+Lean accepted all nine selected roots. Preserve subsequent commits. Service
+submission, editorial review, and registration remain separate.
 See the [recorded Nine status](../Lean/FailureOfComposition/Palomar/STATUS.md) and
 [mathematical statements and Lean signatures](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md).
 The historical starting pins below must not replace the active branch pins.

@@ -99,15 +99,19 @@ subject to its separate limits and is 44,261 bytes and 999 physical lines.
 The focused public candidate is
 `6adc1084e57ca3e9011dbd3765e99b803842ee17`. The current verifier fetched that
 commit, accepted its preparation metadata and source requirements, and passed
-the `palomar-standard-v1` capacity check. Its one full execution reached
+the `palomar-standard-v1` capacity check. Its first full execution reached
 `solution-build` before the separately maintained host guard encountered a
 transient `ProcessLookupError` while reading the live process tree. The guard's
 fail-closed behavior terminated only the owned cgroup after 654.137 seconds;
-cleanup found no remaining owned workload. No con-ron, NanoDa, or Lean verdict
-was reached. This leaves the module candidate mechanically focused and prepared,
-but not yet completely accepted by the current verifier.
+cleanup found no remaining owned workload. No kernel ran in that preserved
+infrastructure-abort record.
 
-The smallest continuation is to make the host guard tolerate the normal race in
-which a process exits between enumeration and inspection, validate that change
-with a harmless fixture, and authorize a new current-verifier execution. The
-single payload authorized for this checkpoint was not retried.
+The guard was narrowly repaired to skip a PID that disappears during individual
+process inspection while retaining fail-closed handling of unavailable host
+telemetry. Three deterministic fixtures passed. A newly authorized execution of
+the unchanged candidate then completed in 3,720.403 seconds with official report
+`status: pass`, `stage: complete`, `phase: verification`. Con-ron accepted
+20,931 declarations in verified mode, NanoDa and Lean's default kernel accepted,
+and Comparator printed `Your solution is okay!`. No resource or monitor stop
+occurred, and cleanup found no remaining owned cgroup. The snapshot is therefore
+technically ready for the separate service-submission decision.
