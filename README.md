@@ -1,7 +1,7 @@
 # FailureOfComposition
 
 This is the maintained repository for the Lean formalization and LaTeX source
-of Florian Lengyel's *Pointwise provable equality and the failure of composition*.
+of *Pointwise provable equality and the failure of composition*.
 
 - [Palomar Registry: PALOMAR-2026-10-01-000013, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-01-000013&version=1)
 - [Paper on arXiv (math.LO): DOI 10.48550/arXiv.2609.25556](https://doi.org/10.48550/arXiv.2609.25556)
