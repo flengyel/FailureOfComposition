@@ -41,15 +41,6 @@ evaluator modules it uses. The default build target is `FailureOfComposition`.
 The Lake package name remains `CategoricalRiceShapiro` to preserve the dependency
 manifest; it does not identify the repository where development is maintained.
 
-The formalization was developed in
-[flengyel/Categorical_Rice_Shapiro](https://github.com/flengyel/Categorical_Rice_Shapiro)
-before moving here. That repository is the historical origin of the exported
-code and verification records. [ROOTPROVENANCE.json](ROOTPROVENANCE.json) records
-the initial export, including its input/output hashes and packaging changes.
-Its flags describe that export event. It is not a manifest of later commits:
-this repository has since been initialized, published, and extended with the
-manuscript and updated documentation.
-
 ## Verification
 
 The Lean 4.35.0-rc2 port at `d2100df` passed the independent WSL rerun on
