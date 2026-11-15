@@ -1,65 +1,63 @@
 # Manuscript
 
-This directory contains the LaTeX source of Florian Lengyel's
-*Pointwise provable equality and the failure of composition*.
+This directory contains Florian Lengyel's *Pointwise provable equality and
+the failure of composition*.
 
-[Version 37](failure_of_composition_2026-09-30_v37.tex), dated September 30, 2026,
-is the current manuscript; its [compiled PDF](failure_of_composition_2026-09-30_v37.pdf)
-has 11 pages. It revises the exposition and related work while preserving the
-mathematical statements, proofs, and numbering from
-[version 36](https://github.com/flengyel/FailureOfComposition/blob/6adc1084e57ca3e9011dbd3765e99b803842ee17/manuscript/failure_of_composition_2026-09-21_v36.tex).
-The [Lean coverage map](../Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
-and submission metadata now identify v37.
-The [statement correspondence](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
-gives each numbered result in mathematical notation and its Lean signature,
-including the hypotheses and the distinction between manuscript numbering
-and selected-declaration order.
-The submission target contains this manuscript and its corresponding Lean
-development in one repository revision. Its 124 Lean sources, Comparator
-configuration, and dependency pins match the complete official local run at
-`6adc1084e57ca3e9011dbd3765e99b803842ee17`. That earlier SHA records the run;
-the new revision supplies the v37 paper-and-Lean package. No new complete
-verifier run or service submission is claimed by the manuscript update.
+[Version 38](failure_of_composition_2026-11-14_v38.tex), dated November 14, 2026,
+is the current repository manuscript; its [PDF](failure_of_composition_2026-11-14_v38.pdf)
+has 11 pages. It removes the repeated comparison in Section 1.1 and adds the
+domain-invariance deduction in Section 6.1. All numbered statements, existing
+proofs, labels, and bibliography are preserved from
+[version 37](failure_of_composition_2026-09-30_v37.tex).
 
-## Provenance
+The current arXiv release remains [2609.25556v2](https://arxiv.org/abs/2609.25556v2).
+Palomar version 1 retains the immutable source
+`fb32a19c4883baad83b286d4594cfbc6b1d2ad5c`. This repository revision does not
+submit an arXiv replacement or a Palomar update. The Lean sources, selected
+statements, Comparator configuration, and dependency pins are unchanged.
 
-Version 37 was reviewed against the v36 source in the accepted Lean snapshot.
-All 11 theorem, corollary, proposition, and proof environments are byte-identical.
-The definitions and unlabelled arguments retain their mathematical content;
-two short composition identities were moved inline. The source and PDF committed
-here are the reviewed artifacts:
+The [coverage map](../Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md) and
+[statement correspondence](../Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
+identify the current manuscript. The
+[revision report](../docs/MANUSCRIPT_V38_REPORT.txt) and
+[focused review](../docs/reviews/MANUSCRIPT_V38_FOCUSED_REVIEW_2026-11-14.txt)
+record the edits and checks.
 
-- v37 source SHA-256: `1170ce0f6ee35f04f626fda647b62f8c10911f3dce90a59dd2fbe6090ae97254`
-- v37 PDF SHA-256: `4d870e4e299ad7811631a2e98f2642c1748e3151b72a11ad8d9801c4de08e10d`
+## Current artifact hashes
 
-The v36 file was copied byte for byte from
-[`flengyel/Categorical_Rice_Shapiro` at `6c3fe13979f31fed5c6da73098cbc323c2647f15`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/research/notes/failure_of_composition_2026-09-21_v36.tex).
-The manuscript is now maintained in this repository alongside its formalization.
+- v38 source SHA-256: `94e80f24abd3a9c17fffa9075a017fdb1f04ea48995ad35b263386a4ddf6613b`
+- v38 PDF SHA-256: `e57a045547808fff9f3f4e9ff8c5a239e1b1935dc61bd3b1971fa332719a99ce`
 
-- Git blob: `e0a2bd4b3570235fa4ea89ffe8dcf9d5445499f9`
-- SHA-256: `65a7b8e1485452f5db9c2f3f1e0c172d6c40a8acc1c5d3a37e06fc80424bed2c`
+## Preserved v37 provenance
+
+The v37 source and PDF remain at their existing paths. Their prior provenance
+and build instructions are retained in the
+[preceding manuscript notes](https://github.com/flengyel/FailureOfComposition/blob/506d1f1494d6c05b0ba304edf5fe0bfa6c32864b/manuscript/README.md).
+V37 preserves the mathematical statements, proofs, and numbering from
+[v36](https://github.com/flengyel/FailureOfComposition/blob/6adc1084e57ca3e9011dbd3765e99b803842ee17/manuscript/failure_of_composition_2026-09-21_v36.tex).
+The recorded complete official local verification remains attached to its
+own source commit `6adc1084e57ca3e9011dbd3765e99b803842ee17`; no new Lean build
+or kernel replay is claimed for the manuscript edits.
+
+## Licensing
 
 The manuscript was submitted under arXiv's
 [perpetual, non-exclusive distribution license](https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html).
-The author retains copyright. That grant authorizes arXiv to distribute the
-submission; it is not a general public reuse license. The repository's
-Apache-2.0 license applies to the Lean formalization and supporting code, not to
-the manuscript or its cited works. This notice records the existing license and
-does not make a new grant or claim that an arXiv-deposited version is
-byte-identical to repository v36.
+The author retains copyright. The repository's Apache-2.0 license applies to
+the Lean formalization and supporting code; it does not make a new grant for
+the manuscript or its cited works.
 
 ## Build
 
 The source includes its bibliography and has no external input or figure files.
-It uses standard LaTeX packages. From this directory:
+From this directory:
 
 ```sh
 mkdir -p build
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build failure_of_composition_2026-09-30_v37.tex
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build failure_of_composition_2026-09-30_v37.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build failure_of_composition_2026-11-14_v38.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build failure_of_composition_2026-11-14_v38.tex
 ```
 
-Repeat the last command if LaTeX requests another pass to settle cross-references.
-Intermediate build files stay in the ignored `build/` directory. The reviewed
-v37 PDF is also committed alongside its source.
-
+Both passes completed with exit code 0. References and citations are resolved;
+there are no overfull boxes. One underfull box in the disclosure footnote also
+occurs when rebuilding v37 with the same TeX installation.

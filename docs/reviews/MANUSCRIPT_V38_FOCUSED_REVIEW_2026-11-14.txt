@@ -1,0 +1,96 @@
+Focused Hostile Referee and Mathematical Writing review: manuscript v38
+14 November 2026
+
+Scope and source
+Pointwise provable equality and the failure of composition, Florian Lengyel.
+Review concerns the two author-approved changes to GitHub v37 at
+506d1f1494d6c05b0ba304edf5fe0bfa6c32864b. The same assistant applied both
+plugin workflows; this is author-side AI-assisted review, not independent
+human peer review or a new review of all references.
+
+(A) Kill-shots / hard blockers
+None confirmed in the changed passages.
+
+(B) Major weaknesses
+None confirmed in the changed passages. The domain conclusion is pointwise
+provable equality, not a claim of uniform equality or a domain functor on
+a category whose proposed composition is already known to fail.
+
+(C) Minor issues
+The repeated final sentence in Section 1.1 was deleted. The remaining text
+still states the finite-generation/presentation comparison and both regimes
+of the generated quotient. Section 6.1 now states domain invariance immediately
+after the domain graph equation and definition of the R-totality condition.
+
+(D) Cross-section consistency failures
+None introduced. For each external standard n, e approximately_T h supplies
+T |- forall v (C_e(n-bar,v) iff C_h(n-bar,v)). Existential quantification in T
+gives equivalence of convergence at n-bar. The PA-uniform graph equations for
+d_e and d_h therefore give T |- forall y (C_d_e(n-bar,y) iff C_d_h(n-bar,y)).
+Thus d_e approximately_T d_h. Transitivity and symmetry give invariance of
+the condition d_e approximately_T id. No recursive-enumerability or consistency
+hypothesis is used in this deduction beyond the section's stated scope.
+
+(E) Acceptance conditions, non-negotiable
+1. Preserve every numbered statement, existing proof, label, and bibliography.
+   Endpoint: exact source comparison; satisfied for all 11 environments.
+2. Limit mathematical prose edits to the deletion and direct deduction.
+   Endpoint: reversing those edits and version/date changes reproduces v37
+   byte for byte; satisfied. Failure would prevent this focused release.
+3. Build the revised PDF and inspect the affected passages.
+   Endpoint: two successful pdfLaTeX passes, resolved references/citations,
+   no overfull boxes, and visual inspection of pages 1, 2, 9, and 10; satisfied.
+
+(F) Not checked / uncertainty log
+No new Lean compilation, independent-kernel replay, exhaustive bibliography
+audit, novelty search, arXiv submission, or Palomar procedure was performed.
+The source comparison does not certify the truth of unchanged results.
+Strongest confirmed blocker: none in the two edits.
+Strongest suspected unconfirmed blocker: none identified in the two edits.
+Most important unchecked item for a whole-paper judgment: primary-source
+pin-cites and unchanged argument dependencies.
+Recommendation depends on unavailable material: not for the two edits; yes
+for any claim of exhaustive historical/citation verification.
+Final recommendation: unknown for a new whole-paper certification; both
+authorized changes pass the focused mathematical and editorial checks.
+
+Mathematical Writing assessment
+Overall diagnosis: the two local changes improve economy and make the domain
+versus range distinction explicit. No alternative outline is needed.
+
+Actual outline and functions:
+1. Introduction; 1.1 related work: problem and comparisons.
+2. Programs and pointwise provable equality; 2.1 historical constructions;
+   2.2 arithmetization: definitions and prerequisites.
+3. Obstruction; 3.1 productivity proof: main counterexample and second route.
+4. Congruence characterization: necessary and sufficient conditions.
+5. Generated congruence: classification and quotient consequence.
+6. Weak totality and ranges; 6.1 weak totality; 6.2 range assignment:
+   applications and representative-dependence counterexamples.
+
+Location / issue / source principle or rationale / action:
+Page 2, Section 1.1 / repeated comparison / economy, while preserving the
+complementary distinction / delete the final sentence only.
+Page 9, Section 6.1 / useful domain contrast unstated / complementary
+explanation at its point of use / add the deduction after the graph equation.
+
+Source consulted: Knuth, Larrabee, and Roberts, Mathematical Writing,
+https://www-cs-faculty.stanford.edu/~knuth/papers/cs1193.pdf,
+Section 1, points 10-11 (printed p. 2; PDF p. 4). Their guidance concerns
+connected exposition and complementary explanation. The decisions above are
+applications of that guidance; the report format is not attributed to the book.
+
+Definition and notation audit: program indices, partial functions, pointwise
+and uniform provability, and inner/outer composition are defined before the
+new paragraph uses them. Domain partial identities and the R-totality
+condition are defined immediately before that paragraph. All quantifiers
+retain the external-standard-input/internal-provability distinction.
+
+Prioritized edits: delete the final Section 1.1 sentence beginning 'Their
+results concern finite generation'; add the approved paragraph beginning
+'If e approximately_T h, then d_e approximately_T d_h'. Both are implemented.
+The manuscript contains no added editorial-process narration.
+
+Scope: complete source preservation checks, focused mathematical deduction,
+two-pass TeX builds, and visual inspection of pages 1, 2, 9, and 10. No claim
+of a fresh whole-paper correctness, bibliographical, or Lean verification.

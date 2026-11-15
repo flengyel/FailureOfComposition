@@ -1,4 +1,4 @@
-# Manuscript v37: mathematical coverage
+# Manuscript v38: mathematical coverage
 
 The [mathematical statements and Lean signatures](MANUSCRIPT_STATEMENTS.md)
 state every numbered manuscript result and the quotient-monoid consequence.
@@ -7,10 +7,13 @@ the nine selected Palomar declarations include alternate proofs and do not
 form a second manuscript numbering.
 
 The current manuscript is
-[version 37](../../manuscript/failure_of_composition_2026-09-30_v37.tex).
-Its mathematical statements, proofs, and numbering are preserved from v36,
-so the coverage below also applies to v37 and its corresponding unchanged Lean
-development in this repository revision.
+[version 38](../../manuscript/failure_of_composition_2026-11-14_v38.tex).
+It preserves all numbered statements, existing proofs, and numbering from v37
+and v36. It removes a repeated comparison in Section 1.1 and adds the direct
+domain-invariance deduction in Section 6.1. That deduction follows from the
+PA-uniform domain graph equation by existentially quantifying the output in
+the pointwise graph equivalence; no new named Lean theorem is claimed.
+The Lean development is unchanged. The v37 source and PDF remain preserved.
 
 This map preserves the final source review from the original development
 repository. The reviewed v36 manuscript is preserved at the immutable accepted
@@ -134,6 +137,6 @@ configuration, and pins unchanged.
 
 The review is a collaborating-agent semantic review, separately documented in
 [`coverage-review.md`](https://github.com/flengyel/Categorical_Rice_Shapiro/blob/6c3fe13979f31fed5c6da73098cbc323c2647f15/Audit/failure-composition-v36/evidence/coverage-review.md).
-It is not external human acceptance. The current v37 submission package is
+It is not external human acceptance. The preserved v37 submission package is
 separate from that historical review; its correspondence is established by
 preservation of the mathematical statements, proofs, and numbering.

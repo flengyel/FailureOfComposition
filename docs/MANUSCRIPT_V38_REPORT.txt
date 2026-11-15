@@ -1,0 +1,56 @@
+Manuscript v38: implementation of the two accepted Google review suggestions
+14 November 2026
+
+Repository: flengyel/FailureOfComposition
+Base main commit: 506d1f1494d6c05b0ba304edf5fe0bfa6c32864b
+Current source: manuscript/failure_of_composition_2026-11-14_v38.tex
+Current PDF: manuscript/failure_of_composition_2026-11-14_v38.pdf
+
+Implemented changes
+1. Section 1.1: delete the final repeated comparison. Retain the cited result
+   and the sound/unsound quotient characterization in the preceding text.
+2. Section 6.1: after defining the domain graph and R-totality, explain that
+   pointwise provable equality preserves domain partial identities, and hence
+   preserves the R-totality condition. The inference is given at each external
+   standard input using existential quantification of the output graph.
+
+Versioning and preservation
+V38 is dated November 14, 2026; PDF subject is Version 38. V37 source, PDF,
+and existing synchronization data remain at their prior paths. Active source,
+PDF, coverage, statement-map, and metadata references identify v38. Historical
+v37 preparation records remain identified as historical. The metadata source
+blob and SHA-256 identify the actual new source. The registered Palomar v1
+commit fb32a19c4883baad83b286d4594cfbc6b1d2ad5c remains immutable. The arXiv
+release remains 2609.25556v2; no external submission was made.
+
+Validation
+All 11 numbered statement/existing proof environments, all labels, and the
+bibliography are byte-identical to v37. Reversing the two authorized prose
+edits and version/date changes reconstructs v37 exactly. The abstract and
+all existing displayed mathematical content are preserved. No Lean source,
+selected statement, Comparator configuration, or dependency pin is changed.
+
+V37 and v38 each passed two pdfLaTeX invocations, all exit codes 0. V38 has
+11 pages and resolved citations and references, with no overfull boxes. The
+sole underfull-box warning in the disclosure footnote also occurs in the v37
+baseline build. Pages 1, 2, 9, and 10 were visually inspected; the date,
+shortened comparison, new paragraph, following proposition, and next-page
+continuation are readable and remain within the margins.
+
+The focused Hostile Referee and Mathematical Writing report is retained at
+docs/reviews/MANUSCRIPT_V38_FOCUSED_REVIEW_2026-11-14.txt. This is the same
+assistant applying both workflows, not two independent reviewers. It records
+the exact scope and the derivation. No new whole-paper, primary-source, Lean,
+independent-kernel, or service verification is claimed.
+
+Hashes
+V37 source actually read: f36a5439b93ca8b6e839065d18363f0f2d54c979fb8707970641e93f4685a8f1
+V38 source SHA-256: 94e80f24abd3a9c17fffa9075a017fdb1f04ea48995ad35b263386a4ddf6613b
+V38 source Git blob: beeb007640108324ce199702ef5f19d4522ab797
+V38 PDF SHA-256: e57a045547808fff9f3f4e9ff8c5a239e1b1935dc61bd3b1971fa332719a99ce
+
+Evidence: provenance/manuscript-v38-20261114/validation.json,
+build-commands.json, v37-to-v38.diff, and compressed final-pass build outputs.
+Reports are to be delivered from committed bytes to Windows Downloads with
+byte verification and conflict preservation; that delivery is recorded after
+the remote commit is published.

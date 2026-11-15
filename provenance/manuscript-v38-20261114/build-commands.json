@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-output-directory=/tmp/foc-v38-20261114/build",
+      "failure_of_composition_2026-09-30_v37.tex"
+    ],
+    "cwd": "/tmp/foc-v38-20261114/work/manuscript",
+    "pass": 1,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-output-directory=/tmp/foc-v38-20261114/build",
+      "failure_of_composition_2026-09-30_v37.tex"
+    ],
+    "cwd": "/tmp/foc-v38-20261114/work/manuscript",
+    "pass": 2,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-output-directory=/tmp/foc-v38-20261114/build",
+      "failure_of_composition_2026-11-14_v38.tex"
+    ],
+    "cwd": "/tmp/foc-v38-20261114/work/manuscript",
+    "pass": 1,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-output-directory=/tmp/foc-v38-20261114/build",
+      "failure_of_composition_2026-11-14_v38.tex"
+    ],
+    "cwd": "/tmp/foc-v38-20261114/work/manuscript",
+    "pass": 2,
+    "exit_code": 0
+  }
+]

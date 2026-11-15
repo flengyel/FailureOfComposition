@@ -6,8 +6,8 @@ of *Pointwise provable equality and the failure of composition*.
 - [Palomar Registry: PALOMAR-2026-10-01-000013, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-01-000013&version=1)
 - [Paper on arXiv (math.LO): DOI 10.48550/arXiv.2609.25556](https://doi.org/10.48550/arXiv.2609.25556)
 - [Lean development and verification guide](Lean/FailureOfComposition/README.md)
-- Manuscript version 37: [source](manuscript/failure_of_composition_2026-09-30_v37.tex),
-  [PDF](manuscript/failure_of_composition_2026-09-30_v37.pdf), and
+- Manuscript version 38: [source](manuscript/failure_of_composition_2026-11-14_v38.tex),
+  [PDF](manuscript/failure_of_composition_2026-11-14_v38.pdf), and
   [provenance and build instructions](manuscript/README.md)
 - [Mathematical statements and Lean signatures](Lean/FailureOfComposition/MANUSCRIPT_STATEMENTS.md)
 - [Manuscript-to-Lean coverage map](Lean/FailureOfComposition/MANUSCRIPT_COVERAGE.md)
@@ -19,8 +19,11 @@ The development proves the failure of induced composition on pointwise
 provability classes, the Pi-one completeness characterization, the classification
 of the generated composition congruence, and the weak-totality and range
 obstructions. The coverage map states the exact program-index scope.
-Version 37 revises the exposition and related work while preserving the
-mathematical statements, proofs, and theorem numbering. Palomar Registry
+Version 38 removes a repeated comparison and explains why the domain-based
+R-totality condition is invariant under pointwise provable equality. The numbered
+statements, existing proofs, and theorem numbering are preserved. Repository v38
+is newer than the current arXiv release, v2; no new arXiv submission is claimed.
+Palomar Registry
 version 1 records the manuscript and corresponding Lean development together
 at commit [`fb32a19c4883baad83b286d4594cfbc6b1d2ad5c`](https://github.com/flengyel/FailureOfComposition/tree/fb32a19c4883baad83b286d4594cfbc6b1d2ad5c).
 Later manuscript and documentation revisions on `main` do not change that
@@ -28,9 +31,9 @@ immutable registered snapshot.
 
 ## Paper
 
-[![First page of the current manuscript: Pointwise provable equality and the failure of composition](docs/images/manuscript-preview.png)](manuscript/failure_of_composition_2026-09-30_v37.pdf)
+[![First page of the current manuscript: Pointwise provable equality and the failure of composition](docs/images/manuscript-preview.png)](manuscript/failure_of_composition_2026-11-14_v38.pdf)
 
-[Read the current manuscript (PDF)](manuscript/failure_of_composition_2026-09-30_v37.pdf) |
+[Read the current manuscript (PDF)](manuscript/failure_of_composition_2026-11-14_v38.pdf) |
 [arXiv DOI](https://doi.org/10.48550/arXiv.2609.25556)
 
 ## Repository layout and history

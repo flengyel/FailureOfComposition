@@ -56,7 +56,8 @@ or depend on its holes. The permitted proof axioms are `propext`,
 - Preserve `ROOTPROVENANCE.json` as the initial export record. Preserve the
   original evaluator-source pin record as provenance; migrated sources require
   a separate, explicit record and corresponding validation.
-- The author is preparing manuscript v37. A toolchain port does not authorize
+- The current manuscript is v38, dated November 14, 2026; preserve v37.
+  A toolchain port does not authorize
   edits to `manuscript/failure_of_composition_2026-09-21_v36.tex`.
 - Work in the dedicated Linux Git checkout described in `docs/CODEX_WSL_SETUP.md`
   and the branch named by the current task. Never develop in a syncfailcomp-managed mirror.

@@ -1,5 +1,12 @@
 # Palomar preparation: mechanically verified Nine interface
 
+The current manuscript is [v38](../../../manuscript/failure_of_composition_2026-11-14_v38.tex),
+dated November 14, 2026. It makes two exposition edits to v37; the Lean
+sources and selected statements are unchanged. The v37 preparation notes
+below are historical. Palomar version 1 remains registered at
+`fb32a19c4883baad83b286d4594cfbc6b1d2ad5c`; this manuscript update
+does not submit or register a successor.
+
 **V37 SUBMISSION PACKAGE WITH VERIFIED LEAN SOURCES; NOT SUBMITTED OR REGISTERED.**
 The submission target is the repository revision containing
 [manuscript v37](../../../manuscript/failure_of_composition_2026-09-30_v37.tex)

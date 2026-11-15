@@ -1,0 +1,34 @@
+{
+  "base_commit": "506d1f1494d6c05b0ba304edf5fe0bfa6c32864b",
+  "manuscript_version": 38,
+  "date": "2026-11-14",
+  "source": "manuscript/failure_of_composition_2026-11-14_v38.tex",
+  "source_sha256": "94e80f24abd3a9c17fffa9075a017fdb1f04ea48995ad35b263386a4ddf6613b",
+  "source_git_blob": "beeb007640108324ce199702ef5f19d4522ab797",
+  "numbered_statement_and_existing_proof_environments_unchanged": 11,
+  "labels_unchanged": true,
+  "bibliography_unchanged": true,
+  "reverse_exact_two_edits_and_version_date_equals_v37": true,
+  "new_named_lean_theorem_claimed": false,
+  "pdf_sha256": "e57a045547808fff9f3f4e9ff8c5a239e1b1935dc61bd3b1971fa332719a99ce",
+  "pdf_pages": 11,
+  "pdf_subject": "Version 38",
+  "visually_inspected_pages": [
+    1,
+    2,
+    9,
+    10
+  ],
+  "unresolved_references_or_citations": false,
+  "overfull_boxes": false,
+  "existing_underfull_disclosure_footnote_in_both_builds": true,
+  "build_commands_exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "lean_build_rerun": false,
+  "new_palomar_submission": false,
+  "new_arxiv_submission": false
+}

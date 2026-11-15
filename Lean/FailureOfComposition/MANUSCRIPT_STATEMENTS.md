@@ -1,9 +1,9 @@
-# Manuscript v37: mathematical statements and Lean declarations
+# Manuscript v38: mathematical statements and Lean declarations
 
 This document gives the mathematical content and maintained Lean signatures of
-the results in [manuscript v37](../../manuscript/failure_of_composition_2026-09-30_v37.tex).
-Version 37 preserves the mathematical statements, proofs, and numbering of v36;
-the correspondence below therefore applies without changing any Lean declaration.
+the results in [manuscript v38](../../manuscript/failure_of_composition_2026-11-14_v38.tex).
+Version 38 preserves all numbered statements, existing proofs, and numbering
+of v37 and v36; the correspondence below therefore applies without changing any Lean declaration.
 The manuscript has six numbered results: Theorems 1, 3 and 4, Corollary 2, and
 Propositions 5 and 6. It has no numbered lemmas. The nine Palomar selections
 separate two proof routes and include an unnumbered monoid consequence; they
@@ -14,7 +14,7 @@ defined **Nine** pair completed official local verification at
 `6adc1084e57ca3e9011dbd3765e99b803842ee17` under PalomarSubmission `65f0154`,
 including both proof routes for Proposition 6 and the unnumbered quotient-monoid
 consequence. Con-ron, NanoDa, Lean's default kernel, and Comparator accepted.
-The current v37 package retains those exact Lean sources, configuration, and pins.
+The current v38 package retains those exact Lean sources, configuration, and pins.
 The
 [selection table](#the-nine-palomar-selections) distinguishes these statuses.
 This document does not claim a new verification run or registry acceptance.
